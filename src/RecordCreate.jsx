@@ -20,8 +20,8 @@ export default function RecordCreate(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (
-      cr_date != null &&
-      cr_datehold != "Invalid Date"
+      cr_date !== null &&
+      cr_datehold !== "Invalid Date"
     ){
     var newRecord = {
       'colone': colone,
@@ -87,6 +87,7 @@ export default function RecordCreate(props) {
         <div><img src={spacer} alt="spare" />colfour:&nbsp; &nbsp; &nbsp;<input style={{height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px'}} placeholder="Required" type="text" value={colfour} onChange={(event) => setcolfour(event.target.value)}/></div>
         <div><img src={spacer2} alt="spare" /></div>
         <div><img src={spacer} alt="spare" />coldate:&nbsp; &nbsp; &nbsp;<LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
+          
               <DatePicker
                 id="cr_date"
                 format="YYYY.M.D"

@@ -77,8 +77,7 @@ export default function FrontPage() {
           "colfour": colfour,
           "coldate": crDate,
            } 
-           console.log(recordPUT)
-                            
+                                       
            await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/records/update/${editing}`, recordPUT)
             .then((response) => {setCheckForRecords(!checkForRecords); alertCtx.success(`Suksesvolle PUT`)})
             .catch((error) => {alertCtx.error(error.message);})
@@ -89,7 +88,6 @@ export default function FrontPage() {
           const onEditDelete = (row) => {
             axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/records/delete/${row.id}`)
             .then((response) => {setCheckForRecords(!checkForRecords); alertCtx.success(`Suksesvolle DEL`)})
-            
             };       
 
   if (error) return <p>An error occurred in tableone</p>
