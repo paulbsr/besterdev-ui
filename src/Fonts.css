@@ -1,0 +1,451 @@
+.Font-Verdana-Small {
+    font-family: "Verdana";
+    font-size: small
+}
+
+.Font-Verdana-Medium {
+    font-family: "Verdana";
+    font-size: medium
+}
+
+.Font-Verdana-Large {
+    font-family: "Verdana";
+    font-size: large
+}
+
+.Font-Verdana-Small_Grey {
+    font-family: "Verdana";
+    font-size: small;
+    color: #beb9b993
+}
+
+.Font-Verdana-Small_Compliment_Green {
+    font-family: "Verdana";
+    font-size: small;
+    color: #169247
+}
+
+.Font-Verdana-Small_Compliment_Blue {
+    font-family: "Verdana";
+    font-size: small;
+    color: #1CADD5
+}
+
+
+.Font-SegoeUI-Small_White {
+    font-family: "Segoe UI";
+    font-size: small;
+    color: #ffffff
+}
+
+.Label {
+    width: 600px;
+}
+
+.Font-SegoeUI-Task-Name {
+    font-family: "Segoe UI";
+    font-size: medium;
+    color: #0c0101
+}
+
+.Font-SegoeUI-Task-Name-Blue {
+    font-family: "Segoe UI";
+    font-size: medium;
+    color: #0000FF;
+}
+
+.Font-SegoeUI-Task-Name-Blue-Underline {
+    font-family: "Segoe UI";
+    font-size: medium;
+    color: #0000FF;
+    text-decoration: underline
+}
+
+.Font-SegoeUI-Task-Name-Bold {
+    font-weight: bold;
+    font-family: "Segoe UI";
+    font-size: medium;
+    color: #0c0101
+}
+
+.Font-SegoeUI-Task-Name-Bold-Underscore {
+    font-weight: bold;
+    font-family: "Segoe UI";
+    font-size: medium;
+    color: #0c0101;
+    text-decoration: underline;
+}
+
+.Font-SegoeUI-Task-Req {
+    font-family: "Segoe UI";
+    font-size: medium;
+    color: #0000FF
+}
+
+.Font-SegoeUI-Task-Name-White {
+    font-family: "Segoe UI";
+    font-size: medium;
+    color: #FFFFFF;
+}
+
+.Table-Column-200 {width: 200px;}
+
+/* .Table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid rgb(245, 240, 240)
+}
+
+.Table th {
+    background-color: #0c0101;
+    padding: 3px;
+    background-color: #f6f7f1;
+    font-family: "Segoe UI";
+    font-size: small
+}
+
+.Table td {
+    border: 1px solid rgb(233, 228, 228);
+    padding: 6px
+}
+
+.Table tbody {
+    padding: 1px;
+}
+
+.Table2 {
+    border-collapse: collapse;
+    border: 1px solid rgb(245, 207, 235);
+} */
+
+.Table6 th {
+    background-color: #f7f4f3;
+    padding: 4px;
+    font-family: "Verdana";
+    font-size: small;
+}
+
+.Table6 td {
+    border: 1px solid rgb(233, 228, 228);
+    padding: 5px;
+    font-family: "Verdana";
+    font-size: small;
+    min-width: 50%;
+}
+
+.Tableasms {
+    border-collapse: collapse;
+    border: 1px solid rgb(245, 207, 235);
+}
+
+/* TAFEL HOOF */
+.Tableasms th {
+    background-color: #e1ebf8;
+    padding: 4px;
+    font-family: "Segoe UI";
+    font-size: small;
+}
+
+.Tableasms td {
+    border: 1px solid rgb(233, 228, 228);
+    padding: 5px;
+    font-family: "Segoe UI";
+    font-size: small;
+}
+
+/* text-align: center; */
+
+.asmshover {
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.asmshover:hover {
+    font-family: "Verdana";
+    font-size: small;
+    color: hsl(0, 0%, 60%);
+    background-color: #f7f4f3;
+}
+
+.clientid {
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.PRODenvtable {
+    background-color: #CEAB9388;
+}
+
+.TESTenvtable {
+    background-color: #FDD99888;
+}
+
+.DEVenvtable {
+    background-color: #F8ECD188;
+}
+
+.PRODenvtable:hover {
+    background-color: #CEAB93FF;
+}
+
+.TESTenvtable:hover {
+    background-color: #FDD998FF;
+}
+
+.DEVenvtable:hover {
+    background-color: #F8ECD1FF;
+}
+
+.sihover {
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.sihover:hover {
+    font-family: "Segoe UI";
+    font-size: small;
+    color: hsl(0, 0%, 6%);
+    background-color: #f2f2f7;
+}
+
+.Hover {
+    cursor: pointer;
+    border: 1px ridge transparent;
+}
+
+.Hover:hover {
+    color: hsl(244, 85%, 48%);
+    background-color: #f2f2f7;
+    border: 1px #201f1ffb;
+    border-radius: 3px;
+}
+
+.HOWTOHover {
+    cursor: pointer;
+    border: 1px ridge transparent;
+}
+
+.HOWTOHover:hover {
+    color: hsl(332, 85%, 48%);
+    background-color: #f3eee8;
+    border: 1px #201f1ffb;
+    border-radius: 3px;
+    border: 1px solid rgb(236, 169, 225);
+}
+
+.Scorecard {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-archive {
+    background-color: #D8D8D8;
+    border: none;
+    color: #A5A5A5;
+    border-radius: 5px
+}
+
+.button-done {
+    background-color: #E2EFD9;
+    border: none;
+    color: #00B050;
+    border-radius: 5px
+}
+
+.button-wip {
+    background-color: #DEEBF6;
+    border: none;
+    color: #2E75B5;
+    border-radius: 5px
+}
+
+.button-start {
+    background-color: #FADBD2;
+    border: none;
+    color: #B43512;
+    border-radius: 5px
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 500px;
+    height: 500px;
+    background-color: #eee;
+    margin: 10px;
+}
+
+.flex-container {
+    display: flex;
+    margin-top: 10px;
+}
+
+.flex-box {
+    width: 33.33%;
+    overflow-wrap: anywhere;
+    text-align: justify;
+}
+
+.fill {
+    width: 99%;
+}
+
+.done {
+    color: grey;
+}
+
+.doneflex {
+    width: 50%;
+}
+
+.overview {
+    border-collapse: collapse;
+    border: 1px solid rgb(233, 228, 228);
+    width: 100%;
+}
+
+.overview th {
+    background-color: #e1ebf8;
+    padding: 2px;
+    font-family: "Segoe UI";
+    font-size: small;
+}
+
+.overview td {
+    border: 1px solid rgb(233, 228, 228);
+    padding: 5px;
+    font-family: "Segoe UI";
+    font-size: medium;
+}
+
+.overview-box {
+    width: 25%;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    margin-left: 1px;
+    margin-right: 1px;
+}
+
+.fit-eleven {
+    width: 9%;
+    min-width: 135px;
+    font-size: large;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.start-color {
+    background-color: #B2B2B2;
+}
+
+.wip-color {
+    background-color: rgb(0, 0, 190, .65);
+}
+
+.done-color {
+    background-color: rgb(0, 180, 0, .65);
+}
+
+.problem-color {
+    background-color: rgb(190, 0, 0, .65);
+}
+
+.ticker {
+    color: #ff0000;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 15px;
+}
+
+.cr_edit_inputfield {
+    padding: 5px;
+    font-family: "Verdana";
+    font-size: small;
+    width: auto
+}
+
+.cr_edit_inputfield_disc {
+    /* min-width: 50%; */
+    padding: 5px;
+    font-family: "Verdana";
+    font-size: small;
+    width: auto
+}
+
+.banner-light {
+    /* background-color: #f5f9fa; */
+    background-color: #f7f4f3;
+    padding: 1px;
+    text-align: right;
+  }
+
+.banner-white {
+    background-color: #ffffff;
+    padding: 1px;
+    text-align: left;
+  }
+
+
+  
+  /* horizontal-line.css */
+
+.gradient-line {
+    width: 100%;
+    height: 3px; 
+    /* background: linear-gradient(to right, #b96eeb, #f0edf2); */
+    background: linear-gradient(to right, #1994ad, #f5f9fa);
+    /* background: linear-gradient(to right, #D5441C, #f7f4f3); */
+  }
+
+  .gradient-line-thin {
+    width: 100%;
+    height: 1px; 
+    /* background: linear-gradient(to right, #b96eeb, #f0edf2); */
+    background: linear-gradient(to right, #cfcbd1, #ffffff);
+  }
+
+  .spacer-light {
+    font-family: "Segoe UI";
+    font-size: x-large;
+    /* color: #f5f9fa; //green */
+    color: #f7f4f3
+}
+
+.tooltip {
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+  }
+  
+/* Tooltip arrow */
+.tooltip-arrow {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid black;
+  }
+  
+  /* Tooltip content */
+  .tooltip-inner {
+    background-color: black;
+    color: white;
+    padding: 8px;
+  }
+    
+  .footer{
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #f7f4f3;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
