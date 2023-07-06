@@ -10,15 +10,15 @@ import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
+// import BannerWhite from './BannerWhite';
+// import GradientLine from './GradientLine';
+// import BannerLight from './BannerLight';
+// import GradientLineThin from './GradientLineThin';
+// import Quicklinks from './Quicklinks';
 import RecordCreate from './RecordCreate';
-import GradientLine from './GradientLine';
-import BannerWhite from './BannerWhite';
-import BannerLight from './BannerLight';
-import GradientLineThin from './GradientLineThin';
-import Quicklinks from './Quicklinks';
 import 'react-tooltip/dist/react-tooltip.css'
-import { Tooltip } from 'react-tooltip'
-import Footer from './Footer';
+// import { Tooltip } from 'react-tooltip'
+// import Footer from './Footer';
 dayjs.extend(utc);
 
 
@@ -93,7 +93,7 @@ export default function FrontPage() {
   if (error) return <p>An error occurred in tableone</p>
   
   return (<div>
-    <Tooltip id="edit" />
+    {/* <Tooltip id="edit" />
     <Tooltip id="commit" />
     <Tooltip id="revert" />
     <Tooltip id="purge" />
@@ -102,7 +102,7 @@ export default function FrontPage() {
     <GradientLine/>
     <BannerLight/>
     <GradientLineThin/>
-    <Quicklinks/>
+    <Quicklinks/> */}
     
     <table className="Table6">
       <thead>
@@ -162,7 +162,7 @@ export default function FrontPage() {
     </table>
 
     <RecordCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
-    <Footer />
+    {/* <Footer /> */}
   </div>
 
   
