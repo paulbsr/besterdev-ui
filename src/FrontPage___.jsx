@@ -5,22 +5,21 @@ import './Fonts.css'
 import 'react-dropdown/style.css';
 import {FaPen, FaCheck, FaRegTrashAlt} from 'react-icons/fa';
 import {PiArrowCounterClockwiseBold} from 'react-icons/pi';
-// import AlertContext from './Generic/Alerts/AlertContext';
-// import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
-// import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-// import dayjs from "dayjs";
-// import utc from 'dayjs/plugin/utc';
-// import { Tooltip } from 'react-tooltip'
-import BannerWhite from './BannerWhite';
+import AlertContext from './Generic/Alerts/AlertContext';
+import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import dayjs from "dayjs";
+import utc from 'dayjs/plugin/utc';
+import RecordCreate from './RecordCreate';
 import GradientLine from './GradientLine';
+import BannerWhite from './BannerWhite';
 import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
 import Quicklinks from './Quicklinks';
-// import RecordCreate from './RecordCreate';
-// import 'react-tooltip/dist/react-tooltip.css'
-// import { Tooltip } from 'react-tooltip'
-// import Footer from './Footer';
-// dayjs.extend(utc);
+import 'react-tooltip/dist/react-tooltip.css'
+import { Tooltip } from 'react-tooltip'
+import Footer from './Footer';
+dayjs.extend(utc);
 
 
 
@@ -36,7 +35,7 @@ export default function FrontPage() {
   const [coldate, setcoldate] = useState(null)
   const [cr_datehold, setCr_DateHold] = useState(null)
   const [crDate, setCrDate] = useState(null)
-  // const alertCtx = useContext(AlertContext);
+  const alertCtx = useContext(AlertContext);
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => {setExpanded(!isExpanded);};   
 
@@ -81,25 +80,25 @@ export default function FrontPage() {
            console.log(recordPUT)
                             
            await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/records/update/${editing}`, recordPUT)
-            .then((response) => {setCheckForRecords(!checkForRecords);})
-            // .catch((error) => {alertCtx.error(error.message);})
+            .then((response) => {setCheckForRecords(!checkForRecords); alertCtx.success(`Suksesvolle PUT`)})
+            .catch((error) => {alertCtx.error(error.message);})
             setCheckForRecords(!checkForRecords)
             onEditCancel();}
             }
 
           const onEditDelete = (row) => {
             axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/records/delete/${row.id}`)
-            .then((response) => {setCheckForRecords(!checkForRecords);})
+            .then((response) => {setCheckForRecords(!checkForRecords); alertCtx.success(`Suksesvolle DEL`)})
             
             };       
 
   if (error) return <p>An error occurred in tableone</p>
   
   return (<div>
-    {/* <Tooltip id="edit" />
+    <Tooltip id="edit" />
     <Tooltip id="commit" />
     <Tooltip id="revert" />
-    <Tooltip id="purge" /> */}
+    <Tooltip id="purge" />
 
     <BannerWhite/>
     <GradientLine/>
@@ -142,12 +141,11 @@ export default function FrontPage() {
               </> 
           </td>
           
-          <td className="asmshover Table6 td">{row.id === editing ? (<input style={{height: '22.5px', width: '380px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px'}} value={colone} onChange={(e) => setcolone(e.target.value)} className='cr_edit_inputfield'/>) : (<a href={'https://itsm.gm.com/sm/index.do?ctx=docEngine&file=cm3r&query=number%3D"' + (row.colone) + '"+&action=&title=' + (row.colone)} target="_blank" rel="noreferrer" >{row.colone}</a>)}</td>
-          <td className="asmshover Table6 td">{row.id === editing ? (<input style={{height: '22.5px', width: '380px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px'}} value={coltwo} onChange={(e) => setcoltwo(e.target.value)} className='cr_edit_inputfield'/>) : (<a href={'https://dashboard.heroku.com/apps'} target="_blank" rel="noreferrer">{row.coltwo}</a>)}</td>
+          <td className="asmshover Table6 td">{row.id === editing ? (<input style={{height: '22.5px', width: '380px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px'}} value={colone} onChange={(e) => setcolone(e.target.value)} className='cr_edit_inputfield'/>) : (<a href={'https://itsm.gm.com/sm/index.do?ctx=docEngine&file=cm3r&query=number%3D"' + (row.colone) + '"+&action=&title=' + (row.colone)} target="_blank">{row.colone}</a>)}</td>
+          <td className="asmshover Table6 td">{row.id === editing ? (<input style={{height: '22.5px', width: '380px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px'}} value={coltwo} onChange={(e) => setcoltwo(e.target.value)} className='cr_edit_inputfield'/>) : (<a href={'https://dashboard.heroku.com/apps'} target="_blank">{row.coltwo}</a>)}</td>
           <td className="asmshover Table6 td">{row.id === editing ? (<input style={{height: '22.5px', width: '380px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px'}} value={colthree} onChange={(e) => setcolthree(e.target.value)} className='cr_edit_inputfield_disc'/>) : (row.colthree)}</td>
           <td className="asmshover Table6 td">{row.id === editing ? (<input style={{height: '22.5px', width: '380px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px'}} value={colfour} onChange={(e) => setcolfour(e.target.value)} className='cr_edit_inputfield'/>) : (<a href={row.colfour}>As jy wil kak skryf</a>)}</td>
-          {/* <td className="asmshover Table6 td">{row.id === editing ? (
-          <LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
+          <td className="asmshover Table6 td">{row.id === editing ? (<LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
               <DatePicker
                 id="cr_date"
                 format="YYYY.M.D"
@@ -158,15 +156,15 @@ export default function FrontPage() {
                 sx={{height: '22.5px', '& .MuiInputBase-root': {height: '100%', fontSize: '13.5px', width: '150px'}, '& .MuiSvgIcon-root': {height: '20px'}}}
               />
             </LocalizationProvider>) : new Date(row.coldate).toLocaleDateString("en-CA")}
-          </td> */}
+          </td>
         </tr>
         )})
       }
       </tbody>
     </table>
 
-    {/* <RecordCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
-    <Footer/> */}
+    <RecordCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
+    <Footer />
   </div>
 
   
