@@ -16,10 +16,9 @@ import GradientLine from './GradientLine';
 import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
 import Quicklinks from './Quicklinks';
-// import RecordCreate from './RecordCreate';
+import RecordCreate from './RecordCreate';
+import Footer from './Footer';
 // import 'react-tooltip/dist/react-tooltip.css'
-// import { Tooltip } from 'react-tooltip'
-// import Footer from './Footer';
 // dayjs.extend(utc);
 
 
@@ -165,8 +164,8 @@ export default function FrontPage() {
       </tbody>
     </table>
 
-    {/* <RecordCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
-    <Footer/> */}
+    <RecordCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
+    <Footer/>
   </div>
 
   

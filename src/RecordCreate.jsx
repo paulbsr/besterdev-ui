@@ -8,7 +8,6 @@ import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
 import spacer from './graphix/besterdev_spacer_white.png'
 import spacer2 from './graphix/besterdev_spacer_white_half.png'
-import { FCiWavePulse1 } from "react-icons/fc";  //https://react-icons.github.io/react-icons/icons?name=fa
 import { GiHummingbird } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
