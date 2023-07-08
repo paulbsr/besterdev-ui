@@ -3,6 +3,13 @@ import { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 import './Fonts.css'
 import 'react-dropdown/style.css';
+import BannerWhite from './BannerWhite';
+import GradientLine from './GradientLine';
+import BannerLight from './BannerLight';
+import GradientLineThin from './GradientLineThin';
+import Quicklinks from './Quicklinks';
+import RecordCreate from './RecordCreate';
+import Footer from './Footer';
 import {FaPen, FaCheck, FaRegTrashAlt} from 'react-icons/fa';
 import {PiArrowCounterClockwiseBold} from 'react-icons/pi';
 import AlertContext from './Generic/Alerts/AlertContext';
@@ -14,13 +21,6 @@ import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 dayjs.extend(utc);
 
-import BannerWhite from './BannerWhite';
-import GradientLine from './GradientLine';
-import BannerLight from './BannerLight';
-import GradientLineThin from './GradientLineThin';
-import Quicklinks from './Quicklinks';
-import RecordCreate from './RecordCreate';
-import Footer from './Footer';
 
 
 
