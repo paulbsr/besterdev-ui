@@ -19,6 +19,7 @@ import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
+import LoginForm from './LoginForm';
 dayjs.extend(utc);
 
 
@@ -98,12 +99,13 @@ export default function FrontPage() {
     <Tooltip id="commit" />
     <Tooltip id="revert" />
     <Tooltip id="purge" />
-
+{/* 
     <BannerWhite/>
-    <GradientLine/>
+    <GradientLine/> */}
     <BannerLight/>
     <GradientLineThin/>
     <Quicklinks/>
+    <RecordCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
     
     <table className="Table6">
       <thead>
@@ -162,8 +164,8 @@ export default function FrontPage() {
       </tbody>
     </table>
 
-    <RecordCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
-    {/* <Footer /> */}
+    {/* <RecordCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /> */}
+    <Footer />
   </div>
 
   

@@ -2,10 +2,12 @@ import React from 'react';
 import {FaReact, FaJava, FaNodeJs} from 'react-icons/fa';
 import { SiSpring } from "react-icons/si";
 import './Fonts.css'
+import spacer from './graphix/besterdev_spacer_white.png'
 
 const BannerLight = () => {
   return (
-    <div className="banner-light">
+    
+    <div className="banner-light">Management Portal
       <a data-tooltip-id="insert" data-tooltip-content="ReactJS9"><FaReact style={{color: '#61dafb', fontSize: '35px', cursor: 'pointer' }}/></a>&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="NodeJS18"><FaNodeJs style={{color: '#169247', fontSize: '35px', cursor: 'pointer' }}/></a>&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Java17"><FaJava style={{color: '#D5441C', fontSize: '40px', cursor: 'pointer' }}/></a>&nbsp;
