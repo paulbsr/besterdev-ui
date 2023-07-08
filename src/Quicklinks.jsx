@@ -52,12 +52,10 @@ export default function Quicklinks() {
     <>
       <Box>
         <LinkTabs variant="scrollable">
+          <LinkTab label="AWS Amplify Console" href={"https://eu-west-1.console.aws.amazon.com/amplify/home?installation_id=39421369&setup_action=install&region=eu-west-1#/dv43gyvsmgsn1/settings/domains/"} target="_blank" ></LinkTab>
           <LinkTab label="Heroku Dashboard" href={"https://dashboard.heroku.com/apps"} target="_blank" ></LinkTab>
           <LinkTab label="ChatGPT" href={"https://chat.openai.com/"} target="_blank" ></LinkTab>
-          <LinkTab label="Cloud UI" href={"https://besterdev-ui-7acbd6898555.herokuapp.com/"} target="_blank" ></LinkTab>
-          <LinkTab label="Cloud API" href={"https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/records"} target="_blank" ></LinkTab>
-          <LinkTab label="localhost UI" href={"http://localhost:3000/"} target="_blank" ></LinkTab>
-          <LinkTab label="localhost API" href={"http://localhost:8000/api/v1/records"} target="_blank" ></LinkTab>
+          <LinkTab label="localhost ui" href={"http://localhost:3000"} target="_blank" ></LinkTab>
           <LinkTab label="Bester.ie" href={"https://www.bester.ie"} target="_blank" ></LinkTab>
         </LinkTabs>
       </Box>

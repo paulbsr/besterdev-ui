@@ -22,8 +22,6 @@ import { Tooltip } from 'react-tooltip'
 dayjs.extend(utc);
 
 
-
-
 export default function FrontPage() {
   const [checkForRecords, setCheckForRecords] = useState(true);
   const [tabledata, setTabledata] = useState([]);
@@ -165,7 +163,7 @@ export default function FrontPage() {
     </table>
 
     <RecordCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
-    <Footer />
+    {/* <Footer /> */}
   </div>
 
   
