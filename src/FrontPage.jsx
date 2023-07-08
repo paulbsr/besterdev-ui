@@ -15,7 +15,7 @@ import BannerWhite from './BannerWhite';
 import GradientLine from './GradientLine';
 import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
-import Quicklinks from './Quicklinks';
+// import Quicklinks from './Quicklinks';
 import RecordCreate from './RecordCreate';
 import Footer from './Footer';
 // import 'react-tooltip/dist/react-tooltip.css'
@@ -104,7 +104,7 @@ export default function FrontPage() {
     <GradientLine/>
     <BannerLight/>
     <GradientLineThin/>
-    <Quicklinks/>
+    {/* <Quicklinks/> */}
     
     <table className="Table6">
       <thead>
