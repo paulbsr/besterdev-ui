@@ -42,7 +42,9 @@ export default function FrontPage() {
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/records')
-      .then((response) => {console.log(response.data); setTabledata(response.data); setError(null);}).catch((e)=> console.error(e));}, [checkForRecords]);
+      // .then((response) => {setTabledata(response.data); setError(null);})
+      .then((response) => {const sortedTabledata = response.data.sort((b, a) => b.colone.localeCompare(a.colone)); setTabledata(sortedTabledata); setError(null); console.log(tabledata);}) //sort colone alphabetically
+      .catch((e)=> console.error(e));}, [checkForRecords]);
 
         const handleEdit = (row) => {
           setEditing(row.id)
@@ -67,7 +69,7 @@ export default function FrontPage() {
           setCrDate(newVal);
         };
 
-        const onEditSave = async() => {console.log("TEST")
+        const onEditSave = async() => {
         { 
             
         const recordPUT = {
@@ -77,10 +79,10 @@ export default function FrontPage() {
           "colfour": colfour,
           "coldate": crDate,
            } 
-           console.log(recordPUT)
+           
                             
            await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/records/update/${editing}`, recordPUT)
-            .then((response) => {setCheckForRecords(!checkForRecords); alertCtx.success(`Suksesvolle PUT`)})
+            .then((response) => {setCheckForRecords(!checkForRecords); alertCtx.success(`Suksesvolle PUT`); })
             .catch((error) => {alertCtx.error(error.message);})
             setCheckForRecords(!checkForRecords)
             onEditCancel();}
@@ -111,7 +113,7 @@ export default function FrontPage() {
       <thead>
         <tr>
           <th align='center'></th>
-          <th style={{ width: '400px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>colone</th>
+          <th style={{ width: '400px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>colone contains {tabledata.length} records</th>
           <th style={{ width: '400px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>coltwo</th>
           <th style={{ width: '400px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>colthree</th>
           <th style={{ width: '250px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>colfour</th>

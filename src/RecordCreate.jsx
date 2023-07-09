@@ -79,13 +79,13 @@ export default function RecordCreate(props) {
       <form onSubmit={handleSubmit}>
         <div><img src={spacer2}/></div>
         <div><img src={spacer}/>colone:&nbsp; &nbsp; &nbsp;<input style={{height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px'}} placeholder="Required" type="text" value={colone} onChange={(event) => setcolone(event.target.value)} required/></div>
-        <div><img src={spacer2}/></div>
+        <div>&nbsp;</div>
         <div><img src={spacer}/>coltwo:&nbsp; &nbsp; &nbsp;<input style={{height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px'}} placeholder="Required" type="text" value={coltwo} onChange={(event) => setcoltwo(event.target.value)} required/></div>
-        <div><img src={spacer2}/></div>
+        <div>&nbsp;</div>
         <div><img src={spacer}/>colthree:&nbsp; &nbsp;<input style={{height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px'}} placeholder="Required" type="text" value={colthree} onChange={(event) => setcolthree(event.target.value)}/></div>
-        <div><img src={spacer2}/></div>
+        <div>&nbsp;</div>
         <div><img src={spacer}/>colfour:&nbsp; &nbsp; &nbsp;<input style={{height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px'}} placeholder="Required" type="text" value={colfour} onChange={(event) => setcolfour(event.target.value)}/></div>
-        <div><img src={spacer2}/></div>
+        <div>&nbsp;</div>
         <div><img src={spacer}/>coldate:&nbsp; &nbsp; &nbsp;<LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
               <DatePicker
                 id="cr_date"
