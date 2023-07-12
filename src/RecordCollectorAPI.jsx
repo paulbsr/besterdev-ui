@@ -7,12 +7,12 @@ export default function RecordCollectorAPI() {
 
 
     useEffect(() => {
-        axios('http://universities.hipolabs.com/search?country=ireland')
-        // axios('https://datausa.io/api/data?drilldowns=Nation&measures=Population')
+        // axios('http://universities.hipolabs.com/search?country=ireland')
+        axios('https://datausa.io/api/data?drilldowns=Nation&measures=Population')
         // axios ('https://randomuser.me/api/')
         .then((response) => {
-          setApidata(response.data); 
-          console.log(response.data);
+          setApidata(response.data.data); 
+          console.log(response.data.data);
           console.log(apidata);
         }
         )  
@@ -25,7 +25,7 @@ export default function RecordCollectorAPI() {
               {
                 return (
                   <div key={key}>
-                    {value.name}
+                    {value.Nation}
                   </div>
                 );
               })
