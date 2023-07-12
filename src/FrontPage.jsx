@@ -20,6 +20,7 @@ import utc from 'dayjs/plugin/utc';
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 import LoginForm from './LoginForm';
+import RecordCollectorAPI from './RecordCollectorAPI';
 dayjs.extend(utc);
 
 
@@ -42,7 +43,6 @@ export default function FrontPage() {
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/records')
-      // .then((response) => {setTabledata(response.data); setError(null);})
       .then((response) => {const sortedTabledata = response.data.sort((b, a) => b.colone.localeCompare(a.colone)); setTabledata(sortedTabledata); setError(null); console.log(tabledata);}) //sort colone alphabetically
       .catch((e)=> console.error(e));}, [checkForRecords]);
 
@@ -107,6 +107,7 @@ export default function FrontPage() {
     <BannerLight/>
     <GradientLineThin/>
     <Quicklinks/>
+    
     <RecordCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
     
     <table className="Table6">
@@ -144,7 +145,7 @@ export default function FrontPage() {
               </> 
           </td>
           
-          <td className="asmshover Table6 td">{row.id === editing ? (<input style={{height: '22.5px', width: '380px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px'}} value={colone} onChange={(e) => setcolone(e.target.value)} className='cr_edit_inputfield'/>) : (<a href={'https://itsm.gm.com/sm/index.do?ctx=docEngine&file=cm3r&query=number%3D"' + (row.colone) + '"+&action=&title=' + (row.colone)} target="_blank">{row.colone}</a>)}</td>
+          <td className="asmshover Table6 td">{row.id === editing ? (<input style={{height: '22.5px', width: '380px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px'}} value={colone} onChange={(e) => setcolone(e.target.value)} className='cr_edit_inputfield'/>) : (<a href={'www.dell.com' + (row.colone) + '"+&action=&title=' + (row.colone)} target="_blank">{row.colone}</a>)}</td>
           <td className="asmshover Table6 td">{row.id === editing ? (<input style={{height: '22.5px', width: '380px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px'}} value={coltwo} onChange={(e) => setcoltwo(e.target.value)} className='cr_edit_inputfield'/>) : (<a href={'https://dashboard.heroku.com/apps'} target="_blank">{row.coltwo}</a>)}</td>
           <td className="asmshover Table6 td">{row.id === editing ? (<input style={{height: '22.5px', width: '380px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px'}} value={colthree} onChange={(e) => setcolthree(e.target.value)} className='cr_edit_inputfield_disc'/>) : (row.colthree)}</td>
           <td className="asmshover Table6 td">{row.id === editing ? (<input style={{height: '22.5px', width: '380px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px'}} value={colfour} onChange={(e) => setcolfour(e.target.value)} className='cr_edit_inputfield'/>) : (<a href={row.colfour}>As jy wil kak skryf</a>)}</td>
@@ -166,8 +167,8 @@ export default function FrontPage() {
       </tbody>
     </table>
 
-    {/* <RecordCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /> */}
     <Footer />
+    {/* <RecordCollectorAPI/> */}
   </div>
 
   

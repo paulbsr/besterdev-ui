@@ -4,12 +4,14 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import FrontPage from './FrontPage';
 import LoginForm from './LoginForm';
+import RecordCollectorAPI from './RecordCollectorAPI';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-<LoginForm/>
-    {/* <FrontPage /> */}
+{/* <LoginForm/> */}
+    <RecordCollectorAPI/>
+    <FrontPage />
   </React.StrictMode>
 );
 
