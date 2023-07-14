@@ -1,5 +1,10 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import BannerLight from './BannerLight';
+import GradientLineThin from './GradientLineThin';
+import Quicklinks from './Quicklinks';
+
+
 
 export default function RecordCollectorAPI() {
     const [apidata, setApidata] = useState([]);
@@ -18,19 +23,17 @@ export default function RecordCollectorAPI() {
         )  
         }, []);
 
-        return (
-          <>
-            {
-              apidata.map((value, key) =>
-              {
-                return (
-                  <div key={key}>
-                    {value.Nation}
-                  </div>
-                );
-              })
-            }
-          </>
-        );
+  return (
+    <>
+    <BannerLight/>
+    <GradientLineThin/>
+    <Quicklinks/>
+      {
+        apidata.map((value, key) => {
+          return (<div key={key}>{value.Population}</div>);
+        })
+      }
+    </>
+  );
 
-           }
+}

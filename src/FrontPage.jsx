@@ -166,9 +166,9 @@ export default function FrontPage() {
       }
       </tbody>
     </table>
-
+    <RecordCollectorAPI/>
     <Footer />
-    {/* <RecordCollectorAPI/> */}
+
   </div>
 
   
