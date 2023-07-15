@@ -72,7 +72,7 @@ export default function RecordCreate(props) {
     <div className='Font-Verdana-Small'>
       <Tooltip id="insert" />
       {/* <div onClick={toggleAccordion}><img src={spacer}/><a data-tooltip-id="insert" data-tooltip-content="Insert"><FaTeamspeak style={{color: '#169247', fontSize: '35px', cursor: 'pointer' }}/></a><b>Add a Record</b><img src={spacer}/><a data-tooltip-id="insert" data-tooltip-content="Insert"></a></div>npm */}
-      <div onClick={toggleAccordion}><img src={spacer} alt="1"/><a data-tooltip-id="insert" data-tooltip-content="Insert"><GiHummingbird style={{color: '#1994AD', fontSize: '35px', cursor: 'pointer' }}/></a><b>Add a Record</b><img src={spacer} alt="1"/><a data-tooltip-id="insert" data-tooltip-content="Insert"></a></div>
+      <div onClick={toggleAccordion}><img src={spacer} alt="1"/><a data-tooltip-id="insert" data-tooltip-content="Insert"><GiHummingbird style={{color: '#1994AD', fontSize: '35px', cursor: 'pointer' }}/></a><b>Insert record</b><img src={spacer} alt="1"/><a data-tooltip-id="insert" data-tooltip-content="Insert"></a></div>
       {isExpanded && (
         <div>
         <div>
