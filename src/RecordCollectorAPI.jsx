@@ -25,12 +25,12 @@ export default function RecordCollectorAPI() {
 
   return (
     <>
-    <BannerLight/>
+    {/* <BannerLight/>
     <GradientLineThin/>
-    <Quicklinks/>
+    <Quicklinks/> */}
       {
         apidata.map((value, key) => {
-          return (<div key={key}>{value.Population}</div>);
+          return (<div key={key}>&nbsp;{value.Population}&nbsp; &nbsp;{value.Nation}&nbsp; &nbsp;{"value.ID Nation"}</div>);
         })
       }
     </>

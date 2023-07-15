@@ -101,9 +101,9 @@ export default function FrontPage() {
     <Tooltip id="commit" />
     <Tooltip id="revert" />
     <Tooltip id="purge" />
-{/* 
+
     <BannerWhite/>
-    <GradientLine/> */}
+    <GradientLine/>
     <BannerLight/>
     <GradientLineThin/>
     <Quicklinks/>

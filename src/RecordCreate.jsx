@@ -100,7 +100,7 @@ export default function RecordCreate(props) {
             <button className="Font-Verdana-Small" type="submit" style={{marginLeft: '10px', height: '30px', border: '1px solid #169247', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#169247 ',  cursor: 'pointer'}}>Commit</button>     
         </div>
       </form>
-      <RecordCollectorAPI/>
+      {/* <RecordCollectorAPI/> */}
     </div>
    </div>)}
   </div>
