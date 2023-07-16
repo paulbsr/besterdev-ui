@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import FrontPage from './FrontPage';
 import BannerWhite from './BannerWhite';
 import GradientLine from './GradientLine';
+import RecordCandidate from './CandidateScreen';
+import BannerLight from './BannerLight';
+import GradientLineThin from './GradientLineThin';
+import Quicklinks from './Quicklinks';
+import { Tooltip } from 'react-tooltip'
 
 
 const LoginForm = () => {
@@ -29,8 +34,20 @@ const LoginForm = () => {
   };
 
   return (
-    <div><BannerWhite/> <GradientLine/>
-      {isLoggedIn ? (<FrontPage/>) 
+    
+    <div>
+    <Tooltip id="edit" />
+    <Tooltip id="commit" />
+    <Tooltip id="revert" />
+    <Tooltip id="purge" />
+    
+    <BannerWhite/> 
+    <GradientLine/> 
+    <BannerLight/> 
+    <GradientLineThin/> 
+    <Quicklinks/>
+      {/* {isLoggedIn ? (<FrontPage/>)  */}
+            {isLoggedIn ? (<RecordCandidate/>) 
       : 
       (
         <form onSubmit={handleSubmit}>

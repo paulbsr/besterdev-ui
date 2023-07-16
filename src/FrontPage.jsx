@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 import './Fonts.css'
@@ -20,7 +19,10 @@ import utc from 'dayjs/plugin/utc';
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 import LoginForm from './LoginForm';
-import RecordCollectorAPI from './RecordCollectorAPI';
+// import RecordCollectorAPI from './RecordCollectorAPI';
+// import RecordCandidate from './CandidateScreen';
+import CandidateScreen from './CandidateScreen';
+import { GiHummingbird, GiNestBirds, GiKiwiBird } from "react-icons/gi";
 dayjs.extend(utc);
 
 
@@ -108,7 +110,16 @@ export default function FrontPage() {
     <GradientLineThin/>
     <Quicklinks/>
     
+    <CandidateScreen/>
     <RecordCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
+
+    <div className='Font-Verdana-Small'>
+    &nbsp;<div onClick={toggleAccordion}></div>
+    &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Amend"><GiKiwiBird style={{ color: '#ff8500', fontSize: '30px', cursor: 'pointer' }} /></a>
+        <b>Amend Record</b>
+        </div>
+        
+        
     
     <table className="Table6">
       <thead>
@@ -166,7 +177,8 @@ export default function FrontPage() {
       }
       </tbody>
     </table>
-    <RecordCollectorAPI/>
+
+
     <Footer />
 
   </div>

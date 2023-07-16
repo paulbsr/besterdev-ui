@@ -4,11 +4,13 @@ import { SiSpring , SiPostgresql, SiHeroku, SiSpringboot } from "react-icons/si"
 import { BiLogoPostgresql, BiLogoHeroku, BiLogoGithub} from "react-icons/bi";
 import './Fonts.css'
 import spacer from './graphix/besterdev_spacer_white.png'
+import FrontPage from './FrontPage';
 
 const BannerLight = () => {
   return (
     
     <div className="banner-light">
+<a href='<Frontpage/>'>FRontpqge</a>     
       <a data-tooltip-id="insert" data-tooltip-content="ReactJS9"><FaReact style={{color: '#61dafb', fontSize: '35px', cursor: 'pointer' }}/></a>&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="NodeJS18"><FaNodeJs style={{color: '#169247', fontSize: '35px', cursor: 'pointer' }}/></a>&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Java17"><FaJava style={{color: '#D5441C', fontSize: '40px', cursor: 'pointer' }}/></a>&nbsp;

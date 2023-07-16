@@ -19,10 +19,7 @@ export default function RecordCollectorAPI() {
       .then((response) => {
         setApidata(response.data.data);
         console.log(response.data.data);
-        console.log(apidata);
-      }
-      )
-  }, []);
+        console.log(apidata);})}, []);
 
 
   useEffect(() => {
@@ -32,20 +29,13 @@ export default function RecordCollectorAPI() {
       .then((response) => {
         setApidata2(response.data.results);
         console.log(response.data.results);
-        console.log(apidata2);
-      }
-      )
-  }, []);
+        console.log(apidata2);})}, []);
 
 
   function GenderLabel({ gender }) {
-    if (gender === "female") {
-      return <span>F</span>;
-    } else if (gender === "male") {
-      return <span>M</span>;
-    } else {
-      return null; // Return null if the value is neither "female" nor "male"
-    }
+    if (gender === "female") {return <span>F</span>;} 
+    else if (gender === "male") {return <span>M</span>;} 
+    else {return null;}
   }
 
   return (
@@ -65,19 +55,10 @@ export default function RecordCollectorAPI() {
             <div><b>&nbsp;Landline: </b>{value.phone}</div>
             <div><b>&nbsp;Mobile: </b>{value.cell}</div>
             <div><b>&nbsp;Street: </b>{value.location.street.number} &nbsp;{value.location.street.name}, {value.location.city}, {value.location.postcode}</div>
-            {/* <div><b>&nbsp;City: </b>{value.location.city}</div>
-            <div><b>&nbsp;State/Province: </b>{value.location.state}</div>
-            <div><b>&nbsp;Postcode: </b>{value.location.postcode}</div> */}
-
           </div>
-          
-          
-          
-          
           );
         })
       }
     </>
   );
-
 }

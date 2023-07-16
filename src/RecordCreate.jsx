@@ -11,7 +11,6 @@ import spacer2 from './graphix/besterdev_spacer_white_half.png'
 import { GiHummingbird } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
-import RecordCollectorAPI from "./RecordCollectorAPI";
 dayjs.extend(utc);
 
 
@@ -69,13 +68,16 @@ export default function RecordCreate(props) {
     
 
     
-    <div className='Font-Verdana-Small'>
+    <div className='Font-Verdana-Small'>&nbsp;
       <Tooltip id="insert" />
-      {/* <div onClick={toggleAccordion}><img src={spacer}/><a data-tooltip-id="insert" data-tooltip-content="Insert"><FaTeamspeak style={{color: '#169247', fontSize: '35px', cursor: 'pointer' }}/></a><b>Add a Record</b><img src={spacer}/><a data-tooltip-id="insert" data-tooltip-content="Insert"></a></div>npm */}
-      <div onClick={toggleAccordion}><img src={spacer} alt="1"/><a data-tooltip-id="insert" data-tooltip-content="Insert"><GiHummingbird style={{color: '#1994AD', fontSize: '35px', cursor: 'pointer' }}/></a><b>Insert record</b><img src={spacer} alt="1"/><a data-tooltip-id="insert" data-tooltip-content="Insert"></a></div>
+      <div onClick={toggleAccordion}>
+        <a data-tooltip-id="insert" data-tooltip-content="Insert"><GiHummingbird style={{ color: '#ff8500', fontSize: '35px', cursor: 'pointer' }} /></a>
+        <b>Insert record</b>
+      </div>
+      
       {isExpanded && (
         <div>
-        <div>
+          <div>
 
       <form onSubmit={handleSubmit}>
         <div><img alt="1" src={spacer2}/></div>
@@ -100,7 +102,6 @@ export default function RecordCreate(props) {
             <button className="Font-Verdana-Small" type="submit" style={{marginLeft: '10px', height: '30px', border: '1px solid #169247', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#169247 ',  cursor: 'pointer'}}>Commit</button>     
         </div>
       </form>
-      {/* <RecordCollectorAPI/> */}
     </div>
    </div>)}
   </div>
