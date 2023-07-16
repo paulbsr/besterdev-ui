@@ -71,7 +71,7 @@ export default function RecordCreate(props) {
     <div className='Font-Verdana-Small'>&nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-        <a data-tooltip-id="insert" data-tooltip-content="Insert"><GiHummingbird style={{ color: '#ff8500', fontSize: '35px', cursor: 'pointer' }} /></a>
+        <a data-tooltip-id="insert" data-tooltip-content="Insert"><GiHummingbird style={{ color: '#000000', fontSize: '35px', cursor: 'pointer' }} /></a>
         <b>Insert record</b>
       </div>
       

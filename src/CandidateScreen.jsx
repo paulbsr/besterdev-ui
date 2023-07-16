@@ -21,7 +21,8 @@ export default function CandidateScreen() {
   const [country, setCountry] = useState(null)
   const alertCtx = useContext(AlertContext);
   const [isExpanded, setExpanded] = useState(false);
-  const toggleAccordion = () => {setExpanded(!isExpanded);};  
+  const toggleAccordion = () => {setExpanded(!isExpanded);};
+    
     
   const onKeepPost = async (event) => {
     
@@ -66,7 +67,7 @@ export default function CandidateScreen() {
                 <div className='Font-Verdana-Small'>
                   <Tooltip id="Screen" />
                   <div onClick={toggleAccordion}></div>
-                  <a data-tooltip-id="Screen" data-tooltip-content="Screen"><GiNestBirds style={{ color: '#ff8500', fontSize: '35px', cursor: 'pointer' }} /></a>
+                  <a data-tooltip-id="Screen" data-tooltip-content="Screen"><GiNestBirds style={{ color: '#000000', fontSize: '35px', cursor: 'pointer' }} /></a>
                   <b>&nbsp;Screen Candidate: </b>
                 </div>
 
@@ -81,11 +82,12 @@ export default function CandidateScreen() {
                   {/* <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#D5441C', outline: 'none'}} type='button' onClick={() => onKeepPost()}><a data-tooltip-id="commit" data-tooltip-content="Drop"><FaMinusCircle style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }}/></a></button> */}
                   {/* <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#D5441C', outline: 'none'}} type='button' onClick={() => setFirstname(inbound.name.first) & setLastname(inbound.name.last) & setMobile(inbound.phone) & setEmail(inbound.email) & setCountry(inbound.location.country)}><a data-tooltip-id="commit" data-tooltip-content="Drop"><FaPlusCircle style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }}/></a></button> */}
                   {/* &nbsp; */}
-                  <button onClick={() => setFirstname(inbound.name.first) & setLastname(inbound.name.last) & setMobile(inbound.phone) & setEmail(inbound.email) & setCountry(inbound.location.country)}>Keep</button>
+                  <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#169247', outline: 'none'}} onClick={() => setFirstname(inbound.name.first) & setLastname(inbound.name.last) & setMobile(inbound.phone) & setEmail(inbound.email) & setCountry(inbound.location.country)}><a data-tooltip-id="commit" data-tooltip-content="Keep"><FaPlusCircle style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }}/></a></button>
                   &nbsp;
-                  <button>Drop</button>
+                  {/* <button>Drop</button> */}
+                  <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#D5441C', outline: 'none'}} onClick={() => setFirstname(inbound.name.first) & setLastname(inbound.name.last) & setMobile(inbound.phone) & setEmail(inbound.email) & setCountry(inbound.location.country)}><a data-tooltip-id="commit" data-tooltip-content="Drop"><FaMinusCircle style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }}/></a></button>
                   &nbsp;
-                  {inbound.name.first} {inbound.name.last} is a {inbound.dob.age}<GenderLabel gender={inbound.gender}/> {inbound.login.username} who currently resides in {inbound.location.state}, {inbound.location.country} with primary skills of ...... and ...... whom can be reached at {inbound.phone} or <a href={'mailto:${inbound.email}'}>${inbound.email}</a>
+                  {inbound.name.first} {inbound.name.last} is a {inbound.dob.age}<GenderLabel gender={inbound.gender}/> <span style={{ color: 'red', fontStyle: 'italic'}}>{inbound.login.username}</span> who currently resides in {inbound.location.state}, {inbound.location.country} with primary skills of <span style={{ color: 'red', fontStyle: 'italic'}}>{inbound.login.username}</span> and <span style={{ color: 'red', fontStyle: 'italic'}}>{inbound.login.username}</span> and <span style={{ color: 'red', fontStyle: 'italic'}}>{inbound.login.username}</span> whom can be reached at {inbound.phone} or <a href={"mailto:${email}"}>{inbound.email}</a>
                 </div>
 
               </div>

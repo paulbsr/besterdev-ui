@@ -115,7 +115,7 @@ export default function FrontPage() {
 
     <div className='Font-Verdana-Small'>
     &nbsp;<div onClick={toggleAccordion}></div>
-    &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Amend"><GiKiwiBird style={{ color: '#ff8500', fontSize: '30px', cursor: 'pointer' }} /></a>
+    &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Amend"><GiKiwiBird style={{ color: '#000000', fontSize: '30px', cursor: 'pointer' }} /></a>
         <b>Amend Record</b>
         </div>
         
