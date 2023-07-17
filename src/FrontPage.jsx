@@ -6,12 +6,10 @@ import GradientLine from './GradientLine';
 import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
 import Quicklinks from './Quicklinks';
-import RecordCreate from './RecordCreate';
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
-import RecordAmend from './RecordAmend';
 import Template2 from './Template2';
 import CandidateScreen from './CandidateScreen';
 import CandidateAmend from './CandidateAmend';
@@ -41,11 +39,9 @@ export default function FrontPage() {
     <Quicklinks />
 
     <CandidateScreen />
-    {/* <RecordCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /> */}
     <CandidateCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
-    {/* <RecordAmend checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /> */}
     <CandidateAmend checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
-    <Template2 />
+    {/* <Template2 /> */}
 
   </div>
   )

@@ -13,10 +13,10 @@
     font-size: large
 }
 
-.Font-Verdana-Small_Grey {
+.Font-Verdana-Small-Postgres {
     font-family: "Verdana";
     font-size: small;
-    color: #beb9b993
+    color: #336791
 }
 
 .Font-Verdana-Small_Compliment_Green {
@@ -32,10 +32,10 @@
 }
 
 
-.Font-SegoeUI-Small_White {
+.Font-SegoeUI-Medium {
     font-family: "Segoe UI";
-    font-size: small;
-    color: #ffffff
+    font-size: medium;
+    color: #e22525
 }
 
 .Label {

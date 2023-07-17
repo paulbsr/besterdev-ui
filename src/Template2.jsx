@@ -19,10 +19,10 @@ export default function Template2(props) {
   return (
 
     
-        <div className='Font-Verdana-Small'>&nbsp; &nbsp;
+        <div className='Font-Verdana-Small-Heroku'>&nbsp; &nbsp;
             <Tooltip id="insert" />
             <div onClick={toggleAccordion}>
-            &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Template"><GiNestBirds style={{ color: '#000000', fontSize: '20px', cursor: 'pointer' }} /></a>
+            &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Template"><GiNestBirds style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>
             &nbsp;<b>Template Accordion</b>
             </div>
 
