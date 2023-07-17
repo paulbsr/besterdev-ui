@@ -71,7 +71,7 @@ export default function CandidateCreate(props) {
 
   return (
 
-    <div className='Font-Verdana-Small'>&nbsp;
+    <div className='Font-Verdana-Small-Postgres'>&nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
         <a data-tooltip-id="insert" data-tooltip-content="Add"><GiHummingbird style={{ color: '#336791', fontSize: '35px', cursor: 'pointer' }} /></a>

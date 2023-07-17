@@ -71,7 +71,7 @@ import { Tooltip } from 'react-tooltip'
 
 
 
-      <div className='Font-Verdana-Small'>&nbsp; &nbsp;
+      <div className='Font-Verdana-Small-Postgres'>&nbsp; &nbsp;
         <Tooltip id="insert" />
         <div onClick={toggleAccordion}>
           &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Select"><GiBirdCage style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
@@ -85,7 +85,7 @@ import { Tooltip } from 'react-tooltip'
               {
                 candidatedata.map((inbound, key) => {
                   
-                  const formattedString = `${inbound.name.first} ${inbound.name.last} is a ${inbound.dob.age} ${inbound.gender} ${inbound.location.coordinates.latitude} who currently resides in ${inbound.location.state}, ${inbound.location.country} with primary skills of ${inbound.location.coordinates.longitude} and ${inbound.location.coordinates.longitude} and ${inbound.location.coordinates.longitude} whom can be reached at ${inbound.phone} or ${inbound.email}`;
+                  const formattedString = `${inbound.name.first} ${inbound.name.last} is a ${inbound.dob.age} year old ${inbound.gender} with a Job Description of ${inbound.location.coordinates.latitude}, whom currently resides in ${inbound.location.state}, ${inbound.location.country} with primary skills of ${inbound.location.coordinates.longitude} and ${inbound.location.coordinates.longitude} and ${inbound.location.coordinates.longitude} whom can be reached at ${inbound.phone} or ${inbound.email}`;
                  
                   return (
                     <form onSubmit={onKeepPost}>
@@ -100,7 +100,7 @@ import { Tooltip } from 'react-tooltip'
                           &nbsp;
                           
                           &nbsp;
-                          &nbsp;<input style={{ height: '50px', border: '2px solid #336791', borderRadius: '3px', padding: 0, paddingLeft: '10px', width: '95%' }} type="text" value={formattedString}/>
+                          &nbsp;<input style={{ backgroundColor: '#f7f4f3', height: '40px', border: '2px solid #336791', borderRadius: '3px', padding: 0, paddingLeft: '20px', width: '95%' }} type="text" value={formattedString}/>
                           {/* <div>&nbsp;</div> */}
                           {/* <span style={{ color: 'black', fontStyle: 'bold' }}>{inbound.name.first} {inbound.name.last}</span> is a {inbound.dob.age}<GenderLabel gender={inbound.gender} /> <span style={{ color: 'red', fontStyle: 'italic' }}>{inbound.location.coordinates.latitude}</span> who currently resides in {inbound.location.state}, {inbound.location.country} with primary skills of <span style={{ color: 'red', fontStyle: 'italic' }}>{inbound.location.coordinates.longitude}</span> and <span style={{ color: 'red', fontStyle: 'italic' }}>{inbound.location.coordinates.longitude}</span> and <span style={{ color: 'red', fontStyle: 'italic' }}>{inbound.location.coordinates.longitude}</span> whom can be reached at {inbound.phone} or <a href={"mailto:${email}"}>{inbound.email}</a> */}
                           <div>&nbsp;</div>

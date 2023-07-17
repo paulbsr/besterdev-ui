@@ -108,7 +108,7 @@ export default function CandidateAmend(props) {
   return (
 
 
-    <div className='Font-Verdana-Small'>&nbsp; &nbsp;
+    <div className='Font-Verdana-Small-Postgres'>&nbsp; &nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
         &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Amend"><GiKiwiBird style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>
