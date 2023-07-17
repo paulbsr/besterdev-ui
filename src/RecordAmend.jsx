@@ -18,6 +18,7 @@ dayjs.extend(utc);
 
 
 export default function RecordAmend(props) {
+
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => {setExpanded(!isExpanded);};  
   const [checkForRecords, setCheckForRecords] = useState(true);
@@ -36,7 +37,7 @@ export default function RecordAmend(props) {
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/records')
       .then((response) => {const sortedTabledata = response.data.sort((b, a) => b.colone.localeCompare(a.colone)); setTabledata(sortedTabledata); setError(null); console.log(tabledata);}) //sort colone alphabetically
-      .catch((e)=> console.error(e));}, [checkForRecords]);
+      .catch((e)=> console.error(e));}, [props.checkForRecords]);
 
         const handleEdit = (row) => {
           setEditing(row.id)
@@ -74,15 +75,15 @@ export default function RecordAmend(props) {
            
                             
            await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/records/update/${editing}`, recordPUT)
-            .then((response) => {setCheckForRecords(!checkForRecords); alertCtx.success(`Suksesvolle PUT`); })
+            .then((response) => {props.setCheckForRecords(!props.checkForRecords); alertCtx.success(`Suksesvolle PUT`); })
             .catch((error) => {alertCtx.error(error.message);})
-            setCheckForRecords(!checkForRecords)
+            setCheckForRecords(!props.checkForRecords)
             onEditCancel();}
             }
 
           const onEditDelete = (row) => {
             axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/records/delete/${row.id}`)
-            .then((response) => {setCheckForRecords(!checkForRecords); alertCtx.success(`Suksesvolle DEL`)})
+            .then((response) => {props.setCheckForRecords(!props.checkForRecords); alertCtx.success(`Suksesvolle DEL`)})
             
             };       
 
@@ -90,88 +91,79 @@ export default function RecordAmend(props) {
 
   return (
 
-    
-        <div className='Font-Verdana-Small'>&nbsp; &nbsp;
-            <Tooltip id="insert" />
-            <div onClick={toggleAccordion}>
-            &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Amend"><GiKiwiBird style={{ color: '#000000', fontSize: '28px', cursor: 'pointer' }} /></a>
-            &nbsp;<b>Amend Candidate</b>
-            </div>
 
-            {isExpanded && (
-                <div>
-                    <div>
+    <div className='Font-Verdana-Small'>&nbsp; &nbsp;
+      <Tooltip id="insert" />
+      <div onClick={toggleAccordion}>
+        &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Amend"><GiKiwiBird style={{ color: '#000000', fontSize: '28px', cursor: 'pointer' }} /></a>
+        &nbsp;<b>Amend Candidate</b>
+      </div>
 
-                    &nbsp;
+      {isExpanded && (
+        <div>
+          <div>
 
-                        <table className="Table6">
-      <thead>
-        <tr>
-          <th align='center'></th>
-          <th style={{ width: '400px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>colone contains {tabledata.length} records</th>
-          <th style={{ width: '400px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>coltwo</th>
-          <th style={{ width: '400px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>colthree</th>
-          <th style={{ width: '250px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>colfour</th>
-          <th style={{ width: '100px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>coldate</th>
-        </tr>
-      </thead>
-      
-    <tbody>
+            &nbsp;
 
-      {tabledata.map((row) => {
-        return (
-        <tr key={row.id}>
-          <td className="Table6 td">
-              <>
-            {row.id === editing ? 
-              (
-              <>
-              <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#169247', outline: 'none'}} type='button' onClick={() => onEditSave()}><a data-tooltip-id="commit" data-tooltip-content="Commit"><FaCheck style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }}/></a></button>&nbsp;
-              <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'silver', outline: 'none'}} type='button' onClick={() => onEditCancel()}><a data-tooltip-id="revert" data-tooltip-content="Revert"><PiArrowCounterClockwiseBold style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>&nbsp;
-              <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#D5441C', outline: 'none'}} type='button' onClick={() => onEditDelete(row)}><a data-tooltip-id="purge" data-tooltip-content="Purge"><FaRegTrashAlt style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>
-              </>
-              )
-              :
-              (
-              <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#1994AD', outline: 'none' }} type='button' onClick={() => handleEdit(row)}><a data-tooltip-id="edit" data-tooltip-content="Edit"><FaPen style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>
-              )
-              }
-              </> 
-          </td>
-          
-          <td className="asmshover Table6 td">{row.id === editing ? (<input style={{height: '22.5px', width: '380px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px'}} value={colone} onChange={(e) => setcolone(e.target.value)} className='cr_edit_inputfield'/>) : (<a href={'www.dell.com' + (row.colone) + '"+&action=&title=' + (row.colone)} target="_blank">{row.colone}</a>)}</td>
-          <td className="asmshover Table6 td">{row.id === editing ? (<input style={{height: '22.5px', width: '380px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px'}} value={coltwo} onChange={(e) => setcoltwo(e.target.value)} className='cr_edit_inputfield'/>) : (<a href={'https://dashboard.heroku.com/apps'} target="_blank">{row.coltwo}</a>)}</td>
-          <td className="asmshover Table6 td">{row.id === editing ? (<input style={{height: '22.5px', width: '380px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px'}} value={colthree} onChange={(e) => setcolthree(e.target.value)} className='cr_edit_inputfield_disc'/>) : (row.colthree)}</td>
-          <td className="asmshover Table6 td">{row.id === editing ? (<input style={{height: '22.5px', width: '380px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px'}} value={colfour} onChange={(e) => setcolfour(e.target.value)} className='cr_edit_inputfield'/>) : (<a href={row.colfour}>As jy wil kak skryf</a>)}</td>
-          <td className="asmshover Table6 td">{row.id === editing ? (<LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
-              <DatePicker
-                id="cr_date"
-                format="YYYY.M.D"
-                value={crDate}
-                selected={coldate}
-                onChange={handleDateChange}
-                dateFormat="YYYY.M.D"
-                sx={{height: '22.5px', '& .MuiInputBase-root': {height: '100%', fontSize: '13.5px', width: '150px'}, '& .MuiSvgIcon-root': {height: '20px'}}}
-              />
-            </LocalizationProvider>) : new Date(row.coldate).toLocaleDateString("en-CA")}
-          </td>
-        </tr>
-        )})
-      }
-      </tbody>
-    </table>
+            <table className="Table6">
+              <thead>
+                <tr>
+                  <th align='center'></th>
+                  <th style={{ width: '400px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>colone contains {tabledata.length} records</th>
+                  <th style={{ width: '400px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>coltwo</th>
+                  <th style={{ width: '400px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>colthree</th>
+                  <th style={{ width: '250px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>colfour</th>
+                  <th style={{ width: '100px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>coldate</th>
+                </tr>
+              </thead>
 
-            
+              <tbody>
 
+                {tabledata.map((row) => {
+                  return (
+                    <tr key={row.id}>
+                      <td className="Table6 td">
+                        <>
+                          {row.id === editing ?
+                            (
+                              <>
+                                <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#169247', outline: 'none' }} type='button' onClick={() => onEditSave()}><a data-tooltip-id="commit" data-tooltip-content="Commit"><FaCheck style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>&nbsp;
+                                <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'silver', outline: 'none' }} type='button' onClick={() => onEditCancel()}><a data-tooltip-id="revert" data-tooltip-content="Revert"><PiArrowCounterClockwiseBold style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>&nbsp;
+                                <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#D5441C', outline: 'none' }} type='button' onClick={() => onEditDelete(row)}><a data-tooltip-id="purge" data-tooltip-content="Purge"><FaRegTrashAlt style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>
+                              </>
+                            )
+                            :
+                            (
+                              <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#1994AD', outline: 'none' }} type='button' onClick={() => handleEdit(row)}><a data-tooltip-id="edit" data-tooltip-content="Edit"><FaPen style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>
+                            )
+                          }
+                        </>
+                      </td>
 
-
-
-
-
-
-                    </div>
-                </div>)}
-        </div>
-
-    );
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '380px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px' }} value={colone} onChange={(e) => setcolone(e.target.value)} className='cr_edit_inputfield' />) : (<a href={'www.dell.com' + (row.colone) + '"+&action=&title=' + (row.colone)} target="_blank">{row.colone}</a>)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '380px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px' }} value={coltwo} onChange={(e) => setcoltwo(e.target.value)} className='cr_edit_inputfield' />) : (<a href={'https://dashboard.heroku.com/apps'} target="_blank">{row.coltwo}</a>)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '380px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px' }} value={colthree} onChange={(e) => setcolthree(e.target.value)} className='cr_edit_inputfield_disc' />) : (row.colthree)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '380px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px' }} value={colfour} onChange={(e) => setcolfour(e.target.value)} className='cr_edit_inputfield' />) : (<a href={row.colfour}>As jy wil kak skryf</a>)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
+                        <DatePicker
+                          id="cr_date"
+                          format="YYYY.M.D"
+                          value={crDate}
+                          selected={coldate}
+                          onChange={handleDateChange}
+                          dateFormat="YYYY.M.D"
+                          sx={{ height: '22.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.5px', width: '150px' }, '& .MuiSvgIcon-root': { height: '20px' } }}
+                        />
+                      </LocalizationProvider>) : new Date(row.coldate).toLocaleDateString("en-CA")}
+                      </td>
+                    </tr>
+                  )
+                })
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>)}
+    </div>
+  );
 }
