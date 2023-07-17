@@ -163,7 +163,7 @@
 .asmshover:hover {
     font-family: "Verdana";
     font-size: small;
-    color: hsl(0, 0%, 60%);
+    color: hsl(0, 0%, 0%);
     background-color: #f7f4f3;
 }
 

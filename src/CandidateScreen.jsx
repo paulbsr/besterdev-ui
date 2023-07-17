@@ -66,7 +66,7 @@ export default function CandidateScreen() {
         <div className='Font-Verdana-Small'>&nbsp; &nbsp;
             <Tooltip id="insert" />
             <div onClick={toggleAccordion}>
-                &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Select"><GiBirdCage style={{ color: '#000000', fontSize: '30px', cursor: 'pointer' }} /></a>
+                &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Select"><GiBirdCage style={{ color: '#000000', fontSize: '25px', cursor: 'pointer' }} /></a>
                 &nbsp;<b>Screen Candidates</b>
             </div>
 

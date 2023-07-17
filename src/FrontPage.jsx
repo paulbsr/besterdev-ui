@@ -14,6 +14,8 @@ import { Tooltip } from 'react-tooltip'
 import RecordAmend from './RecordAmend';
 import Template2 from './Template2';
 import CandidateScreen from './CandidateScreen';
+import CandidateAmend from './CandidateAmend';
+import CandidateCreate from './CandidateCreate';
 dayjs.extend(utc);
 
 
@@ -39,8 +41,10 @@ export default function FrontPage() {
     <Quicklinks />
 
     <CandidateScreen />
-    <RecordCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
-    <RecordAmend checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
+    {/* <RecordCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /> */}
+    <CandidateCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
+    {/* <RecordAmend checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /> */}
+    <CandidateAmend checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
     <Template2 />
 
   </div>
