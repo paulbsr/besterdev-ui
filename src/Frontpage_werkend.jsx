@@ -19,12 +19,12 @@ import utc from 'dayjs/plugin/utc';
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 import LoginForm from './LoginForm';
+// import RecordCollectorAPI from './RecordCollectorAPI';
+// import RecordCandidate from './CandidateScreen';
 import CandidateScreen from './CandidateScreen';
-import { GiKiwiBird } from "react-icons/gi";
+import { GiHummingbird, GiNestBirds, GiKiwiBird } from "react-icons/gi";
 import Template from './CandidateScreen1';
 import RecordAmend from './RecordAmend';
-import Template2 from './Template2';
-import CandidateScreen1 from './CandidateScreen1';
 dayjs.extend(utc);
 
 
@@ -45,58 +45,58 @@ export default function FrontPage() {
   const toggleAccordion = () => {setExpanded(!isExpanded);};   
 
 
-  // useEffect(() => {
-  //   axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/records')
-  //     .then((response) => {const sortedTabledata = response.data.sort((b, a) => b.colone.localeCompare(a.colone)); setTabledata(sortedTabledata); setError(null); console.log(tabledata);}) //sort colone alphabetically
-  //     .catch((e)=> console.error(e));}, [checkForRecords]);
+  useEffect(() => {
+    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/records')
+      .then((response) => {const sortedTabledata = response.data.sort((b, a) => b.colone.localeCompare(a.colone)); setTabledata(sortedTabledata); setError(null); console.log(tabledata);}) //sort colone alphabetically
+      .catch((e)=> console.error(e));}, [checkForRecords]);
 
-  //       const handleEdit = (row) => {
-  //         setEditing(row.id)
-  //         setcolone(row.colone)
-  //         setcoltwo(row.coltwo)
-  //         setcolthree(row.colthree)
-  //         setcolfour(row.colfour)
-  //         setcoldate(row.coldate)
-  //       };
+        const handleEdit = (row) => {
+          setEditing(row.id)
+          setcolone(row.colone)
+          setcoltwo(row.coltwo)
+          setcolthree(row.colthree)
+          setcolfour(row.colfour)
+          setcoldate(row.coldate)
+        };
 
-  //       const onEditCancel = () => {
-  //         setEditing("");
-  //         setcolone(null)
-  //         setcoltwo(null)
-  //         setcolthree(null)
-  //         setcolfour(null)
-  //         setcoldate(null)
-  //       };
+        const onEditCancel = () => {
+          setEditing("");
+          setcolone(null)
+          setcoltwo(null)
+          setcolthree(null)
+          setcolfour(null)
+          setcoldate(null)
+        };
 
-  //       const handleDateChange = (newVal) => {
-  //         setCr_DateHold(newVal.format("YYYY.M.D"));
-  //         setCrDate(newVal);
-  //       };
+        const handleDateChange = (newVal) => {
+          setCr_DateHold(newVal.format("YYYY.M.D"));
+          setCrDate(newVal);
+        };
 
-  //       const onEditSave = async() => {
-  //       { 
+        const onEditSave = async() => {
+        { 
             
-  //       const recordPUT = {
-  //         "colone": colone,
-  //         "coltwo": coltwo,
-  //         "colthree": colthree,
-  //         "colfour": colfour,
-  //         "coldate": crDate,
-  //          } 
+        const recordPUT = {
+          "colone": colone,
+          "coltwo": coltwo,
+          "colthree": colthree,
+          "colfour": colfour,
+          "coldate": crDate,
+           } 
            
                             
-  //          await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/records/update/${editing}`, recordPUT)
-  //           .then((response) => {setCheckForRecords(!checkForRecords); alertCtx.success(`Suksesvolle PUT`); })
-  //           .catch((error) => {alertCtx.error(error.message);})
-  //           setCheckForRecords(!checkForRecords)
-  //           onEditCancel();}
-  //           }
+           await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/records/update/${editing}`, recordPUT)
+            .then((response) => {setCheckForRecords(!checkForRecords); alertCtx.success(`Suksesvolle PUT`); })
+            .catch((error) => {alertCtx.error(error.message);})
+            setCheckForRecords(!checkForRecords)
+            onEditCancel();}
+            }
 
-  //         const onEditDelete = (row) => {
-  //           axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/records/delete/${row.id}`)
-  //           .then((response) => {setCheckForRecords(!checkForRecords); alertCtx.success(`Suksesvolle DEL`)})
+          const onEditDelete = (row) => {
+            axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/records/delete/${row.id}`)
+            .then((response) => {setCheckForRecords(!checkForRecords); alertCtx.success(`Suksesvolle DEL`)})
             
-  //           };       
+            };       
 
   if (error) return <p>An error occurred in tableone</p>
   
@@ -111,14 +111,12 @@ export default function FrontPage() {
     <BannerLight/>
     <GradientLineThin/>
     <Quicklinks/>
-    <CandidateScreen1/>
+    
+    <CandidateScreen/>
     <RecordCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
     <RecordAmend checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
-    <Template2/>
 
-
-
-    {/* <div className='Font-Verdana-Small'>
+    <div className='Font-Verdana-Small'>
     &nbsp;<div onClick={toggleAccordion}></div>
     &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Amend"><GiKiwiBird style={{ color: '#000000', fontSize: '30px', cursor: 'pointer' }} /></a>
         <b>Amend Record</b>
@@ -181,8 +179,8 @@ export default function FrontPage() {
         )})
       }
       </tbody>
-    </table> */}
-
+    </table>
+    <Template/>
 
     {/* <Footer /> */}
 

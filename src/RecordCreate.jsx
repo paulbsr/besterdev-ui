@@ -72,7 +72,7 @@ export default function RecordCreate(props) {
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
         <a data-tooltip-id="insert" data-tooltip-content="Insert"><GiHummingbird style={{ color: '#000000', fontSize: '35px', cursor: 'pointer' }} /></a>
-        <b>Insert record</b>
+        <b>Insert Candidate</b>
       </div>
       
       {isExpanded && (
