@@ -5,7 +5,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
 import AlertContext from "./AlertContext";
 
-export default function Alert() {
+export default function Alert(props) {
   const alertCtx = useContext(AlertContext);
 
   const {

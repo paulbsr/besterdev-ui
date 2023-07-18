@@ -8,6 +8,21 @@
     font-size: medium
 }
 
+.Font-Verdana-Medium-Bold {
+    font-family: "Verdana";
+    font-size: medium;
+    font-weight: bold;
+
+}
+
+.Font-Verdana-Medium-Italic-Rusty {
+    font-family: "Verdana";
+    font-size: medium;
+    font-style: italic;
+    color: #D5441C;
+
+}
+
 .Font-Verdana-Large {
     font-family: "Verdana";
     font-size: large
@@ -16,6 +31,12 @@
 .Font-Verdana-Small-Postgres {
     font-family: "Verdana";
     font-size: small;
+    color: #336791
+}
+
+.Font-Verdana-Medium-Postgres {
+    font-family: "Verdana";
+    font-size: medium;
     color: #336791
 }
 
@@ -448,4 +469,8 @@
     bottom: 0;
     left: 0;
     width: 100%;
+  }
+
+  .bold {
+    font-weight: bold;
   }

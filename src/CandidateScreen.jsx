@@ -2,11 +2,12 @@ import { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 import AlertContext from "./Generic/Alerts/AlertContext";
 import './Fonts.css'
-import { FaMinusCircle, FaPlusCircle } from 'react-icons/fa';
+import spacer from './graphix/besterdev_spacer_white.png'
 import GradientLineThin from './GradientLineThin';
 import { GiBirdCage } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
+import ColouredBox from './ColouredBox';
 
  export default function CandidateScreen() {
 
@@ -71,11 +72,12 @@ import { Tooltip } from 'react-tooltip'
 
 
 
-      <div className='Font-Verdana-Small-Postgres'>&nbsp; &nbsp;
+      <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
         <Tooltip id="insert" />
         <div onClick={toggleAccordion}>
           &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Select"><GiBirdCage style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
           &nbsp;<b>Screen Candidates</b>
+          {/* <div>&nbsp;</div> */}
         </div>
 
         {isExpanded && (
@@ -84,28 +86,62 @@ import { Tooltip } from 'react-tooltip'
 
               {
                 candidatedata.map((inbound, key) => {
+
                   
+                  const inboundnamefirst = <span className="Font-Verdana-Medium-Bold">{inbound.name.first}</span>;
+                  const inboundnamelast = <span className="Font-Verdana-Medium-Bold">{inbound.name.last}</span>;
+                  const inboundage = <span className="Font-Verdana-Medium">{inbound.dob.age}</span>;
+                  const inboungender = <span className="Font-Verdana-Medium">{inbound.gender}</span>;
+                  const inboundjd = <span className="Font-Verdana-Medium-Italic-Rusty">{inbound.location.coordinates.latitude}</span>;
+                  const inboundstate = <span className="Font-Verdana-Medium">{inbound.location.state}</span>;
+                  const inboundcountry = <span className="Font-Verdana-Medium">{inbound.location.country}</span>;
+                  const inboundskill1 = <span className="Font-Verdana-Medium-Italic-Rusty">{inbound.location.coordinates.longitude}</span>;
+                  const inboundskill2 = <span className="Font-Verdana-Medium-Italic-Rusty">{inbound.location.coordinates.longitude}</span>;
+                  const inboundskill3 = <span className="Font-Verdana-Medium-Italic-Rusty">{inbound.location.coordinates.longitude}</span>;
+                  const inboundmobile = <span className="Font-Verdana-Medium">{inbound.phone}</span>;
+                  const inboundemail = <span className="Font-Verdana-Medium">{inbound.email}</span>;
+
+
                   const formattedString = `${inbound.name.first} ${inbound.name.last} is a ${inbound.dob.age} year old ${inbound.gender} with a Job Description of ${inbound.location.coordinates.latitude}, whom currently resides in ${inbound.location.state}, ${inbound.location.country} with primary skills of ${inbound.location.coordinates.longitude} and ${inbound.location.coordinates.longitude} and ${inbound.location.coordinates.longitude} whom can be reached at ${inbound.phone} or ${inbound.email}`;
-                 
+                  
                   return (
+                    
                     <form onSubmit={onKeepPost}>
                       <div key={key}>
 
-                        <div className='Font-Verdana-Small'>
+                        <div className='Font-Verdana-Medium'>
                           <Tooltip id="Screen" />
                           <div onClick={toggleAccordion}></div>
                         </div>
 
+                        <ColouredBox 
+                        fn={inboundnamefirst} 
+                        ln={inboundnamelast}
+                        age={inboundage}
+                        gender={inboungender}
+                        jd={inboundjd}
+                        state={inboundstate}
+                        country={inboundcountry}
+                        skill1={inboundskill1}
+                        skill2={inboundskill2}
+                        skill3={inboundskill3}
+                        mobile={inboundmobile}
+                        email={inboundemail}/>
+                        
                         <div className='Font-Verdana-Small'>
-                          &nbsp;
-                          
-                          &nbsp;
-                          &nbsp;<input style={{ backgroundColor: '#f7f4f3', height: '40px', border: '2px solid #336791', borderRadius: '3px', padding: 0, paddingLeft: '20px', width: '95%' }} type="text" value={formattedString}/>
+                          {/* &nbsp; */}
+                          {/* &nbsp; */}
+                          {/* &nbsp;<input style={{ backgroundColor: '#f7f4f3', height: '40px', border: '2px solid #336791', borderRadius: '3px', padding: 0, paddingLeft: '20px', width: '95%' }} type="text" value={formattedString}/> */}
                           {/* <div>&nbsp;</div> */}
                           {/* <span style={{ color: 'black', fontStyle: 'bold' }}>{inbound.name.first} {inbound.name.last}</span> is a {inbound.dob.age}<GenderLabel gender={inbound.gender} /> <span style={{ color: 'red', fontStyle: 'italic' }}>{inbound.location.coordinates.latitude}</span> who currently resides in {inbound.location.state}, {inbound.location.country} with primary skills of <span style={{ color: 'red', fontStyle: 'italic' }}>{inbound.location.coordinates.longitude}</span> and <span style={{ color: 'red', fontStyle: 'italic' }}>{inbound.location.coordinates.longitude}</span> and <span style={{ color: 'red', fontStyle: 'italic' }}>{inbound.location.coordinates.longitude}</span> whom can be reached at {inbound.phone} or <a href={"mailto:${email}"}>{inbound.email}</a> */}
                           <div>&nbsp;</div>
-                          &nbsp; &nbsp; Add some comments before commit?&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '650px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)}/>
-                          <button className="Font-Verdana-Small-Heroku" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#336791', cursor: 'pointer' }} onClick={() => setFirstname(inbound.name.first) & setLastname(inbound.name.last) & setMobile(inbound.phone) & setEmail(inbound.email) & setCountry(inbound.location.country) & setJobdesc(inbound.location.coordinates.latitude) & setSkill1(inbound.location.coordinates.longitude)}>Add Candidate</button>
+                          <div>&nbsp;</div>
+                          <div>&nbsp;</div>
+                          <div>&nbsp;</div>
+                          <div>&nbsp;</div>
+                          <div>&nbsp;</div>
+                          &nbsp; &nbsp; Jy moet "Company" en "Role" nog maak?&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '650px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)}/>
+                          <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#336791', cursor: 'pointer' }} onClick={() => setFirstname(inbound.name.first) & setLastname(inbound.name.last) & setMobile(inbound.phone) & setEmail(inbound.email) & setCountry(inbound.location.country) & setJobdesc(inbound.location.coordinates.latitude) & setSkill1(inbound.location.coordinates.longitude)}>Add Candidate</button>
                         </div>
 
                       </div>

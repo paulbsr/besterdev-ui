@@ -99,7 +99,7 @@ export default function CandidateAmend(props) {
 
           const onEditDelete = (row) => {
             axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/delete/${row.id}`)
-            .then((response) => {props.setCheckForRecords(!props.checkForRecords); alertCtx.success(`Suksesvolle DEL`)})
+            .then((response) => {props.setCheckForRecords(!props.checkForRecords); alert(`${firstname} ${lastname} removed from DB.`)})
             
             };       
 
@@ -108,11 +108,11 @@ export default function CandidateAmend(props) {
   return (
 
 
-    <div className='Font-Verdana-Small-Postgres'>&nbsp; &nbsp;
+    <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
         &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Amend"><GiKiwiBird style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>
-        &nbsp;<b>View & Amend Candidate Details ({tabledata.length})</b>
+        &nbsp;<b>View & Amend Selected Candidate Details ({tabledata.length})</b>
       </div>
 
       {isExpanded && (
