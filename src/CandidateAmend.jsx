@@ -40,7 +40,7 @@ export default function CandidateAmend(props) {
    
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates')
-      .then((response) => {const sortedTabledata = response.data.sort((b, a) => b.firstname.localeCompare(a.firstname)); setTabledata(sortedTabledata); setError(null); console.log(tabledata);}) //sort firstname alphabetically
+      .then((response) => {const sortedTabledata = response.data.sort((b, a) => b.firstname.localeCompare(a.firstname)); setTabledata(sortedTabledata);}) //sort firstname alphabetically
       .catch((e)=> console.error(e));}, [props.checkForRecords]);
 
         const handleEdit = (row) => {

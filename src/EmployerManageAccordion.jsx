@@ -8,9 +8,11 @@ import GradientLineThin from './GradientLineThin';
 import { GiHummingbird, GiNestBirds } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
+import EmployerManage from './EmployerManage';
+import EmployerCreate from './EmployerCreate';
 
 
-export default function Template2(props) {
+export default function EmployerManageAccordion(props) {
 
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => {setExpanded(!isExpanded);};  
@@ -19,18 +21,20 @@ export default function Template2(props) {
   return (
 
     
-        <div className='Font-Verdana-Small-Heroku'>&nbsp; &nbsp;
+        <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
             <Tooltip id="insert" />
             <div onClick={toggleAccordion}>
-            &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Template"><GiNestBirds style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>
-            &nbsp;<b>Template Accordion</b>
+            &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Manage"><GiNestBirds style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>
+            &nbsp;<b>Manage Employers/Customers</b>
             </div>
 
             {isExpanded && (
                 <div>
                     <div>
 
-                        This is a bare bones Toggle Accordion Template#2
+                    <EmployerCreate/>
+                    <EmployerManage/>
+
 
                     </div>
                 </div>)}

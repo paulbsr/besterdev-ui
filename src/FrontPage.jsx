@@ -10,10 +10,12 @@ import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
-import Template2 from './Template2';
+import Template2 from './EmployerManageAccordion';
 import CandidateScreen from './CandidateScreen';
 import CandidateAmend from './CandidateAmend';
 import CandidateCreate from './CandidateCreate';
+import EmployerManageAccordion from './EmployerManageAccordion';
+import AccordionTemplate from './AccordionTemplate';
 dayjs.extend(utc);
 
 
@@ -41,7 +43,9 @@ export default function FrontPage() {
     <CandidateScreen />
     <CandidateCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
     <CandidateAmend checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
-    {/* <Template2 /> */}
+
+    <EmployerManageAccordion/>
+    {/* <AccordionTemplate /> */}
 
   </div>
   )
