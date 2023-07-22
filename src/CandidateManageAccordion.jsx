@@ -1,13 +1,14 @@
 import { useState, useEffect, useContext } from 'react'
 import './Fonts.css'
-import { GiNestBirds } from "react-icons/gi";
+import { GiKiwiBird } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
-import EmployerManage from './EmployerManage';
-import EmployerCreate from './EmployerCreate';
+import CandidateCreate from './CandidateCreate';
+import CandidateManage from './CandidateManage';
 
 
-export default function EmployerManageAccordion(props) {
+
+export default function CandidateManageAccordion(props) {
 
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => {setExpanded(!isExpanded);};  
@@ -19,16 +20,16 @@ export default function EmployerManageAccordion(props) {
         <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
             <Tooltip id="insert" />
             <div onClick={toggleAccordion}>
-            &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Manage"><GiNestBirds style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>
-            &nbsp;<b>Manage Employers/Customers</b>
+            &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Manage"><GiKiwiBird style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>
+            &nbsp;<b>Manage Candidate/Commodities</b>
             </div>
 
             {isExpanded && (
                 <div>
                     <div>
 
-                    <EmployerCreate/>
-                    <EmployerManage/>
+                    <CandidateCreate/>
+                    <CandidateManage/>
 
 
                     </div>

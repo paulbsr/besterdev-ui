@@ -13,11 +13,12 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
 import 'react-tooltip/dist/react-tooltip.css'
+import CandidateCreate from './CandidateCreate';
 dayjs.extend(utc);
 
 
 
-export default function CandidateAmend(props) {
+export default function CandidateManage() {
 
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => {setExpanded(!isExpanded);};  
@@ -41,7 +42,7 @@ export default function CandidateAmend(props) {
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates')
       .then((response) => {const sortedTabledata = response.data.sort((b, a) => b.firstname.localeCompare(a.firstname)); setTabledata(sortedTabledata);}) //sort firstname alphabetically
-      .catch((e)=> console.error(e));}, [props.checkForRecords]);
+      .catch((e)=> console.error(e));}, [checkForRecords]);
 
         const handleEdit = (row) => {
           setEditing(row.id)
@@ -91,35 +92,36 @@ export default function CandidateAmend(props) {
            
                             
            await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/update/${editing}`, candidatePUT)
-            .then((response) => {props.setCheckForRecords(!props.checkForRecords); console.log(candidatePUT); alertCtx.success(`Suksesvolle PUT`); })
-            .catch((error) => {alertCtx.error(error.message);})
-            setCheckForRecords(!props.checkForRecords)
+            .then((response) => {setCheckForRecords(!checkForRecords);})
+            .catch((error) => {alert("Done");})
+            setCheckForRecords(!checkForRecords)
             onEditCancel();}
             }
 
           const onEditDelete = (row) => {
             axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/delete/${row.id}`)
-            .then((response) => {props.setCheckForRecords(!props.checkForRecords); alert(`${firstname} ${lastname} removed from DB.`)})
+            .then((response) => {setCheckForRecords(!checkForRecords); alert(`${firstname} ${lastname} removed from DB.`)})
             
             };       
 
   if (error) return <p>An error occurred in tableone</p>
 
   return (
+    
 
 
     <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
         &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Amend"><GiKiwiBird style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>
-        &nbsp;<b>View & Amend Selected Candidate Details ({tabledata.length})</b>
+        &nbsp;<b>Manage Candidates/Comodoties ({tabledata.length})</b>
       </div>
 
       {isExpanded && (
         <div>
           <div>
 
-            &nbsp;
+          <CandidateCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
 
             <table className="Table6">
               <thead>

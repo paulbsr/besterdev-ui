@@ -4,7 +4,6 @@ import './Fonts.css'
 import 'react-dropdown/style.css';
 import { FaPen, FaCheck, FaRegTrashAlt } from 'react-icons/fa';
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
-import AlertContext from './Generic/Alerts/AlertContext';
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 
@@ -12,7 +11,6 @@ import { Tooltip } from 'react-tooltip'
 export default function EmployerManage(props) {
   const [checkForRecords, setCheckForRecords] = useState(true);
   const [employerrecords, setemployerrecords] = useState([]);
-  const [error, setError] = useState(null);
   const [editing, setEditing] = useState("");
   const [empname, setEmpname] = useState(null);
   const [empcontactfn, setEmpcontactfn] = useState(null);
@@ -65,7 +63,7 @@ export default function EmployerManage(props) {
       }
       
       await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers/update/${editing}`, employerPUT)
-        .then((response) => { props.setCheckForRecords(!props.checkForRecords); })
+        .then((response) => {setCheckForRecords(!checkForRecords); })
         .catch((error) => { alert('Employer updated.'); })
       setCheckForRecords(!checkForRecords)
       onEditCancel();

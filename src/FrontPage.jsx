@@ -12,10 +12,11 @@ import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 import Template2 from './EmployerManageAccordion';
 import CandidateScreen from './CandidateScreen';
-import CandidateAmend from './CandidateAmend';
+import CandidateManage from './CandidateManage';
 import CandidateCreate from './CandidateCreate';
 import EmployerManageAccordion from './EmployerManageAccordion';
-import AccordionTemplate from './AccordionTemplate';
+import RoleManageAccordion from './RoleManageAccordion';
+import CandidateManageAccordion from './CandidateManageAccordion';
 dayjs.extend(utc);
 
 
@@ -41,10 +42,12 @@ export default function FrontPage() {
     <Quicklinks />
 
     <CandidateScreen />
-    <CandidateCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
-    <CandidateAmend checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
-
+    {/* <CandidateCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /> */}
+    {/* <CandidateManage checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /> */}
+    <CandidateManage/>
     <EmployerManageAccordion/>
+    <RoleManageAccordion/>
+    
     {/* <AccordionTemplate /> */}
 
   </div>

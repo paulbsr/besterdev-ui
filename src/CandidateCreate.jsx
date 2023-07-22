@@ -12,6 +12,7 @@ import { GiHummingbird } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 import RecordAmend from "./RecordAmend";
+import { GiKiwiBird } from "react-icons/gi";
 dayjs.extend(utc);
 
 
@@ -61,8 +62,6 @@ export default function CandidateCreate(props) {
         const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/create`, newRecord);
         if (response.status === 200) { props.setCheckForRecords(!props.checkForRecords); alert(`${firstname} ${lastname} has been memorialized.`); }
         else { alert(`oops! Something went wrong!`); }
-        if (response.status === 200) {alertCtx.success("blah"); props.setCheckForRecords(!props.checkForRecords);}
-        else {alertCtx.error(`oops! Something went wrong in TaskRecordCreate`);}
       }
 
       catch (err) { alertCtx.error(`oops! Something went wrong!`); console.log(err); }
@@ -76,10 +75,10 @@ export default function CandidateCreate(props) {
 
   return (
 
-    <div className='Font-Verdana-Medium-Postgres'>&nbsp;
+    <div className='Font-Verdana-Small-Postgres'>&nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-        <a data-tooltip-id="insert" data-tooltip-content="Add"><GiHummingbird style={{ color: '#336791', fontSize: '35px', cursor: 'pointer' }} /></a>
+        <a data-tooltip-id="insert" data-tooltip-content="Add"><img alt="1" src={spacer}/><img alt="1" src={spacer}/><GiHummingbird style={{ color: '#336791', fontSize: '35px', cursor: 'pointer' }}/><GiKiwiBird style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>
         <b>Add a Candidate</b>
       </div>
 
