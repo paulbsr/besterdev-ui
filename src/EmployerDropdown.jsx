@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import CandidateScreen from './CandidateScreen'
 
 export default function EmployerDropdown(props) {
   const [employers, setEmployers] = useState(null);
@@ -21,7 +22,9 @@ export default function EmployerDropdown(props) {
         {employers && employers.map(option => (
           <option key={option.id} value={option.id}>{option.empname}</option>
         ))}
+        
       </select>
     </div>
+    
   );
 };

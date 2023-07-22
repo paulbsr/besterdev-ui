@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 import AlertContext from "./Generic/Alerts/AlertContext";
 import './Fonts.css'
-import spacer from './graphix/besterdev_spacer_white.png'
 import GradientLineThin from './GradientLineThin';
 import { GiBirdCage } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css'
@@ -25,6 +24,9 @@ import RoleDropdown from './RoleDropdown';
   const [skill1, setSkill1] = useState(null);
   const [country, setCountry] = useState(null);
   const [comment, setComment] = useState('');
+  const [role, setRole] = useState(null);
+  const [reqnum, setReqnum] = useState(null);
+  const [employer, setEmployer] = useState(null);
   const alertCtx = useContext(AlertContext);
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
@@ -40,7 +42,10 @@ import RoleDropdown from './RoleDropdown';
         'dob': dob,
         'jobdesc': jobdesc,
         'skill1': skill1,
-        'comment': comment
+        'comment': comment,
+        'role': role,
+        'reqnum': reqnum,
+        'employer': employer
       }
       console.log(candidatePOST)
       const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/create`, candidatePOST);
@@ -71,15 +76,11 @@ import RoleDropdown from './RoleDropdown';
     <>
       <GradientLineThin />&nbsp;
 
-
-
-
       <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
         <Tooltip id="insert" />
         <div onClick={toggleAccordion}>
           &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Select"><GiBirdCage style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
           &nbsp;<b>Screen Candidates</b>
-          {/* <div>&nbsp;</div> */}
         </div>
 
         {isExpanded && (
@@ -88,7 +89,6 @@ import RoleDropdown from './RoleDropdown';
 
               {
                 candidatedata.map((inbound, key) => {
-
                   
                   const inboundnamefirst = <span className="Font-Verdana-Medium-Bold">{inbound.name.first}</span>;
                   const inboundnamelast = <span className="Font-Verdana-Medium-Bold">{inbound.name.last}</span>;
@@ -102,7 +102,6 @@ import RoleDropdown from './RoleDropdown';
                   const inboundskill3 = <span className="Font-Verdana-Medium-Italic-Rusty">{inbound.location.coordinates.longitude}</span>;
                   const inboundmobile = <span className="Font-Verdana-Medium">{inbound.phone}</span>;
                   const inboundemail = <span className="Font-Verdana-Medium">{inbound.email}</span>;
-
 
                   const formattedString = `${inbound.name.first} ${inbound.name.last} is a ${inbound.dob.age} year old ${inbound.gender} with a Job Description of ${inbound.location.coordinates.latitude}, whom currently resides in ${inbound.location.state}, ${inbound.location.country} with primary skills of ${inbound.location.coordinates.longitude} and ${inbound.location.coordinates.longitude} and ${inbound.location.coordinates.longitude} whom can be reached at ${inbound.phone} or ${inbound.email}`;
                   
@@ -131,25 +130,17 @@ import RoleDropdown from './RoleDropdown';
                         email={inboundemail}/>
                         
                         <div className='Font-Verdana-Small'>
-                          {/* &nbsp; */}
-                          {/* &nbsp; */}
-                          {/* &nbsp;<input style={{ backgroundColor: '#f7f4f3', height: '40px', border: '2px solid #336791', borderRadius: '3px', padding: 0, paddingLeft: '20px', width: '95%' }} type="text" value={formattedString}/> */}
-                          {/* <div>&nbsp;</div> */}
-                          {/* <span style={{ color: 'black', fontStyle: 'bold' }}>{inbound.name.first} {inbound.name.last}</span> is a {inbound.dob.age}<GenderLabel gender={inbound.gender} /> <span style={{ color: 'red', fontStyle: 'italic' }}>{inbound.location.coordinates.latitude}</span> who currently resides in {inbound.location.state}, {inbound.location.country} with primary skills of <span style={{ color: 'red', fontStyle: 'italic' }}>{inbound.location.coordinates.longitude}</span> and <span style={{ color: 'red', fontStyle: 'italic' }}>{inbound.location.coordinates.longitude}</span> and <span style={{ color: 'red', fontStyle: 'italic' }}>{inbound.location.coordinates.longitude}</span> whom can be reached at {inbound.phone} or <a href={"mailto:${email}"}>{inbound.email}</a> */}
                           <div>&nbsp;</div>
                           <div>&nbsp;</div>
                           <div>&nbsp;</div>
                           <div>&nbsp;</div>
                           <div>&nbsp;</div>
                           <div>&nbsp;</div>
-                          {/* &nbsp; &nbsp; Company:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '350px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)}/> */}
                           &nbsp; &nbsp;<EmployerDropdown/>
-                          {/* <div>&nbsp;</div> */}
                           &nbsp; &nbsp;<RoleDropdown/>
                           <div>&nbsp;</div>
-                          {/* &nbsp; &nbsp; General Role:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '350px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)}/> */}
                           <div>&nbsp;</div>
-                          &nbsp; &nbsp; Specific Req:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '350px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)}/>
+                          &nbsp; &nbsp; Requisition Number:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '350px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)}/>
                           <div>&nbsp;</div>
                           &nbsp; &nbsp; Comment:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '650px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)}/>
                           <div>&nbsp;</div>
