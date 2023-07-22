@@ -59,9 +59,7 @@ export default function RoleManage(props) {
       }
       
       await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/roles/update/${editing}`, rolePUT)
-      .then((response) => {setCheckForRecords(!checkForRecords);})
-      .catch((error) => {alert("Done");})
-      setCheckForRecords(!checkForRecords)
+      .then((response) => {setCheckForRecords(!checkForRecords); alert(`${rolename} has been updated.`);})
       onEditCancel();
     }
   }

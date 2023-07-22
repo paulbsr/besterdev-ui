@@ -92,15 +92,14 @@ export default function CandidateManage() {
            
                             
            await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/update/${editing}`, candidatePUT)
-            .then((response) => {setCheckForRecords(!checkForRecords);})
-            .catch((error) => {alert("Done");})
-            setCheckForRecords(!checkForRecords)
-            onEditCancel();}
-            }
+           .then((response) => {setCheckForRecords(!checkForRecords); alert(`Candidate ${firstname} ${lastname} has been updated.`);})
+           onEditCancel();
+         }
+       }
 
           const onEditDelete = (row) => {
             axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/delete/${row.id}`)
-            .then((response) => {setCheckForRecords(!checkForRecords); alert(`${firstname} ${lastname} removed from DB.`)})
+            .then((response) => {setCheckForRecords(!checkForRecords); alert(`Candidate ${firstname} ${lastname} has been purged.`)})
             
             };       
 
@@ -181,7 +180,7 @@ export default function CandidateManage() {
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '180px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={jobdesc} onChange={(e) => setjobdesc(e.target.value)} className='cr_edit_inputfield' />) : (row.jobdesc)}</td>
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '180px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={skill1} onChange={(e) => setskill1(e.target.value)} className='cr_edit_inputfield' />) : (row.skill1)}</td>
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '480px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={comment} onChange={(e) => setcomment(e.target.value)} className='cr_edit_inputfield' />) : (row.comment)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '30px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={status} onChange={(e) => setstatus(e.target.value)} className='cr_edit_inputfield' />) : (row.status)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '40px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={status} onChange={(e) => setstatus(e.target.value)} className='cr_edit_inputfield' />) : (row.status)}</td>
                     </tr>
                   )
                 })

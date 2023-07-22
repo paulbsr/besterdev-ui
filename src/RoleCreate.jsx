@@ -32,11 +32,8 @@ export default function RoleCreate(props) {
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    if (
-      cr_date != null &&
-      cr_datehold != "Invalid Date"
-    ) {
+    
+     {
       var newRoleRecord = {
         'rolename': rolename,
         'roledesc': roledesc,
@@ -50,16 +47,13 @@ export default function RoleCreate(props) {
       try {
         const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/roles/create`, newRoleRecord);
         if (response.status === 200) { props.setCheckForRecords(!props.checkForRecords); alert(`${rolename} has been memorialized.`); }
-        else { alert(`oops! Something went wrong!`); }
+        else { alert(`oops! Something went wrong @ the if/else!`); }
+
       }
 
-      catch (err) { alertCtx.error(`oops! Something went wrong!`); console.log(err); }
+      catch (err) { alert(`oops! Something went wrong @ the try/catch!`); console.log(err); }
     }
-    else {
-      event.preventDefault();
-      alertCtx.warning("Valid CR date required");
     }
-  }
 
 
   return (
