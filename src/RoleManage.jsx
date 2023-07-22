@@ -8,9 +8,9 @@ import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 
 
-export default function EmployerManage(props) {
+export default function RoleManage(props) {
   const [checkForRecords, setCheckForRecords] = useState(true);
-  const [employerrecords, setemployerrecords] = useState([]);
+  const [rolerecords, setRolerecords] = useState([]);
   const [editing, setEditing] = useState("");
   const [rolename, setRolename] = useState('');
   const [roledesc, setRoledesc] = useState('');
@@ -24,7 +24,7 @@ export default function EmployerManage(props) {
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/roles')
-      .then((response) => { const sortedrolerecords = response.data.sort((b, a) => b.rolename.localeCompare(a.rolename)); setemployerrecords(sortedrolerecords);}) //sort empname alphabetically
+      .then((response) => { const sortedrolerecords = response.data.sort((b, a) => b.rolename.localeCompare(a.rolename)); setRolerecords(sortedrolerecords);}) //sort empname alphabetically
       .catch((e) => console.error(e));
   }, [checkForRecords]);
 
@@ -59,9 +59,9 @@ export default function EmployerManage(props) {
       }
       
       await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/roles/update/${editing}`, rolePUT)
-        .then((response) => {props.setCheckForRecords(!props.checkForRecords); })
-        .catch((error) => { alert('Role updated.'); })
-      // setCheckForRecords(!checkForRecords)
+      .then((response) => {setCheckForRecords(!checkForRecords);})
+      .catch((error) => {alert("Done");})
+      setCheckForRecords(!checkForRecords)
       onEditCancel();
     }
   }
@@ -69,7 +69,8 @@ export default function EmployerManage(props) {
 
   const onEditDelete = (row) => {
     axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/roles/delete/${row.id}`)
-      .then((response) => { setCheckForRecords(!checkForRecords); alert(`${rolename} has been purged.`) })
+      .then((response) => { setCheckForRecords(!checkForRecords); 
+      alert(`${rolename} has been purged.`) })
   };
 
 
@@ -95,7 +96,7 @@ export default function EmployerManage(props) {
 
       <tbody>
 
-        {employerrecords.map((row) => {
+        {rolerecords.map((row) => {
           return (
             <tr key={row.id}>
               <td className="Table6 td">
