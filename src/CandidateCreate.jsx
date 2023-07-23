@@ -78,7 +78,7 @@ export default function CandidateCreate(props) {
     <div className='Font-Verdana-Small-Postgres'>&nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-        <a data-tooltip-id="insert" data-tooltip-content="Add"><img alt="1" src={spacer}/><img alt="1" src={spacer}/><GiHummingbird style={{ color: '#336791', fontSize: '35px', cursor: 'pointer' }}/><GiKiwiBird style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>
+        <a data-tooltip-id="insert" data-tooltip-content="Add"><img alt="1" src={spacer}/><img alt="1" src={spacer}/><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }}/><GiKiwiBird style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>
         <b>Add a Candidate</b>
       </div>
 

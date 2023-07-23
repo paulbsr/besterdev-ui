@@ -116,7 +116,7 @@ export default function CandidateManage() {
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
         &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Amend"><GiKiwiBird style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>
-        &nbsp;<b>Manage Candidates/Comodoties ({tabledata.length})</b>
+        &nbsp;<b>Manage Candidates/Commodoties ({tabledata.length})</b>
       </div>
 
       {isExpanded && (

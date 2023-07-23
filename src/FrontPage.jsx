@@ -17,6 +17,8 @@ import CandidateCreate from './CandidateCreate';
 import EmployerManageAccordion from './EmployerManageAccordion';
 import RoleManageAccordion from './RoleManageAccordion';
 import CandidateManageAccordion from './CandidateManageAccordion';
+import JobreqManageAccordion from './JobreqManageAccordion';
+import JobreqManage from './JobreqManage';
 dayjs.extend(utc);
 
 
@@ -46,7 +48,9 @@ export default function FrontPage() {
     {/* <CandidateManage checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /> */}
     <CandidateManage/>
     <EmployerManageAccordion/>
-    <RoleManageAccordion/>
+    {/* <RoleManageAccordion/> */}
+    <JobreqManage/>
+    
     
     {/* <AccordionTemplate /> */}
 

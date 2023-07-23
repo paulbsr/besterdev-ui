@@ -16,8 +16,8 @@ export default function RoleDropdown(props) {
 
   return (
     <div>
-      <label htmlFor="dropdown">&nbsp; &nbsp; Select a Role:&nbsp;</label>
-      <select id="dropdown" style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '300px' }}>
+      <label htmlFor="dropdown">&nbsp; &nbsp; Propopse candidate for this Company/JR/Role:&nbsp;</label>
+      <select id="dropdown" style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '300px' }}>
         {roles && roles.map(option => (
           <option key={option.id} value={option.id}>{option.rolename}</option>
         ))}
