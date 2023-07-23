@@ -13,14 +13,12 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
 import 'react-tooltip/dist/react-tooltip.css'
-import CandidateCreate from './CandidateCreate';
 import JobreqCreate from './JobreqCreate';
 dayjs.extend(utc);
 
 
 
 export default function JobreqManage() {
-
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => {setExpanded(!isExpanded);};  
   const [checkForRecords, setCheckForRecords] = useState(true);
@@ -45,8 +43,8 @@ export default function JobreqManage() {
    
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs')
-      .then((response) => {const SortedJobreqData = response.data.sort((b, a) => b.jrnumber.localeCompare(a.jrnumber)); setJobreqdata(SortedJobreqData); console.log(SortedJobreqData)}) //sort reqnumber alphabetically
-      .catch((e)=> console.error(e));}, [checkForRecords]); console.log(jobreqdata); 
+      .then((response) => {const SortedJobreqData = response.data.sort((b, a) => b.jrnumber.localeCompare(a.jrnumber)); setJobreqdata(SortedJobreqData); console.log(jobreqdata)}) //sort reqnumber alphabetically
+      .catch((e)=> console.error(e));}, [checkForRecords]);
 
         const handleEdit = (row) => {
           setEditing(row.id)
@@ -103,20 +101,17 @@ export default function JobreqManage() {
             "status": status,
             "wa": wa
         }
-        
-           
-                            
-           await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/update/${editing}`, jobreqPUT)
+                               
+           await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs/update/${editing}`, jobreqPUT)
            .then((response) => {setCheckForRecords(!checkForRecords); alert(`JR#${jrnumber} has been updated.`);})
            onEditCancel();
          }
        }
 
           const onEditDelete = (row) => {
-            axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/delete/${row.id}`)
+            axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs/delete/${row.id}`)
             .then((response) => {setCheckForRecords(!checkForRecords); alert(`JR#${jrnumber} has been purged.`)})
-            
-            };       
+        };       
 
   if (error) return <p>An error occurred in Jobreqs</p>
 
@@ -146,7 +141,6 @@ export default function JobreqManage() {
                   <th style={{ width: '110px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Company</th>
                   <th style={{ width: '250px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>JR Title</th>
                   <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Location</th>
-                  {/* <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Required Skill</th> */}
                   <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Recruiter Name</th>
                   <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Recruiter eMail</th>
                   <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Recruiter Number</th>
@@ -186,8 +180,6 @@ export default function JobreqManage() {
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '280px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={company} onChange={(e) => setCompany(e.target.value)} className='cr_edit_inputfield_disc' />) : (row.company)}</td>
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '130px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={jrtitle} onChange={(e) => setJrtitle(e.target.value)} className='cr_edit_inputfield' />) : (row.jrtitle)}</td>
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '180px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={location} onChange={(e) => setLocation(e.target.value)} className='cr_edit_inputfield' />) : (row.location)}</td>
-                      {/* <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '180px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={reqskill2} onChange={(e) => setReqskill2(e.target.value)} className='cr_edit_inputfield' />) : (row.reqskill2)}</td> */}
-                      
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '130px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={recruitername} onChange={(e) => setRecruitername(e.target.value)} className='cr_edit_inputfield' />) : (row.recruitername)}</td> 
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '40px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={recruiteremail} onChange={(e) => setRecruiteremail(e.target.value)} className='cr_edit_inputfield' />) : (row.recruiteremail)}</td>
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '40px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={recruiternumber} onChange={(e) => setRecruiternumber(e.target.value)} className='cr_edit_inputfield' />) : (row.recruiternumber)}</td>
@@ -197,7 +189,7 @@ export default function JobreqManage() {
                         <DatePicker
                           id="cr_date"
                           format="YYYY.M.D"
-                          value={crDate}
+                          value={createdate}
                           selected={createdate}
                           onChange={handleDateChange}
                           dateFormat="YYYY.M.D"
@@ -208,7 +200,7 @@ export default function JobreqManage() {
                         <DatePicker
                           id="cr_date"
                           format="YYYY.M.D"
-                          value={crDate}
+                          value={targetdate}
                           selected={targetdate}
                           onChange={handleDateChange}
                           dateFormat="YYYY.M.D"
