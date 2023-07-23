@@ -37,10 +37,22 @@ export default function JobreqManage() {
   const [targetdate, setTargetdate] = useState(null);
   const [status, setStatus] = useState(null);
   const [wa, setWa] = useState(null);
-  const [cr_datehold, setCr_DateHold] = useState(null);
+  const [cr_datehold1, setCr_DateHold1] = useState(null);
+  const [cr_datehold2, setCr_DateHold2] = useState(null);
   const [crDate, setCrDate] = useState(null);
   const alertCtx = useContext(AlertContext);
-   
+  
+  const handleCreateDateChange = (newVal) => {
+    setCr_DateHold1(newVal.format("YYYY.M.D"));
+    setCreatedate(newVal); console.log(newVal);
+  };
+
+  
+  const handleTargetDateChange = (newVal) => {
+    setCr_DateHold2(newVal.format("YYYY.M.D"));
+    setTargetdate(newVal); console.log(newVal);
+  };
+
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs')
       .then((response) => {const SortedJobreqData = response.data.sort((b, a) => b.jrnumber.localeCompare(a.jrnumber)); setJobreqdata(SortedJobreqData); console.log(jobreqdata)}) //sort reqnumber alphabetically
@@ -78,10 +90,10 @@ export default function JobreqManage() {
           setWa(null)
         };
 
-        const handleDateChange = (newVal) => {
-          setCr_DateHold(newVal.format("YYYY.M.D"));
-          setCrDate(newVal);
-        };
+        // const handleDateChange = (newVal) => {
+        //   setCr_DateHold(newVal.format("YYYY.M.D"));
+        //   setCrDate(newVal);
+        // };
 
         const onEditSave = async() => {
         { 
@@ -177,36 +189,41 @@ export default function JobreqManage() {
                       </td>
 
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={jrnumber} onChange={(e) => setJrnumber(e.target.value)} className='cr_edit_inputfield' />) : (row.jrnumber)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '280px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={company} onChange={(e) => setCompany(e.target.value)} className='cr_edit_inputfield_disc' />) : (row.company)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '130px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={jrtitle} onChange={(e) => setJrtitle(e.target.value)} className='cr_edit_inputfield' />) : (row.jrtitle)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '180px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={location} onChange={(e) => setLocation(e.target.value)} className='cr_edit_inputfield' />) : (row.location)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={company} onChange={(e) => setCompany(e.target.value)} className='cr_edit_inputfield_disc' />) : (row.company)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '230px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={jrtitle} onChange={(e) => setJrtitle(e.target.value)} className='cr_edit_inputfield' />) : (row.jrtitle)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '130px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={location} onChange={(e) => setLocation(e.target.value)} className='cr_edit_inputfield' />) : (row.location)}</td>
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '130px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={recruitername} onChange={(e) => setRecruitername(e.target.value)} className='cr_edit_inputfield' />) : (row.recruitername)}</td> 
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '40px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={recruiteremail} onChange={(e) => setRecruiteremail(e.target.value)} className='cr_edit_inputfield' />) : (row.recruiteremail)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '40px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={recruiternumber} onChange={(e) => setRecruiternumber(e.target.value)} className='cr_edit_inputfield' />) : (row.recruiternumber)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '40px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={comment} onChange={(e) => setComment(e.target.value)} className='cr_edit_inputfield' />) : (row.comment)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '40px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={wa} onChange={(e) => setWa(e.target.value)} className='cr_edit_inputfield' />) : (row.wa)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '130px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={recruiteremail} onChange={(e) => setRecruiteremail(e.target.value)} className='cr_edit_inputfield' />) : (row.recruiteremail)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '130px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={recruiternumber} onChange={(e) => setRecruiternumber(e.target.value)} className='cr_edit_inputfield' />) : (row.recruiternumber)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '370px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={comment} onChange={(e) => setComment(e.target.value)} className='cr_edit_inputfield' />) : (row.comment)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={wa} onChange={(e) => setWa(e.target.value)} className='cr_edit_inputfield' />) : (row.wa)}</td>
+                      
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '80px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={createdate} onChange={(e) => setCreatedate(e.target.value)} className='cr_edit_inputfield' />) : (row.createdate)}</td>
+                      {/* <LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
                         <DatePicker
-                          id="cr_date"
+                          id="createdate"
                           format="YYYY.M.D"
                           value={createdate}
                           selected={createdate}
-                          onChange={handleDateChange}
+                          onChange={handleCreateDateChange}
                           dateFormat="YYYY.M.D"
-                          sx={{ height: '22.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.5px', width: '80px' }, '& .MuiSvgIcon-root': { height: '20px' } }}
-                        />
-                      </LocalizationProvider>) : new Date(row.dob).toLocaleDateString("en-CA")}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
+                          sx={{ height: '22.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.5px', width: '80px' }, '& .MuiSvgIcon-root': { height: '20px' } }}/>
+                      </LocalizationProvider>
+                      ) : new Date(row.createdate).toLocaleDateString("en-CA")}</td> */}
+                      
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '80px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={targetdate} onChange={(e) => setTargetdate(e.target.value)} className='cr_edit_inputfield' />) : (row.targetdate)}</td>
+                      {/* <LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
                         <DatePicker
-                          id="cr_date"
+                          id="targetdate"
                           format="YYYY.M.D"
                           value={targetdate}
                           selected={targetdate}
-                          onChange={handleDateChange}
+                          onChange={handleTargetDateChange}
                           dateFormat="YYYY.M.D"
-                          sx={{ height: '22.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.5px', width: '80px' }, '& .MuiSvgIcon-root': { height: '20px' } }}
-                        />
-                      </LocalizationProvider>) : new Date(row.dob).toLocaleDateString("en-CA")}</td>
+                          sx={{ height: '22.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.5px', width: '80px' }, '& .MuiSvgIcon-root': { height: '20px' } }}/>
+                      </LocalizationProvider>
+                      ) : new Date(row.targetdate).toLocaleDateString("en-CA")}</td> */}
+
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '40px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={status} onChange={(e) => setStatus(e.target.value)} className='cr_edit_inputfield' />) : (row.status)}</td>
                       
                     </tr>
