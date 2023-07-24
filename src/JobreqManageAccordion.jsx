@@ -4,29 +4,25 @@ import { BsSignpostFill } from "react-icons/bs";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 import JobreqManage from './JobreqManage';
-import JobreqCreate from './JobreqCreate';
-
 
 export default function JobreqManageAccordion(props) {
 
-  const [isExpanded, setExpanded] = useState(false);
-  const toggleAccordion = () => {setExpanded(!isExpanded);};  
- 
+    const [isExpanded, setExpanded] = useState(false);
+    const toggleAccordion = () => { setExpanded(!isExpanded); };
 
-  return (
+    return (
 
-    
         <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
             <Tooltip id="insert" />
             <div onClick={toggleAccordion}>
-            &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Manage"><BsSignpostFill style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>
-            &nbsp;<b>Manage JRs</b>
+                &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Manage"><BsSignpostFill style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>
+                &nbsp;<b>Manage JRs</b>
             </div>
 
             {isExpanded && (
                 <div>
                     <div>
-                    <JobreqManage/>
+                        <JobreqManage />
                     </div>
                 </div>)}
         </div>
