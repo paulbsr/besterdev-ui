@@ -11,7 +11,6 @@ import spacer2 from './graphix/besterdev_spacer_white_half.png'
 import { GiHummingbird } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
-import RecordAmend from "./RecordAmend";
 import { BsSignpostFill } from "react-icons/bs";
 dayjs.extend(utc);
 
@@ -55,8 +54,7 @@ export default function JobreqCreate(props) {
     if (
       createdate != null &&
       cr_datehold1 != "Invalid Date"
-    ) 
-    {
+    ) {
       var jobreqPOST = {
         "jrnumber": jrnumber,
         "company": company,
@@ -64,7 +62,7 @@ export default function JobreqCreate(props) {
         "location": location,
         "recruitername": recruitername,
         "recruiteremail": recruiteremail,
-        "recruiternumber":recruiternumber,
+        "recruiternumber": recruiternumber,
         "comment": comment,
         "createdate": createdate,
         "targetdate": targetdate,
@@ -72,8 +70,8 @@ export default function JobreqCreate(props) {
         "wa": wa
       }
       console.log(jobreqPOST)
-      
-      
+
+
       try {
         const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs/create`, jobreqPOST);
         if (response.status === 200) { props.setCheckForRecords(!props.checkForRecords); alert(`${jrnumber} for ${company} has been memorialized.`); }
@@ -88,17 +86,15 @@ export default function JobreqCreate(props) {
     }
   }
 
-  // const DropdownMenu = () => {
-  //   const [WAprofile, setWAprofile] = useState('Option 1');
-  
-    const handleWAprofileChange = (event) => {setWAprofile(event.target.value);};
+
+  const handleWAprofileChange = (event) => { setWAprofile(event.target.value); };
 
   return (
 
     <div className='Font-Verdana-Small-Postgres'>&nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-        <a data-tooltip-id="insert" data-tooltip-content="Add"><img alt="1" src={spacer}/><img alt="1" src={spacer}/><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }}/><BsSignpostFill style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>
+        <a data-tooltip-id="insert" data-tooltip-content="Add"><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /><BsSignpostFill style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>
         <b>Add a Job Requisition/JR</b>
       </div>
 
@@ -109,18 +105,18 @@ export default function JobreqCreate(props) {
             <form onSubmit={handleSubmit}>
               <div><img alt="1" src={spacer2} /></div>
               <div className='Font-Verdana-Small-Postgres'>
-              <img alt="1" src={spacer}/><img alt="1" src={spacer}/>JR Number:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} placeholder="Required" type="text" value={jrnumber} onChange={(event) => setJrnumber(event.target.value)} required/>
-              <img alt="1" src={spacer}/>JR Title:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} placeholder="Required" type="text" value={jrtitle} onChange={(event) => setJrtitle(event.target.value)} required/>
-              <div>&nbsp;</div>
-              <img alt="1" src={spacer}/><img alt="1" src={spacer}/>Company:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} placeholder="Required" type="text" value={company} onChange={(event) => setCompany(event.target.value)} required/>
-              <img alt="1" src={spacer}/><img alt="1" src={spacer}/>Location:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} type="text" value={location} onChange={(event) => setLocation(event.target.value)}/>
-              <div>&nbsp;</div>
-              <img alt="1" src={spacer}/><img alt="1" src={spacer}/>Recruiter's Name:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} type="text" value={recruitername} onChange={(event) => setRecruitername(event.target.value)}/>
-              <img alt="1" src={spacer}/>Recruiter's eMail Address:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} type="text" value={recruiteremail} onChange={(event) => setRecruiteremail(event.target.value)} />
-              <img alt="1" src={spacer}/>Recruiter's Mobile Number:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} type="text" value={recruiternumber} onChange={(event) => setRecruiternumber(event.target.value)}/>
-              <div>&nbsp;</div>
-              <img alt="1" src={spacer}/><img alt="1" src={spacer}/>Comment:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)}/>
-              <img alt="1" src={spacer}/>Work Appropriate Model:&nbsp;
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} />JR Number:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} placeholder="Required" type="text" value={jrnumber} onChange={(event) => setJrnumber(event.target.value)} required />
+                <img alt="1" src={spacer} />JR Title:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} placeholder="Required" type="text" value={jrtitle} onChange={(event) => setJrtitle(event.target.value)} required />
+                <div>&nbsp;</div>
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Company:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} placeholder="Required" type="text" value={company} onChange={(event) => setCompany(event.target.value)} required />
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Location:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} type="text" value={location} onChange={(event) => setLocation(event.target.value)} />
+                <div>&nbsp;</div>
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Recruiter's Name:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} type="text" value={recruitername} onChange={(event) => setRecruitername(event.target.value)} />
+                <img alt="1" src={spacer} />Recruiter's eMail Address:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} type="text" value={recruiteremail} onChange={(event) => setRecruiteremail(event.target.value)} />
+                <img alt="1" src={spacer} />Recruiter's Mobile Number:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} type="text" value={recruiternumber} onChange={(event) => setRecruiternumber(event.target.value)} />
+                <div>&nbsp;</div>
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Comment:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)} />
+                <img alt="1" src={spacer} />Work Appropriate Model:&nbsp;
                 <select style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} id="dropdown" value={wa} onChange={(event) => setWa(event.target.value)}>
                   <option value="00">Work Appropriate Model</option>
                   <option value="FR">Fully Remote</option>
@@ -130,58 +126,38 @@ export default function JobreqCreate(props) {
                   <option value="H4">Hybrid 4-day Onsite</option>
                   <option value="FO">Fully Onsite</option>
                 </select>
-              
-              
-              {/* <input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} type="text" value={wa} onChange={(event) => setWa(event.target.value)}/> */}
-              <div>&nbsp;</div>
-              <img alt="1" src={spacer}/><img alt="1" src={spacer} />Recruitment Start Date:&nbsp; <LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
-                <DatePicker
-                  id="createdate"
-                  format="YYYY.M.D"
-                  selected={createdate}
-                  onChange={handleCreateDateChange}
-                  dateFormat="YYYY.M.D"
-                  sx={{ height: '27.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.3px' } }}
-                />
-              </LocalizationProvider>
 
-              <img alt="1" src={spacer} />Target Completion Date:&nbsp; <LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
-                <DatePicker
-                  id="targetdate"
-                  format="YYYY.M.D"
-                  selected={targetdate}
-                  onChange={handleTargetDateChange}
-                  dateFormat="YYYY.M.D"
-                  sx={{ height: '27.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.3px' } }}
-                />
-              </LocalizationProvider>
-              <img alt="1" src={spacer}/><img alt="1" src={spacer}/>Status:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} type="text" value={status} onChange={(event) => setStatus(event.target.value)}/>
-              <div>&nbsp;</div>
-              
-              <img alt="1" src={spacer}/><img alt="1" src={spacer}/><button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#336791', cursor: 'pointer' }}>Add a Job Requisition</button>
-              
-              {/* <div>
-      <h1>Dropdown Menu Example</h1>
-      <label htmlFor="dropdown">Select an option:</label>
-      <select id="dropdown" value={WAprofile} onChange={handleWAprofileChange}>
-        <option value="Option 1">Option 1</option>
-        <option value="Option 2">Option 2</option>
-        <option value="Option 3">Option 3</option>
-        <option value="Option 4">Option 4</option>
-        <option value="Option 5">Option 5</option>
-        <option value="Option 6">Option 6</option>
-        <option value="Option 7">Option 7</option>
-        <option value="Option 8">Option 8</option>
-      </select>
-      <p>Selected Option: {WAprofile}</p>
-    </div> */}
-              
+
+                {/* <input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} type="text" value={wa} onChange={(event) => setWa(event.target.value)}/> */}
+                <div>&nbsp;</div>
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Recruitment Start Date:&nbsp; <LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
+                  <DatePicker
+                    id="createdate"
+                    format="YYYY.M.D"
+                    selected={createdate}
+                    onChange={handleCreateDateChange}
+                    dateFormat="YYYY.M.D"
+                    sx={{ height: '27.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.3px' } }}
+                  />
+                </LocalizationProvider>
+
+                <img alt="1" src={spacer} />Target Completion Date:&nbsp; <LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
+                  <DatePicker
+                    id="targetdate"
+                    format="YYYY.M.D"
+                    selected={targetdate}
+                    onChange={handleTargetDateChange}
+                    dateFormat="YYYY.M.D"
+                    sx={{ height: '27.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.3px' } }}
+                  />
+                </LocalizationProvider>
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Status:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} type="text" value={status} onChange={(event) => setStatus(event.target.value)} />
+                <div>&nbsp;</div>
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} /><button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#336791', cursor: 'pointer' }}>Add a Job Requisition</button>
               </div>
             </form>
-            
           </div>
         </div>)}
     </div>
-
   );
 }
