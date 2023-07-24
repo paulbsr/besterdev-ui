@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect } from 'react'
 import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
 import './Fonts.css';
@@ -7,9 +7,9 @@ import 'react-dropdown/style.css';
 import {FaPen, FaCheck, FaRegTrashAlt} from 'react-icons/fa';
 import {PiArrowCounterClockwiseBold} from 'react-icons/pi';
 import { BsSignpostFill } from "react-icons/bs";
-import AlertContext from './Generic/Alerts/AlertContext';
-import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+// import AlertContext from './Generic/Alerts/AlertContext';
+// import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
+// import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
 import 'react-tooltip/dist/react-tooltip.css'
@@ -23,7 +23,7 @@ export default function JobreqManage() {
   const toggleAccordion = () => {setExpanded(!isExpanded);};  
   const [checkForRecords, setCheckForRecords] = useState(true);
   const [jobreqdata, setJobreqdata] = useState([]);
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
   const [editing, setEditing] = useState("");
   const [jrnumber, setJrnumber] = useState(null);
   const [company, setCompany] = useState(null);
@@ -37,21 +37,21 @@ export default function JobreqManage() {
   const [targetdate, setTargetdate] = useState(null);
   const [status, setStatus] = useState(null);
   const [wa, setWa] = useState(null);
-  const [cr_datehold1, setCr_DateHold1] = useState(null);
-  const [cr_datehold2, setCr_DateHold2] = useState(null);
-  const [crDate, setCrDate] = useState(null);
-  const alertCtx = useContext(AlertContext);
+  // const [cr_datehold1, setCr_DateHold1] = useState(null);
+  // const [cr_datehold2, setCr_DateHold2] = useState(null);
+  // const [crDate, setCrDate] = useState(null);
+  // const alertCtx = useContext(AlertContext);
   
-  const handleCreateDateChange = (newVal) => {
-    setCr_DateHold1(newVal.format("YYYY.M.D"));
-    setCreatedate(newVal); console.log(newVal);
-  };
+  // const handleCreateDateChange = (newVal) => {
+  //   setCr_DateHold1(newVal.format("YYYY.M.D"));
+  //   setCreatedate(newVal); console.log(newVal);
+  // };
 
   
-  const handleTargetDateChange = (newVal) => {
-    setCr_DateHold2(newVal.format("YYYY.M.D"));
-    setTargetdate(newVal); console.log(newVal);
-  };
+  // const handleTargetDateChange = (newVal) => {
+  //   setCr_DateHold2(newVal.format("YYYY.M.D"));
+  //   setTargetdate(newVal); console.log(newVal);
+  // };
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs')
@@ -125,7 +125,7 @@ export default function JobreqManage() {
             .then((response) => {setCheckForRecords(!checkForRecords); alert(`${jrnumber} has been purged.`)})
         };       
 
-  if (error) return <p>An error occurred in Jobreqs</p>
+  // if (error) return <p>An error occurred in Jobreqs</p>
 
   return (
     
