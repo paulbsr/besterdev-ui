@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './Fonts.css'
 import GradientLineThin from './GradientLineThin';
-import { GiBirdCage } from "react-icons/gi";
+import { FaPersonCircleQuestion } from "react-icons/fa6";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 import ColouredBox from './ColouredBox';
@@ -85,7 +85,7 @@ export default function CandidateScreen() {
       <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
         <Tooltip id="insert" />
         <div onClick={toggleAccordion}>
-          &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Select"><GiBirdCage style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
+          &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Select"><FaPersonCircleQuestion style={{ color: '#336791', fontSize: '45px', cursor: 'pointer' }} /></a>
           &nbsp;<b>Screen Candidates</b>
         </div>
 

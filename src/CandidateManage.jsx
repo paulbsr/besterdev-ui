@@ -6,7 +6,7 @@ import axios from 'axios'
 import 'react-dropdown/style.css';
 import {FaPen, FaCheck, FaRegTrashAlt} from 'react-icons/fa';
 import {PiArrowCounterClockwiseBold} from 'react-icons/pi';
-import { GiKiwiBird } from "react-icons/gi";
+import { MdManageAccounts } from "react-icons/md";
 import AlertContext from './Generic/Alerts/AlertContext';
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -58,6 +58,10 @@ export default function CandidateManage() {
           setskill1(row.skill1)
           setcomment(row.comment)
           setstatus(row.status)
+          setRole(row.role)
+          setReqnum(row.reqnum)
+          setEmployer(row.employer)
+
         };
 
         const onEditCancel = () => {
@@ -71,6 +75,9 @@ export default function CandidateManage() {
           setskill1(null)
           setcomment(null)
           setstatus(null)
+          setRole(null)
+          setReqnum(null)
+          setEmployer(null)
         };
 
         const handleDateChange = (newVal) => {
@@ -90,7 +97,10 @@ export default function CandidateManage() {
           "jobdesc": jobdesc,
           "skill1":skill1,
           "comment":comment,
-          "status":status
+          "status":status,
+          "role": role,
+          "reqnum": reqnum,
+          "employer": employer
         } 
            
                             
@@ -115,7 +125,7 @@ export default function CandidateManage() {
     <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-        &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Amend"><GiKiwiBird style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>
+        &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Amend"><MdManageAccounts style={{ color: '#336791', fontSize: '45px', cursor: 'pointer' }} /></a>
         &nbsp;<b>Manage Candidates/Commodoties ({tabledata.length})</b>
       </div>
 
@@ -167,10 +177,10 @@ export default function CandidateManage() {
                         </>
                       </td>
 
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={firstname} onChange={(e) => setfirstname(e.target.value)} className='cr_edit_inputfield' />) : (row.firstname)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '130px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={lastname} onChange={(e) => setlastname(e.target.value)} className='cr_edit_inputfield' />) : (row.lastname)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '280px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={email} onChange={(e) => setemail(e.target.value)} className='cr_edit_inputfield_disc' />) : (<a href={'mailto: ${row.email}'} target="_blank">{row.email}</a>)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '130px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={mobile} onChange={(e) => setmobile(e.target.value)} className='cr_edit_inputfield' />) : (row.mobile)}</td> 
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '60px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={firstname} onChange={(e) => setfirstname(e.target.value)} className='cr_edit_inputfield' />) : (row.firstname)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={lastname} onChange={(e) => setlastname(e.target.value)} className='cr_edit_inputfield' />) : (row.lastname)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '240px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={email} onChange={(e) => setemail(e.target.value)} className='cr_edit_inputfield_disc' />) : (<a href={'mailto: ${row.email}'} target="_blank">{row.email}</a>)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '120px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={mobile} onChange={(e) => setmobile(e.target.value)} className='cr_edit_inputfield' />) : (row.mobile)}</td> 
                       <td className="asmshover Table6 td">{row.id === editing ? (<LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
                         <DatePicker
                           id="cr_date"
@@ -179,16 +189,16 @@ export default function CandidateManage() {
                           selected={dob}
                           onChange={handleDateChange}
                           dateFormat="YYYY.M.D"
-                          sx={{ height: '22.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.5px', width: '80px' }, '& .MuiSvgIcon-root': { height: '20px' } }}
+                          sx={{ height: '22.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.5px', width: '90px' }, '& .MuiSvgIcon-root': { height: '20px' } }}
                         />
                       </LocalizationProvider>) : new Date(row.dob).toLocaleDateString("en-CA")}
                       </td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '180px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={jobdesc} onChange={(e) => setjobdesc(e.target.value)} className='cr_edit_inputfield' />) : (row.jobdesc)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '180px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={skill1} onChange={(e) => setskill1(e.target.value)} className='cr_edit_inputfield' />) : (row.skill1)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '480px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={comment} onChange={(e) => setcomment(e.target.value)} className='cr_edit_inputfield' />) : (row.comment)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '40px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={employer} onChange={(e) => setEmployer(e.target.value)} className='cr_edit_inputfield' />) : (row.employer)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '40px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={role} onChange={(e) => setRole(e.target.value)} className='cr_edit_inputfield' />) : (row.role)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '40px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={reqnum} onChange={(e) => setReqnum(e.target.value)} className='cr_edit_inputfield' />) : (row.reqnum)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '140px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={jobdesc} onChange={(e) => setjobdesc(e.target.value)} className='cr_edit_inputfield' />) : (row.jobdesc)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '190px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={skill1} onChange={(e) => setskill1(e.target.value)} className='cr_edit_inputfield' />) : (row.skill1)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '290px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={comment} onChange={(e) => setcomment(e.target.value)} className='cr_edit_inputfield' />) : (row.comment)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '140px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={employer} onChange={(e) => setEmployer(e.target.value)} className='cr_edit_inputfield' />) : (row.employer)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '140px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={role} onChange={(e) => setRole(e.target.value)} className='cr_edit_inputfield' />) : (row.role)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={reqnum} onChange={(e) => setReqnum(e.target.value)} className='cr_edit_inputfield' />) : (row.reqnum)}</td>
                       {/* <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '40px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={status} onChange={(e) => setstatus(e.target.value)} className='cr_edit_inputfield' />) : (row.status)}</td> */}
                     </tr>
                   )

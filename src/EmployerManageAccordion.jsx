@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 import './Fonts.css'
-import { GiNestBirds } from "react-icons/gi";
+import { FaPeopleGroup } from "react-icons/fa6";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 import EmployerManage from './EmployerManage';
@@ -19,7 +19,7 @@ export default function EmployerManageAccordion(props) {
         <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
             <Tooltip id="insert" />
             <div onClick={toggleAccordion}>
-            &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Manage"><GiNestBirds style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>
+            &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Manage"><FaPeopleGroup style={{ color: '#336791', fontSize: '45px', cursor: 'pointer' }} /></a>
             &nbsp;<b>Manage Employers/Customers</b>
             </div>
 
