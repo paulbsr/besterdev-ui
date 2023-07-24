@@ -1,14 +1,11 @@
 import { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
-import AlertContext from "./Generic/Alerts/AlertContext";
 import './Fonts.css'
 import GradientLineThin from './GradientLineThin';
 import { GiBirdCage } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 import ColouredBox from './ColouredBox';
-import EmployerDropdown from './EmployerDropdown';
-import RoleDropdown from './RoleDropdown';
 
 export default function CandidateScreen() {
 
@@ -28,7 +25,6 @@ export default function CandidateScreen() {
   const [reqnum, setReqnum] = useState(null);
   const [employer, setEmployer] = useState(null);
   const [jobreqs, setJobreqs] = useState(null);
-  const alertCtx = useContext(AlertContext);
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
 
@@ -67,11 +63,10 @@ export default function CandidateScreen() {
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs')
-      .then((response) => {
-        const sortedjobreqs = response.data.sort((b, a) => b.company.localeCompare(a.company));
+      .then((response) => {const sortedjobreqs = response.data.sort((b, a) => b.company.localeCompare(a.company));
         setJobreqs(sortedjobreqs);
       })
-      .catch((e) => console.error(e));
+      // .catch((e) => console.error(e));
   },
     []);
 
@@ -148,7 +143,7 @@ export default function CandidateScreen() {
                           <div>
                             <div>
                               <label htmlFor="dropdown">&nbsp; &nbsp; Propose this candidate for this Employer/Role/JR:&nbsp;</label>
-                              <select
+                              <select className='Font-Verdana-Medium'
                                 onChange={(event) => {
                                   const selectedIndex = event.target.selectedIndex;
                                   const selectedOption = event.target.options[selectedIndex];
@@ -167,11 +162,11 @@ export default function CandidateScreen() {
                                   borderRadius: '4px',
                                   padding: 0,
                                   paddingLeft: '10px',
-                                  width: '300px'
+                                  width: '500px'
                                 }}
                               >
                                 {jobreqs && jobreqs.map(option => (
-                                  <option
+                                  <option 
                                     key={option.id}
                                     value={option.id}
                                     data-company={option.company} // Store company data as an attribute

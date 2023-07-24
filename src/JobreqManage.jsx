@@ -150,11 +150,11 @@ export default function JobreqManage() {
                 <tr>
                   <th style={{ width: '20px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'></th>
                   <th style={{ width: '110px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>JR Number</th>
-                  <th style={{ width: '110px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Company</th>
+                  <th style={{ width: '130px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Company</th>
                   <th style={{ width: '250px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>JR Title</th>
-                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Location</th>
-                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Recruiter Name</th>
-                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Recruiter eMail</th>
+                  <th style={{ width: '120px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Location</th>
+                  <th style={{ width: '160px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Recruiter Name</th>
+                  <th style={{ width: '170px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Recruiter eMail</th>
                   <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Recruiter Number</th>
                   <th style={{ width: '400px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Comment</th>
                   <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>WA</th>
