@@ -10,7 +10,7 @@ import ColouredBox from './ColouredBox';
 import EmployerDropdown from './EmployerDropdown';
 import RoleDropdown from './RoleDropdown';
 
- export default function CandidateScreen() {
+export default function CandidateScreen() {
 
   const today = new Date(); // Create a new Date object representing today's date
   const formattedDate = today.toISOString().split('T')[0]; // Convert the date to the desired format (YYYY-MM-DD)
@@ -27,9 +27,11 @@ import RoleDropdown from './RoleDropdown';
   const [role, setRole] = useState(null);
   const [reqnum, setReqnum] = useState(null);
   const [employer, setEmployer] = useState(null);
+  const [jobreqs, setJobreqs] = useState(null);
   const alertCtx = useContext(AlertContext);
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
+
   const onKeepPost = async (event) => {
 
     {
@@ -63,13 +65,22 @@ import RoleDropdown from './RoleDropdown';
     []);
 
 
+  useEffect(() => {
+    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs')
+      .then((response) => {
+        const sortedjobreqs = response.data.sort((b, a) => b.company.localeCompare(a.company));
+        setJobreqs(sortedjobreqs);
+      })
+      .catch((e) => console.error(e));
+  },
+    []);
+
+
   function GenderLabel({ gender }) {
     if (gender === "female") { return <span>F</span>; }
     else if (gender === "male") { return <span>M</span>; }
     else { return null; }
   }
-
-  
 
 
   return (
@@ -86,11 +97,11 @@ import RoleDropdown from './RoleDropdown';
         {isExpanded && (
           <div>
             <div>
-               <div>&nbsp;</div>
+              <div>&nbsp;</div>
 
               {
                 candidatedata.map((inbound, key) => {
-                  
+
                   const inboundnamefirst = <span className="Font-Verdana-Medium-Bold">{inbound.name.first}</span>;
                   const inboundnamelast = <span className="Font-Verdana-Medium-Bold">{inbound.name.last}</span>;
                   const inboundage = <span className="Font-Verdana-Medium">{inbound.dob.age}</span>;
@@ -105,49 +116,79 @@ import RoleDropdown from './RoleDropdown';
                   const inboundemail = <span className="Font-Verdana-Medium">{inbound.email}</span>;
 
                   const formattedString = `${inbound.name.first} ${inbound.name.last} is a ${inbound.dob.age} year old ${inbound.gender} with a Job Description of ${inbound.location.coordinates.latitude}, whom currently resides in ${inbound.location.state}, ${inbound.location.country} with primary skills of ${inbound.location.coordinates.longitude} and ${inbound.location.coordinates.longitude} and ${inbound.location.coordinates.longitude} whom can be reached at ${inbound.phone} or ${inbound.email}`;
-                  
+
                   return (
-                    
                     <form onSubmit={onKeepPost}>
                       <div key={key}>
-
                         <div className='Font-Verdana-Medium'>
                           <Tooltip id="Screen" />
                           <div onClick={toggleAccordion}></div>
                         </div>
 
-                        <ColouredBox 
-                        fn={inboundnamefirst} 
-                        ln={inboundnamelast}
-                        age={inboundage}
-                        gender={inboungender}
-                        jd={inboundjd}
-                        state={inboundstate}
-                        country={inboundcountry}
-                        skill1={inboundskill1}
-                        skill2={inboundskill2}
-                        skill3={inboundskill3}
-                        mobile={inboundmobile}
-                        email={inboundemail}/>
-                        
+                        <ColouredBox
+                          fn={inboundnamefirst}
+                          ln={inboundnamelast}
+                          age={inboundage}
+                          gender={inboungender}
+                          jd={inboundjd}
+                          state={inboundstate}
+                          country={inboundcountry}
+                          skill1={inboundskill1}
+                          skill2={inboundskill2}
+                          skill3={inboundskill3}
+                          mobile={inboundmobile}
+                          email={inboundemail} />
+
                         <div className='Font-Verdana-Medium'>
                           <div>&nbsp;</div>
                           <div>&nbsp;</div>
                           <div>&nbsp;</div>
                           <div>&nbsp;</div>
                           <div>&nbsp;</div>
-                          {/* <div>&nbsp;</div> */}
-                          {/* &nbsp; &nbsp;<EmployerDropdown/> */}
-                          &nbsp; &nbsp;<RoleDropdown/>
+                          <div>
+                            <div>
+                              <label htmlFor="dropdown">&nbsp; &nbsp; Propose this candidate for this Employer/Role/JR:&nbsp;</label>
+                              <select
+                                onChange={(event) => {
+                                  const selectedIndex = event.target.selectedIndex;
+                                  const selectedOption = event.target.options[selectedIndex];
+                                  const company = selectedOption.getAttribute("data-company");
+                                  const jrtitle = selectedOption.getAttribute("data-jrtitle");
+                                  const jrnumber = selectedOption.getAttribute("data-jrnumber");
+
+                                  setEmployer(company);
+                                  setRole(jrtitle);
+                                  setReqnum(jrnumber);
+                                }}
+                                id="dropdown"
+                                style={{
+                                  height: '37.5px',
+                                  border: '1.25px solid #c4c4c4',
+                                  borderRadius: '4px',
+                                  padding: 0,
+                                  paddingLeft: '10px',
+                                  width: '300px'
+                                }}
+                              >
+                                {jobreqs && jobreqs.map(option => (
+                                  <option
+                                    key={option.id}
+                                    value={option.id}
+                                    data-company={option.company} // Store company data as an attribute
+                                    data-jrtitle={option.jrtitle} // Store jrtitle data as an attribute
+                                    data-jrnumber={option.jrnumber} // Store jrnumber data as an attribute
+                                  >
+                                    {option.company} / {option.jrtitle} / {option.jrnumber}
+                                  </option>
+                                ))}
+                              </select>
+                            </div>
+                          </div>
                           <div>&nbsp;</div>
-                          {/* <div>&nbsp;</div> */}
-                          {/* &nbsp; &nbsp; Requisition Number:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '350px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)}/> */}
-                          {/* <div>&nbsp;</div> */}
-                          &nbsp; &nbsp; Comment:&nbsp;<input style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '650px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)}/>
+                          &nbsp; &nbsp; Comment:&nbsp;<input style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '650px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)} />
                           <div>&nbsp;</div>
                           &nbsp; &nbsp;<button className="Font-Verdana-Medium-Postgres" type="submit" style={{ marginLeft: '10px', height: '37.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#336791', cursor: 'pointer' }} onClick={() => setFirstname(inbound.name.first) & setLastname(inbound.name.last) & setMobile(inbound.phone) & setEmail(inbound.email) & setCountry(inbound.location.country) & setJobdesc(inbound.location.coordinates.latitude) & setSkill1(inbound.location.coordinates.longitude)}>Add Candidate</button>
                         </div>
-
                       </div>
                     </form>
                   );

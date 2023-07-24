@@ -137,9 +137,9 @@ export default function CandidateManage() {
                   <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Job Title</th>
                   <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Skilled</th>
                   <th style={{ width: '250px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Comment</th>
+                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Employer</th>
                   <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Role</th>
                   <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>ReqNum</th>
-                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Employer</th>
                   <th style={{ width: '50px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Status</th>
                 </tr>
               </thead>
@@ -186,10 +186,10 @@ export default function CandidateManage() {
                       <td className="asmshover Table7 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '180px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={jobdesc} onChange={(e) => setjobdesc(e.target.value)} className='cr_edit_inputfield' />) : (row.jobdesc)}</td>
                       <td className="asmshover Table7 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '180px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={skill1} onChange={(e) => setskill1(e.target.value)} className='cr_edit_inputfield' />) : (row.skill1)}</td>
                       <td className="asmshover Table7 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '480px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={comment} onChange={(e) => setcomment(e.target.value)} className='cr_edit_inputfield' />) : (row.comment)}</td>
-                      <td className="asmshover Table7 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '40px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={status} onChange={(e) => setstatus(e.target.value)} className='cr_edit_inputfield' />) : (row.status)}</td>
+                      <td className="asmshover Table7 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '40px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={employer} onChange={(e) => setEmployer(e.target.value)} className='cr_edit_inputfield' />) : (row.employer)}</td>
                       <td className="asmshover Table7 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '40px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={role} onChange={(e) => setRole(e.target.value)} className='cr_edit_inputfield' />) : (row.role)}</td>
                       <td className="asmshover Table7 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '40px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={reqnum} onChange={(e) => setReqnum(e.target.value)} className='cr_edit_inputfield' />) : (row.reqnum)}</td>
-                      <td className="asmshover Table7 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '40px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={employer} onChange={(e) => setEmployer(e.target.value)} className='cr_edit_inputfield' />) : (row.employer)}</td>
+                      <td className="asmshover Table7 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '40px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={status} onChange={(e) => setstatus(e.target.value)} className='cr_edit_inputfield' />) : (row.status)}</td>
                     </tr>
                   )
                 })
