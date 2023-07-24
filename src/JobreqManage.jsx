@@ -115,14 +115,14 @@ export default function JobreqManage() {
         }
                                
            await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs/update/${editing}`, jobreqPUT)
-           .then((response) => {setCheckForRecords(!checkForRecords); alert(`JR#${jrnumber} has been updated.`);})
+           .then((response) => {setCheckForRecords(!checkForRecords); alert(`${jrnumber} has been updated.`);})
            onEditCancel();
          }
        }
 
           const onEditDelete = (row) => {
             axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs/delete/${row.id}`)
-            .then((response) => {setCheckForRecords(!checkForRecords); alert(`JR#${jrnumber} has been purged.`)})
+            .then((response) => {setCheckForRecords(!checkForRecords); alert(`${jrnumber} has been purged.`)})
         };       
 
   if (error) return <p>An error occurred in Jobreqs</p>
@@ -157,7 +157,7 @@ export default function JobreqManage() {
                   <th style={{ width: '170px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Recruiter eMail</th>
                   <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Recruiter Number</th>
                   <th style={{ width: '400px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Comment</th>
-                  <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>WA</th>
+                  <th style={{ width: '50px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>WA</th>
                   <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Create Date</th>
                   <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Target Date</th>
                   <th style={{ width: '60px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Status</th>

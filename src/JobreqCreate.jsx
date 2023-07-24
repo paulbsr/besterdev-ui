@@ -38,22 +38,13 @@ export default function JobreqCreate(props) {
   const [cr_datehold2, setCr_DateHold2] = useState(null)
   const [checkForRecords, setCheckForRecords] = useState(true);
   const [isExpanded, setExpanded] = useState(false);
-
-  const waoptions = [
-    { name: "Fully Remote" },
-    { name: "Hybrid/1-day" },
-    { name: "Hybrid/2-day" },
-    { name: "Hybrid/3-day" },
-    { name: "Hybrid/4-day" },
-    { name: "Fully OnSite" },
-  ];
+  const [WAprofile, setWAprofile] = useState('Option 1');
 
   const handleCreateDateChange = (newVal) => {
     setCr_DateHold1(newVal.format("YYYY.M.D"));
     setCreatedate(newVal); console.log(newVal);
   };
 
-  
   const handleTargetDateChange = (newVal) => {
     setCr_DateHold2(newVal.format("YYYY.M.D"));
     setTargetdate(newVal); console.log(newVal);
@@ -85,7 +76,7 @@ export default function JobreqCreate(props) {
       
       try {
         const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs/create`, jobreqPOST);
-        if (response.status === 200) { props.setCheckForRecords(!props.checkForRecords); alert(`JR ${jrnumber} for ${company} has been memorialized.`); }
+        if (response.status === 200) { props.setCheckForRecords(!props.checkForRecords); alert(`${jrnumber} for ${company} has been memorialized.`); }
         else { alert(`oops! Something went wrong!`); }
       }
 
@@ -97,6 +88,10 @@ export default function JobreqCreate(props) {
     }
   }
 
+  // const DropdownMenu = () => {
+  //   const [WAprofile, setWAprofile] = useState('Option 1');
+  
+    const handleWAprofileChange = (event) => {setWAprofile(event.target.value);};
 
   return (
 
@@ -125,7 +120,19 @@ export default function JobreqCreate(props) {
               <img alt="1" src={spacer}/>Recruiter's Mobile Number:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} type="text" value={recruiternumber} onChange={(event) => setRecruiternumber(event.target.value)}/>
               <div>&nbsp;</div>
               <img alt="1" src={spacer}/><img alt="1" src={spacer}/>Comment:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)}/>
-              <img alt="1" src={spacer}/>Work Appropriate Model:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} type="text" value={wa} onChange={(event) => setWa(event.target.value)}/>
+              <img alt="1" src={spacer}/>Work Appropriate Model:&nbsp;
+                <select style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} id="dropdown" value={WAprofile} onChange={(event) => setWa(event.target.value)}>
+                  <option value="00">Work Appropriate Model</option>
+                  <option value="FR">Fully Remote</option>
+                  <option value="H1">Hybrid 1-day Onsite</option>
+                  <option value="H2">Hybrid 2-day Onsite</option>
+                  <option value="H3">Hybrid 3-day Onsite</option>
+                  <option value="H4">Hybrid 4-day Onsite</option>
+                  <option value="FO">Fully Onsite</option>
+                </select>
+              
+              
+              {/* <input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} type="text" value={wa} onChange={(event) => setWa(event.target.value)}/> */}
               <div>&nbsp;</div>
               <img alt="1" src={spacer}/><img alt="1" src={spacer} />Recruitment Start Date:&nbsp; <LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
                 <DatePicker
@@ -152,8 +159,26 @@ export default function JobreqCreate(props) {
               <div>&nbsp;</div>
               
               <img alt="1" src={spacer}/><img alt="1" src={spacer}/><button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#336791', cursor: 'pointer' }}>Add a Job Requisition</button>
+              
+              {/* <div>
+      <h1>Dropdown Menu Example</h1>
+      <label htmlFor="dropdown">Select an option:</label>
+      <select id="dropdown" value={WAprofile} onChange={handleWAprofileChange}>
+        <option value="Option 1">Option 1</option>
+        <option value="Option 2">Option 2</option>
+        <option value="Option 3">Option 3</option>
+        <option value="Option 4">Option 4</option>
+        <option value="Option 5">Option 5</option>
+        <option value="Option 6">Option 6</option>
+        <option value="Option 7">Option 7</option>
+        <option value="Option 8">Option 8</option>
+      </select>
+      <p>Selected Option: {WAprofile}</p>
+    </div> */}
+              
               </div>
             </form>
+            
           </div>
         </div>)}
     </div>
