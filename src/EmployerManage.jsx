@@ -6,6 +6,7 @@ import { FaPen, FaCheck, FaRegTrashAlt } from 'react-icons/fa';
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
+import GradientLine from './GradientLine';
 
 
 export default function EmployerManage(props) {
@@ -89,6 +90,7 @@ export default function EmployerManage(props) {
     <Tooltip id="purge" />
 
     &nbsp;
+    
 
     <table className="Table6">
       <thead>
@@ -139,6 +141,9 @@ export default function EmployerManage(props) {
         }
       </tbody>
     </table>
+    <div>&nbsp;</div>
+    <GradientLine/>
+    <div>&nbsp;</div>
   </div>
   )
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import FrontPage from './FrontPage';
 import BannerWhite from './BannerWhite';
 import GradientLine from './GradientLine';
-import RecordCandidate from './CandidateScreen';
+import RecordCandidate from './CandidateAPI';
 import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
 import Quicklinks from './Quicklinks';

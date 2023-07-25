@@ -14,6 +14,7 @@ import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
 import 'react-tooltip/dist/react-tooltip.css'
 import CandidateCreate from './CandidateCreate';
+import GradientLine from './GradientLine';
 dayjs.extend(utc);
 
 
@@ -206,6 +207,9 @@ export default function CandidateManage() {
                 }
               </tbody>
             </table>
+            <div>&nbsp;</div>
+            <GradientLine />
+            <div>&nbsp;</div>
           </div>
         </div>)}
     </div>

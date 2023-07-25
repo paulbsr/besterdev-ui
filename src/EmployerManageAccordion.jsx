@@ -9,31 +9,32 @@ import EmployerCreate from './EmployerCreate';
 
 export default function EmployerManageAccordion(props) {
 
-  const [isExpanded, setExpanded] = useState(false);
-  const toggleAccordion = () => {setExpanded(!isExpanded);};  
- 
+    const [isExpanded, setExpanded] = useState(false);
+    const toggleAccordion = () => { setExpanded(!isExpanded); };
 
-  return (
 
-    
+    return (
+
+
         <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
             <Tooltip id="insert" />
             <div onClick={toggleAccordion}>
-            &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Manage"><FaPeopleGroup style={{ color: '#336791', fontSize: '45px', cursor: 'pointer' }} /></a>
-            &nbsp;<b>Manage Employers/Customers</b>
+                &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Manage"><FaPeopleGroup style={{ color: '#336791', fontSize: '45px', cursor: 'pointer' }} /></a>
+                &nbsp;<b>Manage Employers/Customers</b>
             </div>
 
             {isExpanded && (
                 <div>
                     <div>
 
-                    <EmployerCreate/>
-                    <EmployerManage/>
+                        <EmployerCreate />
+                        <EmployerManage />
 
 
                     </div>
-                </div>)}
+                </div>
+            )
+            }
         </div>
-
     );
 }

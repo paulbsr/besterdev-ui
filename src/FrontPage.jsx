@@ -6,10 +6,13 @@ import GradientLine from './GradientLine';
 import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
 import Quicklinks from './Quicklinks';
-import CandidateScreen from './CandidateScreen';
+import CandidateAPI from './CandidateAPI';
 import CandidateManage from './CandidateManage';
-import EmployerManageAccordion from './EmployerManageAccordion';
+import EmployerManage from './EmployerManage';
 import JobreqManage from './JobreqManage';
+import EmployerCreate from './EmployerCreate';
+import EmployerManageAccordion from './EmployerManageAccordion';
+
 
 
 export default function FrontPage() {
@@ -22,7 +25,7 @@ export default function FrontPage() {
       <BannerLight />
       <GradientLineThin />
       <Quicklinks />
-      <CandidateScreen />
+      <CandidateAPI />
       <CandidateManage />
       <EmployerManageAccordion />
       <JobreqManage />
