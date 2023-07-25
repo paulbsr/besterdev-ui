@@ -9,14 +9,14 @@ const BannerLight = () => {
   return (
 
     <div className="banner-light">
-      <a data-tooltip-id="insert" data-tooltip-content="ReactJS9"><FaReact style={{ color: '#61dafb', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="NodeJS18"><FaNodeJs style={{ color: '#169247', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Java17"><FaJava style={{ color: '#D5441C', fontSize: '40px', cursor: 'pointer' }} /></a>&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="SpringBoot3.1.1"><SiSpringboot style={{ color: '#169247', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="DF04LM7IJ1Q2O"><BiLogoPostgresql style={{ color: '#336791', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Github Repo"><BiLogoGithub style={{ color: '#000000', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Amplify FE"><FaAws style={{ color: '#ff8500', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Heroku BE"><BiLogoHeroku style={{ color: '#6762a6', fontSize: '33px', cursor: 'pointer' }} /></a>
+      <a data-tooltip-id="insert" data-tooltip-content="ReactJS9" href="https://www.reactjs.com" target="_blank"><FaReact style={{ color: '#61dafb', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="NodeJS18" href="https://www.nodejs.org/en" target="_blank"><FaNodeJs style={{ color: '#169247', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Java17" href="https://www.java.com/en" target="_blank"><FaJava style={{ color: '#D5441C', fontSize: '40px', cursor: 'pointer' }} /></a>&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="SpringBoot3.1.1" href="https://spring.io/projects/spring-boot" target="_blank"><SiSpringboot style={{ color: '#169247', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="DF04LM7IJ1Q2O" href="https://spring.io/projects/spring-boot" target="_blank"><BiLogoPostgresql style={{ color: '#336791', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Github Repo" href="https://github.com" target="_blank"><BiLogoGithub style={{ color: '#000000', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Amplify FE" href="https://eu-west-1.console.aws.amazon.com/amplify/home?installation_id=39421369&setup_action=install&region=eu-west-1#/dv43gyvsmgsn1/settings/domains/" target="_blank"><FaAws style={{ color: '#ff8500', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Heroku BE" href="https://dashboard.heroku.com/apps" target="_blank"><BiLogoHeroku style={{ color: '#6762a6', fontSize: '33px', cursor: 'pointer' }} /></a>
       <a data-tooltip-id="insert" data-tooltip-content="Settings"><CiSettings style={{ color: '#000000', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
     </div>
   );
