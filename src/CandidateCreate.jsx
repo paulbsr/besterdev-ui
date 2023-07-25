@@ -33,7 +33,9 @@ export default function CandidateCreate(props) {
     if (
       cr_date != null &&
       cr_datehold !== "Invalid Date"
-    ) {
+    ) 
+    
+    {
       var newRecord = {
         'firstname': firstname,
         'dob': cr_date,

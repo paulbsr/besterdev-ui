@@ -28,6 +28,7 @@ export default function CandidateAPI() {
   const [reqnum, setReqnum] = useState(null);
   const [employer, setEmployer] = useState(null);
   const [jobreqs, setJobreqs] = useState(null);
+  const [candidatecount, setCandidatecount] = useState([]);
   const [checkForRecords, setCheckForRecords] = useState(true);
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
@@ -71,6 +72,12 @@ export default function CandidateAPI() {
       // .catch((e) => console.error(e));
   },
     []);
+
+
+    useEffect(() => {
+      axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates')
+        .then((response) => {const sortedcandidatecount = response.data.sort((b, a) => b.firstname.localeCompare(a.firstname)); setCandidatecount(sortedcandidatecount);}) //sort firstname alphabetically
+        .catch((e)=> console.error(e));}, [checkForRecords]);
 
 
   function GenderLabel({ gender }) {
@@ -186,8 +193,11 @@ export default function CandidateAPI() {
                           <div>&nbsp;</div>
                           <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp; &nbsp;<button className="Font-Verdana-Medium-Postgres" type="submit" style={{ marginLeft: '10px', height: '37.5px', border: '2px solid #336791', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#169247', cursor: 'pointer' }} onClick={() => setFirstname(inbound.name.first) & setLastname(inbound.name.last) & setMobile(inbound.phone) & setEmail(inbound.email) & setCountry(inbound.location.country) & setJobdesc(inbound.location.coordinates.latitude) & setSkill1(inbound.location.coordinates.longitude)}><b>Add Candidate</b></button>
                           &nbsp; &nbsp;<button className="Font-Verdana-Medium-Postgres" type="submit" style={{ marginLeft: '10px', height: '37.5px', border: '2px solid #336791', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#D5441C', cursor: 'pointer' }} ><b>Skip Candidate</b></button>
+                          &nbsp; &nbsp; Candidate Count: {candidatecount.length}
                           <div>&nbsp;</div>
-                          <GradientLine/>
+                          
+                          {/* <div>&nbsp;</div> */}
+                          {/* <GradientLine/> */}
                           <div>&nbsp;</div>
                         </div>
                       </div>
