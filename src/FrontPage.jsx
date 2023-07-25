@@ -12,6 +12,7 @@ import EmployerManage from './EmployerManage';
 import JobreqManage from './JobreqManage';
 import EmployerCreate from './EmployerCreate';
 import EmployerManageAccordion from './EmployerManageAccordion';
+import Footer from './Footer';
 
 
 
@@ -29,6 +30,8 @@ export default function FrontPage() {
       <CandidateManage />
       <EmployerManageAccordion />
       <JobreqManage />
+      <Footer/>
+      
     </div>
   )
 

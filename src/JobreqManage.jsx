@@ -12,6 +12,7 @@ import utc from 'dayjs/plugin/utc';
 import 'react-tooltip/dist/react-tooltip.css'
 import JobreqCreate from './JobreqCreate';
 import GradientLine from './GradientLine';
+import Footer from './Footer';
 dayjs.extend(utc);
 
 
@@ -208,7 +209,11 @@ export default function JobreqManage() {
             <div>&nbsp;</div>
             <GradientLine />
             <div>&nbsp;</div>
-          </div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            </div>
         </div>)}
     </div>
   );
