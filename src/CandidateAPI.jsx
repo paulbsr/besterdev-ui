@@ -95,7 +95,7 @@ export default function CandidateAPI() {
         <Tooltip id="insert" />
         <div onClick={toggleAccordion}>
           &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Select"><FaPersonCircleQuestion style={{ color: '#336791', fontSize: '45px', cursor: 'pointer' }} /></a>
-          &nbsp;<b>Screen Candidates</b>
+          &nbsp;<b>Screen Candidates from CandidateAPI:</b>
         </div>
 
         {/* {isExpanded && ( */}
@@ -174,6 +174,9 @@ export default function CandidateAPI() {
                                   width: '660px'
                                 }}
                               >
+
+                                <option disabled selected value="">Company  -  Job Req  - Number</option>
+
                                 {jobreqs && jobreqs.map(option => (
                                   <option 
                                     key={option.id}
@@ -182,7 +185,7 @@ export default function CandidateAPI() {
                                     data-jrtitle={option.jrtitle} // Store jrtitle data as an attribute
                                     data-jrnumber={option.jrnumber} // Store jrnumber data as an attribute
                                   >
-                                    {option.company} / {option.jrtitle} / {option.jrnumber}
+                                    {option.company}   -   {option.jrtitle}   -   {option.jrnumber}
                                   </option>
                                 ))}
                               </select>

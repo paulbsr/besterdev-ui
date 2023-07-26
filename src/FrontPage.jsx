@@ -28,6 +28,7 @@ export default function FrontPage() {
       <Quicklinks />
       <CandidateAPI />
       <CandidateManage />
+      {/* <EmployerManage /> */}
       <EmployerManageAccordion />
       <JobreqManage />
       <Footer/>
