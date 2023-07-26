@@ -27,9 +27,9 @@ export default function FrontPage() {
       <GradientLineThin />
       <Quicklinks />
       <CandidateAPI />
-      {/* <CandidateManage />
+      <CandidateManage />
       <EmployerManageAccordion />
-      <JobreqManage /> */}
+      <JobreqManage />
       <Footer/>
       
     </div>
