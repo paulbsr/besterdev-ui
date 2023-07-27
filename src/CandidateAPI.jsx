@@ -6,9 +6,7 @@ import { FaPersonCircleQuestion } from "react-icons/fa6";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 import ColouredBox from './ColouredBox';
-import GradientLine from './GradientLine';
 import spacer from './graphix/besterdev_spacer_white.png'
-import spacer2 from './graphix/besterdev_spacer_white_half.png'
 
 export default function CandidateAPI() {
 
@@ -95,7 +93,7 @@ export default function CandidateAPI() {
         <Tooltip id="insert" />
         <div onClick={toggleAccordion}>
           &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Select"><FaPersonCircleQuestion style={{ color: '#336791', fontSize: '45px', cursor: 'pointer' }} /></a>
-          &nbsp;<b>Screen Candidates from CandidateAPI:</b>
+          &nbsp;<b>Screen Candidates via the CandidateAPI:</b>
         </div>
 
         {/* {isExpanded && ( */}

@@ -8,12 +8,9 @@ import GradientLineThin from './GradientLineThin';
 import Quicklinks from './Quicklinks';
 import CandidateAPI from './CandidateAPI';
 import CandidateManage from './CandidateManage';
-import EmployerManage from './EmployerManage';
+import EmployerManage1 from './EmployerManage1';
 import JobreqManage from './JobreqManage';
-import EmployerCreate from './EmployerCreate';
-import EmployerManageAccordion from './EmployerManageAccordion';
 import Footer from './Footer';
-
 
 
 export default function FrontPage() {
@@ -28,12 +25,9 @@ export default function FrontPage() {
       <Quicklinks />
       <CandidateAPI />
       <CandidateManage />
-      {/* <EmployerManage /> */}
-      <EmployerManageAccordion />
+      <EmployerManage1/>
       <JobreqManage />
       <Footer/>
-      
     </div>
   )
-
 };

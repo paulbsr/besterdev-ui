@@ -211,7 +211,9 @@ export default function CandidateManage() {
             <GradientLine />
             <div>&nbsp;</div>
           </div>
-        </div>)}
+        </div>
+        )
+        }
     </div>
   );
 }

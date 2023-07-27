@@ -178,34 +178,35 @@ export default function JobreqCreate(props) {
 
                 {/* <input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} type="text" value={wa} onChange={(event) => setWa(event.target.value)}/> */}
                 <div>&nbsp;</div>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Recruitment Start:&nbsp; <LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Recruitment Start:&nbsp; 
+                <LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
                   <DatePicker
                     id="createdate"
                     format="YYYY.M.D"
                     selected={createdate}
                     onChange={handleCreateDateChange}
                     dateFormat="YYYY.M.D"
-                    sx={{ height: '27.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.3px' } }}
-                  />
+                    sx={{ height: '27.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.3px', width: '215px' } }}/>
                 </LocalizationProvider>
 
-                <img alt="1" src={spacer} />&nbsp; &nbsp;Completion Date:&nbsp; <LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Recruitment End:&nbsp; 
+                <LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
                   <DatePicker
                     id="targetdate"
                     format="YYYY.M.D"
                     selected={targetdate}
                     onChange={handleTargetDateChange}
                     dateFormat="YYYY.M.D"
-                    sx={{ height: '27.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.3px' } }}
-                  />
+                    sx={{ height: '27.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.3px', width: '300px' } }}/>
                 </LocalizationProvider>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Status:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} type="text" value={status} onChange={(event) => setStatus(event.target.value)} />
+
+                <img alt="1" src={spacer} />Status:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '335px' }} type="text" value={status} onChange={(event) => setStatus(event.target.value)} />
                 {/* <div>&nbsp;</div> */}
                 <div>&nbsp;</div>
                 <img alt="1" src={spacer} /><img alt="1" src={spacer} />Comment:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '745px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)} />
                 <img alt="1" src={spacer} />Work Appropriate Model:&nbsp;
                 <select style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '230px' }} id="dropdown" value={wa} onChange={(event) => setWa(event.target.value)}>
-                  <option value="00">Work Appropriate Model</option>
+                  <option disabled selected value="">Work Appropriate Model</option>
                   <option value="FR">Fully Remote</option>
                   <option value="H1">Hybrid 1-day Onsite</option>
                   <option value="H2">Hybrid 2-day Onsite</option>
@@ -213,7 +214,7 @@ export default function JobreqCreate(props) {
                   <option value="H4">Hybrid 4-day Onsite</option>
                   <option value="FO">Fully Onsite</option>
                 </select>
-
+                <div>&nbsp;</div>
                 <img alt="1" src={spacer} /><img alt="1" src={spacer} /><button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#336791', cursor: 'pointer' }}>Add a Job Requisition</button>
               </div>
             </form>

@@ -7,11 +7,14 @@ import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 import GradientLine from './GradientLine';
+import EmployerCreate from './EmployerCreate';
+import { MdManageAccounts } from "react-icons/md";
+import { FaPeopleGroup } from "react-icons/fa6";
 
 
-export default function EmployerManage(props) {
+export default function EmployerManage1(props) {
   const [checkForRecords, setCheckForRecords] = useState(true);
-  const [employerrecords, setemployerrecords] = useState([]);
+  const [employerrecords, setEmployerrecords] = useState([]);
   const [editing, setEditing] = useState("");
   const [empname, setEmpname] = useState(null);
   const [empcontactfn, setEmpcontactfn] = useState(null);
@@ -20,15 +23,13 @@ export default function EmployerManage(props) {
   const [empcontactemail, setEmpcontactemail] = useState(null);
   const [empcomment, setEmpcomment] = useState(null);
   const [isExpanded, setExpanded] = useState(false);
-  
-  
   const toggleAccordion = () => { setExpanded(!isExpanded); };
 
 
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers')
-      .then((response) => { const sortedemployerrecords = response.data.sort((b, a) => b.empname.localeCompare(a.empname)); setemployerrecords(sortedemployerrecords);}) //sort empname alphabetically
+      .then((response) => { const sortedemployerrecords = response.data.sort((b, a) => b.empname.localeCompare(a.empname)); setEmployerrecords(sortedemployerrecords);}) //sort empname alphabetically
       .catch((e) => console.error(e));
   }, [checkForRecords]);
 
@@ -85,7 +86,23 @@ export default function EmployerManage(props) {
   };
 
 
-  return (<div>
+  return (
+  
+  
+      <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
+      <Tooltip id="insert" />
+      <div onClick={toggleAccordion}>
+        &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Amend"><FaPeopleGroup style={{ color: '#336791', fontSize: '45px', cursor: 'pointer' }} /></a>
+        &nbsp;<b>Manage Employers/Customers ({employerrecords.length})</b>
+      </div>
+
+      {isExpanded && (
+        <div>
+          <div>
+
+  <div>
+    
+    <EmployerCreate  checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
     <Tooltip id="edit" />
     <Tooltip id="commit" />
     <Tooltip id="revert" />
@@ -147,5 +164,10 @@ export default function EmployerManage(props) {
     <GradientLine/>
     <div>&nbsp;</div>
   </div>
-  )
+</div>
+</div>
+)
+}
+</div>
+)
 }
