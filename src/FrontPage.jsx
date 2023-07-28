@@ -31,7 +31,7 @@ export default function FrontPage() {
       <Footer/>
       
       <ToastContainer
-        position="top-right"
+        position="top-left"
         autoClose={2500}
         hideProgressBar={false}
         newestOnTop={false}

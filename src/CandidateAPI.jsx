@@ -212,21 +212,11 @@ export default function CandidateAPI() {
                           {/* &nbsp; &nbsp;<button className="Font-Verdana-Medium-Postgres" type="submit" style={{ marginLeft: '10px', height: '37.5px', border: '2px solid #336791', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#D5441C', cursor: 'pointer' }} href="https://www.bester.ie" target="_blank"><b>Skip Candidate</b></button> */}
                           
                           <button
-              className="Font-Verdana-Medium-Postgres"
-              type="button" // Change the type to "button" to prevent form submission
-              style={{
-                marginLeft: '10px',
-                height: '37.5px',
-                border: '2px solid #336791',
-                borderRadius: '5px',
-                backgroundColor: '#f7f4f3',
-                color: '#D5441C',
-                cursor: 'pointer'
-              }}
-              onClick={onSkipCandidate} // Call onSkipCandidate function when clicked
-            >
-              <b>Skip Candidate</b>
-            </button>
+                            className="Font-Verdana-Medium-Postgres"
+                            type="button" // Change the type to "button" to prevent form submission
+                            style={{marginLeft: '10px', height: '37.5px', border: '2px solid #336791', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#D5441C', cursor: 'pointer'}}
+                            onClick={onSkipCandidate} // Call onSkipCandidate function when clicked
+                          ><b>Skip Candidate</b></button>
                           
                           &nbsp; &nbsp; Candidate Count: {candidatecount.length}
                           <div>&nbsp;</div>

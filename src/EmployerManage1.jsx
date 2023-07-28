@@ -68,7 +68,7 @@ export default function EmployerManage1(props) {
       }
       
       await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers/update/${editing}`, employerPUT)
-      .then((response) => {setCheckForRecords(!checkForRecords); toast.success(`The Employer ${empname} has been updated.`)}) 
+      .then((response) => {setCheckForRecords(!checkForRecords); toast.success(`${empname} has been updated.`)}) 
       .catch((error) => {alert("Done");})
       setCheckForRecords(!checkForRecords)
       onEditCancel();
@@ -79,7 +79,7 @@ export default function EmployerManage1(props) {
 
   const onEditDelete = (row) => {
     axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers/delete/${row.id}`)
-      .then((response) => { setCheckForRecords(!checkForRecords); toast.success(`The Employer ${empname} has been purged.`) })
+      .then((response) => { setCheckForRecords(!checkForRecords); toast.success(`${empname} has been purged.`) })
   };
 
 
