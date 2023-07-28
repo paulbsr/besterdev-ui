@@ -9,6 +9,8 @@ import spacer2 from './graphix/besterdev_spacer_white_half.png'
 import { GiHummingbird } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
+import { toast } from 'react-toastify';
+
 dayjs.extend(utc);
 
 
@@ -49,8 +51,15 @@ export default function CandidateCreate(props) {
 
       try {
         const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/create`, newRecord);
-        if (response.status === 200) { props.setCheckForRecords(!props.checkForRecords); alert(`${firstname} ${lastname} has been memorialized.`); }
-        else { alert(`oops! Something went wrong!`); }
+        if (response.status === 200) { 
+          props.setCheckForRecords(!props.checkForRecords); 
+          // alert(`${firstname} ${lastname} has been memorialized.`); 
+          toast.success(`${firstname} ${lastname} memorialized.`)
+        }
+        else { 
+          // alert(`oops! Something went wrong!`); 
+          toast.error('Bad')
+        }
       }
 
       catch (err) { alertCtx.error(`oops! Something went wrong!`); console.log(err); }

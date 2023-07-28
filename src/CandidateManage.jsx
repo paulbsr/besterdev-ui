@@ -15,6 +15,7 @@ import utc from 'dayjs/plugin/utc';
 import 'react-tooltip/dist/react-tooltip.css'
 import CandidateCreate from './CandidateCreate';
 import GradientLine from './GradientLine';
+import { toast } from 'react-toastify';
 dayjs.extend(utc);
 
 
@@ -106,16 +107,24 @@ export default function CandidateManage() {
            
                             
            await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/update/${editing}`, candidatePUT)
-           .then((response) => {setCheckForRecords(!checkForRecords); alert(`Candidate ${firstname} ${lastname} has been updated.`);})
+           .then((response) => {
+            setCheckForRecords(!checkForRecords); 
+            // alert(`Candidate ${firstname} ${lastname} has been updated.`);
+            toast.success(`${firstname} ${lastname} updated.`)
+          }
+          )
            onEditCancel();
          }
        }
 
           const onEditDelete = (row) => {
             axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/delete/${row.id}`)
-            .then((response) => {setCheckForRecords(!checkForRecords); alert(`Candidate ${firstname} ${lastname} has been purged.`)})
-            
-            };       
+            .then((response) => {
+              setCheckForRecords(!checkForRecords); 
+              toast.success(`${firstname} ${lastname} purged.`)
+            }
+            )
+       };       
 
   if (error) return <p>An error occurred in tableone</p>
 

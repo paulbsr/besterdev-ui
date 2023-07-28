@@ -6,9 +6,13 @@ import spacer2 from './graphix/besterdev_spacer_white_half.png'
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 import { GiHummingbird, GiNestBirds } from "react-icons/gi";
+import { toast } from 'react-toastify';
+import AlertContext from "./Generic/Alerts/AlertContext";
 
 export default function EmployerCreate(props) {
 
+  const today = new Date(); // Create a new Date object representing today's date
+  const formattedDate = today.toISOString().split('T')[0]; // Convert the date to the desired format (YYYY-MM-DD)
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [empname, setEmpname] = useState(null);
   const [empcontactfn, setEmpcontactfn] = useState(null);
@@ -17,8 +21,18 @@ export default function EmployerCreate(props) {
   const [empcontactemail, setEmpcontactemail] = useState(null);
   const [empcomment, setEmpcomment] = useState(null);
   const [isExpanded, setExpanded] = useState(false);
+  const [checkForRecords, setCheckForRecords] = useState(true);
+  const [cr_date, setcr_date] = useState(formattedDate);
+  const [cr_datehold, setCr_DateHold] = useState(null)
+  const alertCtx = useContext(AlertContext);
+
 
   const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (
+      cr_date != null &&
+      cr_datehold !== "Invalid Date"
+    ) 
     {
       var newEmpRecord = {
         "empname": empname,
@@ -31,12 +45,21 @@ export default function EmployerCreate(props) {
 
       try {
         const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers/create`, newEmpRecord);
-        if (response.status === 200) { props.setCheckForRecords(!props.checkForRecords); alert(`${empname} has been memorialized.`); }
+        if (response.status === 200) { 
+          props.setCheckForRecords(!props.checkForRecords); 
+          // alert(`${empname} has been memorialized.`); 
+          toast.success(`${empname} memorialized.`)
+        }
+        
         else { alert(`oops! Something went wrong!`); }
 
       }
 
-      catch (err) { alert(`oops! Something went wrong!`); console.log(err); }
+      catch (err) { alertCtx.error(`oops! Something went wrong!`); console.log(err); }
+    }
+    else {
+      event.preventDefault();
+      alertCtx.warning("Valid CR date required");
     }
   }
 

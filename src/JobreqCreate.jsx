@@ -12,6 +12,8 @@ import { GiHummingbird } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 import { BsSignpostFill } from "react-icons/bs";
+import { toast } from 'react-toastify';
+
 dayjs.extend(utc);
 
 
@@ -75,7 +77,12 @@ export default function JobreqCreate(props) {
 
       try {
         const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs/create`, jobreqPOST);
-        if (response.status === 200) { props.setCheckForRecords(!props.checkForRecords); alert(`${jrnumber} for ${company} has been memorialized.`); }
+        if (response.status === 200) { 
+          props.setCheckForRecords(!props.checkForRecords); 
+          // alert(`${jrnumber} for ${company} has been memorialized.`); 
+          toast.success(`${jrnumber} for ${company} memorialized.`)
+        
+        }
         else { alert(`oops! Something went wrong!`); }
       }
 

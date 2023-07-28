@@ -13,6 +13,7 @@ import 'react-tooltip/dist/react-tooltip.css'
 import JobreqCreate from './JobreqCreate';
 import GradientLine from './GradientLine';
 import Footer from './Footer';
+import { toast } from 'react-toastify';
 dayjs.extend(utc);
 
 
@@ -93,14 +94,14 @@ export default function JobreqManage() {
         }
                                
            await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs/update/${editing}`, jobreqPUT)
-           .then((response) => {setCheckForRecords(!checkForRecords); alert(`${jrnumber} has been updated.`);})
+           .then((response) => {setCheckForRecords(!checkForRecords); toast.success(`${jrnumber} has been updated.`);})
            onEditCancel();
          }
        }
 
           const onEditDelete = (row) => {
             axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs/delete/${row.id}`)
-            .then((response) => {setCheckForRecords(!checkForRecords); alert(`${jrnumber} has been purged.`)})
+            .then((response) => {setCheckForRecords(!checkForRecords); toast.success(`${jrnumber} has been purged.`)})
         };       
 
   return (
