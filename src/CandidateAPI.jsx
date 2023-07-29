@@ -101,6 +101,29 @@ export default function CandidateAPI() {
   };
 
 
+  
+
+
+  // const onSelectCandidate = async () => {
+  //   try 
+  //     {
+  //       const response = await axios('https://randomuser.me/api/');
+  //       const newCandidate = response.data.results;
+  //       setCandidatedata(newCandidate);
+  //       setFirstname(newCandidate.name.first);
+  //       setLastname(newCandidate.name.last);
+  //       setMobile(newCandidate.phone);
+  //       setEmail(newCandidate.email);
+  //       setCountry(newCandidate.location.country);
+  //       setJobdesc(newCandidate.location.coordinates.latitude);
+  //       setSkill1(newCandidate.location.coordinates.longitude);
+  //       console.log(newCandidate)
+  //     } 
+  //   catch (error) {console.error('Error fetching candidate data:', error);}
+    
+  // };
+
+
   return (
     <>
       <GradientLineThin />&nbsp;
@@ -211,12 +234,22 @@ export default function CandidateAPI() {
                           <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp; &nbsp;<button className="Font-Verdana-Medium-Postgres" type="submit" style={{ marginLeft: '10px', height: '37.5px', border: '2px solid #336791', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#169247', cursor: 'pointer' }} onClick={() => setFirstname(inbound.name.first) & setLastname(inbound.name.last) & setMobile(inbound.phone) & setEmail(inbound.email) & setCountry(inbound.location.country) & setJobdesc(inbound.location.coordinates.latitude) & setSkill1(inbound.location.coordinates.longitude)}><b>Add Candidate</b></button>
                           {/* &nbsp; &nbsp;<button className="Font-Verdana-Medium-Postgres" type="submit" style={{ marginLeft: '10px', height: '37.5px', border: '2px solid #336791', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#D5441C', cursor: 'pointer' }} href="https://www.bester.ie" target="_blank"><b>Skip Candidate</b></button> */}
                           
+                          {/* <button
+                            className="Font-Verdana-Medium-Postgres"
+                            type="button" // Change the type to "button" to prevent form submission
+                            style={{marginLeft: '10px', height: '37.5px', border: '2px solid #336791', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#D5441C', cursor: 'pointer'}}
+                            onClick={onSelectCandidate} // Call onSkipCandidate function when clicked
+                          ><b>Experiment</b>
+                          </button> */}
+
+
                           <button
                             className="Font-Verdana-Medium-Postgres"
                             type="button" // Change the type to "button" to prevent form submission
                             style={{marginLeft: '10px', height: '37.5px', border: '2px solid #336791', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#D5441C', cursor: 'pointer'}}
                             onClick={onSkipCandidate} // Call onSkipCandidate function when clicked
-                          ><b>Skip Candidate</b></button>
+                          ><b>Skip Candidate</b>
+                          </button>
                           
                           &nbsp; &nbsp; Candidate Count: {candidatecount.length}
                           <div>&nbsp;</div>

@@ -13,6 +13,7 @@ import JobreqManage from './JobreqManage';
 import Footer from './Footer';
 import { Flip, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom'; 
 
 export default function FrontPage() {
 
@@ -25,11 +26,16 @@ export default function FrontPage() {
       <GradientLineThin />
       <Quicklinks />
       <CandidateAPI />
-      <CandidateManage />
+      {/* <CandidateManage />
       <EmployerManage1/>
-      <JobreqManage />
+      <JobreqManage /> */}
+
+      <Link to="/manage">
+        <div>
+          <span></span>
+        </div>
+      </Link>
       <Footer/>
-      
       <ToastContainer
         position="top-left"
         autoClose={2500}
