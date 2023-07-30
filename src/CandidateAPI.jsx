@@ -7,6 +7,7 @@ import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 import ColouredBox from './ColouredBox';
 import spacer from './graphix/besterdev_spacer_white.png'
+import { toast } from 'react-toastify';
 
 export default function CandidateAPI() {
 
@@ -51,9 +52,9 @@ export default function CandidateAPI() {
 
       const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/create`, candidatePOST);
       if (response.status === 200) { 
-        // setCheckForRecords(!checkForRecords); 
-        alert(`${firstname} ${lastname} has been memorialized.`); 
-        setCheckForRecords(!checkForRecords);
+        setCheckForRecords(!checkForRecords); 
+        toast.success(`${firstname} ${lastname} has been memorialized.`); 
+        // setCheckForRecords(!checkForRecords);
       }
       else { alert(`oops! Something went wrong in CandidateAPI!`); }
     }
@@ -75,10 +76,13 @@ export default function CandidateAPI() {
     []);
 
 
-    useEffect(() => {
+    useEffect(() => 
+    {
       axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates')
-        .then((response) => {const sortedcandidatecount = response.data.sort((b, a) => b.firstname.localeCompare(a.firstname)); setCandidatecount(sortedcandidatecount);}) //sort firstname alphabetically
-        .catch((e)=> console.error(e));}, [checkForRecords]);
+        .then((response) => {const sortedcandidatecount = response.data.sort((b, a) => b.firstname.localeCompare(a.firstname)); 
+          setCandidatecount(sortedcandidatecount);})
+        .catch((e)=> console.error(e));
+    }, [checkForRecords]);
 
 
   function GenderLabel({ gender }) {
@@ -89,19 +93,16 @@ export default function CandidateAPI() {
 
 
   const onSkipCandidate = async () => {
-    try {
+    try 
+    {
       const response = await axios('https://randomuser.me/api/');
       const newCandidate = response.data.results;
       setCandidatedata(newCandidate);
       console.log(newCandidate)
-    } catch (error) {
-      console.error('Error fetching candidate data:', error);
-
-    }
+    } 
+    catch (error) {console.error('Error fetching candidate data:', error);}
   };
 
-
-  
 
 
   // const onSelectCandidate = async () => {
@@ -132,7 +133,7 @@ export default function CandidateAPI() {
         <Tooltip id="insert" />
         <div onClick={toggleAccordion}>
           &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Select"><FaPersonCircleQuestion style={{ color: '#336791', fontSize: '45px', cursor: 'pointer' }} /></a>
-          &nbsp;<b>Screen Candidates via the CandidateAPI:</b>
+          &nbsp;<b>Screen Candidates via the Candidate Hunter API:</b>
         </div>
 
         {/* {isExpanded && ( */}

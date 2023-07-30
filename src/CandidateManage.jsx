@@ -46,8 +46,10 @@ export default function CandidateManage() {
    
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates')
-      .then((response) => {const sortedTabledata = response.data.sort((b, a) => b.firstname.localeCompare(a.firstname)); setTabledata(sortedTabledata);}) //sort firstname alphabetically
-      .catch((e)=> console.error(e));}, [checkForRecords]);
+      .then((response) => {const sortedTabledata = response.data.sort((b, a) => b.firstname.localeCompare(a.firstname)); 
+        setTabledata(sortedTabledata);}) //sort firstname alphabetically
+      .catch((e)=> console.error(e));}, 
+      [checkForRecords]);
 
         const handleEdit = (row) => {
           setEditing(row.id)
@@ -110,7 +112,7 @@ export default function CandidateManage() {
            .then((response) => {
             setCheckForRecords(!checkForRecords); 
             // alert(`Candidate ${firstname} ${lastname} has been updated.`);
-            toast.success(`${firstname} ${lastname} updated.`)
+            toast.success(`${firstname} ${lastname} has been updated.`)
           }
           )
            onEditCancel();
@@ -121,7 +123,7 @@ export default function CandidateManage() {
             axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/delete/${row.id}`)
             .then((response) => {
               setCheckForRecords(!checkForRecords); 
-              toast.success(`${firstname} ${lastname} purged.`)
+              toast.success(`${firstname} ${lastname} has been purged.`)
             }
             )
        };       

@@ -30,7 +30,7 @@ export default function FrontPage() {
       <EmployerManage1/>
       <JobreqManage /> */}
 
-      <Link to="/manage">
+      {/* <Link to="/manage">
         <div>
           <span></span>
         </div>
@@ -47,9 +47,8 @@ export default function FrontPage() {
         transition={Flip}
         draggable
         pauseOnHover
-        theme="dark"
-        
-        />
+        theme="dark"        
+        /> */}
     
     </div>
   )
