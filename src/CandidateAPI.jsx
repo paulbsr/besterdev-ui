@@ -104,27 +104,6 @@ export default function CandidateAPI() {
   };
 
 
-
-  // const onSelectCandidate = async () => {
-  //   try 
-  //     {
-  //       const response = await axios('https://randomuser.me/api/');
-  //       const newCandidate = response.data.results;
-  //       setCandidatedata(newCandidate);
-  //       setFirstname(newCandidate.name.first);
-  //       setLastname(newCandidate.name.last);
-  //       setMobile(newCandidate.phone);
-  //       setEmail(newCandidate.email);
-  //       setCountry(newCandidate.location.country);
-  //       setJobdesc(newCandidate.location.coordinates.latitude);
-  //       setSkill1(newCandidate.location.coordinates.longitude);
-  //       console.log(newCandidate)
-  //     } 
-  //   catch (error) {console.error('Error fetching candidate data:', error);}
-    
-  // };
-
-
   return (
     <>
       <GradientLineThin />&nbsp;
@@ -213,7 +192,7 @@ export default function CandidateAPI() {
                                 }}
                               >
 
-                                <option disabled selected value="">Company  -  Job Req  - Number</option>
+                                <option disabled selected value="">Employer  -  Job Title  - Req Number</option>
 
                                 {jobreqs && jobreqs.map(option => (
                                   <option 

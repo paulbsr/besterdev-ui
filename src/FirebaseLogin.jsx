@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import 'react-tooltip/dist/react-tooltip.css'
+// import firebase from 'firebase/app'; // Import the default export
 import 'firebase/auth'; // Import the specific service you need (in this case, authentication)
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
@@ -10,16 +11,9 @@ import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
 import Quicklinks from './Quicklinks';
 import spacer from './graphix/besterdev_spacer_white.png'
+// import firebase from 'firebase/app';                                                                                                                                                                                                                                                                          
+// import 'firebase/auth';
 
-
-const firebaseConfig = {
-  apiKey: 'AIzaSyCwDLcoI45eQU61Y7GVXlBDAx-3Du_gQuA',
-  authDomain: 'besterdev-432e9.firebaseapp.com',
-  projectId: 'besterdev-432e9',
-  // Add other Firebase configuration properties here...
-};
-
-firebase.initializeApp(firebaseConfig);
 
 
 const Login = () => {

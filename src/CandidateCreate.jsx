@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import AlertContext from "./Generic/Alerts/AlertContext";
 import axios from 'axios';
 import './Fonts.css';
@@ -25,6 +25,10 @@ export default function CandidateCreate(props) {
   const [jobdesc, setJobdesc] = useState('');
   const [skill1, setSkill1] = useState('');
   const [comment, setComment] = useState('');
+  const [role, setRole] = useState(null);
+  const [reqnum, setReqnum] = useState(null);
+  const [employer, setEmployer] = useState(null);
+  const [jobreqs, setJobreqs] = useState(null);
   const [cr_date, setcr_date] = useState(formattedDate);
   const [cr_datehold, setCr_DateHold] = useState(null)
   const [isExpanded, setExpanded] = useState(false);
@@ -45,18 +49,19 @@ export default function CandidateCreate(props) {
         'mobile': mobile,
         'jobdesc': jobdesc,
         'skill1': skill1,
-        'comment': comment
+        'comment': comment,
+        'role': role,
+        'reqnum': reqnum,
+        'employer': employer
       }
 
       try {
         const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/create`, newRecord);
         if (response.status === 200) { 
           props.setCheckForRecords(!props.checkForRecords); 
-          // alert(`${firstname} ${lastname} has been memorialized.`); 
-          toast.success(`${firstname} ${lastname} memorialized.`)
+          toast.success(`${firstname} ${lastname} has been memorialized.`)
         }
         else { 
-          // alert(`oops! Something went wrong!`); 
           toast.error('Bad')
         }
       }
@@ -68,6 +73,16 @@ export default function CandidateCreate(props) {
       alertCtx.warning("Valid CR date required");
     }
   }
+
+
+  useEffect(() => {
+    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs')
+      .then((response) => {const sortedjobreqs = response.data.sort((b, a) => b.company.localeCompare(a.company));
+        setJobreqs(sortedjobreqs);
+      })
+      // .catch((e) => console.error(e));
+  },
+    []);
 
 
   return (
@@ -95,9 +110,47 @@ export default function CandidateCreate(props) {
                 <div>
                 <img alt="1" src={spacer} /><img alt="1" src={spacer} />Job Title:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} placeholder="Required" type="text" value={jobdesc} onChange={(event) => setJobdesc(event.target.value)} required />
                 <img alt="1" src={spacer} />Skill:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '230px' }} placeholder="Required" type="text" value={skill1} onChange={(event) => setSkill1(event.target.value)} required />
-                {/* <div>&nbsp;</div> */}
                 <img alt="1" src={spacer} />Comment:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '425px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)} />
                 <div>&nbsp;</div>
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} /><label htmlFor="dropdown">Propose for:&nbsp;</label>
+                <select className='Font-Verdana-Small'
+                                onChange={(event) => {
+                                  const selectedIndex = event.target.selectedIndex;
+                                  const selectedOption = event.target.options[selectedIndex];
+                                  const company = selectedOption.getAttribute("data-company");
+                                  const jrtitle = selectedOption.getAttribute("data-jrtitle");
+                                  const jrnumber = selectedOption.getAttribute("data-jrnumber");
+
+                                  setEmployer(company);
+                                  setRole(jrtitle);
+                                  setReqnum(jrnumber);
+                                }}
+                                id="dropdown"
+                                style={{
+                                  height: '27.5px',
+                                  border: '1.25px solid #c4c4c4',
+                                  borderRadius: '4px',
+                                  padding: 0,
+                                  paddingLeft: '10px',
+                                  width: '505px'
+                                }}
+                              >
+
+                                <option disabled selected value="">Employer  -  Role  - Req Number</option>
+
+                                {jobreqs && jobreqs.map(option => (
+                                  <option 
+                                    key={option.id}
+                                    value={option.id}
+                                    data-company={option.company} // Store company data as an attribute
+                                    data-jrtitle={option.jrtitle} // Store jrtitle data as an attribute
+                                    data-jrnumber={option.jrnumber} // Store jrnumber data as an attribute
+                                  >
+                                    {option.company}   -   {option.jrtitle}   -   {option.jrnumber}
+                                  </option>
+                                ))}
+                              </select>
+
                 <img alt="1" src={spacer} />&nbsp; &nbsp; &nbsp;<button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#336791', cursor: 'pointer' }}>Add Candidate</button>
                 <div>&nbsp;</div>
               </div>

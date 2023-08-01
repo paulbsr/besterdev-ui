@@ -154,7 +154,7 @@ export default function CandidateManage() {
                   <th style={{ width: '70px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Firstname</th>
                   <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Lastname</th>
                   <th style={{ width: '250px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>eMail</th>
-                  <th style={{ width: '130px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Mobile</th>
+                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Mobile</th>
                   <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Date Found</th>
                   <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Job Title</th>
                   <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Skilled</th>
