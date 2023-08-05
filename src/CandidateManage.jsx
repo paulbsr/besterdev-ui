@@ -162,7 +162,6 @@ export default function CandidateManage() {
                   <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Employer</th>
                   <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Role</th>
                   <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>ReqNum</th>
-                  {/* <th style={{ width: '50px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Status</th> */}
                 </tr>
               </thead>
 
@@ -211,7 +210,6 @@ export default function CandidateManage() {
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '140px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={employer} onChange={(e) => setEmployer(e.target.value)} className='cr_edit_inputfield' />) : (row.employer)}</td>
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '140px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={role} onChange={(e) => setRole(e.target.value)} className='cr_edit_inputfield' />) : (row.role)}</td>
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={reqnum} onChange={(e) => setReqnum(e.target.value)} className='cr_edit_inputfield' />) : (row.reqnum)}</td>
-                      {/* <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '40px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={status} onChange={(e) => setstatus(e.target.value)} className='cr_edit_inputfield' />) : (row.status)}</td> */}
                     </tr>
                   )
                 })

@@ -1,20 +1,59 @@
+//https://www.freecodecamp.org/news/use-firebase-authentication-in-a-react-app/
+//https://medium.com/@dennisivy/creating-protected-routes-with-react-router-v6-2c4bbaf7bc1c
+
 import React from 'react';
-import ReactDOM from 'react-dom'; // Fixed import statement for ReactDOM
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate, Outlet } from 'react-router-dom';
 import './index.css';
-import reportWebVitals from './reportWebVitals';
 import FrontPage from './FrontPage';
 import ManagePage from './ManagePage';
-import Login from './FirebaseLogin';
-import 'firebase/auth';
+import Login from './Login';
 import firebase from 'firebase/compat/app';
+import 'firebase/firestore';
+import 'firebase/auth';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import 'firebase/firestore'; // Import other Firebase services as needed
-// import { Route, Navigate } from 'react-router-dom';
+import { getAuth } from "firebase/auth";
 
+
+//THIS IS WORKING CODE:
+const PrivateRoutes = () => {
+  let auth = {'token':true}
+return (
+    auth.token ? <Outlet/> : <Navigate to='/login'/>
+  )
+}
+
+// const PrivateRoutes = () => {
+//   // let auth = {'token':false}
+//   const user = firebase.auth().currentUser;
+//   let auth = {user}
+// return (
+//     auth.user? <Outlet/> : <Navigate to='/login'/>
+//   )
+// }
+
+
+// const PrivateRoutes = () => {
+//   // Check if the user is authenticated
+//   const isAuthenticated = () => {
+//     const user = firebase.auth().currentUser;
+//     console.log(user)
+//     return !!user; // Returns true if the user is authenticated, false otherwise
+    
+//   };
+
+//   return (
+//     isAuthenticated() ? <Outlet /> : <Navigate to='/login' />
+//   );
+// };
+
+
+// const isAuthenticated = () => {
+//   const user = firebase.auth().currentUser;
+//     return !!user.displayName;
+// };
 
 const firebaseConfig = {
   apiKey: "AIzaSyCwDLcoI45eQU61Y7GVXlBDAx-3Du_gQuA",
@@ -26,59 +65,26 @@ const firebaseConfig = {
   measurementId: "G-FCGGY1NE36"
 };
 
-const PrivateRoute = ({ element: Component, ...rest }) => {
-  return (
-    <Route
-      {...rest}
-      element={isAuthenticated() ? <Component /> : <Navigate to="/login" />}
-    />
-  );
-};
-
 firebase.initializeApp(firebaseConfig);
-
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 
-reportWebVitals();
 
 const App = () => {
-  return (
 
-//     <Router>
-//       <Routes>
-//         <PrivateRoute exact path="/search" element={<FrontPage />} />
-//         <PrivateRoute exact path="/manage" element={<ManagePage />} />
-//         <Route path="/login" element={<Login />} />
-//         <Route path="/" element={<Login />} />
-//       </Routes>
-//     </Router>
-//   );
-// };
-    <Router>
-      <Routes>
-        <Route exact path="/search" element={<FrontPage />} />
-        <Route path="/manage" element={<ManagePage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Login />} />
-      </Routes>
+return (
+
+  <Router>
+        <Routes>
+          <Route element={<PrivateRoutes/>}>
+              <Route path='/search' element={<FrontPage/>} />
+              <Route path='/manage' element={<ManagePage/>} />
+          </Route>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/' element={<Login/>}/>
+        </Routes>
     </Router>
-
-  //   <Router>
-  //   <Routes>
-  //     <Route path="/login" element={<Login />} />
-  //     <PrivateRoute path="/search" element={<FrontPage />} />
-  //     <PrivateRoute path="/manage" element={<ManagePage />} />
-  //   </Routes>
-  // </Router>
   );
 };
-
-const isAuthenticated = () => {
-  const user = firebase.auth().currentUser;
-  return !!user;
-};
-
+export const auth = getAuth(app);
 ReactDOM.render(<App />, document.getElementById('root')); // Use ReactDOM.render to render the App component
-
 export default App;

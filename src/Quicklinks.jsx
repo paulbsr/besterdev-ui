@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import './Fonts.css'
 import {styled} from "@mui/material/styles";
 
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -46,17 +47,15 @@ const LinkTab = styled((props) => <Tab disableRipple {...props} />)(({ theme }) 
     '&.Mui-selected:hover': {color: '#D5441C',},})
     );
 
-export default function Quicklinks() {
+export default function Quicklinks({user}) {
 
   return (
     <>
       <Box>
         <LinkTabs variant="scrollable">
-          <LinkTab label="AWS Amplify Console" href={"https://eu-west-1.console.aws.amazon.com/amplify/home?installation_id=39421369&setup_action=install&region=eu-west-1#/dv43gyvsmgsn1/settings/domains/"} target="_blank" ></LinkTab>
-          <LinkTab label="Heroku Dashboard" href={"https://dashboard.heroku.com/apps"} target="_blank" ></LinkTab>
-          <LinkTab label="ChatGPT" href={"https://chat.openai.com/"} target="_blank" ></LinkTab>
-          <LinkTab label="localhost ui" href={"http://localhost:3000"} target="_blank" ></LinkTab>
-          <LinkTab label="Bester.ie" href={"https://www.bester.ie"} target="_blank" ></LinkTab>
+          <LinkTab label={user} href={`mailto:${user}`}></LinkTab>
+          <LinkTab label="localhost" href={"http://localhost:3000"} target="_blank" ></LinkTab>
+          <LinkTab label="bester.ie" href={"https://www.bester.ie"} target="_blank" ></LinkTab>
         </LinkTabs>
       </Box>
     </>

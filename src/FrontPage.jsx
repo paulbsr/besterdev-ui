@@ -26,30 +26,7 @@ export default function FrontPage() {
       <GradientLineThin />
       <Quicklinks />
       <CandidateAPI />
-      {/* <CandidateManage />
-      <EmployerManage1/>
-      <JobreqManage /> */}
-
-      {/* <Link to="/manage">
-        <div>
-          <span></span>
-        </div>
-      </Link>
-      <Footer/>
-      <ToastContainer
-        position="top-left"
-        autoClose={2500}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        transition={Flip}
-        draggable
-        pauseOnHover
-        theme="dark"        
-        /> */}
-    
+   
     </div>
   )
 };

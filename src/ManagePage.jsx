@@ -20,6 +20,7 @@ const ManagePage = () => {
       <BannerLight />
       <GradientLineThin />
       <Quicklinks />
+      <GradientLineThin />
       <CandidateManage />
       <EmployerManage1 />
       <JobreqManage />

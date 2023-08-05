@@ -121,15 +121,8 @@ export default function JobreqCreate(props) {
             <form onSubmit={handleSubmit}>
               <div><img alt="1" src={spacer2} /></div>
               <div className='Font-Verdana-Small-Postgres'>
-                
-                
+                               
                 <div>&nbsp;</div>
-                {/* <img alt="1" src={spacer} /><img alt="1" src={spacer} />Company:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} placeholder="Required" type="text" value={company} onChange={(event) => setCompany(event.target.value)} required /> */}
-                
-
-
-
-                {/* <div>&nbsp;</div> */}
                           <div>
                             <div>
                             <img alt="1" src={spacer} /><img alt="1" src={spacer} />

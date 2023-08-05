@@ -17,16 +17,16 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   );
 };
 
-const App = () => {
-  return (
-    <Router>
-      <Route path="/login" component={Login} />
-      <PrivateRoute path="/dashboard" component={Dashboard} />
-      <PrivateRoute path="/manage" component={ManagePage} />
-      <PrivateRoute path="/search" component={FrontPage} />
-      {/* Add other routes here... */}
-    </Router>
-  );
-};
+// const App = () => {
+//   return (
+//     <Router>
+//       <Route path="/login" component={Login} />
+//       <PrivateRoute path="/dashboard" component={Dashboard} />
+//       <PrivateRoute path="/manage" component={ManagePage} />
+//       <PrivateRoute path="/search" component={FrontPage} />
+//       {/* Add other routes here... */}
+//     </Router>
+//   );
+// };
 
 export default App;

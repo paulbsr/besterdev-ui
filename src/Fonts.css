@@ -462,3 +462,7 @@
   .bold {
     font-weight: bold;
   }
+
+  .far-left {
+    text-align: left;
+  }

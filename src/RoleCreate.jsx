@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import AlertContext from "./Generic/Alerts/AlertContext";
 import axios from 'axios';
 import './Fonts.css';
 import spacer from './graphix/besterdev_spacer_white.png'
@@ -11,49 +10,29 @@ import { FaCriticalRole } from "react-icons/fa";
 
 
 export default function RoleCreate(props) {
-  // const today = new Date(); // Create a new Date object representing today's date
-  // const formattedDate = today.toISOString().split('T')[0]; // Convert the date to the desired format (YYYY-MM-DD)
-  // const alertCtx = useContext(AlertContext);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [rolename, setRolename] = useState('');
   const [roledesc, setRoledesc] = useState('');
   const [roleskill1, setRoleskill1] = useState('');
   const [roleskill2, setRoleskill2] = useState('');
   const [roleskill3, setRoleskill3] = useState('');
-  // const [cr_date, setcr_date] = useState(formattedDate);
-  // const [cr_datehold, setCr_DateHold] = useState(null)
   const [checkForRecords, setCheckForRecords] = useState(true);
   const [isExpanded, setExpanded] = useState(false);
 
-
-  // const handleDateChange = (newVal) => {
-  //   setCr_DateHold(newVal.format("YYYY.M.D"));
-  //   setcr_date(newVal);
-  // };
-
   const handleSubmit = async (event) => {
-    
-     
-      var newRoleRecord = {
+    var newRoleRecord = 
+      {
         'rolename': rolename,
         'roledesc': roledesc,
         'roleskill1': roleskill1,
         'roleskill2': roleskill2,
         'roleskill3': roleskill3
       }
-      console.log(newRoleRecord)
 
-
-      // try {
-        const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/roles/create`, newRoleRecord);
+  const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/roles/create`, newRoleRecord);
         if (response.status === 200) { setCheckForRecords(!checkForRecords); alert(`${rolename} has been memorialized.`); }
         else { alert(`oops! Something went wrong @ the if/else!`); }
-
-      // }
-
-      // catch (err) { alert(`oops! Something went wrong @ the try/catch!`); console.log(err); }
-    
-    }
+        }
 
 
   return (
