@@ -1,4 +1,3 @@
-import React from 'react';
 import BannerWhite from './BannerWhite';
 import GradientLine from './GradientLine';
 import BannerLight from './BannerLight';
@@ -12,7 +11,7 @@ import { Flip, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-const ManagePage = () => {
+export default function PageManage() {
   return (
     <div>
       <BannerWhite />
@@ -27,7 +26,7 @@ const ManagePage = () => {
       <Footer/>
       <ToastContainer
         position="top-left"
-        autoClose={2500}
+        autoClose={1000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -40,5 +39,3 @@ const ManagePage = () => {
     </div>
   );
 };
-
-export default ManagePage;

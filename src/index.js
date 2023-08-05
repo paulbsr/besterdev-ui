@@ -5,9 +5,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Routes, Navigate, Outlet } from 'react-router-dom';
 import './index.css';
-import FrontPage from './FrontPage';
-import ManagePage from './ManagePage';
-import Login from './Login';
+import PageSearch from './PageSearch';
+import PageManage from './PageManage';
+import PageLogin from './PageLogin';
 import firebase from 'firebase/compat/app';
 import 'firebase/firestore';
 import 'firebase/auth';
@@ -76,11 +76,11 @@ return (
   <Router>
         <Routes>
           <Route element={<PrivateRoutes/>}>
-              <Route path='/search' element={<FrontPage/>} />
-              <Route path='/manage' element={<ManagePage/>} />
+              <Route path='/screen' element={<PageSearch/>} />
+              <Route path='/manage' element={<PageManage/>} />
           </Route>
-          <Route path='/login' element={<Login/>}/>
-          <Route path='/' element={<Login/>}/>
+          <Route path='/login' element={<PageLogin/>}/>
+          <Route path='/' element={<PageLogin/>}/>
         </Routes>
     </Router>
   );
