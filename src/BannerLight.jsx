@@ -1,20 +1,19 @@
 import React from "react";
-import './Fonts.css'
-import { FaReact, FaJava, FaNodeJs, FaAws } from 'react-icons/fa';
+import './Fonts.css';
+import { FaReact, FaJava, FaNodeJs, FaAws, FaUsersViewfinder, FaPeopleArrows } from 'react-icons/fa';
 import { SiSpringboot } from "react-icons/si";
-import { SlLogin } from "react-icons/sl";
-import { RiOpenaiFill } from "react-icons/ri"
-import { CiSettings } from "react-icons/ci";
-import { BiLogoFirebase } from "react-icons/bi"
-import { TbUserSearch } from "react-icons/tb"
+import { SlLogin, SlSettings } from "react-icons/sl";
+import { RiOpenaiFill } from "react-icons/ri";
+import { BiLogoFirebase } from "react-icons/bi";
 import { BiLogoPostgresql, BiLogoHeroku, BiLogoGithub } from "react-icons/bi";
+
 
   const BannerLight = ({ user }) => {
   return (
     <div className="banner-light" >
-      <a data-tooltip-id="insert" data-tooltip-content="Login" href="https://www.bester.ie/"><SlLogin style={{ color: '#1994AD', fontSize: '24px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Screen Candidates" href="https://www.bester.ie/screen"><TbUserSearch style={{ color: '#1994AD', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Management Portal" href="https://www.bester.ie/manage"><CiSettings style={{ color: '#1994AD', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Login" href="https://www.bester.ie/"><SlLogin style={{ color: '#1994AD', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Screen Candidates" href="https://www.bester.ie/screen"><FaPeopleArrows style={{ color: '#1994AD', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Management Portal" href="https://www.bester.ie/manage"><SlSettings style={{ color: '#1994AD', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="ChatGPT" href="https://chat.openai.com/auth/login" target="_blank"><RiOpenaiFill style={{ color: '#19c37c', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="ReactJS9" href="https://www.reactjs.com" target="_blank"><FaReact style={{ color: '#61dafb', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="NodeJS18" href="https://www.nodejs.org/en" target="_blank"><FaNodeJs style={{ color: '#169247', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
@@ -23,7 +22,7 @@ import { BiLogoPostgresql, BiLogoHeroku, BiLogoGithub } from "react-icons/bi";
       <a data-tooltip-id="insert" data-tooltip-content="PostgreSQL DB DF04LM7IJ1Q2O" href="https://spring.io/projects/spring-boot" target="_blank"><BiLogoPostgresql style={{ color: '#336791', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Github Repo" href="https://github.com" target="_blank"><BiLogoGithub style={{ color: '#000000', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Amplify FE" href="https://eu-west-1.console.aws.amazon.com/amplify/home?installation_id=39421369&setup_action=install&region=eu-west-1#/dv43gyvsmgsn1/settings/domains/" target="_blank"><FaAws style={{ color: '#ff8500', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Heroku BE" href="https://dashboard.heroku.com/apps" target="_blank"><BiLogoHeroku style={{ color: '#6762a6', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Heroku BE" href="https://dashboard.heroku.com/apps" target="_blank"><BiLogoHeroku style={{ color: '#6762a6', fontSize: '33px', cursor: 'pointer' }} /></a>
       <a data-tooltip-id="insert" data-tooltip-content="Google Firebase IAM" href="https://console.firebase.google.com/project/besterdev-432e9/overview" target="_blank"><BiLogoFirebase style={{ color: '#FFCB2B', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
     </div>
   );

@@ -1,28 +1,20 @@
-import React, { useState } from 'react';
-import 'react-tooltip/dist/react-tooltip.css'
-import 'firebase/auth';
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
 import BannerWhite from './BannerWhite';
 import GradientLine from './GradientLine';
+import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
 import Quicklinks from './Quicklinks';
-import spacer from './graphix/besterdev_spacer_white.png'
-import BannerLight from './BannerLight';
+import React, { useState } from 'react';
+import firebase from 'firebase/compat/app';
+import 'firebase/auth';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+import spacer from './graphix/besterdev_spacer_white.png';
 import Footer from './Footer';
-import './Fonts.css'
+import './Fonts.css';
 import 'react-dropdown/style.css';
-import 'react-tooltip/dist/react-tooltip.css'
-// import BannerWhite from './BannerWhite';
-// import GradientLine from './GradientLine';
-// import BannerLight from './BannerLight';
-// import GradientLineThin from './GradientLineThin';
-// import Quicklinks from './Quicklinks';
-// import CandidateAPI from './CandidateAPI';
-// import 'react-toastify/dist/ReactToastify.css';
-// import { Flip, ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import 'react-tooltip/dist/react-tooltip.css';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 const PageLogin = () => {

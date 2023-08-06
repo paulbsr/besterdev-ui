@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
-import './Fonts.css'
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import './Fonts.css';
 import GradientLineThin from './GradientLineThin';
 import { FaPersonCircleQuestion } from "react-icons/fa6";
-import 'react-tooltip/dist/react-tooltip.css'
-import { Tooltip } from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css';
+import { Tooltip } from 'react-tooltip';
 import ColouredBox from './ColouredBox';
-import spacer from './graphix/besterdev_spacer_white.png'
+import spacer from './graphix/besterdev_spacer_white.png';
 import { toast } from 'react-toastify';
 
 export default function CandidateAPI() {

@@ -15,6 +15,7 @@ import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import 'react-tooltip/dist/react-tooltip.css';
 
 
 //THIS IS WORKING CODE:
