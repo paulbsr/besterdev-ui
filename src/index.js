@@ -16,13 +16,14 @@ import 'firebase/compat/firestore';
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import 'react-tooltip/dist/react-tooltip.css';
+import { UserProvider } from './UserContext';
 
 
 //THIS IS WORKING CODE:
 const PrivateRoutes = () => {
-  let auth = {'token':true}
-return (
-    auth.token ? <Outlet/> : <Navigate to='/login'/>
+  let auth = { 'token': true }
+  return (
+    auth.token ? <Outlet /> : <Navigate to='/login' />
   )
 }
 
@@ -71,20 +72,41 @@ const app = initializeApp(firebaseConfig);
 
 
 const App = () => {
+  console.log('App() wat <UserProvider> bevat is nou geroep - dit beteken email gaan oorgeskryf word.');
 
-return (
+  return (
 
-  <Router>
+    <UserProvider>
+      <Router>
         <Routes>
-          <Route element={<PrivateRoutes/>}>
-              <Route path='/screen' element={<PageSearch/>} />
-              <Route path='/manage' element={<PageManage/>} />
+          <Route element={<PrivateRoutes />}>
+            <Route path='/search' element={<PageSearch />} />
+            <Route path='/screen' element={<PageSearch />} />
+            <Route path='/manage' element={<PageManage />} />
           </Route>
-          <Route path='/login' element={<PageLogin/>}/>
-          <Route path='/' element={<PageLogin/>}/>
+          <Route path='/login' element={<PageLogin />} />
+          <Route path='/' element={<PageLogin />} />
+          {/* <Navigate to="/login" /> */}
         </Routes>
-    </Router>
+      </Router>
+    </UserProvider>
+  
   );
+
+
+  // return (
+  //   <Router>
+  //     <Routes>
+  //       <Route path='/login' element={<UserProvider><PageLogin /></UserProvider>} />
+  //       <Route element={<PrivateRoutes />}>
+  //         <Route path='/screen' element={<UserProvider><PageSearch /></UserProvider>} />
+  //         <Route path='/manage' element={<PageManage />} />
+  //       </Route>
+  //       {/* <Route path='/' element={<Navigate to='/login' />} /> */}
+  //     </Routes>
+  //   </Router>
+  // );
+
 };
 export const auth = getAuth(app);
 ReactDOM.render(<App />, document.getElementById('root')); // Use ReactDOM.render to render the App component

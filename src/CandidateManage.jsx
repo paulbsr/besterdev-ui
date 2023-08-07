@@ -172,6 +172,10 @@ export default function CandidateManage() {
                     <tr key={row.id}>
                       <td className="Table6 td">
                         <>
+                        <Tooltip id="edit" />
+                          <Tooltip id="commit" />
+                          <Tooltip id="revert" />
+                          <Tooltip id="purge" />
                           {row.id === editing ?
                             (
                               <>

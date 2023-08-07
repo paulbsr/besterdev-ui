@@ -6,10 +6,13 @@ import { SlLogin, SlSettings } from "react-icons/sl";
 import { RiOpenaiFill } from "react-icons/ri";
 import { BiLogoFirebase } from "react-icons/bi";
 import { BiLogoPostgresql, BiLogoHeroku, BiLogoGithub } from "react-icons/bi";
+import 'react-tooltip/dist/react-tooltip.css'
 
 
   const BannerLight = ({ user }) => {
+    
   return (
+
     <div className="banner-light" >
       <a data-tooltip-id="insert" data-tooltip-content="Login" href="https://www.bester.ie/"><SlLogin style={{ color: '#1994AD', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Screen Candidates" href="https://www.bester.ie/screen"><FaPeopleArrows style={{ color: '#1994AD', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;

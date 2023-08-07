@@ -5,6 +5,7 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import './Fonts.css'
 import {styled} from "@mui/material/styles";
+import { useUserContext } from './UserContext';
 
 
 function TabPanel(props) {
@@ -47,15 +48,19 @@ const LinkTab = styled((props) => <Tab disableRipple {...props} />)(({ theme }) 
     '&.Mui-selected:hover': {color: '#D5441C',},})
     );
 
-export default function Quicklinks({user}) {
+export default function Quicklinks() {
+  const { loggedInUserEmail } = useUserContext();
+  console.log('Quicklinks collected:', loggedInUserEmail);
 
   return (
     <>
       <Box>
         <LinkTabs variant="scrollable">
-          <LinkTab label={user} href={`mailto:${user}`}></LinkTab>
+          {/* <LinkTab label={user} href={`mailto:${user}`}></LinkTab> */}
+          <LinkTab label={loggedInUserEmail} href={`mailto:${loggedInUserEmail}`}></LinkTab>
           <LinkTab label="localhost" href={"http://localhost:3000"} target="_blank" ></LinkTab>
           <LinkTab label="bester.ie" href={"https://www.bester.ie"} target="_blank" ></LinkTab>
+
         </LinkTabs>
       </Box>
     </>

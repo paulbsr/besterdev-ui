@@ -8,6 +8,7 @@ import { Tooltip } from 'react-tooltip';
 import ColouredBox from './ColouredBox';
 import spacer from './graphix/besterdev_spacer_white.png';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom'; 
 
 export default function CandidateAPI() {
 
@@ -31,6 +32,7 @@ export default function CandidateAPI() {
   const [checkForRecords, setCheckForRecords] = useState(true);
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
+  const navigate = useNavigate();
 
   const onKeepPost = async (event) => {
 
@@ -49,14 +51,20 @@ export default function CandidateAPI() {
         'reqnum': reqnum,
         'employer': employer
       }
-
+      
       const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/create`, candidatePOST);
-      if (response.status === 200) { 
-        setCheckForRecords(!checkForRecords); 
-        toast.success(`${firstname} ${lastname} has been memorialized.`); 
-        // setCheckForRecords(!checkForRecords);
-      }
-      else { alert(`oops! Something went wrong in CandidateAPI!`); }
+      // if (response.status === 200) { 
+      //   // setCheckForRecords(!checkForRecords);
+      //   navigate('/login');  
+      //   toast.success(`${firstname} ${lastname} has been memorialized.`); 
+      //   toast.success(`${firstname} ${lastname} has been memorialized.`); 
+      //   toast.success(`${firstname} ${lastname} has been memorialized.`); 
+      //   toast.success(`${firstname} ${lastname} has been memorialized.`); 
+      //   toast.success(`${firstname} ${lastname} has been memorialized.`); 
+      //   navigate('/login'); 
+      //   // setCheckForRecords(!checkForRecords);
+      // }
+      // else { alert(`oops! Something went wrong in CandidateAPI!`); }
     }
   }
 
@@ -71,25 +79,24 @@ export default function CandidateAPI() {
       .then((response) => {const sortedjobreqs = response.data.sort((b, a) => b.company.localeCompare(a.company));
         setJobreqs(sortedjobreqs);
       })
-      // .catch((e) => console.error(e));
   },
     []);
 
 
-    useEffect(() => 
-    {
+  useEffect(() => {
       axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates')
         .then((response) => {const sortedcandidatecount = response.data.sort((b, a) => b.firstname.localeCompare(a.firstname)); 
           setCandidatecount(sortedcandidatecount);})
         .catch((e)=> console.error(e));
-    }, [checkForRecords]);
+    }, 
+    []);
 
 
-  function GenderLabel({ gender }) {
-    if (gender === "female") { return <span>F</span>; }
-    else if (gender === "male") { return <span>M</span>; }
-    else { return null; }
-  }
+  // function GenderLabel({ gender }) {
+  //   if (gender === "female") { return <span>F</span>; }
+  //   else if (gender === "male") { return <span>M</span>; }
+  //   else { return null; }
+  // }
 
 
   const onSkipCandidate = async () => {
@@ -98,7 +105,6 @@ export default function CandidateAPI() {
       const response = await axios('https://randomuser.me/api/');
       const newCandidate = response.data.results;
       setCandidatedata(newCandidate);
-      console.log(newCandidate)
     } 
     catch (error) {console.error('Error fetching candidate data:', error);}
   };
@@ -114,10 +120,6 @@ export default function CandidateAPI() {
           &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Select"><FaPersonCircleQuestion style={{ color: '#336791', fontSize: '45px', cursor: 'pointer' }} /></a>
           &nbsp;<b>Screen Candidates via the Candidate Hunter API:</b>
         </div>
-
-        {/* {isExpanded && ( */}
-          {/* <div> */}
-            {/* <div> */}
               <div>&nbsp;</div>
 
               {
@@ -233,9 +235,6 @@ export default function CandidateAPI() {
                           
                           &nbsp; &nbsp; Candidate Count: {candidatecount.length}
                           <div>&nbsp;</div>
-                          
-                          {/* <div>&nbsp;</div> */}
-                          {/* <GradientLine/> */}
                           <div>&nbsp;</div>
                         </div>
                       </div>
@@ -243,8 +242,6 @@ export default function CandidateAPI() {
                   );
                 })
               }
-            {/* </div> */}
-          {/* </div> */}
       </div>
     </>
   );

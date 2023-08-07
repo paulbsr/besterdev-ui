@@ -1,9 +1,9 @@
+import React, { useState } from 'react';
 import BannerWhite from './BannerWhite';
 import GradientLine from './GradientLine';
 import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
 import Quicklinks from './Quicklinks';
-import React, { useState } from 'react';
 import firebase from 'firebase/compat/app';
 import 'firebase/auth';
 import 'firebase/compat/auth';
@@ -14,24 +14,35 @@ import './Fonts.css';
 import 'react-dropdown/style.css';
 import 'react-tooltip/dist/react-tooltip.css';
 import 'react-toastify/dist/ReactToastify.css';
+import { useUserContext } from './UserContext';
+import './Fonts.css'
+import { useNavigate } from 'react-router-dom'; 
+import { Flip, toast, ToastContainer } from 'react-toastify'; // Import toast components
+import 'react-toastify/dist/ReactToastify.css'; // Import toast styles
+
 
 
 
 const PageLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loggedInUserEmail, setLoggedInUserEmail] = useState('');
+  const { setLoggedInUserEmail } = useUserContext();
+  const [loginSuccessMessage, setLoginSuccessMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         setLoggedInUserEmail(user.email);
-        // Handle successful login here
-        console.log(loggedInUserEmail)
+        setLoginSuccessMessage('Login successful!');
+        toast.success('Login successful!');
+        navigate('/screen'); 
       })
       .catch((error) => {
-        // Handle login error here
+        setLoginSuccessMessage('Auth failed.');
+        toast.error('Unsuccessful Auth attempt');
+        navigate('/login');
       });
   };
 
@@ -42,7 +53,7 @@ const PageLogin = () => {
       <GradientLine />
       <BannerLight />
       <GradientLineThin />
-      <Quicklinks user={loggedInUserEmail}/>
+      <Quicklinks />
       <GradientLineThin />
       <div>&nbsp;</div>
       <div>&nbsp;</div>
@@ -52,6 +63,19 @@ const PageLogin = () => {
       <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp; &nbsp;Password: <input className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '350px' }} type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
       <div>&nbsp;</div>
       <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp; &nbsp;<button style={{marginLeft: '10px', height: '37.5px', width: '100px', border: '1px solid #1994AD', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#1994AD', cursor: 'pointer'}} onClick={handleLogin}>Login</button>
+      {loginSuccessMessage &&       
+      <ToastContainer
+        position="top-left"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        transition={Flip}
+        draggable
+        pauseOnHover
+        theme="dark"/>}
       <Footer/>
     </div>
   );
