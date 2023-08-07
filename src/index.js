@@ -17,13 +17,26 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import 'react-tooltip/dist/react-tooltip.css';
 import { UserProvider } from './UserContext';
+import { useContext } from 'react';
+import { UserContext } from './UserContext';
+import { useUserContext } from './UserContext';
+
+
+// //THIS IS WORKING CODE:
+// const PrivateRoutes = () => {
+//   let auth = { 'token': true }
+//   return (
+//     auth.token ? <Outlet /> : <Navigate to='/login' />
+//   )
+// }
 
 
 //THIS IS WORKING CODE:
 const PrivateRoutes = () => {
-  let auth = { 'token': true }
+  const { loggedInUserEmail } = useUserContext();
+  console.log('Hy behoort leeg te wees?' +loggedInUserEmail);
   return (
-    auth.token ? <Outlet /> : <Navigate to='/login' />
+    loggedInUserEmail  ? <Outlet /> : <Navigate to='/login' />
   )
 }
 
@@ -73,6 +86,7 @@ const app = initializeApp(firebaseConfig);
 
 const App = () => {
   console.log('App() wat <UserProvider> bevat is nou geroep - dit beteken email gaan oorgeskryf word.');
+  
 
   return (
 
