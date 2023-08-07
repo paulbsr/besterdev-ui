@@ -7,8 +7,7 @@ import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';
 import ColouredBox from './ColouredBox';
 import spacer from './graphix/besterdev_spacer_white.png';
-import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 
 export default function CandidateAPI() {
 
@@ -32,9 +31,8 @@ export default function CandidateAPI() {
   const [checkForRecords, setCheckForRecords] = useState(true);
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
-  const navigate = useNavigate();
 
-  const onKeepPost = async (event) => {
+  const onKeepPost = async () => {
 
     {
       var candidatePOST = {
@@ -94,9 +92,9 @@ export default function CandidateAPI() {
 
   const onSkipCandidate = async () => {
       const response = await axios('https://randomuser.me/api/');
-      const newCandidate = response.data.results;
-      setCandidatedata(newCandidate);
+      setCandidatedata(response.data.results);
   };
+
 
 
   return (
@@ -211,8 +209,7 @@ export default function CandidateAPI() {
                             onClick={onSkipCandidate}
                           ><b>Skip Candidate</b>
                           </button>
-                          
-                          &nbsp; &nbsp; Candidate Count: {candidatecount.length}
+                            &nbsp; &nbsp; Candidate Count: {candidatecount.length}
                           <div>&nbsp;</div>
                           <div>&nbsp;</div>
                         </div>
