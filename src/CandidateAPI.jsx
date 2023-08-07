@@ -12,8 +12,8 @@ import { useNavigate } from 'react-router-dom';
 
 export default function CandidateAPI() {
 
-  const today = new Date(); // Create a new Date object representing today's date
-  const formattedDate = today.toISOString().split('T')[0]; // Convert the date to the desired format (YYYY-MM-DD)
+  const today = new Date();
+  const formattedDate = today.toISOString().split('T')[0]; // Convert to YYYY-MM-DD
   const [candidatedata, setCandidatedata] = useState([]);
   const [firstname, setFirstname] = useState(null);
   const [lastname, setLastname] = useState(null);
@@ -53,30 +53,22 @@ export default function CandidateAPI() {
       }
       
       const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/create`, candidatePOST);
-      // if (response.status === 200) { 
-      //   // setCheckForRecords(!checkForRecords);
-      //   navigate('/login');  
-      //   toast.success(`${firstname} ${lastname} has been memorialized.`); 
-      //   toast.success(`${firstname} ${lastname} has been memorialized.`); 
-      //   toast.success(`${firstname} ${lastname} has been memorialized.`); 
-      //   toast.success(`${firstname} ${lastname} has been memorialized.`); 
-      //   toast.success(`${firstname} ${lastname} has been memorialized.`); 
-      //   navigate('/login'); 
-      //   // setCheckForRecords(!checkForRecords);
-      // }
-      // else { alert(`oops! Something went wrong in CandidateAPI!`); }
     }
   }
 
   useEffect(() => {
-    axios('https://randomuser.me/api/').then((response) => {setCandidatedata(response.data.results);})
+    axios('https://randomuser.me/api/')
+      .then((response) => { 
+        setCandidatedata(response.data.results); 
+      })
   },
     []);
 
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs')
-      .then((response) => {const sortedjobreqs = response.data.sort((b, a) => b.company.localeCompare(a.company));
+      .then((response) => {
+        const sortedjobreqs = response.data.sort((b, a) => b.company.localeCompare(a.company));
         setJobreqs(sortedjobreqs);
       })
   },
@@ -84,11 +76,12 @@ export default function CandidateAPI() {
 
 
   useEffect(() => {
-      axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates')
-        .then((response) => {const sortedcandidatecount = response.data.sort((b, a) => b.firstname.localeCompare(a.firstname)); 
-          setCandidatecount(sortedcandidatecount);})
-        .catch((e)=> console.error(e));
-    }, 
+    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates')
+      .then((response) => {
+        const sortedcandidatecount = response.data.sort((b, a) => b.firstname.localeCompare(a.firstname));
+        setCandidatecount(sortedcandidatecount);
+      })
+  },
     []);
 
 
@@ -100,13 +93,9 @@ export default function CandidateAPI() {
 
 
   const onSkipCandidate = async () => {
-    try 
-    {
       const response = await axios('https://randomuser.me/api/');
       const newCandidate = response.data.results;
       setCandidatedata(newCandidate);
-    } 
-    catch (error) {console.error('Error fetching candidate data:', error);}
   };
 
 
@@ -214,22 +203,12 @@ export default function CandidateAPI() {
                           &nbsp; &nbsp; Comment:&nbsp; &nbsp;<input className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '650px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)} />
                           <div>&nbsp;</div>
                           <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp; &nbsp;<button className="Font-Verdana-Medium-Postgres" type="submit" style={{ marginLeft: '10px', height: '37.5px', border: '2px solid #336791', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#169247', cursor: 'pointer' }} onClick={() => setFirstname(inbound.name.first) & setLastname(inbound.name.last) & setMobile(inbound.phone) & setEmail(inbound.email) & setCountry(inbound.location.country) & setJobdesc(inbound.location.coordinates.latitude) & setSkill1(inbound.location.coordinates.longitude)}><b>Add Candidate</b></button>
-                          {/* &nbsp; &nbsp;<button className="Font-Verdana-Medium-Postgres" type="submit" style={{ marginLeft: '10px', height: '37.5px', border: '2px solid #336791', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#D5441C', cursor: 'pointer' }} href="https://www.bester.ie" target="_blank"><b>Skip Candidate</b></button> */}
-                          
-                          {/* <button
-                            className="Font-Verdana-Medium-Postgres"
-                            type="button" // Change the type to "button" to prevent form submission
-                            style={{marginLeft: '10px', height: '37.5px', border: '2px solid #336791', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#D5441C', cursor: 'pointer'}}
-                            onClick={onSelectCandidate} // Call onSkipCandidate function when clicked
-                          ><b>Experiment</b>
-                          </button> */}
-
 
                           <button
                             className="Font-Verdana-Medium-Postgres"
                             type="button" // Change the type to "button" to prevent form submission
                             style={{marginLeft: '10px', height: '37.5px', border: '2px solid #336791', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#D5441C', cursor: 'pointer'}}
-                            onClick={onSkipCandidate} // Call onSkipCandidate function when clicked
+                            onClick={onSkipCandidate}
                           ><b>Skip Candidate</b>
                           </button>
                           

@@ -7,16 +7,28 @@ import { RiOpenaiFill } from "react-icons/ri";
 import { BiLogoFirebase } from "react-icons/bi";
 import { BiLogoPostgresql, BiLogoHeroku, BiLogoGithub } from "react-icons/bi";
 import 'react-tooltip/dist/react-tooltip.css'
+import { useNavigate } from 'react-router-dom'; 
+
+
+
 
 
   const BannerLight = ({ user }) => {
+    const navigate = useNavigate();
+    const handleNavigateLogin = () => {navigate('/login');}
+    const handleNavigateScreen = () => {navigate('/screen');}
+    const handleNavigateManage = () => {navigate('/manage');}
     
+
+    
+
   return (
 
+
     <div className="banner-light" >
-      <a data-tooltip-id="insert" data-tooltip-content="Login" href="https://www.bester.ie/"><SlLogin style={{ color: '#1994AD', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Screen Candidates" href="https://www.bester.ie/screen"><FaPeopleArrows style={{ color: '#1994AD', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Management Portal" href="https://www.bester.ie/manage"><SlSettings style={{ color: '#1994AD', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Login" onClick={handleNavigateLogin}><SlLogin style={{ color: '#1994AD', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Screen Candidates" onClick={handleNavigateScreen}><FaPeopleArrows style={{ color: '#1994AD', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Management Portal" onClick={handleNavigateManage}><SlSettings style={{ color: '#1994AD', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="ChatGPT" href="https://chat.openai.com/auth/login" target="_blank"><RiOpenaiFill style={{ color: '#19c37c', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="ReactJS9" href="https://www.reactjs.com" target="_blank"><FaReact style={{ color: '#61dafb', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="NodeJS18" href="https://www.nodejs.org/en" target="_blank"><FaNodeJs style={{ color: '#169247', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
