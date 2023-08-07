@@ -111,7 +111,6 @@ export default function CandidateManage() {
            await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/update/${editing}`, candidatePUT)
            .then((response) => {
             setCheckForRecords(!checkForRecords); 
-            // alert(`Candidate ${firstname} ${lastname} has been updated.`);
             toast.success(`${firstname} ${lastname} has been updated.`)
           }
           )

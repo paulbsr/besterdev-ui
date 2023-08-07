@@ -9,66 +9,24 @@ import PageSearch from './PageSearch';
 import PageManage from './PageManage';
 import PageLogin from './PageLogin';
 import firebase from 'firebase/compat/app';
+import 'react-tooltip/dist/react-tooltip.css';
 import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import 'react-tooltip/dist/react-tooltip.css';
 import { UserProvider } from './UserContext';
-import { useContext } from 'react';
-import { UserContext } from './UserContext';
 import { useUserContext } from './UserContext';
 
 
-// //THIS IS WORKING CODE:
-// const PrivateRoutes = () => {
-//   let auth = { 'token': true }
-//   return (
-//     auth.token ? <Outlet /> : <Navigate to='/login' />
-//   )
-// }
-
-
-//THIS IS WORKING CODE:
 const PrivateRoutes = () => {
   const { loggedInUserEmail } = useUserContext();
-  console.log('Hy behoort leeg te wees?' +loggedInUserEmail);
+  console.log('Hy behoort leeg te wees?' + loggedInUserEmail);
   return (
-    loggedInUserEmail  ? <Outlet /> : <Navigate to='/login' />
+    loggedInUserEmail ? <Outlet /> : <Navigate to='/login' />
   )
 }
-
-// const PrivateRoutes = () => {
-//   // let auth = {'token':false}
-//   const user = firebase.auth().currentUser;
-//   let auth = {user}
-// return (
-//     auth.user? <Outlet/> : <Navigate to='/login'/>
-//   )
-// }
-
-
-// const PrivateRoutes = () => {
-//   // Check if the user is authenticated
-//   const isAuthenticated = () => {
-//     const user = firebase.auth().currentUser;
-//     console.log(user)
-//     return !!user; // Returns true if the user is authenticated, false otherwise
-    
-//   };
-
-//   return (
-//     isAuthenticated() ? <Outlet /> : <Navigate to='/login' />
-//   );
-// };
-
-
-// const isAuthenticated = () => {
-//   const user = firebase.auth().currentUser;
-//     return !!user.displayName;
-// };
 
 const firebaseConfig = {
   apiKey: "AIzaSyCwDLcoI45eQU61Y7GVXlBDAx-3Du_gQuA",
@@ -83,13 +41,10 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const app = initializeApp(firebaseConfig);
 
-
 const App = () => {
   console.log('App() wat <UserProvider> bevat is nou geroep - dit beteken email gaan oorgeskryf word.');
-  
 
   return (
-
     <UserProvider>
       <Router>
         <Routes>
@@ -100,27 +55,11 @@ const App = () => {
           </Route>
           <Route path='/login' element={<PageLogin />} />
           <Route path='/' element={<PageLogin />} />
-          {/* <Navigate to="/login" /> */}
+          <Route path='*' element={<PageLogin />} />
         </Routes>
       </Router>
     </UserProvider>
-  
   );
-
-
-  // return (
-  //   <Router>
-  //     <Routes>
-  //       <Route path='/login' element={<UserProvider><PageLogin /></UserProvider>} />
-  //       <Route element={<PrivateRoutes />}>
-  //         <Route path='/screen' element={<UserProvider><PageSearch /></UserProvider>} />
-  //         <Route path='/manage' element={<PageManage />} />
-  //       </Route>
-  //       {/* <Route path='/' element={<Navigate to='/login' />} /> */}
-  //     </Routes>
-  //   </Router>
-  // );
-
 };
 export const auth = getAuth(app);
 ReactDOM.render(<App />, document.getElementById('root')); // Use ReactDOM.render to render the App component
