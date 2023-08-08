@@ -31,8 +31,10 @@ export default function CandidateAPI() {
   const [checkForRecords, setCheckForRecords] = useState(true);
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
+  const [getCandidates, setGetCandidates] = useState(false);
 
-  const onKeepPost = async () => {
+  const onKeepCandidate = async (e) => {
+    e.preventDefault();
 
     {
       var candidatePOST = {
@@ -51,6 +53,7 @@ export default function CandidateAPI() {
       }
       
       const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/create`, candidatePOST);
+      setGetCandidates(!getCandidates);
     }
   }
 
@@ -60,7 +63,7 @@ export default function CandidateAPI() {
         setCandidatedata(response.data.results); 
       })
   },
-    []);
+    [getCandidates]);
 
 
   useEffect(() => {
@@ -70,7 +73,7 @@ export default function CandidateAPI() {
         setJobreqs(sortedjobreqs);
       })
   },
-    []);
+    [getCandidates]);
 
 
   useEffect(() => {
@@ -80,7 +83,7 @@ export default function CandidateAPI() {
         setCandidatecount(sortedcandidatecount);
       })
   },
-    []);
+    [getCandidates]);
 
 
   // function GenderLabel({ gender }) {
@@ -128,7 +131,7 @@ export default function CandidateAPI() {
                   const formattedString = `${inbound.name.first} ${inbound.name.last} is a ${inbound.dob.age} year old ${inbound.gender} with a Job Description of ${inbound.location.coordinates.latitude}, whom currently resides in ${inbound.location.state}, ${inbound.location.country} with primary skills of ${inbound.location.coordinates.longitude} and ${inbound.location.coordinates.longitude} and ${inbound.location.coordinates.longitude} whom can be reached at ${inbound.phone} or ${inbound.email}`;
 
                   return (
-                    <form onSubmit={onKeepPost}>
+                    <form onSubmit={(e) => onKeepCandidate(e)}>
                       <div key={key}>
                         <div className='Font-Verdana-Medium'>
                           <Tooltip id="Screen" />
