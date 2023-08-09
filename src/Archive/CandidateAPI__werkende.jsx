@@ -1,18 +1,12 @@
-// http://www.google.com/search?q=+"java+developer"+"ireland" -intitle:"profiles" -inurl:"dir/+"+site:ie.linkedin.com/in/+OR+site:ie.linkedin.com/pub/
-// http://www.google.com/search?q=+"python"+"south+africa" -intitle:"profiles" -inurl:"dir/+"+site:za.linkedin.com/in/+OR+site:za.linkedin.com/pub/
-// http://www.google.com/search?q=+"$(skill)"+"$(country)" -intitle:"profiles" -inurl:"dir/+"+site:ie.linkedin.com/in/+OR+site:ie.linkedin.com/pub/
-
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Fonts.css';
 import GradientLineThin from './GradientLineThin';
-import { FaPersonCircleQuestion, FaLinkedin } from "react-icons/fa6";
+import { FaPersonCircleQuestion } from "react-icons/fa6";
 import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';
 import ColouredBox from './ColouredBox';
 import spacer from './graphix/besterdev_spacer_white.png';
-import GradientLine from './GradientLine';
-import GradientLineLinkedIn from './GradientLineLinkedIn';
 // import { useNavigate } from 'react-router-dom';
 
 export default function CandidateAPI() {
@@ -34,13 +28,10 @@ export default function CandidateAPI() {
   const [employer, setEmployer] = useState(null);
   const [jobreqs, setJobreqs] = useState(null);
   const [candidatecount, setCandidatecount] = useState([]);
+  // const [checkForRecords, setCheckForRecords] = useState(true);
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [getCandidates, setGetCandidates] = useState(false);
-  const [wa, setWa] = useState(null);
-  const [linkedincountry, setLinkedinCountry] = useState(null);
-  const [linkedinjobdesc, setLinkedinJobdesc] = useState(null);
-  const [linkedinskill, setLinkedinSkill] = useState(null);
 
   const onKeepCandidate = async (e) => {
     e.preventDefault();
@@ -108,10 +99,6 @@ export default function CandidateAPI() {
       setCandidatedata(response.data.results);
   };
 
-  const onSearchLinkedIn = () => {
-    window.open('http://www.google.com/search?q=+"'+(linkedinjobdesc)+' "+'+(linkedinskill)+' -intitle:"profiles" -inurl:"dir/+"+site:ie.linkedin.com/in/+OR+site:ie.linkedin.com/pub/', '_blank');
-  };
-  
 
 
   return (
@@ -194,7 +181,7 @@ export default function CandidateAPI() {
                                   borderRadius: '4px',
                                   padding: 0,
                                   paddingLeft: '10px',
-                                  width: '400px'
+                                  width: '660px'
                                 }}
                               >
 
@@ -212,14 +199,13 @@ export default function CandidateAPI() {
                                   </option>
                                 ))}
                               </select>
-                            {/* </div> */}
-                          {/* </div> */}
-                          {/* <div>&nbsp;</div> */}
-                          &nbsp; &nbsp; Comment:&nbsp; &nbsp;<input className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '400px' }} placeholder="Optional thoughts?" type="text" value={comment} onChange={(event) => setComment(event.target.value)} required/>
-                          {/* </div> */}
-                          {/* <div>&nbsp;</div> */}
+                            </div>
+                          </div>
+                          <div>&nbsp;</div>
+                          &nbsp; &nbsp; Comment:&nbsp; &nbsp;<input className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '650px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)} />
+                          <div>&nbsp;</div>
                           <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp; &nbsp;<button className="Font-Verdana-Medium-Postgres" type="submit" style={{ marginLeft: '10px', height: '37.5px', border: '2px solid #336791', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#169247', cursor: 'pointer' }} onClick={() => setFirstname(inbound.name.first) & setLastname(inbound.name.last) & setMobile(inbound.phone) & setEmail(inbound.email) & setCountry(inbound.location.country) & setJobdesc(inbound.location.coordinates.latitude) & setSkill1(inbound.location.coordinates.longitude)}><b>Add Candidate</b></button>
-                          &nbsp;&nbsp;&nbsp;
+
                           <button
                             className="Font-Verdana-Medium-Postgres"
                             type="button" // Change the type to "button" to prevent form submission
@@ -230,57 +216,12 @@ export default function CandidateAPI() {
                             &nbsp; &nbsp; Candidate Count: {candidatecount.length}
                           <div>&nbsp;</div>
                           <div>&nbsp;</div>
-                          <GradientLineLinkedIn/>
-
-                              <div className='Font-Verdana-Medium-LinkedIn'>&nbsp; &nbsp;
-                                <Tooltip id="insert" />
-                                <div onClick={toggleAccordion}>
-                                  &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Select">
-                                    {/* <FaPersonCircleQuestion style={{ color: '#336791', fontSize: '45px', cursor: 'pointer' }} /> */}
-                                    <FaLinkedin style={{ color: '#0A66C2', fontSize: '35px', cursor: 'pointer' }} /></a>
-                                  &nbsp;<b>Find Candidates on LinkedIn:</b>
-                                </div>
-                                <div>&nbsp;</div>
-
-
-                              </div>
-                            </div>
-                            <div>&nbsp;</div>
-                            <div>
-                              {/* <img alt="1" src={spacer} /> */}
-                              &nbsp; &nbsp; Country:&nbsp;
-                              <select className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '230px' }} id="dropdown" value={wa} onChange={(event) => setLinkedinCountry(event.target.value)}>
-                                <option disabled selected value="Tax Domiciled">Tax Domiciled</option>
-                                <option value="IE">Ireland (Rep)</option>
-                                <option value="NI">Ireland (NI)</option>
-                                <option value="EN">England</option>
-                                <option value="WA">Wales</option>
-                                <option value="SC">Scotland</option>
-                              </select>
-                              <img alt="1" src={spacer} />Job Title:&nbsp;<input className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '300px' }} placeholder="Software Engineering Manager" type="text" value={linkedinjobdesc} onChange={(event) => setLinkedinJobdesc(event.target.value)} required />
-                              <img alt="1" src={spacer} />Skill:&nbsp;<input className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '300px' }} placeholder="DevOps" type="text" value={linkedinskill} onChange={(event) => setLinkedinSkill(event.target.value)} required />
-                              <img alt="1" src={spacer} />
-                              {/* Comment:&nbsp;<input style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '425px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)} /> */}
-
-                              <button
-                                className="Font-Verdana-Medium-Postgres"
-                                type="button" // Change the type to "button" to prevent form submission
-                                style={{ marginLeft: '10px', height: '37.5px', border: '2px solid #0A66C2', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#0A66C2', cursor: 'pointer' }}
-                                onClick={onSearchLinkedIn}
-                              ><b>Search LinkedIn</b>
-                              </button>
-                            </div>
-                          </div>
                         </div>
-                        <div>&nbsp;</div>
-                        <div>&nbsp;</div>
-                        <GradientLineLinkedIn />
                       </div>
                     </form>
-
                   );
                 })
-        }
+              }
       </div>
     </>
   );

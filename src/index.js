@@ -18,6 +18,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { UserProvider } from './UserContext';
 import { useUserContext } from './UserContext';
+// import CandidateSearchLinkedin from './CandidateSearchLinkedin';
 
 
 const PrivateRoutes = () => {
@@ -52,10 +53,12 @@ const App = () => {
             <Route path='/search' element={<PageSearch />} />
             <Route path='/screen' element={<PageSearch />} />
             <Route path='/manage' element={<PageManage />} />
+            {/* <Route path='/linkedin' element={<CandidateSearchLinkedin />} /> */}
           </Route>
           <Route path='/login' element={<PageLogin />} />
           <Route path='/' element={<PageLogin />} />
           <Route path='*' element={<PageLogin />} />
+          {/* <Route path='/linkedin' element={<CandidateSearchLinkedin />} /> */}
         </Routes>
       </Router>
     </UserProvider>
