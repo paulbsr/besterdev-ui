@@ -44,7 +44,7 @@ const LinkTab = styled((props) => <Tab disableRipple {...props} />)(({ theme }) 
     paddingLeft: 22,
     paddingRight: 22,
     '&:hover': {color: '#D5441C',},
-    '&.Mui-selected': {color: 'grey',},
+    '&.Mui-selected': {color: '#1994AD',},
     '&.Mui-selected:hover': {color: '#D5441C',},})
     );
 

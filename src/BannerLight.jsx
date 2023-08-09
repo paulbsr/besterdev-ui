@@ -2,12 +2,13 @@ import React from "react";
 import './Fonts.css';
 import { FaReact, FaJava, FaNodeJs, FaAws, FaUsersViewfinder, FaPeopleArrows } from 'react-icons/fa';
 import { SiSpringboot } from "react-icons/si";
-import { SlLogin, SlSettings } from "react-icons/sl";
+import { SlLogin, SlSettings, SlLogout, } from "react-icons/sl";
 import { RiOpenaiFill } from "react-icons/ri";
 import { BiLogoFirebase } from "react-icons/bi";
 import { BiLogoPostgresql, BiLogoHeroku, BiLogoGithub } from "react-icons/bi";
 import 'react-tooltip/dist/react-tooltip.css'
 import { useNavigate } from 'react-router-dom'; 
+// import LogoutButton from './LogoutButton'
 
 
 
@@ -38,7 +39,9 @@ import { useNavigate } from 'react-router-dom';
       <a data-tooltip-id="insert" data-tooltip-content="Github Repo" href="https://github.com" target="_blank"><BiLogoGithub style={{ color: '#000000', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Amplify FE" href="https://eu-west-1.console.aws.amazon.com/amplify/home?installation_id=39421369&setup_action=install&region=eu-west-1#/dv43gyvsmgsn1/settings/domains/" target="_blank"><FaAws style={{ color: '#ff8500', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Heroku BE" href="https://dashboard.heroku.com/apps" target="_blank"><BiLogoHeroku style={{ color: '#6762a6', fontSize: '33px', cursor: 'pointer' }} /></a>
-      <a data-tooltip-id="insert" data-tooltip-content="Google Firebase IAM" href="https://console.firebase.google.com/project/besterdev-432e9/overview" target="_blank"><BiLogoFirebase style={{ color: '#FFCB2B', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Google Firebase IAM" href="https://console.firebase.google.com/project/besterdev-432e9/overview" target="_blank"><BiLogoFirebase style={{ color: '#FFCB2B', fontSize: '33px', cursor: 'pointer' }} /></a>
+      <a data-tooltip-id="insert" data-tooltip-content="Logout" onClick={handleNavigateManage}><SlLogout style={{ color: '#1994AD', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp; &nbsp;
+      {/* <a data-tooltip-id="insert" data-tooltip-content="Logout" onClick={<LogoutButton/>}><SlLogout style={{ color: '#1994AD', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp; &nbsp; */}
     </div>
   );
 };

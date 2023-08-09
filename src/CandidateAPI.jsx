@@ -7,7 +7,7 @@ import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';
 import ColouredBox from './ColouredBox';
 import spacer from './graphix/besterdev_spacer_white.png';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 export default function CandidateAPI() {
 
@@ -28,7 +28,7 @@ export default function CandidateAPI() {
   const [employer, setEmployer] = useState(null);
   const [jobreqs, setJobreqs] = useState(null);
   const [candidatecount, setCandidatecount] = useState([]);
-  const [checkForRecords, setCheckForRecords] = useState(true);
+  // const [checkForRecords, setCheckForRecords] = useState(true);
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [getCandidates, setGetCandidates] = useState(false);
@@ -54,6 +54,7 @@ export default function CandidateAPI() {
       
       const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/create`, candidatePOST);
       setGetCandidates(!getCandidates);
+      setComment(''); 
     }
   }
 
