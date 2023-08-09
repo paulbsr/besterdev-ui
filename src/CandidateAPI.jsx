@@ -15,6 +15,7 @@ import GradientLine from './GradientLine';
 import GradientLineLinkedIn from './GradientLineLinkedIn';
 // import { useNavigate } from 'react-router-dom';
 
+
 export default function CandidateAPI() {
 
   const today = new Date();
@@ -60,17 +61,17 @@ export default function CandidateAPI() {
         'reqnum': reqnum,
         'employer': employer
       }
-      
+
       const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/create`, candidatePOST);
       setGetCandidates(!getCandidates);
-      setComment(''); 
+      setComment('');
     }
   }
 
   useEffect(() => {
     axios('https://randomuser.me/api/')
-      .then((response) => { 
-        setCandidatedata(response.data.results); 
+      .then((response) => {
+        setCandidatedata(response.data.results);
       })
   },
     [getCandidates]);
@@ -104,14 +105,14 @@ export default function CandidateAPI() {
 
 
   const onSkipCandidate = async () => {
-      const response = await axios('https://randomuser.me/api/');
-      setCandidatedata(response.data.results);
+    const response = await axios('https://randomuser.me/api/');
+    setCandidatedata(response.data.results);
   };
 
   const onSearchLinkedIn = () => {
-    window.open('http://www.google.com/search?q=+"'+(linkedinjobdesc)+' "+'+(linkedinskill)+' -intitle:"profiles" -inurl:"dir/+"+site:ie.linkedin.com/in/+OR+site:ie.linkedin.com/pub/', '_blank');
+    window.open('http://www.google.com/search?q=+"' + (linkedinjobdesc) + ' "+' + (linkedinskill) + ' -intitle:"profiles" -inurl:"dir/+"+site:ie.linkedin.com/in/+OR+site:ie.linkedin.com/pub/', '_blank');
   };
-  
+
 
 
   return (
@@ -121,166 +122,162 @@ export default function CandidateAPI() {
       <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
         <Tooltip id="insert" />
         <div onClick={toggleAccordion}>
-          &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Select"><FaPersonCircleQuestion style={{ color: '#336791', fontSize: '45px', cursor: 'pointer' }} /></a>
+          &nbsp; &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Select"><FaPersonCircleQuestion style={{ color: '#336791', fontSize: '45px', cursor: 'pointer' }} /></a>
           &nbsp;<b>Screen Candidates via the Candidate Hunter API:</b>
         </div>
-              <div>&nbsp;</div>
+        <div>&nbsp;</div>
 
-              {
-                candidatedata.map((inbound, key) => {
+        {
+          candidatedata.map((inbound, key) => {
 
-                  const inboundnamefirst = <span className="Font-Verdana-Medium-Bold">{inbound.name.first}</span>;
-                  const inboundnamelast = <span className="Font-Verdana-Medium-Bold">{inbound.name.last}</span>;
-                  const inboundage = <span className="Font-Verdana-Medium">{inbound.dob.age}</span>;
-                  const inboundgender = <span className="Font-Verdana-Medium">{inbound.gender}</span>;
-                  const inboundjd = <span className="Font-Verdana-Medium-Italic-Rusty">{inbound.location.coordinates.latitude}</span>;
-                  const inboundstate = <span className="Font-Verdana-Medium">{inbound.location.state}</span>;
-                  const inboundcountry = <span className="Font-Verdana-Medium">{inbound.location.country}</span>;
-                  const inboundskill1 = <span className="Font-Verdana-Medium-Italic-Rusty">{inbound.location.coordinates.longitude}</span>;
-                  const inboundskill2 = <span className="Font-Verdana-Medium-Italic-Rusty">{inbound.location.coordinates.longitude}</span>;
-                  const inboundskill3 = <span className="Font-Verdana-Medium-Italic-Rusty">{inbound.location.coordinates.longitude}</span>;
-                  const inboundmobile = <span className="Font-Verdana-Medium">{inbound.phone}</span>;
-                  const inboundemail = <span className="Font-Verdana-Medium">{inbound.email}</span>;
+            const inboundnamefirst = <span className="Font-Verdana-Medium-Bold">{inbound.name.first}</span>;
+            const inboundnamelast = <span className="Font-Verdana-Medium-Bold">{inbound.name.last}</span>;
+            const inboundage = <span className="Font-Verdana-Medium">{inbound.dob.age}</span>;
+            const inboundgender = <span className="Font-Verdana-Medium">{inbound.gender}</span>;
+            const inboundjd = <span className="Font-Verdana-Medium-Italic-Rusty">{inbound.location.coordinates.latitude}</span>;
+            const inboundstate = <span className="Font-Verdana-Medium">{inbound.location.state}</span>;
+            const inboundcountry = <span className="Font-Verdana-Medium">{inbound.location.country}</span>;
+            const inboundskill1 = <span className="Font-Verdana-Medium-Italic-Rusty">{inbound.location.coordinates.longitude}</span>;
+            const inboundskill2 = <span className="Font-Verdana-Medium-Italic-Rusty">{inbound.location.coordinates.longitude}</span>;
+            const inboundskill3 = <span className="Font-Verdana-Medium-Italic-Rusty">{inbound.location.coordinates.longitude}</span>;
+            const inboundmobile = <span className="Font-Verdana-Medium">{inbound.phone}</span>;
+            const inboundemail = <span className="Font-Verdana-Medium">{inbound.email}</span>;
 
-                  const formattedString = `${inbound.name.first} ${inbound.name.last} is a ${inbound.dob.age} year old ${inbound.gender} with a Job Description of ${inbound.location.coordinates.latitude}, whom currently resides in ${inbound.location.state}, ${inbound.location.country} with primary skills of ${inbound.location.coordinates.longitude} and ${inbound.location.coordinates.longitude} and ${inbound.location.coordinates.longitude} whom can be reached at ${inbound.phone} or ${inbound.email}`;
+            const formattedString = `${inbound.name.first} ${inbound.name.last} is a ${inbound.dob.age} year old ${inbound.gender} with a Job Description of ${inbound.location.coordinates.latitude}, whom currently resides in ${inbound.location.state}, ${inbound.location.country} with primary skills of ${inbound.location.coordinates.longitude} and ${inbound.location.coordinates.longitude} and ${inbound.location.coordinates.longitude} whom can be reached at ${inbound.phone} or ${inbound.email}`;
 
-                  return (
-                    <form onSubmit={(e) => onKeepCandidate(e)}>
-                      <div key={key}>
-                        <div className='Font-Verdana-Medium'>
-                          <Tooltip id="Screen" />
-                          <div onClick={toggleAccordion}></div>
-                        </div>
+            return (
+              <form onSubmit={(e) => onKeepCandidate(e)}>
+                <div key={key}>
+                  <div className='Font-Verdana-Medium'>
+                    <Tooltip id="Screen" />
+                    <div onClick={toggleAccordion}></div>
+                  </div>
 
-                        <ColouredBox
-                          fn={inboundnamefirst}
-                          ln={inboundnamelast}
-                          age={inboundage}
-                          gender={inboundgender}
-                          jd={inboundjd}
-                          state={inboundstate}
-                          country={inboundcountry}
-                          skill1={inboundskill1}
-                          skill2={inboundskill2}
-                          skill3={inboundskill3}
-                          mobile={inboundmobile}
-                          email={inboundemail} />
+                  <ColouredBox
+                    fn={inboundnamefirst}
+                    ln={inboundnamelast}
+                    age={inboundage}
+                    gender={inboundgender}
+                    jd={inboundjd}
+                    state={inboundstate}
+                    country={inboundcountry}
+                    skill1={inboundskill1}
+                    skill2={inboundskill2}
+                    skill3={inboundskill3}
+                    mobile={inboundmobile}
+                    email={inboundemail} />
 
-                        <div className='Font-Verdana-Medium'>
-                          <div>&nbsp;</div>
-                          <div>&nbsp;</div>
-                          <div>&nbsp;</div>
-                          <div>&nbsp;</div>
-                          <div>&nbsp;</div>
-                          <div>
-                            <div>
-                              <label htmlFor="dropdown">&nbsp; &nbsp; Propose for:&nbsp;</label>
-                              <select className='Font-Verdana-Medium'
-                                onChange={(event) => {
-                                  const selectedIndex = event.target.selectedIndex;
-                                  const selectedOption = event.target.options[selectedIndex];
-                                  const company = selectedOption.getAttribute("data-company");
-                                  const jrtitle = selectedOption.getAttribute("data-jrtitle");
-                                  const jrnumber = selectedOption.getAttribute("data-jrnumber");
+                  <div className='Font-Verdana-Medium'>
+                    <div>&nbsp;</div>
+                    <div>&nbsp;</div>
+                    <div>&nbsp;</div>
+                    <div>&nbsp;</div>
+                    <div>&nbsp;</div>
+                    <div>
+                      <div>
+                        <label htmlFor="dropdown">&nbsp; &nbsp; Propose for:&nbsp;</label>
+                        <select className='Font-Verdana-Medium'
+                          onChange={(event) => {
+                            const selectedIndex = event.target.selectedIndex;
+                            const selectedOption = event.target.options[selectedIndex];
+                            const company = selectedOption.getAttribute("data-company");
+                            const jrtitle = selectedOption.getAttribute("data-jrtitle");
+                            const jrnumber = selectedOption.getAttribute("data-jrnumber");
 
-                                  setEmployer(company);
-                                  setRole(jrtitle);
-                                  setReqnum(jrnumber);
-                                }}
-                                id="dropdown"
-                                style={{
-                                  height: '37.5px',
-                                  border: '1.25px solid #c4c4c4',
-                                  borderRadius: '4px',
-                                  padding: 0,
-                                  paddingLeft: '10px',
-                                  width: '400px'
-                                }}
-                              >
+                            setEmployer(company);
+                            setRole(jrtitle);
+                            setReqnum(jrnumber);
+                          }}
+                          id="dropdown"
+                          style={{
+                            height: '37.5px',
+                            border: '1.25px solid #c4c4c4',
+                            borderRadius: '4px',
+                            padding: 0,
+                            paddingLeft: '10px',
+                            width: '400px'
+                          }}
+                        >
 
-                                <option disabled selected value="">Employer  -  Job Title  - Req Number</option>
+                          <option disabled selected value="">Employer  -  Job Title  - Req Number</option>
 
-                                {jobreqs && jobreqs.map(option => (
-                                  <option 
-                                    key={option.id}
-                                    value={option.id}
-                                    data-company={option.company} // Store company data as an attribute
-                                    data-jrtitle={option.jrtitle} // Store jrtitle data as an attribute
-                                    data-jrnumber={option.jrnumber} // Store jrnumber data as an attribute
-                                  >
-                                    {option.company}   -   {option.jrtitle}   -   {option.jrnumber}
-                                  </option>
-                                ))}
-                              </select>
-                            {/* </div> */}
-                          {/* </div> */}
-                          {/* <div>&nbsp;</div> */}
-                          &nbsp; &nbsp; Comment:&nbsp; &nbsp;<input className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '400px' }} placeholder="Optional thoughts?" type="text" value={comment} onChange={(event) => setComment(event.target.value)} required/>
-                          {/* </div> */}
-                          {/* <div>&nbsp;</div> */}
-                          <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp; &nbsp;<button className="Font-Verdana-Medium-Postgres" type="submit" style={{ marginLeft: '10px', height: '37.5px', border: '2px solid #336791', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#169247', cursor: 'pointer' }} onClick={() => setFirstname(inbound.name.first) & setLastname(inbound.name.last) & setMobile(inbound.phone) & setEmail(inbound.email) & setCountry(inbound.location.country) & setJobdesc(inbound.location.coordinates.latitude) & setSkill1(inbound.location.coordinates.longitude)}><b>Add Candidate</b></button>
-                          &nbsp;&nbsp;&nbsp;
-                          <button
-                            className="Font-Verdana-Medium-Postgres"
-                            type="button" // Change the type to "button" to prevent form submission
-                            style={{marginLeft: '10px', height: '37.5px', border: '2px solid #336791', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#D5441C', cursor: 'pointer'}}
-                            onClick={onSkipCandidate}
-                          ><b>Skip Candidate</b>
-                          </button>
-                            &nbsp; &nbsp; Candidate Count: {candidatecount.length}
-                          <div>&nbsp;</div>
-                          <div>&nbsp;</div>
-                          <GradientLineLinkedIn/>
-
-                              <div className='Font-Verdana-Medium-LinkedIn'>&nbsp; &nbsp;
-                                <Tooltip id="insert" />
-                                <div onClick={toggleAccordion}>
-                                  &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Select">
-                                    {/* <FaPersonCircleQuestion style={{ color: '#336791', fontSize: '45px', cursor: 'pointer' }} /> */}
-                                    <FaLinkedin style={{ color: '#0A66C2', fontSize: '35px', cursor: 'pointer' }} /></a>
-                                  &nbsp;<b>Find Candidates on LinkedIn:</b>
-                                </div>
-                                <div>&nbsp;</div>
-
-
-                              </div>
-                            </div>
-                            <div>&nbsp;</div>
-                            <div>
-                              {/* <img alt="1" src={spacer} /> */}
-                              &nbsp; &nbsp; Country:&nbsp;
-                              <select className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '230px' }} id="dropdown" value={wa} onChange={(event) => setLinkedinCountry(event.target.value)}>
-                                <option disabled selected value="Tax Domiciled">Tax Domiciled</option>
-                                <option value="IE">Ireland (Rep)</option>
-                                <option value="NI">Ireland (NI)</option>
-                                <option value="EN">England</option>
-                                <option value="WA">Wales</option>
-                                <option value="SC">Scotland</option>
-                              </select>
-                              <img alt="1" src={spacer} />Job Title:&nbsp;<input className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '300px' }} placeholder="Software Engineering Manager" type="text" value={linkedinjobdesc} onChange={(event) => setLinkedinJobdesc(event.target.value)} required />
-                              <img alt="1" src={spacer} />Skill:&nbsp;<input className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '300px' }} placeholder="DevOps" type="text" value={linkedinskill} onChange={(event) => setLinkedinSkill(event.target.value)} required />
-                              <img alt="1" src={spacer} />
-                              {/* Comment:&nbsp;<input style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '425px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)} /> */}
-
-                              <button
-                                className="Font-Verdana-Medium-Postgres"
-                                type="button" // Change the type to "button" to prevent form submission
-                                style={{ marginLeft: '10px', height: '37.5px', border: '2px solid #0A66C2', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#0A66C2', cursor: 'pointer' }}
-                                onClick={onSearchLinkedIn}
-                              ><b>Search LinkedIn</b>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
+                          {jobreqs && jobreqs.map(option => (
+                            <option
+                              key={option.id}
+                              value={option.id}
+                              data-company={option.company} // Store company data as an attribute
+                              data-jrtitle={option.jrtitle} // Store jrtitle data as an attribute
+                              data-jrnumber={option.jrnumber} // Store jrnumber data as an attribute
+                            >
+                              {option.company}   -   {option.jrtitle}   -   {option.jrnumber}
+                            </option>
+                          ))}
+                        </select>
+                        &nbsp; &nbsp; Comment:&nbsp;<input className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '480px' }} placeholder="Optional thoughts?" type="text" value={comment} onChange={(event) => setComment(event.target.value)} required />
+                        {/* <img alt="1" src={spacer} /> */}
+                        {/* <img alt="1" src={spacer} /> */}
+                        <img alt="1" src={spacer} />&nbsp; &nbsp;
+                        <button className="Font-Verdana-Medium-Postgres" type="submit" style={{ marginLeft: '10px', height: '37.5px', border: '2px solid #336791', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#169247', cursor: 'pointer' }} onClick={() => setFirstname(inbound.name.first) & setLastname(inbound.name.last) & setMobile(inbound.phone) & setEmail(inbound.email) & setCountry(inbound.location.country) & setJobdesc(inbound.location.coordinates.latitude) & setSkill1(inbound.location.coordinates.longitude)}><b>Add Candidate</b></button>
+                        &nbsp;&nbsp;&nbsp;
+                        <button
+                          className="Font-Verdana-Medium-Postgres"
+                          type="button" // Change the type to "button" to prevent form submission
+                          style={{ marginLeft: '10px', height: '37.5px', border: '2px solid #336791', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#D5441C', cursor: 'pointer' }}
+                          onClick={onSkipCandidate}>
+                          <b>Skip Candidate</b>
+                        </button>
+                        &nbsp; &nbsp; Candidate Count: {candidatecount.length}
                         <div>&nbsp;</div>
                         <div>&nbsp;</div>
-                        <GradientLineLinkedIn />
                       </div>
-                    </form>
-
-                  );
-                })
+                    </div>
+                  </div>
+                </div>
+              </form>);
+          }
+          )
         }
+
+        <div>
+          <GradientLineLinkedIn />
+          <div className='Font-Verdana-Medium-LinkedIn'>&nbsp; &nbsp;
+            <Tooltip id="insert" />
+            <div onClick={toggleAccordion}>
+              &nbsp; &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Select">
+                <FaLinkedin style={{ color: '#0A66C2', fontSize: '35px', cursor: 'pointer' }} /></a>
+              &nbsp;<b>Find Candidates on LinkedIn:</b>
+            </div>
+            <div>&nbsp;</div>
+          </div>
+
+          <div>&nbsp;</div>
+          <div>
+            &nbsp; &nbsp; Country:&nbsp;
+            <select className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '230px' }} id="dropdown" value={wa} onChange={(event) => setLinkedinCountry(event.target.value)}>
+              <option disabled selected value="Tax Domiciled">Tax Domiciled</option>
+              <option value="IE">Ireland (Rep)</option>
+              <option value="NI">Ireland (NI)</option>
+              <option value="EN">England</option>
+              <option value="WA">Wales</option>
+              <option value="SC">Scotland</option>
+            </select>
+            <img alt="1" src={spacer} />Job Title:&nbsp;<input className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '300px' }} placeholder="Software Engineering Manager" type="text" value={linkedinjobdesc} onChange={(event) => setLinkedinJobdesc(event.target.value)} required />
+            <img alt="1" src={spacer} />Skill:&nbsp;<input className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '300px' }} placeholder="DevOps" type="text" value={linkedinskill} onChange={(event) => setLinkedinSkill(event.target.value)} required />
+            <img alt="1" src={spacer} />
+
+            <button
+              className="Font-Verdana-Medium-Postgres"
+              type="button" // Change the type to "button" to prevent form submission
+              style={{ marginLeft: '10px', height: '37.5px', border: '2px solid #0A66C2', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#0A66C2', cursor: 'pointer' }}
+              onClick={onSearchLinkedIn}>
+              <b>Search LinkedIn</b>
+            </button>
+
+          </div>
+          <div>&nbsp;</div>
+          <div>&nbsp;</div>
+          <GradientLineLinkedIn />
+        </div>
       </div>
     </>
   );

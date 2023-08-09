@@ -109,7 +109,7 @@ export default function JobreqManage() {
     <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-        &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Amend"><BsSignpostFill style={{ color: '#336791', fontSize: '42px', cursor: 'pointer' }} /></a>
+        &nbsp; &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Amend"><BsSignpostFill style={{ color: '#336791', fontSize: '42px', cursor: 'pointer' }} /></a>
         &nbsp;<b>Manage Job Postings/JRs ({jobreqdata.length})</b>
       </div>
 

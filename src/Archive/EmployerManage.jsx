@@ -67,11 +67,6 @@ export default function EmployerManage(props) {
       .catch((error) => {alert("Done");})
       setCheckForRecords(!checkForRecords)
       onEditCancel();
-      
-        // .then((response) => {setCheckForRecords(!checkForRecords); }); alert(`The Employer ${empname} has been updated.`) 
-        // .catch((error) => { alert('Employer updated.'); })
-      // setCheckForRecords(!checkForRecords)
-      // onEditCancel();
     }
   }
 
