@@ -122,7 +122,7 @@ export default function CandidateAPI() {
       <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
         <Tooltip id="insert" />
         <div onClick={toggleAccordion}>
-          &nbsp; &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Select"><FaPersonCircleQuestion style={{ color: '#336791', fontSize: '45px', cursor: 'pointer' }} /></a>
+          &nbsp; &nbsp;<a data-tooltip-id="insert" data-tooltip-content="HunterAPI"><FaPersonCircleQuestion style={{ color: '#336791', fontSize: '45px', cursor: 'pointer' }} /></a>
           &nbsp;<b>Screen Candidates via the Candidate Hunter API:</b>
         </div>
         <div>&nbsp;</div>
@@ -243,7 +243,7 @@ export default function CandidateAPI() {
           <div className='Font-Verdana-Medium-LinkedIn'>&nbsp; &nbsp;
             <Tooltip id="insert" />
             <div onClick={toggleAccordion}>
-              &nbsp; &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Select">
+              &nbsp; &nbsp;<a data-tooltip-id="insert" data-tooltip-content="LinkedIn.com">
                 <FaLinkedin style={{ color: '#0A66C2', fontSize: '35px', cursor: 'pointer' }} /></a>
               &nbsp;<b>Find Candidates on LinkedIn:</b>
             </div>
@@ -252,7 +252,7 @@ export default function CandidateAPI() {
 
           <div>&nbsp;</div>
           <div>
-            &nbsp; &nbsp; Country:&nbsp;
+            &nbsp; &nbsp; LinkedIn Site:&nbsp;
             <select className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '230px' }} id="dropdown" value={wa} onChange={(event) => setLinkedinCountry(event.target.value)}>
               <option disabled selected value="Tax Domiciled">Tax Domiciled</option>
               <option value="IE">Ireland (Rep)</option>

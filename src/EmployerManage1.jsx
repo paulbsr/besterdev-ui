@@ -86,10 +86,10 @@ export default function EmployerManage1(props) {
   return (
   
   
-      <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
+      <div className='Font-Verdana-Medium-T'>&nbsp; &nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-        &nbsp; &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Amend"><FaPeopleGroup style={{ color: '#336791', fontSize: '45px', cursor: 'pointer' }} /></a>
+        &nbsp; &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Amend"><FaPeopleGroup style={{ color: '#1994AD', fontSize: '45px', cursor: 'pointer' }} /></a>
         &nbsp;<b>Manage Employers/Customers ({employerrecords.length})</b>
       </div>
 

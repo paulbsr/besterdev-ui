@@ -136,7 +136,7 @@ export default function CandidateManage() {
     <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-        &nbsp; &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Amend"><MdManageAccounts style={{ color: '#336791', fontSize: '45px', cursor: 'pointer' }} /></a>
+        &nbsp; &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Amend"><MdManageAccounts style={{ color: '#1994AD', fontSize: '45px', cursor: 'pointer' }} /></a>
         &nbsp;<b>Manage Candidates/Commodoties ({tabledata.length})</b>
       </div>
 
@@ -165,13 +165,12 @@ export default function CandidateManage() {
               </thead>
 
               <tbody>
-
                 {tabledata.map((row) => {
                   return (
                     <tr key={row.id}>
-                      <td className="Table6 td">
+                      <td className="Table6 td ">
                         <>
-                        <Tooltip id="edit" />
+                          <Tooltip id="edit" />
                           <Tooltip id="commit" />
                           <Tooltip id="revert" />
                           <Tooltip id="purge" />

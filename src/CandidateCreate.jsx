@@ -87,10 +87,10 @@ export default function CandidateCreate(props) {
 
   return (
 
-    <div className='Font-Verdana-Small-Postgres'>&nbsp;
+    <div className='Font-Verdana-Small-T'>&nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-        <a data-tooltip-id="insert" data-tooltip-content="Add"><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
+        <a data-tooltip-id="insert" data-tooltip-content="Add Candidate"><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#1994AD', fontSize: '25px', cursor: 'pointer' }} /></a>
         <b>Manually Add a Candidate</b>
         <div>&nbsp;</div>
       </div>
@@ -101,57 +101,58 @@ export default function CandidateCreate(props) {
             <form onSubmit={handleSubmit}>
               <div><img alt="1" src={spacer2} /></div>
               <div className='Font-Verdana-Small-Postgres'>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Firstname:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '190px' }} placeholder="Required" type="text" value={firstname} onChange={(event) => setfirstname(event.target.value)} required />
-                <img alt="1" src={spacer} />Lastname:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '190px' }} placeholder="Required" type="text" value={lastname} onChange={(event) => setlastname(event.target.value)} required />
-                <img alt="1" src={spacer} />eMail:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} placeholder="Required" type="text" value={email} onChange={(event) => setemail(event.target.value)} required />
-                <img alt="1" src={spacer} />Mobile:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '160px' }} placeholder="Required" type="text" value={mobile} onChange={(event) => setmobile(event.target.value)} required />
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Firstname:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '300px' }} placeholder="Required" type="text" value={firstname} onChange={(event) => setfirstname(event.target.value)} required />
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Lastname:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '300px' }} placeholder="Required" type="text" value={lastname} onChange={(event) => setlastname(event.target.value)} required />
+                <img alt="1" src={spacer} />eMail:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '295px' }} placeholder="Required" type="text" value={email} onChange={(event) => setemail(event.target.value)} required />
+                <img alt="1" src={spacer} />Mobile:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '320px' }} placeholder="Required" type="text" value={mobile} onChange={(event) => setmobile(event.target.value)} required />
                 </div>
                 <div>&nbsp;</div>
                 <div>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Job Title:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} placeholder="Required" type="text" value={jobdesc} onChange={(event) => setJobdesc(event.target.value)} required />
-                <img alt="1" src={spacer} />Skill:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '230px' }} placeholder="Required" type="text" value={skill1} onChange={(event) => setSkill1(event.target.value)} required />
-                <img alt="1" src={spacer} />Comment:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '425px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)} />
-                <div>&nbsp;</div>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} /><label htmlFor="dropdown">Propose for:&nbsp;</label>
-                <select className='Font-Verdana-Small'
-                                onChange={(event) => {
-                                  const selectedIndex = event.target.selectedIndex;
-                                  const selectedOption = event.target.options[selectedIndex];
-                                  const company = selectedOption.getAttribute("data-company");
-                                  const jrtitle = selectedOption.getAttribute("data-jrtitle");
-                                  const jrnumber = selectedOption.getAttribute("data-jrnumber");
+                <img alt="1" src={spacer} />
+                <img alt="1" src={spacer} />
+                <label htmlFor="dropdown">Propose for:&nbsp;&nbsp;</label>
+                <select className='Font-Verdana-Small-Postgres'
+                  onChange={(event) => {
+                    const selectedIndex = event.target.selectedIndex;
+                    const selectedOption = event.target.options[selectedIndex];
+                    const company = selectedOption.getAttribute("data-company");
+                    const jrtitle = selectedOption.getAttribute("data-jrtitle");
+                    const jrnumber = selectedOption.getAttribute("data-jrnumber");
 
-                                  setEmployer(company);
-                                  setRole(jrtitle);
-                                  setReqnum(jrnumber);
-                                }}
-                                id="dropdown"
-                                style={{
-                                  height: '27.5px',
-                                  border: '1.25px solid #c4c4c4',
-                                  borderRadius: '4px',
-                                  padding: 0,
-                                  paddingLeft: '10px',
-                                  width: '505px'
-                                }}
-                              >
+                    setEmployer(company);
+                    setRole(jrtitle);
+                    setReqnum(jrnumber);
+                  }}
+                  id="dropdown"
+                  style={{
+                    height: '27.5px',
+                    border: '1.25px solid #c4c4c4',
+                    borderRadius: '4px',
+                    padding: 0,
+                    paddingLeft: '10px',
+                    width: '300px'
+                  }}
+                >
 
-                                <option disabled selected value="">Employer  -  Role  - Req Number</option>
+                  <option disabled selected value="">Employer  -  Role  - Req Number</option>
 
-                                {jobreqs && jobreqs.map(option => (
-                                  <option 
-                                    key={option.id}
-                                    value={option.id}
-                                    data-company={option.company} // Store company data as an attribute
-                                    data-jrtitle={option.jrtitle} // Store jrtitle data as an attribute
-                                    data-jrnumber={option.jrnumber} // Store jrnumber data as an attribute
-                                  >
-                                    {option.company}   -   {option.jrtitle}   -   {option.jrnumber}
-                                  </option>
-                                ))}
-                              </select>
-
-                <img alt="1" src={spacer} />&nbsp; &nbsp; &nbsp;<button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#336791', cursor: 'pointer' }}>Add Candidate</button>
+                  {jobreqs && jobreqs.map(option => (
+                    <option
+                      key={option.id}
+                      value={option.id}
+                      data-company={option.company} // Store company data as an attribute
+                      data-jrtitle={option.jrtitle} // Store jrtitle data as an attribute
+                      data-jrnumber={option.jrnumber} // Store jrnumber data as an attribute
+                    >
+                      {option.company}   -   {option.jrtitle}   -   {option.jrnumber}
+                    </option>
+                  ))}
+                </select>
+                  <img alt="1" src={spacer} /><img alt="1" src={spacer} />Job Title:&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '305px' }} placeholder="Required" type="text" value={jobdesc} onChange={(event) => setJobdesc(event.target.value)} required />
+                  <img alt="1" src={spacer} />Skill:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '300px' }} placeholder="Required" type="text" value={skill1} onChange={(event) => setSkill1(event.target.value)} required />
+                  <img alt="1" src={spacer} />Comment:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '300px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)} />
+                  <div>&nbsp;</div>
+                <img alt="1" src={spacer} />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #1994AD', borderRadius: '5px', backgroundColor: '#1994AD', color: '#FFFFFF', cursor: 'pointer' }}>Add Candidate</button>
                 <div>&nbsp;</div>
               </div>
             </form>

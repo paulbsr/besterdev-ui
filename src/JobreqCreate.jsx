@@ -77,11 +77,11 @@ export default function JobreqCreate(props) {
 
       try {
         const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs/create`, jobreqPOST);
-        if (response.status === 200) { 
-          props.setCheckForRecords(!props.checkForRecords); 
+        if (response.status === 200) {
+          props.setCheckForRecords(!props.checkForRecords);
           // alert(`${jrnumber} for ${company} has been memorialized.`); 
           toast.success(`${jrnumber} for ${company} memorialized.`)
-        
+
         }
         else { alert(`oops! Something went wrong!`); }
       }
@@ -97,7 +97,7 @@ export default function JobreqCreate(props) {
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers')
-      .then((response) => { const sortedemployerrecords = response.data.sort((b, a) => b.empname.localeCompare(a.empname)); setEmployerDropDown(sortedemployerrecords);}) //sort empname alphabetically
+      .then((response) => { const sortedemployerrecords = response.data.sort((b, a) => b.empname.localeCompare(a.empname)); setEmployerDropDown(sortedemployerrecords); }) //sort empname alphabetically
       .catch((e) => console.error(e));
   }, [checkForRecords]);
 
@@ -107,10 +107,10 @@ export default function JobreqCreate(props) {
 
   return (
 
-    <div className='Font-Verdana-Small-Postgres'>&nbsp;
+    <div className='Font-Verdana-Small-T'>&nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-        <a data-tooltip-id="insert" data-tooltip-content="Add"><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
+        <a data-tooltip-id="insert" data-tooltip-content="Add"><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#1994AD', fontSize: '25px', cursor: 'pointer' }} /></a>
         <b>Add a Job Requisition/JR</b>
       </div>
 
@@ -121,64 +121,66 @@ export default function JobreqCreate(props) {
             <form onSubmit={handleSubmit}>
               <div><img alt="1" src={spacer2} /></div>
               <div className='Font-Verdana-Small-Postgres'>
-                               
+
                 <div>&nbsp;</div>
-                          <div>
-                            <div>
-                            <img alt="1" src={spacer} /><img alt="1" src={spacer} />
-                              <label htmlFor="dropdown">Employer/Customer:&nbsp;</label>
-                              <select className='Font-Verdana-Small'
-                                onChange={(event) => {
-                                  const selectedIndex = event.target.selectedIndex;
-                                  const selectedOption = event.target.options[selectedIndex];
-                                  const company = selectedOption.getAttribute("data-company");
+                <div>
+                  <div>
+                    <img alt="1" src={spacer} /><img alt="1" src={spacer} />
+                    <label htmlFor="dropdown">Employer:&nbsp;</label>
+                    <select className='Font-Verdana-Small'
+                      onChange={(event) => {
+                        const selectedIndex = event.target.selectedIndex;
+                        const selectedOption = event.target.options[selectedIndex];
+                        const company = selectedOption.getAttribute("data-company");
 
-                                  setCompany(company);
+                        setCompany(company);
 
-                                }}
-                                id="dropdown"
-                                style={{
-                                  height: '27.5px',
-                                  border: '1.25px solid #c4c4c4',
-                                  borderRadius: '4px',
-                                  padding: 0,
-                                  paddingLeft: '10px',
-                                  width: '205px'
-                                }}
-                              >
-                                <option disabled selected value="">Company / Employer</option>
-                                {employerdropdown && employerdropdown.map(option => (
-                                  <option 
-                                    key={option.id}
-                                    value={option.empname}
-                                    data-company={option.empname} // Store company data as an attribute
+                      }}
+                      id="dropdown"
+                      style={{
+                        height: '27.5px',
+                        border: '1.25px solid #c4c4c4',
+                        borderRadius: '4px',
+                        padding: 0,
+                        paddingLeft: '10px',
+                        width: '250px'
+                      }}
+                    >
+                      <option disabled selected value="">Company / Employer</option>
+                      {employerdropdown && employerdropdown.map(option => (
+                        <option
+                          key={option.id}
+                          value={option.empname}
+                          data-company={option.empname} // Store company data as an attribute
 
-                                  >
-                                    {option.empname}
-                                  </option>
-                                ))}
-                              </select>
-                              <img alt="1" src={spacer} /><img alt="1" src={spacer} />Location:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '340px' }} type="text" value={location} onChange={(event) => setLocation(event.target.value)} />
-                            </div>
-                          </div>
-                          <div>&nbsp;</div>
-                
-                
-
-                {/* <img alt="1" src={spacer} /><img alt="1" src={spacer} />Location:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '260px' }} type="text" value={location} onChange={(event) => setLocation(event.target.value)} /> */}
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} />JR Number:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} placeholder="Required" type="text" value={jrnumber} onChange={(event) => setJrnumber(event.target.value)} required />
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} />JR Title:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '350px' }} placeholder="Required" type="text" value={jrtitle} onChange={(event) => setJrtitle(event.target.value)} required />
-                {/* <div>&nbsp;</div> */}
-                {/* <img alt="1" src={spacer} /><img alt="1" src={spacer} />Location:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '260px' }} type="text" value={location} onChange={(event) => setLocation(event.target.value)} /> */}
+                        >
+                          {option.empname}
+                        </option>
+                      ))}
+                    </select>
+                    <img alt="1" src={spacer} />Location:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} type="text" value={location} onChange={(event) => setLocation(event.target.value)} />
+                    <img alt="1" src={spacer} />JR Number:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} placeholder="Required" type="text" value={jrnumber} onChange={(event) => setJrnumber(event.target.value)} required />
+                    <img alt="1" src={spacer} />JR Title:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} placeholder="Required" type="text" value={jrtitle} onChange={(event) => setJrtitle(event.target.value)} required />
+                    <img alt="1" src={spacer} />WFH:&nbsp;
+                    <select style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '230px' }} id="dropdown" value={wa} onChange={(event) => setWa(event.target.value)}>
+                      <option disabled selected value="">Work Appropriate Model</option>
+                      <option value="FR">Fully Remote</option>
+                      <option value="H1">Hybrid 1-day Onsite</option>
+                      <option value="H2">Hybrid 2-day Onsite</option>
+                      <option value="H3">Hybrid 3-day Onsite</option>
+                      <option value="H4">Hybrid 4-day Onsite</option>
+                      <option value="FO">Fully Onsite</option>
+                    </select>
+                  </div>
+                </div>
                 <div>&nbsp;</div>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Recruiter's Name:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '210px' }} type="text" value={recruitername} onChange={(event) => setRecruitername(event.target.value)} />
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Recruiter's eMail:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '290px' }} type="text" value={recruiteremail} onChange={(event) => setRecruiteremail(event.target.value)} />
-                <img alt="1" src={spacer} />Recruiter's Mobile Number:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} type="text" value={recruiternumber} onChange={(event) => setRecruiternumber(event.target.value)} />
-               
-
-                {/* <input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} type="text" value={wa} onChange={(event) => setWa(event.target.value)}/> */}
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Recruiter's Name:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '190px' }} type="text" value={recruitername} onChange={(event) => setRecruitername(event.target.value)} />
+                <img alt="1" src={spacer} />Recruiter eMail:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '205px' }} type="text" value={recruiteremail} onChange={(event) => setRecruiteremail(event.target.value)} />
+                <img alt="1" src={spacer} />Recruiter Mobile:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '215px' }} type="text" value={recruiternumber} onChange={(event) => setRecruiternumber(event.target.value)} />
+                <img alt="1" src={spacer} />Status:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '255px' }} type="text" value={status} onChange={(event) => setStatus(event.target.value)} />
+                <img alt="1" src={spacer} />Comment:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '190px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)} />
                 <div>&nbsp;</div>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Recruitment Start:&nbsp; 
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Recruitment Start:&nbsp;
                 <LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
                   <DatePicker
                     id="createdate"
@@ -186,10 +188,10 @@ export default function JobreqCreate(props) {
                     selected={createdate}
                     onChange={handleCreateDateChange}
                     dateFormat="YYYY.M.D"
-                    sx={{ height: '27.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.3px', width: '215px' } }}/>
+                    sx={{ height: '27.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.3px', width: '195px' } }} />
                 </LocalizationProvider>
 
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Recruitment End:&nbsp; 
+                <img alt="1" src={spacer} />Recruitment End:&nbsp;
                 <LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
                   <DatePicker
                     id="targetdate"
@@ -197,25 +199,10 @@ export default function JobreqCreate(props) {
                     selected={targetdate}
                     onChange={handleTargetDateChange}
                     dateFormat="YYYY.M.D"
-                    sx={{ height: '27.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.3px', width: '300px' } }}/>
+                    sx={{ height: '27.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.3px', width: '205px' } }} />
                 </LocalizationProvider>
-
-                <img alt="1" src={spacer} />Status:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '335px' }} type="text" value={status} onChange={(event) => setStatus(event.target.value)} />
-                {/* <div>&nbsp;</div> */}
                 <div>&nbsp;</div>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Comment:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '745px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)} />
-                <img alt="1" src={spacer} />Work Appropriate Model:&nbsp;
-                <select style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '230px' }} id="dropdown" value={wa} onChange={(event) => setWa(event.target.value)}>
-                  <option disabled selected value="">Work Appropriate Model</option>
-                  <option value="FR">Fully Remote</option>
-                  <option value="H1">Hybrid 1-day Onsite</option>
-                  <option value="H2">Hybrid 2-day Onsite</option>
-                  <option value="H3">Hybrid 3-day Onsite</option>
-                  <option value="H4">Hybrid 4-day Onsite</option>
-                  <option value="FO">Fully Onsite</option>
-                </select>
-                <div>&nbsp;</div>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} /><button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#336791', cursor: 'pointer' }}>Add a Job Requisition</button>
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} /><button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #1994AD', borderRadius: '5px', backgroundColor: '#1994AD', color: '#FFFFFF', cursor: 'pointer' }}>Add Job Requisition</button>
               </div>
             </form>
           </div>

@@ -40,11 +40,32 @@
     color: #336791
 }
 
+
+.Font-Verdana-Medium-T {
+    font-family: "Verdana";
+    font-size: medium;
+    color: #1994AD
+}
+
+.Font-Verdana-Small-T {
+    font-family: "Verdana";
+    font-size: small;
+    color: #1994AD
+}
+
+
 .Font-Verdana-Medium-LinkedIn {
     font-family: "Verdana";
     font-size: medium;
     color: #0A66C2
 }
+
+.Font-Verdana-Medium-Indeed {
+    font-family: "Verdana";
+    font-size: medium;
+    color: #003A9B
+}
+
 
 .Font-Verdana-Small_Compliment_Green {
     font-family: "Verdana";
