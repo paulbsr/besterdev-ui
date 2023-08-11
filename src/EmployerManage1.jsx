@@ -11,6 +11,7 @@ import EmployerCreate from './EmployerCreate';
 import { MdManageAccounts } from "react-icons/md";
 import { FaPeopleGroup } from "react-icons/fa6";
 import { toast } from 'react-toastify';
+import GradientLineRusty from './GradientLineRusty';
 
 
 export default function EmployerManage1(props) {
@@ -111,13 +112,13 @@ export default function EmployerManage1(props) {
     <table className="Table6">
       <thead>
         <tr>
-          <th style={{ width: '20px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'></th>
-          <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Company Name</th>
-          <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Contact First Name</th>
-          <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Contact Last Name</th>
-          <th style={{ width: '350px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Contact eMail</th>
-          <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Contact Number</th>
-          <th style={{ width: '650px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Comment</th>
+          <th style={{ width: '20px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'></th>
+          <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Company Name</th>
+          <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Contact First Name</th>
+          <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Contact Last Name</th>
+          <th style={{ width: '350px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Contact eMail</th>
+          <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Contact Number</th>
+          <th style={{ width: '650px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Comment</th>
         </tr>
       </thead>
 
@@ -158,7 +159,7 @@ export default function EmployerManage1(props) {
       </tbody>
     </table>
     <div>&nbsp;</div>
-    <GradientLine/>
+    <GradientLineRusty/>
     <div>&nbsp;</div>
   </div>
 </div>

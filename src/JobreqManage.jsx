@@ -14,6 +14,7 @@ import JobreqCreate from './JobreqCreate';
 import GradientLine from './GradientLine';
 import Footer from './Footer';
 import { toast } from 'react-toastify';
+import GradientLineRusty from './GradientLineRusty';
 dayjs.extend(utc);
 
 
@@ -123,19 +124,19 @@ export default function JobreqManage() {
             <table className="Table6">
               <thead>
                 <tr>
-                  <th style={{ width: '20px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'></th>
-                  <th style={{ width: '110px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>JR Number</th>
-                  <th style={{ width: '130px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Company</th>
-                  <th style={{ width: '250px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>JR Title</th>
-                  <th style={{ width: '120px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Location</th>
-                  <th style={{ width: '160px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Recruiter Name</th>
-                  <th style={{ width: '170px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Recruiter eMail</th>
-                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Recruiter Number</th>
-                  <th style={{ width: '400px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Comment</th>
-                  <th style={{ width: '50px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>WA</th>
-                  <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Create Date</th>
-                  <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Target Date</th>
-                  <th style={{ width: '60px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Status</th>
+                  <th style={{ width: '20px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'></th>
+                  <th style={{ width: '110px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>JR Number</th>
+                  <th style={{ width: '130px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Company</th>
+                  <th style={{ width: '250px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>JR Title</th>
+                  <th style={{ width: '120px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Location</th>
+                  <th style={{ width: '160px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Recruiter Name</th>
+                  <th style={{ width: '170px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Recruiter eMail</th>
+                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Recruiter Number</th>
+                  <th style={{ width: '400px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Comment</th>
+                  <th style={{ width: '50px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>WA</th>
+                  <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Create Date</th>
+                  <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Target Date</th>
+                  <th style={{ width: '60px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Status</th>
                   
                 </tr>
               </thead>
@@ -213,7 +214,7 @@ export default function JobreqManage() {
               </tbody>
             </table>
             <div>&nbsp;</div>
-            <GradientLine />
+            <GradientLineRusty />
             <div>&nbsp;</div>
             <div>&nbsp;</div>
             <div>&nbsp;</div>

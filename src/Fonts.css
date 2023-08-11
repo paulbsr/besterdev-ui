@@ -28,6 +28,12 @@
     font-size: large
 }
 
+.Font-Verdana-Small-Rusty {
+    font-family: "Verdana";
+    font-size: small;
+    color: #D5441C
+}
+
 .Font-Verdana-Small-Postgres {
     font-family: "Verdana";
     font-size: small;
@@ -196,10 +202,24 @@
     border: 1px solid transparent;
 }
 
-.asmshover:hover {
+/* .asmshover:hover {
     font-family: "Verdana";
     font-size: small;
     color: hsl(0, 0%, 0%);
+    background-color: #f7f4f3;
+} */
+
+.asmshover:hover {
+    font-family: "Verdana";
+    font-size: small;
+    color: #D5441C;
+    background-color: #f7f4f3;
+}
+
+.asmshover:rusty {
+    font-family: "Verdana";
+    font-size: small;
+    color: #D5441C;
     background-color: #f7f4f3;
 }
 
@@ -442,6 +462,14 @@
     height: 3px; 
     background: linear-gradient(to right, #336791, #f5f9fa);
   }
+ 
+
+  .gradient-line-rusty {
+    width: 100%;
+    height: 3px; 
+    background: linear-gradient(to right,  #D5441C, #f5f9fa);
+  }
+
 
   .gradient-line-thin {
     width: 100%;

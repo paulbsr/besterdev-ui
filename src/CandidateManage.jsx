@@ -16,6 +16,7 @@ import 'react-tooltip/dist/react-tooltip.css'
 import CandidateCreate from './CandidateCreate';
 import GradientLine from './GradientLine';
 import { toast } from 'react-toastify';
+import GradientLineRusty from './GradientLineRusty';
 dayjs.extend(utc);
 
 
@@ -150,18 +151,18 @@ export default function CandidateManage() {
             <table className="Table6">
               <thead>
                 <tr>
-                  <th style={{ width: '20px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'></th>
-                  <th style={{ width: '70px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Firstname</th>
-                  <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Lastname</th>
-                  <th style={{ width: '250px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>eMail</th>
-                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Mobile</th>
-                  <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Date Found</th>
-                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Job Title</th>
-                  <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Skilled</th>
-                  <th style={{ width: '300px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Comment</th>
-                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Employer</th>
-                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>Role</th>
-                  <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small_Compliment_Blue" align='center'>ReqNum</th>
+                  <th style={{ width: '20px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'></th>
+                  <th style={{ width: '70px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Firstname</th>
+                  <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Lastname</th>
+                  <th style={{ width: '250px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>eMail</th>
+                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Mobile</th>
+                  <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Date Found</th>
+                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Job Title</th>
+                  <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Primary Skill</th>
+                  <th style={{ width: '300px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Comment</th>
+                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Employer</th>
+                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Role</th>
+                  <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>ReqNum</th>
                 </tr>
               </thead>
 
@@ -220,7 +221,7 @@ export default function CandidateManage() {
               </tbody>
             </table>
             <div>&nbsp;</div>
-            <GradientLine />
+            <GradientLineRusty />
             <div>&nbsp;</div>
           </div>
         </div>
