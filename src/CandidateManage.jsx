@@ -134,9 +134,10 @@ export default function CandidateManage() {
 
 
     <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
+    
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-        &nbsp; &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Amend"><MdManageAccounts style={{ color: '#1994AD', fontSize: '45px', cursor: 'pointer' }} /></a>
+        &nbsp; &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Amend"><MdManageAccounts style={{ color: '#336791', fontSize: '45px', cursor: 'pointer' }} /></a>
         &nbsp;<b>Manage Candidates/Commodoties ({tabledata.length})</b>
       </div>
 
@@ -184,16 +185,16 @@ export default function CandidateManage() {
                             )
                             :
                             (
-                                <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#1994AD', outline: 'none' }} type='button' onClick={() => handleEdit(row)}><a data-tooltip-id="edit" data-tooltip-content="Edit"><FaPen style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>
+                                <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#336791', outline: 'none' }} type='button' onClick={() => handleEdit(row)}><a data-tooltip-id="edit" data-tooltip-content="Edit"><FaPen style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>
                             )
                           }
                         </>
                       </td>
 
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '60px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={firstname} onChange={(e) => setfirstname(e.target.value)} className='cr_edit_inputfield' />) : (row.firstname)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={lastname} onChange={(e) => setlastname(e.target.value)} className='cr_edit_inputfield' />) : (row.lastname)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '240px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={email} onChange={(e) => setemail(e.target.value)} className='cr_edit_inputfield_disc' />) : (<a href={'mailto: ${row.email}'} target="_blank">{row.email}</a>)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '120px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={mobile} onChange={(e) => setmobile(e.target.value)} className='cr_edit_inputfield' />) : (row.mobile)}</td> 
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '60px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={firstname} onChange={(e) => setfirstname(e.target.value)} className='cr_edit_inputfield' />) : (row.firstname)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={lastname} onChange={(e) => setlastname(e.target.value)} className='cr_edit_inputfield' />) : (row.lastname)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '240px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={email} onChange={(e) => setemail(e.target.value)} className='cr_edit_inputfield_disc' />) : (<a href={'mailto: ${row.email}'} target="_blank">{row.email}</a>)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '120px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={mobile} onChange={(e) => setmobile(e.target.value)} className='cr_edit_inputfield' />) : (row.mobile)}</td> 
                       <td className="asmshover Table6 td">{row.id === editing ? (<LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
                         <DatePicker
                           id="cr_date"
@@ -206,12 +207,12 @@ export default function CandidateManage() {
                         />
                       </LocalizationProvider>) : new Date(row.dob).toLocaleDateString("en-CA")}
                       </td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '140px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={jobdesc} onChange={(e) => setjobdesc(e.target.value)} className='cr_edit_inputfield' />) : (row.jobdesc)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '190px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={skill1} onChange={(e) => setskill1(e.target.value)} className='cr_edit_inputfield' />) : (row.skill1)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '290px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={comment} onChange={(e) => setcomment(e.target.value)} className='cr_edit_inputfield' />) : (row.comment)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '140px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={employer} onChange={(e) => setEmployer(e.target.value)} className='cr_edit_inputfield' />) : (row.employer)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '140px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={role} onChange={(e) => setRole(e.target.value)} className='cr_edit_inputfield' />) : (row.role)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #1994AD', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={reqnum} onChange={(e) => setReqnum(e.target.value)} className='cr_edit_inputfield' />) : (row.reqnum)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '140px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={jobdesc} onChange={(e) => setjobdesc(e.target.value)} className='cr_edit_inputfield' />) : (row.jobdesc)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '190px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={skill1} onChange={(e) => setskill1(e.target.value)} className='cr_edit_inputfield' />) : (row.skill1)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '290px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={comment} onChange={(e) => setcomment(e.target.value)} className='cr_edit_inputfield' />) : (row.comment)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '140px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={employer} onChange={(e) => setEmployer(e.target.value)} className='cr_edit_inputfield' />) : (row.employer)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '140px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={role} onChange={(e) => setRole(e.target.value)} className='cr_edit_inputfield' />) : (row.role)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={reqnum} onChange={(e) => setReqnum(e.target.value)} className='cr_edit_inputfield' />) : (row.reqnum)}</td>
                     </tr>
                   )
                 })

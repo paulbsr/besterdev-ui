@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './graphix/besterdev_logo_birdie11.png';
+import logo from './graphix/logo_transparent1.png';
 
 const BannerWhite = () => {
   return (

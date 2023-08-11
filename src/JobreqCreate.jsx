@@ -107,10 +107,10 @@ export default function JobreqCreate(props) {
 
   return (
 
-    <div className='Font-Verdana-Small-T'>&nbsp;
+    <div className='Font-Verdana-Small-Postgres'>&nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-        <a data-tooltip-id="insert" data-tooltip-content="Add"><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#1994AD', fontSize: '25px', cursor: 'pointer' }} /></a>
+        <a data-tooltip-id="insert" data-tooltip-content="Add"><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
         <b>Add a Job Requisition/JR</b>
       </div>
 
@@ -201,8 +201,10 @@ export default function JobreqCreate(props) {
                     dateFormat="YYYY.M.D"
                     sx={{ height: '27.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.3px', width: '205px' } }} />
                 </LocalizationProvider>
-                <div>&nbsp;</div>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} /><button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #1994AD', borderRadius: '5px', backgroundColor: '#1994AD', color: '#FFFFFF', cursor: 'pointer' }}>Add Job Requisition</button>
+                {/* <div>&nbsp;</div> */}
+                <img alt="1" src={spacer} />
+                {/* <img alt="1" src={spacer} /> */}
+                <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Add Job Requisition</button>
               </div>
             </form>
           </div>

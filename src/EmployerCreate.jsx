@@ -66,10 +66,10 @@ export default function EmployerCreate(props) {
 
   return (
 
-    <div className='Font-Verdana-Small-T'>&nbsp;
+    <div className='Font-Verdana-Small-Postgres'>&nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-        <a data-tooltip-id="insert" data-tooltip-content="Add"><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#1994AD', fontSize: '25px', cursor: 'pointer' }} /></a>
+        <a data-tooltip-id="insert" data-tooltip-content="Add"><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
         <b>Add an Employer/Customer</b>
       </div>
 
@@ -96,7 +96,7 @@ export default function EmployerCreate(props) {
 
                 <div>&nbsp;</div>
 
-                <div><img alt="1" src={spacer} />&nbsp; &nbsp; &nbsp;<button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #1994AD', borderRadius: '5px', backgroundColor: '#1994AD', color: '#FFFFFF', cursor: 'pointer' }}>Add Employer/Customer</button></div>
+                <div><img alt="1" src={spacer} />&nbsp; &nbsp; &nbsp;<button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Add Employer/Customer</button></div>
               </div>
             </form>
           </div>
