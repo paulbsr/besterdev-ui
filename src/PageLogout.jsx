@@ -1,0 +1,1 @@
+const logout = () => {return firebase.auth().signOut();}

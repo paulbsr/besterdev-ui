@@ -53,6 +53,7 @@ const App = () => {
             <Route path='/search' element={<PageSearch />} />
             <Route path='/screen' element={<PageSearch />} />
             <Route path='/manage' element={<PageManage />} />
+            {/* <Route path='/logout' element={<PageLogout />} /> */}
             {/* <Route path='/linkedin' element={<CandidateSearchLinkedin />} /> */}
           </Route>
           <Route path='/login' element={<PageLogin />} />
