@@ -11,9 +11,7 @@ import spacer2 from './graphix/besterdev_spacer_white_half.png'
 import { GiHummingbird } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
-import { BsSignpostFill } from "react-icons/bs";
 import { toast } from 'react-toastify';
-
 dayjs.extend(utc);
 
 
@@ -201,9 +199,7 @@ export default function JobreqCreate(props) {
                     dateFormat="YYYY.M.D"
                     sx={{ height: '27.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.3px', width: '205px' } }} />
                 </LocalizationProvider>
-                {/* <div>&nbsp;</div> */}
                 <img alt="1" src={spacer} />
-                {/* <img alt="1" src={spacer} /> */}
                 <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Add Job Requisition</button>
               </div>
             </form>

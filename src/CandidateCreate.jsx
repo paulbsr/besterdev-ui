@@ -101,10 +101,10 @@ export default function CandidateCreate(props) {
             <form onSubmit={handleSubmit}>
               <div><img alt="1" src={spacer2} /></div>
               <div className='Font-Verdana-Small-Postgres'>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Firstname:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '300px' }} placeholder="Required" type="text" value={firstname} onChange={(event) => setfirstname(event.target.value)} required />
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Lastname:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '300px' }} placeholder="Required" type="text" value={lastname} onChange={(event) => setlastname(event.target.value)} required />
-                <img alt="1" src={spacer} />eMail:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '295px' }} placeholder="Required" type="text" value={email} onChange={(event) => setemail(event.target.value)} required />
-                <img alt="1" src={spacer} />Mobile:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '320px' }} placeholder="Required" type="text" value={mobile} onChange={(event) => setmobile(event.target.value)} required />
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Firstname:&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '288px' }} placeholder="Required" type="text" value={firstname} onChange={(event) => setfirstname(event.target.value)} required />
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Lastname:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '303px' }} placeholder="Required" type="text" value={lastname} onChange={(event) => setlastname(event.target.value)} required />
+                <img alt="1" src={spacer} />eMail:&nbsp;&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '298px' }} placeholder="Required" type="text" value={email} onChange={(event) => setemail(event.target.value)} required />
+                <img alt="1" src={spacer} />Mobile:<img alt="1" src={spacer} /><input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '320px' }} placeholder="Required" type="text" value={mobile} onChange={(event) => setmobile(event.target.value)} required />
                 </div>
                 <div>&nbsp;</div>
                 <div>
@@ -149,8 +149,8 @@ export default function CandidateCreate(props) {
                   ))}
                 </select>
                   <img alt="1" src={spacer} /><img alt="1" src={spacer} />Job Title:&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '305px' }} placeholder="Required" type="text" value={jobdesc} onChange={(event) => setJobdesc(event.target.value)} required />
-                  <img alt="1" src={spacer} />Skill:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '300px' }} placeholder="Required" type="text" value={skill1} onChange={(event) => setSkill1(event.target.value)} required />
-                  <img alt="1" src={spacer} />Comment:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '300px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)} />
+                  <img alt="1" src={spacer} />Skill:&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '300px' }} placeholder="Required" type="text" value={skill1} onChange={(event) => setSkill1(event.target.value)} required />
+                  <img alt="1" src={spacer} />Comment:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '320px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)} />
                   <div>&nbsp;</div>
                 <img alt="1" src={spacer} />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Add Candidate</button>
                 <div>&nbsp;</div>

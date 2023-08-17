@@ -8,6 +8,7 @@ import './index.css';
 import PageSearch from './PageSearch';
 import PageManage from './PageManage';
 import PageLogin from './PageLogin';
+import PageLogout from './PageLogout';
 import firebase from 'firebase/compat/app';
 import 'react-tooltip/dist/react-tooltip.css';
 import 'firebase/firestore';
@@ -53,7 +54,7 @@ const App = () => {
             <Route path='/search' element={<PageSearch />} />
             <Route path='/screen' element={<PageSearch />} />
             <Route path='/manage' element={<PageManage />} />
-            {/* <Route path='/logout' element={<PageLogout />} /> */}
+            <Route path='/logout' element={<PageLogout />} />
             {/* <Route path='/linkedin' element={<CandidateSearchLinkedin />} /> */}
           </Route>
           <Route path='/login' element={<PageLogin />} />
