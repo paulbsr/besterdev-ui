@@ -213,19 +213,21 @@ export default function CandidateAPI() {
                             </option>
                           ))}
                         </select>
-                        &nbsp; &nbsp; Comment:&nbsp;<input className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '480px' }} placeholder="Optional thoughts?" type="text" value={comment} onChange={(event) => setComment(event.target.value)} required />
+                        &nbsp; &nbsp; Comment:&nbsp;<input className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '530px' }} placeholder="Optional thoughts?" type="text" value={comment} onChange={(event) => setComment(event.target.value)} required />
                         {/* <img alt="1" src={spacer} /> */}
                         {/* <img alt="1" src={spacer} /> */}
                         <img alt="1" src={spacer} />&nbsp; &nbsp;
-                        <button className="Font-Verdana-Medium-Postgres" type="submit" style={{ marginLeft: '10px', height: '37.5px', border: '2px solid #336791', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#169247', cursor: 'pointer' }} onClick={() => setFirstname(inbound.name.first) & setLastname(inbound.name.last) & setMobile(inbound.phone) & setEmail(inbound.email) & setCountry(inbound.location.country) & setJobdesc(inbound.location.coordinates.latitude) & setSkill1(inbound.location.coordinates.longitude)}><b>Add Candidate</b></button>
+                        <button className="Font-Verdana-Medium-Postgres" type="submit" style={{ marginLeft: '10px', height: '37.5px', border: '2px solid #169247', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#169247', cursor: 'pointer' }} onClick={() => setFirstname(inbound.name.first) & setLastname(inbound.name.last) & setMobile(inbound.phone) & setEmail(inbound.email) & setCountry(inbound.location.country) & setJobdesc(inbound.location.coordinates.latitude) & setSkill1(inbound.location.coordinates.longitude)}><b>Add Candidate</b></button>
                         &nbsp;&nbsp;&nbsp;
+                        
                         <button
                           className="Font-Verdana-Medium-Postgres"
                           type="button" // Change the type to "button" to prevent form submission
-                          style={{ marginLeft: '10px', height: '37.5px', border: '2px solid #336791', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#D5441C', cursor: 'pointer' }}
+                          style={{ marginLeft: '10px', height: '37.5px', border: '2px solid #D5441C', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#D5441C', cursor: 'pointer' }}
                           onClick={onSkipCandidate}>
                           <b>Skip Candidate</b>
                         </button>
+                        
                         &nbsp; &nbsp; Candidate Count: {candidatecount.length}
                         <div>&nbsp;</div>
                         <div>&nbsp;</div>
@@ -263,7 +265,7 @@ export default function CandidateAPI() {
             </select>
             <img alt="1" src={spacer} />Job Title:&nbsp;<input className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '300px' }} placeholder="Software Engineering Manager" type="text" value={linkedinjobdesc} onChange={(event) => setLinkedinJobdesc(event.target.value)} required />
             <img alt="1" src={spacer} />Skill:&nbsp;<input className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '300px' }} placeholder="DevOps" type="text" value={linkedinskill} onChange={(event) => setLinkedinSkill(event.target.value)} required />
-            <img alt="1" src={spacer} />
+            <img alt="1" src={spacer} />&nbsp; &nbsp;
 
             <button
               className="Font-Verdana-Medium-Postgres"

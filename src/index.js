@@ -19,8 +19,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { UserProvider } from './UserContext';
 import { useUserContext } from './UserContext';
+import ReactGA from 'react-ga';
 // import CandidateSearchLinkedin from './CandidateSearchLinkedin';
 
+
+const TRACKING_ID = "G-FCGGY1NE36"; // YOUR_OWN_TRACKING_ID
+ReactGA.initialize(TRACKING_ID);
 
 const PrivateRoutes = () => {
   const { loggedInUserEmail } = useUserContext();
