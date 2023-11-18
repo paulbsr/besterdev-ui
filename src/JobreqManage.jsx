@@ -111,7 +111,7 @@ export default function JobreqManage() {
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
         &nbsp; &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Amend"><BsSignpostFill style={{ color: '#336791', fontSize: '42px', cursor: 'pointer' }} /></a>
-        &nbsp;<b>Manage Job Postings/JRs ({jobreqdata.length})</b>
+        &nbsp;<b>Manage Job Postings / JRs ({jobreqdata.length})</b>
       </div>
 
       {isExpanded && (
@@ -216,10 +216,10 @@ export default function JobreqManage() {
             <div>&nbsp;</div>
             <GradientLineRusty />
             <div>&nbsp;</div>
+            {/* <div>&nbsp;</div>
             <div>&nbsp;</div>
             <div>&nbsp;</div>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
+            <div>&nbsp;</div> */}
             </div>
         </div>)}
     </div>
