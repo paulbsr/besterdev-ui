@@ -20,6 +20,7 @@ import { toast } from 'react-toastify';
 import GradientLineRusty from './GradientLineRusty';
 import HowtoCreate from './HowtoCreate';
 import HowtoStepCreate from './HowtoStepCreate';
+// import TaskRecordAccordion from './HowtoStepNumberAccordion';
 dayjs.extend(utc);
 
 
@@ -112,13 +113,17 @@ export default function HowtoManage() {
         &nbsp;<b>Manage Howtos ({tabledata.length})</b>
       </div>
 
+      <HowtoCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
+
+      <HowtoStepCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
+
       {isExpanded && (
         <div>
           <div>
 
-          <HowtoCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
 
-          <HowtoStepCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
+
+          {/* <TaskRecordAccordion /> */}
 
             <table className="Table6">
               <thead>

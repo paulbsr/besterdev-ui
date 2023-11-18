@@ -88,7 +88,7 @@ export default function HowtoCreate(props) {
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
         <a data-tooltip-id="insert" data-tooltip-content="Create a Howto"><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
-        <b>Create a Howto</b>
+        <b>Create a New Howto Document</b>
         <div>&nbsp;</div>
       </div>
 
@@ -98,9 +98,9 @@ export default function HowtoCreate(props) {
             <form onSubmit={handleSubmit}>
               <div><img alt="1" src={spacer2} /></div>
               <div className='Font-Verdana-Small-Postgres'>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Howto Name:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '288px' }} placeholder="Required" type="text" value={howto_name} onChange={(event) => setHowto_name(event.target.value)} required />
-                <img alt="1" src={spacer} />Howto Description:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '650px' }} placeholder="Required" type="text" value={howto_desc} onChange={(event) => setHowto_desc(event.target.value)} required />
-                <img alt="1" src={spacer} />Author:&nbsp; &nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} type="text" value={howto_author} onChange={(event) => setHowto_author(event.target.value)} />
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Howto Name:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '600px' }} placeholder="Required" type="text" value={howto_name} onChange={(event) => setHowto_name(event.target.value)} required />
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Howto Description:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '650px' }} placeholder="Required" type="text" value={howto_desc} onChange={(event) => setHowto_desc(event.target.value)} required />
+                {/* <img alt="1" src={spacer} />Author:&nbsp; &nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} type="text" value={howto_author} onChange={(event) => setHowto_author(event.target.value)} /> */}
                 <img alt="1" src={spacer} /><button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Create Howto</button>
                 <div>&nbsp;</div>
               </div>

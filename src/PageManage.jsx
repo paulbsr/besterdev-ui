@@ -9,10 +9,7 @@ import JobreqManage from './JobreqManage';
 import Footer from './Footer';
 import { Flip, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import HowtoManage from './HowtoManage';
 import WebsiteManage from './WebsiteManage';
-
-
 
 export default function PageManage() {
   return (
@@ -26,7 +23,7 @@ export default function PageManage() {
       <CandidateManage />
       <EmployerManage1 />
       <JobreqManage />
-      <HowtoManage />
+      {/* <HowtoManage /> */}
       <WebsiteManage />
       <Footer/>
       <ToastContainer

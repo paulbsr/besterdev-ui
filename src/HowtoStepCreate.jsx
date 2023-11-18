@@ -18,17 +18,11 @@ export default function HowtoStepCreate(props) {
   const formattedDate = today.toISOString().split('T')[0]; // Convert the date to the desired format (YYYY-MM-DD)
   const alertCtx = useContext(AlertContext);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
-  const [firstname, setfirstname] = useState('');
-  const [lastname, setlastname] = useState('');
-  const [email, setemail] = useState('');
-  const [mobile, setmobile] = useState('');
-  const [jobdesc, setJobdesc] = useState('');
-  const [skill1, setSkill1] = useState('');
-  const [comment, setComment] = useState('');
-  const [role, setRole] = useState(null);
-  const [reqnum, setReqnum] = useState(null);
-  const [employer, setEmployer] = useState(null);
-  const [jobreqs, setJobreqs] = useState(null);
+  const [step_parentid, setStep_parentid] = useState('');
+  const [step_number, setStep_number] = useState('');
+  const [step_name, setStep_name] = useState('');
+  const [step_url, setStep_url] = useState('');
+  const [step_obj, setStep_obj] = useState('');
   const [cr_date, setcr_date] = useState(formattedDate);
   const [cr_datehold, setCr_DateHold] = useState(null)
   const [isExpanded, setExpanded] = useState(false);
@@ -42,24 +36,18 @@ export default function HowtoStepCreate(props) {
     
     {
       var newRecord = {
-        'firstname': firstname,
-        'dob': cr_date,
-        'lastname': lastname,
-        'email': email,
-        'mobile': mobile,
-        'jobdesc': jobdesc,
-        'skill1': skill1,
-        'comment': comment,
-        'role': role,
-        'reqnum': reqnum,
-        'employer': employer
+        'step_parentid': step_parentid,
+        'step_number': step_number,
+        'step_name': step_name,
+        'step_url': step_url,
+        'step_obj': step_obj,
       }
 
       try {
-        const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howto/create`, newRecord);
+        const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtostep/create`, newRecord);
         if (response.status === 200) { 
           props.setCheckForRecords(!props.checkForRecords); 
-          toast.success(`${firstname} ${lastname} has been memorialized.`)
+          toast.success(`${step_name} has been memorialized.`)
         }
         else { 
           toast.error('Bad')
@@ -75,14 +63,14 @@ export default function HowtoStepCreate(props) {
   }
 
 
-  useEffect(() => {
-    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs')
-      .then((response) => {const sortedjobreqs = response.data.sort((b, a) => b.company.localeCompare(a.company));
-        setJobreqs(sortedjobreqs);
-      })
-      // .catch((e) => console.error(e));
-  },
-    []);
+  // useEffect(() => {
+  //   axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs')
+  //     .then((response) => {const sortedjobreqs = response.data.sort((b, a) => b.company.localeCompare(a.company));
+  //       setJobreqs(sortedjobreqs);
+  //     })
+  //     // .catch((e) => console.error(e));
+  // },
+  //   []);
 
 
   return (
@@ -91,7 +79,7 @@ export default function HowtoStepCreate(props) {
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
         <a data-tooltip-id="insert" data-tooltip-content="Create a Step"><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
-        <b>Create a Step:</b>
+        <b>Create a Step</b>
         <div>&nbsp;</div>
       </div>
 
@@ -101,18 +89,18 @@ export default function HowtoStepCreate(props) {
             <form onSubmit={handleSubmit}>
               <div><img alt="1" src={spacer2} /></div>
               <div className='Font-Verdana-Small-Postgres'>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} /><u>Step Number</u>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '25.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '30px' }} placeholder="Required" type="text" value={firstname} onChange={(event) => setfirstname(event.target.value)} required />
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} /><u>Step Number</u>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '25.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '30px' }} placeholder="Required" type="text" value={step_number} onChange={(event) => setStep_number(event.target.value)} required />
                 
-                <img alt="1" src={spacer} /><i>Step Name:</i>&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '690px' }} placeholder="Required" type="text" value={lastname} onChange={(event) => setlastname(event.target.value)} required />
+                <img alt="1" src={spacer} /><i>Step Name:</i>&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '690px' }} placeholder="Required" type="text" value={step_name} onChange={(event) => setStep_name(event.target.value)} required />
                 <div>&nbsp;</div>
                 
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Supporting URL:&nbsp;&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '850px' }} placeholder="Optional" type="text" value={email} onChange={(event) => setemail(event.target.value)} />
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Supporting URL:&nbsp;&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '850px' }} placeholder="Optional" type="text" value={step_url} onChange={(event) => setStep_url(event.target.value)} />
                 <div>&nbsp;</div>
                 
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Step Objective:&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '850px' }} placeholder="Required" type="text" value={email} onChange={(event) => setemail(event.target.value)} required />
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Step Objective:&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '850px' }} placeholder="Required" type="text" value={step_obj} onChange={(event) => setStep_obj(event.target.value)} required />
                 <div>&nbsp;</div>
                 
-                <img alt="1" src={spacer} /><button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Add Howto</button>
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} /><button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Add a Step</button>
                 <div>&nbsp;</div>
               </div>
             </form>
