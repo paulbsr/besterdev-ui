@@ -32,60 +32,35 @@ export default function HowtoManage() {
   const [tabledata, setTabledata] = useState([]);
   const [error, setError] = useState(null);
   const [editing, setEditing] = useState("")
-  const [firstname, setfirstname] = useState(null)
-  const [lastname, setlastname] = useState(null)
-  const [email, setemail] = useState(null)
-  const [mobile, setmobile] = useState(null)
-  const [dob, setdob] = useState(null)
-  const [jobdesc, setjobdesc] = useState(null)
-  const [skill1, setskill1] = useState(null)
-  const [comment, setcomment] = useState(null)
-  const [status, setstatus] = useState(null)
-  const [role, setRole] = useState(null);
-  const [reqnum, setReqnum] = useState(null);
-  const [employer, setEmployer] = useState(null);
+  const [howto_name, setHowto_name] = useState(null)
+  const [howto_desc, setHowto_desc] = useState(null)
+  const [howto_author, setHowto_author] = useState(null)
+  const [howto_date, setHowto_date] = useState(null)
   const [cr_datehold, setCr_DateHold] = useState(null)
   const [crDate, setCrDate] = useState(null)
   const alertCtx = useContext(AlertContext);
    
   useEffect(() => {
-    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates')
-      .then((response) => {const sortedTabledata = response.data.sort((b, a) => b.firstname.localeCompare(a.firstname)); 
+    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtos')
+      .then((response) => {const sortedTabledata = response.data.sort((b, a) => b.howto_name.localeCompare(a.howto_name)); 
         setTabledata(sortedTabledata);}) //sort firstname alphabetically
       .catch((e)=> console.error(e));}, 
       [checkForRecords]);
 
         const handleEdit = (row) => {
-          setEditing(row.id)
-          setfirstname(row.firstname)
-          setlastname(row.lastname)
-          setemail(row.email)
-          setmobile(row.mobile)
-          setdob(row.dob)
-          setjobdesc(row.jobdesc)
-          setskill1(row.skill1)
-          setcomment(row.comment)
-          setstatus(row.status)
-          setRole(row.role)
-          setReqnum(row.reqnum)
-          setEmployer(row.employer)
-
+          setEditing(row.howto_id)
+          setHowto_name(row.howto_name)
+          setHowto_desc(row.howto_desc)
+          setHowto_author(row.howto_author)
+          setHowto_date(row.howto_date)
         };
 
         const onEditCancel = () => {
           setEditing("");
-          setfirstname(null)
-          setlastname(null)
-          setemail(null)
-          setmobile(null)
-          setdob(null)
-          setjobdesc(null)
-          setskill1(null)
-          setcomment(null)
-          setstatus(null)
-          setRole(null)
-          setReqnum(null)
-          setEmployer(null)
+          setHowto_name(null)
+          setHowto_desc(null)
+          setHowto_author(null)
+          setHowto_date(null)
         };
 
         const handleDateChange = (newVal) => {
@@ -96,26 +71,18 @@ export default function HowtoManage() {
         const onEditSave = async() => {
         { 
             
-        const candidatePUT = {
-          "firstname": firstname,
-          "lastname": lastname,
-          "email": email,
-          "mobile": mobile,
-          "dob": crDate,
-          "jobdesc": jobdesc,
-          "skill1":skill1,
-          "comment":comment,
-          "status":status,
-          "role": role,
-          "reqnum": reqnum,
-          "employer": employer
+        const howtoPUT = {
+          "howto_name": howto_name,
+          "howto_desc": howto_desc,
+          "howto_author": howto_author,
+          "howto_date": howto_date,
         } 
            
                             
-           await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/update/${editing}`, candidatePUT)
+           await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtos/update/${editing}`, howtoPUT)
            .then((response) => {
             setCheckForRecords(!checkForRecords); 
-            toast.success(`${firstname} ${lastname} has been updated.`)
+            toast.success(`${howto_name} updated.`)
           }
           )
            onEditCancel();
@@ -123,10 +90,10 @@ export default function HowtoManage() {
        }
 
           const onEditDelete = (row) => {
-            axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/delete/${row.id}`)
+            axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtos/delete/${row.howto_id}`)
             .then((response) => {
               setCheckForRecords(!checkForRecords); 
-              toast.success(`${firstname} ${lastname} has been purged.`)
+              toast.success(`${howto_name} purged.`)
             }
             )
        };       
@@ -157,31 +124,24 @@ export default function HowtoManage() {
               <thead>
                 <tr>
                   <th style={{ width: '20px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'></th>
-                  <th style={{ width: '70px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Key</th>
                   <th style={{ width: '450px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Howto name</th>
-                  <th style={{ width: '850px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Description</th>
-                  <th style={{ width: '250px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Created By</th>
+                  <th style={{ width: '900px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Description</th>
+                  <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Created By</th>
                   <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Last Touched</th>
-                  {/* <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Job Title</th> */}
-                  {/* <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Primary Skill</th> */}
-                  {/* <th style={{ width: '300px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Comment</th> */}
-                  {/* <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Employer</th> */}
-                  {/* <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Role</th> */}
-                  {/* <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>ReqNum</th> */}
                 </tr>
               </thead>
 
               <tbody>
                 {tabledata.map((row) => {
                   return (
-                    <tr key={row.id}>
+                    <tr key={row.howto_id}>
                       <td className="Table6 td ">
                         <>
                           <Tooltip id="edit" />
                           <Tooltip id="commit" />
                           <Tooltip id="revert" />
                           <Tooltip id="purge" />
-                          {row.id === editing ?
+                          {row.howto_id === editing ?
                             (
                               <>
                                 <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#169247', outline: 'none' }} type='button' onClick={() => onEditSave()}><a data-tooltip-id="commit" data-tooltip-content="Commit"><FaCheck style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>&nbsp;
@@ -197,28 +157,10 @@ export default function HowtoManage() {
                         </>
                       </td>
 
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '60px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={firstname} onChange={(e) => setfirstname(e.target.value)} className='cr_edit_inputfield' />) : (row.firstname)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={lastname} onChange={(e) => setlastname(e.target.value)} className='cr_edit_inputfield' />) : (row.lastname)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '240px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={email} onChange={(e) => setemail(e.target.value)} className='cr_edit_inputfield_disc' />) : (<a href={'mailto: ${row.email}'} target="_blank">{row.email}</a>)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '120px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={mobile} onChange={(e) => setmobile(e.target.value)} className='cr_edit_inputfield' />) : (row.mobile)}</td> 
-                      <td className="asmshover Table6 td">{row.id === editing ? (<LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
-                        <DatePicker
-                          id="cr_date"
-                          format="YYYY.M.D"
-                          value={crDate}
-                          selected={dob}
-                          onChange={handleDateChange}
-                          dateFormat="YYYY.M.D"
-                          sx={{ height: '22.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.5px', width: '90px' }, '& .MuiSvgIcon-root': { height: '20px' } }}
-                        />
-                      </LocalizationProvider>) : new Date(row.dob).toLocaleDateString("en-CA")}
-                      </td>
-                      {/* <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '140px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={jobdesc} onChange={(e) => setjobdesc(e.target.value)} className='cr_edit_inputfield' />) : (row.jobdesc)}</td> */}
-                      {/* <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '190px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={skill1} onChange={(e) => setskill1(e.target.value)} className='cr_edit_inputfield' />) : (row.skill1)}</td> */}
-                      {/* <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '290px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={comment} onChange={(e) => setcomment(e.target.value)} className='cr_edit_inputfield' />) : (row.comment)}</td> */}
-                      {/* <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '140px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={employer} onChange={(e) => setEmployer(e.target.value)} className='cr_edit_inputfield' />) : (row.employer)}</td> */}
-                      {/* <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '140px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={role} onChange={(e) => setRole(e.target.value)} className='cr_edit_inputfield' />) : (row.role)}</td> */}
-                      {/* <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={reqnum} onChange={(e) => setReqnum(e.target.value)} className='cr_edit_inputfield' />) : (row.reqnum)}</td> */}
+                      <td className="asmshover Table6 td">{row.howto_id === editing ? (<input style={{ height: '22.5px', width: '440px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={howto_name} onChange={(e) => setHowto_name(e.target.value)} className='cr_edit_inputfield' />) : (row.howto_name)}</td>
+                      <td className="asmshover Table6 td">{row.howto_id === editing ? (<input style={{ height: '22.5px', width: '880px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={howto_desc} onChange={(e) => setHowto_desc(e.target.value)} className='cr_edit_inputfield' />) : (row.howto_desc)}</td>
+                      <td className="asmshover Table6 td">{row.howto_id === editing ? (<input style={{ height: '22.5px', width: '190px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={howto_author} onChange={(e) => setHowto_author(e.target.value)} className='cr_edit_inputfield_disc' />) : (row.howto_author)}</td>
+                      <td className="asmshover Table6 td">{row.howto_id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={howto_date} onChange={(e) => setHowto_date(e.target.value)} className='cr_edit_inputfield' />) : (row.howto_date)}</td> 
                     </tr>
                   )
                 })

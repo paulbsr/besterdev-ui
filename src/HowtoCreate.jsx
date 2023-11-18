@@ -21,6 +21,10 @@ export default function HowtoCreate(props) {
   const [howtoname, setHowtoname] = useState('');
   const [howtodescription, setHowtodescription] = useState('');
   const [author, setAuthor] = useState('');
+  const [howto_name, setHowto_name] = useState(null)
+  const [howto_desc, setHowto_desc] = useState(null)
+  const [howto_author, setHowto_author] = useState(null)
+  const [howto_date, setHowto_date] = useState(null)
   const [mobile, setmobile] = useState('');
   const [jobdesc, setJobdesc] = useState('');
   const [skill1, setSkill1] = useState('');
@@ -42,24 +46,17 @@ export default function HowtoCreate(props) {
     
     {
       var newRecord = {
-        'howtoname': howtoname,
-        'dob': cr_date,
-        'howtodescription': howtodescription,
-        'author': author,
-        'mobile': mobile,
-        'jobdesc': jobdesc,
-        'skill1': skill1,
-        'comment': comment,
-        'role': role,
-        'reqnum': reqnum,
-        'employer': employer
+        'howto_name': howto_name,
+        'howto_desc': howto_desc,
+        'howto_author': howto_author,
+        'howto_date': howto_date,
       }
 
       try {
-        const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howto/create`, newRecord);
+        const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtos/create`, newRecord);
         if (response.status === 200) { 
           props.setCheckForRecords(!props.checkForRecords); 
-          toast.success(`${howtoname} ${howtodescription} has been memorialized.`)
+          toast.success(`${howto_name} memorialized.`)
         }
         else { 
           toast.error('Bad')
@@ -101,9 +98,9 @@ export default function HowtoCreate(props) {
             <form onSubmit={handleSubmit}>
               <div><img alt="1" src={spacer2} /></div>
               <div className='Font-Verdana-Small-Postgres'>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Howto Name:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '288px' }} placeholder="Required" type="text" value={howtoname} onChange={(event) => setHowtoname(event.target.value)} required />
-                <img alt="1" src={spacer} />Howto Description:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '650px' }} placeholder="Required" type="text" value={howtodescription} onChange={(event) => setHowtodescription(event.target.value)} required />
-                <img alt="1" src={spacer} />Author:&nbsp; &nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} type="text" value={author} onChange={(event) => setAuthor(event.target.value)} />
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Howto Name:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '288px' }} placeholder="Required" type="text" value={howto_name} onChange={(event) => setHowto_name(event.target.value)} required />
+                <img alt="1" src={spacer} />Howto Description:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '650px' }} placeholder="Required" type="text" value={howto_desc} onChange={(event) => setHowto_desc(event.target.value)} required />
+                <img alt="1" src={spacer} />Author:&nbsp; &nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} type="text" value={howto_author} onChange={(event) => setHowto_author(event.target.value)} />
                 <img alt="1" src={spacer} /><button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Create Howto</button>
                 <div>&nbsp;</div>
               </div>
