@@ -1,18 +1,16 @@
 import { useState, useEffect, useContext } from 'react'
 import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
-import './Fonts.css';
-import axios from 'axios'
-import 'react-dropdown/style.css';
-import {FaPen, FaCheck, FaRegTrashAlt} from 'react-icons/fa';
-import { TbWorldWww } from "react-icons/tb";
-import {PiArrowCounterClockwiseBold} from 'react-icons/pi';
 import 'react-tooltip/dist/react-tooltip.css'
+import './Fonts.css';
+import 'react-dropdown/style.css';
+import axios from 'axios'
+import { FaPen, FaCheck, FaRegTrashAlt } from 'react-icons/fa';
+import { TbWorldWww } from "react-icons/tb";
+import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
 import { toast } from 'react-toastify';
 import GradientLineRusty from './GradientLineRusty';
 import WebsiteCreate from './WebsiteCreate';
-import WebResourceChannelCreate from './WebResourceChannelCreate';
-
 
 export default function WebsiteManage() {
   const [isExpanded, setExpanded] = useState(false);
@@ -67,7 +65,7 @@ export default function WebsiteManage() {
            await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/update/${editing}`, websitePUT)
            .then((response) => {
             setCheckForRecords(!checkForRecords); 
-            toast.success(`${website_name} has been updated.`)
+            toast.success(`${website_name} updated.`)
           }
           )
            onEditCancel();
@@ -141,9 +139,9 @@ export default function WebsiteManage() {
                         </>
                       </td>
 
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '290px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_name} onChange={(e) => setWebsite_name(e.target.value)} className='cr_edit_inputfield' />) : (<a href={row.website_url} target="_blank">{row.website_name}</a>)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '1200px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_desc} onChange={(e) => setWebsite_desc(e.target.value)} className='cr_edit_inputfield' />) : (row.website_desc)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '190px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_owner} onChange={(e) => setWebsite_owner(e.target.value)} className='cr_edit_inputfield' />) : (row.website_owner)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<textarea style={{ height: '62.5px', width: '290px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_name} onChange={(e) => setWebsite_name(e.target.value)} className='cr_edit_inputfield' />) : (<a href={row.website_url} target="_blank">{row.website_name}</a>)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<textarea style={{ height: '62.5px', width: '1200px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_desc} onChange={(e) => setWebsite_desc(e.target.value)} className='cr_edit_inputfield' />) : (row.website_desc)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<textarea style={{ height: '62.5px', width: '190px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_owner} onChange={(e) => setWebsite_owner(e.target.value)} className='cr_edit_inputfield' />) : (row.website_owner)}</td>
                     </tr>
                   )
                 })
