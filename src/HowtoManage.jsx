@@ -20,6 +20,7 @@ import { toast } from 'react-toastify';
 import GradientLineRusty from './GradientLineRusty';
 import HowtoCreate from './HowtoCreate';
 import HowtoStepCreate from './HowtoStepCreate';
+import HowtoStepRecordCreate from './HowtoStepRecordCreate';
 // import TaskRecordAccordion from './HowtoStepNumberAccordion';
 dayjs.extend(utc);
 
@@ -116,6 +117,8 @@ export default function HowtoManage() {
       <HowtoCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
 
       <HowtoStepCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
+
+      <HowtoStepRecordCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
 
       {/* {isExpanded && (
         <div>
