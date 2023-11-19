@@ -60,6 +60,7 @@ export default function Quicklinks() {
           <LinkTab label={loggedInUserEmail} href={`mailto:${loggedInUserEmail}`}></LinkTab>
           <LinkTab label="localhost" href={"http://localhost:3000"} target="_blank" ></LinkTab>
           <LinkTab label="bester.ie" href={"https://www.bester.ie"} target="_blank" ></LinkTab>
+          <LinkTab label="@TriBruteThor" href={"https://www.bester.ie"} target="_blank" ></LinkTab>
 
         </LinkTabs>
       </Box>

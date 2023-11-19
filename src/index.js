@@ -9,7 +9,7 @@ import PageSearch from './PageSearch';
 import PageManage from './PageManage';
 import PageLogin from './PageLogin';
 import PageLogout from './PageLogout';
-import PageHowto from './PageHowto';
+import PageHowto from './PageHowtoManage';
 import firebase from 'firebase/compat/app';
 import 'react-tooltip/dist/react-tooltip.css';
 import 'firebase/firestore';
@@ -21,6 +21,8 @@ import { getAuth } from "firebase/auth";
 import { UserProvider } from './UserContext';
 import { useUserContext } from './UserContext';
 import ReactGA from 'react-ga';
+import PageHowtoDocs from './PageHowtoDocs';
+import PageHowtoManage from './PageHowtoManage';
 // import CandidateSearchLinkedin from './CandidateSearchLinkedin';
 
 
@@ -60,7 +62,8 @@ const App = () => {
             <Route path='/screen' element={<PageSearch />} />
             <Route path='/manage' element={<PageManage />} />
             <Route path='/logout' element={<PageLogout />} />
-            <Route path='/howto' element={<PageHowto />} />
+            <Route path='/howtomanage' element={<PageHowtoManage />} />
+            <Route path='/howtodocs' element={<PageHowtoDocs />} />
           </Route>
           <Route path='/login' element={<PageLogin />} />
           <Route path='/' element={<PageLogin />} />

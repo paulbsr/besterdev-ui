@@ -117,9 +117,9 @@ export default function HowtoManage() {
 
       <HowtoStepCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
 
-      {isExpanded && (
+      {/* {isExpanded && (
         <div>
-          <div>
+          <div> */}
 
 
 
@@ -176,9 +176,9 @@ export default function HowtoManage() {
             <GradientLineRusty />
             <div>&nbsp;</div>
           </div>
-        </div>
-        )
-        }
-    </div>
+    //     </div>
+    //     )
+    //     }
+    // </div>
   );
 }

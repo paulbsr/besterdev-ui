@@ -7,7 +7,7 @@ import Footer from './Footer';
 import { Flip, ToastContainer, toast } from 'react-toastify';
 import HowtoManage from './HowtoManage';
 
-export default function PageHowto() {
+export default function PageHowtoManage() {
     return (
       <div>
         <BannerWhite />
@@ -15,6 +15,7 @@ export default function PageHowto() {
         <BannerLight />
         <GradientLineThin />
         <Quicklinks />
+        <GradientLineThin />
         <HowtoManage />
         <Footer/>
         <ToastContainer

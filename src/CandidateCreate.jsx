@@ -110,6 +110,8 @@ export default function CandidateCreate(props) {
                 <div>
                 <img alt="1" src={spacer} />
                 <img alt="1" src={spacer} />
+                
+                
                 <label htmlFor="dropdown">Propose for:&nbsp;&nbsp;</label>
                 <select className='Font-Verdana-Small-Postgres'
                   onChange={(event) => {
@@ -148,6 +150,8 @@ export default function CandidateCreate(props) {
                     </option>
                   ))}
                 </select>
+
+                
                   <img alt="1" src={spacer} /><img alt="1" src={spacer} />Job Title:&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '305px' }} placeholder="Required" type="text" value={jobdesc} onChange={(event) => setJobdesc(event.target.value)} required />
                   <img alt="1" src={spacer} />Skill:&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '300px' }} placeholder="Required" type="text" value={skill1} onChange={(event) => setSkill1(event.target.value)} required />
                   <img alt="1" src={spacer} />Comment:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '320px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)} />
