@@ -6,6 +6,11 @@ import Quicklinks from './Quicklinks';
 import Footer from './Footer';
 import { Flip, ToastContainer, toast } from 'react-toastify';
 import HowtoManage from './HowtoManage';
+import HowtoSteps from './HowtoSteps';
+// import TaskRecordCreate from './TaskRecordCreate';
+import HowtoStepRecordCreate from './HowtoStepRecordCreate';
+import Task_Accordion from './Task_Accordion';
+import TaskRecordAccordion from './TaskRecordAccordion';
 
 export default function PageHowtoDocs() {
     return (
@@ -17,6 +22,11 @@ export default function PageHowtoDocs() {
         <Quicklinks />
         <GradientLineThin />
         {/* <HowtoManage /> */}
+        <HowtoSteps />
+        {/* <TaskRecordCreate /> */}
+        <HowtoStepRecordCreate />
+        <Task_Accordion />
+        <TaskRecordAccordion />
         <Footer/>
         <ToastContainer
         position="top-left"

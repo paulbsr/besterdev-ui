@@ -169,8 +169,8 @@ export default function JobreqManage() {
                         </>
                       </td>
 
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={jrnumber} onChange={(e) => setJrnumber(e.target.value)} className='cr_edit_inputfield' />) : (row.jrnumber)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '110px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={company} onChange={(e) => setCompany(e.target.value)} className='cr_edit_inputfield_disc' />) : (row.company)}</td>
+                      <td className="Table6">{row.id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={jrnumber} onChange={(e) => setJrnumber(e.target.value)} />) : (row.jrnumber)}</td>
+                      <td className="Table6">{row.id === editing ? (<input style={{ height: '22.5px', width: '110px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={company} onChange={(e) => setCompany(e.target.value)} />) : (row.company)}</td>
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '230px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={jrtitle} onChange={(e) => setJrtitle(e.target.value)} className='cr_edit_inputfield' />) : (row.jrtitle)}</td>
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '100px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={location} onChange={(e) => setLocation(e.target.value)} className='cr_edit_inputfield' />) : (row.location)}</td>
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '140px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={recruitername} onChange={(e) => setRecruitername(e.target.value)} className='cr_edit_inputfield' />) : (row.recruitername)}</td> 
@@ -178,36 +178,10 @@ export default function JobreqManage() {
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '130px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={recruiternumber} onChange={(e) => setRecruiternumber(e.target.value)} className='cr_edit_inputfield' />) : (row.recruiternumber)}</td>
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '380px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={comment} onChange={(e) => setComment(e.target.value)} className='cr_edit_inputfield' />) : (row.comment)}</td>
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '30px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={wa} onChange={(e) => setWa(e.target.value)} className='cr_edit_inputfield' />) : (row.wa)}</td>
-                      
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '70px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={createdate} onChange={(e) => setCreatedate(e.target.value)} className='cr_edit_inputfield' />) : (row.createdate)}</td>
-                      {/* <LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
-                        <DatePicker
-                          id="createdate"
-                          format="YYYY.M.D"
-                          value={createdate}
-                          selected={createdate}
-                          onChange={handleCreateDateChange}
-                          dateFormat="YYYY.M.D"
-                          sx={{ height: '22.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.5px', width: '80px' }, '& .MuiSvgIcon-root': { height: '20px' } }}/>
-                      </LocalizationProvider>
-                      ) : new Date(row.createdate).toLocaleDateString("en-CA")}</td> */}
-                      
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '70px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={targetdate} onChange={(e) => setTargetdate(e.target.value)} className='cr_edit_inputfield' />) : (row.targetdate)}</td>
-                      {/* <LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
-                        <DatePicker
-                          id="targetdate"
-                          format="YYYY.M.D"
-                          value={targetdate}
-                          selected={targetdate}
-                          onChange={handleTargetDateChange}
-                          dateFormat="YYYY.M.D"
-                          sx={{ height: '22.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.5px', width: '80px' }, '& .MuiSvgIcon-root': { height: '20px' } }}/>
-                      </LocalizationProvider>
-                      ) : new Date(row.targetdate).toLocaleDateString("en-CA")}</td> */}
-
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '40px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={status} onChange={(e) => setStatus(e.target.value)} className='cr_edit_inputfield' />) : (row.status)}</td>
-                      
-                    </tr>
+                     </tr>
                   )
                 })
                 }
@@ -216,10 +190,6 @@ export default function JobreqManage() {
             <div>&nbsp;</div>
             <GradientLineRusty />
             <div>&nbsp;</div>
-            {/* <div>&nbsp;</div>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div> */}
             </div>
         </div>)}
     </div>

@@ -6,6 +6,9 @@ import Box from '@mui/material/Box';
 import './Fonts.css'
 import {styled} from "@mui/material/styles";
 import { useUserContext } from './UserContext';
+import WebsiteManage from './WebsiteManage';
+import WebSiteCreate from './WebsiteCreate';
+import WebResourceQuickAdd from './WebResourceQuickAdd';
 
 
 function TabPanel(props) {
@@ -60,7 +63,8 @@ export default function Quicklinks() {
           <LinkTab label={loggedInUserEmail} href={`mailto:${loggedInUserEmail}`}></LinkTab>
           <LinkTab label="localhost" href={"http://localhost:3000"} target="_blank" ></LinkTab>
           <LinkTab label="bester.ie" href={"https://www.bester.ie"} target="_blank" ></LinkTab>
-          <LinkTab label="@TriBruteThor" href={"https://www.bester.ie"} target="_blank" ></LinkTab>
+          <LinkTab label="@TriBruteT0R" href={"https://www.bester.ie"} target="_blank" ></LinkTab>
+          <WebResourceQuickAdd />
 
         </LinkTabs>
       </Box>

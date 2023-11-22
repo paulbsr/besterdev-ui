@@ -12,7 +12,6 @@
     font-family: "Verdana";
     font-size: medium;
     font-weight: bold;
-
 }
 
 .Font-Verdana-Medium-Italic-Rusty {
@@ -20,7 +19,6 @@
     font-size: medium;
     font-style: italic;
     color: #D5441C;
-
 }
 
 .Font-Verdana-Large {
@@ -45,7 +43,6 @@
     font-size: medium;
     color: #336791
 }
-
 
 .Font-Verdana-Medium-T {
     font-family: "Verdana";
@@ -86,60 +83,10 @@
 }
 
 
-.Font-SegoeUI-Medium {
-    font-family: "Segoe UI";
-    font-size: medium;
-    color: #e22525
-}
-
-.Label {
-    width: 600px;
-}
-
-.Font-SegoeUI-Task-Name {
-    font-family: "Segoe UI";
-    font-size: medium;
-    color: #0c0101
-}
-
-.Font-SegoeUI-Task-Name-Blue {
-    font-family: "Segoe UI";
-    font-size: medium;
-    color: #0000FF;
-}
-
-.Font-SegoeUI-Task-Name-Blue-Underline {
-    font-family: "Segoe UI";
-    font-size: medium;
-    color: #0000FF;
-    text-decoration: underline
-}
-
-.Font-SegoeUI-Task-Name-Bold {
-    font-weight: bold;
-    font-family: "Segoe UI";
-    font-size: medium;
-    color: #0c0101
-}
-
-.Font-SegoeUI-Task-Name-Bold-Underscore {
-    font-weight: bold;
-    font-family: "Segoe UI";
-    font-size: medium;
-    color: #0c0101;
-    text-decoration: underline;
-}
-
-.Font-SegoeUI-Task-Req {
-    font-family: "Segoe UI";
-    font-size: medium;
-    color: #0000FF
-}
-
-.Font-SegoeUI-Task-Name-White {
-    font-family: "Segoe UI";
-    font-size: medium;
-    color: #FFFFFF;
+.Font-Verdana-QuickAdd {
+    font-family: "Verdana";
+    font-size: small;
+    color: grey
 }
 
 .Table-Column-200 {width: 200px;}
@@ -154,60 +101,18 @@
 
 .Table6 td {
     border: 1px solid rgb(233, 228, 228);
-    padding: 5px;
+    padding: 4px;
     font-family: "Verdana";
     font-size: small;
     min-width: 50%;
 }
 
-.Table7 th {
+.asmshover:hover {
+    font-family: "Verdana";
+    font-size: small;
+    color: #D5441C;
     background-color: #f7f4f3;
-    padding: 4px;
-    font-family: "Verdana";
-    font-size: x-small;
 }
-
-.Table7 td {
-    border: 1px solid rgb(233, 228, 228);
-    padding: 5px;
-    font-family: "Verdana";
-    font-size: x-small;
-    min-width: 50%;
-}
-
-.Tableasms {
-    border-collapse: collapse;
-    border: 1px solid rgb(245, 207, 235);
-}
-
-/* TAFEL HOOF */
-.Tableasms th {
-    background-color: #e1ebf8;
-    padding: 4px;
-    font-family: "Segoe UI";
-    font-size: small;
-}
-
-.Tableasms td {
-    border: 1px solid rgb(233, 228, 228);
-    padding: 5px;
-    font-family: "Segoe UI";
-    font-size: small;
-}
-
-/* text-align: center; */
-
-.asmshover {
-    cursor: pointer;
-    border: 1px solid transparent;
-}
-
-/* .asmshover:hover {
-    font-family: "Verdana";
-    font-size: small;
-    color: hsl(0, 0%, 0%);
-    background-color: #f7f4f3;
-} */
 
 .asmshover:hover {
     font-family: "Verdana";
@@ -218,78 +123,13 @@
     border: 1px solid #336791;
 }
 
-.asmshover:rusty {
+/* .asmshover:rusty {
     font-family: "Verdana";
     font-size: small;
     color: #D5441C;
     background-color: #f7f4f3;
-}
+} */
 
-.clientid {
-    cursor: pointer;
-    border: 1px solid transparent;
-}
-
-.PRODenvtable {
-    background-color: #CEAB9388;
-}
-
-.TESTenvtable {
-    background-color: #FDD99888;
-}
-
-.DEVenvtable {
-    background-color: #F8ECD188;
-}
-
-.PRODenvtable:hover {
-    background-color: #CEAB93FF;
-}
-
-.TESTenvtable:hover {
-    background-color: #FDD998FF;
-}
-
-.DEVenvtable:hover {
-    background-color: #F8ECD1FF;
-}
-
-.sihover {
-    cursor: pointer;
-    border: 1px solid transparent;
-}
-
-.sihover:hover {
-    font-family: "Segoe UI";
-    font-size: small;
-    color: hsl(0, 0%, 6%);
-    background-color: #f2f2f7;
-}
-
-.Hover {
-    cursor: pointer;
-    border: 1px ridge transparent;
-}
-
-.Hover:hover {
-    color: hsl(244, 85%, 48%);
-    background-color: #f2f2f7;
-    border: 1px #201f1ffb;
-    border-radius: 3px;
-}
-
-.HOWTOHover {
-    cursor: pointer;
-    border: 1px ridge transparent;
-}
-
-.HOWTOHover:hover {
-    color: hsl(332, 85%, 48%);
-    background-color: #f3eee8;
-    border: 1px #201f1ffb;
-    border-radius: 3px;
-    border: 1px solid rgb(236, 169, 225);
-}
 
 .Scorecard {
     width: 100%;

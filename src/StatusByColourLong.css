@@ -9,8 +9,8 @@
 .grey {font-family: "Segoe UI"; font-size: smaller; color: rgb(151, 151, 151)}
 .pprecord {cursor:pointer; border: 1px solid transparent; text-align: left;}
 .pprecord:hover {font-family: "Segoe UI"; font-size: medium; color: hsl(300, 4%, 5%); background-color: #EFEFEF; text-align: left;}
-.asmshover {cursor:pointer; border: 1px solid transparent;}
-.asmshover:hover {font-family: "Segoe UI"; font-size: medium; color: hsl(0, 0%, 5%); background-color: #e7e4e4; }
+/* .asmshover {cursor:pointer; border: 1px solid transparent;}
+.asmshover:hover {font-family: "Segoe UI"; font-size: medium; color: hsl(0, 0%, 5%); background-color: #e7e4e4; } */
 .scorecardhover {font-family: "Segoe UI"; font-size: small; cursor:pointer; border: 1px solid transparent;}
 .scorecardhover:hover {font-family: "Segoe UI"; font-size: x-small; color: hsl(0, 0%, 5%); background-color: #EFEFEF;}
 .taskrecordshover {cursor:pointer; border: 1px solid transparent;}

@@ -21,6 +21,7 @@ import GradientLineRusty from './GradientLineRusty';
 import HowtoCreate from './HowtoCreate';
 import HowtoStepCreate from './HowtoStepCreate';
 import HowtoStepRecordCreate from './HowtoStepRecordCreate';
+import HowtoSteps from './HowtoSteps';
 // import TaskRecordAccordion from './HowtoStepNumberAccordion';
 dayjs.extend(utc);
 
@@ -175,6 +176,8 @@ export default function HowtoManage() {
                 }
               </tbody>
             </table>
+
+            <HowtoSteps />
             <div>&nbsp;</div>
             <GradientLineRusty />
             <div>&nbsp;</div>
