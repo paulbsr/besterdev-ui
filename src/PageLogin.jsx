@@ -34,7 +34,7 @@ const PageLogin = () => {
         setLoggedInUserEmail(user.email);
         setLoginSuccessMessage('Login successful!');
         toast.success('Login successful!');
-        navigate('/screen'); 
+        navigate('/home'); 
       })
       .catch((error) => {
         setLoginSuccessMessage('Auth failed.');

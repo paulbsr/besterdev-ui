@@ -80,7 +80,6 @@ export default function CandidateCreate(props) {
       .then((response) => {const sortedjobreqs = response.data.sort((b, a) => b.company.localeCompare(a.company));
         setJobreqs(sortedjobreqs);
       })
-      // .catch((e) => console.error(e));
   },
     []);
 

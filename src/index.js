@@ -23,6 +23,7 @@ import { getAuth } from "firebase/auth";
 import { UserProvider } from './UserContext';
 import { useUserContext } from './UserContext';
 import ReactGA from 'react-ga';
+import PageHome from './PageHome';
 
 // import CandidateSearchLinkedin from './CandidateSearchLinkedin';
 
@@ -66,6 +67,7 @@ const App = () => {
             <Route path='/howtomanage' element={<PageHowtoManage />} />
             <Route path='/howtodocs' element={<PageHowtoDocs />} />
             <Route path='/resources' element={<PageResources/>} />
+            <Route path='/home' element={<PageHome />} />
           </Route>
           <Route path='/login' element={<PageLogin />} />
           <Route path='/' element={<PageLogin />} />

@@ -1,0 +1,47 @@
+import BannerWhite from './BannerWhite';
+import GradientLine from './GradientLine';
+import BannerLight from './BannerLight';
+import GradientLineThin from './GradientLineThin';
+import Quicklinks from './Quicklinks';
+import Footer from './Footer';
+import { Flip, ToastContainer, toast } from 'react-toastify';
+import HowtoManage from './HowtoManage';
+import HowtoSteps from './HowtoSteps';
+// import TaskRecordCreate from './TaskRecordCreate';
+import HowtoStepRecordCreate from './HowtoStepRecordCreate';
+import Task_Accordion from './Task_Accordion';
+import TaskRecordAccordion from './TaskRecordAccordion';
+import SideBarNavigation from './SideBarNavigation';
+
+export default function PageHome() {
+    return (
+      <div>
+        <BannerWhite />
+        <GradientLine />
+        <BannerLight />
+        <GradientLineThin />
+        <Quicklinks />
+        <GradientLineThin />
+        <SideBarNavigation />
+        {/* <HowtoManage /> */}
+        {/* <HowtoSteps /> */}
+        {/* <TaskRecordCreate /> */}
+        {/* <HowtoStepRecordCreate /> */}
+        {/* <Task_Accordion /> */}
+        {/* <TaskRecordAccordion /> */}
+        <Footer/>
+        <ToastContainer
+        position="top-left"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        transition={Flip}
+        draggable
+        pauseOnHover
+        theme="dark"/>
+      </div>
+    )
+  };

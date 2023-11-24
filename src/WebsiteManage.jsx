@@ -16,6 +16,7 @@ export default function WebsiteManage(props) {
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [checkForRecords, setCheckForRecords] = useState(true);
+  const [checkForRecordsA, setCheckForRecordsA] = useState(true);
   const [tabledata, setTabledata] = useState([]);
   const [error, setError] = useState(null);
   const [editing, setEditing] = useState("")
@@ -30,7 +31,9 @@ export default function WebsiteManage(props) {
         const sortedTabledata = response.data.sort((b, a) => b.website_name.localeCompare(a.website_name));
         setTabledata(sortedTabledata);})
       .catch((e) => console.error(e));
-  }, [checkForRecords]);
+  }, [checkForRecords] [props.checkForRecordsA]
+  
+  );
 
   const handleEdit = (row) => {
     setEditing(row.id)

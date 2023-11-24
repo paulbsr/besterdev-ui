@@ -107,6 +107,29 @@
     min-width: 50%;
 }
 
+.Table5{
+    /* background-color: #f7f4f3; */
+    background-color: #ffffff;
+    padding: 4px;
+    font-family: "Verdana";
+    font-size: small ;
+    border: 1px solid rgb(233, 228, 228);
+    font-weight: normal;
+    text-align: right;
+    /* min-width: 50%; */
+}
+
+.Table5-hover:hover {
+    font-family: "Verdana";
+    font-size: small;
+    color: #D5441C;
+    background-color: #f7f4f3;
+    border-radius: 3px;
+    border: 1px solid #336791;
+    /* padding: 4px; */
+    font-weight: normal;
+}
+
 .asmshover:hover {
     font-family: "Verdana";
     font-size: small;
