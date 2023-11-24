@@ -42,12 +42,12 @@ export default function JobreqCreate(props) {
 
   const handleCreateDateChange = (newVal) => {
     setCr_DateHold1(newVal.format("YYYY.M.D"));
-    setCreatedate(newVal); console.log(newVal);
+    setCreatedate(newVal);
   };
 
   const handleTargetDateChange = (newVal) => {
     setCr_DateHold2(newVal.format("YYYY.M.D"));
-    setTargetdate(newVal); console.log(newVal);
+    setTargetdate(newVal);
   };
 
   const handleSubmit = async (event) => {

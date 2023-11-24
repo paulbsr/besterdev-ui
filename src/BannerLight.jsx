@@ -1,17 +1,18 @@
 import React from "react";
 import './Fonts.css';
 import { FaReact, FaJava, FaNodeJs, FaAws, FaPeopleArrows } from 'react-icons/fa';
-import { SiSpringboot, SiGoogleanalytics, SiDocker } from "react-icons/si";
+import { SiSpringboot, SiGoogleanalytics, SiDocker, SiProtonvpn, SiProtonmail } from "react-icons/si";
 import { SlLogin, SlLogout } from "react-icons/sl";
 import { RiOpenaiFill } from "react-icons/ri";
 import { GrVirtualMachine} from "react-icons/gr";
 import { BiLogoFirebase, BiLogoPostgresql, BiLogoHeroku, BiLogoGithub, BiLogoGoogle } from "react-icons/bi";
-import { MdManageAccounts } from "react-icons/md";
+import { MdManageAccounts, MdOutlineVpnLock  } from "react-icons/md";
 import { FaFileCircleQuestion } from "react-icons/fa6";
 import { FaQuestionCircle } from "react-icons/fa";
 import 'react-tooltip/dist/react-tooltip.css'
 import { useNavigate } from 'react-router-dom'; 
 import { TbWorldWww } from "react-icons/tb";
+import { GiSecretBook } from "react-icons/gi";
 
 
   const BannerLight = ({ user }) => {
@@ -48,6 +49,8 @@ import { TbWorldWww } from "react-icons/tb";
       <a data-tooltip-id="insert" data-tooltip-content="Google Analytics" href="https://analytics.google.com/analytics/web/?pli=1#/p400562922/reports/intelligenthome" target="_blank" rel="noreferrer"><SiGoogleanalytics style={{ color: 'orange', fontSize: '24px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Docker" href="https://www.docker.com" target="_blank" rel="noreferrer"><SiDocker style={{ color: '#1D63ED', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Hyper-V" href="https://www.docker.com" target="_blank" rel="noreferrer"><GrVirtualMachine style={{ color: '#336791', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="ProtonVPN (paulbsr@live.ie)" href="https://protonvpn.com/" target="_blank" rel="noreferrer"><MdOutlineVpnLock style={{ color: 'gray', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="ProtonMail (kuberkont)" href="https://mail.proton.me/u/0/inbox" target="_blank" rel="noreferrer"><GiSecretBook style={{ color: 'gray', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Logout" onClick={handleNavigateLogout}><SlLogout style={{ color: '#000000', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
       
     </div>

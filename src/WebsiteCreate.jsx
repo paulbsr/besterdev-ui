@@ -47,9 +47,7 @@ export default function WebSiteCreate(props) {
     <div className='Font-Verdana-Small-Postgres'>&nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-        {/* <a data-tooltip-id="insert" data-tooltip-content="Memorialize a Resource"> */}
           <img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} />
-          {/* </a> */}
         <b>Memorialize a Website or Tool:</b>
         <div>&nbsp;</div>
       </div>

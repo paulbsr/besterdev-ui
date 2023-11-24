@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from "react";
 import axios from 'axios';
 import './Fonts.css';
 import spacer from './graphix/besterdev_spacer_white.png';
-import spacer2 from './graphix/besterdev_spacer_white_half.png';
 import { toast } from 'react-toastify';
 
 export default function WebResourceQuickAdd(props) {
@@ -26,6 +25,7 @@ export default function WebResourceQuickAdd(props) {
             {
                 const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/create`, newRecord);
                 if (response.status === 200) {
+                    props.setCheckForRecords(!props.checkForRecords);
                     toast.success(`${website_name} added.`)
                 }
                 else {

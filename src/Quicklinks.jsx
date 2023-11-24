@@ -1,4 +1,5 @@
-import * as React from 'react';
+// import * as React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -51,9 +52,10 @@ const LinkTab = styled((props) => <Tab disableRipple {...props} />)(({ theme }) 
     '&.Mui-selected:hover': {color: '#D5441C',},})
     );
 
-export default function Quicklinks() {
+export default function Quicklinks(props) {
   const { loggedInUserEmail } = useUserContext();
   console.log('Quicklinks collected:', loggedInUserEmail);
+  const [checkForRecords, setCheckForRecords] = useState(true);
 
   return (
     <>
@@ -64,7 +66,7 @@ export default function Quicklinks() {
           <LinkTab label="localhost" href={"http://localhost:3000"} target="_blank" ></LinkTab>
           <LinkTab label="bester.ie" href={"https://www.bester.ie"} target="_blank" ></LinkTab>
           <LinkTab label="@TriBruteT0R" href={"https://www.bester.ie"} target="_blank" ></LinkTab>
-          <WebResourceQuickAdd />
+          <WebResourceQuickAdd checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
 
         </LinkTabs>
       </Box>

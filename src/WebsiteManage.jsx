@@ -12,7 +12,7 @@ import { toast } from 'react-toastify';
 import GradientLineRusty from './GradientLineRusty';
 import WebsiteCreate from './WebsiteCreate';
 
-export default function WebsiteManage() {
+export default function WebsiteManage(props) {
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [checkForRecords, setCheckForRecords] = useState(true);
