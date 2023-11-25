@@ -5,8 +5,8 @@ import 'react-tooltip/dist/react-tooltip.css'
 import './Fonts.css';
 import 'react-dropdown/style.css';
 import axios from 'axios'
-import Darknet1 from './graphix/Darknet1.png'
-import Darknet2 from './graphix/Darknet2.png'
+import Darknet12 from './graphix/Darknet12.png'
+import Darknet14 from './graphix/Darknet14.png'
 import Darknet3 from './graphix/Darknet3.png'
 import Darknet4 from './graphix/Darknet4.png'
 import Darknet5 from './graphix/Darknet5.png'
@@ -40,17 +40,17 @@ export default function Homepage(props) {
 <table style={{ width: '100%' }}>
       <thead>
         <tr>
-          <th style={{ width: '20%' }}></th>
-          <th style={{ width: '50%' }} className="Table-home-centre"><img src={Darknet7}/></th>
-          <th style={{ width: '20%' }} className="Table-home-right"><img src={WhiteSpacer}/></th>
+          {/* <th style={{ width: '20%' }}></th> */}
+          <th style={{ width: '100%' }}><img src={Darknet12}/></th>
+          {/* <th style={{ width: '20%' }}><img src={WhiteSpacer}/></th> */}
         </tr>
       </thead>
       <tbody>
         {/* You can repeat this row for more rows */}
         <tr>
+          {/* <td></td> */}
           <td></td>
-          <td></td>
-          <td></td>
+          {/* <td></td> */}
         </tr>
       </tbody>
     </table>

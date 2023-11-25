@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './graphix/logo_transparent2.png';
-import Darknet7 from './graphix/Darknet7.png'
+import Darknet13 from './graphix/Darknet13.png'
 
 const BannerWhite = () => {
   return (
