@@ -11,7 +11,7 @@ import HowtoSteps from './HowtoSteps';
 import HowtoStepRecordCreate from './HowtoStepRecordCreate';
 import Task_Accordion from './Task_Accordion';
 import TaskRecordAccordion from './TaskRecordAccordion';
-import SideBarNavigation from './SideBarNavigation';
+import Homepage from './Homepage';
 
 export default function PageHome() {
     return (
@@ -22,13 +22,7 @@ export default function PageHome() {
         <GradientLineThin />
         <Quicklinks />
         <GradientLineThin />
-        <SideBarNavigation />
-        {/* <HowtoManage /> */}
-        {/* <HowtoSteps /> */}
-        {/* <TaskRecordCreate /> */}
-        {/* <HowtoStepRecordCreate /> */}
-        {/* <Task_Accordion /> */}
-        {/* <TaskRecordAccordion /> */}
+        <Homepage />
         <Footer/>
         <ToastContainer
         position="top-left"
