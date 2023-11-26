@@ -11,6 +11,7 @@ import HowtoSteps from './HowtoSteps';
 import HowtoStepRecordCreate from './HowtoStepRecordCreate';
 import Task_Accordion from './Task_Accordion';
 import TaskRecordAccordion from './TaskRecordAccordion';
+import Task from './Task';
 
 export default function PageHowtoDocs() {
     return (
@@ -22,11 +23,12 @@ export default function PageHowtoDocs() {
         <Quicklinks />
         <GradientLineThin />
         {/* <HowtoManage /> */}
-        <HowtoSteps />
+        {/* <HowtoSteps /> */}
         {/* <TaskRecordCreate /> */}
-        <HowtoStepRecordCreate />
+        {/* <HowtoStepRecordCreate /> */}
+        {/* <Task /> */}
         <Task_Accordion />
-        <TaskRecordAccordion />
+        {/* <TaskRecordAccordion /> */}
         <Footer/>
         <ToastContainer
         position="top-left"

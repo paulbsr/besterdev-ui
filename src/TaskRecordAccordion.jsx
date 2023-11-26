@@ -1,20 +1,18 @@
-
 import React, { useState} from 'react';
-// import TaskRecordCreate from './TaskRecordCreate';
+import TaskRecordCreate from './TaskRecordCreate';
 import TaskRecordStatusByColourLong from './TaskRecordStatusByColourLong';
 import {getStatusByColourTaskText} from './getStatusByColourTaskText'
 import axios from "axios";
 import { Tooltip } from '@mui/material';
 import { MdOutlineCancel, MdOutlineInput, MdOutlineInsertComment, MdAddCircleOutline } from "react-icons/md";
 import { AiOutlineFileAdd, AiOutlineCheckCircle, AiOutlineEdit } from "react-icons/ai";
-import { toast } from 'react-toastify';
-// import MouseoverPopover from "./MouseoverPopover";
 
 
-function TaskRecordAccordion ({steprecord_id, steprecord, steprecord_date, howto_id, howto_name, step_id, step_name, checkForRecords, setCheckForRecords}) {
+function TaskRecordAccordion ({alertCtx, project_handle, activeAccount, asms_number, parentid, parenttask, checkForRecords, setCheckForRecords, taskstatus}) {
+ 
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => {setExpanded(!isExpanded);};
-  const orderedTasks = step_name((task, key) => {return howto_id === step_id});
+  const orderedTasks = parenttask.filter((task, key) => {return task.id === parentid});
   const taskRecords = orderedTasks[0].tasks.sort((a, b) => new Date(b.date[0], b.date[1], b.date[2]) - new Date(a.date[0], a.date[1], a.date[2]) || b.childid - a.childid);
   const [editing, setEditing] = useState(false);
   const [taskrecord, setTaskrecord] = useState(null);
@@ -37,13 +35,16 @@ function TaskRecordAccordion ({steprecord_id, steprecord, steprecord_date, howto
           'date': date,
       }
 
-      const response = await axios.put(`${process.env.REACT_APP_API_URL}/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
-      setCheckForRecords(!checkForRecords);
-      toast.success(`Toastify test.`);
+      const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
+
+          .catch((error) => {alertCtx.error(error.message);})
+      setCheckForRecords(!checkForRecords)
+      alertCtx.success(`TaskRecord has been memorialized`);
+    //   toast.success(`Toastify test.`)
       onEditCancel();
   }
 
-  function editableTaskRecord(childid, childrecord, parentid, status, date, asms, handle, future, checkForRecords, setCheckForRecords) {
+  function editableTaskRecord(alertCtx, childid, childrecord, parentid, status, date, asms, handle, future, checkForRecords, setCheckForRecords) {
       return (
           <div>
               <div style={{display: 'flex'}}>
@@ -76,7 +77,7 @@ function TaskRecordAccordion ({steprecord_id, steprecord, steprecord_date, howto
                           onChange={(e) => setTaskrecord(e.target.value)}
                       ></textarea>
                       :
-                      <div><TaskRecordStatusByColourLong childid={childid} childrecord={childrecord} parentid={parentid} status={status} date={date} asms={asms} handle={handle} future={future} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /></div>
+                      <div><TaskRecordStatusByColourLong alertCtx={alertCtx} childid={childid} childrecord={childrecord} parentid={parentid} status={status} date={date} asms={asms} handle={handle} future={future} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /></div>
                   }
                   </div>
               </div>
@@ -88,8 +89,8 @@ function TaskRecordAccordion ({steprecord_id, steprecord, steprecord_date, howto
       if(taskRecords[0].status === 'DONE') {
           return (
               <div>
-                  <TaskRecordStatusByColourLong childid={taskRecords[0].childid} childrecord={taskRecords[0].childrecord} parentid={taskRecords[0].parentid} status={taskRecords[0].status} date={taskRecords[0].date} asms={taskRecords[0].asms} handle={taskRecords[0].handle} future={taskRecords[0].future} checkForRecords={taskRecords[0].checkForRecords} setCheckForRecords={taskRecords[0].setCheckForRecords}/>
-                  <div>{taskRecords.slice(1).map(({childid, childrecord, parentid, date, asms, handle, future }) => (<TaskRecordStatusByColourLong childid={childid} childrecord={childrecord} parentid={parentid} status={'ARCHIVE'} date={date} asms={asms} handle={handle} future={future} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>))}</div>
+                  <TaskRecordStatusByColourLong alertCtx={alertCtx} childid={taskRecords[0].childid} childrecord={taskRecords[0].childrecord} parentid={taskRecords[0].parentid} status={taskRecords[0].status} date={taskRecords[0].date} asms={taskRecords[0].asms} handle={taskRecords[0].handle} future={taskRecords[0].future} checkForRecords={taskRecords[0].checkForRecords} setCheckForRecords={taskRecords[0].setCheckForRecords}/>
+                  <div>{taskRecords.slice(1).map(({childid, childrecord, parentid, date, asms, handle, future }) => (<TaskRecordStatusByColourLong alertCtx={alertCtx} childid={childid} childrecord={childrecord} parentid={parentid} status={'ARCHIVE'} date={date} asms={asms} handle={handle} future={future} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>))}</div>
               </div>
           )
       }
@@ -97,24 +98,26 @@ function TaskRecordAccordion ({steprecord_id, steprecord, steprecord_date, howto
 
   return (
     <div>
-            <div 
-    //   style={{ color: getStatusByColourTaskText(taskstatus) }} 
+      {activeAccount.idTokenClaims.roles.includes('user.Read') || activeAccount.idTokenClaims.roles.includes('user.Manager') || activeAccount.idTokenClaims.roles.includes('user.Admin') ?
+      <div 
+      style={{ color: getStatusByColourTaskText(taskstatus) }} 
       onClick={toggleAccordion}>
         <Tooltip title='Edit Task Record' placement="top-end"><MdAddCircleOutline style={{ color: '#D5441C', fontSize: '20px' }}/></Tooltip>Insert an Step Instruction</div>
-      <div ><u>STATUS</u>:&nbsp;<Tooltip title='Edit Task Record' placement="top-end"><MdOutlineInput fontSize='small'/></Tooltip></div>
+      :
+      <div style={{ color: getStatusByColourTaskText(taskstatus) }}><u>STATUS</u>:&nbsp;<Tooltip title='Edit Task Record' placement="top-end"><MdOutlineInput fontSize='small'/></Tooltip></div>}
      
      
      
       {isExpanded &&
               (
                   <div>
-                      {/* <TaskRecordCreate project_handle={project_handle} asms_number={asms_number} parentid={parentid} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /> */}
+                      <TaskRecordCreate project_handle={project_handle} asms_number={asms_number} parentid={parentid} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
                   </div>
               )
         }
      
           <div className='Verdana'>
-              {taskRecords.map(({ childid, childrecord, parentid, status, date, asms, handle, future }) => (editableTaskRecord(childid, childrecord, parentid, status, date, asms, handle, future, checkForRecords, setCheckForRecords)))}
+              {taskRecords.map(({ childid, childrecord, parentid, status, date, asms, handle, future }) => (editableTaskRecord(alertCtx, childid, childrecord, parentid, status, date, asms, handle, future, checkForRecords, setCheckForRecords)))}
           </div>
     </div>
    

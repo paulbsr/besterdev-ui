@@ -50,13 +50,11 @@ export default function HowtoStepCreate(props) {
 
       try {
         const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtostep/create`, newRecord);
-        if (response.status === 200) { 
-          props.setCheckForRecords(!props.checkForRecords); 
+        if (response.status === 200) {
+          props.setCheckForRecords(!props.checkForRecords);
           toast.success(`${step_name} memorialized.`)
         }
-        else { 
-          toast.error('Bad')
-        }
+        else { toast.error('Nee') }
       }
 
       catch (err) { alertCtx.error(`oops! Something went wrong!`); console.log(err); }
@@ -86,7 +84,7 @@ export default function HowtoStepCreate(props) {
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
         <a data-tooltip-id="insert" data-tooltip-content=".."><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
-        <b>Create a Step</b>
+        <b>Create a Howto Step </b>
         <div>&nbsp;</div>
       </div>
 
