@@ -27,7 +27,7 @@ function Task_Accordion({ activeAccount, asms_number, project_handle, requested_
 
   return (
     <div>
-      <HowtoStepCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
+      {/* <HowtoStepCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /> */}
       <Task_Create asms_number={asms_number} project_handle={project_handle} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
       <div>
         <table className="Table6 fill">

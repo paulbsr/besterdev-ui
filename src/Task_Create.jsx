@@ -40,13 +40,34 @@ export default function Task_Create(props) {
   const [howtos, setHowtos] = useState('');
   const [howto_id, setHowto_id] = useState('');
   const [howto_name, setHowto_name] = useState('');
+  const current = new Date();
+  const datum = `${current.getFullYear()}.${current.getMonth() + 1}.${current.getDate()}`;
+  const [date, setdate] = useState(current);
+  const [taskname, setTaskname] = useState("");
+  const [step_number, setStep_number] = useState('');
+  const [taskrequirement, setTaskrequirement] = useState("");
+  const [taskowner, setTaskowner] = useState("");
+  const [tasktargetdatehold, setTasktargetdatehold] = useState(null);
+  const [tasktargetdate, setTasktargetdate] = useState(null);
+  const [taskcreatedate, setTaskcreatedate] = useState(current);
+  const [taskstatus, setTaskstatus] = useState("START");
+  const [projecthandle, setProjecthandle] = useState(props.project_handle);
+  // const [asms, setAsms] = useState(props.asms_number);
+  const [asms, setAsms] = useState("asms");
+  const [tasknextstep, setTasknextstep] = useState("");
+  const handleChange = (e, newVal) => setTaskowner(newVal);
+  const handleDateChange = (newVal) => {
+    setTasktargetdatehold(newVal.format("YYYY.M.D"));
+    setTasktargetdate(newVal);
+  };
 
   const handleSubmit = async (event) => {
-    if (
-      tasktargetdate != null &&
-      tasktargetdatehold != "Invalid Date" &&
-      tasktargetdate.isAfter(dayjs.utc())
-    ) {
+    // if (
+    //   tasktargetdate != null &&
+    //   tasktargetdatehold != "Invalid Date" &&
+    //   tasktargetdate.isAfter(dayjs.utc())
+    // ) 
+    {
       event.preventDefault();
       var newtask =
       {
@@ -74,35 +95,17 @@ export default function Task_Create(props) {
         alertCtx.error(`oops! Something went wrong!#2`);
         console.log(err);
       }
-    } else {
-      event.preventDefault();
-      alertCtx.warning("Valid due date required");
-    }
+    } 
+    // else {
+    //   event.preventDefault();
+    //   alertCtx.warning("Valid due date required");
+    // }
 
 
 
   };
 
-  const current = new Date();
-  const datum = `${current.getFullYear()}.${current.getMonth() + 1}.${current.getDate()}`;
-  const [date, setdate] = useState(current);
-  const [taskname, setTaskname] = useState("");
-  const [step_number, setStep_number] = useState('');
-  const [taskrequirement, setTaskrequirement] = useState("");
-  const [taskowner, setTaskowner] = useState("");
-  const [tasktargetdatehold, setTasktargetdatehold] = useState(null);
-  const [tasktargetdate, setTasktargetdate] = useState(null);
-  const [taskcreatedate, setTaskcreatedate] = useState(current);
-  const [taskstatus, setTaskstatus] = useState("START");
-  const [projecthandle, setProjecthandle] = useState(props.project_handle);
-  // const [asms, setAsms] = useState(props.asms_number);
-  const [asms, setAsms] = useState("asms");
-  const [tasknextstep, setTasknextstep] = useState("");
-  const handleChange = (e, newVal) => setTaskowner(newVal);
-  const handleDateChange = (newVal) => {
-    setTasktargetdatehold(newVal.format("YYYY.M.D"));
-    setTasktargetdate(newVal);
-  };
+
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtos')
