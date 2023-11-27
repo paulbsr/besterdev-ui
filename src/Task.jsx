@@ -18,7 +18,7 @@ export default function Task({ project_handle, activeAccount, id, taskname, task
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [editing, setEditing] = useState(false)
   const [requirement, setRequirement] = useState(null)
-  const [owner, setOwner] = useState(null)
+  const [owner, setOwner] = useState("asms")
   const [newTargetDate, setNewTargetDate] = useState(null)
   const [name, setName] = useState(null)
   const alertCtx = useContext(AlertContext);
@@ -67,7 +67,7 @@ export default function Task({ project_handle, activeAccount, id, taskname, task
     const updatedTask = {
       // 'tasktargetdate': newTargetDate,
       'taskrequirement': requirement,
-      // 'taskowner': owner,
+      'asms': owner,
       'taskname': name,
     }
 

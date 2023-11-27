@@ -29,7 +29,7 @@ export default function PageHowtoDocs() {
         {/* <Task /> */}
         <Task_Accordion />
         {/* <TaskRecordAccordion /> */}
-        <Footer/>
+        {/* <Footer/> */}
         <ToastContainer
         position="top-left"
         autoClose={1000}
