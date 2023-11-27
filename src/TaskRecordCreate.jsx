@@ -66,7 +66,7 @@ export default function TaskRecordCreate(props) {
        
         <textarea
           autoFocus
-          cols="80"
+          cols="150"
           // variant="outlined"
           // defaultValue={taskname}
           rows={5}
@@ -77,7 +77,7 @@ export default function TaskRecordCreate(props) {
         <button 
         className="Font-Verdana-Small-Postgres" 
         type="submit" 
-        style={{ height: '22.5px', border: '1px solid #ffffff', borderRadius: '5px', backgroundColor: '#C0C0C0', color: '#FFFFFF', cursor: 'pointer' }} 
+        style={{ height: '22.5px', border: '1px solid #ffffff', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }} 
         onClick={() => setStatus("START")}>
         INSERT
         </button>

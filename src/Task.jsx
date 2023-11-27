@@ -6,10 +6,7 @@ import { getStatusByColourTaskText } from './getStatusByColourTaskText'
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
-import { Autocomplete } from "@mui/material";
-import TextField from "@mui/material/TextField";
 import axios from 'axios'
-// import TaskPopOut from "./TaskPopOut";
 import { MdOutlineCancel } from "react-icons/md";
 import { Tooltip } from '@mui/material';
 import { AiOutlineFileAdd, AiOutlineCheckCircle, AiOutlineEdit, AiOutlineExpand } from "react-icons/ai";
@@ -31,9 +28,9 @@ export default function Task({ project_handle, activeAccount, id, taskname, task
   };
 
   const handleEdit = () => {
-    setOwner(taskowner)
+    // setOwner(taskowner)
     setRequirement(taskrequirement)
-    setNewTargetDate(tasktargetdate)
+    // setNewTargetDate(tasktargetdate)
     setName(taskname)
     setEditing(true)
   }
@@ -41,8 +38,8 @@ export default function Task({ project_handle, activeAccount, id, taskname, task
   const onEditCancel = () => {
     setEditing(false);
     setRequirement(null);
-    setOwner(null);
-    setNewTargetDate(null);
+    // setOwner(null);
+    // setNewTargetDate(null);
     setName(null)
   }
 
@@ -54,23 +51,23 @@ export default function Task({ project_handle, activeAccount, id, taskname, task
     let noDetails = []
 
     // Check field changes
-    if (newTargetDate !== tasktargetdate) updatedDetails.push("Due Date");
-    if (owner !== taskowner) updatedDetails.push("Owner");
+    // if (newTargetDate !== tasktargetdate) updatedDetails.push("Due Date");
+    // if (owner !== taskowner) updatedDetails.push("Owner");
     if (requirement !== taskrequirement) updatedDetails.push("Requirement");
     if (name !== taskname) updatedDetails.push("Task Name");
 
 
     //Check fields are not null
-    if (!newTargetDate) noDetails.push('Due Date')
-    if (!owner?.trim()) noDetails.push('Owner')
+    // if (!newTargetDate) noDetails.push('Due Date')
+    // if (!owner?.trim()) noDetails.push('Owner')
     if (!requirement?.trim()) noDetails.push('Requirement')
     if (!name?.trim()) noDetails.push('Task Name')
 
 
     const updatedTask = {
-      'tasktargetdate': newTargetDate,
+      // 'tasktargetdate': newTargetDate,
       'taskrequirement': requirement,
-      'taskowner': owner,
+      // 'taskowner': owner,
       'taskname': name,
     }
 
@@ -91,7 +88,8 @@ export default function Task({ project_handle, activeAccount, id, taskname, task
 
   return (
     <>
-      <div className="Verdana" style={{ color: getStatusByColourTaskText(taskstatus) }}>
+      {/* <div className="Verdana" style={{ color: getStatusByColourTaskText(taskstatus) }}> */}
+      <div className="Verdana" >
 
         <div style={{ display: 'flex', float: 'right' }}>
           <>
@@ -116,28 +114,29 @@ export default function Task({ project_handle, activeAccount, id, taskname, task
         </div>
         {editing === true ?
           <><>
-            <textarea
+            <input
               required
               defaultValue={taskname}
               onChange={(e) => setName(e.target.value)}
               size='small'
-              style={{ width: 300, height: '30px', marginBottom: '15px', display: 'flex' }} />
+              // style={{ width: 500, height: '27.5px', marginBottom: '15px', display: 'flex' }} />
+              style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '500px' }} />
           </>
           </>
           :
-          <i onClick={toggleAccordion}>{taskname}</i>}
+          <i onClick={toggleAccordion}><i>Step-x: </i><b>{taskname}</b></i>}
       </div>
-
       {isExpanded &&
         <div>
           <div className='Verdana'>{editing === true ?
-            <textarea
+            <input
               freeSolo
               required
               defaultValue={taskrequirement}
               onChange={(e) => setRequirement(e.target.value)}
               size='small'
-              style={{ width: 300, height: '30px', marginBottom: '15px', display: 'flex' }} />
+              // style={{ width: 500, height: '27.50px', marginBottom: '15px', display: 'flex' }} />
+              style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '500px' }} />
             :
             taskrequirement}
           </div>
