@@ -8,8 +8,7 @@ import { MdOutlineCancel, MdOutlineInput, MdOutlineInsertComment, MdAddCircleOut
 import { AiOutlineFileAdd, AiOutlineCheckCircle, AiOutlineEdit } from "react-icons/ai";
 
 
-function TaskRecordAccordion({ alertCtx, project_handle, activeAccount, asms_number, parentid, parenttask, checkForRecords, setCheckForRecords, taskstatus }) {
-    console.log(parenttask);
+function TaskRecordAccordion({ alertCtx, project_handle, asms_number, parentid, parenttask, checkForRecords, setCheckForRecords, taskstatus }) {
     const [isExpanded, setExpanded] = useState(false);
     const toggleAccordion = () => { setExpanded(!isExpanded); };
     const orderedTasks = parenttask.filter((task, key) => { return task.id === parentid });
@@ -60,7 +59,7 @@ function TaskRecordAccordion({ alertCtx, project_handle, activeAccount, asms_num
                                 :
                                 (
                                     status !== 'DONE' ?
-                                        <Tooltip title='Edit Task Record' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(childid, childrecord) }}><AiOutlineEdit style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '18px' }} /></button></Tooltip>
+                                        <Tooltip title='Edit Step Entry' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(childid, childrecord) }}><AiOutlineEdit style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '18px' }} /></button></Tooltip>
                                         :
                                         null
                                 )
@@ -70,7 +69,7 @@ function TaskRecordAccordion({ alertCtx, project_handle, activeAccount, asms_num
 
                     <div>{editing === childid ?
                         <textarea
-                            cols="70"
+                            cols="150"
                             variant="outlined"
                             defaultValue={taskrecord}
                             rows={3}
@@ -78,7 +77,7 @@ function TaskRecordAccordion({ alertCtx, project_handle, activeAccount, asms_num
                         ></textarea>
                         :
                         <div>
-                            {/* <TaskRecordStatusByColourLong alertCtx={alertCtx} childid={childid} childrecord={childrecord} parentid={parentid} status={status} date={date} asms={asms} handle={handle} future={future} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /> */}
+                            <TaskRecordStatusByColourLong alertCtx={alertCtx} childid={childid} childrecord={childrecord} parentid={parentid} status={status} date={date} asms={asms} handle={handle} future={future} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
                         </div>
                     }
                     </div>
@@ -87,26 +86,27 @@ function TaskRecordAccordion({ alertCtx, project_handle, activeAccount, asms_num
         )
     }
 
-    if (taskRecords.length > 0) {
-        if (taskRecords[0].status === 'DONE') {
-            return (
-                <div>
-                    <TaskRecordStatusByColourLong alertCtx={alertCtx} childid={taskRecords[0].childid} childrecord={taskRecords[0].childrecord} parentid={taskRecords[0].parentid} status={taskRecords[0].status} date={taskRecords[0].date} asms={taskRecords[0].asms} handle={taskRecords[0].handle} future={taskRecords[0].future} checkForRecords={taskRecords[0].checkForRecords} setCheckForRecords={taskRecords[0].setCheckForRecords} />
-                    <div>{taskRecords.slice(1).map(({ childid, childrecord, parentid, date, asms, handle, future }) => (<TaskRecordStatusByColourLong alertCtx={alertCtx} childid={childid} childrecord={childrecord} parentid={parentid} status={'ARCHIVE'} date={date} asms={asms} handle={handle} future={future} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />))}</div>
-                </div>
-            )
-        }
-    }
+    // if (taskRecords.length > 0) {
+    //     if (taskRecords[0].status === 'DONE') {
+    //         return (
+    //             <div>
+    //                 <TaskRecordStatusByColourLong alertCtx={alertCtx} childid={taskRecords[0].childid} childrecord={taskRecords[0].childrecord} parentid={taskRecords[0].parentid} status={taskRecords[0].status} date={taskRecords[0].date} asms={taskRecords[0].asms} handle={taskRecords[0].handle} future={taskRecords[0].future} checkForRecords={taskRecords[0].checkForRecords} setCheckForRecords={taskRecords[0].setCheckForRecords} />
+    //                 <div>{taskRecords.slice(1).map(({ childid, childrecord, parentid, date, asms, handle, future }) => (<TaskRecordStatusByColourLong alertCtx={alertCtx} childid={childid} childrecord={childrecord} parentid={parentid} status={'ARCHIVE'} date={date} asms={asms} handle={handle} future={future} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />))}</div>
+    //             </div>
+    //         )
+    //     }
+    // }
 
     return (
         <div>
             <div className='Verdana'>
                 {taskRecords.map(({ childid, childrecord, parentid, status, date, asms, handle, future }) => (editableTaskRecord(alertCtx, childid, childrecord, parentid, status, date, asms, handle, future, checkForRecords, setCheckForRecords)))}
             </div>
-            <div
-                onClick={toggleAccordion}>
-                <MdAddCircleOutline style={{ color: '#D5441C', fontSize: '20px' }} />
-                Insert an Step Instruction
+            <div>
+                {/* <MdAddCircleOutline style={{ color: '#D5441C', fontSize: '20px' }} /> */}
+                <Tooltip title='Insert Step Entry' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={toggleAccordion}><MdAddCircleOutline style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
+                Insert an Additional Step
+                
             </div>
 
             {isExpanded &&

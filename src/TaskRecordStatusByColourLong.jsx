@@ -17,7 +17,11 @@ const TaskRecordStatusByColourLong = (props) => {
 
     return (
         <div className={`text ${color}`}>
-            <div className={`text taskrecordshover`} id={props.recordID} onClick={() => bringUpDetails(props.childrecord, props.recordID)}>&nbsp;{props.date[0] + '.' + props.date[1] + '.' + props.date[2]}: {props.childrecord}</div>
+            <div className={`text taskrecordshover`} id={props.recordID} onClick={() => bringUpDetails(props.childrecord, props.recordID)}>
+                &nbsp;
+                {/* {props.date[0] + '.' + props.date[1] + '.' + props.date[2]} */}
+                : {props.childrecord}
+                </div>
         </div>
     );
 };

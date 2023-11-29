@@ -10,40 +10,48 @@ import axios from 'axios'
 import { MdOutlineCancel } from "react-icons/md";
 import { Tooltip } from '@mui/material';
 import { AiOutlineFileAdd, AiOutlineCheckCircle, AiOutlineEdit, AiOutlineExpand } from "react-icons/ai";
+import { toast } from 'react-toastify';
 
 
 
-export default function Task({ project_handle, activeAccount, id, taskname, taskrequirement, taskowner, tasktargetdate, taskstatus, asms, childrecord, parenttask, checkForRecords, setCheckForRecords }) {
+export default function Task({ projecthandle, id, taskname, taskrequirement, taskowner, tasktargetdate, taskstatus, asms, childrecord, parenttask, checkForRecords, setCheckForRecords }) {
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
-  const [editing, setEditing] = useState(false)
-  const [requirement, setRequirement] = useState(null)
-  const [owner, setOwner] = useState("asms")
-  const [newTargetDate, setNewTargetDate] = useState(null)
-  const [name, setName] = useState(null)
+  const [editing, setEditing] = useState(false);
+
+  const [owner, setTaskowner] = useState("asms");
+  const [newTargetDate, setNewTargetDate] = useState(null);
+
+ 
+  // const [taskowner, setTaskowner] = useState();
   const alertCtx = useContext(AlertContext);
+
+  const [stepnumber, SetStepnumber] = useState(); //Step Number
+  const [name, setName] = useState(); //Step Name
+  const [stepurl, setStepURL] = useState(); //Step URL
+  const [requirement, setRequirement] = useState(); //Step Objective
 
   const handleDateChange = (newVal) => {
     setNewTargetDate(newVal.utc(true));
   };
 
   const handleEdit = () => {
-    // setOwner(taskowner)
-    setRequirement(taskrequirement)
-    // setNewTargetDate(tasktargetdate)
-    setName(taskname)
+    SetStepnumber(projecthandle) //Step Number
+    setName(taskname) //Step Name
+    setTaskowner(taskowner) //Step URL
+    setRequirement(taskrequirement) //Step Objective
     setEditing(true)
   }
 
   const onEditCancel = () => {
     setEditing(false);
     setRequirement(null);
-    // setOwner(null);
+    // setTaskowner(null);
     // setNewTargetDate(null);
     setName(null)
   }
 
-  const handleChange = (e, newVal) => setOwner(newVal);
+  const handleChange = (e, newVal) => setTaskowner(newVal);
 
 
   const onEditSave = async () => {
@@ -66,9 +74,12 @@ export default function Task({ project_handle, activeAccount, id, taskname, task
 
     const updatedTask = {
       // 'tasktargetdate': newTargetDate,
-      'taskrequirement': requirement,
-      'asms': owner,
-      'taskname': name,
+      'projecthandle': stepnumber, //Step Number the problem is in teh controller!!!!!!!!!!!!!!!!!!!!!!
+      'taskname': name, //Step Name
+      'taskowner': stepurl, //Step URL
+      'taskrequirement': requirement, //Step Objective
+      'asms': asms,
+         
     }
 
 
@@ -78,19 +89,20 @@ export default function Task({ project_handle, activeAccount, id, taskname, task
     }
 
     const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskdetails/${id}`, updatedTask)
-      .then((response) => { updatedDetails.length ? alertCtx.success(` "${taskname}" task successfully updated ${updatedDetails.join(", ")}`) : alertCtx.warning(`No changes in "${taskname}"`) })
+    // const response = await axios.put(`http://localhost:8000/api/v1/tasks/update/taskdetails/${id}`, updatedTask)
+      .then((response) => { updatedDetails.length ? 
+        alertCtx.success(` "${taskname}" task successfully updated ${updatedDetails.join(", ")}`) : alertCtx.warning(`No changes in "${taskname}"`) })
 
       .catch((error) => { alertCtx.error(error.message); })
     setCheckForRecords(!checkForRecords)
+    toast.success(`Step called ${taskname} has been updated.`)
     onEditCancel();
   }
 
 
   return (
     <>
-      {/* <div className="Verdana" style={{ color: getStatusByColourTaskText(taskstatus) }}> */}
-      <div className="Verdana" >
-
+      <div className="Font-Verdana-Medium-Howto" >
         <div style={{ display: 'flex', float: 'right' }}>
           <>
             {editing === true ?
@@ -101,6 +113,7 @@ export default function Task({ project_handle, activeAccount, id, taskname, task
                 </>
               )
               :
+              
               (
 
                 isExpanded && taskstatus !== 'DONE' ?
@@ -112,35 +125,74 @@ export default function Task({ project_handle, activeAccount, id, taskname, task
             }
           </>
         </div>
+
+
+
         {editing === true ?
-          <><>
+          <>Step Number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<>
             <input
               required
-              defaultValue={taskname}
+              defaultValue={projecthandle}  //passed in from above
+              onChange={(e) => SetStepnumber(e.target.value)}
+              style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '25px' }} />
+          
+          <>&nbsp;&nbsp;&nbsp;Step Name: <>
+            <input
+              required
+              defaultValue={taskname} //passed in from above
               onChange={(e) => setName(e.target.value)}
-              size='small'
-              // style={{ width: 500, height: '27.5px', marginBottom: '15px', display: 'flex' }} />
               style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '500px' }} />
+          <div className='Font-Spacer-White'>Make this Spacer White</div>
+          </>
+          </>
           </>
           </>
           :
-          <i onClick={toggleAccordion}><i>Step-x: </i><b>{taskname}</b></i>}
+          <i onClick={toggleAccordion}>
+            <i>Step-{projecthandle}:</i><b>{taskname}</b></i>
+            
+            
+            
+            }
       </div>
+      <div></div>
+
+
+
       {isExpanded &&
         <div>
-          <div className='Verdana'>{editing === true ?
-            <input
-              freeSolo
-              required
-              defaultValue={taskrequirement}
-              onChange={(e) => setRequirement(e.target.value)}
-              size='small'
-              // style={{ width: 500, height: '27.50px', marginBottom: '15px', display: 'flex' }} />
-              style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '500px' }} />
-            :
-            taskrequirement}
+          <div className='Font-Verdana-Medium-Howto'>
+
+          {editing === true ?
+              <>Supporting URL: &nbsp;<>
+                <input
+                  required
+                  defaultValue={taskowner} //passed in from above
+                  onChange={(e) => setStepURL(e.target.value)}
+                  style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '500px' }} />
+              <div className='Font-Spacer-White'>Make this Spacer White</div>
+              </>
+              </>
+              :
+              <a href={taskowner} target="_blank">{taskowner}</a>}
+
+
+            {editing === true ?
+              <>Step Objective: &nbsp;&nbsp;<>
+                <input
+                  required
+                  defaultValue={taskrequirement} //passed in from above
+                  onChange={(e) => setRequirement(e.target.value)}
+                  size='small'
+                  style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1050px' }} />
+              <div className='Font-Spacer-White'>Make this Spacer White</div>
+              </>
+              </>
+              :
+              <div>{taskrequirement}</div>}
+
           </div>
-          <TaskRecordAccordion alertCtx={alertCtx} project_handle={project_handle} activeAccount={activeAccount} taskstatus={taskstatus} parentid={id} asms_number={asms} parenttask={parenttask} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
+          <TaskRecordAccordion projecthandle={projecthandle} taskstatus={taskstatus} parentid={id} asms_number={asms} parenttask={parenttask} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
         </div>
       }
     </>

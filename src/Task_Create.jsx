@@ -44,16 +44,16 @@ export default function Task_Create(props) {
   const datum = `${current.getFullYear()}.${current.getMonth() + 1}.${current.getDate()}`;
   const [date, setdate] = useState(current);
   const [taskname, setTaskname] = useState("");
-  const [step_number, setStep_number] = useState('');
+  // const [step_number, setStep_number] = useState('');
   const [taskrequirement, setTaskrequirement] = useState("");
-  const [taskowner, setTaskowner] = useState("");
+  const [taskowner, setTaskowner] = useState(""); //This has become "TaskURL"
   const [tasktargetdatehold, setTasktargetdatehold] = useState(null);
   const [tasktargetdate, setTasktargetdate] = useState(null);
   const [taskcreatedate, setTaskcreatedate] = useState(current);
   const [taskstatus, setTaskstatus] = useState("START");
-  const [projecthandle, setProjecthandle] = useState(props.project_handle);
+  const [projecthandle, setProjecthandle] = useState(props.projecthandle); //This became "Step Number" as in Step-"19"
   // const [asms, setAsms] = useState(props.asms_number);
-  const [asms, setAsms] = useState("asms");
+  const [asms, setAsms] = useState("asms"); //This will become the HOWTO's ID or Name
   const [tasknextstep, setTasknextstep] = useState("");
   const handleChange = (e, newVal) => setTaskowner(newVal);
   const handleDateChange = (newVal) => {
@@ -73,13 +73,13 @@ export default function Task_Create(props) {
       {
         taskname: taskname,
         taskrequirement: taskrequirement,
-        taskowner: taskowner,
+        taskowner: taskowner, //is now TaskURL
         tasktargetdate: tasktargetdate,
         taskcreatedate: taskcreatedate,
         taskstatus: taskstatus,
         asms: asms,
         projecthandle: projecthandle,
-        tasknextstep: tasknextstep,
+
       };
 
       try {
@@ -131,8 +131,6 @@ export default function Task_Create(props) {
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
         <a data-tooltip-id="insert" data-tooltip-content=".."><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
-        {/* &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<GiHummingbird style={{ color: '#D5441C', fontSize: '25px', cursor: 'pointer' }} /> */}
-        {/* &nbsp;<b><a className='Font-Verdana-Small-Rusty-Normal'>Add a Task</a></b> */}
         <b>Create a Howto Step </b>
         <div>&nbsp;</div>
       </div>
@@ -147,7 +145,7 @@ export default function Task_Create(props) {
             <form onSubmit={handleSubmit}>
               <div className='Font-Verdana-Small-Postgres'>
 
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Step Number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '25.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '30px' }} placeholder="Req" type="text" value={step_number} onChange={(event) => setStep_number(event.target.value)} required />
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Step Number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '25.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '30px' }} placeholder="Req" type="text" value={projecthandle} onChange={(event) => setProjecthandle(event.target.value)} required />
                 &nbsp; &nbsp; &nbsp; &nbsp;Step Name:&nbsp;
                 <input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '500px' }} type="text" onChange={(event) => setTaskname(event.target.value)} required />
 

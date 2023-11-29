@@ -14,36 +14,38 @@ function Task_Accordion({ activeAccount, asms_number, project_handle, requested_
   const [parenttask, setParenttask] = useState([]);
   const [error, setError] = useState(null);
   const doneList = parenttask.filter(status => status.taskstatus === 'DONE').sort((a, b) => (a.tasks[0].date.join(":") > b.tasks[0].date.join(":")) ? -1 : 1)
+  const [projecthandle, setProjecthandle] = useState("")
 
   useEffect(() => {
     // axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/asms/${asms_number}`).then((response) => {
     axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/asms/asms`).then((response) => {
-      setParenttask(response.data.sort((a, b) => a.id - b.id)); setError(null);
+      setParenttask(response.data.sort((a, b) => a.id - b.id)); 
+      setError(null);
     }).catch(setError);
   }, [checkForRecords]);
 
+    
 
   if (error) return <p>An error in Task_Accordion occurred</p>
 
   return (
     <div>
-      {/* <HowtoStepCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /> */}
-      <Task_Create asms_number={asms_number} project_handle={project_handle} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
-      <div>
-        <table className="Table6 fill">
+      <Task_Create asms_number={asms_number} projecthandle={projecthandle} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
+      <div div className="flex-box">
+        <table className="Table6 fill" style={{ width: '100%' }}>
           <thead>
             <tr>
               <th>Howto Name</th>
             </tr>
           </thead>
           {
-            parenttask.map(({ id, taskname, taskrequirement, taskowner, tasktargetdate, taskstatus, asms, tasks, taskcreatedate }) =>
+            parenttask.map(({ id, taskname, taskrequirement, taskowner, tasktargetdate, taskstatus, asms, tasks, taskcreatedate, projecthandle }) =>
             (
               <tbody>
                 {
                   <tr>
                     <td>
-                      {<Task project_handle={project_handle} id={id} taskname={taskname} taskrequirement={taskrequirement} taskowner={taskowner} asms={asms} tasktargetdate={tasktargetdate} taskstatus={taskstatus} parenttask={parenttask} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />}
+                      {<Task projecthandle={projecthandle} id={id} taskname={taskname} taskrequirement={taskrequirement} taskowner={taskowner} asms={asms} tasktargetdate={tasktargetdate} taskstatus={taskstatus} parenttask={parenttask} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />}
                     </td>
                   </tr>}
               </tbody>
