@@ -11,12 +11,18 @@ import { AiOutlineFileAdd, AiOutlineCheckCircle, AiOutlineEdit } from "react-ico
 function TaskRecordAccordion({ alertCtx, project_handle, asms_number, parentid, parenttask, checkForRecords, setCheckForRecords, taskstatus }) {
     const [isExpanded, setExpanded] = useState(false);
     const toggleAccordion = () => { setExpanded(!isExpanded); };
+    // const orderedTasks = parenttask.filter((task, key) => { return task.id === parentid });
     const orderedTasks = parenttask.filter((task, key) => { return task.id === parentid });
-    //   const taskRecords = orderedTasks[0].tasks.sort((a, b) => new Date(b.date[0], b.date[1], b.date[2]) - new Date(a.date[0], a.date[1], a.date[2]) || b.childid - a.childid);
+    // const taskRecords = orderedTasks[0].tasks.sort((a, b) => new Date(b.date[0], b.date[1], b.date[2]) - new Date(a.date[0], a.date[1], a.date[2]) || b.childid - a.childid);
+    // const taskRecords = orderedTasks.sort((a, b) => b.childid - a.childid);
     const taskRecords = orderedTasks;
+    // const taskRecords = orderedTasks;
     const [editing, setEditing] = useState(false);
     const [taskrecord, setTaskrecord] = useState(null);
     const date = new Date();
+    console.log(parenttask)
+    console.log(orderedTasks)
+  
 
     const handleEdit = (id, childrecord) => {
         setEditing(id)
@@ -59,7 +65,9 @@ function TaskRecordAccordion({ alertCtx, project_handle, asms_number, parentid, 
                                 :
                                 (
                                     status !== 'DONE' ?
-                                        <Tooltip title='Edit Step Entry' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(childid, childrecord) }}><AiOutlineEdit style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '18px' }} /></button></Tooltip>
+                                        <Tooltip title='Edit Step Entry' placement="top-end">
+                                            <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(childid, childrecord) }}>
+                                            <AiOutlineEdit style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '18px' }} /></button></Tooltip>
                                         :
                                         null
                                 )
@@ -105,7 +113,7 @@ function TaskRecordAccordion({ alertCtx, project_handle, asms_number, parentid, 
             <div>
                 {/* <MdAddCircleOutline style={{ color: '#D5441C', fontSize: '20px' }} /> */}
                 <Tooltip title='Insert Step Entry' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={toggleAccordion}><MdAddCircleOutline style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
-                Insert an Additional Step
+                Insert an Additional Step Entry
                 
             </div>
 

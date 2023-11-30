@@ -75,6 +75,12 @@
     color: #000000
 }
 
+.Font-Segoe-Medium-Howto {
+    font-family: "Segoe UI";
+    font-size: medium;
+    color: #2e2828
+}
+
 .Font-Verdana-Medium-Indeed {
     font-family: "Verdana";
     font-size: medium;
@@ -154,16 +160,15 @@
     /* min-width: 50%; */
 }
 
-.Table-home-left:hover {
+/* .Table-home-left:hover {
     font-family: "Verdana";
     font-size: small;
     color: #D5441C;
     background-color: #f7f4f3;
     border-radius: 4px;
     border: 1px solid #336791;
-    /* padding: 4px; */
     font-weight: normal;
-}
+} */
 
 .Table-home-centre{
     /* background-color: #f7f4f3; */
@@ -177,16 +182,15 @@
     /* min-width: 50%; */
 }
 
-.Table-home-centre:hover {
+/* .Table-home-centre:hover {
     font-family: "Verdana";
     font-size: small;
     color: #D5441C;
     background-color: #f7f4f3;
     border-radius: 4px;
     border: 1px solid #336791;
-    /* padding: 4px; */
     font-weight: normal;
-}
+} */
 
 .Table-home-right{
     /* background-color: #f7f4f3; */
@@ -200,16 +204,15 @@
     /* min-width: 50%; */
 }
 
-.Table-home-right:hover {
+/* .Table-home-right:hover {
     font-family: "Verdana";
     font-size: small;
     color: #D5441C;
     background-color: #f7f4f3;
     border-radius: 4px;
     border: 1px solid #336791;
-    /* padding: 4px; */
     font-weight: normal;
-}
+} */
 
 .asmshover:hover {
     font-family: "Verdana";

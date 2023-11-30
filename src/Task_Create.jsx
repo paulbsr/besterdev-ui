@@ -153,7 +153,7 @@ export default function Task_Create(props) {
                 <input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '750px' }} type="text" onChange={(event) => setTaskrequirement(event.target.value)} />
 
                 <div>&nbsp;</div>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Supporting URL:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '650px' }} placeholder="Optional" type="text" value={taskowner} onChange={(event) => setTaskowner(event.target.value)} />
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Supporting URL:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '653px' }} placeholder="Optional" type="text" value={taskowner} onChange={(event) => setTaskowner(event.target.value)} />
 
                 {/* &nbsp; &nbsp; &nbsp; &nbsp;Owner:&nbsp;
                 <select style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} id="dropdown" onChange={(event) => setTaskowner(event.target.value)}>

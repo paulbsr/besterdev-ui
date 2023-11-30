@@ -10,7 +10,7 @@ import axios from 'axios'
 import { MdOutlineCancel } from "react-icons/md";
 import { Tooltip } from '@mui/material';
 import { AiOutlineFileAdd, AiOutlineCheckCircle, AiOutlineEdit, AiOutlineExpand } from "react-icons/ai";
-import { toast } from 'react-toastify';
+import { toast, Flip, ToastContainer } from 'react-toastify';
 
 
 
@@ -102,7 +102,8 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
 
   return (
     <>
-      <div className="Font-Verdana-Medium-Howto" >
+      <div className="Font-Segoe-Medium-Howto" >
+      {/* <div className="Font-Verdana-Medium-Howto" > */}
         <div style={{ display: 'flex', float: 'right' }}>
           <>
             {editing === true ?
@@ -141,7 +142,7 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
               required
               defaultValue={taskname} //passed in from above
               onChange={(e) => setName(e.target.value)}
-              style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '500px' }} />
+              style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '848px' }} />
           <div className='Font-Spacer-White'>Make this Spacer White</div>
           </>
           </>
@@ -149,7 +150,7 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
           </>
           :
           <i onClick={toggleAccordion}>
-            <i>Step-{projecthandle}:</i><b>{taskname}</b></i>
+            <i>Step-{projecthandle}:&nbsp;</i><b>{taskname}</b></i>
             
             
             
@@ -161,7 +162,8 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
 
       {isExpanded &&
         <div>
-          <div className='Font-Verdana-Medium-Howto'>
+                <div className="Font-Segoe-Medium-Howto" >
+          {/* <div className='Font-Verdana-Medium-Howto'> */}
 
           {editing === true ?
               <>Supporting URL: &nbsp;<>
@@ -169,7 +171,7 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
                   required
                   defaultValue={taskowner} //passed in from above
                   onChange={(e) => setStepURL(e.target.value)}
-                  style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '500px' }} />
+                  style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} />
               <div className='Font-Spacer-White'>Make this Spacer White</div>
               </>
               </>
@@ -184,7 +186,7 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
                   defaultValue={taskrequirement} //passed in from above
                   onChange={(e) => setRequirement(e.target.value)}
                   size='small'
-                  style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1050px' }} />
+                  style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1002px' }} />
               <div className='Font-Spacer-White'>Make this Spacer White</div>
               </>
               </>

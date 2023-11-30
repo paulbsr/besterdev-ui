@@ -25,10 +25,7 @@ import { useUserContext } from './UserContext';
 import ReactGA from 'react-ga';
 import PageHome from './PageHome';
 
-// import CandidateSearchLinkedin from './CandidateSearchLinkedin';
-
-
-const TRACKING_ID = "G-FCGGY1NE36"; // YOUR_OWN_TRACKING_ID
+const TRACKING_ID = "G-FCGGY1NE36"; 
 ReactGA.initialize(TRACKING_ID);
 
 const PrivateRoutes = () => {
