@@ -6,19 +6,19 @@ import axios from "axios";
 import { Tooltip } from '@mui/material';
 import { MdOutlineCancel, MdOutlineInput, MdOutlineInsertComment, MdAddCircleOutline } from "react-icons/md";
 import { AiOutlineFileAdd, AiOutlineCheckCircle, AiOutlineEdit } from "react-icons/ai";
+import { toast, Flip, ToastContainer } from 'react-toastify';
 
 
-function TaskRecordAccordion({ alertCtx, project_handle, asms_number, parentid, parenttask, checkForRecords, setCheckForRecords, taskstatus }) {
+function TaskRecordAccordion({ alertCtx, project_handle, handle, asms_number, parentid, parenttask, checkForRecords, setCheckForRecords, taskstatus }) {
     const [isExpanded, setExpanded] = useState(false);
     const toggleAccordion = () => { setExpanded(!isExpanded); };
     const orderedTasks = parenttask.filter((task, key) => { return task.id === parentid });
     // const orderedTasks = parenttask.filter((task, key) => { return task.id === parentid });
     const taskRecords = orderedTasks[0].tasks.sort((a, b) => a.childid - b.childid);
-    // const taskRecords = orderedTasks.sort((a, b) => a.childid - b.childid);
-    // const taskRecords = orderedTasks;
-    // const taskRecords = orderedTasks;
     const [editing, setEditing] = useState(false);
     const [taskrecord, setTaskrecord] = useState(null);
+    const [parentids, setParentids] = useState(parentid); //This is a constraint on the Taskrecords table and must collerate to an entry in Tasks
+    const [handles, setHandles] = useState(handle); //This will become the Sequence Number of the TaskRecord
     const date = new Date();
     console.log(parenttask) //so parenttask is good and contains the "tasks"
     console.log(orderedTasks)
@@ -27,6 +27,7 @@ function TaskRecordAccordion({ alertCtx, project_handle, asms_number, parentid, 
 
     const handleEdit = (id, childrecord) => {
         setEditing(id)
+
         setTaskrecord(childrecord)
     }
 
@@ -38,19 +39,22 @@ function TaskRecordAccordion({ alertCtx, project_handle, asms_number, parentid, 
     const onEditSave = async (childid) => {
 
         const updatedTaskRecord = {
+            'parentid': parentids, //This is a constraint on the Taskrecords table and must collerate to an entry in Tasks
             'childrecord': taskrecord,
             'date': date,
+            'handle': handles,
         }
 
         const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
+        // const response = await axios.put(`http://localhost:8000/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
 
             .catch((error) => { alertCtx.error(error.message); })
         setCheckForRecords(!checkForRecords)
-        alertCtx.success(`TaskRecord has been memorialized`);
+        toast.success(`Step Record amended.`)
         onEditCancel();
     }
 
-    function editableTaskRecord(alertCtx, childid, childrecord, parentid, status, date, asms, handle, future, checkForRecords, setCheckForRecords) {
+    function editableTaskRecord(childid, childrecord, parentid, status, date, asms, handle, checkForRecords, setCheckForRecords) {
         return (
             <div>
                 <div style={{ display: 'flex' }}>
@@ -77,17 +81,30 @@ function TaskRecordAccordion({ alertCtx, project_handle, asms_number, parentid, 
                     </div>
 
                     <div>{editing === childid ?
-                        <textarea
-                            cols="150"
-                            variant="outlined"
-                            defaultValue={childid}
-                            rows={3}
-                            onChange={(e) => setTaskrecord(e.target.value)}
-                        ></textarea>
+                        
+                        <>
+                            <textarea
+                                cols="1"
+                                variant="outlined"
+                                defaultValue={handle}
+                                rows={1}
+                                onChange={(e) => setHandles(e.target.value)}>
+                            </textarea>&nbsp;&nbsp;
+
+                            <textarea
+                                cols="150"
+                                variant="outlined"
+                                defaultValue={childrecord}
+                                rows={1}
+                                onChange={(e) => setTaskrecord(e.target.value)}>
+                            </textarea>
+                        </>
+
+
                         :
-                        <div>
+                        <div className="Font-Calibri-Large-Howto"> &nbsp;&nbsp;&nbsp;
                             {/* <TaskRecordStatusByColourLong childid={childid} childrecord={childrecord} parentid={parentid} status={status} date={date} asms={asms} handle={handle} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /> */}
-                        {childid}
+                        (<b>{handle}</b>)&nbsp;{childrecord} 
                         </div>
                     }
                     </div>
@@ -109,11 +126,11 @@ function TaskRecordAccordion({ alertCtx, project_handle, asms_number, parentid, 
 
     return (
         <div>
-            <div className='Verdana'>
+            <div className="Font-Calibri-Large-Howto">
                 {taskRecords.map(({ childid, childrecord, parentid, status, date, asms, handle, future }) => (editableTaskRecord(childid, childrecord, parentid, status, date, asms, handle, checkForRecords, setCheckForRecords)))}
             </div>
 
-            <div>
+            <div className="Font-Verdana-Smaller_Insert">
                 {/* <MdAddCircleOutline style={{ color: '#D5441C', fontSize: '20px' }} /> */}
                 <Tooltip title='Insert Step Entry' placement="top-end">Insert an Additional Step Entry<button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={toggleAccordion}><MdAddCircleOutline style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
             </div>

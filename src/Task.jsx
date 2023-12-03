@@ -38,20 +38,20 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
   const handleEdit = () => {
     SetStepnumber(projecthandle) //Step Number
     setName(taskname) //Step Name
-    setTaskowner(taskowner) //Step URL
+    setStepURL(taskowner) //Step URL
     setRequirement(taskrequirement) //Step Objective
     setEditing(true)
   }
 
   const onEditCancel = () => {
     setEditing(false);
-    setRequirement(null);
+    // setRequirement(null);
     // setTaskowner(null);
     // setNewTargetDate(null);
-    setName(null)
+    // setName(null)
   }
 
-  const handleChange = (e, newVal) => setTaskowner(newVal);
+  // const handleChange = (e, newVal) => setTaskowner(newVal);
 
 
   const onEditSave = async () => {
@@ -74,7 +74,7 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
 
     const updatedTask = {
       // 'tasktargetdate': newTargetDate,
-      'projecthandle': stepnumber, //Step Number the problem is in teh controller!!!!!!!!!!!!!!!!!!!!!!
+      'projecthandle': stepnumber, //Step Number
       'taskname': name, //Step Name
       'taskowner': stepurl, //Step URL
       'taskrequirement': requirement, //Step Objective
@@ -102,8 +102,8 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
 
   return (
     <>
-      <div className="Font-Segoe-Medium-Howto" >
-      {/* <div className="Font-Verdana-Medium-Howto" > */}
+      <div className="Font-Calibri-Large-Howto" >
+      {/* <div className="Font-Verdana-Large-Howto" > */}
         <div style={{ display: 'flex', float: 'right' }}>
           <>
             {editing === true ?
@@ -130,19 +130,19 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
 
 
         {editing === true ?
-          <>Step Number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<>
+          <><i>Step Number:</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<>
             <input
               required
               defaultValue={projecthandle}  //passed in from above
               onChange={(e) => SetStepnumber(e.target.value)}
               style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '25px' }} />
           
-          <>&nbsp;&nbsp;&nbsp;Step Name: <>
+          <>&nbsp;&nbsp;&nbsp;&nbsp;<i>Step Name:</i>&nbsp;&nbsp;<>
             <input
               required
               defaultValue={taskname} //passed in from above
               onChange={(e) => setName(e.target.value)}
-              style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '848px' }} />
+              style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '855px' }} />
           <div className='Font-Spacer-White'>Make this Spacer White</div>
           </>
           </>
@@ -162,11 +162,11 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
 
       {isExpanded &&
         <div>
-                <div className="Font-Segoe-Medium-Howto" >
-          {/* <div className='Font-Verdana-Medium-Howto'> */}
+                <div className="Font-Calibri-Large-Howto" >
+          {/* <div className='Font-Verdana-Large-Howto'> */}
 
           {editing === true ?
-              <>Supporting URL: &nbsp;<>
+              <><i>Supporting URL:</i>&nbsp;<>
                 <input
                   required
                   defaultValue={taskowner} //passed in from above
@@ -180,7 +180,7 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
 
 
             {editing === true ?
-              <>Step Objective: &nbsp;&nbsp;<>
+              <><i>Step Objective:</i>&nbsp;&nbsp;&nbsp;<>
                 <input
                   required
                   defaultValue={taskrequirement} //passed in from above
@@ -191,7 +191,7 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
               </>
               </>
               :
-              <div>{taskrequirement}</div>}
+              <div>OBJECTIVE: {taskrequirement}</div>}
 
           </div>
           <TaskRecordAccordion projecthandle={projecthandle} taskstatus={taskstatus} parentid={id} asms_number={asms} parenttask={parenttask} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />

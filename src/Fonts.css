@@ -75,10 +75,48 @@
     color: #000000
 }
 
+.Font-Verdana-Large-Howto {
+    font-family: "Verdana";
+    font-size: large;
+    color: #423333
+}
+
+.Font-Calibri-Large-Howto {
+    font-family: "Calibri";
+    font-size: large;
+    color: #0c0c0c
+}
+
+.Font-Calibri-XLarge-Howto {
+    font-family: "Calibri";
+    font-size: x-large;
+    color: #0c0c0c
+}
+
+.Font-Verdana-Large-Howto-Italic-Rusty {
+    font-family: "Verdana";
+    font-size: large;
+    font-style: italic;
+    color: #D5441C;
+}
+
+.Font-Calibri-Large-Howto-Italic-Rusty {
+    font-family: "Calibri";
+    font-size: large;
+    font-style: italic;
+    color: #D5441C;
+}
+
 .Font-Segoe-Medium-Howto {
     font-family: "Segoe UI";
     font-size: medium;
     color: #2e2828
+}
+
+.Font-Segoe-Large-Howto {
+    font-family: "Segoe UI";
+    font-size: large;
+    color: #0c0c0c
 }
 
 .Font-Verdana-Medium-Indeed {
@@ -88,10 +126,10 @@
 }
 
 
-.Font-Verdana-Small_Compliment_Green {
+.Font-Verdana-Smaller_Insert {
     font-family: "Verdana";
-    font-size: small;
-    color: #169247
+    font-size: smaller;
+    color: #444342
 }
 
 .Font-Verdana-Small_Compliment_Blue {
