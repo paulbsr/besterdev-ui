@@ -18,17 +18,17 @@ function TaskRecordAccordion({ alertCtx, project_handle, handle, asms_number, pa
     const [editing, setEditing] = useState(false);
     const [taskrecord, setTaskrecord] = useState(null);
     const [parentids, setParentids] = useState(parentid); //This is a constraint on the Taskrecords table and must collerate to an entry in Tasks
-    const [handles, setHandles] = useState(handle); //This will become the Sequence Number of the TaskRecord
+    const [handles, setHandles] = useState(); //This will become the Sequence Number of the TaskRecord
     const date = new Date();
     console.log(parenttask) //so parenttask is good and contains the "tasks"
     console.log(orderedTasks)
     console.log(taskRecords)
 
 
-    const handleEdit = (id, childrecord) => {
+    const handleEdit = (id, childrecord, handles) => {
         setEditing(id)
-
         setTaskrecord(childrecord)
+        setHandles(handle)
     }
 
     const onEditCancel = () => {
@@ -102,7 +102,7 @@ function TaskRecordAccordion({ alertCtx, project_handle, handle, asms_number, pa
 
 
                         :
-                        <div className="Font-Calibri-Large-Howto"> &nbsp;&nbsp;&nbsp;
+                        <div className="Font-Calibri-Large-Howto"> 
                             {/* <TaskRecordStatusByColourLong childid={childid} childrecord={childrecord} parentid={parentid} status={status} date={date} asms={asms} handle={handle} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /> */}
                         (<b>{handle}</b>)&nbsp;{childrecord} 
                         </div>

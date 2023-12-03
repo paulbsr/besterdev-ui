@@ -163,7 +163,6 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
       {isExpanded &&
         <div>
                 <div className="Font-Calibri-Large-Howto" >
-          {/* <div className='Font-Verdana-Large-Howto'> */}
 
           {editing === true ?
               <><i>Supporting URL:</i>&nbsp;<>
@@ -176,7 +175,7 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
               </>
               </>
               :
-              <a href={taskowner} target="_blank">{taskowner}</a>}
+              <a className="Font-Verdana-XSmall" href={taskowner} target="_blank">{taskowner}</a>}
 
 
             {editing === true ?
