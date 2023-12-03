@@ -9,11 +9,13 @@ import { BiLogoFirebase, BiLogoPostgresql, BiLogoHeroku, BiLogoGithub, BiLogoGoo
 import { MdManageAccounts, MdOutlineVpnLock, MdOutlineMailLock } from "react-icons/md";
 import { FaFileCircleQuestion } from "react-icons/fa6";
 import { FaQuestionCircle, FaHome } from "react-icons/fa";
+import { GiBrainDump } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css'
 import { useNavigate } from 'react-router-dom'; 
 import { TbWorldWww } from "react-icons/tb";
 import { GiSecretBook } from "react-icons/gi";
 import { IoHome } from "react-icons/io5";
+import { MdEditDocument } from "react-icons/md";
 
 
   const BannerLight = ({ user }) => {
@@ -36,7 +38,7 @@ import { IoHome } from "react-icons/io5";
       <a data-tooltip-id="insert" data-tooltip-content="Screen Candidates" onClick={handleNavigateScreen}><FaPeopleArrows style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Management Portal" onClick={handleNavigateManage}><MdManageAccounts style={{ color: '#336791', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Howto Management" onClick={handleNavigateHowtoManage}><FaFileCircleQuestion style={{ color: '#336791', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Author" onClick={handleNavigateHowtoDocs}><FaQuestionCircle style={{ color: '#336791', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Braindump" onClick={handleNavigateHowtoDocs}><MdEditDocument style={{ color: '#336791', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Resources" onClick={handleNavigateResources}><TbWorldWww style={{ color: '#336791', fontSize: '32px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="ChatGPT" href="https://chat.openai.com/auth/login" target="_blank" rel="noreferrer"><RiOpenaiFill style={{ color: '#19c37c', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="ReactJS9" href="https://www.reactjs.com" target="_blank" rel="noreferrer"><FaReact style={{ color: '#61dafb', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;

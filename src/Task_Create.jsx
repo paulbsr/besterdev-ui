@@ -69,6 +69,8 @@ export default function Task_Create(props) {
     // ) 
     {
       event.preventDefault();
+
+      
       var newtask =
       {
         taskname: taskname,
@@ -96,13 +98,6 @@ export default function Task_Create(props) {
         console.log(err);
       }
     } 
-    // else {
-    //   event.preventDefault();
-    //   alertCtx.warning("Valid due date required");
-    // }
-
-
-
   };
 
 

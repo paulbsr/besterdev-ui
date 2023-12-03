@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import TaskRecordCreate from './TaskRecordCreate';
-import TaskRecordStatusByColourLong from './TaskRecordStatusByColourLong';
-import { getStatusByColourTaskText } from './getStatusByColourTaskText'
 import axios from "axios";
 import { Tooltip } from '@mui/material';
 import { MdOutlineCancel, MdOutlineInput, MdOutlineInsertComment, MdAddCircleOutline } from "react-icons/md";
@@ -13,27 +11,23 @@ function TaskRecordAccordion({ alertCtx, project_handle, handle, asms_number, pa
     const [isExpanded, setExpanded] = useState(false);
     const toggleAccordion = () => { setExpanded(!isExpanded); };
     const orderedTasks = parenttask.filter((task, key) => { return task.id === parentid });
-    // const orderedTasks = parenttask.filter((task, key) => { return task.id === parentid });
     const taskRecords = orderedTasks[0].tasks.sort((a, b) => a.childid - b.childid);
     const [editing, setEditing] = useState(false);
     const [taskrecord, setTaskrecord] = useState(null);
     const [parentids, setParentids] = useState(parentid); //This is a constraint on the Taskrecords table and must collerate to an entry in Tasks
-    const [handles, setHandles] = useState(); //This will become the Sequence Number of the TaskRecord
+    const [handlenew, setHandlenew] = useState(); //This will become the Sequence Number of the TaskRecord
     const date = new Date();
-    console.log(parenttask) //so parenttask is good and contains the "tasks"
-    console.log(orderedTasks)
-    console.log(taskRecords)
 
-
-    const handleEdit = (id, childrecord, handles) => {
-        setEditing(id)
-        setTaskrecord(childrecord)
-        setHandles(handle)
+    const handleEdit = (id, childrecord, handle) => {
+        setEditing(id);
+        setTaskrecord(childrecord);
+        setHandlenew(handlenew);
     }
 
     const onEditCancel = () => {
         setEditing(false);
-        setTaskrecord(null);
+        // setTaskrecord(null);
+        // setHandles();
     }
 
     const onEditSave = async (childid) => {
@@ -42,22 +36,59 @@ function TaskRecordAccordion({ alertCtx, project_handle, handle, asms_number, pa
             'parentid': parentids, //This is a constraint on the Taskrecords table and must collerate to an entry in Tasks
             'childrecord': taskrecord,
             'date': date,
-            'handle': handles,
+            'handle': handlenew,
         }
 
         const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
         // const response = await axios.put(`http://localhost:8000/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
-
-            .catch((error) => { alertCtx.error(error.message); })
         setCheckForRecords(!checkForRecords)
         toast.success(`Step Record amended.`)
         onEditCancel();
     }
-
+    console.log(orderedTasks)
     function editableTaskRecord(childid, childrecord, parentid, status, date, asms, handle, checkForRecords, setCheckForRecords) {
         return (
             <div>
                 <div style={{ display: 'flex' }}>
+                    <div>{editing === childid ?
+                        <>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            {/* <textarea
+                                cols="1"
+                                variant="outlined"
+                                defaultValue={handle}
+                                rows={1}
+                                onChange={(e) => setHandlenew(e.target.value)}>
+                            </textarea> */}
+
+                            <input
+                                required
+                                defaultValue={handle} //passed in from above
+                                onChange={(e) => setHandlenew(e.target.value)}
+                                style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '20px' }} />
+
+                            &nbsp;&nbsp;&nbsp;
+                            {/* <textarea
+                                cols="150"
+                                variant="outlined"
+                                defaultValue={childrecord}
+                                rows={1}
+                                onChange={(e) => setTaskrecord(e.target.value)}>
+                            </textarea> */}
+
+                            <input
+                                required
+                                defaultValue={childrecord} //passed in from above
+                                onChange={(e) => setTaskrecord(e.target.value)}
+                                style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} />
+                        </>
+                        :
+                        <div className="Font-Calibri-Large-Howto">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{handle}.&nbsp;&nbsp;&nbsp;{childrecord}
+                        </div>
+                    }
+                    </div>
+
                     <div style={{ display: 'flex', float: 'right' }}>
                         <>
                             {editing === childid ?
@@ -69,60 +100,18 @@ function TaskRecordAccordion({ alertCtx, project_handle, handle, asms_number, pa
                                 )
                                 :
                                 (
-                                    status !== 'DONE' ?
-                                        <Tooltip title='Edit Step Entry' placement="top-end">
-                                            <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(childid, childrecord) }}>
-                                                <AiOutlineEdit style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '18px' }} /></button></Tooltip>
-                                        :
-                                        null
+                                    <Tooltip title='Edit Step Entry' placement="top-end">
+                                        <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(childid, childrecord) }}>
+                                            <AiOutlineEdit style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '18px' }} /></button>
+                                    </Tooltip>
                                 )
                             }
                         </>
-                    </div>
-
-                    <div>{editing === childid ?
-                        
-                        <>
-                            <textarea
-                                cols="1"
-                                variant="outlined"
-                                defaultValue={handle}
-                                rows={1}
-                                onChange={(e) => setHandles(e.target.value)}>
-                            </textarea>&nbsp;&nbsp;
-
-                            <textarea
-                                cols="150"
-                                variant="outlined"
-                                defaultValue={childrecord}
-                                rows={1}
-                                onChange={(e) => setTaskrecord(e.target.value)}>
-                            </textarea>
-                        </>
-
-
-                        :
-                        <div className="Font-Calibri-Large-Howto"> 
-                            {/* <TaskRecordStatusByColourLong childid={childid} childrecord={childrecord} parentid={parentid} status={status} date={date} asms={asms} handle={handle} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /> */}
-                        (<b>{handle}</b>)&nbsp;{childrecord} 
-                        </div>
-                    }
                     </div>
                 </div>
             </div>
         )
     }
-
-    // if (taskRecords.length > 0) {
-    //     if (taskRecords[0].status === 'DONE') {
-    //         return (
-    //             <div>
-    //                 <TaskRecordStatusByColourLong childid={taskRecords[0].childid} childrecord={taskRecords[0].childrecord} parentid={taskRecords[0].parentid} status={taskRecords[0].status} date={taskRecords[0].date} asms={taskRecords[0].asms} handle={taskRecords[0].handle} future={taskRecords[0].future} checkForRecords={taskRecords[0].checkForRecords} setCheckForRecords={taskRecords[0].setCheckForRecords} />
-    //                 <div>{taskRecords.slice(1).map(({ childid, childrecord, parentid, date, asms, handle, future }) => (<TaskRecordStatusByColourLong alertCtx={alertCtx} childid={childid} childrecord={childrecord} parentid={parentid} status={'ARCHIVE'} date={date} asms={asms} handle={handle} future={future} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />))}</div>
-    //             </div>
-    //         )
-    //     }
-    // }
 
     return (
         <div>
@@ -131,7 +120,6 @@ function TaskRecordAccordion({ alertCtx, project_handle, handle, asms_number, pa
             </div>
 
             <div className="Font-Verdana-Smaller_Insert">
-                {/* <MdAddCircleOutline style={{ color: '#D5441C', fontSize: '20px' }} /> */}
                 <Tooltip title='Insert Step Entry' placement="top-end">Insert an Additional Step Entry<button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={toggleAccordion}><MdAddCircleOutline style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
             </div>
 

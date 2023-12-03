@@ -135,14 +135,14 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
               required
               defaultValue={projecthandle}  //passed in from above
               onChange={(e) => SetStepnumber(e.target.value)}
-              style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '25px' }} />
+              style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '25px' }} />
           
           <>&nbsp;&nbsp;&nbsp;&nbsp;<i>Step Name:</i>&nbsp;&nbsp;<>
             <input
               required
               defaultValue={taskname} //passed in from above
               onChange={(e) => setName(e.target.value)}
-              style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '855px' }} />
+              style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '855px' }} />
           <div className='Font-Spacer-White'>Make this Spacer White</div>
           </>
           </>
@@ -170,7 +170,7 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
                   required
                   defaultValue={taskowner} //passed in from above
                   onChange={(e) => setStepURL(e.target.value)}
-                  style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} />
+                  style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} />
               <div className='Font-Spacer-White'>Make this Spacer White</div>
               </>
               </>
@@ -185,7 +185,7 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
                   defaultValue={taskrequirement} //passed in from above
                   onChange={(e) => setRequirement(e.target.value)}
                   size='small'
-                  style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1002px' }} />
+                  style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1002px' }} />
               <div className='Font-Spacer-White'>Make this Spacer White</div>
               </>
               </>
