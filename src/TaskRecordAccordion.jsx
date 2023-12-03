@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import TaskRecordCreate from './TaskRecordCreate';
 import axios from "axios";
+import './Fonts.css'
 import { Tooltip } from '@mui/material';
 import { MdOutlineCancel, MdOutlineInput, MdOutlineInsertComment, MdAddCircleOutline } from "react-icons/md";
 import { AiOutlineFileAdd, AiOutlineCheckCircle, AiOutlineEdit } from "react-icons/ai";
@@ -102,7 +103,7 @@ function TaskRecordAccordion({ alertCtx, project_handle, handle, asms_number, pa
                                 (
                                     <Tooltip title='Edit Step Entry' placement="top-end">
                                         <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(childid, childrecord) }}>
-                                            <AiOutlineEdit style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '18px' }} /></button>
+                                            <AiOutlineEdit style={{ color: '#DDDDDD', display: 'round', margin: 'auto', fontSize: '18px' }} /></button>
                                     </Tooltip>
                                 )
                             }
@@ -116,7 +117,7 @@ function TaskRecordAccordion({ alertCtx, project_handle, handle, asms_number, pa
     return (
         <div>
             <div className="Font-Calibri-Large-Howto">
-                {taskRecords.map(({ childid, childrecord, parentid, status, date, asms, handle, future }) => (editableTaskRecord(childid, childrecord, parentid, status, date, asms, handle, checkForRecords, setCheckForRecords)))}
+                {taskRecords.map(({ childid, childrecord, parentid, status, date, asms, handle }) => (editableTaskRecord(childid, childrecord, parentid, status, date, asms, handle, checkForRecords, setCheckForRecords)))}
             </div>
 
             <div className="Font-Verdana-Smaller_Insert">

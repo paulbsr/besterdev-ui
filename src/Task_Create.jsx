@@ -217,7 +217,7 @@ export default function Task_Create(props) {
                 <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }} >Add this Step</button>
               </div>
             </form>
-            <div>Make this spacer white</div>
+            <div className='Font-Spacer-White'>Make this spacer white</div>
           </div>
         </div>
       )

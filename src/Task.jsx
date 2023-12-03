@@ -119,7 +119,7 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
 
                 isExpanded && taskstatus !== 'DONE' ?
 
-                  <Tooltip title='Edit Step Header' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => { handleEdit() }}><AiOutlineEdit style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
+                  <Tooltip title='Edit Step Header' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => { handleEdit() }}><AiOutlineEdit style={{ color: '#DDDDDD', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
                   :
                   null
               )
@@ -190,7 +190,7 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
               </>
               </>
               :
-              <div>OBJECTIVE: {taskrequirement}</div>}
+              <div>{taskrequirement}</div>}
 
           </div>
           <TaskRecordAccordion projecthandle={projecthandle} taskstatus={taskstatus} parentid={id} asms_number={asms} parenttask={parenttask} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />

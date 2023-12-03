@@ -32,7 +32,7 @@ function Task_Accordion({ activeAccount, asms_number, project_handle, requested_
     <div>
       <Task_Create asms_number={asms_number} projecthandle={projecthandle} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
       <div className="flex-box">
-        <table className="Table6 fill" style={{ width: '100%' }}>
+        <table className="Table4" style={{ width: '100%' }}>
           <thead>
             <tr>
               <th>Howto Name</th>

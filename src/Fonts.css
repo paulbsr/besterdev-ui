@@ -191,6 +191,29 @@
     font-weight: normal;
 }
 
+.Table4 th {
+    background-color: #f7f4f3;
+    padding: 4px;
+    font-family: "Calibri";
+    font-size: xx-large;
+}
+
+.Table4 td {
+    border: 1px solid rgb(233, 228, 228);
+    padding: 4px;
+    font-family: "Calibri";
+    font-size: xx-large;
+    min-width: 50%;
+}
+
+.Table6 td {
+    border: 1px solid rgb(233, 228, 228);
+    padding: 4px;
+    /* font-family: "Verdana"; */
+    /* font-size: small; */
+    min-width: 50%;
+}
+
 .Table-home-left{
     /* background-color: #f7f4f3; */
     background-color: #ffffff;
