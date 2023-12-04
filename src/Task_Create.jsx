@@ -50,7 +50,7 @@ export default function Task_Create(props) {
   const [tasktargetdatehold, setTasktargetdatehold] = useState(null);
   const [tasktargetdate, setTasktargetdate] = useState(null);
   const [taskcreatedate, setTaskcreatedate] = useState(current);
-  const [taskstatus, setTaskstatus] = useState("START");
+  const [taskstatus, setTaskstatus] = useState("Parent HOWTO");
   const [projecthandle, setProjecthandle] = useState(props.projecthandle); //This became "Step Number" as in Step-"19"
   // const [asms, setAsms] = useState(props.asms_number);
   const [asms, setAsms] = useState("asms"); //This will become the HOWTO's ID or Name
@@ -73,30 +73,33 @@ export default function Task_Create(props) {
       
       var newtask =
       {
-        taskname: taskname,
-        taskrequirement: taskrequirement,
-        taskowner: taskowner, //is now TaskURL
+        taskname: taskname, //Step Name
+        taskrequirement: taskrequirement, //Step Objective
+        taskowner: taskowner, //Step URL
         tasktargetdate: tasktargetdate,
         taskcreatedate: taskcreatedate,
-        taskstatus: taskstatus,
+        taskstatus: taskstatus, //Parent Howto
         asms: asms,
-        projecthandle: projecthandle,
-
+        projecthandle: projecthandle, //Step Number
       };
 
-      try {
-        const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/create`, newtask);
+      // try 
+      // {
+        // const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/create`, newtask);
+        const response = await axios.post(`http://localhost:8000/api/v1/tasks/create`, newtask);
 
-        if (response.status === 200) {
+        if (response.status === 200) 
+        {
           props.setCheckForRecords(!props.checkForRecords);
           toast.success(`A new Step called ${taskname} has been added.`)
-        } else {
-          alertCtx.error(`oops! Something went wrong#1!`);
-        }
-      } catch (err) {
-        alertCtx.error(`oops! Something went wrong!#2`);
-        console.log(err);
-      }
+        } 
+        else {alertCtx.error(`oops! Something went wrong#1!`); }
+      // } 
+      // catch (err) 
+      // {
+      //   alertCtx.error(`oops! Something went wrong!#2`);
+      //   console.log(err);
+      // }
     } 
   };
 
@@ -114,13 +117,6 @@ export default function Task_Create(props) {
 
   return (
 
-    // <div className='Font-Verdana-Small-Postgres'>&nbsp;
-
-
-
-
-
-
 
     <div className='Font-Verdana-Small-Postgres'>&nbsp;
       <Tooltip id="insert" />
@@ -136,7 +132,6 @@ export default function Task_Create(props) {
           <div>&nbsp;</div>
           <div>
 
-
             <form onSubmit={handleSubmit}>
               <div className='Font-Verdana-Small-Postgres'>
 
@@ -150,35 +145,6 @@ export default function Task_Create(props) {
                 <div>&nbsp;</div>
                 <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Supporting URL:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '653px' }} placeholder="Optional" type="text" value={taskowner} onChange={(event) => setTaskowner(event.target.value)} />
 
-                {/* &nbsp; &nbsp; &nbsp; &nbsp;Owner:&nbsp;
-                <select style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} id="dropdown" onChange={(event) => setTaskowner(event.target.value)}>
-                  <option disabled selected value="">Responsible</option>
-                  <option value="Conor Lynch">Conor Lynch</option>
-                  <option value="Declan Lawless">Declan Lawless</option>
-                  <option value="Julia Temple">Julia Temple</option>
-                  <option value="Kieran Hayter">Kieran Hayter</option>
-                  <option value="Liam Cearbhaill">Liam Cearbhaill</option>
-                  <option value="Monique Borje">Monique Borje</option>
-                  <option value="Patrick Haugh">Patrick Haugh</option>
-                  <option value="Paul Bester">Paul Bester</option>
-                  <option value="Ray Egan">Ray Egan</option>
-                  <option value="Rosie Curran">Rosie Curran</option>
-                  <option value="Simon Dowling">Simon Dowling</option>
-                  <option value="Stefan Manole">Stefan Manole</option>
-                </select> */}
-
-                {/* &nbsp; &nbsp; &nbsp; &nbsp;Due:&nbsp;
-                <LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
-                  <DatePicker
-                    id="Tasktargetdate"
-                    format="YYYY.M.D"
-                    selected={tasktargetdate}
-                    onChange={handleDateChange}
-                    minDate={dayjs.utc().add(1, "day")}
-                    dateFormat="YYYY.M.D"
-                    sx={{ height: '27.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.3px', width: '195px' } }} />
-                </LocalizationProvider> */}
-
                 <img alt="1" src={spacer} /><label htmlFor="dropdown">Attach to Howto:&nbsp;&nbsp;</label>
                 <select className='Font-Verdana-Small-Postgres'
                   onChange={(event) => {
@@ -186,8 +152,8 @@ export default function Task_Create(props) {
                     const selectedOption = event.target.options[selectedIndex];
                     const howto_name = selectedOption.getAttribute("data-howto_name");
                     const howto_id = selectedOption.getAttribute("data-howto_id");
-                    setHowto_name(howto_name);
-                    setHowto_id(howto_id);
+                    setTaskstatus(howto_name);
+                    // setHowto_id(howto_id);
                   }}
                   id="dropdown"
                   style={{

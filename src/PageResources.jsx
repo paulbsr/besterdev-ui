@@ -4,7 +4,7 @@ import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
 import Quicklinks from './Quicklinks';
 import Footer from './Footer';
-import { Flip, ToastContainer, toast } from 'react-toastify';
+import { Flip, ToastContainer, toast, Zoom } from 'react-toastify';
 import WebSiteCreate from './WebsiteCreate';
 import WebsiteManage from './WebsiteManage';
 
@@ -21,13 +21,13 @@ export default function PageResources() {
         {/* <Footer/> */}
         <ToastContainer
         position="top-left"
-        autoClose={1000}
+        autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
         rtl={false}
         pauseOnFocusLoss
-        transition={Flip}
+        transition={Zoom}
         draggable
         pauseOnHover
         theme="dark"/>

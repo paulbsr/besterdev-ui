@@ -22,14 +22,7 @@ export default function PageHowtoDocs() {
         <GradientLineThin />
         <Quicklinks />
         <GradientLineThin />
-        {/* <HowtoManage /> */}
-        {/* <HowtoSteps /> */}
-        {/* <TaskRecordCreate /> */}
-        {/* <HowtoStepRecordCreate /> */}
-        {/* <Task /> */}
         <Task_Accordion />
-        {/* <TaskRecordAccordion /> */}
-        {/* <Footer/> */}
         <ToastContainer
         position="top-left"
         autoClose={2000}

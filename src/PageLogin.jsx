@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 import { useUserContext } from './UserContext';
 import { useNavigate } from 'react-router-dom'; 
-import { Flip, toast, ToastContainer } from 'react-toastify'; // Import toast components
 import BannerWhite from './BannerWhite';
 import GradientLine from './GradientLine';
-import BannerLight from './BannerLight';
-import GradientLineThin from './GradientLineThin';
-import Quicklinks from './Quicklinks';
 import firebase from 'firebase/compat/app';
 import spacer from './graphix/besterdev_spacer_white.png';
-import Footer from './Footer';
+import { Flip, ToastContainer, toast, Zoom } from 'react-toastify';
 import 'firebase/auth';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
@@ -62,7 +58,7 @@ const PageLogin = () => {
       <div>&nbsp;</div>
       <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp; &nbsp;<button style={{marginLeft: '10px', height: '37.5px', width: '100px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#336791', cursor: 'pointer'}} onClick={handleLogin}><b>Login</b></button>
       {loginSuccessMessage &&       
-      <ToastContainer
+        <ToastContainer
         position="top-left"
         autoClose={2000}
         hideProgressBar={false}
@@ -70,11 +66,12 @@ const PageLogin = () => {
         closeOnClick
         rtl={false}
         pauseOnFocusLoss
-        transition={Flip}
+        transition={Zoom}
         draggable
         pauseOnHover
-        theme="dark"/>}
-      {/* <Footer/> */}
+        theme="dark"/>
+        }
+
     </div>
   );
 };
