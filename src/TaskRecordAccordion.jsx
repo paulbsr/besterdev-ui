@@ -12,7 +12,7 @@ function TaskRecordAccordion({ project_handle, asms_number, parentid, parenttask
     const [isExpanded, setExpanded] = useState(false);
     const toggleAccordion = () => { setExpanded(!isExpanded); };
     const orderedTasks = parenttask.filter((task, key) => { return task.id === parentid });
-    const taskRecords = orderedTasks[0].tasks.sort((a, b) => a.childid - b.childid);
+    const taskRecords = orderedTasks[0].tasks.sort((a, b) => a.handle - b.handle);
     const [editing, setEditing] = useState(false);
     const [taskrecord, setTaskrecord] = useState(null);
     const [parentids, setParentids] = useState(parentid); //This is a constraint on the Taskrecords table and must collerate to an entry in Tasks
@@ -60,7 +60,7 @@ function TaskRecordAccordion({ project_handle, asms_number, parentid, parenttask
                                     required
                                     defaultValue={handle} //passed in from above
                                     onChange={(e) => setHandle(e.target.value)}
-                                    style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '20px' }} />
+                                    style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '20px', padding: 0, paddingLeft: '9px', }} />
                                 &nbsp;&nbsp;
 
                                 <input

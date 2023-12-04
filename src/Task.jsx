@@ -18,14 +18,8 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [editing, setEditing] = useState(false);
-
-  const [owner, setTaskowner] = useState("asms");
   const [newTargetDate, setNewTargetDate] = useState(null);
-
- 
-  // const [taskowner, setTaskowner] = useState();
   const alertCtx = useContext(AlertContext);
-
   const [stepnumber, SetStepnumber] = useState(); //Step Number
   const [name, setName] = useState(); //Step Name
   const [stepurl, setStepURL] = useState(); //Step URL
@@ -150,7 +144,7 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
           </>
           :
           <i onClick={toggleAccordion}>
-            <i className="Font-Calibri-Larger-Howto">Step-{projecthandle}:&nbsp;</i><b className="Font-Calibri-Larger-Howto">{taskname}</b></i>
+            <i className="Font-Calibri-Large-Howto">Step-{projecthandle}:&nbsp;</i><b className="Font-Calibri-Large-Howto">{taskname}</b></i>
             
             
             

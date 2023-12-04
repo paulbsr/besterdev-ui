@@ -7,7 +7,7 @@ import HowtoStepCreate from './HowtoStepCreate';
 import './Fonts.css'
 
 
-function Task_Accordion({ activeAccount, asms_number, project_handle, requested_asms, ppm_id }) {
+function Task_Accordion({ asms_number, project_handle, requested_asms, ppm_id }) {
 
   const [checkForRecords, setCheckForRecords] = useState(true);   // update this value to be the opposite of its current value, every time a new CR is added
   const [isExpanded, setExpanded] = useState(false);
