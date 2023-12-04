@@ -18,7 +18,7 @@ export default function TaskRecordCreate(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    var NewChildRecord = 
+    var NewChildRecord =
     {
       date: date,
       childrecord: childrecord,
@@ -38,22 +38,22 @@ export default function TaskRecordCreate(props) {
       if (response.status === 200) {
         props.setCheckForRecords(!props.checkForRecords);
         toast.success(`Step Record added.`)
-      } 
-      else {alertCtx.error(`oops! Something went wrong in TaskRecordCreate`);}
-    } 
-    catch (err) {alertCtx.error(`oops! Something went wrong in TaskRecordCreate`);}
+      }
+      else { alertCtx.error(`oops! Something went wrong in TaskRecordCreate`); }
+    }
+    catch (err) { alertCtx.error(`oops! Something went wrong in TaskRecordCreate`); }
 
     // try {
 
 
-      // const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskstatus/${parentid}`, UpdateTaskStatus);
-      // if (response.status === 202) {
-      //   props.setCheckForRecords(!props.checkForRecords);
-      // } else {
-      //   alertCtx.error(
-      //     `oops! Something went wrong in TaskRecordCreate not updating the status of the parent`
-      //   );
-      // }
+    // const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskstatus/${parentid}`, UpdateTaskStatus);
+    // if (response.status === 202) {
+    //   props.setCheckForRecords(!props.checkForRecords);
+    // } else {
+    //   alertCtx.error(
+    //     `oops! Something went wrong in TaskRecordCreate not updating the status of the parent`
+    //   );
+    // }
 
 
 
@@ -68,22 +68,40 @@ export default function TaskRecordCreate(props) {
   return (
     <>
       <form onSubmit={handleSubmit}>
-       
-        <textarea
+
+        {/* <textarea
           cols="150"
           rows={2}
           onChange={(e) => setChildrecord(e.target.value)}>
-        </textarea>
-        <div></div>
-       
-        <button 
-        className="Font-Verdana-Small-Postgres" 
-        type="submit" 
-        style={{ height: '22.5px', border: '1px solid #ffffff', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }} 
+        </textarea> */}
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input
+              required
+              // defaultValue={projecthandle}
+              // onChange={(e) => SetStepnumber(e.target.value)} //Jy moet SetStepNumber nog maak
+              onChange={(e) => setChildrecord(e.target.value)}
+              style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '25px' }} />
+        &nbsp;&nbsp;
+        <input
+          required
+          // defaultValue={taskowner} //passed in from above
+          onChange={(e) => setChildrecord(e.target.value)}
+          style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1050px' }} />
+        {/* <div className='Font-Spacer-White'>Make this Spacer White</div> */}
+
+
+
+        {/* <div></div> */}
+        &nbsp;&nbsp;
+        <button
+          className="Font-Verdana-Small-Postgres"
+          type="submit"
+          style={{ height: '22.5px', border: '1px solid #ffffff', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}
         >
-        INSERT
+          INSERT
         </button>
-       </form>
+      </form>
     </>
   );
 }

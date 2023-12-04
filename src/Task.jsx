@@ -150,7 +150,7 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
           </>
           :
           <i onClick={toggleAccordion}>
-            <i>Step-{projecthandle}:&nbsp;</i><b>{taskname}</b></i>
+            <i className="Font-Calibri-Larger-Howto">Step-{projecthandle}:&nbsp;</i><b className="Font-Calibri-Larger-Howto">{taskname}</b></i>
             
             
             

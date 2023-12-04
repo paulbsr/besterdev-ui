@@ -8,7 +8,7 @@ import { AiOutlineFileAdd, AiOutlineCheckCircle, AiOutlineEdit } from "react-ico
 import { toast, Flip, ToastContainer } from 'react-toastify';
 
 
-function TaskRecordAccordion({ alertCtx, project_handle, handle, asms_number, parentid, parenttask, checkForRecords, setCheckForRecords, taskstatus }) {
+function TaskRecordAccordion({ project_handle, asms_number, parentid, parenttask, checkForRecords, setCheckForRecords }) {
     const [isExpanded, setExpanded] = useState(false);
     const toggleAccordion = () => { setExpanded(!isExpanded); };
     const orderedTasks = parenttask.filter((task, key) => { return task.id === parentid });
@@ -16,13 +16,13 @@ function TaskRecordAccordion({ alertCtx, project_handle, handle, asms_number, pa
     const [editing, setEditing] = useState(false);
     const [taskrecord, setTaskrecord] = useState(null);
     const [parentids, setParentids] = useState(parentid); //This is a constraint on the Taskrecords table and must collerate to an entry in Tasks
-    const [handlenew, setHandlenew] = useState(); //This will become the Sequence Number of the TaskRecord
+    const [handle, setHandle] = useState(); //This will become the Sequence Number of the TaskRecord
     const date = new Date();
 
     const handleEdit = (id, childrecord, handle) => {
         setEditing(id);
         setTaskrecord(childrecord);
-        setHandlenew(handlenew);
+        setHandle(handle);
     }
 
     const onEditCancel = () => {
@@ -37,7 +37,7 @@ function TaskRecordAccordion({ alertCtx, project_handle, handle, asms_number, pa
             'parentid': parentids, //This is a constraint on the Taskrecords table and must collerate to an entry in Tasks
             'childrecord': taskrecord,
             'date': date,
-            'handle': handlenew,
+            'handle': handle,
         }
 
         const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
@@ -51,43 +51,29 @@ function TaskRecordAccordion({ alertCtx, project_handle, handle, asms_number, pa
         return (
             <div>
                 <div style={{ display: 'flex' }}>
-                    <div>{editing === childid ?
-                        <>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            {/* <textarea
-                                cols="1"
-                                variant="outlined"
-                                defaultValue={handle}
-                                rows={1}
-                                onChange={(e) => setHandlenew(e.target.value)}>
-                            </textarea> */}
+                    <div>
+                        {editing === childid ?
+                            <>
+                                &nbsp;&nbsp;&nbsp;
 
-                            <input
-                                required
-                                defaultValue={handle} //passed in from above
-                                onChange={(e) => setHandlenew(e.target.value)}
-                                style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '20px' }} />
+                                <input
+                                    required
+                                    defaultValue={handle} //passed in from above
+                                    onChange={(e) => setHandle(e.target.value)}
+                                    style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '20px' }} />
+                                &nbsp;&nbsp;
 
-                            &nbsp;&nbsp;&nbsp;
-                            {/* <textarea
-                                cols="150"
-                                variant="outlined"
-                                defaultValue={childrecord}
-                                rows={1}
-                                onChange={(e) => setTaskrecord(e.target.value)}>
-                            </textarea> */}
-
-                            <input
-                                required
-                                defaultValue={childrecord} //passed in from above
-                                onChange={(e) => setTaskrecord(e.target.value)}
-                                style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} />
-                        </>
-                        :
-                        <div className="Font-Calibri-Large-Howto">
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{handle}.&nbsp;&nbsp;&nbsp;{childrecord}
-                        </div>
-                    }
+                                <input
+                                    required
+                                    defaultValue={childrecord} //passed in from above
+                                    onChange={(e) => setTaskrecord(e.target.value)}
+                                    style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} />
+                            </>
+                            :
+                            <div className="Font-Calibri-Large-Howto">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{handle}.&nbsp;&nbsp;&nbsp;{childrecord}
+                            </div>
+                        }
                     </div>
 
                     <div style={{ display: 'flex', float: 'right' }}>
@@ -102,7 +88,7 @@ function TaskRecordAccordion({ alertCtx, project_handle, handle, asms_number, pa
                                 :
                                 (
                                     <Tooltip title='Edit Step Entry' placement="top-end">
-                                        <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(childid, childrecord) }}>
+                                        <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(childid, childrecord, handle) }}>
                                             <AiOutlineEdit style={{ color: '#DDDDDD', display: 'round', margin: 'auto', fontSize: '18px' }} /></button>
                                     </Tooltip>
                                 )
@@ -115,13 +101,13 @@ function TaskRecordAccordion({ alertCtx, project_handle, handle, asms_number, pa
     }
 
     return (
-        <div>
-            <div className="Font-Calibri-Large-Howto">
+        <div className='Font-Verdana-XSmall'>
+            <div>
                 {taskRecords.map(({ childid, childrecord, parentid, status, date, asms, handle }) => (editableTaskRecord(childid, childrecord, parentid, status, date, asms, handle, checkForRecords, setCheckForRecords)))}
             </div>
 
-            <div className="Font-Verdana-Smaller_Insert">
-                <Tooltip title='Insert Step Entry' placement="top-end">Insert an Additional Step Entry<button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={toggleAccordion}><MdAddCircleOutline style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <Tooltip title='Insert Step Entry' placement="top-end">Insert an additional Step Entry<button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={toggleAccordion}><MdAddCircleOutline style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
             </div>
 
             {isExpanded &&

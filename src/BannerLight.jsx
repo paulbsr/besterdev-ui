@@ -1,22 +1,19 @@
 import React from "react";
 import './Fonts.css';
+import 'react-tooltip/dist/react-tooltip.css'
 import { FaReact, FaJava, FaNodeJs, FaAws, FaPeopleArrows } from 'react-icons/fa';
-import { SiSpringboot, SiGoogleanalytics, SiDocker, SiProtonvpn, SiProtonmail } from "react-icons/si";
+import { SiSpringboot, SiGoogleanalytics, SiDocker } from "react-icons/si";
 import { SlLogin, SlLogout, SlHome } from "react-icons/sl";
 import { RiOpenaiFill, RiHome3Line } from "react-icons/ri";
 import { GrVirtualMachine} from "react-icons/gr";
 import { BiLogoFirebase, BiLogoPostgresql, BiLogoHeroku, BiLogoGithub, BiLogoGoogle } from "react-icons/bi";
 import { MdManageAccounts, MdOutlineVpnLock, MdOutlineMailLock } from "react-icons/md";
 import { FaFileCircleQuestion } from "react-icons/fa6";
-import { FaQuestionCircle, FaHome } from "react-icons/fa";
-import { GiBrainDump } from "react-icons/gi";
-import 'react-tooltip/dist/react-tooltip.css'
 import { useNavigate } from 'react-router-dom'; 
 import { TbWorldWww } from "react-icons/tb";
-import { GiSecretBook } from "react-icons/gi";
 import { IoHome } from "react-icons/io5";
 import { MdEditDocument } from "react-icons/md";
-
+import { FaQuestionCircle, FaHome } from "react-icons/fa";
 
   const BannerLight = ({ user }) => {
     const navigate = useNavigate();

@@ -92,9 +92,21 @@
     color: #0c0c0c
 }
 
+.Font-Calibri-Larger-Howto {
+    font-family: "Calibri";
+    font-size: larger;
+    color: #0c0c0c
+}
+
 .Font-Calibri-XLarge-Howto {
     font-family: "Calibri";
     font-size: x-large;
+    color: #0c0c0c
+}
+
+.Font-Calibri-XXLarge-Howto {
+    font-family: "Calibri";
+    font-size: xx-large;
     color: #0c0c0c
 }
 
@@ -190,6 +202,13 @@
     /* padding: 4px; */
     font-weight: normal;
 }
+
+/* .Table4 {
+    background-color: #f7f4f3;
+    padding: 4px;
+    font-family: "Calibri";
+    font-size: xx-large;
+} */
 
 .Table4 th {
     background-color: #f7f4f3;
