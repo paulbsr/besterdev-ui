@@ -7,7 +7,6 @@ import Footer from './Footer';
 import { Flip, ToastContainer, toast, Zoom } from 'react-toastify';
 import HowtoManage from './HowtoManage';
 import HowtoSteps from './HowtoSteps';
-// import TaskRecordCreate from './TaskRecordCreate';
 import HowtoStepRecordCreate from './HowtoStepRecordCreate';
 import Task_Accordion from './Task_Accordion';
 import TaskRecordAccordion from './TaskRecordAccordion';

@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import AlertContext from "./Generic/Alerts/AlertContext";
 import './Fonts.css'
 import TaskRecordAccordion from './TaskRecordAccordion';
-import { getStatusByColourTaskText } from './getStatusByColourTaskText'
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
@@ -10,9 +9,7 @@ import axios from 'axios'
 import { MdOutlineCancel } from "react-icons/md";
 import { Tooltip } from '@mui/material';
 import { AiOutlineFileAdd, AiOutlineCheckCircle, AiOutlineEdit, AiOutlineExpand } from "react-icons/ai";
-import { toast, Flip, ToastContainer } from 'react-toastify';
-
-
+import { toast } from 'react-toastify';
 
 export default function Task({ projecthandle, id, taskname, taskrequirement, taskowner, tasktargetdate, taskstatus, asms, childrecord, parenttask, checkForRecords, setCheckForRecords }) {
   const [isExpanded, setExpanded] = useState(false);
@@ -66,14 +63,13 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
     if (!name?.trim()) noDetails.push('Task Name')
 
 
-    const updatedTask = {
-      // 'tasktargetdate': newTargetDate,
+    const updatedTask = 
+    {
       'projecthandle': stepnumber, //Step Number
       'taskname': name, //Step Name
       'taskowner': stepurl, //Step URL
       'taskrequirement': requirement, //Step Objective
       'asms': asms,
-         
     }
 
 
@@ -89,7 +85,7 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
 
       .catch((error) => { alertCtx.error(error.message); })
     setCheckForRecords(!checkForRecords)
-    toast.success(`Step called ${taskname} has been updated.`)
+    toast.success(`Step called ${name} has been updated.`)
     onEditCancel();
   }
 
@@ -97,22 +93,18 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
   return (
     <>
       <div className="Font-Calibri-Large-Howto" >
-      {/* <div className="Font-Verdana-Large-Howto" > */}
         <div style={{ display: 'flex', float: 'right' }}>
           <>
             {editing === true ?
               (
-                <>
-                  <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave()}><AiOutlineCheckCircle style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
+                <>&nbsp;&nbsp;
+                  <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave()}><AiOutlineCheckCircle style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>&nbsp;
                   <Tooltip title='Revert' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditCancel()}><MdOutlineCancel style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
                 </>
               )
               :
-              
               (
-
                 isExpanded && taskstatus !== 'DONE' ?
-
                   <Tooltip title='Edit Step Header' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => { handleEdit() }}><AiOutlineEdit style={{ color: '#DDDDDD', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
                   :
                   null
@@ -120,8 +112,6 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
             }
           </>
         </div>
-
-
 
         {editing === true ?
           <><i>Step Number:</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<>
@@ -146,17 +136,13 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
           <i onClick={toggleAccordion}>
             <i className="Font-Calibri-Large-Howto">Step-{projecthandle}:&nbsp;</i><b className="Font-Calibri-Large-Howto">{taskname}</b></i>
             
-            
-            
             }
       </div>
       <div></div>
 
-
-
       {isExpanded &&
         <div>
-                <div className="Font-Calibri-Large-Howto" >
+          <div className="Font-Calibri-Large-Howto" >
 
           {editing === true ?
               <><i>Supporting URL:</i>&nbsp;<>
@@ -171,7 +157,6 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
               :
               <a className="Font-Verdana-XSmall" href={taskowner} target="_blank">{taskowner}</a>}
 
-
             {editing === true ?
               <><i>Step Objective:</i>&nbsp;&nbsp;&nbsp;<>
                 <input
@@ -185,7 +170,6 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
               </>
               :
               <div>{taskrequirement}</div>}
-
           </div>
           <TaskRecordAccordion projecthandle={projecthandle} taskstatus={taskstatus} parentid={id} asms_number={asms} parenttask={parenttask} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
         </div>

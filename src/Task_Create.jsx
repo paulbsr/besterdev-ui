@@ -44,7 +44,6 @@ export default function Task_Create(props) {
   const datum = `${current.getFullYear()}.${current.getMonth() + 1}.${current.getDate()}`;
   const [date, setdate] = useState(current);
   const [taskname, setTaskname] = useState("");
-  // const [step_number, setStep_number] = useState('');
   const [taskrequirement, setTaskrequirement] = useState("");
   const [taskowner, setTaskowner] = useState(""); //This has become "TaskURL"
   const [tasktargetdatehold, setTasktargetdatehold] = useState(null);
@@ -52,24 +51,18 @@ export default function Task_Create(props) {
   const [taskcreatedate, setTaskcreatedate] = useState(current);
   const [taskstatus, setTaskstatus] = useState("Parent HOWTO");
   const [projecthandle, setProjecthandle] = useState(props.projecthandle); //This became "Step Number" as in Step-"19"
-  // const [asms, setAsms] = useState(props.asms_number);
   const [asms, setAsms] = useState("asms"); //This will become the HOWTO's ID or Name
-  const [tasknextstep, setTasknextstep] = useState("");
+  
   const handleChange = (e, newVal) => setTaskowner(newVal);
+  
   const handleDateChange = (newVal) => {
     setTasktargetdatehold(newVal.format("YYYY.M.D"));
     setTasktargetdate(newVal);
   };
 
   const handleSubmit = async (event) => {
-    // if (
-    //   tasktargetdate != null &&
-    //   tasktargetdatehold != "Invalid Date" &&
-    //   tasktargetdate.isAfter(dayjs.utc())
-    // ) 
     {
       event.preventDefault();
-
       
       var newtask =
       {
@@ -83,8 +76,6 @@ export default function Task_Create(props) {
         projecthandle: projecthandle, //Step Number
       };
 
-      // try 
-      // {
         // const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/create`, newtask);
         const response = await axios.post(`http://localhost:8000/api/v1/tasks/create`, newtask);
 
@@ -94,16 +85,8 @@ export default function Task_Create(props) {
           toast.success(`A new Step called ${taskname} has been added.`)
         } 
         else {alertCtx.error(`oops! Something went wrong#1!`); }
-      // } 
-      // catch (err) 
-      // {
-      //   alertCtx.error(`oops! Something went wrong!#2`);
-      //   console.log(err);
-      // }
     } 
   };
-
-
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtos')
@@ -121,7 +104,7 @@ export default function Task_Create(props) {
     <div className='Font-Verdana-Small-Postgres'>&nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-        <a data-tooltip-id="insert" data-tooltip-content=".."><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
+        <a data-tooltip-id="insert" data-tooltip-content="Insert additional Step"><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
         <b>Create a Howto Step </b>
         <div>&nbsp;</div>
       </div>
@@ -131,10 +114,8 @@ export default function Task_Create(props) {
         <div>
           <div>&nbsp;</div>
           <div>
-
             <form onSubmit={handleSubmit}>
               <div className='Font-Verdana-Small-Postgres'>
-
                 <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Step Number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '25.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '30px' }} placeholder="Req" type="text" value={projecthandle} onChange={(event) => setProjecthandle(event.target.value)} required />
                 &nbsp; &nbsp; &nbsp; &nbsp;Step Name:&nbsp;
                 <input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '500px' }} type="text" onChange={(event) => setTaskname(event.target.value)} required />
@@ -178,7 +159,6 @@ export default function Task_Create(props) {
                     </option>
                   ))}
                 </select>
-
                 &nbsp; &nbsp; &nbsp; &nbsp;
                 <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }} >Add this Step</button>
               </div>
@@ -188,7 +168,6 @@ export default function Task_Create(props) {
         </div>
       )
       }
-
     </div>
   );
 }

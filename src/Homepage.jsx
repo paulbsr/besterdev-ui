@@ -5,7 +5,8 @@ import 'react-tooltip/dist/react-tooltip.css'
 import './Fonts.css';
 import 'react-dropdown/style.css';
 import axios from 'axios'
-import Darknet12 from './graphix/Darknet12.png'
+import Darknet7 from './graphix/Darknet7.png'
+import One from './graphix/2.png'
 import WhiteSpacer from './graphix/WhiteSpacer.png'
 
 
@@ -31,7 +32,6 @@ export default function Homepage(props) {
       .then((response) => {
         const sortedHowtodata = response.data.sort((a, b) => a.howto_name.localeCompare(b.howto_name));
         setHowtodata(sortedHowtodata);
-        console.log(howtodata);
       })
       .catch((e) => console.error(e));
   }, [props.checkForRecords]);
@@ -44,7 +44,7 @@ export default function Homepage(props) {
       <table style={{ width: '100%' }}>
         <thead>
           <tr>
-            <th style={{ width: '100%' }}><img src={Darknet12} /></th>
+            <th style={{ width: '100%' }}><img src={One} /></th>
           </tr>
         </thead>
         <tbody>
@@ -73,22 +73,27 @@ export default function Homepage(props) {
 
             return (
               <tr key={index}>
+
                 <td style={{ width: '20%' }} className="Table-home-left">
-                  <Tooltip id="edit" />
-                  <a data-tooltip-id="edit" data-tooltip-content={row.website_desc} href={row.website_url} target="_blank">
-                    {row.website_name}
-                  </a>
-                </td>
-                <td style={{ width: '50%' }} className="Table-home-centre">
-                  <img src={WhiteSpacer} alt="Website Logo" />
-                </td>
-                <td style={{ width: '20%' }} className="Table-home-right">
                   {howtoRow && (
                     <div>
                       {howtoRow.howto_name}
                     </div>
                   )}
                 </td>
+
+                <td style={{ width: '50%' }} className="Table-home-centre">
+                  <img src={WhiteSpacer} alt="Website Logo" />
+                </td>
+
+                <td style={{ width: '20%' }} className="Table-home-right">
+                  <Tooltip id="edit" />
+                  <a data-tooltip-id="edit" data-tooltip-content={row.website_desc} href={row.website_url} target="_blank">
+                    {row.website_name}
+                  </a>
+                </td>
+
+
               </tr>
             );
           })}
