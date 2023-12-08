@@ -18,21 +18,10 @@ export default function HowtoCreate(props) {
   const formattedDate = today.toISOString().split('T')[0]; // Convert the date to the desired format (YYYY-MM-DD)
   const alertCtx = useContext(AlertContext);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
-  const [howtoname, setHowtoname] = useState('');
-  const [howtodescription, setHowtodescription] = useState('');
-  const [author, setAuthor] = useState('');
   const [howto_name, setHowto_name] = useState(null)
   const [howto_desc, setHowto_desc] = useState(null)
   const [howto_author, setHowto_author] = useState(null)
-  const [howto_date, setHowto_date] = useState(null)
-  const [mobile, setmobile] = useState('');
-  const [jobdesc, setJobdesc] = useState('');
-  const [skill1, setSkill1] = useState('');
-  const [comment, setComment] = useState('');
-  const [role, setRole] = useState(null);
-  const [reqnum, setReqnum] = useState(null);
-  const [employer, setEmployer] = useState(null);
-  const [jobreqs, setJobreqs] = useState(null);
+  const [howto_date, setHowto_date] = useState(formattedDate)
   const [cr_date, setcr_date] = useState(formattedDate);
   const [cr_datehold, setCr_DateHold] = useState(null)
   const [isExpanded, setExpanded] = useState(false);
@@ -53,7 +42,7 @@ export default function HowtoCreate(props) {
       }
 
       try {
-        const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtos/create`, newRecord);
+        const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howto/create`, newRecord);
         if (response.status === 200) { 
           props.setCheckForRecords(!props.checkForRecords); 
           toast.success(`${howto_name} memorialized.`)
@@ -72,17 +61,7 @@ export default function HowtoCreate(props) {
   }
 
 
-  useEffect(() => {
-    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs')
-      .then((response) => {const sortedjobreqs = response.data.sort((b, a) => b.company.localeCompare(a.company));
-        setJobreqs(sortedjobreqs);
-      })
-      // .catch((e) => console.error(e));
-  },
-    []);
-
-
-  return (
+    return (
 
     <div className='Font-Verdana-Small-Postgres'>&nbsp;
       <Tooltip id="insert" />

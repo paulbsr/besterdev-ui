@@ -48,6 +48,7 @@ export default function HowtoManage() {
       .then((response) => {const sortedTabledata = response.data.sort((b, a) => b.howto_name.localeCompare(a.howto_name)); 
         setTabledata(sortedTabledata);}) //sort firstname alphabetically
       .catch((e)=> console.error(e));}, 
+      // console.log(tabledata)
       [checkForRecords]);
 
         const handleEdit = (row) => {
@@ -74,7 +75,8 @@ export default function HowtoManage() {
         const onEditSave = async() => {
         { 
             
-        const howtoPUT = {
+        const howtoPUT = 
+        {
           "howto_name": howto_name,
           "howto_desc": howto_desc,
           "howto_author": howto_author,
@@ -82,7 +84,7 @@ export default function HowtoManage() {
         } 
            
                             
-           await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtos/update/${editing}`, howtoPUT)
+           await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howto/update/${editing}`, howtoPUT)
            .then((response) => {
             setCheckForRecords(!checkForRecords); 
             toast.success(`${howto_name} updated.`)
@@ -93,7 +95,7 @@ export default function HowtoManage() {
        }
 
           const onEditDelete = (row) => {
-            axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtos/delete/${row.howto_id}`)
+            axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howto/delete/${row.howto_id}`)
             .then((response) => {
               setCheckForRecords(!checkForRecords); 
               toast.success(`${howto_name} purged.`)
