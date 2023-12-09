@@ -21,7 +21,7 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
   const [name, setName] = useState(); //Step Name
   const [stepurl, setStepURL] = useState(); //Step URL
   const [requirement, setRequirement] = useState(); //Step Objective
-console.log(parenttask)
+// console.log(parenttask)
   const handleDateChange = (newVal) => {
     setNewTargetDate(newVal.utc(true));
   };

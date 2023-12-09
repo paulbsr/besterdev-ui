@@ -22,7 +22,7 @@ function Task_Accordion({ asms_number, project_handle, requested_asms, ppm_id })
     .then((response) => {
       setParenttask(response.data.sort((a, b) => a.projecthandle - b.projecthandle)); 
       setError(null);
-      console.log(parenttask)
+      // console.log(parenttask)
     }).catch(setError);
   }, [checkForRecords]);
 

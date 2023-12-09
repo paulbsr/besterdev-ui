@@ -92,7 +92,7 @@ export default function Task_Create(props) {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtos')
       .then((response) => {
         const howtos = response.data.sort((b, a) => b.howto_name.localeCompare(a.howto_name));
-        console.log(howtos);
+        // console.log(howtos);
         setHowtos(howtos);
       })
   },

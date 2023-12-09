@@ -31,7 +31,7 @@ ReactGA.initialize(TRACKING_ID);
 
 const PrivateRoutes = () => {
   const { loggedInUserEmail } = useUserContext();
-  console.log('Hy behoort leeg te wees?' + loggedInUserEmail);
+  // console.log('Hy behoort leeg te wees?' + loggedInUserEmail);
   return (
     loggedInUserEmail ? <Outlet /> : <Navigate to='/login' />
   )
@@ -51,7 +51,7 @@ firebase.initializeApp(firebaseConfig);
 const app = initializeApp(firebaseConfig);
 
 const App = () => {
-  console.log('App() wat <UserProvider> bevat is nou geroep - dit beteken email gaan oorgeskryf word.');
+  // console.log('App() wat <UserProvider> bevat is nou geroep - dit beteken email gaan oorgeskryf word.');
 
   return (
     <UserProvider>

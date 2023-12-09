@@ -11,6 +11,7 @@ function New_Task_Accordion({ }) {
   const [checkForRecords, setCheckForRecords] = useState(true);
   const [howtodata, setHowtoData] = useState([]);
   const [error, setError] = useState(null);
+  const [howto_id, setHowto_id] = useState('6');
 
 
   useEffect(() => {
@@ -33,7 +34,7 @@ function New_Task_Accordion({ }) {
         <table className="Table4" style={{ width: '100%' }}>
           <thead>
             <tr>
-              <th>{howtodata.howto_name}</th>
+              <th>{howtodata.howto_name} {howto_id}</th>
             </tr>
           </thead>
 
@@ -42,7 +43,7 @@ function New_Task_Accordion({ }) {
               {
                 <tr>
                   <td>
-                    {<New_Task key={step.step_id} step_id={step.step_id} step_number={step.step_number} step_name={step.step_name} step_url={step.step_url} step_obj={step.step_obj} howtodata={howtodata} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />}
+                    {<New_Task key={step.step_id} howto_id={step.howto_id} step_id={step.step_id} step_number={step.step_number} step_name={step.step_name} step_url={step.step_url} step_obj={step.step_obj} howtodata={howtodata} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />}
                   </td>
                 </tr>}
             </tbody>

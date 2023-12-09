@@ -5,7 +5,7 @@ import './Fonts.css'
 import { Tooltip } from '@mui/material';
 import { MdOutlineCancel, MdOutlineInput, MdOutlineInsertComment, MdAddCircleOutline } from "react-icons/md";
 import { AiOutlineFileAdd, AiOutlineCheckCircle, AiOutlineEdit } from "react-icons/ai";
-import { toast, Flip, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 
 function TaskRecordAccordion({ project_handle, asms_number, parentid, parenttask, checkForRecords, setCheckForRecords }) {
@@ -18,6 +18,12 @@ function TaskRecordAccordion({ project_handle, asms_number, parentid, parenttask
     const [parentids, setParentids] = useState(parentid); //This is a constraint on the Taskrecords table and must collerate to an entry in Tasks
     const [handle, setHandle] = useState(); //This will become the Sequence Number of the TaskRecord
     const date = new Date();
+    console.log('PARENTTASK:', parenttask)
+    console.log('ORDEREDTASKS (.filter):', orderedTasks) //this one uses a filter to find only those with children
+    console.log('TASKRECORDS:', taskRecords )
+
+
+
 
     const handleEdit = (id, childrecord, handle) => {
         setEditing(id);
@@ -46,8 +52,8 @@ function TaskRecordAccordion({ project_handle, asms_number, parentid, parenttask
         toast.success(`Step Record amended.`)
         onEditCancel();
     }
-    console.log(orderedTasks)
-    function editableTaskRecord(childid, childrecord, parentid, status, date, asms, handle, checkForRecords, setCheckForRecords) {
+
+    function editableTaskRecord(childid, childrecord, handle, checkForRecords, setCheckForRecords) {
         return (
             <div>
                 <div style={{ display: 'flex' }}>

@@ -54,7 +54,7 @@ const LinkTab = styled((props) => <Tab disableRipple {...props} />)(({ theme }) 
 
 export default function Quicklinks(props) {
   const { loggedInUserEmail } = useUserContext();
-  console.log('Quicklinks collected:', loggedInUserEmail);
+  // console.log('Quicklinks collected:', loggedInUserEmail);
   const [checkForRecords, setCheckForRecords] = useState(true);
 
   return (

@@ -7,7 +7,7 @@ import { Tooltip } from '@mui/material';
 import { AiOutlineCheckCircle, AiOutlineEdit } from "react-icons/ai";
 import { toast } from 'react-toastify';
 
-export default function New_Task({ step_id, step_number, step_name, step_url, step_obj, howtodata, checkForRecords, setCheckForRecords }) {
+export default function New_Task({ howto_id, step_id, step_number, step_name, step_url, step_obj, howtodata, checkForRecords, setCheckForRecords }) {
 
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
@@ -61,8 +61,8 @@ export default function New_Task({ step_id, step_number, step_name, step_url, st
               (
                 <>
                   &nbsp;&nbsp;
-                  <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave()}><AiOutlineCheckCircle style={{ color: '#336791', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>&nbsp;
-                  <Tooltip title='Revert' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditCancel()}><MdOutlineCancel style={{ color: '#336791', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
+                  <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave()}><AiOutlineCheckCircle style={{ color: '#D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>&nbsp;
+                  <Tooltip title='Revert' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditCancel()}><MdOutlineCancel style={{ color: '#D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
                 </>
               )
               :
@@ -82,14 +82,14 @@ export default function New_Task({ step_id, step_number, step_name, step_url, st
               required
               defaultValue={step_number}
               onChange={(e) => setStepNumber(e.target.value)}
-              style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '25px' }} />
+              style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '25px' }} />
 
             <>&nbsp;&nbsp;&nbsp;&nbsp;<i>Step Name:</i>&nbsp;&nbsp;<>
               <input
                 required
                 defaultValue={step_name}
                 onChange={(e) => setName(e.target.value)}
-                style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '855px' }} />
+                style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '855px' }} />
               <div className='Font-Spacer-White'>Make this Spacer White</div>
             </>
             </>
@@ -113,7 +113,7 @@ export default function New_Task({ step_id, step_number, step_name, step_url, st
                   required
                   defaultValue={step_url}
                   onChange={(e) => setStepURL(e.target.value)}
-                  style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} />
+                  style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} />
                 <div className='Font-Spacer-White'>Make this Spacer White</div>
               </>
               </>
@@ -127,14 +127,14 @@ export default function New_Task({ step_id, step_number, step_name, step_url, st
                   defaultValue={step_obj}
                   onChange={(e) => setStepObjective(e.target.value)}
                   size='small'
-                  style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1002px' }} />
+                  style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1002px' }} />
                 <div className='Font-Spacer-White'>Make this Spacer White</div>
               </>
               </>
               :
               <div>{step_obj}</div>}
           </div>
-          {/* <New_TaskRecordAccordion parenttask={parenttask} projecthandle={projecthandle} taskstatus={taskstatus} parentid={id} asms_number={asms} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /> */}
+          <New_TaskRecordAccordion step_idd={step_id} howto_id={howto_id} howtodata={howtodata} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
         </div>
       }
     </>
