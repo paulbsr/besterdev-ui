@@ -18,7 +18,8 @@ function Task_Accordion({ asms_number, project_handle, requested_asms, ppm_id })
 
   useEffect(() => {
     // axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/asms/${asms_number}`).then((response) => {
-    axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/asms/asms`).then((response) => {
+    axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/asms/asms`)
+    .then((response) => {
       setParenttask(response.data.sort((a, b) => a.projecthandle - b.projecthandle)); 
       setError(null);
       console.log(parenttask)
@@ -39,9 +40,7 @@ function Task_Accordion({ asms_number, project_handle, requested_asms, ppm_id })
               <th>Howto Name</th>
             </tr>
           </thead>
-          {
-            parenttask.map(({ id, taskname, taskrequirement, taskowner, tasktargetdate, taskstatus, asms, tasks, taskcreatedate, projecthandle }) =>
-            (
+          {parenttask.map(({ id, taskname, taskrequirement, taskowner, tasktargetdate, taskstatus, asms, tasks, taskcreatedate, projecthandle }) => (
               <tbody>
                 {
                   <tr>

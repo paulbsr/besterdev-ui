@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import AlertContext from "./Generic/Alerts/AlertContext";
 import './Fonts.css'
-import TaskRecordAccordion from './TaskRecordAccordion';
+import New_TaskRecordAccordion from './New_TaskRecordAccordion';
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
@@ -11,7 +11,8 @@ import { Tooltip } from '@mui/material';
 import { AiOutlineFileAdd, AiOutlineCheckCircle, AiOutlineEdit, AiOutlineExpand } from "react-icons/ai";
 import { toast } from 'react-toastify';
 
-export default function Task({ projecthandle, id, taskname, taskrequirement, taskowner, tasktargetdate, taskstatus, asms, childrecord, parenttask, checkForRecords, setCheckForRecords }) {
+export default function New_Task({ step_id, step_number, step_name, step_url, step_obj, howtodata, checkForRecords, setCheckForRecords }) {
+
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [editing, setEditing] = useState(false);
@@ -21,16 +22,16 @@ export default function Task({ projecthandle, id, taskname, taskrequirement, tas
   const [name, setName] = useState(); //Step Name
   const [stepurl, setStepURL] = useState(); //Step URL
   const [requirement, setRequirement] = useState(); //Step Objective
-console.log(parenttask)
+
   const handleDateChange = (newVal) => {
     setNewTargetDate(newVal.utc(true));
   };
 
   const handleEdit = () => {
-    SetStepnumber(projecthandle) //Step Number
-    setName(taskname) //Step Name
-    setStepURL(taskowner) //Step URL
-    setRequirement(taskrequirement) //Step Objective
+    SetStepnumber(step_number) //Step Number
+    setName(step_name) //Step Name
+    setStepURL(step_url) //Step URL
+    setRequirement(step_obj) //Step Objective
     setEditing(true)
   }
 
@@ -52,8 +53,8 @@ console.log(parenttask)
     // Check field changes
     // if (newTargetDate !== tasktargetdate) updatedDetails.push("Due Date");
     // if (owner !== taskowner) updatedDetails.push("Owner");
-    if (requirement !== taskrequirement) updatedDetails.push("Requirement");
-    if (name !== taskname) updatedDetails.push("Task Name");
+    // if (requirement !== taskrequirement) updatedDetails.push("Requirement");
+    // if (name !== howto_name) updatedDetails.push("Task Name");
 
 
     //Check fields are not null
@@ -66,10 +67,10 @@ console.log(parenttask)
     const updatedTask = 
     {
       'projecthandle': stepnumber, //Step Number
-      'taskname': name, //Step Name
+      'howto_name': name, //Step Name
       'taskowner': stepurl, //Step URL
       'taskrequirement': requirement, //Step Objective
-      'asms': asms,
+      'asms': stepurl,
     }
 
 
@@ -78,10 +79,10 @@ console.log(parenttask)
       return
     }
 
-    const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskdetails/${id}`, updatedTask)
+    const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskdetails/${step_id}`, updatedTask)
     // const response = await axios.put(`http://localhost:8000/api/v1/tasks/update/taskdetails/${id}`, updatedTask)
       .then((response) => { updatedDetails.length ? 
-        alertCtx.success(` "${taskname}" task successfully updated ${updatedDetails.join(", ")}`) : alertCtx.warning(`No changes in "${taskname}"`) })
+        alertCtx.success(` "${step_name}" task successfully updated ${updatedDetails.join(", ")}`) : alertCtx.warning(`No changes in "${step_name}"`) })
 
       .catch((error) => { alertCtx.error(error.message); })
     setCheckForRecords(!checkForRecords)
@@ -91,6 +92,7 @@ console.log(parenttask)
 
 
   return (
+    
     <>
       <div className="Font-Calibri-Large-Howto" >
         <div style={{ display: 'flex', float: 'right' }}>
@@ -98,13 +100,13 @@ console.log(parenttask)
             {editing === true ?
               (
                 <>&nbsp;&nbsp;
-                  <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave()}><AiOutlineCheckCircle style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>&nbsp;
-                  <Tooltip title='Revert' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditCancel()}><MdOutlineCancel style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
+                  <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave()}><AiOutlineCheckCircle style={{ color: '#336791', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>&nbsp;
+                  <Tooltip title='Revert' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditCancel()}><MdOutlineCancel style={{ color: '#336791', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
                 </>
               )
               :
               (
-                isExpanded && taskstatus !== 'DONE' ?
+                isExpanded && step_name !== 'DONE' ?
                   <Tooltip title='Edit Step Header' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => { handleEdit() }}><AiOutlineEdit style={{ color: '#DDDDDD', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
                   :
                   null
@@ -117,16 +119,16 @@ console.log(parenttask)
           <><i>Step Number:</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<>
             <input
               required
-              defaultValue={projecthandle}  //passed in from above
+              defaultValue={step_number}  //passed in from above
               onChange={(e) => SetStepnumber(e.target.value)}
-              style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '25px' }} />
+              style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '25px' }} />
           
           <>&nbsp;&nbsp;&nbsp;&nbsp;<i>Step Name:</i>&nbsp;&nbsp;<>
             <input
               required
-              defaultValue={taskname} //passed in from above
+              defaultValue={step_name} //passed in from above
               onChange={(e) => setName(e.target.value)}
-              style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '855px' }} />
+              style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '855px' }} />
           <div className='Font-Spacer-White'>Make this Spacer White</div>
           </>
           </>
@@ -134,7 +136,7 @@ console.log(parenttask)
           </>
           :
           <i onClick={toggleAccordion}>
-            <i className="Font-Calibri-Large-Howto">Step-{projecthandle}:&nbsp;</i><b className="Font-Calibri-Large-Howto">{taskname}</b></i>
+            <i className="Font-Calibri-Large-Howto">Step-{step_number}:&nbsp;</i><b className="Font-Calibri-Large-Howto">{step_name}</b></i>
             
             }
       </div>
@@ -148,30 +150,30 @@ console.log(parenttask)
               <><i>Supporting URL:</i>&nbsp;<>
                 <input
                   required
-                  defaultValue={taskowner} //passed in from above
+                  defaultValue={step_url} //passed in from above
                   onChange={(e) => setStepURL(e.target.value)}
-                  style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} />
+                  style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} />
               <div className='Font-Spacer-White'>Make this Spacer White</div>
               </>
               </>
               :
-              <a className="Font-Verdana-XSmall" href={taskowner} target="_blank">{taskowner}</a>}
+              <a className="Font-Verdana-XSmall" href={step_url} target="_blank">{step_url}</a>}
 
             {editing === true ?
               <><i>Step Objective:</i>&nbsp;&nbsp;&nbsp;<>
                 <input
                   required
-                  defaultValue={taskrequirement} //passed in from above
+                  defaultValue={step_obj} //passed in from above
                   onChange={(e) => setRequirement(e.target.value)}
                   size='small'
-                  style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1002px' }} />
+                  style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1002px' }} />
               <div className='Font-Spacer-White'>Make this Spacer White</div>
               </>
               </>
               :
-              <div>{taskrequirement}</div>}
+              <div>{step_obj}</div>}
           </div>
-          <TaskRecordAccordion projecthandle={projecthandle} taskstatus={taskstatus} parentid={id} asms_number={asms} parenttask={parenttask} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
+          {/* <New_TaskRecordAccordion parenttask={parenttask} projecthandle={projecthandle} taskstatus={taskstatus} parentid={id} asms_number={asms} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /> */}
         </div>
       }
     </>

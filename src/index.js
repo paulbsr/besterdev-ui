@@ -10,6 +10,7 @@ import PageManage from './PageManage';
 import PageLogin from './PageLogin';
 import PageLogout from './PageLogout';
 import PageHowtoDocs from './PageHowtoDocs';
+import PageNewHowtoDocs from './PageNewHowtoDocs';
 import PageHowtoManage from './PageHowtoManage';
 import PageResources from './PageResources';
 import firebase from 'firebase/compat/app';
@@ -63,6 +64,7 @@ const App = () => {
             <Route path='/logout' element={<PageLogout />} />
             <Route path='/howtomanage' element={<PageHowtoManage />} />
             <Route path='/howtodocs' element={<PageHowtoDocs />} />
+            <Route path='/newhowtodocs' element={<PageNewHowtoDocs />} />
             <Route path='/resources' element={<PageResources/>} />
             <Route path='/home' element={<PageHome />} />
           </Route>

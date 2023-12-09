@@ -23,6 +23,7 @@ import { FaQuestionCircle, FaHome } from "react-icons/fa";
     const handleNavigateManage = () => {navigate('/manage');}
     const handleNavigateHowtoManage = () => {navigate('/howtomanage');}
     const handleNavigateHowtoDocs = () => {navigate('/howtodocs');}
+    const handleNavigateNewHowtoDocs = () => {navigate('/newhowtodocs');}
     const handleNavigateResources = () => {navigate('/resources');}
     const handleNavigateLogout = () => {navigate('/logout');}
     
@@ -36,6 +37,7 @@ import { FaQuestionCircle, FaHome } from "react-icons/fa";
       <a data-tooltip-id="insert" data-tooltip-content="Management Portal" onClick={handleNavigateManage}><MdManageAccounts style={{ color: '#336791', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Howto Management" onClick={handleNavigateHowtoManage}><FaFileCircleQuestion style={{ color: '#336791', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Braindump" onClick={handleNavigateHowtoDocs}><MdEditDocument style={{ color: '#336791', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="New Braindump" onClick={handleNavigateNewHowtoDocs}><FaQuestionCircle style={{ color: '#D5441C', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Resources" onClick={handleNavigateResources}><TbWorldWww style={{ color: '#336791', fontSize: '32px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="ChatGPT" href="https://chat.openai.com/auth/login" target="_blank" rel="noreferrer"><RiOpenaiFill style={{ color: '#19c37c', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="ReactJS9" href="https://www.reactjs.com" target="_blank" rel="noreferrer"><FaReact style={{ color: '#61dafb', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
