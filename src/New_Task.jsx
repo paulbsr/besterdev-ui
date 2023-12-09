@@ -1,14 +1,10 @@
 import React, { useState, useContext } from 'react';
-import AlertContext from "./Generic/Alerts/AlertContext";
 import './Fonts.css'
 import New_TaskRecordAccordion from './New_TaskRecordAccordion';
-import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import dayjs from "dayjs";
 import axios from 'axios'
 import { MdOutlineCancel } from "react-icons/md";
 import { Tooltip } from '@mui/material';
-import { AiOutlineFileAdd, AiOutlineCheckCircle, AiOutlineEdit, AiOutlineExpand } from "react-icons/ai";
+import { AiOutlineCheckCircle, AiOutlineEdit } from "react-icons/ai";
 import { toast } from 'react-toastify';
 
 export default function New_Task({ step_id, step_number, step_name, step_url, step_obj, howtodata, checkForRecords, setCheckForRecords }) {
@@ -16,90 +12,55 @@ export default function New_Task({ step_id, step_number, step_name, step_url, st
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [editing, setEditing] = useState(false);
-  const [newTargetDate, setNewTargetDate] = useState(null);
-  const alertCtx = useContext(AlertContext);
-  const [stepnumber, SetStepnumber] = useState(); //Step Number
-  const [name, setName] = useState(); //Step Name
-  const [stepurl, setStepURL] = useState(); //Step URL
-  const [requirement, setRequirement] = useState(); //Step Objective
-
-  const handleDateChange = (newVal) => {
-    setNewTargetDate(newVal.utc(true));
-  };
+  const [stepnumber, setStepNumber] = useState();
+  const [stepname, setName] = useState();
+  const [stepurl, setStepURL] = useState();
+  const [stepobjective, setStepObjective] = useState();
 
   const handleEdit = () => {
-    SetStepnumber(step_number) //Step Number
-    setName(step_name) //Step Name
-    setStepURL(step_url) //Step URL
-    setRequirement(step_obj) //Step Objective
+    setStepNumber(step_number)
+    setName(step_name)
+    setStepURL(step_url)
+    setStepObjective(step_obj)
     setEditing(true)
   }
 
-  const onEditCancel = () => {
+  const onEditCancel = () => 
+  {
     setEditing(false);
-    // setRequirement(null);
-    // setTaskowner(null);
-    // setNewTargetDate(null);
-    // setName(null)
   }
 
-  // const handleChange = (e, newVal) => setTaskowner(newVal);
-
-
   const onEditSave = async () => {
-    let updatedDetails = []
-    let noDetails = []
 
-    // Check field changes
-    // if (newTargetDate !== tasktargetdate) updatedDetails.push("Due Date");
-    // if (owner !== taskowner) updatedDetails.push("Owner");
-    // if (requirement !== taskrequirement) updatedDetails.push("Requirement");
-    // if (name !== howto_name) updatedDetails.push("Task Name");
-
-
-    //Check fields are not null
-    // if (!newTargetDate) noDetails.push('Due Date')
-    // if (!owner?.trim()) noDetails.push('Owner')
-    if (!requirement?.trim()) noDetails.push('Requirement')
-    if (!name?.trim()) noDetails.push('Task Name')
-
-
-    const updatedTask = 
+    const updatedStep =
     {
-      'projecthandle': stepnumber, //Step Number
-      'howto_name': name, //Step Name
-      'taskowner': stepurl, //Step URL
-      'taskrequirement': requirement, //Step Objective
-      'asms': stepurl,
+      'step_number': stepnumber,
+      'step_name': stepname,
+      'step_url': stepurl,
+      'step_obj': stepobjective,
     }
 
-
-    if (noDetails.length) {
-      alertCtx.warning(`Please fill in ${noDetails.join(', ')}`)
-      return
-    }
-
-    const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskdetails/${step_id}`, updatedTask)
-    // const response = await axios.put(`http://localhost:8000/api/v1/tasks/update/taskdetails/${id}`, updatedTask)
-      .then((response) => { updatedDetails.length ? 
-        alertCtx.success(` "${step_name}" task successfully updated ${updatedDetails.join(", ")}`) : alertCtx.warning(`No changes in "${step_name}"`) })
-
-      .catch((error) => { alertCtx.error(error.message); })
-    setCheckForRecords(!checkForRecords)
-    toast.success(`Step called ${name} has been updated.`)
+    const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtostep/update/${step_id}`, updatedStep)
+      .then((response) => 
+      {
+        setCheckForRecords(!checkForRecords);
+        toast.success(`${stepname} updated.`)
+      }
+      )
     onEditCancel();
   }
 
 
   return (
-    
+
     <>
       <div className="Font-Calibri-Large-Howto" >
         <div style={{ display: 'flex', float: 'right' }}>
           <>
             {editing === true ?
               (
-                <>&nbsp;&nbsp;
+                <>
+                  &nbsp;&nbsp;
                   <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave()}><AiOutlineCheckCircle style={{ color: '#336791', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>&nbsp;
                   <Tooltip title='Revert' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditCancel()}><MdOutlineCancel style={{ color: '#336791', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
                 </>
@@ -108,8 +69,8 @@ export default function New_Task({ step_id, step_number, step_name, step_url, st
               (
                 isExpanded && step_name !== 'DONE' ?
                   <Tooltip title='Edit Step Header' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => { handleEdit() }}><AiOutlineEdit style={{ color: '#DDDDDD', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
-                  :
-                  null
+              :
+              null
               )
             }
           </>
@@ -119,26 +80,26 @@ export default function New_Task({ step_id, step_number, step_name, step_url, st
           <><i>Step Number:</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<>
             <input
               required
-              defaultValue={step_number}  //passed in from above
-              onChange={(e) => SetStepnumber(e.target.value)}
+              defaultValue={step_number}
+              onChange={(e) => setStepNumber(e.target.value)}
               style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '25px' }} />
-          
-          <>&nbsp;&nbsp;&nbsp;&nbsp;<i>Step Name:</i>&nbsp;&nbsp;<>
-            <input
-              required
-              defaultValue={step_name} //passed in from above
-              onChange={(e) => setName(e.target.value)}
-              style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '855px' }} />
-          <div className='Font-Spacer-White'>Make this Spacer White</div>
-          </>
-          </>
+
+            <>&nbsp;&nbsp;&nbsp;&nbsp;<i>Step Name:</i>&nbsp;&nbsp;<>
+              <input
+                required
+                defaultValue={step_name}
+                onChange={(e) => setName(e.target.value)}
+                style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '855px' }} />
+              <div className='Font-Spacer-White'>Make this Spacer White</div>
+            </>
+            </>
           </>
           </>
           :
           <i onClick={toggleAccordion}>
             <i className="Font-Calibri-Large-Howto">Step-{step_number}:&nbsp;</i><b className="Font-Calibri-Large-Howto">{step_name}</b></i>
-            
-            }
+
+        }
       </div>
       <div></div>
 
@@ -146,14 +107,14 @@ export default function New_Task({ step_id, step_number, step_name, step_url, st
         <div>
           <div className="Font-Calibri-Large-Howto" >
 
-          {editing === true ?
+            {editing === true ?
               <><i>Supporting URL:</i>&nbsp;<>
                 <input
                   required
-                  defaultValue={step_url} //passed in from above
+                  defaultValue={step_url}
                   onChange={(e) => setStepURL(e.target.value)}
                   style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} />
-              <div className='Font-Spacer-White'>Make this Spacer White</div>
+                <div className='Font-Spacer-White'>Make this Spacer White</div>
               </>
               </>
               :
@@ -163,11 +124,11 @@ export default function New_Task({ step_id, step_number, step_name, step_url, st
               <><i>Step Objective:</i>&nbsp;&nbsp;&nbsp;<>
                 <input
                   required
-                  defaultValue={step_obj} //passed in from above
-                  onChange={(e) => setRequirement(e.target.value)}
+                  defaultValue={step_obj}
+                  onChange={(e) => setStepObjective(e.target.value)}
                   size='small'
                   style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1002px' }} />
-              <div className='Font-Spacer-White'>Make this Spacer White</div>
+                <div className='Font-Spacer-White'>Make this Spacer White</div>
               </>
               </>
               :
