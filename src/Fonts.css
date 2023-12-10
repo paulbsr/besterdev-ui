@@ -162,7 +162,7 @@
     color: grey
 }
 
-.Table-Column-200 {width: 200px;}
+/* .Table-Column-200 {width: 200px;} */
 
 
 .Table6 th {
@@ -190,7 +190,7 @@
     font-weight: normal;
     text-align: right;
     /* min-width: 50%; */
-}
+}e-right
 
 .Table5-hover:hover {
     font-family: "Verdana";
@@ -290,15 +290,15 @@
 }
 
 
-/* .Table-home-right:hover {
-    font-family: "Verdana";
-    font-size: small;
+.Table-howtoedit{
+    font-family: "Calibri";
+    font-size: larger;
     color: #D5441C;
     background-color: #f7f4f3;
     border-radius: 4px;
     border: 1px solid #336791;
     font-weight: normal;
-} */
+}
 
 .asmshover:hover {
     font-family: "Verdana";

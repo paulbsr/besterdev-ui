@@ -59,7 +59,7 @@ export default function HowtoStepCreate(props) {
     <div className='Font-Verdana-Small-Postgres'>&nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-        <a data-tooltip-id="insert" data-tooltip-content=".."><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
+        <a data-tooltip-id="insert" data-tooltip-content=".."><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
         <b>Insert an additional Howto Step </b>
         <div>&nbsp;</div>
       </div>
@@ -70,13 +70,24 @@ export default function HowtoStepCreate(props) {
             <form onSubmit={handleSubmit}>
               <div><img alt="1" src={spacer2} /></div>
               <div className='Font-Verdana-Small-Postgres'>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Step Number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '25.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '30px' }} placeholder="Req" type="text" value={step_number} onChange={(event) => setStep_number(event.target.value)} required />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Step Name:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '500px' }} placeholder="Required" type="text" value={step_name} onChange={(event) => setStep_name(event.target.value)} required />
-                <img alt="1" src={spacer} />Step Objective:&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '750px' }} placeholder="Required" type="text" value={step_obj} onChange={(event) => setStep_obj(event.target.value)} required />
+                {/* <img alt="1" src={spacer} /><img alt="1" src={spacer} /> */}
+                Step Number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '25.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '30px' }} placeholder="Req" type="text" value={step_number} onChange={(event) => setStep_number(event.target.value)} required />
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Step Name:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '845x' }} placeholder="Required" type="text" value={step_name} onChange={(event) => setStep_name(event.target.value)} required />
+                {/* <img alt="1" src={spacer} /> */}
+                
                 <div>&nbsp;</div>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Supporting URL:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '650px' }} placeholder="Optional" type="text" value={step_url} onChange={(event) => setStep_url(event.target.value)} />
-
-                <img alt="1" src={spacer} /><label htmlFor="dropdown">Attach to Howto:&nbsp;&nbsp;</label>
+                
+                <div>
+                Supporting URL:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} placeholder="Optional" type="text" value={step_url} onChange={(event) => setStep_url(event.target.value)} />
+                </div>
+                
+                <div>&nbsp;</div>
+                Step Objective:&nbsp;&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} placeholder="Required" type="text" value={step_obj} onChange={(event) => setStep_obj(event.target.value)} required />
+                {/* <img alt="1" src={spacer} /><img alt="1" src={spacer} /> */}
+                
+                {/* <img alt="1" src={spacer} />
+                <label htmlFor="dropdown">Attach to Howto:&nbsp;&nbsp;</label>
                 <select className='Font-Verdana-Small-Postgres'
                   onChange={(event) => {
                     const selectedIndex = event.target.selectedIndex;
@@ -106,8 +117,12 @@ export default function HowtoStepCreate(props) {
                     >{option.howto_name}
                     </option>
                   ))}
-                </select>
-                <img alt="1" src={spacer} /><button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>Add this Step</button>
+                </select> */}
+
+                <div>&nbsp;</div>
+
+                {/* <img alt="1" src={spacer} /> */}
+                <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>Add this Step</button>
                 <div>&nbsp;</div>
               </div>
             </form>

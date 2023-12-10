@@ -30,8 +30,8 @@ function New_Task_Accordion({ }) {
   return (
     <div>
       <HowtoStepCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
-      <div className="flex-box">
-        <table className="Table4" style={{ width: '100%' }}>
+      <div>
+        <table className="Table4" style={{ width: '1150px' }}>
           <thead>
             <tr>
               <th>{howtodata.howto_name} {howto_id}</th>

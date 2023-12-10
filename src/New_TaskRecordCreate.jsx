@@ -43,12 +43,12 @@ export default function New_TaskRecordCreate(props) {
           required
           onChange={(e) => setSteprecord(e.target.value)}
           style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} />
-
+        <div>&nbsp;</div>
         &nbsp;&nbsp;&nbsp;<button
           className="Font-Verdana-Small-Postgres"
           type="submit"
-          style={{ height: '22.5px', border: '1px solid #ffffff', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}
-        >Insert New Record
+          style={{ height: '27.5px', border: '1px solid #ffffff', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}
+        >Add this Record
         </button>
       </form>
     </>

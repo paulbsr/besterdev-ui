@@ -89,7 +89,7 @@ export default function New_Task({ howto_id, step_id, step_number, step_name, st
                 required
                 defaultValue={step_name}
                 onChange={(e) => setName(e.target.value)}
-                style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '855px' }} />
+                style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '800px' }} />
               <div className='Font-Spacer-White'>Make this Spacer White</div>
             </>
             </>

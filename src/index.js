@@ -25,13 +25,14 @@ import { UserProvider } from './UserContext';
 import { useUserContext } from './UserContext';
 import ReactGA from 'react-ga';
 import PageHome from './PageHome';
+import PageHowtoEdit from './PageHowtoEdit';
 
 const TRACKING_ID = "G-FCGGY1NE36"; 
 ReactGA.initialize(TRACKING_ID);
 
 const PrivateRoutes = () => {
   const { loggedInUserEmail } = useUserContext();
-  // console.log('Hy behoort leeg te wees?' + loggedInUserEmail);
+
   return (
     loggedInUserEmail ? <Outlet /> : <Navigate to='/login' />
   )
@@ -51,7 +52,6 @@ firebase.initializeApp(firebaseConfig);
 const app = initializeApp(firebaseConfig);
 
 const App = () => {
-  // console.log('App() wat <UserProvider> bevat is nou geroep - dit beteken email gaan oorgeskryf word.');
 
   return (
     <UserProvider>
@@ -67,6 +67,7 @@ const App = () => {
             <Route path='/newhowtodocs' element={<PageNewHowtoDocs />} />
             <Route path='/resources' element={<PageResources/>} />
             <Route path='/home' element={<PageHome />} />
+            <Route path='/howtoedit' element={<PageHowtoEdit />} />
           </Route>
           <Route path='/login' element={<PageLogin />} />
           <Route path='/' element={<PageLogin />} />
