@@ -22,7 +22,8 @@ import { TbLetterR } from "react-icons/tb";
 
 const today = new Date(); // Create a new Date object representing today's date
 const formattedDate = today.toISOString().split('T')[0]; // Convert the date to the desired format (YYYY-MM-DD)
-const Footer = () => (<div className="footer Font-Verdana-Small">
+const Footer = () => (
+<div className="footer Font-Verdana-Small">
     <TbSquareRoundedLetterP style={{color: 'black', fontSize: '20px' }}/>
     <TbSquareRoundedLetterA style={{color: 'black', fontSize: '20px' }}/>
     <TbSquareRoundedLetterU style={{color: 'black', fontSize: '20px' }}/>
@@ -43,6 +44,7 @@ const Footer = () => (<div className="footer Font-Verdana-Small">
     <TbLetterE style={{color: 'black', fontSize: '15px' }}/>
     <TbLetterR style={{color: 'black', fontSize: '15px' }}/>&nbsp; &nbsp; */}
     Last Updated: {formattedDate }. &nbsp; 
-    All rights reserved. </div>);
+    All rights reserved. 
+</div>);
 
 export default Footer;

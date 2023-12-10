@@ -6,7 +6,7 @@ import './Fonts.css';
 import 'react-dropdown/style.css';
 import axios from 'axios'
 import Darknet7 from './graphix/Darknet7.png'
-import One from './graphix/2.png'
+import One from './graphix/3.png'
 import WhiteSpacer from './graphix/WhiteSpacer.png'
 
 
