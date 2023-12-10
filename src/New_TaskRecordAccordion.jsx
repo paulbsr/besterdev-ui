@@ -9,20 +9,23 @@ import { toast } from 'react-toastify';
 
 
 function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setCheckForRecords }) {
+    const date = new Date();
     const [isExpanded, setExpanded] = useState(false);
     const toggleAccordion = () => { setExpanded(!isExpanded); };
     const filteredSteps1 = howtodata.howto_steps.filter((steps) => steps.step_id === step_idd);
     const filteredSteps = howtodata.howto_steps.filter((task, key) => { return task.step_id === step_idd });
     const SortedStepRecords = filteredSteps[0].step_records.sort((a, b) => a.steprecord_number - b.steprecord_number);
     const [editing, setEditing] = useState(false);
-    const [taskrecord, setTaskrecord] = useState(null);
-    const [handle, setHandle] = useState(); 
-    const date = new Date();
+    const [steprecord_id, setStepRecord_id] = useState();
+    const [steprecord_number, setStepRecord_number] = useState();
+    const [steprecord, setStepRecord] = useState();
+    const [steprecord_date, setStepRecord_date] = useState(date);
 
-    const handleEdit = (id, childrecord, handle) => {
-        setEditing(id);
-        setTaskrecord(childrecord);
-        setHandle(handle);
+    const handleEdit = (steprecord_id, newsteprecordnumber, newsteprecord ) => {
+        setEditing(steprecord_id);
+        setStepRecord_number(newsteprecordnumber);
+        setStepRecord(newsteprecord);
+        setStepRecord_date(date);
     }
 
     const onEditCancel = () => {
@@ -31,17 +34,16 @@ function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setChec
         // setHandles();
     }
 
-    const onEditSave = async (childid) => {
+    const onEditSave = async (steprecord_id) => {
 
-        // const updatedTaskRecord = {
-        //     'parentid': parentids,
-        //     'childrecord': taskrecord,
-        //     'date': date,
-        //     'handle': handle,
-        // }
+        const StepRecordPUT = 
+        {
+            'steprecord_number': steprecord_number,
+            'steprecord': steprecord,
+            'steprecord_date': steprecord_date,
+        }
 
-        // const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
-        // const response = await axios.put(`http://localhost:8000/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
+        const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/update/${steprecord_id}`, StepRecordPUT)
         setCheckForRecords(!checkForRecords)
         toast.success(`Step Record amended.`)
         onEditCancel();
@@ -58,15 +60,15 @@ function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setChec
 
                                 <input
                                     required
-                                    defaultValue={steprecord_number} //passed in from above
-                                    onChange={(e) => setHandle(e.target.value)}
+                                    defaultValue={steprecord_number}
+                                    onChange={(e) => setStepRecord_number(e.target.value)}
                                     style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '20px', padding: 0, paddingLeft: '9px', }} />
                                 &nbsp;&nbsp;
 
                                 <input
                                     required
-                                    defaultValue={steprecord} //passed in from above
-                                    onChange={(e) => setTaskrecord(e.target.value)}
+                                    defaultValue={steprecord}
+                                    onChange={(e) => setStepRecord(e.target.value)}
                                     style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} />
                             </>
                             :
@@ -81,7 +83,7 @@ function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setChec
                             {editing === steprecord_id ?
                                 (
                                     <>&nbsp;&nbsp;
-                                        <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave(steprecord_number)}><AiOutlineCheckCircle style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>&nbsp;
+                                        <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave(steprecord_id)}><AiOutlineCheckCircle style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>&nbsp;
                                         <Tooltip title='Discard' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditCancel()}><MdOutlineCancel style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
                                     </>
                                 )
@@ -107,20 +109,18 @@ function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setChec
             </div>
 
             <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <Tooltip title='Insert Step Entry' placement="top-end">Insert an additional Step Entry<button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={toggleAccordion}><MdAddCircleOutline style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
+                <Tooltip title='Insert an additional Step Record' placement="top-end">Insert an additional Step Record<button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={toggleAccordion}><MdAddCircleOutline style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
             </div>
 
             {isExpanded &&
                 (
                     <div>
-                        {/* <New_TaskRecordCreate project_handle={project_handle} asms_number={asms_number} parentid={parentid} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /> */}
+                        <New_TaskRecordCreate step_idd={step_idd} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
                     </div>
                 )
             }
         </div>
     );
-
-    
 }
 
 export default New_TaskRecordAccordion;
