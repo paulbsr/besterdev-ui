@@ -7,24 +7,14 @@ import 'react-dropdown/style.css';
 import {FaPen, FaCheck, FaRegTrashAlt} from 'react-icons/fa';
 import { FaFileCircleQuestion } from "react-icons/fa6";
 import {PiArrowCounterClockwiseBold} from 'react-icons/pi';
-import { MdManageAccounts } from "react-icons/md";
 import AlertContext from './Generic/Alerts/AlertContext';
-import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
-import 'react-tooltip/dist/react-tooltip.css'
-import CandidateCreate from './CandidateCreate';
-import GradientLine from './GradientLine';
 import { toast } from 'react-toastify';
 import GradientLineRusty from './GradientLineRusty';
 import HowtoCreate from './HowtoCreate';
-import HowtoStepCreate from './HowtoStepCreate';
-import HowtoStepRecordCreate from './HowtoStepRecordCreate';
 import HowtoSteps from './HowtoSteps';
-// import TaskRecordAccordion from './HowtoStepNumberAccordion';
 dayjs.extend(utc);
-
 
 
 export default function HowtoManage() {
@@ -119,18 +109,6 @@ export default function HowtoManage() {
 
       <HowtoCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
 
-      {/* <HowtoStepCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/> */}
-
-      {/* <HowtoStepRecordCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/> */}
-
-      {/* {isExpanded && (
-        <div>
-          <div> */}
-
-
-
-          {/* <TaskRecordAccordion /> */}
-
             <table className="Table6">
               <thead>
                 <tr>
@@ -184,9 +162,5 @@ export default function HowtoManage() {
             <GradientLineRusty />
             <div>&nbsp;</div>
           </div>
-    //     </div>
-    //     )
-    //     }
-    // </div>
   );
 }

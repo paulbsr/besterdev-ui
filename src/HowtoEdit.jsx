@@ -34,8 +34,6 @@ export default function HowtoEdit(props) {
       </table>
 
 
-
-
       <table style={{ width: '100%' }}>
         <thead>
           <tr>
@@ -45,32 +43,12 @@ export default function HowtoEdit(props) {
           </tr>
         </thead>
 
-
         <tbody>
-              <tr>
-
-                <td className="Table-home-left">
-                  {/* {howtoRow && (
-                    <div>
-                      {howtoRow.howto_name}
-                    </div>
-                  )} */}
-                </td>
-
-                <td className="Table-home-right">
-                  {/* <img src={WhiteSpacer} alt="Website Logo" /> */}
-                  <New_Task_Accordion howto_ids={props.howto_id}/>
-                </td>
-
-                <td className="Table-home-right">
-                  {/* <Tooltip id="edit" />
-                  <a data-tooltip-id="edit" data-tooltip-content={row.website_desc} href={row.website_url} target="_blank">
-                    {row.website_name}
-                  </a> */}
-                </td>
-
-
-              </tr>
+          <tr>
+            <td className="Table-home-left"></td>
+            <td className="Table-home-right"><New_Task_Accordion howto_ids={props.howto_id} /></td>
+            <td className="Table-home-right"></td>
+          </tr>
         </tbody>
       </table>
     </div>

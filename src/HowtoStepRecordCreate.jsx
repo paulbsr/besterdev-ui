@@ -40,10 +40,8 @@ export default function HowtoStepRecordCreate(props) {
     if (response.status === 200) 
     {
       setCheckForRecords(!checkForRecords);
-      // alert(`${steprecord} StepRecord memorialized.`);
       toast.success(`${steprecord} StepRecord memorialized.`);
     }
-    // else { alert(`oops! Something went wrong @ the if/else!`); }
     else { toast.error('Nee') }
   }
 

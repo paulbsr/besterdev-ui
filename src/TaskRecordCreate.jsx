@@ -45,14 +45,11 @@ export default function TaskRecordCreate(props) {
       <form onSubmit={handleSubmit}>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
           required
-          // defaultValue={projecthandle}
-          // onChange={(e) => SetStepnumber(e.target.value)} //Jy moet SetStepNumber nog maak
           onChange={(e) => setChildrecord(e.target.value)}
           style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '20px', padding: 0, paddingLeft: '7px' }} />
 
         &nbsp;&nbsp;&nbsp;<input
           required
-          // defaultValue={taskowner} //passed in from above
           onChange={(e) => setChildrecord(e.target.value)}
           style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} />
 

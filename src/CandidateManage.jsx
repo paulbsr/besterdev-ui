@@ -204,8 +204,7 @@ export default function CandidateManage() {
                           selected={dob}
                           onChange={handleDateChange}
                           dateFormat="YYYY.M.D"
-                          sx={{ height: '22.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.5px', width: '90px' }, '& .MuiSvgIcon-root': { height: '20px' } }}
-                        />
+                          sx={{ height: '22.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.5px', width: '90px' }, '& .MuiSvgIcon-root': { height: '20px' } }}/>
                       </LocalizationProvider>) : new Date(row.dob).toLocaleDateString("en-CA")}
                       </td>
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '140px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={jobdesc} onChange={(e) => setjobdesc(e.target.value)} className='cr_edit_inputfield' />) : (row.jobdesc)}</td>

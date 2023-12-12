@@ -7,16 +7,13 @@ import './Fonts.css'
 
 
 function New_Task_Accordion({ howto_ids }) {
-
   const [checkForRecords, setCheckForRecords] = useState(true);
   const [howtodata, setHowtoData] = useState([]);
   const [error, setError] = useState(null);
-  // const [howto_id, setHowto_id] = useState();
 
 
   useEffect(() => {
     axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howto/${howto_ids}`)
-    // axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howto/6`)
       .then((response) => {
         const howto = response.data;
         howto.howto_steps.sort((a, b) => a.step_number - b.step_number);
@@ -35,7 +32,7 @@ function New_Task_Accordion({ howto_ids }) {
         <table className="Table4" style={{ width: '1150px' }}>
           <thead>
             <tr>
-              <th>{howtodata.howto_name} {howto_ids}</th>
+              <th>{howtodata.howto_name}</th>
             </tr>
           </thead>
 

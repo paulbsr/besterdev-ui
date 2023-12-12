@@ -23,7 +23,6 @@ export default function PageHowtoEdit() {
         <Quicklinks />
         <GradientLineThin />
         <HowtoEdit howto_id={howto_id}/>
-        {/* <HowtoEdit /> */}
         <Footer/>
         <ToastContainer
         position="top-left"

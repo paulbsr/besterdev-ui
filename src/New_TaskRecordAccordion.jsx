@@ -28,10 +28,9 @@ function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setChec
         setStepRecord_date(date);
     }
 
-    const onEditCancel = () => {
+    const onEditCancel = () => 
+    {
         setEditing(false);
-        // setTaskrecord(null);
-        // setHandles();
     }
 
     const onEditSave = async (steprecord_id) => {

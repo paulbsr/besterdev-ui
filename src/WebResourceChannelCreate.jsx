@@ -80,7 +80,6 @@ export default function WebResourceChannelCreate(props) {
       .then((response) => {const sortedjobreqs = response.data.sort((b, a) => b.company.localeCompare(a.company));
         setJobreqs(sortedjobreqs);
       })
-      // .catch((e) => console.error(e));
   },
     []);
 
@@ -113,10 +112,6 @@ export default function WebResourceChannelCreate(props) {
                 <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />URL:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '690px' }} placeholder="Required" type="text" value={email} onChange={(event) => setemail(event.target.value)} required />
                 <div>&nbsp;</div>
                 
-                {/* <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Step Objective:&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '850px' }} placeholder="Required" type="text" value={email} onChange={(event) => setemail(event.target.value)} required /> */}
-                {/* <div>&nbsp;</div> */}
-                
-                {/* <img alt="1" src={spacer} /><button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Add Howto</button> */}
                 <div>&nbsp;</div>
               </div>
             </form>

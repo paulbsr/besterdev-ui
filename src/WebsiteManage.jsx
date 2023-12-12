@@ -83,11 +83,7 @@ export default function WebsiteManage(props) {
       )
   };
 
-  // if (error) return <p>An error occurred in tableone</p>
-
   return (
-
-
 
     <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
 

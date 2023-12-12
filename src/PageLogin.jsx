@@ -45,10 +45,6 @@ const PageLogin = () => {
     <div>
       <BannerWhite />
       <GradientLine />
-      {/* <BannerLight /> */}
-      {/* <GradientLineThin /> */}
-      {/* <Quicklinks /> */}
-      {/* <GradientLineThin /> */}
       <div>&nbsp;</div>
       <div>&nbsp;</div>
       <div>&nbsp;</div>

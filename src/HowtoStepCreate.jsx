@@ -13,42 +13,39 @@ dayjs.extend(utc);
 
 export default function HowtoStepCreate(props) {
   const toggleAccordion = () => { setExpanded(!isExpanded); };
-  // const [howto_id_fk, setHowto_id_fk] = useState(props.howto_idb);
   const [step_number, setStep_number] = useState();
   const [step_name, setStep_name] = useState();
   const [step_url, setStep_url] = useState();
   const [step_obj, setStep_obj] = useState();
   const [howtos, setHowtos] = useState('');
-  // const [howto_id, setHowto_id] = useState('');
-  // const [howto_name, setHowto_name] = useState('');
   const [isExpanded, setExpanded] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
+
     {
-      var newRecord = 
+      var newRecord =
       {
-        // 'howto_id_fk': howto_id_fk,
         'howto_id_fk': props.howto_idb,
         'step_number': step_number,
         'step_name': step_name,
         'step_url': step_url,
         'step_obj': step_obj,
-    }
+      }
 
-        const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtostep/create`, newRecord);
-        if (response.status === 200) {
-          props.setCheckForRecords(!props.checkForRecords);
-          toast.success(`Step ${step_name} memorialized.`)
-        }
-        else { toast.error('Nee') }
+      const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtostep/create`, newRecord);
+      if (response.status === 200) {
+        props.setCheckForRecords(!props.checkForRecords);
+        toast.success(`Step ${step_name} memorialized.`)
+      }
+      else { toast.error('Nee') }
     }
   }
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtos')
-      .then((response) => {const howtos = response.data.sort((b, a) => b.howto_name.localeCompare(a.howto_name)); 
+      .then((response) => {
+        const howtos = response.data.sort((b, a) => b.howto_name.localeCompare(a.howto_name));
         setHowtos(howtos);
       })
   },
@@ -71,18 +68,18 @@ export default function HowtoStepCreate(props) {
               <div><img alt="1" src={spacer2} /></div>
               <div className='Font-Verdana-Small-Postgres'>
                 Step Number:{props.howto_idb}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '25.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '30px' }} placeholder="Req" type="text" value={step_number} onChange={(event) => setStep_number(event.target.value)} required />
-                
+
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Step Name:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '845x' }} placeholder="Required" type="text" value={step_name} onChange={(event) => setStep_name(event.target.value)} required />
-                
+
                 <div>&nbsp;</div>
-                
+
                 <div>
-                Supporting URL:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} placeholder="Optional" type="text" value={step_url} onChange={(event) => setStep_url(event.target.value)} />
+                  Supporting URL:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} placeholder="Optional" type="text" value={step_url} onChange={(event) => setStep_url(event.target.value)} />
                 </div>
-                
+
                 <div>&nbsp;</div>
                 Step Objective:&nbsp;&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} placeholder="Required" type="text" value={step_obj} onChange={(event) => setStep_obj(event.target.value)} required />
-                
+
                 {/* <img alt="1" src={spacer} />
                 <label htmlFor="dropdown">Attach to Howto:&nbsp;&nbsp;</label>
                 <select className='Font-Verdana-Small-Postgres'

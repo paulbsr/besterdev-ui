@@ -1,16 +1,10 @@
 import { useState, useEffect, useContext } from 'react'
 import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
-import 'react-tooltip/dist/react-tooltip.css'
 import './Fonts.css';
 import 'react-dropdown/style.css';
 import axios from 'axios'
-import Darknet7 from './graphix/Darknet7.png'
 import One from './graphix/3.png'
-import WhiteSpacer from './graphix/WhiteSpacer.png'
-import HowtoEdit from './HowtoEdit';
-import New_TaskRecordAccordion from './New_TaskRecordAccordion';
-import New_Task_Accordion from './New_Task_Accordion';
 import { Link } from 'react-router-dom';
 
 
@@ -61,7 +55,6 @@ export default function Homepage(props) {
         <tbody>
           <tr>
             <td>
-            {/* {showHowtoEdit && <HowtoEdit howtoid={howtoIdd} />} */}
             </td>
           </tr>
         </tbody>
@@ -88,27 +81,24 @@ export default function Homepage(props) {
               <tr key={index}>
 
                 <td style={{ width: '20%' }} className="Table-home-left">
-                  {howtoRow && (
-                    <div>
-                      {/* <a onClick={() => handleLinkClick(howtoRow.howto_id)}>{howtoRow.howto_name} #{howtoRow.howto_id}</a> */}
-                      <a  href={`/howtoedit/${howtoRow.howto_id}`} target="_blank">{howtoRow.howto_name}</a>
-                    </div>
-                  )}
-                </td>
-
-                <td style={{ width: '50%' }} className="Table-home-centre">
-                  {/* <img src={WhiteSpacer} alt="Website Logo" /> */}
-                  {/* {showHowtoEdit && <HowtoEdit howtoid={howtoIdd} target="_blank"/>} */}
-                  {showHowtoEdit && <Link to={`/howtoedit/${howtoIdd}`} target="_blank"></Link>}
-                  {/* <Link to={`/howtoedit/${howtoIdd}`} target="_blank">Open HowtoEdit Page</Link> */}
-
-                </td>
-
-                <td style={{ width: '20%' }} className="Table-home-right">
                   <Tooltip id="edit" />
                   <a data-tooltip-id="edit" data-tooltip-content={row.website_desc} href={row.website_url} target="_blank">
                     {row.website_name}
                   </a>
+                </td>
+
+
+                <td style={{ width: '50%' }} className="Table-home-centre">
+                  {showHowtoEdit && <Link to={`/howtoedit/${howtoIdd}`} target="_blank"></Link>}
+                </td>
+
+
+                <td style={{ width: '20%' }} className="Table-home-right">
+                  {howtoRow && (
+                    <div>
+                      <a href={`/howtoedit/${howtoRow.howto_id}`} target="_blank">{howtoRow.howto_name}</a>
+                    </div>
+                  )}
                 </td>
 
               </tr>

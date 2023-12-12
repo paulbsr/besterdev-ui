@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { useUserContext } from './UserContext';
 import { useNavigate } from 'react-router-dom'; 
-import { Flip, toast, ToastContainer } from 'react-toastify'; // Import toast components
+import { Flip, toast, ToastContainer } from 'react-toastify';
 import BannerWhite from './BannerWhite';
 import GradientLine from './GradientLine';
 import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
 import Quicklinks from './Quicklinks';
 import firebase from 'firebase/compat/app';
-import spacer from './graphix/besterdev_spacer_white.png';
 import Footer from './Footer';
 import 'firebase/auth';
 import 'firebase/compat/auth';

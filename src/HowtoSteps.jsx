@@ -1,18 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-// import AlertContext from "../Generic/Alerts/AlertContext";
 import './Fonts.css'
-// import TaskRecordAccordion from './TaskRecordAccordion';
-// import { getStatusByColourTaskText } from '../getStatusByColourTaskText'
-import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import dayjs from "dayjs";
-import { Autocomplete } from "@mui/material";
-import TextField from "@mui/material/TextField";
 import axios from 'axios'
-// import TaskPopOut from "./TaskPopOut";
 import { MdOutlineCancel } from "react-icons/md";
 import { Tooltip } from '@mui/material';
-import { AiOutlineFileAdd, AiOutlineCheckCircle, AiOutlineEdit, AiOutlineExpand } from "react-icons/ai";
+import { AiOutlineCheckCircle, AiOutlineEdit } from "react-icons/ai";
 
 
 
@@ -24,7 +15,6 @@ export default function HowtoSteps ({ project_handle, activeAccount, id, tasknam
   const [owner, setOwner] = useState(null)
   const [newTargetDate, setNewTargetDate] = useState(null)
   const [name, setName] = useState(null)
-  // const alertCtx = useContext(AlertContext);
   const [stepsdata, setStepsdata] = useState(null)
 
 
