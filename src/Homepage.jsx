@@ -8,6 +8,10 @@ import axios from 'axios'
 import Darknet7 from './graphix/Darknet7.png'
 import One from './graphix/3.png'
 import WhiteSpacer from './graphix/WhiteSpacer.png'
+import HowtoEdit from './HowtoEdit';
+import New_TaskRecordAccordion from './New_TaskRecordAccordion';
+import New_Task_Accordion from './New_Task_Accordion';
+import { Link } from 'react-router-dom';
 
 
 export default function Homepage(props) {
@@ -15,6 +19,13 @@ export default function Homepage(props) {
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [tabledata, setTabledata] = useState([]);
   const [howtodata, setHowtodata] = useState([]);
+  const [showHowtoEdit, setShowHowtoEdit] = useState(false);
+  const [howtoIdd, setHowtoIdd] = useState(null);
+
+  const handleLinkClick = (howtoId) => {
+    setHowtoIdd(howtoId);
+    setShowHowtoEdit(true);
+  }
 
 
   useEffect(() => {
@@ -49,7 +60,9 @@ export default function Homepage(props) {
         </thead>
         <tbody>
           <tr>
-            <td></td>
+            <td>
+            {/* {showHowtoEdit && <HowtoEdit howtoid={howtoIdd} />} */}
+            </td>
           </tr>
         </tbody>
       </table>
@@ -77,13 +90,18 @@ export default function Homepage(props) {
                 <td style={{ width: '20%' }} className="Table-home-left">
                   {howtoRow && (
                     <div>
-                      {howtoRow.howto_name}
+                      {/* <a onClick={() => handleLinkClick(howtoRow.howto_id)}>{howtoRow.howto_name} #{howtoRow.howto_id}</a> */}
+                      <a  href={`/howtoedit/${howtoRow.howto_id}`} target="_blank">{howtoRow.howto_name}</a>
                     </div>
                   )}
                 </td>
 
                 <td style={{ width: '50%' }} className="Table-home-centre">
-                  <img src={WhiteSpacer} alt="Website Logo" />
+                  {/* <img src={WhiteSpacer} alt="Website Logo" /> */}
+                  {/* {showHowtoEdit && <HowtoEdit howtoid={howtoIdd} target="_blank"/>} */}
+                  {showHowtoEdit && <Link to={`/howtoedit/${howtoIdd}`} target="_blank"></Link>}
+                  {/* <Link to={`/howtoedit/${howtoIdd}`} target="_blank">Open HowtoEdit Page</Link> */}
+
                 </td>
 
                 <td style={{ width: '20%' }} className="Table-home-right">
@@ -93,7 +111,6 @@ export default function Homepage(props) {
                   </a>
                 </td>
 
-
               </tr>
             );
           })}
@@ -101,5 +118,5 @@ export default function Homepage(props) {
       </table>
     </div>
   );
-}
 
+}

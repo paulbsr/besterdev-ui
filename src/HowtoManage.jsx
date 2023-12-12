@@ -119,9 +119,9 @@ export default function HowtoManage() {
 
       <HowtoCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
 
-      <HowtoStepCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
+      {/* <HowtoStepCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/> */}
 
-      <HowtoStepRecordCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
+      {/* <HowtoStepRecordCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/> */}
 
       {/* {isExpanded && (
         <div>

@@ -6,9 +6,15 @@ import Quicklinks from './Quicklinks';
 import Footer from './Footer';
 import { ToastContainer, Zoom } from 'react-toastify';
 import HowtoEdit from './HowtoEdit';
+import { useParams } from 'react-router-dom';
+
 
 export default function PageHowtoEdit() {
+
+  const { howto_id } = useParams();
+
     return (
+      
       <div>
         <BannerWhite />
         <GradientLine />
@@ -16,7 +22,8 @@ export default function PageHowtoEdit() {
         <GradientLineThin />
         <Quicklinks />
         <GradientLineThin />
-        <HowtoEdit />
+        <HowtoEdit howto_id={howto_id}/>
+        {/* <HowtoEdit /> */}
         <Footer/>
         <ToastContainer
         position="top-left"

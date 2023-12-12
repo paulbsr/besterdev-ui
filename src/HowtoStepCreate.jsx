@@ -3,7 +3,6 @@ import axios from 'axios';
 import './Fonts.css';
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
-import spacer from './graphix/besterdev_spacer_white.png';
 import spacer2 from './graphix/besterdev_spacer_white_half.png';
 import { GiHummingbird } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css';
@@ -14,14 +13,14 @@ dayjs.extend(utc);
 
 export default function HowtoStepCreate(props) {
   const toggleAccordion = () => { setExpanded(!isExpanded); };
-  const [howto_id_fk, setHowto_id_fk] = useState('6');
+  // const [howto_id_fk, setHowto_id_fk] = useState(props.howto_idb);
   const [step_number, setStep_number] = useState();
   const [step_name, setStep_name] = useState();
   const [step_url, setStep_url] = useState();
   const [step_obj, setStep_obj] = useState();
   const [howtos, setHowtos] = useState('');
-  const [howto_id, setHowto_id] = useState('');
-  const [howto_name, setHowto_name] = useState('');
+  // const [howto_id, setHowto_id] = useState('');
+  // const [howto_name, setHowto_name] = useState('');
   const [isExpanded, setExpanded] = useState(false);
 
   const handleSubmit = async (event) => {
@@ -30,7 +29,8 @@ export default function HowtoStepCreate(props) {
     {
       var newRecord = 
       {
-        'howto_id_fk': howto_id_fk,
+        // 'howto_id_fk': howto_id_fk,
+        'howto_id_fk': props.howto_idb,
         'step_number': step_number,
         'step_name': step_name,
         'step_url': step_url,
@@ -60,7 +60,7 @@ export default function HowtoStepCreate(props) {
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
         <a data-tooltip-id="insert" data-tooltip-content=".."><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
-        <b>Insert an additional Howto Step </b>
+        <b>Add a Step to <i>"{props.howto_name}"</i></b>
         <div>&nbsp;</div>
       </div>
 
@@ -70,11 +70,9 @@ export default function HowtoStepCreate(props) {
             <form onSubmit={handleSubmit}>
               <div><img alt="1" src={spacer2} /></div>
               <div className='Font-Verdana-Small-Postgres'>
-                {/* <img alt="1" src={spacer} /><img alt="1" src={spacer} /> */}
-                Step Number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '25.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '30px' }} placeholder="Req" type="text" value={step_number} onChange={(event) => setStep_number(event.target.value)} required />
+                Step Number:{props.howto_idb}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '25.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '30px' }} placeholder="Req" type="text" value={step_number} onChange={(event) => setStep_number(event.target.value)} required />
                 
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Step Name:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '845x' }} placeholder="Required" type="text" value={step_name} onChange={(event) => setStep_name(event.target.value)} required />
-                {/* <img alt="1" src={spacer} /> */}
                 
                 <div>&nbsp;</div>
                 
@@ -84,7 +82,6 @@ export default function HowtoStepCreate(props) {
                 
                 <div>&nbsp;</div>
                 Step Objective:&nbsp;&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} placeholder="Required" type="text" value={step_obj} onChange={(event) => setStep_obj(event.target.value)} required />
-                {/* <img alt="1" src={spacer} /><img alt="1" src={spacer} /> */}
                 
                 {/* <img alt="1" src={spacer} />
                 <label htmlFor="dropdown">Attach to Howto:&nbsp;&nbsp;</label>
@@ -121,8 +118,7 @@ export default function HowtoStepCreate(props) {
 
                 <div>&nbsp;</div>
 
-                {/* <img alt="1" src={spacer} /> */}
-                <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>Add this Step</button>
+                <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>Add this Step to {props.howto_name}</button>
                 <div>&nbsp;</div>
               </div>
             </form>

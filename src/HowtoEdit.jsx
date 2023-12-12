@@ -5,7 +5,6 @@ import 'react-tooltip/dist/react-tooltip.css'
 import './Fonts.css';
 import 'react-dropdown/style.css';
 import axios from 'axios'
-import Darknet7 from './graphix/Darknet7.png'
 import One from './graphix/9.png'
 import WhiteSpacer from './graphix/WhiteSpacer.png'
 import New_Task_Accordion from './New_Task_Accordion';
@@ -14,29 +13,6 @@ import New_Task_Accordion from './New_Task_Accordion';
 export default function HowtoEdit(props) {
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
-  const [tabledata, setTabledata] = useState([]);
-  const [howtodata, setHowtodata] = useState([]);
-
-
-  useEffect(() => {
-    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites')
-      .then((response) => {
-        const sortedTabledata = response.data.sort((b, a) => b.website_name.localeCompare(a.website_name));
-        setTabledata(sortedTabledata);
-      })
-      .catch((e) => console.error(e));
-  }, [props.checkForRecords]);
-
-
-  useEffect(() => {
-    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtos')
-      .then((response) => {
-        const sortedHowtodata = response.data.sort((a, b) => a.howto_name.localeCompare(b.howto_name));
-        setHowtodata(sortedHowtodata);
-      })
-      .catch((e) => console.error(e));
-  }, [props.checkForRecords]);
-
 
   return (
 
@@ -83,7 +59,7 @@ export default function HowtoEdit(props) {
 
                 <td className="Table-home-right">
                   {/* <img src={WhiteSpacer} alt="Website Logo" /> */}
-                  <New_Task_Accordion />
+                  <New_Task_Accordion howto_ids={props.howto_id}/>
                 </td>
 
                 <td className="Table-home-right">
