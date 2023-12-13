@@ -11,7 +11,9 @@
 
 .Font-Verdana-Small {
     font-family: "Verdana";
-    font-size: small
+    font-size: small;
+    font-style: italic;
+    color: #D5441C;
 }
 
 .Font-Verdana-Medium {

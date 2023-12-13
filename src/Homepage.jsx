@@ -8,7 +8,7 @@ import One from './graphix/3.png'
 import { Link } from 'react-router-dom';
 
 
-export default function Homepage(props) {
+export default function HomePage(props) {
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [tabledata, setTabledata] = useState([]);

@@ -35,7 +35,8 @@ export default function WebsiteManage(props) {
   
   );
 
-  const handleEdit = (row) => {
+  const handleEdit = (row) => 
+  {
     setEditing(row.id)
     setWebsite_name(row.website_name)
     setWebsite_desc(row.website_desc)
@@ -43,7 +44,8 @@ export default function WebsiteManage(props) {
     setWebsite_owner(row.website_owner)
   };
 
-  const onEditCancel = () => {
+  const onEditCancel = () => 
+  {
     setEditing("");
     setWebsite_name(null)
     setWebsite_desc(null)
@@ -100,8 +102,8 @@ export default function WebsiteManage(props) {
           <tr>
             <th style={{ width: '20px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'></th>
             <th style={{ width: '300px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Website</th>
-            <th style={{ width: '1300px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Value / Description / Action</th>
-            <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>URL</th>
+            <th style={{ width: '1000px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Value / Description / Action</th>
+            <th style={{ width: '400px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>URL</th>
           </tr>
         </thead>
 
@@ -131,9 +133,9 @@ export default function WebsiteManage(props) {
                   </>
                 </td>
 
-                <td className="asmshover">{row.id === editing ? (<textarea style={{ height: '62.5px', width: '290px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_name} onChange={(e) => setWebsite_name(e.target.value)} />) : (<a href={row.website_url} target="_blank">{row.website_name}</a>)}</td>
-                <td className="asmshover">{row.id === editing ? (<textarea style={{ height: '62.5px', width: '1200px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_desc} onChange={(e) => setWebsite_desc(e.target.value)} />) : (row.website_desc)}</td>
-                <td className="asmshover">{row.id === editing ? (<textarea style={{ height: '62.5px', width: '190px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_url} onChange={(e) => setWebsite_url(e.target.value)} />) : (row.website_url)}</td>
+                <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '300px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_name} onChange={(e) => setWebsite_name(e.target.value)} />) : (<a href={row.website_url} target="_blank">{row.website_name}</a>)}</td>
+                <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '1000px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_desc} onChange={(e) => setWebsite_desc(e.target.value)} />) : (row.website_desc)}</td>
+                <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '400px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_url} onChange={(e) => setWebsite_url(e.target.value)} />) : (row.website_url)}</td>
               </tr>
             )
           })

@@ -102,7 +102,7 @@ function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setChec
     }
 
     return (
-        <div className='Font-Verdana-XSmall'>
+        <div className='Font-Verdana-Small'>
             <div>
                 {SortedStepRecords.map(({ steprecord_id, steprecord_number, steprecord }) => (editableStepRecord(steprecord_id, steprecord_number, steprecord, checkForRecords, setCheckForRecords)))}
             </div>

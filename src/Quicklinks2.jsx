@@ -7,10 +7,7 @@ import Box from '@mui/material/Box';
 import './Fonts.css'
 import {styled} from "@mui/material/styles";
 import { useUserContext } from './UserContext';
-import WebsiteManage from './WebsiteManage';
-import WebSiteCreate from './WebsiteCreate';
-import WebResourceQuickAdd from './WebResourceQuickAdd';
-import GradientLineThin from './GradientLineThin';
+import CyclopediaAdd from './CyclopediaAdd';
 
 
 function TabPanel(props) {
@@ -53,7 +50,7 @@ const LinkTab = styled((props) => <Tab disableRipple {...props} />)(({ theme }) 
     '&.Mui-selected:hover': {color: '#D5441C',},})
     );
 
-export default function Quicklinks(props) {
+export default function Quicklinks2(props) {
   const { loggedInUserEmail } = useUserContext();
   // console.log('Quicklinks collected:', loggedInUserEmail);
   const [checkForRecords, setCheckForRecords] = useState(true);
@@ -63,15 +60,13 @@ export default function Quicklinks(props) {
       <Box>
         <LinkTabs variant="scrollable">
           {/* <LinkTab label={user} href={`mailto:${user}`}></LinkTab> */}
-          {/* <LinkTab label={loggedInUserEmail} href={`mailto:${loggedInUserEmail}`}></LinkTab>
-           */}
+          {/* <LinkTab label={loggedInUserEmail} href={`mailto:${loggedInUserEmail}`}></LinkTab> */}
           {/* <LinkTab label="localhost" href={"http://localhost:3000"} target="_blank" ></LinkTab> */}
           {/* <LinkTab label="bester.ie" href={"https://www.bester.ie"} target="_blank" ></LinkTab> */}
-          <WebResourceQuickAdd checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
+          <CyclopediaAdd checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
 
         </LinkTabs>
       </Box>
-      <GradientLineThin />
     </>
   )
 }

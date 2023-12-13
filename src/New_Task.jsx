@@ -121,13 +121,16 @@ export default function New_Task({ howto_id, step_id, step_number, step_name, st
               <a className="Font-Verdana-XSmall" href={step_url} target="_blank">{step_url}</a>}
 
             {editing === true ?
-              <><i>Step Objective:</i>&nbsp;&nbsp;&nbsp;<>
-                <input
+              <><i>Step Objective:</i><>
+              {/* <div>&nbsp;</div> */}
+                <textarea
+                  rows="6"
                   required
                   defaultValue={step_obj}
                   onChange={(e) => setStepObjective(e.target.value)}
                   size='small'
-                  style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1002px' }} />
+                  style={{ font: 'Calibri', fontSize: 'large', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1112px' }} />
+                
                 <div className='Font-Spacer-White'>Make this Spacer White</div>
               </>
               </>
