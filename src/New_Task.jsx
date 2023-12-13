@@ -82,14 +82,14 @@ export default function New_Task({ howto_id, step_id, step_number, step_name, st
               required
               defaultValue={step_number}
               onChange={(e) => setStepNumber(e.target.value)}
-              style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '25px' }} />
+              style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '25px' }} />
 
             <>&nbsp;&nbsp;&nbsp;&nbsp;<i>Step Name:</i>&nbsp;&nbsp;<>
               <input
                 required
                 defaultValue={step_name}
                 onChange={(e) => setName(e.target.value)}
-                style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '800px' }} />
+                style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '800px' }} />
               <div className='Font-Spacer-White'>Make this Spacer White</div>
             </>
             </>
@@ -113,7 +113,7 @@ export default function New_Task({ howto_id, step_id, step_number, step_name, st
                   required
                   defaultValue={step_url}
                   onChange={(e) => setStepURL(e.target.value)}
-                  style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} />
+                  style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} />
                 <div className='Font-Spacer-White'>Make this Spacer White</div>
               </>
               </>
@@ -128,8 +128,8 @@ export default function New_Task({ howto_id, step_id, step_number, step_name, st
                   required
                   defaultValue={step_obj}
                   onChange={(e) => setStepObjective(e.target.value)}
-                  size='small'
-                  style={{ font: 'Calibri', fontSize: 'large', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1112px' }} />
+                  size='Large'
+                  style={{ fontFamily: 'Calibri', fontSize: 'Large', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1112px' }} />
                 
                 <div className='Font-Spacer-White'>Make this Spacer White</div>
               </>

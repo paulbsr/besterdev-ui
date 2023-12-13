@@ -36,12 +36,12 @@ export default function New_TaskRecordCreate(props) {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
           required
           onChange={(e) => setSteprecord_number(e.target.value)}
-          style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '20px', padding: 0, paddingLeft: '7px' }} />
+          style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '20px', padding: 0, paddingLeft: '7px' }} />
 
         &nbsp;&nbsp;&nbsp;<input
           required
           onChange={(e) => setSteprecord(e.target.value)}
-          style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} />
+          style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} />
         <div>&nbsp;</div>
         &nbsp;&nbsp;&nbsp;<button
           className="Font-Verdana-Small-Postgres"

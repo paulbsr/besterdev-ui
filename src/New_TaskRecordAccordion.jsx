@@ -61,14 +61,14 @@ function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setChec
                                     required
                                     defaultValue={steprecord_number}
                                     onChange={(e) => setStepRecord_number(e.target.value)}
-                                    style={{ height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '20px', padding: 0, paddingLeft: '9px', }} />
+                                    style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '20px', padding: 0, paddingLeft: '9px', }} />
                                 &nbsp;&nbsp;
 
-                                <textarea
+                                <input
                                     required
                                     defaultValue={steprecord}
                                     onChange={(e) => setStepRecord(e.target.value)}
-                                    style={{ height: '16.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} />
+                                    style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} />
                             </>
                             :
                             <div className="Font-Calibri-Large-Howto">
