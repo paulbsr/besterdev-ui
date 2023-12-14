@@ -2,7 +2,7 @@ import BannerWhite from './BannerWhite';
 import GradientLine from './GradientLine';
 import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
-import Quicklinks from './Quicklinks';
+import Quicklinks3 from './Quicklinks3';
 import Footer from './Footer';
 import { ToastContainer, Zoom } from 'react-toastify';
 import HowtoEdit from './HowtoEdit';
@@ -20,7 +20,7 @@ export default function PageHowtoEdit() {
         <GradientLine />
         <BannerLight />
         <GradientLineThin />
-        <Quicklinks />
+        <Quicklinks3 />
         <GradientLineThin />
         <HowtoEdit howto_id={howto_id}/>
         <Footer/>

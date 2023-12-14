@@ -2,7 +2,7 @@ import BannerWhite from './BannerWhite';
 import GradientLine from './GradientLine';
 import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
-import Quicklinks from './Quicklinks';
+import Quicklinks3 from './Quicklinks3';
 import CandidateManage from './CandidateManage';
 import EmployerManage1 from './EmployerManage1';
 import JobreqManage from './JobreqManage';
@@ -17,7 +17,7 @@ export default function PageManage() {
       <GradientLine />
       <BannerLight />
       <GradientLineThin />
-      <Quicklinks />
+      <Quicklinks3 />
       <GradientLineThin />
       <CandidateManage />
       <EmployerManage1 />

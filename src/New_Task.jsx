@@ -122,7 +122,6 @@ export default function New_Task({ howto_id, step_id, step_number, step_name, st
 
             {editing === true ?
               <><i>Step Objective:</i><>
-              {/* <div>&nbsp;</div> */}
                 <textarea
                   rows="6"
                   required

@@ -7,6 +7,8 @@ import Box from '@mui/material/Box';
 import './Fonts.css'
 import {styled} from "@mui/material/styles";
 import { useUserContext } from './UserContext';
+import GradientLineThin from './GradientLineThin';
+import QuickAddWebResource from './QuickAddWebResource';
 import QuickAddCyclopedia from './QuickAddCyclopedia';
 
 
@@ -50,23 +52,19 @@ const LinkTab = styled((props) => <Tab disableRipple {...props} />)(({ theme }) 
     '&.Mui-selected:hover': {color: '#D5441C',},})
     );
 
-export default function Quicklinks2(props) {
+export default function Quicklinks3(props) {
   const { loggedInUserEmail } = useUserContext();
-  // console.log('Quicklinks collected:', loggedInUserEmail);
   const [checkForRecords, setCheckForRecords] = useState(true);
 
   return (
     <>
       <Box>
         <LinkTabs variant="scrollable">
-          {/* <LinkTab label={user} href={`mailto:${user}`}></LinkTab> */}
-          {/* <LinkTab label={loggedInUserEmail} href={`mailto:${loggedInUserEmail}`}></LinkTab> */}
-          {/* <LinkTab label="localhost" href={"http://localhost:3000"} target="_blank" ></LinkTab> */}
-          {/* <LinkTab label="bester.ie" href={"https://www.bester.ie"} target="_blank" ></LinkTab> */}
+          <QuickAddWebResource checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
           <QuickAddCyclopedia checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
-
         </LinkTabs>
       </Box>
+      {/* <GradientLineThin /> */}
     </>
   )
 }

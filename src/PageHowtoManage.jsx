@@ -2,7 +2,7 @@ import BannerWhite from './BannerWhite';
 import GradientLine from './GradientLine';
 import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
-import Quicklinks from './Quicklinks';
+import Quicklinks3 from './Quicklinks3';
 import Footer from './Footer';
 import { Flip, ToastContainer, toast, Zoom } from 'react-toastify';
 import HowtoManage from './HowtoManage';
@@ -14,7 +14,7 @@ export default function PageHowtoManage() {
         <GradientLine />
         <BannerLight />
         <GradientLineThin />
-        <Quicklinks />
+        <Quicklinks3 />
         <GradientLineThin />
         <HowtoManage />
         <Footer/>

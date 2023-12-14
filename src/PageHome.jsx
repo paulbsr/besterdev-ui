@@ -7,6 +7,7 @@ import Footer from './Footer';
 import { Flip, ToastContainer, toast, Zoom } from 'react-toastify';
 import HomePage from './HomePage';
 import Quicklinks2 from './Quicklinks2';
+import Quicklinks3 from './Quicklinks3';
 
 export default function PageHome() {
     return (
@@ -15,8 +16,9 @@ export default function PageHome() {
         <GradientLine />
         <BannerLight />
         <GradientLineThin />
-        <Quicklinks />
-        <Quicklinks2 />
+        {/* <Quicklinks /> */}
+        {/* <Quicklinks2 /> */}
+        <Quicklinks3 />
         <GradientLineThin />
         <HomePage />
         <Footer/>

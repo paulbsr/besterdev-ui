@@ -2,7 +2,7 @@ import BannerWhite from './BannerWhite';
 import GradientLine from './GradientLine';
 import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
-import Quicklinks from './Quicklinks';
+import Quicklinks3 from './Quicklinks3';
 import Footer from './Footer';
 import { Flip, ToastContainer, Zoom, toast } from 'react-toastify';
 import Task_Accordion from './Task_Accordion';
@@ -15,7 +15,7 @@ export default function PageHowtoDocs() {
         <GradientLine />
         <BannerLight />
         <GradientLineThin />
-        <Quicklinks />
+        <Quicklinks3 />
         <GradientLineThin />
         <Task_Accordion />
         <ToastContainer

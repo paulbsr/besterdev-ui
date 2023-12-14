@@ -7,10 +7,8 @@ import Box from '@mui/material/Box';
 import './Fonts.css'
 import {styled} from "@mui/material/styles";
 import { useUserContext } from './UserContext';
-import WebsiteManage from './WebsiteManage';
-import WebSiteCreate from './WebsiteCreate';
-import WebResourceQuickAdd from './WebResourceQuickAdd';
 import GradientLineThin from './GradientLineThin';
+import QuickAddWebResource from './QuickAddWebResource';
 
 
 function TabPanel(props) {
@@ -67,7 +65,7 @@ export default function Quicklinks(props) {
            */}
           {/* <LinkTab label="localhost" href={"http://localhost:3000"} target="_blank" ></LinkTab> */}
           {/* <LinkTab label="bester.ie" href={"https://www.bester.ie"} target="_blank" ></LinkTab> */}
-          <WebResourceQuickAdd checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
+          <QuickAddWebResource checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
 
         </LinkTabs>
       </Box>

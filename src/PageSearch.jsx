@@ -2,7 +2,7 @@ import BannerWhite from './BannerWhite';
 import GradientLine from './GradientLine';
 import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
-import Quicklinks from './Quicklinks';
+import Quicklinks3 from './Quicklinks3';
 import CandidateAPI from './CandidateAPI';
 import Footer from './Footer';
 import './Fonts.css'
@@ -18,7 +18,7 @@ export default function PageSearch() {
       <GradientLine />
       <BannerLight />
       <GradientLineThin />
-      <Quicklinks />
+      <Quicklinks3 />
       <CandidateAPI />
       <Footer/>
     </div>
