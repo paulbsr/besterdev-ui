@@ -102,12 +102,13 @@ function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setChec
     }
 
     return (
-        <div className='Font-Verdana-Small'>
+        // <div className='Font-Verdana-Small'>
+        <div>
             <div>
                 {SortedStepRecords.map(({ steprecord_id, steprecord_number, steprecord }) => (editableStepRecord(steprecord_id, steprecord_number, steprecord, checkForRecords, setCheckForRecords)))}
             </div>
 
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div className='Font-Verdana-Small'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <Tooltip title='Insert an additional Step Record' placement="top-end">Insert an additional Step Record<button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={toggleAccordion}><MdAddCircleOutline style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
             </div>
 
