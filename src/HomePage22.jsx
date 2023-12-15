@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import CyclopediaAccordion from './CyclopediaAccordion';
 
 
-export default function HomePage(props) {
+export default function HomePage22(props) {
   const [checkForRecords, setCheckForRecords] = useState(true);
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };

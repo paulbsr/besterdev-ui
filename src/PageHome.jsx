@@ -5,7 +5,7 @@ import GradientLineThin from './GradientLineThin';
 import Footer from './Footer';
 import { Flip, ToastContainer, toast, Zoom } from 'react-toastify';
 import Quicklinks3 from './Quicklinks3';
-import HomePage from './HomePage';
+import HomePage22 from './HomePage22';
 
 export default function PageHome() {
     return (
@@ -16,7 +16,7 @@ export default function PageHome() {
         <GradientLineThin />
         <Quicklinks3 />
         <GradientLineThin />
-        <HomePage />
+        <HomePage22 />
         <Footer/>
         <ToastContainer
         position="top-left"
