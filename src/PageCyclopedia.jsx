@@ -3,7 +3,6 @@ import GradientLine from './GradientLine';
 import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
 import Quicklinks3 from './Quicklinks3';
-import Footer from './Footer';
 import './Fonts.css'
 import 'react-dropdown/style.css';
 import 'react-tooltip/dist/react-tooltip.css'
@@ -23,7 +22,6 @@ export default function PageCyclopedia(cyclopediadata) {
       <Quicklinks3 />
       <GradientLineThin />
       <CyclopediaAccordion cyclopediadata={cyclopediadata}  />
-      {/* <Footer/> */}
     </div>
   )
 };

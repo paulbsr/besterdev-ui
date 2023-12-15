@@ -12,11 +12,9 @@ function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setChec
     const date = new Date();
     const [isExpanded, setExpanded] = useState(false);
     const toggleAccordion = () => { setExpanded(!isExpanded); };
-    // const filteredSteps1 = howtodata.howto_steps.filter((steps) => steps.step_id === step_idd);
     const filteredSteps = howtodata.howto_steps.filter((task, key) => { return task.step_id === step_idd });
     const SortedStepRecords = filteredSteps[0].step_records.sort((a, b) => a.steprecord_number - b.steprecord_number);
     const [editing, setEditing] = useState(false);
-    // const [steprecord_id, setStepRecord_id] = useState();
     const [steprecord_number, setStepRecord_number] = useState();
     const [steprecord, setStepRecord] = useState();
     const [steprecord_date, setStepRecord_date] = useState(date);
@@ -102,7 +100,6 @@ function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setChec
     }
 
     return (
-        // <div className='Font-Verdana-Small'>
         <div>
             <div>
                 {SortedStepRecords.map(({ steprecord_id, steprecord_number, steprecord }) => (editableStepRecord(steprecord_id, steprecord_number, steprecord, checkForRecords, setCheckForRecords)))}

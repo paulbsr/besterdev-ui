@@ -1,12 +1,9 @@
 import { useState, useEffect, useContext } from 'react'
-import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
 import 'react-tooltip/dist/react-tooltip.css'
 import './Fonts.css';
 import 'react-dropdown/style.css';
-import axios from 'axios'
 import One from './graphix/9.png'
-import WhiteSpacer from './graphix/WhiteSpacer.png'
 import New_Task_Accordion from './New_Task_Accordion';
 
 

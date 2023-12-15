@@ -3,7 +3,6 @@ import axios from 'axios'
 import Task_Create from './Task_Create';
 import Task from './Task';
 import GradientLineRusty from "./GradientLineRusty";
-import HowtoStepCreate from './HowtoStepCreate';
 import './Fonts.css'
 
 
@@ -17,16 +16,14 @@ function Task_Accordion({ asms_number, project_handle, requested_asms, ppm_id })
   const [projecthandle, setProjecthandle] = useState("")
 
   useEffect(() => {
-    // axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/asms/${asms_number}`).then((response) => {
     axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/asms/asms`)
-    .then((response) => {
-      setParenttask(response.data.sort((a, b) => a.projecthandle - b.projecthandle)); 
-      setError(null);
-      // console.log(parenttask)
-    }).catch(setError);
+      .then((response) => {
+        setParenttask(response.data.sort((a, b) => a.projecthandle - b.projecthandle));
+        setError(null);
+      }).catch(setError);
   }, [checkForRecords]);
 
-    
+
 
   if (error) return <p>An error in Task_Accordion occurred</p>
 
@@ -41,16 +38,16 @@ function Task_Accordion({ asms_number, project_handle, requested_asms, ppm_id })
             </tr>
           </thead>
           {parenttask.map(({ id, taskname, taskrequirement, taskowner, tasktargetdate, taskstatus, asms, tasks, taskcreatedate, projecthandle }) => (
-              <tbody>
-                {
-                  <tr>
-                    <td>
-                      {<Task projecthandle={projecthandle} id={id} taskname={taskname} taskrequirement={taskrequirement} taskowner={taskowner} asms={asms} tasktargetdate={tasktargetdate} taskstatus={taskstatus} parenttask={parenttask} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />}
-                    </td>
-                  </tr>}
-              </tbody>
-            )
-            )
+            <tbody>
+              {
+                <tr>
+                  <td>
+                    {<Task projecthandle={projecthandle} id={id} taskname={taskname} taskrequirement={taskrequirement} taskowner={taskowner} asms={asms} tasktargetdate={tasktargetdate} taskstatus={taskstatus} parenttask={parenttask} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />}
+                  </td>
+                </tr>}
+            </tbody>
+          )
+          )
           }
         </table>
       </div>

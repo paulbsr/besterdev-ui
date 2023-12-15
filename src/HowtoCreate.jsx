@@ -31,9 +31,7 @@ export default function HowtoCreate(props) {
     if (
       cr_date != null &&
       cr_datehold !== "Invalid Date"
-    ) 
-    
-    {
+    ) {
       var newRecord = {
         'howto_name': howto_name,
         'howto_desc': howto_desc,
@@ -43,11 +41,11 @@ export default function HowtoCreate(props) {
 
       try {
         const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howto/create`, newRecord);
-        if (response.status === 200) { 
-          props.setCheckForRecords(!props.checkForRecords); 
+        if (response.status === 200) {
+          props.setCheckForRecords(!props.checkForRecords);
           toast.success(`${howto_name} memorialized.`)
         }
-        else { 
+        else {
           toast.error('Bad')
         }
       }
@@ -61,7 +59,7 @@ export default function HowtoCreate(props) {
   }
 
 
-    return (
+  return (
 
     <div className='Font-Verdana-Small-Postgres'>&nbsp;
       <Tooltip id="insert" />
@@ -79,7 +77,6 @@ export default function HowtoCreate(props) {
               <div className='Font-Verdana-Small-Postgres'>
                 <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Howto Name:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '600px' }} placeholder="Required" type="text" value={howto_name} onChange={(event) => setHowto_name(event.target.value)} required />
                 <img alt="1" src={spacer} /><img alt="1" src={spacer} />Howto Description:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '650px' }} placeholder="Required" type="text" value={howto_desc} onChange={(event) => setHowto_desc(event.target.value)} required />
-                {/* <img alt="1" src={spacer} />Author:&nbsp; &nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} type="text" value={howto_author} onChange={(event) => setHowto_author(event.target.value)} /> */}
                 <img alt="1" src={spacer} /><button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Create Howto</button>
                 <div>&nbsp;</div>
               </div>

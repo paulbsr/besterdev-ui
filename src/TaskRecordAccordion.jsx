@@ -18,12 +18,6 @@ function TaskRecordAccordion({ project_handle, asms_number, parentid, parenttask
     const [parentids, setParentids] = useState(parentid); //This is a constraint on the Taskrecords table and must collerate to an entry in Tasks
     const [handle, setHandle] = useState(); //This will become the Sequence Number of the TaskRecord
     const date = new Date();
-    console.log('PARENTTASK:', parenttask)
-    console.log('ORDEREDTASKS (.filter):', orderedTasks) //this one uses a filter to find only those with children
-    console.log('TASKRECORDS:', taskRecords )
-
-
-
 
     const handleEdit = (id, childrecord, handle) => {
         setEditing(id);
@@ -47,7 +41,6 @@ function TaskRecordAccordion({ project_handle, asms_number, parentid, parenttask
         }
 
         const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
-        // const response = await axios.put(`http://localhost:8000/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
         setCheckForRecords(!checkForRecords)
         toast.success(`Step Record amended.`)
         onEditCancel();

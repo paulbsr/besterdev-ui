@@ -59,12 +59,7 @@ export default function Quicklinks2(props) {
     <>
       <Box>
         <LinkTabs variant="scrollable">
-          {/* <LinkTab label={user} href={`mailto:${user}`}></LinkTab> */}
-          {/* <LinkTab label={loggedInUserEmail} href={`mailto:${loggedInUserEmail}`}></LinkTab> */}
-          {/* <LinkTab label="localhost" href={"http://localhost:3000"} target="_blank" ></LinkTab> */}
-          {/* <LinkTab label="bester.ie" href={"https://www.bester.ie"} target="_blank" ></LinkTab> */}
           <QuickAddCyclopedia checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
-
         </LinkTabs>
       </Box>
     </>

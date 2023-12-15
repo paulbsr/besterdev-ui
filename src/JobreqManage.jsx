@@ -11,8 +11,6 @@ import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
 import 'react-tooltip/dist/react-tooltip.css'
 import JobreqCreate from './JobreqCreate';
-import GradientLine from './GradientLine';
-import Footer from './Footer';
 import { toast } from 'react-toastify';
 import GradientLineRusty from './GradientLineRusty';
 dayjs.extend(utc);

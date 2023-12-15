@@ -7,8 +7,6 @@ import Footer from './Footer';
 import { ToastContainer, Zoom } from 'react-toastify';
 import HowtoEdit from './HowtoEdit';
 import { useParams } from 'react-router-dom';
-// import CyclopediaAccordion from './CyclopediaAccordion';
-
 
 export default function PageCyclopedia() {
 
@@ -24,7 +22,6 @@ export default function PageCyclopedia() {
         <Quicklinks3 />
         <GradientLineThin />
         <HowtoEdit howto_id={howto_id}/>
-        {/* <CyclopediaAccordion /> */}
         <Footer/>
         <ToastContainer
         position="top-left"

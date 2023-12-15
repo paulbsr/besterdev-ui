@@ -3,7 +3,6 @@ import GradientLine from './GradientLine';
 import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
 import Quicklinks3 from './Quicklinks3';
-import Footer from './Footer';
 import { Flip, ToastContainer, toast, Zoom } from 'react-toastify';
 import WebSiteCreate from './WebsiteCreate';
 import WebsiteManage from './WebsiteManage';

@@ -12,10 +12,7 @@ import { FaFileCircleQuestion } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom'; 
 import { TbWorldWww } from "react-icons/tb";
 import { IoHome } from "react-icons/io5";
-import { MdEditDocument } from "react-icons/md";
-import { FaQuestionCircle, FaHome } from "react-icons/fa";
 import { GiGiftOfKnowledge } from "react-icons/gi";
-import { TfiWrite } from "react-icons/tfi";
 
   const BannerLight = ({ user }) => {
     const navigate = useNavigate();
@@ -28,9 +25,7 @@ import { TfiWrite } from "react-icons/tfi";
     const handleNavigateCyclopedia= () => {navigate('/cyclopedia');}
     const handleNavigateResources = () => {navigate('/resources');}
     const handleNavigateLogout = () => {navigate('/logout');}
-    // const handleNavigateHowtoEdit = () => {navigate('/howtoedit/6');}
-    // const handleNavigateHowtoZero = () => {navigate('/howtozero/6');}
-    
+ 
     
   return (
 
@@ -38,14 +33,10 @@ import { TfiWrite } from "react-icons/tfi";
       <a data-tooltip-id="insert" data-tooltip-content="Login" onClick={handleNavigateLogin}><SlLogin style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Home" onClick={handleNavigateHome}><IoHome style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Howto Add" onClick={handleNavigateHowtoManage}><FaFileCircleQuestion style={{ color: '#336791', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      {/* <a data-tooltip-id="insert" data-tooltip-content="Howto Edit" onClick={handleNavigateHowtoEdit}><GiGiftOfKnowledge style={{ color: '#D5441C', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
       <a data-tooltip-id="insert" data-tooltip-content="Screen Candidates" onClick={handleNavigateScreen}><FaPeopleArrows style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Management Portal" onClick={handleNavigateManage}><MdManageAccounts style={{ color: '#336791', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      
       <a data-tooltip-id="insert" data-tooltip-content="Cyclopedia" onClick={handleNavigateCyclopedia}><GiGiftOfKnowledge style={{ color: '#D5441C', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      {/* <a data-tooltip-id="insert" data-tooltip-content="Experiment" onClick={handleNavigateNewHowtoDocs}><FaQuestionCircle style={{ color: '#D5441C', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
       <a data-tooltip-id="insert" data-tooltip-content="Resources" onClick={handleNavigateResources}><TbWorldWww style={{ color: '#336791', fontSize: '32px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      
       <a data-tooltip-id="insert" data-tooltip-content="ChatGPT" href="https://chat.openai.com/auth/login" target="_blank" rel="noreferrer"><RiOpenaiFill style={{ color: '#19c37c', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="ReactJS9" href="https://www.reactjs.com" target="_blank" rel="noreferrer"><FaReact style={{ color: '#61dafb', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="NodeJS18" href="https://www.nodejs.org/en" target="_blank" rel="noreferrer"><FaNodeJs style={{ color: '#169247', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;

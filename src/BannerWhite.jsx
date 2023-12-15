@@ -25,10 +25,7 @@ const BannerWhite = () => {
   return (
     <div className="banner-white">
       <div>&nbsp;&nbsp;&nbsp;&nbsp;
-        {/* <img src={logo} /> */}
         <SiMaildotru style={{color: '#D5441C', fontSize: '36px' }}/>
-        {/* <TbLetterA style={{color: '#336791', fontSize: '40px' }}/> */}
-        {/* <TbLetterT style={{color: '#336791', fontSize: '40px' }}/> */}
         <TbLetterT style={{color: '#336791', fontSize: '40px' }}/>
         <TbLetterR style={{color: '#336791', fontSize: '40px' }}/>
         <TbLetterI style={{color: '#336791', fontSize: '40px' }}/>
@@ -37,7 +34,6 @@ const BannerWhite = () => {
         <TbLetterT style={{color: '#336791', fontSize: '40px' }}/>
         <TbLetterE style={{color: '#336791', fontSize: '40px' }}/>
         <TbLetterD style={{color: '#D5441C', fontSize: '40px' }}/>
-        
       </div>
     </div>
   );

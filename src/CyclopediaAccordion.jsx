@@ -5,8 +5,7 @@ import './Fonts.css'
 import { Tooltip } from '@mui/material';
 import { MdOutlineCancel, MdAddCircleOutline } from "react-icons/md";
 import { AiOutlineCheckCircle, AiOutlineEdit } from "react-icons/ai";
-import spacer from './graphix/besterdev_spacer_white.png';
-import spacer2 from './graphix/besterdev_spacer_white_half.png';
+
 import { toast } from 'react-toastify';
 import GradientLineRusty from './GradientLineRusty';
 import {FaPen, FaCheck, FaRegTrashAlt} from 'react-icons/fa';
