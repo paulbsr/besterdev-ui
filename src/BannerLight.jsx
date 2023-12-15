@@ -25,10 +25,10 @@ import { TfiWrite } from "react-icons/tfi";
     const handleNavigateManage = () => {navigate('/manage');}
     const handleNavigateHowtoManage = () => {navigate('/howtomanage');}
     const handleNavigateHowtoDocs = () => {navigate('/howtodocs');}
-    const handleNavigateNewHowtoDocs = () => {navigate('/newhowtodocs');}
+    const handleNavigateCyclopedia= () => {navigate('/cyclopedia');}
     const handleNavigateResources = () => {navigate('/resources');}
     const handleNavigateLogout = () => {navigate('/logout');}
-    const handleNavigateHowtoEdit = () => {navigate('/howtoedit/6');}
+    // const handleNavigateHowtoEdit = () => {navigate('/howtoedit/6');}
     // const handleNavigateHowtoZero = () => {navigate('/howtozero/6');}
     
     
@@ -38,11 +38,11 @@ import { TfiWrite } from "react-icons/tfi";
       <a data-tooltip-id="insert" data-tooltip-content="Login" onClick={handleNavigateLogin}><SlLogin style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Home" onClick={handleNavigateHome}><IoHome style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Howto Add" onClick={handleNavigateHowtoManage}><FaFileCircleQuestion style={{ color: '#336791', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      {/* <a data-tooltip-id="insert" data-tooltip-content="Howto Edit" onClick={handleNavigateHowtoEdit}><TfiWrite style={{ color: '#D5441C', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
+      {/* <a data-tooltip-id="insert" data-tooltip-content="Howto Edit" onClick={handleNavigateHowtoEdit}><GiGiftOfKnowledge style={{ color: '#D5441C', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
       <a data-tooltip-id="insert" data-tooltip-content="Screen Candidates" onClick={handleNavigateScreen}><FaPeopleArrows style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Management Portal" onClick={handleNavigateManage}><MdManageAccounts style={{ color: '#336791', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       
-      {/* <a data-tooltip-id="insert" data-tooltip-content="Experiment/Tasks" onClick={handleNavigateHowtoZero}><MdEditDocument style={{ color: '#D5441C', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
+      <a data-tooltip-id="insert" data-tooltip-content="Cyclopedia" onClick={handleNavigateCyclopedia}><GiGiftOfKnowledge style={{ color: '#D5441C', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       {/* <a data-tooltip-id="insert" data-tooltip-content="Experiment" onClick={handleNavigateNewHowtoDocs}><FaQuestionCircle style={{ color: '#D5441C', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
       <a data-tooltip-id="insert" data-tooltip-content="Resources" onClick={handleNavigateResources}><TbWorldWww style={{ color: '#336791', fontSize: '32px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       

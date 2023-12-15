@@ -26,7 +26,7 @@ import { useUserContext } from './UserContext';
 import ReactGA from 'react-ga';
 import PageHome from './PageHome';
 import PageHowtoEdit from './PageHowtoEdit';
-import PageZero from './PageZero';
+import PageCyclopedia from './PageCyclopedia';
 
 const TRACKING_ID = "G-FCGGY1NE36"; 
 ReactGA.initialize(TRACKING_ID);
@@ -70,19 +70,18 @@ const App = () => {
             <Route path='/home' element={<PageHome />} />
             {/* <Route path='/howtoedit' element={<PageHowtoEdit />} /> */}
             
-            {/* <Route path='/howtozero' element={<PageZero />} />
-            <Route path='/howtozero/6' element={<PageZero />} />
-            <Route path='/howtozero/:IB' element={<PageZero />} /> */}
+            <Route path='/cyclopedia' element={<PageCyclopedia />} />
+            {/* <Route path='/howtozero/6' element={<PageZero />} /> */}
+            {/* <Route path='/howtozero/:IB' element={<PageZero />} /> */}
           </Route>
-
 
           <Route path='/howtoedit/:howto_id' element={<PageHowtoEdit />} />
           <Route path='/login' element={<PageLogin />} />
           <Route path='/' element={<PageLogin />} />
           <Route path='*' element={<PageLogin />} />
-          <Route path='/howtozero' element={<PageZero />} />
-          <Route path='/howtozero/6' element={<PageZero />} />
-          <Route path='/howtozero/:IB' element={<PageZero />} />
+          {/* <Route path='/howtozero' element={<PageZero />} /> */}
+          {/* <Route path='/howtozero/6' element={<PageZero />} /> */}
+          {/* <Route path='/howtozero/:IB' element={<PageZero />} /> */}
         </Routes>
       </Router>
     </UserProvider>

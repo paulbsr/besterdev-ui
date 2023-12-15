@@ -2,19 +2,17 @@ import BannerWhite from './BannerWhite';
 import GradientLine from './GradientLine';
 import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
-import Quicklinks from './Quicklinks';
-import CandidateAPI from './CandidateAPI';
+import Quicklinks3 from './Quicklinks3';
 import Footer from './Footer';
 import './Fonts.css'
 import 'react-dropdown/style.css';
 import 'react-tooltip/dist/react-tooltip.css'
 import 'react-toastify/dist/ReactToastify.css';
-import { useParams } from 'react-router-dom';
+import CyclopediaAccordion from './CyclopediaAccordion';
 
 
-export default function PageZero() {
 
-    const { howto_id } = useParams();
+export default function PageCyclopedia(cyclopediadata) {
 
   return (
     <div>
@@ -22,9 +20,10 @@ export default function PageZero() {
       <GradientLine />
       <BannerLight />
       <GradientLineThin />
-      <Quicklinks />
-      <>pppppppppppppppppppppppppppppppppppppppp{howto_id}</>
-      <Footer/>
+      <Quicklinks3 />
+      <GradientLineThin />
+      <CyclopediaAccordion cyclopediadata={cyclopediadata}  />
+      {/* <Footer/> */}
     </div>
   )
 };

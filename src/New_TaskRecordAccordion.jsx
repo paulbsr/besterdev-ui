@@ -12,11 +12,11 @@ function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setChec
     const date = new Date();
     const [isExpanded, setExpanded] = useState(false);
     const toggleAccordion = () => { setExpanded(!isExpanded); };
-    const filteredSteps1 = howtodata.howto_steps.filter((steps) => steps.step_id === step_idd);
+    // const filteredSteps1 = howtodata.howto_steps.filter((steps) => steps.step_id === step_idd);
     const filteredSteps = howtodata.howto_steps.filter((task, key) => { return task.step_id === step_idd });
     const SortedStepRecords = filteredSteps[0].step_records.sort((a, b) => a.steprecord_number - b.steprecord_number);
     const [editing, setEditing] = useState(false);
-    const [steprecord_id, setStepRecord_id] = useState();
+    // const [steprecord_id, setStepRecord_id] = useState();
     const [steprecord_number, setStepRecord_number] = useState();
     const [steprecord, setStepRecord] = useState();
     const [steprecord_date, setStepRecord_date] = useState(date);
@@ -68,7 +68,7 @@ function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setChec
                                     required
                                     defaultValue={steprecord}
                                     onChange={(e) => setStepRecord(e.target.value)}
-                                    style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} />
+                                    style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '970px' }} />
                             </>
                             :
                             <div className="Font-Calibri-Large-Howto">
