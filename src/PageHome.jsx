@@ -4,8 +4,8 @@ import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
 import Footer from './Footer';
 import { Flip, ToastContainer, toast, Zoom } from 'react-toastify';
-import HomePage from './HomePage';
 import Quicklinks3 from './Quicklinks3';
+import HomePage from './HomePage';
 
 export default function PageHome() {
     return (
