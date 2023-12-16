@@ -205,13 +205,6 @@
     font-weight: normal;
 }
 
-/* .Table4 {
-    background-color: #f7f4f3;
-    padding: 4px;
-    font-family: "Calibri";
-    font-size: xx-large;
-} */
-
 .Table4 th {
     background-color: #f7f4f3;
     padding: 4px;
@@ -230,65 +223,42 @@
 .Table6 td {
     border: 1px solid rgb(233, 228, 228);
     padding: 4px;
-    /* font-family: "Verdana"; */
-    /* font-size: small; */
     min-width: 50%;
 }
 
+.scrollable-container {
+    background-color: #ffffff;
+    max-height: 2300px; /* Adjust the height as needed */
+    overflow-y: auto;
+  }
+
 .Table-home-left{
-    /* background-color: #f7f4f3; */
     background-color: #ffffff;
     padding: 4px;
-    font-family: "Verdana";
-    font-size: small ;
-    /* border: 1px solid rgb(233, 228, 228); */
+    font-family: "Calibri";
+    font-size: large;
     font-weight: normal;
     text-align: right;
-    /* min-width: 50%; */
+    position: sticky;
+    top: 0;
 }
-
-/* .Table-home-left:hover {
-    font-family: "Verdana";
-    font-size: small;
-    color: #D5441C;
-    background-color: #f7f4f3;
-    border-radius: 4px;
-    border: 1px solid #336791;
-    font-weight: normal;
-} */
 
 .Table-home-centre{
-    /* background-color: #f7f4f3; */
     background-color: #ffffff;
     padding: 4px;
     font-family: "Verdana";
     font-size: small ;
-    /* border: 1px solid rgb(233, 228, 228); */
+    text-align: left;
     font-weight: normal;
-    text-align: center;
-    /* min-width: 50%; */
 }
 
-/* .Table-home-centre:hover {
-    font-family: "Verdana";
-    font-size: small;
-    color: #D5441C;
-    background-color: #f7f4f3;
-    border-radius: 4px;
-    border: 1px solid #336791;
-    font-weight: normal;
-} */
-
 .Table-home-right{
-    /* background-color: #f7f4f3; */
     background-color: #ffffff;
     padding: 4px;
-    font-family: "Verdana";
-    font-size: small ;
-    /* border: 1px solid rgb(233, 228, 228); */
+    font-family: "Calibri";
+    font-size: large;
     font-weight: normal;
     text-align: left;
-    /* min-width: 50%; */
 }
 
 
@@ -317,14 +287,6 @@
     border-radius: 3px;
     border: 1px solid #336791;
 }
-
-/* .asmshover:rusty {
-    font-family: "Verdana";
-    font-size: small;
-    color: #D5441C;
-    background-color: #f7f4f3;
-} */
-
 
 .Scorecard {
     width: 100%;

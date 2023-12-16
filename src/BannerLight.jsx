@@ -18,8 +18,8 @@ import { GiGiftOfKnowledge } from "react-icons/gi";
     const navigate = useNavigate();
     const handleNavigateLogin = () => {navigate('/login');}
     const handleNavigateHome = () => {navigate('/home');}
-    const handleNavigateScreen = () => {navigate('/screen');}
-    const handleNavigateManage = () => {navigate('/manage');}
+    const handleNavigateManage = () => {navigate('/candidatemanage');}
+    const handleNavigateHunt = () => {navigate('/hunt');}
     const handleNavigateHowtoManage = () => {navigate('/howtomanage');}
     const handleNavigateHowtoDocs = () => {navigate('/howtodocs');}
     const handleNavigateCyclopedia= () => {navigate('/cyclopediamanage');}
@@ -32,11 +32,11 @@ import { GiGiftOfKnowledge } from "react-icons/gi";
     <div className="banner-light" >
       <a data-tooltip-id="insert" data-tooltip-content="Login" onClick={handleNavigateLogin}><SlLogin style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Home" onClick={handleNavigateHome}><IoHome style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Howto Add" onClick={handleNavigateHowtoManage}><FaFileCircleQuestion style={{ color: '#336791', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Screen Candidates" onClick={handleNavigateScreen}><FaPeopleArrows style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Management Portal" onClick={handleNavigateManage}><MdManageAccounts style={{ color: '#336791', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Howtos" onClick={handleNavigateHowtoManage}><FaFileCircleQuestion style={{ color: '#336791', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Hunt" onClick={handleNavigateHunt}><FaPeopleArrows style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Candidates" onClick={handleNavigateManage}><MdManageAccounts style={{ color: '#336791', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Cyclopedia" onClick={handleNavigateCyclopedia}><GiGiftOfKnowledge style={{ color: '#D5441C', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Resources" onClick={handleNavigateResources}><TbWorldWww style={{ color: '#336791', fontSize: '32px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Web Resources" onClick={handleNavigateResources}><TbWorldWww style={{ color: '#336791', fontSize: '32px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="ChatGPT" href="https://chat.openai.com/auth/login" target="_blank" rel="noreferrer"><RiOpenaiFill style={{ color: '#19c37c', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="ReactJS9" href="https://www.reactjs.com" target="_blank" rel="noreferrer"><FaReact style={{ color: '#61dafb', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="NodeJS18" href="https://www.nodejs.org/en" target="_blank" rel="noreferrer"><FaNodeJs style={{ color: '#169247', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;

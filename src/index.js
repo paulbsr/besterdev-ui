@@ -27,6 +27,7 @@ import { getAuth } from "firebase/auth";
 import { UserProvider } from './UserContext';
 import { useUserContext } from './UserContext';
 import ReactGA from 'react-ga';
+import CandidateAPI from './CandidateAPI';
 
 const TRACKING_ID = "G-FCGGY1NE36"; 
 ReactGA.initialize(TRACKING_ID);
@@ -61,9 +62,10 @@ const App = () => {
           <Route element={<PrivateRoutes />}>
             <Route path='/search' element={<PageSearch />} />
             <Route path='/screen' element={<PageSearch />} />
-            <Route path='/manage' element={<PageManage />} />
+            <Route path='/candidatemanage' element={<PageManage />} />
             <Route path='/logout' element={<PageLogout />} />
             <Route path='/howtomanage' element={<PageHowtoManage />} />
+            <Route path='/hunt' element={<PageSearch />} />
             <Route path='/cyclopediamanage' element={<PageCyclopedia />} />
             <Route path='/webresourcemanage' element={<PageResources/>} />
             <Route path='/howtodocs' element={<PageHowtoDocs />} />

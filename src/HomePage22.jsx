@@ -59,7 +59,8 @@ export default function HomePage22(props) {
   
   
   const InnerTableLeft = () => (
-    <table className="Table-home-left" style={{ flexDirection: 'column-reverse' }}>
+    <div className="scrollable-container">
+    <table className="Table-home-left" >
       <tbody>
         {websitedata.map((row, index) => (
           <tr  key={index}>
@@ -69,15 +70,17 @@ export default function HomePage22(props) {
         ))}
       </tbody>
     </table>
+    </div>
   );
   
 
   const InnerTableCentre = () => (
-    <table style={{ flexDirection: 'column-reverse' }}>
+    <div className="scrollable-container">
+    <table className="Table-home-centre">
       <tbody>
         {cyclopediadata.map((rowc, index) => (
           <tr key={index}>
-                  <td className="Table-home-right">
+                  <td className="Table-home-centre">
                     {rowc && (
                       <div>
                         <b>{rowc.cyclopedia_name}:</b>&nbsp;&nbsp;&nbsp;{rowc.cyclopedia_desc}
@@ -88,6 +91,7 @@ export default function HomePage22(props) {
         ))}
       </tbody>
     </table>
+    </div>
   );
 
 
@@ -96,11 +100,12 @@ export default function HomePage22(props) {
   
   
   const InnerTableRight = () => (
-    <table className="flex-container">
+    <div className="scrollable-container">
+    <table className="Table-home-right">
       <tbody>
         {howtodata.map((row, index) => (
           <tr key={index}>
-                  <td className="Table-home-right flex-container">
+                  <td className="Table-home-right">
                     {row && (
                       <div>
                         <a href={`/howtoedit/${row.howto_id}`} target="_blank">{row.howto_name}</a>
@@ -111,11 +116,13 @@ export default function HomePage22(props) {
         ))}
       </tbody>
     </table>
+    </div>
   );
   
 
 
   const OuterTable = () => (
+    <div className="scrollable-container">
     <table style={{ width: '100%' }}>
       <tbody>
         <tr>
@@ -134,6 +141,7 @@ export default function HomePage22(props) {
         </tr>
       </tbody>
     </table>
+    </div>
   );
 
 
