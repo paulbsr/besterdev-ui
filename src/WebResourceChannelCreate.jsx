@@ -14,8 +14,8 @@ dayjs.extend(utc);
 
 
 export default function WebResourceChannelCreate(props) {
-  const today = new Date(); // Create a new Date object representing today's date
-  const formattedDate = today.toISOString().split('T')[0]; // Convert the date to the desired format (YYYY-MM-DD)
+  const today = new Date();
+  const formattedDate = today.toISOString().split('T')[0];
   const alertCtx = useContext(AlertContext);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [firstname, setfirstname] = useState('');

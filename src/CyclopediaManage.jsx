@@ -162,8 +162,8 @@ function CyclopediaManage ({  }) {
             <thead>
               <tr>
                 <th style={{ width: '20px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'></th>
-                <th style={{ width: '450px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Name</th>
-                <th style={{ width: '900px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Description</th>
+                <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Name</th>
+                <th style={{ width: '1450px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Description</th>
                 <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Reference</th>
                 {/* <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Last Touched</th> */}
               </tr>

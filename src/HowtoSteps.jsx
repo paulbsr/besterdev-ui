@@ -73,26 +73,7 @@ export default function HowtoSteps ({ project_handle, activeAccount, id, tasknam
       'taskowner': owner,
       'taskname': name,
     }
-
-
-
-    // if (noDetails.length) {
-    //   alertCtx.warning(`Please fill in ${noDetails.join(', ')}`)
-    //   return
-    // }
-
-    // const response = await axios.put(`${process.env.REACT_APP_API_URL}/api/v1/tasks/update/taskdetails/${id}`, updatedTask)
-    //   .then((response) => { updatedDetails.length ? 
-    //     alertCtx.success(` "${taskname}" task successfully updated ${updatedDetails.join(", ")}`) : alertCtx.warning(`No changes in "${taskname}"`) 
-    //   })
-
-    //   .catch((error) => { alertCtx.error(error.message); })
-    // setCheckForRecords(!checkForRecords)
-    // onEditCancel();
   }
-
-
-
 
   return (
     <>
@@ -147,8 +128,7 @@ export default function HowtoSteps ({ project_handle, activeAccount, id, tasknam
             :
             taskrequirement}
           </div>
-          {/* <TaskRecordAccordion alertCtx={alertCtx} project_handle={project_handle} activeAccount={activeAccount} taskstatus={taskstatus} parentid={id} asms_number={asms} parenttask={parenttask} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /> */}
-        </div>
+         </div>
       }
     </>
   );

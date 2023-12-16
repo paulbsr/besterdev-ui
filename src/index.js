@@ -60,6 +60,7 @@ const App = () => {
       <Router>
         <Routes>
           <Route element={<PrivateRoutes />}>
+            <Route path='/home' element={<PageHome />} />
             <Route path='/search' element={<PageSearch />} />
             <Route path='/screen' element={<PageSearch />} />
             <Route path='/candidatemanage' element={<PageManage />} />
@@ -69,8 +70,7 @@ const App = () => {
             <Route path='/cyclopediamanage' element={<PageCyclopedia />} />
             <Route path='/webresourcemanage' element={<PageResources/>} />
             <Route path='/howtodocs' element={<PageHowtoDocs />} />
-            <Route path='/newhowtodocs' element={<PageNewHowtoDocs />} />
-            <Route path='/home' element={<PageHome />} />
+            {/* <Route path='/newhowtodocs' element={<PageNewHowtoDocs />} /> */}
           </Route>
 
           <Route path='/howtoedit/:howto_id' element={<PageHowtoEdit />} />

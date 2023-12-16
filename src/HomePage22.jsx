@@ -64,7 +64,7 @@ export default function HomePage22(props) {
       <tbody>
         {websitedata.map((row, index) => (
           <tr  key={index}>
-            <td style={{ width: '20%' }} className="Table-home-left"><a href={row.website_url} target="_blank" rel="noopener noreferrer">{row.website_name}</a>
+            <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left"><a href={row.website_url} target="_blank" rel="noopener noreferrer">{row.website_name}</a>
             </td>
           </tr>
         ))}
@@ -80,7 +80,7 @@ export default function HomePage22(props) {
       <tbody>
         {cyclopediadata.map((rowc, index) => (
           <tr key={index}>
-                  <td className="Table-home-centre">
+                  <td className="asmshover">
                     {rowc && (
                       <div>
                         <b>{rowc.cyclopedia_name}:</b>&nbsp;&nbsp;&nbsp;{rowc.cyclopedia_desc}
@@ -95,17 +95,13 @@ export default function HomePage22(props) {
   );
 
 
-
-
-  
-  
   const InnerTableRight = () => (
-    <div className="scrollable-container">
-    <table className="Table-home-right">
+    <div>
+    <table >
       <tbody>
         {howtodata.map((row, index) => (
           <tr key={index}>
-                  <td className="Table-home-right">
+                  <td>
                     {row && (
                       <div>
                         <a href={`/howtoedit/${row.howto_id}`} target="_blank">{row.howto_name}</a>
@@ -122,22 +118,22 @@ export default function HomePage22(props) {
 
 
   const OuterTable = () => (
-    <div className="scrollable-container">
+    <div>
     <table style={{ width: '100%' }}>
       <tbody>
         <tr>
           <td style={{width: '20%' }}></td>
           <td style={{width: '2%' }}></td>
-          <td style={{width: '56%' }}><img src={One} /></td>
+          <td style={{width: '56%' }}>&nbsp;&nbsp;<img src={One} /></td>
           <td style={{width: '2%' }}></td>
           <td style={{width: '20%' }}></td>
         </tr>
         <tr>
-          <td style={{width: '20%' }}><InnerTableLeft/></td>
+          <td style={{width: '20%' }} className="Table-home-left"><InnerTableLeft/></td>
           <td style={{width: '2%' }}></td>
-          <td style={{width: '56%' }}><InnerTableCentre /></td>
+          <td style={{width: '56%' }} className="Table-home-centre"><InnerTableCentre /></td>
           <td style={{width: '2%' }}></td>
-          <td style={{width: '20%' }}><InnerTableRight/></td>
+          <td style={{width: '20%' }} className="Table-home-right"><InnerTableRight/></td>
         </tr>
       </tbody>
     </table>
