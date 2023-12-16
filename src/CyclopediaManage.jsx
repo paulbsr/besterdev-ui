@@ -12,9 +12,10 @@ import {FaPen, FaCheck, FaRegTrashAlt} from 'react-icons/fa';
 import { FaFileCircleQuestion } from "react-icons/fa6";
 import {PiArrowCounterClockwiseBold} from 'react-icons/pi';
 import { GiGiftOfKnowledge } from "react-icons/gi";
+import CyclopediaCreate from './CyclopediaCreate';
 
 
-function CyclopediaAccordion ({  }) {
+function CyclopediaManage ({  }) {
     const [checkForRecords, setCheckForRecords] = useState(true);
     // const date = new Date();
     // const [isExpanded, setExpanded] = useState(false);
@@ -155,7 +156,7 @@ function CyclopediaAccordion ({  }) {
       &nbsp;<b>Manage Cyclopedia Entries ({cyclopediadata.length})</b>
     </div>
 
-    {/* <HowtoCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/> */}
+    <CyclopediaCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
 
           <table className="Table6">
             <thead>
@@ -217,4 +218,4 @@ function CyclopediaAccordion ({  }) {
     );
 }
 
-export default CyclopediaAccordion;
+export default CyclopediaManage;

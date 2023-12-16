@@ -64,11 +64,11 @@ const App = () => {
             <Route path='/manage' element={<PageManage />} />
             <Route path='/logout' element={<PageLogout />} />
             <Route path='/howtomanage' element={<PageHowtoManage />} />
+            <Route path='/cyclopediamanage' element={<PageCyclopedia />} />
+            <Route path='/webresourcemanage' element={<PageResources/>} />
             <Route path='/howtodocs' element={<PageHowtoDocs />} />
             <Route path='/newhowtodocs' element={<PageNewHowtoDocs />} />
-            <Route path='/resources' element={<PageResources/>} />
             <Route path='/home' element={<PageHome />} />
-            <Route path='/cyclopedia' element={<PageCyclopedia />} />
           </Route>
 
           <Route path='/howtoedit/:howto_id' element={<PageHowtoEdit />} />

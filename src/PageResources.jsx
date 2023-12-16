@@ -4,7 +4,6 @@ import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
 import Quicklinks3 from './Quicklinks3';
 import { Flip, ToastContainer, toast, Zoom } from 'react-toastify';
-import WebSiteCreate from './WebsiteCreate';
 import WebsiteManage from './WebsiteManage';
 
 export default function PageResources() {
@@ -17,7 +16,6 @@ export default function PageResources() {
         <Quicklinks3 />
         <GradientLineThin />
         <WebsiteManage />
-        {/* <Footer/> */}
         <ToastContainer
         position="top-left"
         autoClose={2000}

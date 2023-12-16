@@ -22,8 +22,8 @@ import { GiGiftOfKnowledge } from "react-icons/gi";
     const handleNavigateManage = () => {navigate('/manage');}
     const handleNavigateHowtoManage = () => {navigate('/howtomanage');}
     const handleNavigateHowtoDocs = () => {navigate('/howtodocs');}
-    const handleNavigateCyclopedia= () => {navigate('/cyclopedia');}
-    const handleNavigateResources = () => {navigate('/resources');}
+    const handleNavigateCyclopedia= () => {navigate('/cyclopediamanage');}
+    const handleNavigateResources = () => {navigate('/webresourcemanage');}
     const handleNavigateLogout = () => {navigate('/logout');}
  
     

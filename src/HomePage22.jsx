@@ -5,7 +5,7 @@ import './Fonts.css';
 import 'react-dropdown/style.css';
 import axios from 'axios'
 import One from './graphix/3.png'
-import CyclopediaAccordion from './CyclopediaAccordion';
+import CyclopediaManage from './CyclopediaManage';
 import spacer from './graphix/besterdev_spacer_white.png';
 
 

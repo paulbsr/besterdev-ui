@@ -7,7 +7,7 @@ import './Fonts.css'
 import 'react-dropdown/style.css';
 import 'react-tooltip/dist/react-tooltip.css'
 import 'react-toastify/dist/ReactToastify.css';
-import CyclopediaAccordion from './CyclopediaAccordion';
+import CyclopediaManage from './CyclopediaManage';
 
 
 
@@ -21,7 +21,7 @@ export default function PageCyclopedia(cyclopediadata) {
       <GradientLineThin />
       <Quicklinks3 />
       <GradientLineThin />
-      <CyclopediaAccordion cyclopediadata={cyclopediadata}  />
+      <CyclopediaManage />
     </div>
   )
 };
