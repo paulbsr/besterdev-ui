@@ -44,7 +44,7 @@ export default function QuickAddWebResource() {
                 <div className='Font-Verdana-QuickAdd'>
                 &nbsp;&nbsp;
                     {/* <img alt="1" src={spacer} /> */}
-                    Web Resource:&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '150px' }} type="text" value={website_name} onChange={(event) => setWebsite_name(event.target.value)} />
+                    WebResource:&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '150px' }} type="text" value={website_name} onChange={(event) => setWebsite_name(event.target.value)} />
                     <img alt="1" src={spacer} />
                     Description:&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '150px' }} type="text" value={website_desc} onChange={(event) => setWebsite_desc(event.target.value)} />
                     <img alt="1" src={spacer} />
