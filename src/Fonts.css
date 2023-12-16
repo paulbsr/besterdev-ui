@@ -271,13 +271,13 @@
     font-weight: normal;
 }
 
-.asmshover:hover {
+/* .asmshover:hover {
     font-family: "Verdana";
     font-size: small;
     color: #D5441C;
     background-color: #f7f4f3;
     padding: 2px;
-}
+} */
 
 .asmshover:hover {
     font-family: "Verdana";
@@ -286,7 +286,16 @@
     background-color: #f7f4f3;
     border-radius: 3px;
     border: 1px solid #336791;
-    padding: 2px;
+    padding: 4px;
+}
+
+.fphover:hover {
+    font-family: "Verdana";
+    font-size: small;
+    color: #D5441C;
+    background-color: #f7f4f3;
+    border-radius: 3px;
+    border: 1px solid #336791;
 }
 
 .Scorecard {

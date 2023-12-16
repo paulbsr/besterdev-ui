@@ -80,7 +80,7 @@ export default function HomePage22(props) {
       <tbody>
         {cyclopediadata.map((rowc, index) => (
           <tr key={index}>
-                  <td className="asmshover">
+                  <td className="fphover">
                     {rowc && (
                       <div>
                         <b>{rowc.cyclopedia_name}:</b>&nbsp;&nbsp;&nbsp;{rowc.cyclopedia_desc}
