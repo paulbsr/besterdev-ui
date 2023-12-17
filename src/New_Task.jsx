@@ -90,14 +90,15 @@ export default function New_Task({ howto_id, step_id, step_number, step_name, st
                 defaultValue={step_name}
                 onChange={(e) => setName(e.target.value)}
                 style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '800px' }} />
-              <div className='Font-Spacer-White'>Make this Spacer White</div>
+              <div className="Font-Spacer-White">Make this Spacer White</div>
             </>
             </>
           </>
           </>
           :
-          <i onClick={toggleAccordion}>
+          <><i onClick={toggleAccordion}>
             <i className="Font-Calibri-Large-Howto">Step-{step_number}:&nbsp;</i><b className="Font-Calibri-Large-Howto">{step_name}</b></i>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i className="Font-Spacer-White">HowtoStepID#{step_id}&nbsp;</i></>
 
         }
       </div>

@@ -70,7 +70,7 @@ function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setChec
                             </>
                             :
                             <div className="Font-Calibri-Large-Howto">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{steprecord_number}.&nbsp;&nbsp;&nbsp;{steprecord}
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{steprecord_number}.&nbsp;&nbsp;&nbsp;{steprecord}&nbsp;&nbsp;&nbsp;
                             </div>
                         }
                     </div>

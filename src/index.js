@@ -10,7 +10,6 @@ import PageManage from './PageManage';
 import PageLogin from './PageLogin';
 import PageLogout from './PageLogout';
 import PageHowtoDocs from './PageHowtoDocs';
-import PageNewHowtoDocs from './PageNewHowtoDocs';
 import PageHowtoManage from './PageHowtoManage';
 import PageResources from './PageResources';
 import firebase from 'firebase/compat/app';
@@ -27,7 +26,6 @@ import { getAuth } from "firebase/auth";
 import { UserProvider } from './UserContext';
 import { useUserContext } from './UserContext';
 import ReactGA from 'react-ga';
-import CandidateAPI from './CandidateAPI';
 
 const TRACKING_ID = "G-FCGGY1NE36"; 
 ReactGA.initialize(TRACKING_ID);
