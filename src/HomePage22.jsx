@@ -5,8 +5,7 @@ import './Fonts.css';
 import 'react-dropdown/style.css';
 import axios from 'axios'
 import One from './graphix/3.png'
-import CyclopediaManage from './CyclopediaManage';
-import spacer from './graphix/besterdev_spacer_white.png';
+import { BsThreeDots } from "react-icons/bs";
 
 
 export default function HomePage22(props) {
@@ -83,7 +82,7 @@ export default function HomePage22(props) {
                   <td className="fphover">
                     {rowc && (
                       <div>
-                        <b>{rowc.cyclopedia_name}:</b>&nbsp;&nbsp;&nbsp;{rowc.cyclopedia_desc}
+                        <BsThreeDots style={{ color: '#336791', fontSize: '12px', cursor: 'pointer' }} /><b>{rowc.cyclopedia_name}:</b>&nbsp;&nbsp;&nbsp;<i>{rowc.cyclopedia_desc}</i>
                       </div>
                     )}
                   </td>
