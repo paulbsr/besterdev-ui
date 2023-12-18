@@ -4,8 +4,12 @@ import 'react-tooltip/dist/react-tooltip.css'
 import './Fonts.css';
 import 'react-dropdown/style.css';
 import axios from 'axios'
-import One from './graphix/3.png'
+// import One from './graphix/3.png'
+import One from './graphix/12.png'
 import { BsThreeDots } from "react-icons/bs";
+import { VscArrowCircleRight } from "react-icons/vsc";
+import { FiCloudRain } from "react-icons/fi";
+import { FaHandPointUp } from "react-icons/fa6";
 
 
 export default function HomePage22(props) {
@@ -82,7 +86,9 @@ export default function HomePage22(props) {
                   <td className="fphover">
                     {rowc && (
                       <div>
-                        <BsThreeDots style={{ color: '#336791', fontSize: '12px', cursor: 'pointer' }} /><b>{rowc.cyclopedia_name}:</b>&nbsp;&nbsp;&nbsp;<i>{rowc.cyclopedia_desc}</i>
+                        <FaHandPointUp style={{ color: '#DDDDDD', fontSize: '19px', cursor: 'pointer' }} />
+                        <b>&nbsp;{rowc.cyclopedia_name}:</b>&nbsp;&nbsp;&nbsp;<i>{rowc.cyclopedia_desc}</i>
+                        <div className='Font-Spacer-White'>Make this spacer white</div>
                       </div>
                     )}
                   </td>
