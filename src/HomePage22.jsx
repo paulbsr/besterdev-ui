@@ -4,12 +4,13 @@ import 'react-tooltip/dist/react-tooltip.css'
 import './Fonts.css';
 import 'react-dropdown/style.css';
 import axios from 'axios'
-// import One from './graphix/3.png'
 import One from './graphix/12.png'
 import { BsThreeDots } from "react-icons/bs";
 import { VscArrowCircleRight } from "react-icons/vsc";
 import { FiCloudRain } from "react-icons/fi";
 import { FaHandPointUp } from "react-icons/fa6";
+import { BsQuestionOctagon } from "react-icons/bs";
+import { TbWorldWww } from "react-icons/tb";
 
 
 export default function HomePage22(props) {
@@ -60,15 +61,18 @@ export default function HomePage22(props) {
   }, [props.checkForRecords]);
 
   
-  
+  <Tooltip id="insert" />
   const InnerTableLeft = () => (
     <div className="scrollable-container">
     <table className="Table-home-left" >
       <tbody>
         {websitedata.map((row, index) => (
           <tr  key={index}>
-            <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left"><a href={row.website_url} target="_blank" rel="noopener noreferrer">{row.website_name}</a>
+            <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left"><a href={row.website_url} target="_blank" rel="noopener noreferrer" >{row.website_name}</a>
+            {/* &nbsp;
+            <a data-tooltip-id="insert" data-tooltip-content="Revert"><TbWorldWww style={{ color: '#DDDDDD', fontSize: '19px', cursor: 'pointer' }} /></a> */}
             </td>
+            {/* <a data-tooltip-id="insert" data-tooltip-content="Amend"></a> */}
           </tr>
         ))}
       </tbody>
@@ -86,7 +90,7 @@ export default function HomePage22(props) {
                   <td className="fphover">
                     {rowc && (
                       <div>
-                        <FaHandPointUp style={{ color: '#DDDDDD', fontSize: '19px', cursor: 'pointer' }} />
+                        <BsQuestionOctagon style={{ color: '#D5441C', fontSize: '15px', cursor: 'pointer' }} />
                         <b>&nbsp;{rowc.cyclopedia_name}:</b>&nbsp;&nbsp;&nbsp;<i>{rowc.cyclopedia_desc}</i>
                         <div className='Font-Spacer-White'>Make this spacer white</div>
                       </div>
