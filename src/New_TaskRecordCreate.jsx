@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import "./Fonts.css";
 import { toast } from 'react-toastify';
+import spacer2 from './graphix/besterdev_spacer_white_half.png';
 
 export default function New_TaskRecordCreate(props) {
   const current = new Date();
@@ -33,17 +34,20 @@ export default function New_TaskRecordCreate(props) {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <input
           required
           onChange={(e) => setSteprecord_number(e.target.value)}
           style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '20px', padding: 0, paddingLeft: '7px' }} />
 
-        &nbsp;&nbsp;&nbsp;<input
+        &nbsp;
+        <input
           required
           onChange={(e) => setSteprecord(e.target.value)}
           style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} />
-        <div>&nbsp;</div>
-        &nbsp;&nbsp;&nbsp;<button
+        {/* <div>&nbsp;</div> */}
+        &nbsp;&nbsp;&nbsp;&nbsp;<img alt="1" src={spacer2} />
+        <button
           className="Font-Verdana-Small-Postgres"
           type="submit"
           style={{ height: '27.5px', border: '1px solid #ffffff', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}

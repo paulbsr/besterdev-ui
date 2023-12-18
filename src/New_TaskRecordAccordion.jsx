@@ -86,7 +86,7 @@ function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setChec
                                 )
                                 :
                                 (
-                                    <Tooltip title='Edit Step Entry' placement="top-end">
+                                    <Tooltip title='Edit Step Record' placement="top-end">
                                         <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(steprecord_id, steprecord_number, steprecord) }}>
                                             <AiOutlineEdit style={{ color: '#DDDDDD', display: 'round', margin: 'auto', fontSize: '18px' }} /></button>
                                     </Tooltip>

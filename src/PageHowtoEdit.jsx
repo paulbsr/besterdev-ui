@@ -22,7 +22,7 @@ export default function PageCyclopedia() {
         <Quicklinks3 />
         <GradientLineThin />
         <HowtoEdit howto_id={howto_id}/>
-        <Footer/>
+        {/* <Footer/> */}
         <ToastContainer
         position="top-left"
         autoClose={2000}
