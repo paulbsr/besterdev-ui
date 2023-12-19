@@ -62,17 +62,18 @@ export default function HomePage22(props) {
 
   
   <Tooltip id="insert" />
+  
   const InnerTableLeft = () => (
     <div className="scrollable-container">
     <table className="Table-home-left" >
       <tbody>
         {websitedata.map((row, index) => (
           <tr  key={index}>
-            <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left"><a href={row.website_url} target="_blank" rel="noopener noreferrer" >{row.website_name}</a>
-            {/* &nbsp;
-            <a data-tooltip-id="insert" data-tooltip-content="Revert"><TbWorldWww style={{ color: '#DDDDDD', fontSize: '19px', cursor: 'pointer' }} /></a> */}
+            <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left"><a href={row.website_url} target="_blank" rel="noopener noreferrer" >{row.website_name}</a>&nbsp;
+            {/* <a data-tooltip-id="insert" data-tooltip-content="Revert"><TbWorldWww style={{ color: '#DDDDDD', fontSize: '19px', cursor: 'pointer' }} /></a> */}
+            {/* <a data-tooltip-id="purge" data-tooltip-content="Amend"><FaHandPointUp style={{ color: '#336791', fontSize: '45px', cursor: 'pointer' }} /></a> */}
             </td>
-            {/* <a data-tooltip-id="insert" data-tooltip-content="Amend"></a> */}
+            
           </tr>
         ))}
       </tbody>

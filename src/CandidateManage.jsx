@@ -12,7 +12,6 @@ import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
-import 'react-tooltip/dist/react-tooltip.css'
 import CandidateCreate from './CandidateCreate';
 import GradientLine from './GradientLine';
 import { toast } from 'react-toastify';

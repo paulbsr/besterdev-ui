@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState } from 'react'
 import 'react-tooltip/dist/react-tooltip.css'
 import 'react-tooltip/dist/react-tooltip.css'
 import './Fonts.css';

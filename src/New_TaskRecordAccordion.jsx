@@ -3,9 +3,13 @@ import New_TaskRecordCreate from './New_TaskRecordCreate';
 import axios from "axios";
 import './Fonts.css'
 import { Tooltip } from '@mui/material';
-import { MdOutlineCancel, MdAddCircleOutline } from "react-icons/md";
+import { MdOutlineCancel, MdAddCircleOutline, MdOutlineRemoveCircleOutline } from "react-icons/md";
 import { AiOutlineCheckCircle, AiOutlineEdit } from "react-icons/ai";
 import { toast } from 'react-toastify';
+import { FaPen, FaCheck, FaRegTrashAlt } from 'react-icons/fa';
+import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
+import { MdOutlineCheck } from "react-icons/md";
+import { GiCheckMark } from "react-icons/gi";
 
 
 function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setCheckForRecords }) {
@@ -46,6 +50,15 @@ function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setChec
         onEditCancel();
     }
 
+    const onEditDelete = (steprecord_id) => {
+        axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/delete/${steprecord_id}`)
+          .then((response) => {
+            setCheckForRecords(!checkForRecords);
+            toast.success(`${steprecord} purged.`)
+          }
+          )
+      };
+
     function editableStepRecord(steprecord_id, steprecord_number, steprecord, checkForRecords, setCheckForRecords) {
         return (
             <div>
@@ -80,8 +93,9 @@ function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setChec
                             {editing === steprecord_id ?
                                 (
                                     <>&nbsp;&nbsp;
-                                        <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave(steprecord_id)}><AiOutlineCheckCircle style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>&nbsp;
-                                        <Tooltip title='Discard' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditCancel()}><MdOutlineCancel style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
+                                        <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave(steprecord_id)}><GiCheckMark  style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
+                                        <Tooltip title='Discard' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditCancel()}><PiArrowCounterClockwiseBold style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
+                                        <Tooltip title='Delete' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditDelete(steprecord_id)}>< FaRegTrashAlt style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
                                     </>
                                 )
                                 :
