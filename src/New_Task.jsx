@@ -5,6 +5,9 @@ import axios from 'axios'
 import { MdOutlineCancel } from "react-icons/md";
 import { Tooltip } from '@mui/material';
 import { AiOutlineCheckCircle, AiOutlineEdit } from "react-icons/ai";
+import { GiCheckMark } from "react-icons/gi"; //Commit
+import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard
+import { FaRegTrashAlt } from 'react-icons/fa'; //Delete
 import { toast } from 'react-toastify';
 
 export default function New_Task({ howto_id, step_id, step_number, step_name, step_url, step_obj, howtodata, checkForRecords, setCheckForRecords }) {
@@ -61,8 +64,8 @@ export default function New_Task({ howto_id, step_id, step_number, step_name, st
               (
                 <>
                   &nbsp;&nbsp;
-                  <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave()}><AiOutlineCheckCircle style={{ color: '#D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>&nbsp;
-                  <Tooltip title='Revert' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditCancel()}><MdOutlineCancel style={{ color: '#D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
+                  <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave()}><GiCheckMark style={{ color: '#D5441C', display: 'block', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>&nbsp;
+                  <Tooltip title='Revert' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditCancel()}><PiArrowCounterClockwiseBold style={{ color: '#D5441C', display: 'block', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
                 </>
               )
               :

@@ -6,11 +6,9 @@ import { Tooltip } from '@mui/material';
 import { MdOutlineCancel, MdAddCircleOutline, MdOutlineRemoveCircleOutline } from "react-icons/md";
 import { AiOutlineCheckCircle, AiOutlineEdit } from "react-icons/ai";
 import { toast } from 'react-toastify';
-import { FaPen, FaCheck, FaRegTrashAlt } from 'react-icons/fa';
-import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
-import { MdOutlineCheck } from "react-icons/md";
-import { GiCheckMark } from "react-icons/gi";
-
+import { GiCheckMark } from "react-icons/gi"; //Commit
+import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard
+import { FaRegTrashAlt } from 'react-icons/fa'; //Delete
 
 function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setCheckForRecords }) {
     const date = new Date();
@@ -54,7 +52,7 @@ function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setChec
         axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/delete/${steprecord_id}`)
           .then((response) => {
             setCheckForRecords(!checkForRecords);
-            toast.success(`${steprecord} purged.`)
+            toast.success(`${steprecord_id} purged.`)
           }
           )
       };
@@ -83,7 +81,7 @@ function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setChec
                             </>
                             :
                             <div className="Font-Calibri-Large-Howto">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{steprecord_number}.&nbsp;&nbsp;&nbsp;{steprecord}&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>{steprecord_number}.</b>&nbsp;&nbsp;&nbsp;{steprecord}&nbsp;&nbsp;&nbsp;
                             </div>
                         }
                     </div>
