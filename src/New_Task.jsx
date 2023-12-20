@@ -57,7 +57,7 @@ export default function New_Task({ howto_id, step_id, step_number, step_name, st
   return (
 
     <>
-      <div className="Font-Calibri-Large-Howto" >
+      <div className="Font-Segoe-Large-Howto" >
         <div style={{ display: 'flex', float: 'right' }}>
           <>
             {editing === true ?
@@ -100,7 +100,7 @@ export default function New_Task({ howto_id, step_id, step_number, step_name, st
           </>
           :
           <><i onClick={toggleAccordion}>
-            <i className="Font-Calibri-Large-Howto">Step-{step_number}:&nbsp;</i><b className="Font-Calibri-Large-Howto">{step_name}</b></i>
+            <i className="Font-Segoe-Large-Howto">Step-{step_number}:&nbsp;</i><b className="Font-Segoe-Large-Howto">{step_name}</b></i>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i className="Font-Spacer-White">HowtoStepID#{step_id}&nbsp;</i></>
 
         }
@@ -109,7 +109,7 @@ export default function New_Task({ howto_id, step_id, step_number, step_name, st
 
       {isExpanded &&
         <div>
-          <div className="Font-Calibri-Large-Howto" >
+          <div className="Font-Segoe-Large-Howto" >
 
             {editing === true ?
               <><i>Supporting URL:</i>&nbsp;<>
@@ -122,7 +122,7 @@ export default function New_Task({ howto_id, step_id, step_number, step_name, st
               </>
               </>
               :
-              <a className="Font-Verdana-XSmall" href={step_url} target="_blank">{step_url}</a>}
+              <a className="Font-Verdana-Small" href={step_url} target="_blank">{step_url}</a>}
 
             {editing === true ?
               <><i>Step Objective:</i><>

@@ -34,6 +34,9 @@ function New_Task_Accordion({ howto_ids }) {
             <tr>
               <th>{howtodata.howto_name}</th>
             </tr>
+            {/* <tr >
+              <th>{howtodata.howto_desc}</th>
+            </tr> */}
           </thead>
 
           {howtodata.howto_steps && howtodata.howto_steps.map((step) => (

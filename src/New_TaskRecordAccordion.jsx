@@ -80,8 +80,12 @@ function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setChec
                                     style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '970px' }} />
                             </>
                             :
-                            <div className="Font-Calibri-Large-Howto">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>{steprecord_number}.</b>&nbsp;&nbsp;&nbsp;{steprecord}&nbsp;&nbsp;&nbsp;
+                            <div className="Font-Segoe-Large-Howto">
+                                {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */}
+                                <b style={{ fontSize: 'medium', color: '#D5441C'}}>{steprecord_number}.</b>
+                                &nbsp;&nbsp;&nbsp;
+                                {steprecord}
+                                &nbsp;&nbsp;&nbsp;
                             </div>
                         }
                     </div>
