@@ -10,7 +10,7 @@ import { GiCheckMark } from "react-icons/gi"; //Commit
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard
 import { FaRegTrashAlt } from 'react-icons/fa'; //Delete
 
-function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setCheckForRecords }) {
+function New_TaskRecordAccordion({ howtodata, step_idd, step_number, checkForRecords, setCheckForRecords }) {
     const date = new Date();
     const [isExpanded, setExpanded] = useState(false);
     const toggleAccordion = () => { setExpanded(!isExpanded); };
@@ -64,7 +64,7 @@ function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setChec
                     <div>
                         {editing === steprecord_id ?
                             <>
-                                &nbsp;&nbsp;&nbsp;
+                                {/* &nbsp;&nbsp;&nbsp; */}
 
                                 <input
                                     required
@@ -82,7 +82,7 @@ function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setChec
                             :
                             <div className="Font-Segoe-Large-Howto">
                                 {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */}
-                                <b style={{ fontSize: 'medium', color: '#D5441C'}}>{steprecord_number}.</b>
+                                <b style={{ fontSize: 'medium', color: 'black'}}>{step_number}.{steprecord_number})</b>
                                 &nbsp;&nbsp;&nbsp;
                                 {steprecord}
                                 &nbsp;&nbsp;&nbsp;
@@ -97,7 +97,7 @@ function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setChec
                                     <>&nbsp;&nbsp;
                                         <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave(steprecord_id)}><GiCheckMark  style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
                                         <Tooltip title='Discard' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditCancel()}><PiArrowCounterClockwiseBold style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
-                                        <Tooltip title='Delete' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditDelete(steprecord_id)}>< FaRegTrashAlt style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
+                                        <Tooltip title='Purge' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditDelete(steprecord_id)}>< FaRegTrashAlt style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
                                     </>
                                 )
                                 :
@@ -121,8 +121,9 @@ function New_TaskRecordAccordion({ howtodata, step_idd, checkForRecords, setChec
                 {SortedStepRecords.map(({ steprecord_id, steprecord_number, steprecord }) => (editableStepRecord(steprecord_id, steprecord_number, steprecord, checkForRecords, setCheckForRecords)))}
             </div>
 
-            <div className='Font-Verdana-Small'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <Tooltip title='Insert an additional Step Record' placement="top-end">Insert an additional Step Record<button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={toggleAccordion}><MdAddCircleOutline style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
+            <div className='Font-Verdana-Small'>
+                {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */}
+                <Tooltip title='Insert an additional Step Record' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={toggleAccordion}><MdAddCircleOutline style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button>&nbsp;Insert an additional Step Record</Tooltip>
             </div>
 
             {isExpanded &&

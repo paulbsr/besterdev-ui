@@ -29,14 +29,12 @@ function New_Task_Accordion({ howto_ids }) {
     <div>
       <HowtoStepCreate howto_idb={howto_ids} howto_name={howtodata.howto_name} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
       <div>
-        <table className="Table4" style={{ width: '1150px' }}>
+        <table className="Table4" style={{ width: '1350px' }}>
           <thead>
             <tr>
               <th>{howtodata.howto_name}</th>
             </tr>
-            {/* <tr >
-              <th>{howtodata.howto_desc}</th>
-            </tr> */}
+
           </thead>
 
           {howtodata.howto_steps && howtodata.howto_steps.map((step) => (
@@ -46,7 +44,8 @@ function New_Task_Accordion({ howto_ids }) {
                   <td>
                     {<New_Task key={step.step_id} howto_id={step.howto_id} step_id={step.step_id} step_number={step.step_number} step_name={step.step_name} step_url={step.step_url} step_obj={step.step_obj} howtodata={howtodata} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />}
                   </td>
-                </tr>}
+                </tr>
+              }
             </tbody>
           )
           )

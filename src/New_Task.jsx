@@ -65,7 +65,7 @@ export default function New_Task({ howto_id, step_id, step_number, step_name, st
                 <>
                   &nbsp;&nbsp;
                   <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave()}><GiCheckMark style={{ color: '#D5441C', display: 'block', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>&nbsp;
-                  <Tooltip title='Revert' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditCancel()}><PiArrowCounterClockwiseBold style={{ color: '#D5441C', display: 'block', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
+                  <Tooltip title='Discard' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditCancel()}><PiArrowCounterClockwiseBold style={{ color: '#D5441C', display: 'block', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
                 </>
               )
               :
@@ -80,19 +80,19 @@ export default function New_Task({ howto_id, step_id, step_number, step_name, st
         </div>
 
         {editing === true ?
-          <><i>Step Number:</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<>
+          <><i>Step Number:</i>&nbsp;&nbsp;<>
             <input
               required
               defaultValue={step_number}
               onChange={(e) => setStepNumber(e.target.value)}
               style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '25px' }} />
 
-            <>&nbsp;&nbsp;&nbsp;&nbsp;<i>Step Name:</i>&nbsp;&nbsp;<>
+            <>&nbsp;&nbsp;<i>Step Name:</i>&nbsp;&nbsp;<>
               <input
                 required
                 defaultValue={step_name}
                 onChange={(e) => setName(e.target.value)}
-                style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '800px' }} />
+                style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '970px' }} />
               <div className="Font-Spacer-White">Make this Spacer White</div>
             </>
             </>
@@ -112,22 +112,22 @@ export default function New_Task({ howto_id, step_id, step_number, step_name, st
           <div className="Font-Segoe-Large-Howto" >
 
             {editing === true ?
-              <><i>Supporting URL:</i>&nbsp;<>
+              <><i>Supporting URL:</i>&nbsp;&nbsp;<>
                 <input
                   required
                   defaultValue={step_url}
                   onChange={(e) => setStepURL(e.target.value)}
-                  style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} />
+                  style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1100px' }} />
                 <div className='Font-Spacer-White'>Make this Spacer White</div>
               </>
               </>
               :
-              <a className="Font-Verdana-Small" href={step_url} target="_blank">{step_url}</a>}
+              <a className="Font-Segoe-Small" href={step_url} target="_blank">{step_url}</a>}
 
             {editing === true ?
-              <><i>Step Objective:</i><>
+              <><i>Step Objective:</i>&nbsp;&nbsp;<>
                 <textarea
-                  rows="6"
+                  rows="3"
                   required
                   defaultValue={step_obj}
                   onChange={(e) => setStepObjective(e.target.value)}
@@ -140,7 +140,7 @@ export default function New_Task({ howto_id, step_id, step_number, step_name, st
               :
               <div>{step_obj}</div>}
           </div>
-          <New_TaskRecordAccordion step_idd={step_id} howto_id={howto_id} howtodata={howtodata} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
+          <New_TaskRecordAccordion step_idd={step_id} howto_id={howto_id} howtodata={howtodata} step_number={step_number} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
         </div>
       }
     </>
