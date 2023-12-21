@@ -132,18 +132,18 @@ export default function HomePage22(props) {
     <table style={{ width: '100%' }}>
       <tbody>
         <tr>
-          <td style={{width: '20%' }}></td>
-          <td style={{width: '2%' }}></td>
-          <td style={{width: '56%' }}>&nbsp;&nbsp;<img src={One} /></td>
-          <td style={{width: '2%' }}></td>
-          <td style={{width: '20%' }}></td>
+          <td style={{width: '25%' }}></td>
+          <td style={{width: '1%' }}></td>
+          <td style={{width: '48%' }}>&nbsp;&nbsp;<img src={One} /></td>
+          <td style={{width: '1%' }}></td>
+          <td style={{width: '25%' }}></td>
         </tr>
         <tr>
-          <td style={{width: '20%' }} className="Table-home-left"><InnerTableLeft/></td>
-          <td style={{width: '2%' }}></td>
-          <td style={{width: '56%' }} className="Table-home-centre"><InnerTableCentre /></td>
-          <td style={{width: '2%' }}></td>
-          <td style={{width: '20%' }} className="Table-home-right"><InnerTableRight/></td>
+          <td style={{width: '25%' }} className="Table-home-left"><InnerTableLeft/></td>
+          <td style={{width: '1%' }}></td>
+          <td style={{width: '48%' }} className="Table-home-centre"><InnerTableCentre /></td>
+          <td style={{width: '1%' }}></td>
+          <td style={{width: '25%' }} className="Table-home-right"><InnerTableRight/></td>
         </tr>
       </tbody>
     </table>
@@ -155,11 +155,10 @@ export default function HomePage22(props) {
     
 
     <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
-  <OuterTable/>
+      <OuterTable />
       <table style={{ width: '100%' }}>
         <thead>
           <tr>
-            {/* <th style={{ width: '100%' }}><img src={One} /></th> */}
           </tr>
         </thead>
         <tbody>
@@ -176,11 +175,11 @@ export default function HomePage22(props) {
       <table style={{ width: '100%' }}>
         <thead>
           <tr>
-            <th style={{ width: '20%' }}></th>
-            <th style={{ width: '2%' }}></th>
-            <th style={{ width: '46%' }}></th>
-            <th style={{ width: '2%' }}></th>
-            <th style={{ width: '20%' }}></th>
+            <th style={{ width: '25%' }}></th>
+            <th style={{ width: '1%' }}></th>
+            <th style={{ width: '48%' }}></th>
+            <th style={{ width: '1%' }}></th>
+            <th style={{ width: '25%' }}></th>
           </tr>
         </thead>
 
@@ -190,51 +189,12 @@ export default function HomePage22(props) {
             websitedata.map((row, index) => {
               const howtoRow = howtodata[index];
               const cyclopediaRow = cyclopediadata[index]
+              
 
               return (
                 <tr key={index}>
-
-                  {/* <td style={{ width: '20%' }} className="Table-home-left">
-                    <Tooltip id="edit" />
-                    <a data-tooltip-id="edit" data-tooltip-content={row.website_desc} href={row.website_url} target="_blank">{row.website_name}</a>
-                  </td> */}
-
                   <td></td>
-
-                  {/* <td style={{ width: '50%' }} className="Table-home-right">
-                    <CyclopediaAccordion cyclopediadata={cyclopediadata}/>
-                    {cyclopediaRow && (
-                      <div>
-                        <a><b><i>{cyclopediaRow.cyclopedia_name}</i>:</b> {cyclopediaRow.cyclopedia_desc}</a>
-                        <CyclopediaAccordion cyclopediadata={cyclopediadata} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
-                      </div>
-                    )}
-                  </td> */}
-
-                  
-
-                  {/* <td style={{ width: '50%' }} className="Table-home-right">
-                    {cyclopediaRow && (
-                      <div>
-                        <a><b><i>{cyclopediaRow.cyclopedia_name}</i>:</b> {cyclopediaRow.cyclopedia_desc}</a>
-                      </div>
-                    )}
-                  </td> */}
-
-
-
                   <td></td>
-
-
-                  {/* <td style={{ width: '20%' }} className="Table-home-right">
-                    {howtoRow && (
-                      <div>
-                        <a href={`/howtoedit/${howtoRow.howto_id}`} target="_blank">{howtoRow.howto_name}</a>
-                      </div>
-                    )}
-                  </td> */}
-
-
                 </tr>
               );
             }
@@ -242,11 +202,6 @@ export default function HomePage22(props) {
           }
         </tbody>
       </table>
-
-
     </div>
-
-    
   );
-
 }

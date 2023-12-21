@@ -18,6 +18,7 @@ function New_Task_Accordion({ howto_ids }) {
         const howto = response.data;
         howto.howto_steps.sort((a, b) => a.step_number - b.step_number);
         setHowtoData(howto);
+        console.log(howtodata)
       }
       )
   }, [checkForRecords]);
@@ -35,16 +36,22 @@ function New_Task_Accordion({ howto_ids }) {
               <th>{howtodata.howto_name}</th>
             </tr>
 
+            {/* <tr>
+              <th><i style={{ fontFamily: 'Verdana', fontSize: 'Medium', fontWeight: 'normal' }}>In Summary: {howtodata.howto_desc}</i></th>
+            </tr> */}
+
           </thead>
 
           {howtodata.howto_steps && howtodata.howto_steps.map((step) => (
             <tbody>
               {
-                <tr>
-                  <td>
-                    {<New_Task key={step.step_id} howto_id={step.howto_id} step_id={step.step_id} step_number={step.step_number} step_name={step.step_name} step_url={step.step_url} step_obj={step.step_obj} howtodata={howtodata} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />}
-                  </td>
-                </tr>
+                 
+                  <tr>
+                    <td>
+                      {<New_Task key={step.step_id} howto_id={step.howto_id} step_id={step.step_id} step_number={step.step_number} step_name={step.step_name} step_url={step.step_url} step_obj={step.step_obj} howtodata={howtodata} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />}
+                    </td>
+                  </tr>
+
               }
             </tbody>
           )
