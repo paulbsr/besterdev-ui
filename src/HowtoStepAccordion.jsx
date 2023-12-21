@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
-import New_Task from './New_Task';
+import HowtoStep from './HowtoStep';
 import GradientLineRusty from "./GradientLineRusty";
 import HowtoStepCreate from './HowtoStepCreate';
 import './Fonts.css'
 
 
-function New_Task_Accordion({ howto_ids }) {
+function HowtoStepAccordion({ howto_ids }) {
   const [checkForRecords, setCheckForRecords] = useState(true);
   const [howtodata, setHowtoData] = useState([]);
   const [error, setError] = useState(null);
@@ -48,7 +48,7 @@ function New_Task_Accordion({ howto_ids }) {
                  
                   <tr>
                     <td>
-                      {<New_Task key={step.step_id} howto_id={step.howto_id} step_id={step.step_id} step_number={step.step_number} step_name={step.step_name} step_url={step.step_url} step_obj={step.step_obj} howtodata={howtodata} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />}
+                      {<HowtoStep key={step.step_id} howto_id={step.howto_id} step_id={step.step_id} step_number={step.step_number} step_name={step.step_name} step_url={step.step_url} step_obj={step.step_obj} howtodata={howtodata} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />}
                     </td>
                   </tr>
 
@@ -64,4 +64,4 @@ function New_Task_Accordion({ howto_ids }) {
     </div>
   );
 }
-export default New_Task_Accordion;
+export default HowtoStepAccordion;

@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import New_TaskRecordCreate from './New_TaskRecordCreate';
+import HowtoStepRecordCreate from './HowtoStepRecordCreate';
 import axios from "axios";
 import './Fonts.css'
 import { Tooltip } from '@mui/material';
-import { MdOutlineCancel, MdAddCircleOutline, MdOutlineRemoveCircleOutline } from "react-icons/md";
-import { AiOutlineCheckCircle, AiOutlineEdit } from "react-icons/ai";
+import { MdAddCircleOutline } from "react-icons/md";
+import { AiOutlineEdit } from "react-icons/ai";
 import { toast } from 'react-toastify';
 import { GiCheckMark } from "react-icons/gi"; //Commit
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard
 import { FaRegTrashAlt } from 'react-icons/fa'; //Delete
 
-function New_TaskRecordAccordion({ howtodata, step_idd, step_number, checkForRecords, setCheckForRecords }) {
+function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, checkForRecords, setCheckForRecords }) {
     const date = new Date();
     const [isExpanded, setExpanded] = useState(false);
     const toggleAccordion = () => { setExpanded(!isExpanded); };
@@ -77,11 +77,10 @@ function New_TaskRecordAccordion({ howtodata, step_idd, step_number, checkForRec
                                     required
                                     defaultValue={steprecord}
                                     onChange={(e) => setStepRecord(e.target.value)}
-                                    style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '970px' }} />
+                                    style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1200px' }} />
                             </>
                             :
                             <div className="Font-Segoe-Large-Howto">
-                                {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */}
                                 <b style={{ fontSize: 'medium', color: 'black'}}>{step_number}.{steprecord_number})</b>
                                 &nbsp;&nbsp;&nbsp;
                                 {steprecord}
@@ -122,14 +121,13 @@ function New_TaskRecordAccordion({ howtodata, step_idd, step_number, checkForRec
             </div>
 
             <div className='Font-Verdana-Small'>
-                {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */}
                 <Tooltip title='Insert an additional Step Record' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={toggleAccordion}><MdAddCircleOutline style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button>&nbsp;Insert an additional Step Record</Tooltip>
             </div>
 
             {isExpanded &&
                 (
                     <div>
-                        <New_TaskRecordCreate step_idd={step_idd} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
+                        <HowtoStepRecordCreate step_idd={step_idd} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
                     </div>
                 )
             }
@@ -137,4 +135,4 @@ function New_TaskRecordAccordion({ howtodata, step_idd, step_number, checkForRec
     );
 }
 
-export default New_TaskRecordAccordion;
+export default HowtoStepRecordAccordion;

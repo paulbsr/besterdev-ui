@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import './Fonts.css'
-import New_TaskRecordAccordion from './New_TaskRecordAccordion';
+import HowtoStepRecordAccordion from './HowtoStepRecordAccordion';
 import axios from 'axios'
 import { MdOutlineCancel } from "react-icons/md";
 import { Tooltip } from '@mui/material';
@@ -10,7 +10,7 @@ import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard
 import { FaRegTrashAlt } from 'react-icons/fa'; //Delete
 import { toast } from 'react-toastify';
 
-export default function New_Task({ howto_id, step_id, step_number, step_name, step_url, step_obj, howtodata, checkForRecords, setCheckForRecords }) {
+export default function HowtoStep({ howto_id, step_id, step_number, step_name, step_url, step_obj, howtodata, checkForRecords, setCheckForRecords }) {
 
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
@@ -140,7 +140,7 @@ export default function New_Task({ howto_id, step_id, step_number, step_name, st
               :
               <div>{step_obj}</div>}
           </div>
-          <New_TaskRecordAccordion step_idd={step_id} howto_id={howto_id} howtodata={howtodata} step_number={step_number} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
+          <HowtoStepRecordAccordion step_idd={step_id} howto_id={howto_id} howtodata={howtodata} step_number={step_number} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
         </div>
       }
     </>

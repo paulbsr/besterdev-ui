@@ -1,8 +1,8 @@
 
 import React, { useState } from 'react';
 import HowtoStepNumberCreate from './HowtoStepNumberCreate';
-import TaskRecordStatusByColourLong from './TaskRecordStatusByColourLong';
-import { getStatusByColourTaskText } from './getStatusByColourTaskText'
+import TaskRecordStatusByColourLong from '../TaskRecordStatusByColourLong';
+import { getStatusByColourTaskText } from '../getStatusByColourTaskText'
 import axios from "axios";
 import { Tooltip } from '@mui/material';
 import { MdOutlineCancel, MdOutlineInput, MdOutlineInsertComment } from "react-icons/md";

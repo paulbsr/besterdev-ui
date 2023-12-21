@@ -4,7 +4,7 @@ import 'react-tooltip/dist/react-tooltip.css'
 import './Fonts.css';
 import 'react-dropdown/style.css';
 import One from './graphix/11.png'
-import New_Task_Accordion from './New_Task_Accordion';
+import HowtoStepAccordion from './HowtoStepAccordion';
 
 
 export default function HowtoEdit(props) {
@@ -43,7 +43,7 @@ export default function HowtoEdit(props) {
         <tbody>
           <tr>
             <td className="Table-home-left"></td>
-            <td className="Table-home-right"><New_Task_Accordion howto_ids={props.howto_id} /></td>
+            <td className="Table-home-right"><HowtoStepAccordion howto_ids={props.howto_id} /></td>
             <td className="Table-home-right"></td>
           </tr>
         </tbody>

@@ -5,7 +5,7 @@ import GradientLineThin from './GradientLineThin';
 import Quicklinks3 from './Quicklinks3';
 import Footer from './Footer';
 import { Flip, ToastContainer, Zoom, toast } from 'react-toastify';
-import Task_Accordion from './Task_Accordion';
+// import Task_Accordion from './Task_Accordion';
 
 
 export default function PageHowtoDocs() {
@@ -17,7 +17,7 @@ export default function PageHowtoDocs() {
         <GradientLineThin />
         <Quicklinks3 />
         <GradientLineThin />
-        <Task_Accordion />
+        {/* <Task_Accordion /> */}
         <ToastContainer
         position="top-left"
         autoClose={2000}

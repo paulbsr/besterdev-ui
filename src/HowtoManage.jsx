@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect } from 'react'
 import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
 import './Fonts.css';
@@ -7,13 +7,12 @@ import 'react-dropdown/style.css';
 import {FaPen, FaCheck, FaRegTrashAlt} from 'react-icons/fa';
 import { FaFileCircleQuestion } from "react-icons/fa6";
 import {PiArrowCounterClockwiseBold} from 'react-icons/pi';
-import AlertContext from './Generic/Alerts/AlertContext';
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
 import { toast } from 'react-toastify';
 import GradientLineRusty from './GradientLineRusty';
 import HowtoCreate from './HowtoCreate';
-import HowtoSteps from './HowtoSteps';
+import HowtoStep from './HowtoStep';
 dayjs.extend(utc);
 
 
@@ -23,15 +22,11 @@ export default function HowtoManage() {
   const toggleAccordion = () => {setExpanded(!isExpanded);};  
   const [checkForRecords, setCheckForRecords] = useState(true);
   const [tabledata, setTabledata] = useState([]);
-  const [error, setError] = useState(null);
   const [editing, setEditing] = useState("")
   const [howto_name, setHowto_name] = useState(null)
   const [howto_desc, setHowto_desc] = useState(null)
   const [howto_author, setHowto_author] = useState(null)
   const [howto_date, setHowto_date] = useState(null)
-  const [cr_datehold, setCr_DateHold] = useState(null)
-  const [crDate, setCrDate] = useState(null)
-  const alertCtx = useContext(AlertContext);
    
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtos')
@@ -57,14 +52,8 @@ export default function HowtoManage() {
           setHowto_date(null)
         };
 
-        const handleDateChange = (newVal) => {
-          setCr_DateHold(newVal.format("YYYY.M.D"));
-          setCrDate(newVal);
-        };
-
         const onEditSave = async() => {
-        { 
-            
+                     
         const howtoPUT = 
         {
           "howto_name": howto_name,
@@ -72,8 +61,7 @@ export default function HowtoManage() {
           "howto_author": howto_author,
           "howto_date": howto_date,
         } 
-           
-                            
+        
            await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howto/update/${editing}`, howtoPUT)
            .then((response) => {
             setCheckForRecords(!checkForRecords); 
@@ -81,8 +69,7 @@ export default function HowtoManage() {
           }
           )
            onEditCancel();
-         }
-       }
+        }
 
           const onEditDelete = (row) => {
             axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howto/delete/${row.howto_id}`)
@@ -92,8 +79,6 @@ export default function HowtoManage() {
             }
             )
        };       
-
-  if (error) return <p>An error occurred in tableone</p>
 
   return (
     
@@ -157,7 +142,7 @@ export default function HowtoManage() {
               </tbody>
             </table>
 
-            <HowtoSteps />
+            <HowtoStep />
             <div>&nbsp;</div>
             <GradientLineRusty />
             <div>&nbsp;</div>
