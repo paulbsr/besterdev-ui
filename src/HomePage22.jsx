@@ -113,9 +113,12 @@ export default function HomePage22(props) {
           <tr key={index}>
                   <td>
                     {row && (
+
                       <div>
                         <a href={`/howtoedit/${row.howto_id}`} target="_blank">{row.howto_name}</a>
+                        <div>&nbsp;</div>
                       </div>
+                      
                     )}
                   </td>
           </tr>

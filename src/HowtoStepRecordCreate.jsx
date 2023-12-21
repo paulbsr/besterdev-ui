@@ -34,7 +34,7 @@ export default function HowtoStepRecordCreate_original(props) {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        &nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;
         <input
           required
           onChange={(e) => setSteprecord_number(e.target.value)}
@@ -44,7 +44,7 @@ export default function HowtoStepRecordCreate_original(props) {
         <input
           required
           onChange={(e) => setSteprecord(e.target.value)}
-          style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1200px' }} />
+          style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1210px' }} />
         {/* <div>&nbsp;</div> */}
         &nbsp;&nbsp;
         {/* <img alt="1" src={spacer2} /> */}
