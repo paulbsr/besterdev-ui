@@ -13,27 +13,42 @@ import { TbLetterO } from "react-icons/tb";
 import { TbLetterE } from "react-icons/tb";
 import { TbNumber3 } from "react-icons/tb";
 import { TbLetterD } from "react-icons/tb";
+import { TbLetterC } from "react-icons/tb";
 import { TbLetterDSmall } from "react-icons/tb";
 // import { TbLetterDSmall } from "react-icons/tb";
 import { SiMaildotru } from "react-icons/si";
 import { TbCircleLetterD } from "react-icons/tb";
 // RED = #D5441C
-// BLUE = #336791
+// BLUE = #D5441C
 
 
 const BannerWhite = () => {
   return (
     <div className="banner-white">
       <div>&nbsp;&nbsp;&nbsp;&nbsp;
-        <SiMaildotru style={{color: '#D5441C', fontSize: '36px' }}/>
-        <TbLetterT style={{color: '#336791', fontSize: '40px' }}/>
-        <TbLetterR style={{color: '#336791', fontSize: '40px' }}/>
-        <TbLetterI style={{color: '#336791', fontSize: '40px' }}/>
-        <TbLetterB style={{color: '#336791', fontSize: '40px' }}/>
-        <TbLetterU style={{color: '#336791', fontSize: '40px' }}/>
-        <TbLetterT style={{color: '#336791', fontSize: '40px' }}/>
-        <TbLetterE style={{color: '#336791', fontSize: '40px' }}/>
-        <TbLetterD style={{color: '#D5441C', fontSize: '40px' }}/>
+        {/* <SiMaildotru style={{color: '#D5441C', fontSize: '36px' }}/>
+        <TbLetterT style={{color: '#D5441C', fontSize: '40px' }}/>
+        <TbLetterR style={{color: '#D5441C', fontSize: '40px' }}/>
+        <TbLetterI style={{color: '#D5441C', fontSize: '40px' }}/>
+        <TbLetterB style={{color: '#D5441C', fontSize: '40px' }}/>
+        <TbLetterU style={{color: '#D5441C', fontSize: '40px' }}/>
+        <TbLetterT style={{color: '#D5441C', fontSize: '40px' }}/>
+        <TbLetterE style={{color: '#D5441C', fontSize: '40px' }}/>
+        <TbLetterD style={{color: '#D5441C', fontSize: '40px' }}/> */}
+
+        {/* <SiMaildotru style={{color: '#D5441C', fontSize: '36px' }}/> */}
+        <TbLetterA style={{color: '#D5441C', fontSize: '40px' }}/>
+        <TbLetterU style={{color: '#D5441C', fontSize: '40px' }}/>
+        <TbLetterT style={{color: '#D5441C', fontSize: '40px' }}/>
+        <TbLetterO style={{color: '#D5441C', fontSize: '40px' }}/>
+        <TbLetterD style={{color: '#D5441C', fontSize: '40px' }}/>    
+        <TbLetterI style={{color: '#D5441C', fontSize: '40px' }}/>
+        <TbLetterD style={{color: '#D5441C', fontSize: '40px' }}/>    
+        <TbLetterA style={{color: '#D5441C', fontSize: '40px' }}/>
+        <TbLetterC style={{color: '#D5441C', fontSize: '40px' }}/>
+        <TbLetterT style={{color: '#D5441C', fontSize: '40px' }}/>
+        <TbLetterI style={{color: '#D5441C', fontSize: '40px' }}/>
+        <TbLetterC style={{color: '#D5441C', fontSize: '40px' }}/>
       </div>
     </div>
   );

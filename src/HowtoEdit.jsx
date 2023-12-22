@@ -3,7 +3,7 @@ import 'react-tooltip/dist/react-tooltip.css'
 import 'react-tooltip/dist/react-tooltip.css'
 import './Fonts.css';
 import 'react-dropdown/style.css';
-import One from './graphix/11.png'
+import Image from './graphix/15.png'
 import HowtoStepAccordion from './HowtoStepAccordion';
 
 
@@ -19,7 +19,7 @@ export default function HowtoEdit(props) {
 
         <thead>
           <tr>
-            <th style={{ width: '100%' }}><img src={One} /></th>
+            <th style={{ width: '100%' }}><img src={Image} /></th>
           </tr>
         </thead>
 

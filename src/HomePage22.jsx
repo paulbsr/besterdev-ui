@@ -4,13 +4,9 @@ import 'react-tooltip/dist/react-tooltip.css'
 import './Fonts.css';
 import 'react-dropdown/style.css';
 import axios from 'axios'
-import One from './graphix/12.png'
-import { BsThreeDots } from "react-icons/bs";
-import { VscArrowCircleRight } from "react-icons/vsc";
-import { FiCloudRain } from "react-icons/fi";
-import { FaHandPointUp } from "react-icons/fa6";
+import Image from './graphix/12.png'
 import { BsQuestionOctagon } from "react-icons/bs";
-import { TbWorldWww } from "react-icons/tb";
+
 
 
 export default function HomePage22(props) {
@@ -137,7 +133,7 @@ export default function HomePage22(props) {
         <tr>
           <td style={{width: '25%' }}></td>
           <td style={{width: '1%' }}></td>
-          <td style={{width: '48%' }}>&nbsp;&nbsp;<img src={One} /></td>
+          <td style={{width: '48%' }}>&nbsp;&nbsp;<img src={Image} /></td>
           <td style={{width: '1%' }}></td>
           <td style={{width: '25%' }}></td>
         </tr>
