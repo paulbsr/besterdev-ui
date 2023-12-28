@@ -27,14 +27,14 @@ const BannerWhite = () => {
     <div className="banner-white">
       <div>&nbsp;&nbsp;&nbsp;&nbsp;
         <SiMaildotru style={{color: '#D5441C', fontSize: '36px' }}/>
-        <TbLetterT style={{color: '#D5441C', fontSize: '40px' }}/>
-        <TbLetterR style={{color: '#D5441C', fontSize: '40px' }}/>
-        <TbLetterI style={{color: '#D5441C', fontSize: '40px' }}/>
-        <TbLetterB style={{color: '#D5441C', fontSize: '40px' }}/>
-        <TbLetterU style={{color: '#D5441C', fontSize: '40px' }}/>
-        <TbLetterT style={{color: '#D5441C', fontSize: '40px' }}/>
-        <TbLetterE style={{color: '#D5441C', fontSize: '40px' }}/>
-        {/* <TbLetterD style={{color: '#D5441C', fontSize: '40px' }}/> */}
+        <TbLetterT style={{color: '#336791', fontSize: '40px' }}/>
+        <TbLetterR style={{color: '#336791', fontSize: '40px' }}/>
+        <TbLetterI style={{color: '#336791', fontSize: '40px' }}/>
+        <TbLetterB style={{color: '#336791', fontSize: '40px' }}/>
+        <TbLetterU style={{color: '#336791', fontSize: '40px' }}/>
+        <TbLetterT style={{color: '#336791', fontSize: '40px' }}/>
+        <TbLetterE style={{color: '#336791', fontSize: '40px' }}/>
+        <TbLetterD style={{color: '#D5441C', fontSize: '40px' }}/>
 
         {/* <SiMaildotru style={{color: '#D5441C', fontSize: '36px' }}/> */}
         {/* <TbLetterA style={{color: '#D5441C', fontSize: '40px' }}/>
