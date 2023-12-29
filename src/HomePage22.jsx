@@ -65,11 +65,7 @@ export default function HomePage22(props) {
       <tbody>
         {websitedata.map((row, index) => (
           <tr  key={index}>
-            <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left"><a href={row.website_url} target="_blank" rel="noopener noreferrer" >{row.website_name}</a>&nbsp;
-            {/* <a data-tooltip-id="insert" data-tooltip-content="Revert"><TbWorldWww style={{ color: '#DDDDDD', fontSize: '19px', cursor: 'pointer' }} /></a> */}
-            {/* <a data-tooltip-id="purge" data-tooltip-content="Amend"><FaHandPointUp style={{ color: '#336791', fontSize: '45px', cursor: 'pointer' }} /></a> */}
-            </td>
-            
+            <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left"><a href={row.website_url} target="_blank" rel="noopener noreferrer" >{row.website_name}</a>&nbsp;</td>
           </tr>
         ))}
       </tbody>
@@ -88,7 +84,7 @@ export default function HomePage22(props) {
                     {rowc && (
                       <div>
                         <BsQuestionOctagon style={{ color: '#D5441C', fontSize: '15px', cursor: 'pointer' }} />
-                        <b>&nbsp;{rowc.cyclopedia_name}:</b>&nbsp;&nbsp;&nbsp;<i>{rowc.cyclopedia_desc}</i>
+                        <b>&nbsp;{rowc.cyclopedia_name}:</b>&nbsp;<i>{rowc.cyclopedia_desc}</i>
                         <div className='Font-Spacer-White'>Make this spacer white</div>
                       </div>
                     )}

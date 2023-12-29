@@ -80,7 +80,7 @@ export default function HowtoStepCreate(props) {
                 <div>&nbsp;</div>
                 Step Objective:&nbsp;&nbsp;&nbsp;
 
-                <textarea style={{ fontFamily: 'Verdana', fontSize: 'Small', height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} placeholder="Required" type="text" value={step_obj} onChange={(event) => setStep_obj(event.target.value)} required />
+                <textarea style={{ fontFamily: 'Verdana', fontSize: 'Small', height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} placeholder="Optional" type="text" value={step_obj} onChange={(event) => setStep_obj(event.target.value)} />
 
                 {/* <img alt="1" src={spacer} />
                 <label htmlFor="dropdown">Attach to Howto:&nbsp;&nbsp;</label>

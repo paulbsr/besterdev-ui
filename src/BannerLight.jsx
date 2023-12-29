@@ -15,6 +15,7 @@ import { IoHome } from "react-icons/io5";
 import { GiGiftOfKnowledge } from "react-icons/gi";
 import { BsQuestionOctagonFill } from "react-icons/bs";
 import { FaDigitalOcean } from "react-icons/fa";
+import { IoLibrary } from "react-icons/io5";
 
   const BannerLight = ({ user }) => {
     const navigate = useNavigate();
@@ -36,7 +37,7 @@ import { FaDigitalOcean } from "react-icons/fa";
       <a data-tooltip-id="insert" data-tooltip-content="Home" onClick={handleNavigateHome}><IoHome style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Web Resources" onClick={handleNavigateResources}><TbWorldWww style={{ color: '#336791', fontSize: '32px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Cyclopedia" onClick={handleNavigateCyclopedia}><BsQuestionOctagonFill style={{ color: '#336791', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Howtos" onClick={handleNavigateHowtoManage}><FaFileCircleQuestion style={{ color: '#336791', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Howtos" onClick={handleNavigateHowtoManage}><IoLibrary style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Hunt" onClick={handleNavigateHunt}><FaPeopleArrows style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Candidates" onClick={handleNavigateManage}><MdManageAccounts style={{ color: '#336791', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="ChatGPT" href="https://chat.openai.com/auth/login" target="_blank" rel="noreferrer"><RiOpenaiFill style={{ color: '#19c37c', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;

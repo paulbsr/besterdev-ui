@@ -12,6 +12,11 @@ import { TbSquareRoundedLetterR } from "react-icons/tb";
 import { TbSquareRoundedLetterC } from "react-icons/tb";
 import { TbSquareRoundedLetterM } from "react-icons/tb";
 
+import { TbLetterB } from "react-icons/tb";
+import { TbLetterM } from "react-icons/tb";
+import { TbLetterS } from "react-icons/tb";
+import { TbLetterC } from "react-icons/tb";
+
 
 const today = new Date(); // Create a new Date object representing today's date
 const formattedDate = today.toISOString().split('T')[0]; // Convert the date to the desired format (YYYY-MM-DD)
@@ -20,22 +25,44 @@ const Footer = () => (
     <TbSquareRoundedLetterP style={{color: 'black', fontSize: '20px' }}/>
     <TbSquareRoundedLetterA style={{color: 'black', fontSize: '20px' }}/>
     <TbSquareRoundedLetterU style={{color: 'black', fontSize: '20px' }}/>
-    <TbSquareRoundedLetterL style={{color: 'black', fontSize: '20px' }}/>&nbsp;
+    <TbSquareRoundedLetterL style={{color: 'black', fontSize: '20px' }}/>
+    &nbsp;
     <TbSquareRoundedLetterB style={{color: 'black', fontSize: '20px' }}/>
     <TbSquareRoundedLetterE style={{color: 'black', fontSize: '20px' }}/>
     <TbSquareRoundedLetterS style={{color: 'black', fontSize: '20px' }}/>
     <TbSquareRoundedLetterT style={{color: 'black', fontSize: '20px' }}/>
     <TbSquareRoundedLetterE style={{color: 'black', fontSize: '20px' }}/>
-    <TbSquareRoundedLetterR style={{color: 'black', fontSize: '20px' }}/>&nbsp; &nbsp; &nbsp;
+    <TbSquareRoundedLetterR style={{color: 'black', fontSize: '20px' }}/>
+    &nbsp; &nbsp; &nbsp;
+
+    < TbLetterM style={{color: 'black', fontSize: '12px' }}/>
+    < TbLetterS style={{color: 'black', fontSize: '11px' }}/>
+    < TbLetterC style={{color: 'black', fontSize: '8px' }}/>
+    &nbsp; &nbsp; &nbsp;
+
+    < TbLetterM style={{color: 'black', fontSize: '12px' }}/>
+    < TbLetterS style={{color: 'black', fontSize: '11px' }}/>
+    < TbLetterC style={{color: 'black', fontSize: '8px' }}/>
+    &nbsp; &nbsp; &nbsp;
+
+    < TbLetterB style={{color: 'black', fontSize: '12px' }}/>
+    < TbLetterS style={{color: 'black', fontSize: '11px' }}/>
+    < TbLetterC style={{color: 'black', fontSize: '8px' }}/>
+    &nbsp; &nbsp; &nbsp;
+
+
+    {/* <TbSquareRoundedLetterM style={{color: 'black', fontSize: '20px' }}/>
+    <TbSquareRoundedLetterS style={{color: 'black', fontSize: '20px' }}/>
+    <TbSquareRoundedLetterC style={{color: 'black', fontSize: '20px' }}/>
+    &nbsp; &nbsp; &nbsp;
     <TbSquareRoundedLetterM style={{color: 'black', fontSize: '20px' }}/>
     <TbSquareRoundedLetterS style={{color: 'black', fontSize: '20px' }}/>
-    <TbSquareRoundedLetterC style={{color: 'black', fontSize: '20px' }}/>&nbsp; &nbsp; &nbsp;
-    <TbSquareRoundedLetterM style={{color: 'black', fontSize: '20px' }}/>
-    <TbSquareRoundedLetterS style={{color: 'black', fontSize: '20px' }}/>
-    <TbSquareRoundedLetterC style={{color: 'black', fontSize: '20px' }}/>&nbsp; &nbsp; &nbsp;
+    <TbSquareRoundedLetterC style={{color: 'black', fontSize: '20px' }}/>
+    &nbsp; &nbsp; &nbsp;
     <TbSquareRoundedLetterB style={{color: 'black', fontSize: '20px' }}/>
     <TbSquareRoundedLetterS style={{color: 'black', fontSize: '20px' }}/>
-    <TbSquareRoundedLetterC style={{color: 'black', fontSize: '20px' }}/>&nbsp; &nbsp; &nbsp;
+    <TbSquareRoundedLetterC style={{color: 'black', fontSize: '20px' }}/> */}
+    &nbsp; &nbsp; &nbsp;
     Last Updated: {formattedDate }. &nbsp; 
     All rights reserved. 
 </div>);
