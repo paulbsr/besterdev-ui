@@ -13,6 +13,7 @@ import { toast } from 'react-toastify';
 import GradientLineRusty from './GradientLineRusty';
 import HowtoCreate from './HowtoCreate';
 import HowtoStep from './HowtoStep';
+import { IoLibrary } from "react-icons/io5";
 dayjs.extend(utc);
 
 
@@ -88,7 +89,7 @@ export default function HowtoManage() {
     
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-        &nbsp; &nbsp; <a data-tooltip-id="insert" data-tooltip-content="Amend"><FaFileCircleQuestion style={{ color: '#336791', fontSize: '38px', cursor: 'pointer' }} /></a>
+        &nbsp; &nbsp; <a data-tooltip-id="insert" data-tooltip-content="Amend"><IoLibrary style={{ color: '#336791', fontSize: '38px', cursor: 'pointer' }} /></a>
         &nbsp;<b>Manage Howtos ({tabledata.length})</b>
       </div>
 

@@ -8,6 +8,7 @@ import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
 import { GiGiftOfKnowledge } from "react-icons/gi";
 import CyclopediaCreate from './CyclopediaCreate';
 import GradientLineRusty from './GradientLineRusty';
+import { BsQuestionOctagonFill } from "react-icons/bs";
 
 
 function CyclopediaManage({ }) {
@@ -139,7 +140,7 @@ function CyclopediaManage({ }) {
 
         <Tooltip id="insert" />
         <div onClick={toggleAccordion}>
-          &nbsp; &nbsp; <a data-tooltip-id="insert" data-tooltip-content="Amend"><GiGiftOfKnowledge style={{ color: '#336791', fontSize: '38px', cursor: 'pointer' }} /></a>
+          &nbsp; &nbsp; <a data-tooltip-id="insert" data-tooltip-content="Amend"><BsQuestionOctagonFill style={{ color: '#336791', fontSize: '38px', cursor: 'pointer' }} /></a>
           &nbsp;<b>Manage Cyclopedia Entries ({cyclopediadata.length})</b>
         </div>
 
