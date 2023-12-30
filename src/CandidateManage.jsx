@@ -191,11 +191,13 @@ export default function CandidateManage() {
                         </>
                       </td>
 
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '60px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={firstname} onChange={(e) => setfirstname(e.target.value)} className='cr_edit_inputfield' />) : (row.firstname)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={lastname} onChange={(e) => setlastname(e.target.value)} className='cr_edit_inputfield' />) : (row.lastname)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '60px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={firstname} onChange={(e) => setfirstname(e.target.value)} />) : (row.firstname)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={lastname} onChange={(e) => setlastname(e.target.value)} />) : (row.lastname)}</td>
                       <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '240px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={email} onChange={(e) => setemail(e.target.value)} className='cr_edit_inputfield_disc' />) : (<a href={'mailto: ${row.email}'} target="_blank">{row.email}</a>)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '120px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={mobile} onChange={(e) => setmobile(e.target.value)} className='cr_edit_inputfield' />) : (row.mobile)}</td> 
-                      <td className="asmshover Table6 td">{row.id === editing ? (<LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '120px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={mobile} onChange={(e) => setmobile(e.target.value)} />) : (row.mobile)}</td> 
+                      <td className="asmshover Table6 td">{row.id === editing ? 
+                      (
+                      <LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
                         <DatePicker
                           id="cr_date"
                           format="YYYY.M.D"
@@ -204,14 +206,17 @@ export default function CandidateManage() {
                           onChange={handleDateChange}
                           dateFormat="YYYY.M.D"
                           sx={{ height: '22.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.5px', width: '90px' }, '& .MuiSvgIcon-root': { height: '20px' } }}/>
-                      </LocalizationProvider>) : new Date(row.dob).toLocaleDateString("en-CA")}
+                      </LocalizationProvider>
+                      )
+                      : 
+                      new Date(row.dob).toLocaleDateString("en-CA")}
                       </td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '140px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={jobdesc} onChange={(e) => setjobdesc(e.target.value)} className='cr_edit_inputfield' />) : (row.jobdesc)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '190px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={skill1} onChange={(e) => setskill1(e.target.value)} className='cr_edit_inputfield' />) : (row.skill1)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '290px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={comment} onChange={(e) => setcomment(e.target.value)} className='cr_edit_inputfield' />) : (row.comment)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '140px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={employer} onChange={(e) => setEmployer(e.target.value)} className='cr_edit_inputfield' />) : (row.employer)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '140px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={role} onChange={(e) => setRole(e.target.value)} className='cr_edit_inputfield' />) : (row.role)}</td>
-                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={reqnum} onChange={(e) => setReqnum(e.target.value)} className='cr_edit_inputfield' />) : (row.reqnum)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '140px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={jobdesc} onChange={(e) => setjobdesc(e.target.value)} />) : (row.jobdesc)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '190px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={skill1} onChange={(e) => setskill1(e.target.value)} />) : (row.skill1)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '290px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={comment} onChange={(e) => setcomment(e.target.value)} />) : (row.comment)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '140px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={employer} onChange={(e) => setEmployer(e.target.value)} />) : (row.employer)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '140px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={role} onChange={(e) => setRole(e.target.value)} />) : (row.role)}</td>
+                      <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={reqnum} onChange={(e) => setReqnum(e.target.value)} />) : (row.reqnum)}</td>
                     </tr>
                   )
                 })

@@ -90,7 +90,7 @@ export default function HowtoManage() {
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
         &nbsp; &nbsp; <a data-tooltip-id="insert" data-tooltip-content="Amend"><IoLibrary style={{ color: '#336791', fontSize: '38px', cursor: 'pointer' }} /></a>
-        &nbsp;<b>Manage Howtos ({tabledata.length})</b>
+        &nbsp;<b>Manage Howto Library ({tabledata.length})</b>
       </div>
 
       <HowtoCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
@@ -101,7 +101,7 @@ export default function HowtoManage() {
                   <th style={{ width: '20px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'></th>
                   <th style={{ width: '450px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Howto name</th>
                   <th style={{ width: '900px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Description</th>
-                  <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Created By</th>
+                  {/* <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Created By</th> */}
                   <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Last Touched</th>
                 </tr>
               </thead>
@@ -134,8 +134,8 @@ export default function HowtoManage() {
 
                       <td className="asmshover Table6 td">{row.howto_id === editing ? (<input style={{ height: '22.5px', width: '440px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={howto_name} onChange={(e) => setHowto_name(e.target.value)} className='cr_edit_inputfield' />) : (row.howto_name)}</td>
                       <td className="asmshover Table6 td">{row.howto_id === editing ? (<input style={{ height: '22.5px', width: '880px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={howto_desc} onChange={(e) => setHowto_desc(e.target.value)} className='cr_edit_inputfield' />) : (row.howto_desc)}</td>
-                      <td className="asmshover Table6 td">{row.howto_id === editing ? (<input style={{ height: '22.5px', width: '190px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={howto_author} onChange={(e) => setHowto_author(e.target.value)} className='cr_edit_inputfield_disc' />) : (row.howto_author)}</td>
-                      <td className="asmshover Table6 td">{row.howto_id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={howto_date} onChange={(e) => setHowto_date(e.target.value)} className='cr_edit_inputfield' />) : (row.howto_date)}</td> 
+                      {/* <td className="asmshover Table6 td">{row.howto_id === editing ? (<input style={{ height: '22.5px', width: '190px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={howto_author} onChange={(e) => setHowto_author(e.target.value)} className='cr_edit_inputfield_disc' />) : (row.howto_author)}</td> */}
+                      <td className="asmshover Table6 td">{row.howto_id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={howto_date} onChange={(e) => setHowto_date(e.target.value)} className='cr_edit_inputfield' />) : new Date(row.howto_date).toLocaleDateString("en-CA")}</td> 
                     </tr>
                   )
                 })
@@ -143,7 +143,7 @@ export default function HowtoManage() {
               </tbody>
             </table>
 
-            <HowtoStep />
+            {/* <HowtoStep /> */}
             <div>&nbsp;</div>
             <GradientLineRusty />
             <div>&nbsp;</div>

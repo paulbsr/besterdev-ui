@@ -143,6 +143,7 @@ export default function HomePage22(props) {
       </tbody>
     </table>
     </div>
+    
   );
 
 
