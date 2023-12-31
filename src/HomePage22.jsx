@@ -74,27 +74,75 @@ export default function HomePage22(props) {
   );
   
 
-  const InnerTableCentre = () => (
-    <div className="scrollable-container">
-    <table className="Table-home-centre">
-      <tbody>
-        {cyclopediadata.map((rowc, index) => (
-          <tr key={index}>
-                  <td className="fphover">
-                    {rowc && (
-                      <div>
-                        <BsQuestionOctagon style={{ color: '#D5441C', fontSize: '15px', cursor: 'pointer' }} />
-                        <b>&nbsp;{rowc.cyclopedia_name}:</b>&nbsp;<i>{rowc.cyclopedia_desc}</i>
-                        <div className='Font-Spacer-White'>Make this spacer white</div>
-                      </div>
-                    )}
-                  </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-    </div>
-  );
+  // const InnerTableCentre = () => (
+  //   <div className="scrollable-container">
+  //   <table className="Table-home-centre">
+  //     <tbody>
+  //       {cyclopediadata.map((rowc, index) => (
+  //         <tr key={index}>
+  //                 <td className="fphover">
+  //                   {rowc && (
+  //                     <div>
+  //                       <BsQuestionOctagon style={{ color: '#D5441C', fontSize: '15px', cursor: 'pointer' }} />
+  //                       <b>&nbsp;{rowc.cyclopedia_name}:</b>&nbsp;<i>{rowc.cyclopedia_desc}</i>
+  //                       <div className='Font-Spacer-White'>Make this spacer white</div>
+  //                     </div>
+  //                   )}
+  //                 </td>
+  //         </tr>
+  //       ))}
+  //     </tbody>
+  //   </table>
+  //   </div>
+  // );
+
+
+  const InnerTableCentre = () => {
+    const [selectedLetter, setSelectedLetter] = useState(null);
+  
+    // Assuming cyclopediadata is an array of objects with a property 'cyclopedia_name'
+    const filteredData = selectedLetter
+      ? cyclopediadata.filter(rowc => rowc.cyclopedia_name && rowc.cyclopedia_name.toLowerCase().startsWith(selectedLetter))
+      : cyclopediadata;
+  
+    const alphabet = 'a  -  b  -  c  -  d  -  e  -  f  -  g  -  h  -  i  -  j  -  k  -  l  -  m  -  n  -  o  -  p  -  q  -  r  -  s  -  t  -  u  -  v  -  w  -  x  -  y  -  z'; 
+  
+    return (
+      <div className="scrollable-container">
+        <div className="alphabet-selector">
+          {alphabet.split('').map((letter, index) => (
+            <span
+              key={index}
+              className={selectedLetter === letter ? 'selected' : ''}
+              onClick={() => setSelectedLetter(letter)}
+            >
+              {letter}
+            </span>
+          ))}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(There are currently <b>{cyclopediadata.length}</b> Cyclopedia entries)
+        </div>
+
+        <div className='Font-Spacer-White'>Make this spacer white</div>
+
+        <table className="Table-home-centre">
+          <tbody>
+            {filteredData.map((rowc, index) => (
+              <tr key={index}>
+                <td className="fphover">
+                  {rowc && (
+                    <div>
+                      <BsQuestionOctagon style={{ color: '#D5441C', fontSize: '15px', cursor: 'pointer' }} />
+                      <b>&nbsp;{rowc.cyclopedia_name}:</b>&nbsp;<i>{rowc.cyclopedia_desc}</i>
+                      <div className='Font-Spacer-White'>Make this spacer white</div>
+                    </div>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  };
 
 
   const InnerTableRight = () => (
