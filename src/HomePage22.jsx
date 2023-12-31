@@ -105,20 +105,20 @@ export default function HomePage22(props) {
       ? cyclopediadata.filter(rowc => rowc.cyclopedia_name && rowc.cyclopedia_name.toLowerCase().startsWith(selectedLetter))
       : cyclopediadata;
   
-    const alphabet = 'a  -  b  -  c  -  d  -  e  -  f  -  g  -  h  -  i  -  j  -  k  -  l  -  m  -  n  -  o  -  p  -  q  -  r  -  s  -  t  -  u  -  v  -  w  -  x  -  y  -  z'; 
+    const alphabet = 'a-b-c-d-e-f-g-h-i-j-k-l-m-n-o-p-q-r-s-t-u-v-w-x-y-z'; 
   
     return (
-      <div className="scrollable-container">
-        <div className="alphabet-selector">
+      <div>
+        <div className="Font-Verdana-Larger-Howto">
           {alphabet.split('').map((letter, index) => (
             <span
               key={index}
               className={selectedLetter === letter ? 'selected' : ''}
               onClick={() => setSelectedLetter(letter)}
-            >
+            >&nbsp;&nbsp;
               {letter}
             </span>
-          ))}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(There are currently <b>{cyclopediadata.length}</b> Cyclopedia entries)
+          ))}&nbsp; &nbsp; ({cyclopediadata.length})
         </div>
 
         <div className='Font-Spacer-White'>Make this spacer white</div>
