@@ -13,6 +13,7 @@ import 'react-dropdown/style.css';
 import 'react-tooltip/dist/react-tooltip.css';
 import 'react-toastify/dist/ReactToastify.css';
 import './Fonts.css';
+import Footer from './Footer';
 
 
 
@@ -66,7 +67,10 @@ const PageLogin = () => {
         pauseOnHover
         theme="dark"/>
         }
-
+      <div>&nbsp;</div>
+      <div>&nbsp;</div>
+      <div>&nbsp;</div>
+      <Footer/>
     </div>
   );
 };

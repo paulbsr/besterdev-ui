@@ -36,17 +36,17 @@ const Footer = () => (
     &nbsp; &nbsp; &nbsp;
 
     < TbLetterM style={{color: 'black', fontSize: '12px' }}/>
-    < TbLetterS style={{color: 'black', fontSize: '11px' }}/>
+    < TbLetterS style={{color: 'black', fontSize: '12px' }}/>
     < TbLetterC style={{color: 'black', fontSize: '8px' }}/>
     &nbsp; &nbsp; &nbsp;
 
     < TbLetterM style={{color: 'black', fontSize: '12px' }}/>
-    < TbLetterS style={{color: 'black', fontSize: '11px' }}/>
+    < TbLetterS style={{color: 'black', fontSize: '12px' }}/>
     < TbLetterC style={{color: 'black', fontSize: '8px' }}/>
     &nbsp; &nbsp; &nbsp;
 
     < TbLetterB style={{color: 'black', fontSize: '12px' }}/>
-    < TbLetterS style={{color: 'black', fontSize: '11px' }}/>
+    < TbLetterS style={{color: 'black', fontSize: '12px' }}/>
     < TbLetterC style={{color: 'black', fontSize: '8px' }}/>
     &nbsp; &nbsp; &nbsp;
 

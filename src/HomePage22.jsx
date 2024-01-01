@@ -109,7 +109,7 @@ export default function HomePage22(props) {
   
     return (
       <div>
-        <div className="Font-Verdana-Larger-Howto">
+        <div className="Font-Verdana-Larger-Howto-Rusty">
           {alphabet.split('').map((letter, index) => (
             <span
               key={index}
