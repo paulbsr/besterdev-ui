@@ -92,7 +92,7 @@ export default function WebsiteManage(props) {
       <div onClick={toggleAccordion}>
         &nbsp; &nbsp;
         <TbWorldWww style={{ color: '#336791', fontSize: '42px', cursor: 'pointer' }} />
-        &nbsp;<b>Manage Tools & Websites ({tabledata.length})</b>
+        &nbsp;<b>Manage Tool, Website or Book ({tabledata.length})</b>
       </div>
 
       <WebsiteCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
@@ -101,8 +101,8 @@ export default function WebsiteManage(props) {
         <thead>
           <tr>
             <th style={{ width: '20px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'></th>
-            <th style={{ width: '300px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Website</th>
-            <th style={{ width: '1000px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Value / Description / Action</th>
+            <th style={{ width: '400px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Tool / Website / Book</th>
+            <th style={{ width: '900px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Value / Description / Action</th>
             <th style={{ width: '400px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>URL</th>
           </tr>
         </thead>
@@ -133,9 +133,9 @@ export default function WebsiteManage(props) {
                   </>
                 </td>
 
-                <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '300px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_name} onChange={(e) => setWebsite_name(e.target.value)} />) : (<a href={row.website_url} target="_blank">{row.website_name}</a>)}</td>
-                <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '1000px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_desc} onChange={(e) => setWebsite_desc(e.target.value)} />) : (row.website_desc)}</td>
-                <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '400px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_url} onChange={(e) => setWebsite_url(e.target.value)} />) : (row.website_url)}</td>
+                <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '400px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_name} onChange={(e) => setWebsite_name(e.target.value)} />) : (<a href={row.website_url} target="_blank">{row.website_name}</a>)}</td>
+                <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '900px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_desc} onChange={(e) => setWebsite_desc(e.target.value)} />) : (row.website_desc)}</td>
+                <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '600px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_url} onChange={(e) => setWebsite_url(e.target.value)} />) : (row.website_url)}</td>
               </tr>
             )
           })

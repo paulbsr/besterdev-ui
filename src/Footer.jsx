@@ -12,16 +12,24 @@ import { TbSquareRoundedLetterR } from "react-icons/tb";
 import { TbSquareRoundedLetterC } from "react-icons/tb";
 import { TbSquareRoundedLetterM } from "react-icons/tb";
 
+
+
+
+import { TbLetterP} from "react-icons/tb";
+import { TbLetterA } from "react-icons/tb";
+import { TbLetterU } from "react-icons/tb";
+import { TbLetterL } from "react-icons/tb";
 import { TbLetterB } from "react-icons/tb";
-import { TbLetterM } from "react-icons/tb";
+import { TbLetterE } from "react-icons/tb";
 import { TbLetterS } from "react-icons/tb";
-import { TbLetterC } from "react-icons/tb";
+import { TbLetterT } from "react-icons/tb";
+import { TbLetterR } from "react-icons/tb";
 
 
 const today = new Date(); // Create a new Date object representing today's date
 const formattedDate = today.toISOString().split('T')[0]; // Convert the date to the desired format (YYYY-MM-DD)
 const Footer = () => (
-<div className="footer Font-Verdana-XSmall">
+<div className="footer Font-Verdana-Small-Footer">
     <TbSquareRoundedLetterP style={{color: 'black', fontSize: '20px' }}/>
     <TbSquareRoundedLetterA style={{color: 'black', fontSize: '20px' }}/>
     <TbSquareRoundedLetterU style={{color: 'black', fontSize: '20px' }}/>
@@ -35,21 +43,22 @@ const Footer = () => (
     <TbSquareRoundedLetterR style={{color: 'black', fontSize: '20px' }}/>
     &nbsp; &nbsp; &nbsp;
 
-    < TbLetterM style={{color: 'black', fontSize: '12px' }}/>
-    < TbLetterS style={{color: 'black', fontSize: '12px' }}/>
-    < TbLetterC style={{color: 'black', fontSize: '8px' }}/>
-    &nbsp; &nbsp; &nbsp;
+    {/* < TbLetterP style={{color: 'black', fontSize: '14px' }}/>
+    < TbLetterA style={{color: 'black', fontSize: '14px' }}/>
+    < TbLetterU style={{color: 'black', fontSize: '14px' }}/>
+    < TbLetterL style={{color: 'black', fontSize: '14px' }}/>
+    &nbsp; 
+    < TbLetterB style={{color: 'black', fontSize: '14px' }}/>
+    < TbLetterE style={{color: 'black', fontSize: '14px' }}/>
+    < TbLetterS style={{color: 'black', fontSize: '14px' }}/>
+    < TbLetterT style={{color: 'black', fontSize: '14px' }}/>
+    < TbLetterE style={{color: 'black', fontSize: '14px' }}/>
+    < TbLetterR style={{color: 'black', fontSize: '14px' }}/>
+    &nbsp; &nbsp; &nbsp; */}
 
-    < TbLetterM style={{color: 'black', fontSize: '12px' }}/>
+    {/* < TbLetterB style={{color: 'black', fontSize: '12px' }}/>
     < TbLetterS style={{color: 'black', fontSize: '12px' }}/>
-    < TbLetterC style={{color: 'black', fontSize: '8px' }}/>
-    &nbsp; &nbsp; &nbsp;
-
-    < TbLetterB style={{color: 'black', fontSize: '12px' }}/>
-    < TbLetterS style={{color: 'black', fontSize: '12px' }}/>
-    < TbLetterC style={{color: 'black', fontSize: '8px' }}/>
-    &nbsp; &nbsp; &nbsp;
-
+    < TbLetterC style={{color: 'black', fontSize: '8px' }}/> */}
 
     {/* <TbSquareRoundedLetterM style={{color: 'black', fontSize: '20px' }}/>
     <TbSquareRoundedLetterS style={{color: 'black', fontSize: '20px' }}/>
@@ -62,9 +71,9 @@ const Footer = () => (
     <TbSquareRoundedLetterB style={{color: 'black', fontSize: '20px' }}/>
     <TbSquareRoundedLetterS style={{color: 'black', fontSize: '20px' }}/>
     <TbSquareRoundedLetterC style={{color: 'black', fontSize: '20px' }}/> */}
+    MSc (Cloud Native SW Engineering) &nbsp; &nbsp; &nbsp;   MSc (Cloud Computing) &nbsp; &nbsp; &nbsp;BSc (Information Technology)
     &nbsp; &nbsp; &nbsp;
-    Last Updated: {formattedDate }. &nbsp; 
-    All rights reserved. 
+    Last Updated: {formattedDate }. &nbsp; All rights reserved. 
 </div>);
 
 export default Footer;

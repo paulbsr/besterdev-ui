@@ -3,6 +3,7 @@ import axios from 'axios';
 import './Fonts.css';
 import spacer from './graphix/besterdev_spacer_white.png';
 import { toast } from 'react-toastify';
+import { TbWorldWww } from "react-icons/tb";
 
 export default function QuickAddWebResource() {
     const [website_name, setWebsite_name] = useState('');
@@ -43,13 +44,12 @@ export default function QuickAddWebResource() {
 
                 <div className='Font-Verdana-QuickAdd'>
                 &nbsp;&nbsp;
-                    {/* <img alt="1" src={spacer} /> */}
-                    WebResource:&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '150px' }} type="text" value={website_name} onChange={(event) => setWebsite_name(event.target.value)} />
+                    WebResource:&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '150px' }} type="text" value={website_name} onChange={(event) => setWebsite_name(event.target.value)} />
                     <img alt="1" src={spacer} />
-                    Description:&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '150px' }} type="text" value={website_desc} onChange={(event) => setWebsite_desc(event.target.value)} />
+                    Description:&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '150px' }} type="text" value={website_desc} onChange={(event) => setWebsite_desc(event.target.value)} />
                     <img alt="1" src={spacer} />
-                    URL:&nbsp;&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '150px' }} type="text" value={website_url} onChange={(event) => setWebsite_url(event.target.value)} />
-                    <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '21.5px', border: '1px solid green', borderRadius: '5px', backgroundColor: '#ffffff', color: 'green', cursor: 'pointer' }}>+ Add</button>
+                    URL:&nbsp;&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '150px' }} type="text" value={website_url} onChange={(event) => setWebsite_url(event.target.value)} />
+                    <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '21.5px', border: '1px solid green', borderRadius: '5px', backgroundColor: '#ffffff', color: 'green', cursor: 'pointer' }}>Add</button>
                 </div>
             </form>
         </div>

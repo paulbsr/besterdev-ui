@@ -10,6 +10,12 @@
     color: #c4b0aa;
 }
 
+.Font-Verdana-Small-Footer {
+    font-family: "Verdana";
+    font-size: x-small;
+    color: #5c5a5a;
+}
+
 .Font-Verdana-Small {
     font-family: "Verdana";
     font-size: small;
