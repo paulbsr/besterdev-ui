@@ -9,7 +9,21 @@ export default function QuickAddWebResource() {
     const [website_name, setWebsite_name] = useState('');
     const [website_desc, setWebsite_desc] = useState('');
     const [website_url, setWebsite_url] = useState('');
-    const [website_owner, setWebsite_owner] = useState('');
+    const [website_cat, setWebsite_cat] = useState('');
+    const [websitedata, setWebsitedata] = useState(null);
+    const [checkForRecords, setCheckForRecords] = useState(true);
+
+    useEffect(() => {
+        axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites')
+            .then((response) => {
+                const sortedwebsitedata = response.data.sort((b, a) => b.website_name.localeCompare(a.website_name));
+                setWebsitedata(sortedwebsitedata);
+                console.log(websitedata)
+            })
+            .catch((e) => console.error(e));
+    },
+        [checkForRecords]
+    )
 
 
     const handleSubmit = async (event) => {
@@ -21,7 +35,7 @@ export default function QuickAddWebResource() {
                 'website_name': website_name,
                 'website_desc': website_desc,
                 'website_url': website_url,
-                'website_owner': website_owner,
+                'website_cat': website_cat,
             }
 
             {
@@ -43,15 +57,45 @@ export default function QuickAddWebResource() {
             <form onSubmit={handleSubmit}>
 
                 <div className='Font-Verdana-QuickAdd'>
-                &nbsp;&nbsp;
-                    WebResource:&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '150px' }} type="text" value={website_name} onChange={(event) => setWebsite_name(event.target.value)} />
-                    <img alt="1" src={spacer} />
-                    Description:&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '150px' }} type="text" value={website_desc} onChange={(event) => setWebsite_desc(event.target.value)} />
-                    <img alt="1" src={spacer} />
-                    URL:&nbsp;&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '150px' }} type="text" value={website_url} onChange={(event) => setWebsite_url(event.target.value)} />
+                    &nbsp;&nbsp;
+
+                    &nbsp;&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '200px' }} placeholder="Web resource" type="text" value={website_name} onChange={(event) => setWebsite_name(event.target.value)} />
+
+                    &nbsp;&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '300px' }} placeholder="Description" type="text" value={website_desc} onChange={(event) => setWebsite_desc(event.target.value)} />
+
+                    &nbsp;&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '200px' }} placeholder="URL" type="text" value={website_url} onChange={(event) => setWebsite_url(event.target.value)} />
+
+                    &nbsp;&nbsp;<select
+                        className='Font-Verdana-QuickAdd'
+                        onChange={(event) => {
+                            const selectedIndex = event.target.selectedIndex;
+                            const selectedOption = event.target.options[selectedIndex];
+                            const category = selectedOption.getAttribute("data-category");
+                            setWebsite_cat(category);
+                        }}
+                        id="dropdown"
+                        style={{
+                            height: '20.5px',
+                            border: '1.25px solid #c4c4c4',
+                            borderRadius: '4px',
+                            padding: 0,
+                            paddingLeft: '5px',
+                            width: '125px'
+                        }}
+                    >
+                        <option disabled selected value="">Category</option>
+                        {websitedata &&
+                            Array.from(new Set(websitedata.map(option => option.website_cat)))
+                                .sort()
+                                .map(category => (
+                                    <option key={category} value={category} data-category={category}>
+                                        {category}
+                                    </option>
+                                ))}
+                    </select>
                     <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '21.5px', border: '1px solid green', borderRadius: '5px', backgroundColor: '#ffffff', color: 'green', cursor: 'pointer' }}>Add</button>
                 </div>
             </form>
         </div>
-    );  
+    );
 }

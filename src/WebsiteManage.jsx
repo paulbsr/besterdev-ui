@@ -23,7 +23,7 @@ export default function WebsiteManage(props) {
   const [website_name, setWebsite_name] = useState('');
   const [website_desc, setWebsite_desc] = useState('');
   const [website_url, setWebsite_url] = useState('');
-  const [website_owner, setWebsite_owner] = useState('');
+  const [website_cat, setWebsite_cat] = useState('');
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites')
@@ -41,7 +41,7 @@ export default function WebsiteManage(props) {
     setWebsite_name(row.website_name)
     setWebsite_desc(row.website_desc)
     setWebsite_url(row.website_url)
-    setWebsite_owner(row.website_owner)
+    setWebsite_cat(row.website_cat)
   };
 
   const onEditCancel = () => 
@@ -50,7 +50,7 @@ export default function WebsiteManage(props) {
     setWebsite_name(null)
     setWebsite_desc(null)
     setWebsite_url(null)
-    setWebsite_owner(null)
+    setWebsite_cat(null)
   };
 
 
@@ -62,7 +62,7 @@ export default function WebsiteManage(props) {
         'website_name': website_name,
         'website_desc': website_desc,
         'website_url': website_url,
-        'website_owner': website_owner,
+        'website_cat': website_cat,
       }
 
 
@@ -104,6 +104,7 @@ export default function WebsiteManage(props) {
             <th style={{ width: '400px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Tool / Website / Book</th>
             <th style={{ width: '900px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Value / Description / Action</th>
             <th style={{ width: '400px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>URL</th>
+            <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Catagory</th>
           </tr>
         </thead>
 
@@ -136,6 +137,7 @@ export default function WebsiteManage(props) {
                 <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '400px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_name} onChange={(e) => setWebsite_name(e.target.value)} />) : (<a href={row.website_url} target="_blank">{row.website_name}</a>)}</td>
                 <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '900px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_desc} onChange={(e) => setWebsite_desc(e.target.value)} />) : (row.website_desc)}</td>
                 <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '600px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_url} onChange={(e) => setWebsite_url(e.target.value)} />) : (row.website_url)}</td>
+                <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '200px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_cat} onChange={(e) => setWebsite_cat(e.target.value)} />) : (row.website_cat)}</td>
               </tr>
             )
           })

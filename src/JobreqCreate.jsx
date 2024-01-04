@@ -94,7 +94,8 @@ export default function JobreqCreate(props) {
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers')
-      .then((response) => { const sortedemployerrecords = response.data.sort((b, a) => b.empname.localeCompare(a.empname)); setEmployerDropDown(sortedemployerrecords); }) //sort empname alphabetically
+      .then((response) => { const sortedemployerrecords = response.data.sort((b, a) => b.empname.localeCompare(a.empname)); 
+        setEmployerDropDown(sortedemployerrecords); }) //sort empname alphabetically
       .catch((e) => console.error(e));
   }, [checkForRecords]);
 
