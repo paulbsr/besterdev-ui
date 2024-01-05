@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useContext, React } from 'react'
 import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
 import './Fonts.css';
@@ -59,19 +59,64 @@ export default function HomePage22(props) {
   
   <Tooltip id="insert" />
   
-  const InnerTableLeft = () => (
-    <div className="scrollable-container">
-    <table className="Table-home-left" >
-      <tbody>
-        {websitedata.map((row, index) => (
-          <tr  key={index}>
-            <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left"><a href={row.website_url} target="_blank" rel="noopener noreferrer" >{row.website_name}</a>&nbsp;</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-    </div>
-  );
+  // const InnerTableLeft = () => (
+  //   <div className="scrollable-container">
+  //   <table className="Table-home-left" >
+  //     <tbody>
+  //       {websitedata.map((row, index) => (
+  //         <tr  key={index}>
+  //           <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left"><a href={row.website_url} target="_blank" rel="noopener noreferrer" >{row.website_name}</a>&nbsp;</td>
+  //         </tr>
+  //       ))}
+  //     </tbody>
+  //   </table>
+  //   </div>
+  // );
+  
+
+
+  const InnerTableLeft = () => {
+    // Assuming websitedata is an array of objects with a property website_cat
+  
+    // Organize data by category
+    const groupedData = {};
+    websitedata.forEach((row) => {
+      if (!groupedData[row.website_cat]) {
+        groupedData[row.website_cat] = [];
+      }
+      groupedData[row.website_cat].push(row);
+    });
+  
+    // Get sorted array of categories
+    const sortedCategories = Object.keys(groupedData).sort();
+  
+    return (
+      <div className="scrollable-container">
+        <table className="Table-home-left">
+          <tbody>
+            {sortedCategories.map((category) => (
+              <>&nbsp;
+                <tr key={category}>
+                  <th colSpan="2" style={{ textAlign: 'right', borderBottom: '1px solid #ddd' }} className="Table-home-left-heading">{category}</th>
+                </tr>
+                {groupedData[category].map((record, index) => (
+                  <tr key={index}>
+                    <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left">
+                      <a href={record.website_url} target="_blank" rel="noopener noreferrer">
+                        {record.website_name}
+                      </a>
+                    </td>
+                  </tr>
+                ))}
+              </>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  };
+  
+  
   
 
   // const InnerTableCentre = () => (
@@ -145,29 +190,79 @@ export default function HomePage22(props) {
   };
 
 
-  const InnerTableRight = () => (
-    <div>
-    <table >
-      <tbody>
-        {howtodata.map((row, index) => (
-          <tr key={index}>
-                  <td>
-                    {row && (
+  // const InnerTableRight = () => (
+  //   <div>
+  //   <table >
+  //     <tbody>
+  //       {howtodata.map((row, index) => (
+  //         <tr key={index}>
+  //                 <td>
+  //                   {row && (
 
-                      <div>
-                        <a href={`/howtoedit/${row.howto_id}`} target="_blank">{row.howto_name}</a>
-                        <div>&nbsp;</div>
+  //                     <div>
+  //                       <a href={`/howtoedit/${row.howto_id}`} target="_blank">{row.howto_name}</a>
+  //                       <div>&nbsp;</div>
                         
-                      </div>
-                    )
-                    }
-                  </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-    </div>
-  );
+  //                     </div>
+  //                   )
+  //                   }
+  //                 </td>
+  //         </tr>
+  //       ))}
+  //     </tbody>
+  //   </table>
+  //   </div>
+  // );
+  
+
+  const InnerTableRight = () => {
+    const amazonIframes = [
+      "https://read.amazon.co.uk/kp/card?asin=B077WWRK8B&preview=inline&linkCode=kpe&ref_=cm_sw_r_kb_dp_F3HQKNR4EF2MMXB0WS0D",
+      "https://read.amazon.co.uk/kp/card?asin=B081Y5262X&preview=inline&linkCode=kpe&ref_=cm_sw_r_kb_dp_H757NZNCTQK525FX3349",
+      
+    ];
+  
+    return (
+      <div>
+        <table>
+          <tbody>
+            {howtodata.map((row, index) => (
+              <tr key={index}>
+                <td>
+                  {row && (
+                    <div>
+                      <a href={`/howtoedit/${row.howto_id}`} target="_blank">{row.howto_name}</a>
+                      <div>&nbsp;</div>
+                    </div>
+                  )}
+                </td>
+              </tr>
+            ))}
+            {/* Render iframes after the last iteration */}
+            {howtodata.length > 0 && (
+              <tr>
+                <td>
+                  {amazonIframes.map((iframeUrl, iframeIndex) => (
+                    <iframe
+                      key={iframeIndex}
+                      type="text/html"
+                      sandbox="allow-scripts allow-same-origin allow-popups"
+                      width="336"
+                      height="550"
+                      frameBorder="0"
+                      allowFullScreen
+                      style={{ maxWidth: '100%' }}
+                      src={iframeUrl}
+                    ></iframe>
+                  ))}
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+    );
+  };
   
 
 

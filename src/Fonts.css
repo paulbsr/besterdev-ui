@@ -95,10 +95,22 @@
     color: #423333
 }
 
+.Font-Verdana-Medium-Howto-Rusty {
+    font-family: "Verdana";
+    font-size: medium;
+    color: #D5441C
+}
+
+.Font-Verdana-Large-Howto-Rusty {
+    font-family: "Verdana";
+    font-size: large;
+    color: #D5441C
+}
+
 .Font-Verdana-Larger-Howto-Rusty {
     font-family: "Verdana";
     font-size: larger;
-    color: #c90808
+    color: #D5441C
 }
 
 .Font-Verdana-Larger-Howto-Postgres {
@@ -259,6 +271,16 @@
     font-weight: normal;
     text-align: right;
     vertical-align: top;
+}
+
+.Table-home-left-heading{
+    background-color: #ffffff;
+    font-family: "Calibri";
+    font-size: large;
+    font-weight: bold;
+    text-align: right;
+    vertical-align: top;
+    color: #D5441C;
 }
 
 .Table-home-centre{
