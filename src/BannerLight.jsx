@@ -2,7 +2,7 @@ import React from "react";
 import './Fonts.css';
 import 'react-tooltip/dist/react-tooltip.css'
 import { FaReact, FaJava, FaNodeJs, FaAws, FaPeopleArrows } from 'react-icons/fa';
-import { SiSpringboot, SiGoogleanalytics, SiDocker } from "react-icons/si";
+import { SiSpringboot, SiGoogleanalytics, SiDocker, SiSwagger } from "react-icons/si";
 import { SlLogin, SlLogout, SlHome } from "react-icons/sl";
 import { RiOpenaiFill, RiHome3Line } from "react-icons/ri";
 import { GrVirtualMachine} from "react-icons/gr";
@@ -28,11 +28,13 @@ import { IoLibrary } from "react-icons/io5";
     const handleNavigateHunt = () => {navigate('/hunt');}
     const handleNavigateHowtoDocs = () => {navigate('/howtodocs');}
     const handleNavigateLogout = () => {navigate('/logout');}
+    const handleNavigateSwagger = () => {navigate('/swagger');}
  
     
   return (
 
     <div className="banner-light" >
+      <a data-tooltip-id="insert" data-tooltip-content="Swagger" onClick={handleNavigateSwagger}><SiSwagger style={{ color: '#85EA2D', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Login" onClick={handleNavigateLogin}><SlLogin style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Home" onClick={handleNavigateHome}><IoHome style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Web Resources" onClick={handleNavigateResources}><TbWorldWww style={{ color: '#336791', fontSize: '32px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;

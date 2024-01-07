@@ -16,6 +16,7 @@ import firebase from 'firebase/compat/app';
 import PageHome from './PageHome';
 import PageHowtoEdit from './PageHowtoEdit';
 import PageCyclopedia from './PageCyclopedia';
+import PageSwagger from './PageSwagger';
 import 'react-tooltip/dist/react-tooltip.css';
 import 'firebase/firestore';
 import 'firebase/auth';
@@ -73,6 +74,7 @@ const App = () => {
 
           <Route path='/howtoedit/:howto_id' element={<PageHowtoEdit />} />
           <Route path='/login' element={<PageLogin />} />
+          <Route path='/swagger' element={<PageSwagger />} />
           <Route path='/' element={<PageLogin />} />
           <Route path='*' element={<PageLogin />} />
 

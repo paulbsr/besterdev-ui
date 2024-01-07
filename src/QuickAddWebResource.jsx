@@ -93,7 +93,7 @@ export default function QuickAddWebResource() {
                                     </option>
                                 ))}
                     </select>
-                    <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '21.5px', border: '1px solid green', borderRadius: '5px', backgroundColor: '#ffffff', color: 'green', cursor: 'pointer' }}>Add</button>
+                    <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '20.5px', border: '1px solid green', borderRadius: '5px', backgroundColor: '#ffffff', color: 'green', cursor: 'pointer' }}>Add</button>
                 </div>
             </form>
         </div>

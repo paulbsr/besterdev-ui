@@ -45,7 +45,8 @@ export default function QuickAddCyclopedia() {
                     &nbsp;&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '300px' }} placeholder="Description" type="text" value={cyclopedia_desc} onChange={(event) => setCyclopedia_desc(event.target.value)} />
 
                     &nbsp;&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '200px' }} placeholder="URL" type="text" value={cyclopedia_ref} onChange={(event) => setCyclopedia_ref(event.target.value)} />
-                    <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '21.5px', border: '1px solid green', borderRadius: '5px', backgroundColor: '#ffffff', color: 'green', cursor: 'pointer' }}>Add</button>
+                    
+                    <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '20.5px', border: '1px solid green', borderRadius: '5px', backgroundColor: '#ffffff', color: 'green', cursor: 'pointer' }}>Add</button>
                 </div>
             </form>
         </div>

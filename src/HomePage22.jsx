@@ -9,6 +9,7 @@ import { BsQuestionOctagon } from "react-icons/bs";
 
 
 
+
 export default function HomePage22(props) {
   const [checkForRecords, setCheckForRecords] = useState(true);
   const [isExpanded, setExpanded] = useState(false);
@@ -57,7 +58,8 @@ export default function HomePage22(props) {
   }, [props.checkForRecords]);
 
   
-  <Tooltip id="insert" />
+
+  
   
   // const InnerTableLeft = () => (
   //   <div className="scrollable-container">
@@ -91,7 +93,7 @@ export default function HomePage22(props) {
     const sortedCategories = Object.keys(groupedData).sort();
   
     return (
-      <div className="scrollable-container">
+      <div className="scrollable-container">  <Tooltip id="insert" />
         <table className="Table-home-left">
           <tbody>
             {sortedCategories.map((category) => (
@@ -102,9 +104,7 @@ export default function HomePage22(props) {
                 {groupedData[category].map((record, index) => (
                   <tr key={index}>
                     <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left">
-                      <a href={record.website_url} target="_blank" rel="noopener noreferrer">
-                        {record.website_name}
-                      </a>
+                      <a href={record.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.website_desc}>{record.website_name}</a>
                     </td>
                   </tr>
                 ))}
@@ -113,6 +113,7 @@ export default function HomePage22(props) {
           </tbody>
         </table>
       </div>
+      
     );
   };
   

@@ -276,11 +276,11 @@
 .Table-home-left-heading{
     background-color: #ffffff;
     font-family: "Calibri";
-    font-size: large;
-    font-weight: bold;
+    font-size: larger;
+    font-weight: normal;
     text-align: right;
     vertical-align: top;
-    color: #D5441C;
+    color: #336791;
 }
 
 .Table-home-centre{
