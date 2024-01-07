@@ -125,7 +125,7 @@ export default function JobreqCreate(props) {
                   <div>
                     <img alt="1" src={spacer} /><img alt="1" src={spacer} />
                     <label htmlFor="dropdown">Employer:&nbsp;</label>
-                    <select className='Font-Verdana-Small'
+                    <select className='Font-Verdana-Small-Postgres'
                       onChange={(event) => {
                         const selectedIndex = event.target.selectedIndex;
                         const selectedOption = event.target.options[selectedIndex];

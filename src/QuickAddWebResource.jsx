@@ -1,9 +1,7 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import './Fonts.css';
-import spacer from './graphix/besterdev_spacer_white.png';
 import { toast } from 'react-toastify';
-import { TbWorldWww } from "react-icons/tb";
 
 export default function QuickAddWebResource() {
     const [website_name, setWebsite_name] = useState('');

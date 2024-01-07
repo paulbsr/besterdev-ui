@@ -14,6 +14,7 @@ import 'react-tooltip/dist/react-tooltip.css';
 import 'react-toastify/dist/ReactToastify.css';
 import './Fonts.css';
 import Footer from './Footer';
+import ToastComponent from './ToastComponent';
 
 
 
@@ -53,20 +54,7 @@ const PageLogin = () => {
       <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp; &nbsp;Password:&nbsp;  <input className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '350px' }} type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
       <div>&nbsp;</div>
       <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp; &nbsp;<button style={{marginLeft: '10px', height: '37.5px', width: '100px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#336791', cursor: 'pointer'}} onClick={handleLogin}><b>Login</b></button>
-      {loginSuccessMessage &&       
-        <ToastContainer
-        position="top-left"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        transition={Zoom}
-        draggable
-        pauseOnHover
-        theme="dark"/>
-        }
+      {loginSuccessMessage && <ToastComponent />}
       <div>&nbsp;</div>
       <div>&nbsp;</div>
       <div>&nbsp;</div>

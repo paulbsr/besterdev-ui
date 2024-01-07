@@ -45,16 +45,16 @@ export default function Task_Create(props) {
   const [date, setdate] = useState(current);
   const [taskname, setTaskname] = useState("");
   const [taskrequirement, setTaskrequirement] = useState("");
-  const [taskowner, setTaskowner] = useState(""); //This has become "TaskURL"
+  const [taskowner, setTaskowner] = useState("");
   const [tasktargetdatehold, setTasktargetdatehold] = useState(null);
   const [tasktargetdate, setTasktargetdate] = useState(null);
   const [taskcreatedate, setTaskcreatedate] = useState(current);
   const [taskstatus, setTaskstatus] = useState("Parent HOWTO");
-  const [projecthandle, setProjecthandle] = useState(props.projecthandle); //This became "Step Number" as in Step-"19"
-  const [asms, setAsms] = useState("asms"); //This will become the HOWTO's ID or Name
-  
+  const [projecthandle, setProjecthandle] = useState(props.projecthandle);
+  const [asms, setAsms] = useState("asms");
+
   const handleChange = (e, newVal) => setTaskowner(newVal);
-  
+
   const handleDateChange = (newVal) => {
     setTasktargetdatehold(newVal.format("YYYY.M.D"));
     setTasktargetdate(newVal);
@@ -63,36 +63,32 @@ export default function Task_Create(props) {
   const handleSubmit = async (event) => {
     {
       event.preventDefault();
-      
+
       var newtask =
       {
-        taskname: taskname, //Step Name
-        taskrequirement: taskrequirement, //Step Objective
-        taskowner: taskowner, //Step URL
+        taskname: taskname,
+        taskrequirement: taskrequirement,
+        taskowner: taskowner,
         tasktargetdate: tasktargetdate,
         taskcreatedate: taskcreatedate,
-        taskstatus: taskstatus, //Parent Howto
+        taskstatus: taskstatus,
         asms: asms,
-        projecthandle: projecthandle, //Step Number
+        projecthandle: projecthandle,
       };
+      const response = await axios.post(`http://localhost:8000/api/v1/tasks/create`, newtask);
 
-        // const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/create`, newtask);
-        const response = await axios.post(`http://localhost:8000/api/v1/tasks/create`, newtask);
-
-        if (response.status === 200) 
-        {
-          props.setCheckForRecords(!props.checkForRecords);
-          toast.success(`A new Step called ${taskname} has been added.`)
-        } 
-        else {alertCtx.error(`oops! Something went wrong#1!`); }
-    } 
+      if (response.status === 200) {
+        props.setCheckForRecords(!props.checkForRecords);
+        toast.success(`A new Step called ${taskname} has been added.`)
+      }
+      else { alertCtx.error(`oops! Something went wrong#1!`); }
+    }
   };
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtos')
       .then((response) => {
         const howtos = response.data.sort((b, a) => b.howto_name.localeCompare(a.howto_name));
-        // console.log(howtos);
         setHowtos(howtos);
       })
   },
@@ -134,7 +130,7 @@ export default function Task_Create(props) {
                     const howto_name = selectedOption.getAttribute("data-howto_name");
                     const howto_id = selectedOption.getAttribute("data-howto_id");
                     setTaskstatus(howto_name);
-                    // setHowto_id(howto_id);
+
                   }}
                   id="dropdown"
                   style={{

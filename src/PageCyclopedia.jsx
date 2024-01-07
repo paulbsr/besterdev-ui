@@ -8,6 +8,7 @@ import 'react-dropdown/style.css';
 import 'react-tooltip/dist/react-tooltip.css'
 import 'react-toastify/dist/ReactToastify.css';
 import CyclopediaManage from './CyclopediaManage';
+import ToastComponent from './ToastComponent';
 
 
 
@@ -22,6 +23,7 @@ export default function PageCyclopedia(cyclopediadata) {
       <Quicklinks3 />
       <GradientLineThin />
       <CyclopediaManage />
+      <ToastComponent />
     </div>
   )
 };

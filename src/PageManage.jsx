@@ -7,8 +7,8 @@ import CandidateManage from './CandidateManage';
 import EmployerManage1 from './EmployerManage1';
 import JobreqManage from './JobreqManage';
 import Footer from './Footer';
-import { Flip, ToastContainer, toast, Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ToastComponent from './ToastComponent';
 
 export default function PageManage() {
   return (
@@ -23,18 +23,7 @@ export default function PageManage() {
       <EmployerManage1 />
       <JobreqManage />
       <Footer/>
-      <ToastContainer
-        position="top-left"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        transition={Zoom}
-        draggable
-        pauseOnHover
-        theme="dark"/>
+      <ToastComponent />
     </div>
   );
 };

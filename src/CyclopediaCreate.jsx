@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import axios from 'axios';
 import './Fonts.css';
 import spacer from './graphix/besterdev_spacer_white.png';
@@ -8,12 +8,13 @@ import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';
 import { toast } from 'react-toastify';
 
-export default function CyclopediaCreate(props) {
+export default function CyclopediaCreate() {
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [isExpanded, setExpanded] = useState(false);
   const [cyclopedia_name, setCyclopedia_name] = useState('');
   const [cyclopedia_desc, setCyclopedia_desc] = useState('');
   const [cyclopedia_ref, setCyclopedia_ref] = useState('');
+  const [checkForRecords, setCheckForRecords] = useState(true);
 
 
   const handleSubmit = async (event) => {
@@ -30,8 +31,8 @@ export default function CyclopediaCreate(props) {
       {
         const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/create`, newRecord);
         if (response.status === 200) {
-          props.setCheckForRecords(!props.checkForRecords);
-          toast.success(`${cyclopedia_name} has been memorialized.`)
+          setCheckForRecords(!checkForRecords);
+          toast.success(`${cyclopedia_name} memorialized.`)
         }
         else {
           toast.error('Nee')

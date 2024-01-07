@@ -9,6 +9,7 @@ import './Fonts.css'
 import 'react-dropdown/style.css';
 import 'react-tooltip/dist/react-tooltip.css'
 import 'react-toastify/dist/ReactToastify.css';
+import ToastComponent from './ToastComponent';
 
 
 export default function PageSearch() {
@@ -21,6 +22,7 @@ export default function PageSearch() {
       <Quicklinks3 />
       <CandidateAPI />
       <Footer/>
+      <ToastComponent />
     </div>
   )
 };

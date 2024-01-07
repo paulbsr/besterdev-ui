@@ -47,7 +47,6 @@ export default function EmployerCreate(props) {
         const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers/create`, newEmpRecord);
         if (response.status === 200) { 
           props.setCheckForRecords(!props.checkForRecords); 
-          // alert(`${empname} has been memorialized.`); 
           toast.success(`${empname} memorialized.`)
         }
         
