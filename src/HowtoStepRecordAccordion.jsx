@@ -11,15 +11,16 @@ import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard
 import { FaRegTrashAlt } from 'react-icons/fa'; //Delete
 
 function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, checkForRecords, setCheckForRecords }) {
+    console.log(howtodata)
     const date = new Date();
     const [isExpanded, setExpanded] = useState(false);
     const toggleAccordion = () => { setExpanded(!isExpanded); };
-    const filteredSteps = howtodata.howto_steps.filter((task, key) => { return task.step_id === step_idd });
-    const SortedStepRecords = filteredSteps[0].step_records.sort((a, b) => a.steprecord_number - b.steprecord_number);
     const [editing, setEditing] = useState(false);
     const [steprecord_number, setStepRecord_number] = useState();
     const [steprecord, setStepRecord] = useState();
     const [steprecord_date, setStepRecord_date] = useState(date);
+    const filteredSteps = howtodata.howto_steps.filter((task, key) => { return task.step_id === step_idd });
+    const SortedStepRecords = filteredSteps[0].step_records.sort((a, b) => a.steprecord_number - b.steprecord_number);
 
     const handleEdit = (steprecord_id, newsteprecordnumber, newsteprecord ) => {
         setEditing(steprecord_id);

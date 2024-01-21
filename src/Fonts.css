@@ -158,6 +158,39 @@
     color: #D5441C;
 }
 
+.Font-Calibri-Large-Howto-Italic-Rusty-CV {
+    border: 1px solid rgb(233, 228, 228);
+    background-color: #f7f4f3;
+    font-family: "Calibri";
+    font-size: x-large;
+    font-style: italic;
+    color: #336791;
+    padding: 14px;
+    font-weight: lighter;
+}
+
+.Font-Calibri-Large-Howto-Italic-Rusty-CV-1 {
+    border: 1px solid rgb(233, 228, 228);
+    background-color: #ffffff;
+    font-family: "Calibri";
+    font-size: x-large;
+    font-style: italic;
+    color: #336791;
+    padding: 14px;
+    font-weight: lighter;
+}
+
+.Font-Calibri-Large-Howto-Italic-Rusty-CV-2 {
+    border: 1px solid rgb(233, 228, 228);
+    background-color: #ffffff;
+    font-family: "Calibri";
+    font-size: large;
+    font-style: italic;
+    color: #336791;
+    padding: 14px;
+    font-weight: lighter;
+}
+
 .Font-Segoe-Medium-Howto {
     font-family: "Segoe UI";
     font-size: medium;
@@ -251,6 +284,31 @@
     font-size: xx-large;
     min-width: 50%;
 }
+
+.TableCV th {
+    border: 1px solid rgb(233, 228, 228);
+    background-color: #f7f4f3;
+    padding: 10px;
+    font-family: "Calibri";
+    font-size: 45px;
+}
+
+/* .TableCV td {
+    border: 1px solid rgb(233, 228, 228);
+    background-color: #f7f4f3;
+    padding: 4px;
+    font-family: "Calibri";
+    font-size: large;
+    min-width: 50%;
+}
+
+.TableCV tr {
+    border: 1px solid rgb(233, 228, 228);
+    padding: 4px;
+    font-family: "Calibri";
+    font-size: large;
+    min-width: 50%;
+} */
 
 .Table6 td {
     border: 1px solid rgb(233, 228, 228);

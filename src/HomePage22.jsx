@@ -59,28 +59,10 @@ export default function HomePage22(props) {
 
   
 
-  
-  
-  // const InnerTableLeft = () => (
-  //   <div className="scrollable-container">
-  //   <table className="Table-home-left" >
-  //     <tbody>
-  //       {websitedata.map((row, index) => (
-  //         <tr  key={index}>
-  //           <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left"><a href={row.website_url} target="_blank" rel="noopener noreferrer" >{row.website_name}</a>&nbsp;</td>
-  //         </tr>
-  //       ))}
-  //     </tbody>
-  //   </table>
-  //   </div>
-  // );
-  
 
 
   const InnerTableLeft = () => {
-    // Assuming websitedata is an array of objects with a property website_cat
-  
-    // Organize data by category
+
     const groupedData = {};
     websitedata.forEach((row) => {
       if (!groupedData[row.website_cat]) {
@@ -89,7 +71,6 @@ export default function HomePage22(props) {
       groupedData[row.website_cat].push(row);
     });
   
-    // Get sorted array of categories
     const sortedCategories = Object.keys(groupedData).sort();
   
     return (
@@ -119,30 +100,6 @@ export default function HomePage22(props) {
   
   
   
-
-  // const InnerTableCentre = () => (
-  //   <div className="scrollable-container">
-  //   <table className="Table-home-centre">
-  //     <tbody>
-  //       {cyclopediadata.map((rowc, index) => (
-  //         <tr key={index}>
-  //                 <td className="fphover">
-  //                   {rowc && (
-  //                     <div>
-  //                       <BsQuestionOctagon style={{ color: '#D5441C', fontSize: '15px', cursor: 'pointer' }} />
-  //                       <b>&nbsp;{rowc.cyclopedia_name}:</b>&nbsp;<i>{rowc.cyclopedia_desc}</i>
-  //                       <div className='Font-Spacer-White'>Make this spacer white</div>
-  //                     </div>
-  //                   )}
-  //                 </td>
-  //         </tr>
-  //       ))}
-  //     </tbody>
-  //   </table>
-  //   </div>
-  // );
-
-
   const InnerTableCentre = () => {
     const [selectedLetter, setSelectedLetter] = useState(null);
   
@@ -176,7 +133,7 @@ export default function HomePage22(props) {
                 <td className="fphover">
                   {rowc && (
                     <div>
-                      <BsQuestionOctagon style={{ color: '#D5441C', fontSize: '15px', cursor: 'pointer' }} />
+                      <BsQuestionOctagon style={{ color: '#D5441C', fontSize: '12px', cursor: 'pointer' }} />
                       <b>&nbsp;{rowc.cyclopedia_name}:</b>&nbsp;<i>{rowc.cyclopedia_desc}</i>
                       <div className='Font-Spacer-White'>Make this spacer white</div>
                     </div>
@@ -191,30 +148,7 @@ export default function HomePage22(props) {
   };
 
 
-  // const InnerTableRight = () => (
-  //   <div>
-  //   <table >
-  //     <tbody>
-  //       {howtodata.map((row, index) => (
-  //         <tr key={index}>
-  //                 <td>
-  //                   {row && (
 
-  //                     <div>
-  //                       <a href={`/howtoedit/${row.howto_id}`} target="_blank">{row.howto_name}</a>
-  //                       <div>&nbsp;</div>
-                        
-  //                     </div>
-  //                   )
-  //                   }
-  //                 </td>
-  //         </tr>
-  //       ))}
-  //     </tbody>
-  //   </table>
-  //   </div>
-  // );
-  
 
   const InnerTableRight = () => {
     const amazonIframes = [

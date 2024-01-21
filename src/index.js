@@ -27,6 +27,7 @@ import { getAuth } from "firebase/auth";
 import { UserProvider } from './UserContext';
 import { useUserContext } from './UserContext';
 import ReactGA from 'react-ga';
+import PageMyCV from './PageMyCV';
 
 const TRACKING_ID = "G-FCGGY1NE36"; 
 ReactGA.initialize(TRACKING_ID);
@@ -69,7 +70,7 @@ const App = () => {
             <Route path='/cyclopediamanage' element={<PageCyclopedia />} />
             <Route path='/webresourcemanage' element={<PageResources/>} />
             <Route path='/howtodocs' element={<PageHowtoDocs />} />
-            {/* <Route path='/newhowtodocs' element={<PageNewHowtoDocs />} /> */}
+            <Route path='/mycv' element={<PageMyCV />} />
           </Route>
 
           <Route path='/howtoedit/:howto_id' element={<PageHowtoEdit />} />
