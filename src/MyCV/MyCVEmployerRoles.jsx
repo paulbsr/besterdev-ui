@@ -9,31 +9,22 @@ import { toast } from 'react-toastify';
 import { GiCheckMark } from "react-icons/gi"; //Commit
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard
 import { FaRegTrashAlt } from 'react-icons/fa'; //Delete
+import Tenure from './Tenure';
 
-function MyCVEmployerRoles({ mycvdata1, employer_id1, role_id1, step_number, checkForRecords, setCheckForRecords }) {
+function MyCVEmployerRoles({ role_name, mycvdata1, employer_id1, role_id1, step_number, checkForRecords, setCheckForRecords }) {
     const date = new Date();
     const [isExpanded, setExpanded] = useState(false);
     const toggleAccordion = () => { setExpanded(!isExpanded); };
-    // const filteredRoles = mycvdata1.employer_roles.filter((task, key) => { return task.role_id === role_id1 });
-    // const SortedStepRecords = filteredRoles[0].step_records.sort((a, b) => a.steprecord_number - b.steprecord_number);
     const [editing, setEditing] = useState(false);
     const [steprecord_number, setStepRecord_number] = useState();
     const [steprecord, setStepRecord] = useState();
     const [steprecord_date, setStepRecord_date] = useState(date);
-
-    const role_id11 = employer_id1; // Replace with the desired role_id
-
-    const filteredRoles = mycvdata1.reduce((accumulator, currentEmployer) => {
-    const filteredRolesForEmployer = currentEmployer.employer_roles.filter(role => role.role_id === role_id11);
-    return accumulator.concat(filteredRolesForEmployer);
-    }, []);
-
-
-// const SortedRoles = filteredRoles[0].employer_roles.sort((a, b) => a.role_id - b.role_id);
-const sortedRoles = filteredRoles.sort((a, b) => a.role_id - b.role_id);
-
-
-    const handleEdit = (steprecord_id, newsteprecordnumber, newsteprecord ) => {
+    const filteredEmployers = mycvdata1.filter(employer => employer.employer_id === employer_id1);
+    const filteredRoles = filteredEmployers[0].employer_roles;
+    const sortedRoles = filteredRoles.sort((a, b) => b.role_id - a.role_id);
+ 
+    const handleEdit = (steprecord_id, newsteprecordnumber, newsteprecord ) => 
+    {
         setEditing(steprecord_id);
         setStepRecord_number(newsteprecordnumber);
         setStepRecord(newsteprecord);
@@ -45,8 +36,8 @@ const sortedRoles = filteredRoles.sort((a, b) => a.role_id - b.role_id);
         setEditing(false);
     }
 
-    const onEditSave = async (steprecord_id) => {
-
+    const onEditSave = async (steprecord_id) => 
+    {
         const MyCVEmployerRolePUT = 
         {
             'steprecord_number': steprecord_number,
@@ -60,14 +51,15 @@ const sortedRoles = filteredRoles.sort((a, b) => a.role_id - b.role_id);
         onEditCancel();
     }
 
-    const onEditDelete = (steprecord_id) => {
+    const onEditDelete = (steprecord_id) => 
+    {
         axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/delete/${steprecord_id}`)
           .then((response) => {
             setCheckForRecords(!checkForRecords);
             toast.success(`${steprecord_id} purged.`)
           }
           )
-      };
+    };
 
     function editableStepRecord(steprecord_id, steprecord_number, steprecord, role_id, role_desc, checkForRecords, setCheckForRecords) {
         return (
@@ -78,7 +70,7 @@ const sortedRoles = filteredRoles.sort((a, b) => a.role_id - b.role_id);
                             <>
                                 <input
                                     required
-                                    defaultValue={steprecord_number}
+                                    defaultValue={role_id}
                                     onChange={(e) => setStepRecord_number(e.target.value)}
                                     style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '20px', padding: 0, paddingLeft: '9px', }} />
                                 &nbsp;&nbsp;
@@ -90,10 +82,11 @@ const sortedRoles = filteredRoles.sort((a, b) => a.role_id - b.role_id);
                                     style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1010px' }} />
                             </>
                             :
-                            <div className="Font-Segoe-Large-Howto">
-                                <b style={{ fontSize: 'medium', color: 'black'}}>{role_id}Uitstaande.{steprecord})</b>
-                                &nbsp;&nbsp;&nbsp;Hierdie is korrek: {steprecord_number}{role_desc}
-                                &nbsp;&nbsp;&nbsp;
+                            <div className="Font-Segoe-Medium-Howto-CV">
+                                {/* <b style={{ fontSize: 'medium', color: 'black'}}>{role_id}Uitstaande.{steprecord})</b>
+                                &nbsp;&nbsp;&nbsp;Hierdie is korrek:  */}
+                                <b>{steprecord_number}</b>&nbsp;&nbsp;&nbsp;&nbsp;(<Tenure startYear={role_id} endYear={role_desc} />)
+                                &nbsp;&nbsp;&nbsp; 
                             </div>
                         }
                     </div>
@@ -123,7 +116,7 @@ const sortedRoles = filteredRoles.sort((a, b) => a.role_id - b.role_id);
         )
     }
 
-console.log(sortedRoles)
+// console.log(sortedRoles)
     return (
         <div>
             <div>
