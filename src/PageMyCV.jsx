@@ -14,7 +14,7 @@ export default function PageMyCV() {
         <MyCV_BannerLight />
         <GradientLineThin />
         <MyCV />
-        <MyCVFooter />
+        {/* <MyCVFooter /> */}
         <ToastComponent />
       </div>
     )

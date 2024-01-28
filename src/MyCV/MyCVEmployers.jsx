@@ -2,12 +2,12 @@ import React, { useState, useContext } from 'react';
 import '../Fonts.css'
 import axios from 'axios'
 import { Tooltip } from '@mui/material';
-import { AiOutlineCheckCircle, AiOutlineEdit } from "react-icons/ai";
 import { GiCheckMark } from "react-icons/gi"; //Commit
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard
 import { toast } from 'react-toastify';
 import MyCVEmployerRoles from './MyCVEmployerRoles';
 import Tenure from './Tenure';
+import { BsPencil } from "react-icons/bs";
 
 export default function MyCVEmployers({ mycvdata, employer_id, employer_name, employer_start, employer_end, employer_summary, checkForRecords, setCheckForRecords }) {
 
@@ -70,8 +70,8 @@ export default function MyCVEmployers({ mycvdata, employer_id, employer_name, em
                             )
                             :
                             (
-                                isExpanded && employer_name !== 'DONE' ?
-                                    <Tooltip title='Edit Employer' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => { handleEdit() }}><AiOutlineEdit style={{ color: '#DDDDDD', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
+                                isExpanded && employer_name ?
+                                    <Tooltip title='Edit Employer' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => { handleEdit() }}><BsPencil style={{ color: '#DDDDDD', display: 'block', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
                                     :
                                     null
                             )
@@ -93,7 +93,8 @@ export default function MyCVEmployers({ mycvdata, employer_id, employer_name, em
                     </>
                     :
                     <i onClick={toggleAccordion}><b>{employer_name}</b></i>
-                }&nbsp;&nbsp; <Tenure startYear={employer_start} endYear={employer_end} /> between {employer_start} and {employer_end}
+                }
+                &nbsp;&nbsp; <Tenure startYear={employer_start} endYear={employer_end} /> between {employer_start} and {employer_end}
                 
             </div>
 
@@ -105,12 +106,10 @@ export default function MyCVEmployers({ mycvdata, employer_id, employer_name, em
                         (
                             <tbody>
                                 {
-
                                     <tr>
                                         <td>
                                         </td>
                                     </tr>
-
                                 }
                             </tbody>
                         )
@@ -131,7 +130,6 @@ export default function MyCVEmployers({ mycvdata, employer_id, employer_name, em
                             </>
                             </>
                             :
-                            // <div> From {employer_start} to {employer_end}</div>
                             <div className='Font-Spacer-White'>Make this Spacer White</div>
                         }
                     </div>

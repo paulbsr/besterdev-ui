@@ -1,0 +1,129 @@
+import React, { useState } from 'react';
+import axios from "axios";
+import '../Fonts.css'
+import { Tooltip } from '@mui/material';
+import { toast } from 'react-toastify';
+import { GiCheckMark } from "react-icons/gi"; //Commit
+import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard
+import { FaRegTrashAlt } from 'react-icons/fa'; //Delete
+import { BsPencil } from "react-icons/bs";
+
+
+function MyCVEmployerRoleDetails({ roledesc, role_name, mycvdata2, employer_id2, role_id2, step_number, checkForRecords, setCheckForRecords }) {
+    const date = new Date();
+    const [isExpanded, setExpanded] = useState(false);
+    const toggleAccordion = () => { setExpanded(!isExpanded); };
+    const [editing, setEditing] = useState(false);
+    const [roledetail_name, setRoledetail_name] = useState();
+    const [roledetail_desc, setRoledetail_desc] = useState();
+    const filteredEmployers = mycvdata2.filter(employer => employer.employer_id === employer_id2);
+    const filteredRoles = filteredEmployers[0].employer_roles;
+    const sortedRoles = filteredRoles.sort((a, b) => b.role_id - a.role_id);
+    const filteredRoleDetails = sortedRoles[0].role_detail;
+console.log(roledesc)
+    const handleEdit = (roledetail_id, newsteprecordnumber, newsteprecord) => {
+        setEditing(roledetail_id);
+        setRoledetail_name(newsteprecordnumber);
+        setRoledetail_desc(newsteprecord);
+    }
+
+    const onEditCancel = () => {
+        setEditing(false);
+    }
+
+    const onEditSave = async (roledetail_id) => {
+        const MyCVEmployerRolePUT =
+        {
+            'roledetail_name': roledetail_name,
+            'roledetail_desc': roledetail_desc,
+        }
+
+        const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/update/${roledetail_id}`, MyCVEmployerRolePUT)
+        setCheckForRecords(!checkForRecords)
+        toast.success(`Employer Role amended.`)
+        onEditCancel();
+    }
+
+    const onEditDelete = (roledetail_id) => {
+        axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/delete/${roledetail_id}`)
+            .then((response) => {
+                setCheckForRecords(!checkForRecords);
+                toast.success(`${roledetail_id} purged.`)
+            }
+            )
+    };
+
+    function editableEmployerRoleDetails(roledetail_id, roledetail_year, roledetail_desc, roledetail_name, role_id, checkForRecords, setCheckForRecords ) {
+        return (
+            <div>
+                <div style={{ display: 'flex' }}>
+                    <div>
+                        {editing === roledetail_id ?
+                            <>
+                                <input
+                                    required
+                                    defaultValue={roledetail_name}
+                                    onChange={(e) => setRoledetail_name(e.target.value)}
+                                    style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '200px', padding: 0, paddingLeft: '9px', }} />
+                                &nbsp;&nbsp;
+
+                                <input
+                                    required
+                                    defaultValue={roledetail_desc}
+                                    onChange={(e) => setRoledetail_desc(e.target.value)}
+                                    style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '800px', padding: 0, paddingLeft: '9px', }} />
+                            </>
+                            :
+                            <div className="Font-Segoe-Medium-Howto-CV">
+                                <GiCheckMark style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '10px' }} />
+                                &nbsp;&nbsp;
+                                {roledetail_name}&nbsp; - &nbsp;{roledetail_desc} 
+
+                            </div>
+                        }
+                    </div>
+
+                    <div style={{ display: 'flex', float: 'right' }}>
+                        <>
+                            {editing === roledetail_id ?
+                                (
+                                    <>&nbsp;&nbsp;
+                                        <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave(roledetail_id)}><GiCheckMark style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
+                                        <Tooltip title='Discard' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditCancel()}><PiArrowCounterClockwiseBold style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
+                                        <Tooltip title='Purge' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditDelete(roledetail_id)}>< FaRegTrashAlt style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
+                                    </>
+                                )
+                                :
+                                (
+                                    <Tooltip title='Edit Role Detail' placement="top-end">
+                                        <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(roledetail_id, roledetail_name, roledetail_desc) }}>
+                                            <BsPencil style={{ color: '#DDDDDD', display: 'round', margin: 'auto', fontSize: '15px' }} /></button>
+                                    </Tooltip>
+                                )
+                            }
+                        </>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+    console.log(filteredRoles)
+    console.log(sortedRoles)
+    console.log(filteredRoleDetails)
+
+    return (
+        <div>
+
+            {filteredRoleDetails.map(({ roledetail_id, roledetail_year, roledetail_desc, roledetail_name, parent_role_id }) => (
+                <div key={roledetail_id}>
+                    {editableEmployerRoleDetails(roledetail_id, roledetail_year, roledetail_desc, roledetail_name, parent_role_id)}
+                </div>
+            ))}
+        </div>
+
+
+    );
+}
+
+export default MyCVEmployerRoleDetails;
