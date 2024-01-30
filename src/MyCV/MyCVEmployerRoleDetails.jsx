@@ -9,18 +9,20 @@ import { FaRegTrashAlt } from 'react-icons/fa'; //Delete
 import { BsPencil } from "react-icons/bs";
 
 
-function MyCVEmployerRoleDetails({ roledesc, role_name, mycvdata2, employer_id2, role_id2, step_number, checkForRecords, setCheckForRecords }) {
+function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, checkForRecords, setCheckForRecords }) {
     const date = new Date();
     const [isExpanded, setExpanded] = useState(false);
     const toggleAccordion = () => { setExpanded(!isExpanded); };
     const [editing, setEditing] = useState(false);
     const [roledetail_name, setRoledetail_name] = useState();
     const [roledetail_desc, setRoledetail_desc] = useState();
-    const filteredEmployers = mycvdata2.filter(employer => employer.employer_id === employer_id2);
-    const filteredRoles = filteredEmployers[0].employer_roles;
-    const sortedRoles = filteredRoles.sort((a, b) => b.role_id - a.role_id);
-    const filteredRoleDetails = sortedRoles[0].role_detail;
-console.log(roledesc)
+    const filteredEmployers = mycvdata2.filter(employer => employer.employer_id === employer_id2); //HIERDIE WERK GOED, HY RETURN SLEGS DIE EMPLOYER WAAROP JY KLIEK!
+    const filteredRoles = filteredEmployers[0].employer_roles.sort((a, b) => b.role_id - a.role_id); //HIERDIE WER GOED,  HY RETURN SLEGS DIE ROLLE VIR DIE GEGEWE EMPLOYER!
+    const specificRole = filteredRoles.filter((detail, key) => { return detail.role_id === role_idd });
+    const filteredRoleDetails = filteredRoles[0].role_detail; //DIE PROBLEEM IS HIER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    const filteredRoleDetails99 = specificRole[0].role_detail; //DIE PROBLEEM IS HIER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
     const handleEdit = (roledetail_id, newsteprecordnumber, newsteprecord) => {
         setEditing(roledetail_id);
         setRoledetail_name(newsteprecordnumber);
@@ -53,7 +55,7 @@ console.log(roledesc)
             )
     };
 
-    function editableEmployerRoleDetails(roledetail_id, roledetail_year, roledetail_desc, roledetail_name, role_id, checkForRecords, setCheckForRecords ) {
+    function editableEmployerRoleDetails(roledetail_id, roledetail_year, roledetail_desc, roledetail_name, parent_role_id ) {
         return (
             <div>
                 <div style={{ display: 'flex' }}>
@@ -108,14 +110,11 @@ console.log(roledesc)
         )
     }
 
-    console.log(filteredRoles)
-    console.log(sortedRoles)
-    console.log(filteredRoleDetails)
 
     return (
         <div>
 
-            {filteredRoleDetails.map(({ roledetail_id, roledetail_year, roledetail_desc, roledetail_name, parent_role_id }) => (
+            {filteredRoleDetails99.map(({ roledetail_id, roledetail_year, roledetail_desc, roledetail_name, parent_role_id }) => (
                 <div key={roledetail_id}>
                     {editableEmployerRoleDetails(roledetail_id, roledetail_year, roledetail_desc, roledetail_name, parent_role_id)}
                 </div>

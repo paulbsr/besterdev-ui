@@ -76,9 +76,7 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, role_id1, step_number, che
                             </>
                             :
                             <div className="Font-Segoe-Medium-Howto-CV">
-                                <i onClick={toggleAccordion}><b>{role_name}</b></i>&nbsp; &nbsp;{role_desc}; 
-                                (<Tenure startYear={role_start} endYear={role_end} />)
-
+                                <i onClick={toggleAccordion}><b>{role_name}</b></i>&nbsp; &nbsp;(<Tenure startYear={role_start} endYear={role_end} />)
                             </div>
                         }
                     </div>
@@ -109,28 +107,28 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, role_id1, step_number, che
     }
 
 
-    return (
+return (
+    <div>
         <div>
-            <div>
-                <div className='Font-Verdana-Small'>
-                </div>
-                {sortedRoles.map(({ role_id, role_name, role_desc, role_start, role_end }) => (
-                    <React.Fragment key={role_id}>
-                        {editableEmployerRole(role_id, role_name, role_desc, role_start, role_end, checkForRecords, setCheckForRecords,)}
-                    </React.Fragment>
-                ))}
+            <div >
             </div>
-
-
-            {isExpanded &&
-                (
-                    <div>{roledesc1} {role_desc}
-                        <MyCVEmployerRoleDetails mycvdata2={mycvdata1} employer_id2={employer_id1} />
-                    </div>
-                )
-            }
+            {sortedRoles.map(({ role_id, role_name, role_desc, role_start, role_end }) => (
+                <React.Fragment key={role_id}>
+                    {editableEmployerRole(role_id, role_name, role_desc, role_start, role_end)}
+                    
+                    {isExpanded &&
+                        (
+                            <div className='Font-Segoe-Medium-Howto-CV'>{role_desc}
+                                <MyCVEmployerRoleDetails mycvdata2={mycvdata1} employer_id2={employer_id1} role_id2={role_id} role_idd={role_id}/>
+                            </div>
+                        )
+                    }
+                </React.Fragment>
+            ))}
         </div>
-    );
+    </div>
+);
+
 }
 
 export default MyCVEmployerRoles;
