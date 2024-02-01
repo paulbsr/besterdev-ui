@@ -60,7 +60,7 @@ export default function MyCVEmployers({ mycvdata, employer_id, employer_name, em
             <div className="Font-Segoe-Large-Howto" >
                 <div style={{ display: 'flex', float: 'right' }}>
                     <>
-                        {editing === true ?
+                        {/* {editing === true ?
                             (
                                 <>
                                     &nbsp;&nbsp;
@@ -75,7 +75,7 @@ export default function MyCVEmployers({ mycvdata, employer_id, employer_name, em
                                     :
                                     null
                             )
-                        }
+                        } */}
                     </>
                 </div>
 
@@ -94,6 +94,7 @@ export default function MyCVEmployers({ mycvdata, employer_id, employer_name, em
                     :
                     <i onClick={toggleAccordion}><b>{employer_name}</b></i>
                 }
+                
                 &nbsp;&nbsp; <Tenure startYear={employer_start} endYear={employer_end} /> between {employer_start} and {employer_end}
                 
             </div>

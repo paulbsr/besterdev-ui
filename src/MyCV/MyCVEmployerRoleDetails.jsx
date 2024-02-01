@@ -115,7 +115,7 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
         <div>
 
             {filteredRoleDetails99.map(({ roledetail_id, roledetail_year, roledetail_desc, roledetail_name, parent_role_id }) => (
-                <div key={roledetail_id}>
+                <div>
                     {editableEmployerRoleDetails(roledetail_id, roledetail_year, roledetail_desc, roledetail_name, parent_role_id)}
                 </div>
             ))}
