@@ -9,6 +9,10 @@ import MyCVEmployerRoles from './MyCVEmployerRoles';
 import Tenure from './Tenure';
 import { BsPencil } from "react-icons/bs";
 import GM from './GM.png'
+import { MdReadMore } from "react-icons/md";
+import { Image } from 'react-bootstrap';
+
+
 
 export default function MyCVEmployers({ mycvdata, employer_id, employer_name, employer_start, employer_end, employer_desc, checkForRecords, setCheckForRecords }) {
 
@@ -45,6 +49,15 @@ export default function MyCVEmployers({ mycvdata, employer_id, employer_name, em
             )
         onEditCancel();
     }
+
+    const employerImages = 
+    {
+        "General Motors IT Services Ireland (GMISI)": require('./GM.png'),
+        "Hewlett Packard": require('./HP.png'),
+        "Dell Inc.": require('./DELL.png'),
+        "Bryan S Ryan": require('./BSR.jpg'),
+    };
+      
 
 
     return (
@@ -85,7 +98,10 @@ export default function MyCVEmployers({ mycvdata, employer_id, employer_name, em
                     </>
                     :
                     <>
-                    <i style={{ cursor: 'pointer' }} onClick={toggleAccordion}><img src={GM} width="25" height="25" />&nbsp;&nbsp;<b>{employer_name}</b></i>
+                    <i style={{ cursor: 'pointer' }} onClick={toggleAccordion}>
+                        {/* <img src={GM} width="25" height="25" />&nbsp;&nbsp;<b>{employer_name}</b> */}
+                    <Image src={employerImages[employer_name]} width="30" height="30" alt="Employer Logo" />&nbsp;&nbsp;<b>{employer_name}</b>
+                    </i>
                     </>
                 }
                 
@@ -94,6 +110,7 @@ export default function MyCVEmployers({ mycvdata, employer_id, employer_name, em
             </div>
 
             {isExpanded &&
+            
                 <div>{employer_desc}
                     <div className="Font-Segoe-Large-Howto" >
 
