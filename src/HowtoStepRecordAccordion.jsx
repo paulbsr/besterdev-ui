@@ -65,8 +65,6 @@ function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, checkForRe
                     <div>
                         {editing === steprecord_id ?
                             <>
-                                {/* &nbsp;&nbsp;&nbsp; */}
-
                                 <input
                                     required
                                     defaultValue={steprecord_number}

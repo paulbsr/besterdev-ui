@@ -94,7 +94,7 @@ export default function MyCV(props) {
                   <th>Curriculum Vitae of Paul Bester</th>
                 </tr>
                 <tr>
-                  <th className="Font-Calibri-Large-Howto-Italic-Rusty-CV-2">24 years in US-based multi-national IT sector. Experienced in innovation-driven and commerce-driven disruptive "Startup/Transition" activities. Hyper-efficient, detail orientated leader, manager and organiser of technical teams with responsibility in the Network/Communications stack. Technically proficient in Routing & Switching, WAN-layer transport, Data Center operations, Contact Centers and Collaboration technologies. Strong PgM/PM, customer-facing and vendor-management with Overseas/Expat Assignment experience.</th>
+                  <th className="CV-Font-Calibri-Large-Italic-PG">24 years in US-based multi-national IT sector. Experienced in innovation-driven and commerce-driven disruptive "Startup/Transition" activities. Hyper-efficient, detail orientated leader, manager and organiser of technical teams with responsibility in the Network/Communications stack. Technically proficient in Routing & Switching, WAN-layer transport, Data Center operations, Contact Centers and Collaboration technologies. Strong PgM/PM, customer-facing and vendor-management with Overseas/Expat Assignment experience.</th>
                 </tr>
               </thead>
 
@@ -102,8 +102,8 @@ export default function MyCV(props) {
                 <tbody>
                   {
                     <tr>
-                      <td className="Font-Calibri-Large-Howto-Italic-Rusty-CV-1">
-                        {<MyCVEmployers mycvdata={mycvdata} key={emp.employer_id} employer_name={emp.employer_name} employer_start={emp.employer_start} employer_end={emp.employer_end} employer_id={emp.employer_id} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />}
+                      <td className="CV-Font-Calibri-Large-Italic-PG">
+                        {<MyCVEmployers mycvdata={mycvdata} key={emp.employer_id} employer_name={emp.employer_name} employer_start={emp.employer_start} employer_end={emp.employer_end} employer_id={emp.employer_id} employer_id={emp.employer_id}checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />}
                       </td>
                     </tr>
                   }
@@ -126,7 +126,7 @@ export default function MyCV(props) {
           <tbody>
             <img src={TUS} width="240" height="300" />
             <div>MSc. Software Engineering</div>
-            <div>AthloneIT (TUS)</div>
+            <div>AthloneIT, (TUS)</div>
             <div className='Font-Spacer-White'>Make this spacer white</div>
             <img src={LYIT} width="240" height="300" alt="Your Image" />
             <div>MSc. Cloud Computing</div>

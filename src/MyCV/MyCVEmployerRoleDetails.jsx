@@ -7,6 +7,8 @@ import { GiCheckMark } from "react-icons/gi"; //Commit
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard
 import { FaRegTrashAlt } from 'react-icons/fa'; //Delete
 import { BsPencil } from "react-icons/bs";
+import MyCVEmployerRoleDetailsCreate from './MyCVEmployerRoleDetailsCreate';
+import { MdAddCircleOutline } from "react-icons/md";
 
 
 function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, checkForRecords, setCheckForRecords }) {
@@ -19,8 +21,7 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
     const filteredEmployers = mycvdata2.filter(employer => employer.employer_id === employer_id2); //HIERDIE WERK GOED, HY RETURN SLEGS DIE EMPLOYER WAAROP JY KLIEK!
     const filteredRoles = filteredEmployers[0].employer_roles.sort((a, b) => b.role_id - a.role_id); //HIERDIE WER GOED,  HY RETURN SLEGS DIE ROLLE VIR DIE GEGEWE EMPLOYER!
     const specificRole = filteredRoles.filter((detail, key) => { return detail.role_id === role_idd });
-    const filteredRoleDetails = filteredRoles[0].role_detail; //DIE PROBLEEM IS HIER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    const filteredRoleDetails99 = specificRole[0].role_detail; //DIE PROBLEEM IS HIER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    const filteredRoleDetails = specificRole[0].role_detail;
 
 
     const handleEdit = (roledetail_id, newsteprecordnumber, newsteprecord) => {
@@ -114,11 +115,26 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
     return (
         <div>
 
-            {filteredRoleDetails99.map(({ roledetail_id, roledetail_year, roledetail_desc, roledetail_name, parent_role_id }) => (
+            {filteredRoleDetails.map(({ roledetail_id, roledetail_year, roledetail_desc, roledetail_name, parent_role_id }) => (
                 <div>
                     {editableEmployerRoleDetails(roledetail_id, roledetail_year, roledetail_desc, roledetail_name, parent_role_id)}
                 </div>
-            ))}
+            )
+            )
+            }
+
+<div className='Font-Verdana-Small'>
+                <Tooltip title='Insert additional Role Deatil' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={toggleAccordion}><MdAddCircleOutline style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button>&nbsp;Insert additional Role Deatil</Tooltip>
+            </div>
+
+            {isExpanded &&
+                (
+                    <div>
+                        <MyCVEmployerRoleDetailsCreate />
+                    </div>
+                )
+            }
+
         </div>
 
 

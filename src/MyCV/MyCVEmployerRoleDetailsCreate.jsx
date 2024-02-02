@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
-import "./Fonts.css";
+import "../Fonts.css";
 import { toast } from 'react-toastify';
+import spacer2 from '../graphix/besterdev_spacer_white_half.png';
 
-export default function HowtoStepRecordCreate_original(props) {
+export default function MyCVEmployerRoleDetailsCreate(props) {
   const current = new Date();
   const [steprecord_parent, setSteprecord_parent] = useState(props.step_idd);
   const [steprecord_number, setSteprecord_number] = useState("");
@@ -44,8 +45,9 @@ export default function HowtoStepRecordCreate_original(props) {
           required
           onChange={(e) => setSteprecord(e.target.value)}
           style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1210px' }} />
+        {/* <div>&nbsp;</div> */}
         &nbsp;&nbsp;
-
+        {/* <img alt="1" src={spacer2} /> */}
         <button
           className="Font-Verdana-Small-Postgres"
           type="submit"

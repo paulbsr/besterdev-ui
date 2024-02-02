@@ -23,14 +23,11 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, role_id1, step_number, che
     const filteredRoles = filteredEmployers[0].employer_roles;
     const sortedRoles = filteredRoles.sort((a, b) => b.role_id - a.role_id);
 
-
     const toggleAccordion = () => { setExpanded(!isExpanded); };
-    
+
     const handleRoleClick = (role_id) => {
         setExpandedRole(expandedRole === role_id ? null : role_id);
-      };
-
-    
+    };
 
     const handleEdit = (steprecord_id, newsteprecordnumber, newsteprecord) => {
         setEditing(steprecord_id);
@@ -49,10 +46,10 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, role_id1, step_number, che
             'role_desc': role_desc,
         }
 
-        const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/update/${steprecord_id}`, MyCVEmployerRolePUT)
-        setCheckForRecords(!checkForRecords)
-        toast.success(`Employer Role amended.`)
-        onEditCancel();
+    const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/update/${steprecord_id}`, MyCVEmployerRolePUT)
+    setCheckForRecords(!checkForRecords)
+    toast.success(`Employer Role amended.`)
+    onEditCancel();
     }
 
     const onEditDelete = (steprecord_id) => {
@@ -67,7 +64,7 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, role_id1, step_number, che
     function editableEmployerRole(role_id, role_name, role_desc, role_start, role_end) {
         return (
             <div>
-                <div style={{ display: 'flex' }}>
+                <div>
                     {/* <div>
                         {editing === role_id ?
                             <>
@@ -90,7 +87,7 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, role_id1, step_number, che
                             </div>
                         }
                     </div> */}
-{/* 
+                    {/* 
                     <div style={{ display: 'flex', float: 'right' }}>
                         <>
                             {editing === role_id ?
@@ -117,55 +114,29 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, role_id1, step_number, che
     }
 
 
-return (
-    // <div>
-    //     <div>
-
-    //         {sortedRoles.map(({ role_id, role_name, role_desc, role_start, role_end }) => (
-    //             <React.Fragment>
-    //                 {editableEmployerRole(role_id, role_name, role_desc, role_start, role_end)}
+    return (
+        <>
+            {sortedRoles.map(({ role_id, role_name, role_desc, role_start, role_end }) => (
+                <React.Fragment key={role_id}>
+                    {editableEmployerRole(role_id, role_name, role_desc, role_start, role_end)}
                     
-    //                 {isExpanded &&
-    //                     (
-    //                         <div className='Font-Segoe-Medium-Howto-CV'>{role_desc}
-    //                             <MyCVEmployerRoleDetails mycvdata2={mycvdata1} employer_id2={employer_id1} role_id2={role_id} role_idd={role_id}/>
-    //                             &nbsp;
-    //                         </div>
-    //                     )
-    //                 }
-    //             </React.Fragment>
-    //         )
-    //         )
-    //         }
-            
-    //     </div>
-    // </div>
-
-    <>
-    {sortedRoles.map(({ role_id, role_name, role_desc, role_start, role_end }) => (
-      <React.Fragment key={role_id}>
-        {editableEmployerRole(role_id, role_name, role_desc, role_start, role_end)}
-        <i onClick={() => handleRoleClick(role_id)}>{role_name}</i>
-        {expandedRole === role_id && (
-          <div className='Font-Segoe-Medium-Howto-CV'>
-            {role_desc}
-            <MyCVEmployerRoleDetails mycvdata2={mycvdata1} employer_id2={employer_id1} role_id2={role_id} role_idd={role_id} />
-            &nbsp;
-          </div>
-        )}
-
-        {/* <i onClick={() => handleRoleClick(role_id)}>{role_name}</i> */}
-        {/* <i onClick={toggleAccordion}><b>{role_name}</b></i>&nbsp; &nbsp;(<Tenure startYear={role_start} endYear={role_end} />) */}
-      </React.Fragment>
-    ))}
-  </>
-
-
-);
-
+                    {/* <i className="Font-Segoe-Medium-Howto-CV" onClick={() => handleRoleClick(role_id)}>{role_name}</i> */}
+                    <i className="CV-Font-Calibri-Large-Black" onClick={() => handleRoleClick(role_id)}><b>{role_name}</b></i>
+                    
+                    
+                    {expandedRole === role_id && (
+                        <div>
+                           
+                            {role_desc}
+                            <MyCVEmployerRoleDetails mycvdata2={mycvdata1} employer_id2={employer_id1} role_id2={role_id} role_idd={role_id} />
+                            &nbsp;
+                        </div>
+                    )}
+                </React.Fragment>
+            ))}
+        </>
+    );
 }
-
-
 
 export default MyCVEmployerRoles;
 
