@@ -8,25 +8,20 @@ import { toast } from 'react-toastify';
 import MyCVEmployerRoles from './MyCVEmployerRoles';
 import Tenure from './Tenure';
 import { BsPencil } from "react-icons/bs";
+import GM from './GM.png'
 
-export default function MyCVEmployers({ mycvdata, employer_id, employer_name, employer_start, employer_end, employer_summary, checkForRecords, setCheckForRecords }) {
+export default function MyCVEmployers({ mycvdata, employer_id, employer_name, employer_start, employer_end, employer_desc, checkForRecords, setCheckForRecords }) {
 
+    const [editing, setEditing] = useState(false);
+    const [employerdesc, setEmployerdesc] = useState();
     const [isExpanded, setExpanded] = useState(false);
     const toggleAccordion = () => { setExpanded(!isExpanded); };
-    const [editing, setEditing] = useState(false);
-    const [employername, setEmployername] = useState();
-    const [employerstart, setEmployerstart] = useState();
-    const [employerend, setEmployerend] = useState();
-    const [employersummary, setEmployersummary] = useState();
 
     const tenure = {employer_start} - {employer_end}
 
     const handleEdit = () => 
     {
-        setEmployername(employer_name)
-        setEmployerstart(employer_start)
-        setEmployerend(employer_end)
-        setEmployersummary(employer_summary)
+        setEmployerdesc(employer_desc)
         setEditing(true)
     }
 
@@ -39,13 +34,10 @@ export default function MyCVEmployers({ mycvdata, employer_id, employer_name, em
     {
         const updatedEmployer =
         {
-            'employer_name': employername,
-            'employer_start': employerstart,
-            'employer_end': employerend,
-            'employer_summary': employersummary,
+            'employer_desc': employerdesc
         }
 
-        const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtostep/update/${employer_id}`, updatedEmployer)
+        const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employer_desc/update/${employer_id}`, updatedEmployer)
             .then((response) => {
                 setCheckForRecords(!checkForRecords);
                 toast.success(`${employer_name} updated.`)
@@ -60,7 +52,7 @@ export default function MyCVEmployers({ mycvdata, employer_id, employer_name, em
             <div className="Font-Segoe-Large-Howto" >
                 <div style={{ display: 'flex', float: 'right' }}>
                     <>
-                        {/* {editing === true ?
+                        {editing === true ?
                             (
                                 <>
                                     &nbsp;&nbsp;
@@ -75,24 +67,26 @@ export default function MyCVEmployers({ mycvdata, employer_id, employer_name, em
                                     :
                                     null
                             )
-                        } */}
+                        }
                     </>
                 </div>
 
                 {editing === true ?
                     <>
-                        <i>Employer:</i>&nbsp;  &nbsp;
+                        {/* <i>Employer:</i>&nbsp;  &nbsp;
 
                         <input
                             required
                             defaultValue={employer_name}
                             onChange={(e) => setEmployername(e.target.value)}
                             style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '400px' }} />
-                        <div className="Font-Spacer-White">Make this Spacer White</div>
+                        <div className="Font-Spacer-White">Make this Spacer White</div> */}
 
                     </>
                     :
-                    <i onClick={toggleAccordion}><b>{employer_name}</b></i>
+                    <>
+                    <i style={{ cursor: 'pointer' }} onClick={toggleAccordion}><img src={GM} width="25" height="25" />&nbsp;&nbsp;<b>{employer_name}</b></i>
+                    </>
                 }
                 
                 &nbsp;&nbsp; <Tenure startYear={employer_start} endYear={employer_end} /> between {employer_start} and {employer_end}
@@ -100,7 +94,7 @@ export default function MyCVEmployers({ mycvdata, employer_id, employer_name, em
             </div>
 
             {isExpanded &&
-                <div>
+                <div>{employer_desc}
                     <div className="Font-Segoe-Large-Howto" >
 
                         {mycvdata.employer_roles && mycvdata.employer_roles.map((role) =>
@@ -118,14 +112,14 @@ export default function MyCVEmployers({ mycvdata, employer_id, employer_name, em
                         }
 
                         {editing === true ?
-                            <><i>Summary:</i>&nbsp; &nbsp;<>
+                            <><>
                                 <textarea
-                                    rows="1"
+                                    rows="5"
                                     required
-                                    defaultValue={employer_id}
-                                    onChange={(e) => setEmployersummary(e.target.value)}
+                                    defaultValue={employer_desc}
+                                    onChange={(e) => setEmployerdesc(e.target.value)}
                                     size='Large'
-                                    style={{ fontFamily: 'Calibri', fontSize: 'Large', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '900px' }} />
+                                    style={{ fontFamily: 'Calibri', fontStyle: 'italic',fontSize: 'Large', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1150px' }} />
 
                                 <div className='Font-Spacer-White'>Make this Spacer White</div>
                             </>

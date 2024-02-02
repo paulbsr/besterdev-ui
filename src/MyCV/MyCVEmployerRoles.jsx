@@ -9,14 +9,13 @@ import { FaRegTrashAlt } from 'react-icons/fa'; //Delete
 import Tenure from './Tenure';
 import MyCVEmployerRoleDetails from './MyCVEmployerRoleDetails';
 import { BsPencil } from "react-icons/bs";
+import { FaVirusCovid } from "react-icons/fa6";
 
-function MyCVEmployerRoles({ mycvdata1, employer_id1, role_id1, step_number, checkForRecords, setCheckForRecords }) {
+function MyCVEmployerRoles({ mycvdata1, employer_id1, checkForRecords, setCheckForRecords }) {
     const date = new Date();
     const [isExpanded, setExpanded] = useState(false);
     const [editing, setEditing] = useState(false);
-    const [role_name, setRole_name] = useState();
-    const [role_desc, setRole_desc] = useState();
-    const [roledesc1, setRoledesc1] = useState("BALSAKKE");
+    const [roledesc, setRole_desc] = useState();
     const [expandedRole, setExpandedRole] = useState(null);
 
     const filteredEmployers = mycvdata1.filter(employer => employer.employer_id === employer_id1);
@@ -29,26 +28,24 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, role_id1, step_number, che
         setExpandedRole(expandedRole === role_id ? null : role_id);
     };
 
-    const handleEdit = (steprecord_id, newsteprecordnumber, newsteprecord) => {
-        setEditing(steprecord_id);
-        setRole_name(date);
-        setRole_desc(newsteprecordnumber);
+    const handleEdit = (role_id, role_desc) => {
+        setEditing(role_id);
+        setRole_desc(role_desc);
     }
 
     const onEditCancel = () => {
         setEditing(false);
     }
 
-    const onEditSave = async (steprecord_id) => {
+    const onEditSave = async (role_id, role_name) => {
         const MyCVEmployerRolePUT =
         {
-            'role_name': role_name,
-            'role_desc': role_desc,
+            'role_desc': roledesc
         }
 
-    const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/update/${steprecord_id}`, MyCVEmployerRolePUT)
+    const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/role_desc/update/${role_id}`, MyCVEmployerRolePUT)
     setCheckForRecords(!checkForRecords)
-    toast.success(`Employer Role amended.`)
+    toast.success(`${role_id} amended.`)
     onEditCancel();
     }
 
@@ -65,15 +62,15 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, role_id1, step_number, che
         return (
             <div>
                 <div>
-                    {/* <div>
+                    <div>
                         {editing === role_id ?
                             <>
-                                <input
+                                {/* <input
                                     required
                                     defaultValue={role_name}
                                     onChange={(e) => setRole_name(e.target.value)}
                                     style={{ fontFamily: 'Calibri', fontStyle: 'Italic', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '250px' }} />
-                                &nbsp;&nbsp;
+                                &nbsp;&nbsp; */}
 
                                 <input
                                     required
@@ -82,12 +79,10 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, role_id1, step_number, che
                                     style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '9px', width: '800px' }} />
                             </>
                             :
-                            <div className="Font-Segoe-Medium-Howto-CV">
-                                <i onClick={toggleAccordion}><b>{role_name}</b></i>&nbsp; &nbsp;(<Tenure startYear={role_start} endYear={role_end} />)
-                            </div>
+                            <div className="Font-Segoe-Medium-Howto-CV"><i onClick={toggleAccordion} /></div> //smoke and mirrors here!
                         }
-                    </div> */}
-                    {/* 
+                    </div>
+                    
                     <div style={{ display: 'flex', float: 'right' }}>
                         <>
                             {editing === role_id ?
@@ -100,14 +95,14 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, role_id1, step_number, che
                                 )
                                 :
                                 (
-                                    <Tooltip title='Edit Step Record' placement="top-end">
+                                    <Tooltip title='Edit the Role Description' placement="top-end">
                                         <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(role_id, role_desc) }}>
-                                            <BsPencil style={{ color: '#DDDDDD', display: 'round', margin: 'auto', fontSize: '15px' }} /></button>
+                                        <BsPencil style={{ color: '#DDDDDD', display: 'round', margin: 'auto', fontSize: '15px' }} /></button>
                                     </Tooltip>
                                 )
                             }
                         </>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         )
@@ -120,9 +115,8 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, role_id1, step_number, che
                 <React.Fragment key={role_id}>
                     {editableEmployerRole(role_id, role_name, role_desc, role_start, role_end)}
                     
-                    {/* <i className="Font-Segoe-Medium-Howto-CV" onClick={() => handleRoleClick(role_id)}>{role_name}</i> */}
-                    <i className="CV-Font-Calibri-Large-Black" onClick={() => handleRoleClick(role_id)}><b>{role_name}</b></i>
-                    
+                    <i style={{ cursor: 'pointer' }} className="CV-Font-Calibri-Large-Black" onClick={() => handleRoleClick(role_id)}><b>{role_name}</b>&nbsp; &nbsp;(<Tenure startYear={role_start} endYear={role_end} />)</i>
+                   
                     
                     {expandedRole === role_id && (
                         <div>

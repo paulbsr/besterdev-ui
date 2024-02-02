@@ -103,7 +103,7 @@ export default function MyCV(props) {
                   {
                     <tr>
                       <td className="CV-Font-Calibri-Large-Italic-PG">
-                        {<MyCVEmployers mycvdata={mycvdata} key={emp.employer_id} employer_name={emp.employer_name} employer_start={emp.employer_start} employer_end={emp.employer_end} employer_id={emp.employer_id} employer_id={emp.employer_id}checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />}
+                        {<MyCVEmployers mycvdata={mycvdata} key={emp.employer_id} employer_name={emp.employer_name} employer_start={emp.employer_start} employer_end={emp.employer_end} employer_id={emp.employer_id} employer_desc={emp.employer_desc} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />}
                       </td>
                     </tr>
                   }
@@ -121,20 +121,20 @@ export default function MyCV(props) {
 
   const InnerTableRight = () => {
     return (
-      <div>
+      <div className="CV-Font-Calibri-Large-Italic-PG">
         <table>
           <tbody>
             <img src={TUS} width="240" height="300" />
             <div>MSc. Software Engineering</div>
-            <div>AthloneIT, (TUS)</div>
+            <div>AthloneIT (TUS), 2022</div>
             <div className='Font-Spacer-White'>Make this spacer white</div>
-            <img src={LYIT} width="240" height="300" alt="Your Image" />
+            <img src={LYIT} width="240" height="300" />
             <div>MSc. Cloud Computing</div>
-            <div>LetterkennyIT (LYIT)</div>
+            <div>LetterkennyIT (LYIT), 2019</div>
             <div className='Font-Spacer-White'>Make this spacer white</div>
             <img src={DCU} width="240" height="300" />
             <div>BSc. Information Technology</div>
-            <div>Dublin City University (DCU)</div>
+            <div>Dublin City University (DCU), 2007</div>
           </tbody>
         </table>
       </div>
