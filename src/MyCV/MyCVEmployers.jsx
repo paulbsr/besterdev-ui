@@ -100,7 +100,7 @@ export default function MyCVEmployers({ mycvdata, employer_id, employer_name, em
                     <>
                     <i style={{ cursor: 'pointer' }} onClick={toggleAccordion}>
                         {/* <img src={GM} width="25" height="25" />&nbsp;&nbsp;<b>{employer_name}</b> */}
-                    <Image src={employerImages[employer_name]} width="30" height="30" alt="Employer Logo" />&nbsp;&nbsp;<b>{employer_name}</b>
+                    <Image src={employerImages[employer_name]} width="40" height="40" alt="Employer Logo" />&nbsp;&nbsp;<b>{employer_name}</b>
                     </i>
                     </>
                 }

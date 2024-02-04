@@ -78,9 +78,9 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
                             </>
                             :
                             <div className="Font-Segoe-Medium-Howto-CV">
-                                <GiCheckMark style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '10px' }} />
+                                <GiCheckMark style={{ color: '#169247', display: 'round', margin: 'auto', fontSize: '10px' }} />
                                 &nbsp;&nbsp;
-                                {roledetail_name}&nbsp; - &nbsp;{roledetail_desc} 
+                                {roledetail_name}&nbsp; - &nbsp;{roledetail_desc} {role_idd}
 
                             </div>
                         }
@@ -124,13 +124,13 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
             }
 
 <div className='Font-Verdana-Small'>
-                <Tooltip title='Insert additional Role Deatil' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={toggleAccordion}><MdAddCircleOutline style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button>&nbsp;Insert additional Role Deatil</Tooltip>
+                <Tooltip title='Insert additional Role Deatil' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={toggleAccordion}><MdAddCircleOutline style={{ color: '#DDDDDD', display: 'block', margin: 'auto', fontSize: '20px' }} /></button>&nbsp;Insert additional Role Deatil</Tooltip>
             </div>
 
             {isExpanded &&
                 (
                     <div>
-                        <MyCVEmployerRoleDetailsCreate />
+                        <MyCVEmployerRoleDetailsCreate parent_role_id1={role_idd} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
                     </div>
                 )
             }

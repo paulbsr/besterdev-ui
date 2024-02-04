@@ -19,7 +19,9 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, checkForRecords, setCheckF
     const [expandedRole, setExpandedRole] = useState(null);
 
     const filteredEmployers = mycvdata1.filter(employer => employer.employer_id === employer_id1);
+    
     const filteredRoles = filteredEmployers[0].employer_roles;
+    
     const sortedRoles = filteredRoles.sort((a, b) => b.role_id - a.role_id);
 
     const toggleAccordion = () => { setExpanded(!isExpanded); };
@@ -37,7 +39,8 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, checkForRecords, setCheckF
         setEditing(false);
     }
 
-    const onEditSave = async (role_id, role_name) => {
+    const onEditSave = async (role_id, role_name) => 
+    {
         const MyCVEmployerRolePUT =
         {
             'role_desc': roledesc
@@ -49,7 +52,8 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, checkForRecords, setCheckF
     onEditCancel();
     }
 
-    const onEditDelete = (steprecord_id) => {
+    const onEditDelete = (steprecord_id) => 
+    {
         axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/delete/${steprecord_id}`)
             .then((response) => {
                 setCheckForRecords(!checkForRecords);
@@ -72,11 +76,11 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, checkForRecords, setCheckF
                                     style={{ fontFamily: 'Calibri', fontStyle: 'Italic', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '250px' }} />
                                 &nbsp;&nbsp; */}
 
-                                <input
+                                <textarea
                                     required
                                     defaultValue={role_desc}
                                     onChange={(e) => setRole_desc(e.target.value)} 
-                                    style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '9px', width: '800px' }} />
+                                    style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '80.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '9px', width: '1150px' }} />
                             </>
                             :
                             <div className="Font-Segoe-Medium-Howto-CV"><i onClick={toggleAccordion} /></div> //smoke and mirrors here!
@@ -115,14 +119,14 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, checkForRecords, setCheckF
                 <React.Fragment key={role_id}>
                     {editableEmployerRole(role_id, role_name, role_desc, role_start, role_end)}
                     
-                    <i style={{ cursor: 'pointer' }} className="CV-Font-Calibri-Large-Black" onClick={() => handleRoleClick(role_id)}><b>{role_name}</b>&nbsp; &nbsp;(<Tenure startYear={role_start} endYear={role_end} />)</i>
+                    <i style={{ cursor: 'pointer' }} className="CV-Font-Calibri-Large-Black" onClick={() => handleRoleClick(role_id)}><b>{role_name}</b>&nbsp; &nbsp;&nbsp; &nbsp;-&nbsp; &nbsp;&nbsp; &nbsp;<Tenure startYear={role_start} endYear={role_end} /> from {role_start} to {role_end}</i>
                    
                     
                     {expandedRole === role_id && (
                         <div>
                            
                             {role_desc}
-                            <MyCVEmployerRoleDetails mycvdata2={mycvdata1} employer_id2={employer_id1} role_id2={role_id} role_idd={role_id} />
+                            <MyCVEmployerRoleDetails mycvdata2={mycvdata1} employer_id2={employer_id1} role_id2={role_id} role_idd={role_id} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
                             &nbsp;
                         </div>
                     )}

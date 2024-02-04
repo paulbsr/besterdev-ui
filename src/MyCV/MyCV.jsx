@@ -83,40 +83,107 @@ export default function MyCV(props) {
   };
 
 
+  // const InnerTableCentre = () => {
+  //   return (
+  //     <div>
+  //       <table>
+  //         <div>
+  //           <table style={{ width: '1200px' }}>
+  //             <thead>
+  //               <tr className="TableCV">
+  //                 <th>Curriculum Vitae of Paul Bester</th>
+  //               </tr>
+                
+  //               <tr>
+  //                 <th className="CV-Font-Calibri-Large-Italic-PG">Professional Summary: 24 years in US-based multi-national IT sector. Experienced in innovation-driven and commerce-driven disruptive "Startup/Transition" activities. Hyper-efficient, detail orientated leader, manager and organiser of technical teams with responsibility in the Network/Communications stack. Technically proficient in Routing & Switching, WAN-layer transport, Data Center operations, Contact Centers and Collaboration technologies. Strong PgM/PM, customer-facing and vendor-management with Overseas/Expat Assignment experience.</th>
+  //               </tr>
+                
+  //               <tr>
+  //                 <th className="CV-Font-Calibri-Large-Italic-PG">Areas of Expertise</th>
+  //               </tr>
+                
+  //               <tr>
+  //                 <th className="CV-Font-Calibri-Large-Italic-PG">Career Highlights</th>
+  //               </tr>
+
+  //               <tr>
+  //                 <th className="CV-Font-Calibri-Large-Italic-PG">Testimonials</th>
+  //               </tr>
+
+  //             </thead>
+
+  //             {mycvdata && mycvdata.map((emp) => (
+  //               <tbody>
+  //                 {
+  //                   <tr>
+  //                     <td className="CV-Font-Calibri-Large-Italic-PG">
+  //                       {<MyCVEmployers mycvdata={mycvdata} key={emp.employer_id} employer_name={emp.employer_name} employer_start={emp.employer_start} employer_end={emp.employer_end} employer_id={emp.employer_id} employer_desc={emp.employer_desc} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />}
+  //                     </td>
+  //                   </tr>
+  //                 }
+  //               </tbody>
+  //             )
+  //             )
+  //             }
+  //           </table>
+  //         </div>
+  //       </table>
+  //     </div>
+  //   );
+  // };
+
+
   const InnerTableCentre = () => {
     return (
       <div>
-        <table>
-          <div>
-            <table style={{ width: '1200px' }}>
-              <thead>
-                <tr className="TableCV">
-                  <th>Curriculum Vitae of Paul Bester</th>
-                </tr>
-                <tr>
-                  <th className="CV-Font-Calibri-Large-Italic-PG">24 years in US-based multi-national IT sector. Experienced in innovation-driven and commerce-driven disruptive "Startup/Transition" activities. Hyper-efficient, detail orientated leader, manager and organiser of technical teams with responsibility in the Network/Communications stack. Technically proficient in Routing & Switching, WAN-layer transport, Data Center operations, Contact Centers and Collaboration technologies. Strong PgM/PM, customer-facing and vendor-management with Overseas/Expat Assignment experience.</th>
-                </tr>
-              </thead>
-
-              {mycvdata && mycvdata.map((emp) => (
-                <tbody>
-                  {
-                    <tr>
-                      <td className="CV-Font-Calibri-Large-Italic-PG">
-                        {<MyCVEmployers mycvdata={mycvdata} key={emp.employer_id} employer_name={emp.employer_name} employer_start={emp.employer_start} employer_end={emp.employer_end} employer_id={emp.employer_id} employer_desc={emp.employer_desc} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />}
-                      </td>
-                    </tr>
-                  }
-                </tbody>
-              )
-              )
-              }
-            </table>
-          </div>
+        <table style={{ width: '1200px' }}>
+          <thead>
+            <tr className="TableCV">
+              <th>Curriculum Vitae of Paul Bester</th>
+            </tr>
+            
+            <tr>
+              <th className="CV-Font-Calibri-Large-Italic-PG">Professional Summary
+              {/* 24 years in US-based multi-national IT sector. Experienced in innovation-driven and commerce-driven disruptive "Startup/Transition" activities. Hyper-efficient, detail-orientated leader, manager, and organizer of technical teams with responsibility in the Network/Communications stack. Technically proficient in Routing & Switching, WAN-layer transport, Data Center operations, Contact Centers, and Collaboration technologies. Strong PgM/PM, customer-facing, and vendor-management with Overseas/Expat Assignment experience. */}
+              </th>
+            </tr>
+            
+            <tr>
+              <th className="CV-Font-Calibri-Large-Italic-PG">Areas of Expertise</th>
+            </tr>
+            
+            <tr>
+              <th className="CV-Font-Calibri-Large-Italic-PG">Career Highlights</th>
+            </tr>
+  
+            <tr>
+              <th className="CV-Font-Calibri-Large-Italic-PG">Testimonials</th>
+            </tr>
+          </thead>
+  
+          <tbody>
+            {mycvdata && mycvdata.map((emp) => (
+              <tr key={emp.employer_id}>
+                <td className="CV-Font-Calibri-Large-Italic-PG">
+                  <MyCVEmployers
+                    mycvdata={mycvdata}
+                    employer_name={emp.employer_name}
+                    employer_start={emp.employer_start}
+                    employer_end={emp.employer_end}
+                    employer_id={emp.employer_id}
+                    employer_desc={emp.employer_desc}
+                    checkForRecords={checkForRecords}
+                    setCheckForRecords={setCheckForRecords}
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
     );
   };
+  
 
 
   const InnerTableRight = () => {

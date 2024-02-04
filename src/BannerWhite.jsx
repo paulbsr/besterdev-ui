@@ -2,7 +2,6 @@ import React from 'react';
 import logo from './graphix/logo_transparent2.png';
 import Darknet13 from './graphix/Darknet13.png'
 import { TbLetterA } from "react-icons/tb";
-// import { TbLetterT } from "react-icons/tb";
 import { TbLetterT } from "react-icons/tb";
 import { TbLetterR } from "react-icons/tb";
 import { TbNumber1 } from "react-icons/tb";
@@ -17,20 +16,14 @@ import { TbLetterC } from "react-icons/tb";
 import { TbLetterS } from "react-icons/tb";
 import { TbLetterV } from "react-icons/tb";
 import { TbLetterDSmall } from "react-icons/tb";
-// import { TbLetterDSmall } from "react-icons/tb";
 import { SiMaildotru } from "react-icons/si";
 import { TbCircleLetterD } from "react-icons/tb";
-// RED = #D5441C
-// BLUE = #D5441C
-// import { TbLetterB } from "react-icons/tb";
 import { TbLetterM } from "react-icons/tb";
-// import { TbLetterS } from "react-icons/tb";
-// import { TbLetterC } from "react-icons/tb";
-
 
 const BannerWhite = () => {
   return (
     <div className="banner-white">
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;
 
       <SiMaildotru style={{color: '#D5441C', fontSize: '36px' }}/>

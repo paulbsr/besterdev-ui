@@ -2,31 +2,28 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import "../Fonts.css";
 import { toast } from 'react-toastify';
-import spacer2 from '../graphix/besterdev_spacer_white_half.png';
 
 export default function MyCVEmployerRoleDetailsCreate(props) {
   const current = new Date();
-  const [steprecord_parent, setSteprecord_parent] = useState(props.step_idd);
-  const [steprecord_number, setSteprecord_number] = useState("");
-  const [steprecord, setSteprecord] = useState("");
-  const [steprecord_date, setSteprecord_date] = useState(current);
-  const [step_id_fk, setStep_id_fk] = useState(props.step_idd);
+  const [checkForRecords, setCheckForRecords] = useState(true);
+  const [roledetaildesc, setRoledetaildesc] = useState("");
+  const [roledetailname, setRoledetailname] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    var StepRecordPost =
+    var RoleDetailPost =
     {
-      steprecord_parent: steprecord_parent,
-      steprecord_number: steprecord_number,
-      steprecord: steprecord,
-      steprecord_date: steprecord_date,
-      step_id_fk: step_id_fk,
+      // roledetail_year: roledetailyear,
+      roledetail_desc: roledetaildesc,
+      roledetail_name: roledetailname,
+      fk_role_id: props.parent_role_id1,
+      parent_role_id: props.parent_role_id1,
     };
 
-      const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/create`, StepRecordPost);
+      const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/role_detail/create`, RoleDetailPost);
       if (response.status === 200) {
-        props.setCheckForRecords(!props.checkForRecords);
-        toast.success(`Step Record#${steprecord_number} added.`)
+        setCheckForRecords(!checkForRecords);
+        toast.success(`Role Detail added.`)
       }
       else { toast.error(`oops! Something went wrong in TaskRecordCreate`); }
   };
@@ -37,22 +34,26 @@ export default function MyCVEmployerRoleDetailsCreate(props) {
         &nbsp;
         <input
           required
-          onChange={(e) => setSteprecord_number(e.target.value)}
-          style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '20px', padding: 0, paddingLeft: '7px' }} />
+          defaultValue={props.parent_role_id1}
+          onChange={(e) => setRoledetailname(e.target.value)}
+          style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '7px', width: '300px' }} />
 
         &nbsp;
+
         <input
           required
-          onChange={(e) => setSteprecord(e.target.value)}
-          style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1210px' }} />
-        {/* <div>&nbsp;</div> */}
+          defaultValue={props.parent_role_id1}
+          onChange={(e) => setRoledetaildesc(e.target.value)}
+          style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '7px', width: '780px' }} />
+          
         &nbsp;&nbsp;
-        {/* <img alt="1" src={spacer2} /> */}
+        
         <button
           className="Font-Verdana-Small-Postgres"
           type="submit"
           style={{ height: '30.5px', border: '1px solid #ffffff', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}
-        > Add </button>
+        > Add 
+        </button>
       </form>
     </>
   );
