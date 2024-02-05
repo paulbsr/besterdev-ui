@@ -56,7 +56,7 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
             )
     };
 
-    function editableEmployerRoleDetails(roledetail_id, roledetail_year, roledetail_desc, roledetail_name, parent_role_id ) {
+    function editableEmployerRoleDetails(roledetail_id, roledetail_year, roledetail_desc, roledetail_name, parent_role_id) {
         return (
             <div>
                 <div style={{ display: 'flex' }}>
@@ -123,14 +123,14 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
             )
             }
 
-<div className='Font-Verdana-Small'>
+            <div className='Font-Verdana-Small'>
                 <Tooltip title='Insert additional Role Deatil' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={toggleAccordion}><MdAddCircleOutline style={{ color: '#DDDDDD', display: 'block', margin: 'auto', fontSize: '20px' }} /></button>&nbsp;Insert additional Role Deatil</Tooltip>
             </div>
 
             {isExpanded &&
                 (
                     <div>
-                        <MyCVEmployerRoleDetailsCreate parent_role_id1={role_idd} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
+                        <MyCVEmployerRoleDetailsCreate parent_role_id1={role_idd} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
                     </div>
                 )
             }

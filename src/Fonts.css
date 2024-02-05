@@ -20,8 +20,8 @@
     font-family: "Candara";
     font-size: small;
     font-style: italic;
-    font-weight:bolder;
-    color: #D5441C;
+    font-weight: bolder;
+    color: #336791;
     justify-content:stretch;
 }
 
@@ -314,7 +314,10 @@
     padding: 10px;
     font-family: "Calibri";
     font-size: 45px;
+    border-radius: 8px;
 }
+
+
 
 /* .TableCV td {
     border: 1px solid rgb(233, 228, 228);
@@ -367,7 +370,7 @@
 .Table-home-centre{
     background-color: #ffffff;
     padding: 4px;
-    font-family: "Calibri";
+    font-family: "Verdana";
     font-size: small ;
     text-align: justify;
     font-weight: normal;
@@ -425,9 +428,9 @@
     font-family: "Calibri";
     font-size: large;
     font-style: italic;
-    color: #169247;
+    color: #000000;
     background-color: #f7f4f3;
-    /* border-radius: 4px; */
+    border-radius: 4px;
     /* border: 2px solid #bef0b9; */
 }
 

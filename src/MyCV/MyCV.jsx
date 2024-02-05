@@ -8,8 +8,15 @@ import Image from './Darknet12.png'
 import TUS from './TUS.png'
 import LYIT from './LYIT.png'
 import DCU from './DCU.png'
+import Testimonial_TB from './Testimonial_TB.png'
+import Testimonial_2 from './Testimonial_2.png'
 import MyCVEmployers from './MyCVEmployers';
 import { GiAchievement } from "react-icons/gi";
+import { GiCheckMark } from "react-icons/gi";
+import { GiStarMedal } from "react-icons/gi";
+import { PiMedalFill } from "react-icons/pi";
+import { PiMedalThin } from "react-icons/pi";
+import { RiMedal2Line } from "react-icons/ri";
 
 
 export default function MyCV(props) {
@@ -17,22 +24,18 @@ export default function MyCV(props) {
   const [isExpandedSummary, setExpandedSummary] = useState(false);
   const [isExpandedExpertise, setExpandedExpertise] = useState(false);
   const [isExpandedHighlights, setExpandedHighlights] = useState(false);
+  const [isExpandedTestimonials, setExpandedTestimonials] = useState(false);
   const [mycvdata, setMycvdata] = useState([]);
   const [mycvcareersummary, setMycvcareersummary] = useState([]);
   const [mycvcareerexpertise, setMycvcareerexpertise] = useState([]);
   const [mycvcareerhighlights, setMycvcareerhighlights] = useState([]);
-
   const [error, setError] = useState(null);
+
   const toggleAccordionSummary = () => { setExpandedSummary(!isExpandedSummary); };
   const toggleAccordionExpertise = () => { setExpandedExpertise(!isExpandedExpertise); };
   const toggleAccordionHighlights = () => { setExpandedHighlights(!isExpandedHighlights); };
+  const toggleAccordionTestimonials = () => { setExpandedTestimonials(!isExpandedTestimonials); };
 
-
-
-  // const handleLinkClick = (howtoId) => {
-  //   setHowtoIdd(howtoId);
-  //   setShowHowtoEdit(true);
-  // }
 
   useEffect(() => {
     axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/mycv`)
@@ -59,11 +62,12 @@ export default function MyCV(props) {
   }, [checkForRecords]);
 
 
+
   useEffect(() => {
     axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/mycv/expertise`)
       .then((response) => {
         const mycvcareerexpertiseIB = response.data;
-        mycvcareerexpertiseIB.sort((a, b) => b.expertise - a.expertise);
+        mycvcareerexpertiseIB.sort((a, b) => a.id - b.id);
         setMycvcareerexpertise(mycvcareerexpertiseIB);
       })
       .catch((error) => {
@@ -71,12 +75,13 @@ export default function MyCV(props) {
       });
   }, [checkForRecords]);
 
+  
 
   useEffect(() => {
     axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/mycv/highlights`)
       .then((response) => {
         const mycvcareerhighlightsIB = response.data;
-        mycvcareerhighlightsIB.sort((a, b) => b.highlight - a.highlight);
+        mycvcareerhighlightsIB.sort((a, b) => b.id - a.id);
         setMycvcareerhighlights(mycvcareerhighlightsIB);
       })
       .catch((error) => {
@@ -84,7 +89,7 @@ export default function MyCV(props) {
       });
   }, [checkForRecords]);
 
-
+console.log(mycvcareerexpertise)
 
   if (error) return <p>An error in Task_Accordion occurred</p>
 
@@ -136,7 +141,7 @@ export default function MyCV(props) {
       <div>
         <table style={{ width: '1200px' }}>
           <thead>
-            
+
             <tr className="TableCV">
               <th>Curriculum Vitae of Paul Bester</th>
             </tr>
@@ -146,53 +151,128 @@ export default function MyCV(props) {
                 This web presence was developed by me personally. You are welcome to review the <a href={'https://github.com/paulbsr/besterdev-ui'} target="_blank">front-end UI</a> and the <a href={'https://github.com/paulbsr/besterdev-api'} target="_blank">back-end API</a> repos on Github. The Tech Stack is JavaScript and NodeJS for the FE/UI hosted on AWS Amplify. The back-end API/MicroServices are developed in Java using the SpringBoot Framework hosted on Heroku alongisde the PostgreSQL database. Identity and Authorization (IAM) is porvided by Google's Firebase. I use Git for VCS and Maven for Builds. Swagger is available by clicking on the icon above.
               </th>
             </tr>
-            
-            
-            <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionSummary}><b>Professional Summary:</b>
-            {isExpandedSummary && (
-              <div className="mycvhover">
-                {mycvcareersummary && mycvcareersummary.map((summary) =>
-                (
-                  <tr key={summary.id}>{summary.career_summary}</tr>
-                )
-                )
-                }
-              </div>)}
+
+
+            <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionSummary}><b>Professional Summary</b>
+              {isExpandedSummary && (
+                <div className="mycvhover">
+                  {mycvcareersummary && mycvcareersummary.map((summary) =>
+                  (
+                    <tr key={summary.id}>{summary.career_summary}</tr>
+                  )
+                  )
+                  }
+                </div>
+              )
+              }
             </div>
             <div>&nbsp;</div>
 
 
-            <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionExpertise}><b>Areas of Expertise:</b>
-             {isExpandedExpertise && (
-               <div >
-                 {mycvcareerexpertise && mycvcareerexpertise.map((expertise) =>
-                 (
-                  <tr className="mycvhover" key={expertise.id}> <GiAchievement style={{ color: '#169247', display: 'round', margin: 'auto', fontSize: '20px' }} />{expertise.expertise_desc}</tr>
-                 )
-                 )
-                 }
-               </div>)}
-             </div>
-             <div>&nbsp;</div>
+            {/* <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionExpertise}><b>Areas of Expertise</b>
+              {isExpandedExpertise && (
+                <div>
+                  {mycvcareerexpertise && mycvcareerexpertise.map((expertise) =>
+                  (
+                    <tr className="mycvhover" key={expertise.id}> <GiAchievement style={{ color: '#169247', display: 'round', margin: 'auto', fontSize: '20px', cursor: 'pointer' }} />{expertise.expertise_desc}</tr>
+                  )
+                  )
+                  }
+                </div>
+                )
+                }
+            </div>
+            <div>&nbsp;</div> */}
+
+            {/* <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionExpertise}>
+              <b>Areas of Expertise</b>
+              {isExpandedExpertise && (
+                <div>
+                  <table>
+                    <tbody>
+                      {mycvcareerexpertise &&
+                        mycvcareerexpertise.reduce((rows, expertise, index) => 
+                        {
+                          if (index % 4 === 0) rows.push([]);
+                          rows[rows.length - 1].push(expertise);
+                          return rows;
+                        }, []).map((row, rowIndex) => (
+                          <tr key={rowIndex} className="mycvhover">
+                            {row.map((expertise) => (
+                              <td key={expertise.id}>
+                                <GiAchievement style={{ color: '#169247', display: 'round', margin: 'auto', fontSize: '20px', cursor: 'pointer' }} />
+                                {expertise.expertise_desc}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div> */}
 
 
-             <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionHighlights}><b>Career Highlights:</b>
-             {isExpandedHighlights && (
-               <div >
-                 {mycvcareerhighlights && mycvcareerhighlights.map((highlight) =>
-                 (
-                  <tr key={highlight.id}> <GiAchievement style={{ color: '#169247', display: 'round', margin: 'auto', fontSize: '19px' }} />{highlight.highlight_desc}</tr>
-                 )
-                 )
-                 }
-               </div>)}
-             </div>
-             <div>&nbsp;</div>
+            <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionExpertise}>
+              <b>Areas of Expertise</b>
+              {isExpandedExpertise && (
+                <div>
+                  <table className="expertise-table">
+                    <tbody>
+                      {mycvcareerexpertise &&
+                        mycvcareerexpertise.reduce((rows, expertise, index) => {
+                          if (index % 5 === 0) rows.push([]);
+                          rows[rows.length - 1].push(expertise);
+                          return rows;
+                        }, []).map((row, rowIndex) => (
+                          <tr key={rowIndex} className="mycvhover">
+                            {row.map((expertise, colIndex) => (
+                              <td key={expertise.id} style={{ width: '21%' }}>
+                                <GiCheckMark style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} />&nbsp;
+                                {expertise.expertise_desc}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+            <div>&nbsp;</div>
 
-            <tr>
-              <th className="CV-Font-Calibri-Large-Italic-PG">Testimonials</th>
-            </tr>
+
+            <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionHighlights}><b>Career Highlights</b>
+              {isExpandedHighlights && (
+                <div>
+                  {mycvcareerhighlights && mycvcareerhighlights.map((highlight) =>
+                  (
+                    <tr className="mycvhover" key={highlight.id}> <RiMedal2Line style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '16px', cursor: 'pointer' }} />&nbsp;{highlight.highlight_desc}</tr>
+                  )
+                  )
+                  }
+                </div>
+              )
+              }
+            </div>
+            <div>&nbsp;</div>
+
+
+            <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionTestimonials}><b>Testimonials</b>
+              {isExpandedTestimonials &&
+                (
+                  <div >
+                    <img src={Testimonial_TB} width="400" height="200" />
+                    <div className='Font-Verdana-Small-Footer'>Tony Bolton, VP of Global Telecoms, 2021.</div>
+                    <img src={Testimonial_2} width="100" height="50" />
+                    <div className='Font-Verdana-Small-Footer'>Tony Bolton, VP of Global Telecoms, 2021.</div>
+                  </div>
+                )
+              }
+            </div>
+            <div>&nbsp;</div>
           </thead>
+
 
           <tbody>
             {mycvdata && mycvdata.map((emp) => (
@@ -210,7 +290,9 @@ export default function MyCV(props) {
                   />
                 </td>
               </tr>
-            ))}
+            )
+            )
+            }
           </tbody>
         </table>
       </div>
@@ -224,11 +306,11 @@ export default function MyCV(props) {
       <div className="CV-Font-Calibri-Large-Italic-PG">
         <table>
           <tbody>
-            <img src={TUS} width="240" height="300" />
+            <img src={LYIT} width="240" height="300" />
             <div>MSc. Software Engineering</div>
             <div>AthloneIT (TUS), 2022</div>
             <div className='Font-Spacer-White'>Make this spacer white</div>
-            <img src={LYIT} width="240" height="300" />
+            <img src={TUS} width="240" height="300" />
             <div>MSc. Cloud Computing</div>
             <div>LetterkennyIT (LYIT), 2019</div>
             <div className='Font-Spacer-White'>Make this spacer white</div>
