@@ -127,9 +127,11 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, employer_name, checkForRec
                     
                     
                     {expandedRole === role_id && (
-                        <>
-                            {role_desc}
-                            <MyCVEmployerRoleDetails mycvdata2={mycvdata1} employer_id2={employer_id1} role_id2={role_id} role_idd={role_id} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
+                        <><div className="mycvhover">{role_desc}</div>
+                        
+                        <div>
+                            <MyCVEmployerRoleDetails mycvdata2={mycvdata1} employer_id2={employer_id1} role_id2={role_id} role_idd={role_id} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
+                        </div>
                         </>
                     )
                     }
