@@ -12,9 +12,9 @@ import { BsPencil } from "react-icons/bs";
 import { FaVirusCovid } from "react-icons/fa6";
 import GM from './GM.png'
 import { Image } from 'react-bootstrap';
-import { SiGeneralmotors } from "react-icons/si";
+import { SiGeneralmotors, SiDell,  } from "react-icons/si";
 
-function MyCVEmployerRoles({ mycvdata1, employer_id1, checkForRecords, setCheckForRecords }) {
+function MyCVEmployerRoles({ mycvdata1, employer_id1, employer_name, checkForRecords, setCheckForRecords }) {
     const date = new Date();
     const [isExpanded, setExpanded] = useState(false);
     const [editing, setEditing] = useState(false);
@@ -26,6 +26,7 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, checkForRecords, setCheckF
     const filteredRoles = filteredEmployers[0].employer_roles;
     
     const sortedRoles = filteredRoles.sort((a, b) => b.role_id - a.role_id);
+    console.log(sortedRoles)
 
     const toggleAccordion = () => { setExpanded(!isExpanded); };
 
@@ -65,7 +66,15 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, checkForRecords, setCheckF
             )
     };
 
-    function editableEmployerRole(role_id, role_desc) {
+    const employerImages = 
+    {
+        "GM": require('./GM.png'),
+        "HP": require('./HP.png'),
+        "DELL": require('./DELL.png'),
+        "BSR": require('./BSR.jpg'),
+    };
+
+    function editableEmployerRole(role_id, role_desc, role_employer) {
         return (
             <div style={{ display: 'flex', float: 'right' }}>
                 {
@@ -79,29 +88,29 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, checkForRecords, setCheckF
                         null
                     // <div className="CV-Font-Calibri-Large-Italic-PG"><i onClick={toggleAccordion} /></div> //smoke and mirrors here!
                 }
-                    
-                    
-                    <div style={{ display: 'flex', float: 'right' }}>
-                        
-                            {editing === role_id ?
-                                (
-                                    <>
-                                        <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave(role_id)}><GiCheckMark style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
-                                        <Tooltip title='Discard' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditCancel()}><PiArrowCounterClockwiseBold style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
-                                        <Tooltip title='Purge' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditDelete(role_id)}>< FaRegTrashAlt style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
-                                    </>
-                                )
-                                :
-                                (
-                                    <Tooltip title='Edit the Role Description' placement="top-end">
-                                        <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(role_id, role_desc) }}>
-                                        <BsPencil style={{ color: '#DDDDDD', display: 'round', margin: 'auto', fontSize: '15px' }} /></button>
-                                    </Tooltip>
-                                )
-                            }
-                        
-                    </div>
-                
+
+
+                <div style={{ display: 'flex', float: 'right' }}>
+
+                    {editing === role_id ?
+                        (
+                            <>
+                                <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave(role_id)}><GiCheckMark style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
+                                <Tooltip title='Discard' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditCancel()}><PiArrowCounterClockwiseBold style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
+                                <Tooltip title='Purge' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditDelete(role_id)}>< FaRegTrashAlt style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
+                            </>
+                        )
+                        :
+                        (
+                            <Tooltip title='Edit the Role Description' placement="top-end">
+                                <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(role_id, role_desc) }}>
+                                    <BsPencil style={{ color: '#DDDDDD', display: 'round', margin: 'auto', fontSize: '15px' }} /></button>
+                            </Tooltip>
+                        )
+                    }
+
+                </div>
+
             </div>
         )
     }
@@ -109,12 +118,13 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, checkForRecords, setCheckF
 
     return (
         <>
-            {sortedRoles.map(({ role_id, role_name, role_desc, role_start, role_end }) => (
+            {sortedRoles.map(({ role_id, role_name, role_desc, role_start, role_end, role_employer }) => (
                 <React.Fragment key={role_id}>
-                    {editableEmployerRole(role_id, role_desc)}
+                    <div className='Font-Spacer-White'>Make this spacer white</div>
+                    {/* {editableEmployerRole(role_id, role_desc)} */}
 
-                    <div style={{ cursor: 'pointer' }} className="CV-Font-Calibri-Large-Italic-PG" onClick={() => handleRoleClick(role_id)}><b><SiGeneralmotors style={{ color: 'blue', display: 'round', margin: 'auto', fontSize: '20px' }} />&nbsp;&nbsp;{role_name}</b>&nbsp; &nbsp;&nbsp; &nbsp;-&nbsp; &nbsp;&nbsp; &nbsp;<Tenure startYear={role_start} endYear={role_end} /> from {role_start} to {role_end}</div>
-                   
+                    <div style={{ cursor: 'pointer' }} className="CV-Font-Calibri-Large-Italic-PG" onClick={() => handleRoleClick(role_id)}><b><Image src={employerImages[role_employer]} width="27" height="27" alt="Employer Logo" />&nbsp;&nbsp;{role_name}</b>&nbsp; &nbsp;&nbsp; &nbsp;-&nbsp; &nbsp;&nbsp; &nbsp;<Tenure startYear={role_start} endYear={role_end} /> from {role_start} to {role_end}</div>
+                    
                     
                     {expandedRole === role_id && (
                         <>

@@ -63,7 +63,7 @@ export default function MyCVEmployers({ mycvdata, employer_id, employer_name, em
     return (
         
         
-        <MyCVEmployerRoles mycvdata1={mycvdata} employer_id1={employer_id} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
+        <MyCVEmployerRoles mycvdata1={mycvdata} employer_id1={employer_id} employer_name={employer_name} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
             
             /* <iv className="Font-Segoe-Large-Howto" >
                 <div style={{ display: 'flex', float: 'right' }}>
