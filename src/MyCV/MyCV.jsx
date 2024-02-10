@@ -17,6 +17,7 @@ import { GiStarMedal } from "react-icons/gi";
 import { PiMedalFill } from "react-icons/pi";
 import { PiMedalThin } from "react-icons/pi";
 import { RiMedal2Line } from "react-icons/ri";
+import MyCVEmployerRoles from './MyCVEmployerRoles';
 
 
 export default function MyCV(props) {
@@ -153,7 +154,7 @@ console.log(mycvcareerexpertise)
             </tr>
 
 
-            <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionSummary}><b>Professional Summary</b>
+            <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionSummary} style={{ cursor: 'pointer' }}><b>Professional Summary</b>
               {isExpandedSummary && (
                 <div className="mycvhover">
                   {mycvcareersummary && mycvcareersummary.map((summary) =>
@@ -213,8 +214,7 @@ console.log(mycvcareerexpertise)
             </div> */}
 
 
-            <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionExpertise}>
-              <b>Areas of Expertise</b>
+            <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionExpertise} style={{ cursor: 'pointer' }}><b>Areas of Expertise</b>
               {isExpandedExpertise && (
                 <div>
                   <table className="expertise-table">
@@ -242,7 +242,7 @@ console.log(mycvcareerexpertise)
             <div>&nbsp;</div>
 
 
-            <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionHighlights}><b>Career Highlights</b>
+            <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionHighlights} style={{ cursor: 'pointer' }}><b>Career Highlights</b>
               {isExpandedHighlights && (
                 <div>
                   {mycvcareerhighlights && mycvcareerhighlights.map((highlight) =>
@@ -258,7 +258,7 @@ console.log(mycvcareerexpertise)
             <div>&nbsp;</div>
 
 
-            <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionTestimonials}><b>Testimonials</b>
+            <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionTestimonials} style={{ cursor: 'pointer' }}><b>Testimonials</b>
               {isExpandedTestimonials &&
                 (
                   <div >
@@ -277,8 +277,8 @@ console.log(mycvcareerexpertise)
           <tbody>
             {mycvdata && mycvdata.map((emp) => (
               <tr key={emp.employer_id}>
-                <td className="CV-Font-Calibri-Large-Italic-PG">
-                  <MyCVEmployers
+                <td >
+                  {/* <MyCVEmployers
                     mycvdata={mycvdata}
                     employer_name={emp.employer_name}
                     employer_start={emp.employer_start}
@@ -287,7 +287,8 @@ console.log(mycvcareerexpertise)
                     employer_desc={emp.employer_desc}
                     checkForRecords={checkForRecords}
                     setCheckForRecords={setCheckForRecords}
-                  />
+                  /> */}
+                    <MyCVEmployerRoles mycvdata1={mycvdata} employer_id1={emp.employer_id} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
                 </td>
               </tr>
             )
@@ -316,7 +317,7 @@ console.log(mycvcareerexpertise)
             <div className='Font-Spacer-White'>Make this spacer white</div>
             <img src={DCU} width="240" height="300" />
             <div>BSc. Information Technology & Computer Science</div>
-            <div>Dublin City University (DCU), 2007</div>
+            <div>Dublin City University (DCU), 2013</div>
           </tbody>
         </table>
       </div>

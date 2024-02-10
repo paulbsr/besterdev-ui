@@ -10,6 +10,9 @@ import Tenure from './Tenure';
 import MyCVEmployerRoleDetails from './MyCVEmployerRoleDetails';
 import { BsPencil } from "react-icons/bs";
 import { FaVirusCovid } from "react-icons/fa6";
+import GM from './GM.png'
+import { Image } from 'react-bootstrap';
+import { SiGeneralmotors } from "react-icons/si";
 
 function MyCVEmployerRoles({ mycvdata1, employer_id1, checkForRecords, setCheckForRecords }) {
     const date = new Date();
@@ -62,36 +65,27 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, checkForRecords, setCheckF
             )
     };
 
-    function editableEmployerRole(role_id, role_name, role_desc, role_start, role_end) {
+    function editableEmployerRole(role_id, role_desc) {
         return (
-            <div>
-                <div>
-                    <div>
-                        {editing === role_id ?
-                            <>
-                                {/* <input
-                                    required
-                                    defaultValue={role_name}
-                                    onChange={(e) => setRole_name(e.target.value)}
-                                    style={{ fontFamily: 'Calibri', fontStyle: 'Italic', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '250px' }} />
-                                &nbsp;&nbsp; */}
-
-                                <textarea
-                                    required
-                                    defaultValue={role_desc}
-                                    onChange={(e) => setRole_desc(e.target.value)} 
-                                    style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '80.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '9px', width: '1150px' }} />
-                            </>
-                            :
-                            <div className="Font-Segoe-Medium-Howto-CV"><i onClick={toggleAccordion} /></div> //smoke and mirrors here!
-                        }
-                    </div>
+            <div style={{ display: 'flex', float: 'right' }}>
+                {
+                    editing === role_id ?
+                        <textarea
+                            required
+                            defaultValue={role_desc}
+                            onChange={(e) => setRole_desc(e.target.value)}
+                            style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '80.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '9px', width: '1150px' }} />
+                        :
+                        null
+                    // <div className="CV-Font-Calibri-Large-Italic-PG"><i onClick={toggleAccordion} /></div> //smoke and mirrors here!
+                }
+                    
                     
                     <div style={{ display: 'flex', float: 'right' }}>
-                        <>
+                        
                             {editing === role_id ?
                                 (
-                                    <>&nbsp;&nbsp;
+                                    <>
                                         <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave(role_id)}><GiCheckMark style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
                                         <Tooltip title='Discard' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditCancel()}><PiArrowCounterClockwiseBold style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
                                         <Tooltip title='Purge' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditDelete(role_id)}>< FaRegTrashAlt style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
@@ -105,9 +99,9 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, checkForRecords, setCheckF
                                     </Tooltip>
                                 )
                             }
-                        </>
+                        
                     </div>
-                </div>
+                
             </div>
         )
     }
@@ -117,21 +111,22 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, checkForRecords, setCheckF
         <>
             {sortedRoles.map(({ role_id, role_name, role_desc, role_start, role_end }) => (
                 <React.Fragment key={role_id}>
-                    {editableEmployerRole(role_id, role_name, role_desc, role_start, role_end)}
-                    
-                    <i style={{ cursor: 'pointer' }} className="CV-Font-Calibri-Large-Black" onClick={() => handleRoleClick(role_id)}><b>{role_name}</b>&nbsp; &nbsp;&nbsp; &nbsp;-&nbsp; &nbsp;&nbsp; &nbsp;<Tenure startYear={role_start} endYear={role_end} /> from {role_start} to {role_end}</i>
+                    {editableEmployerRole(role_id, role_desc)}
+
+                    <div style={{ cursor: 'pointer' }} className="CV-Font-Calibri-Large-Italic-PG" onClick={() => handleRoleClick(role_id)}><b><SiGeneralmotors style={{ color: 'blue', display: 'round', margin: 'auto', fontSize: '20px' }} />&nbsp;&nbsp;{role_name}</b>&nbsp; &nbsp;&nbsp; &nbsp;-&nbsp; &nbsp;&nbsp; &nbsp;<Tenure startYear={role_start} endYear={role_end} /> from {role_start} to {role_end}</div>
                    
                     
                     {expandedRole === role_id && (
-                        <div>
-                           
+                        <>
                             {role_desc}
                             <MyCVEmployerRoleDetails mycvdata2={mycvdata1} employer_id2={employer_id1} role_id2={role_id} role_idd={role_id} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
-                            &nbsp;
-                        </div>
-                    )}
+                        </>
+                    )
+                    }
                 </React.Fragment>
-            ))}
+            )
+            )
+            }
         </>
     );
 }

@@ -71,7 +71,6 @@ const Footer = () => (
     <TbSquareRoundedLetterB style={{color: 'black', fontSize: '20px' }}/>
     <TbSquareRoundedLetterS style={{color: 'black', fontSize: '20px' }}/>
     <TbSquareRoundedLetterC style={{color: 'black', fontSize: '20px' }}/> */}
-    MSc (Cloud Native SW Engineering) &nbsp; &nbsp; &nbsp;   MSc (Cloud Computing) &nbsp; &nbsp; &nbsp;BSc (Information Technology)
     &nbsp; &nbsp; &nbsp;
     Last Updated: {formattedDate }. &nbsp; All rights reserved. 
 </div>);

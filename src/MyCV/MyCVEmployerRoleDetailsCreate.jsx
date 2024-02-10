@@ -46,15 +46,16 @@ export default function MyCVEmployerRoleDetailsCreate(props) {
           onChange={(e) => setRoledetaildesc(e.target.value)}
           style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '7px', width: '780px' }} />
           
-        &nbsp;&nbsp;
+        &nbsp;
         
         <button
           className="Font-Verdana-Small-Postgres"
           type="submit"
-          style={{ height: '30.5px', border: '1px solid #ffffff', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}
+          style={{ height: '30.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#D5441C', cursor: 'pointer' }}
         > Add 
         </button>
       </form>
+      <div>&nbsp;</div>
     </>
   );
 }

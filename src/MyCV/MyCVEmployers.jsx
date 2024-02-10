@@ -61,8 +61,11 @@ export default function MyCVEmployers({ mycvdata, employer_id, employer_name, em
 
 
     return (
-        <>
-            <div className="Font-Segoe-Large-Howto" >
+        
+        
+        <MyCVEmployerRoles mycvdata1={mycvdata} employer_id1={employer_id} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
+            
+            /* <iv className="Font-Segoe-Large-Howto" >
                 <div style={{ display: 'flex', float: 'right' }}>
                     <>
                         {editing === true ?
@@ -86,20 +89,10 @@ export default function MyCVEmployers({ mycvdata, employer_id, employer_name, em
 
                 {editing === true ?
                     <>
-                        {/* <i>Employer:</i>&nbsp;  &nbsp;
-
-                        <input
-                            required
-                            defaultValue={employer_name}
-                            onChange={(e) => setEmployername(e.target.value)}
-                            style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '400px' }} />
-                        <div className="Font-Spacer-White">Make this Spacer White</div> */}
-
                     </>
                     :
                     <>
                     <i style={{ cursor: 'pointer' }} onClick={toggleAccordion}>
-                        {/* <img src={GM} width="25" height="25" />&nbsp;&nbsp;<b>{employer_name}</b> */}
                     <Image src={employerImages[employer_name]} width="40" height="40" alt="Employer Logo" />&nbsp;&nbsp;<b>{employer_name}</b>
                     </i>
                     </>
@@ -107,9 +100,9 @@ export default function MyCVEmployers({ mycvdata, employer_id, employer_name, em
                 
                 &nbsp;&nbsp; <Tenure startYear={employer_start} endYear={employer_end} /> between {employer_start} and {employer_end}
                 
-            </div>
+            </div> */
 
-            {isExpanded &&
+            /* {isExpanded &&
             
                 <div>{employer_desc}
                     <div className="Font-Segoe-Large-Howto" >
@@ -147,7 +140,8 @@ export default function MyCVEmployers({ mycvdata, employer_id, employer_name, em
                     </div>
                     <MyCVEmployerRoles mycvdata1={mycvdata} employer_id1={employer_id} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
                 </div>
-            }
-        </>
+            } */
+            
+        
     );
 }

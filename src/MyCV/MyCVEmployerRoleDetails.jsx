@@ -81,7 +81,6 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
                                 <GiCheckMark style={{ color: '#169247', display: 'round', margin: 'auto', fontSize: '10px' }} />
                                 &nbsp;&nbsp;
                                 {roledetail_name}&nbsp; - &nbsp;{roledetail_desc} {role_idd}
-
                             </div>
                         }
                     </div>
@@ -114,7 +113,6 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
 
     return (
         <div>
-
             {filteredRoleDetails.map(({ roledetail_id, roledetail_year, roledetail_desc, roledetail_name, parent_role_id }) => (
                 <div>
                     {editableEmployerRoleDetails(roledetail_id, roledetail_year, roledetail_desc, roledetail_name, parent_role_id)}
@@ -134,10 +132,7 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
                     </div>
                 )
             }
-
         </div>
-
-
     );
 }
 

@@ -114,7 +114,7 @@ export default function HomePage22(props) {
       <div>
         <div className="Font-Verdana-Larger-Howto-Rusty">
           {alphabet.split('').map((letter, index) => (
-            <span
+            <span style={{ cursor: 'pointer' }} 
               key={index}
               className={selectedLetter === letter ? 'selected' : ''}
               onClick={() => setSelectedLetter(letter)}
