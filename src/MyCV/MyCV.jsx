@@ -10,14 +10,14 @@ import LYIT from './LYIT.png'
 import DCU from './DCU.png'
 import Testimonial_TB from './Testimonial_TB.png'
 import Testimonial_2 from './Testimonial_2.png'
-import MyCVEmployers from './MyCVEmployers';
-import { GiAchievement } from "react-icons/gi";
 import { GiCheckMark } from "react-icons/gi";
-import { GiStarMedal } from "react-icons/gi";
-import { PiMedalFill } from "react-icons/pi";
-import { PiMedalThin } from "react-icons/pi";
 import { RiMedal2Line } from "react-icons/ri";
 import MyCVEmployerRoles from './MyCVEmployerRoles';
+import { MdOutlineSummarize } from "react-icons/md";
+import { GrUserExpert } from "react-icons/gr";
+import { FaHighlighter } from "react-icons/fa6";
+import { IoTrophyOutline } from "react-icons/io5";
+import { GiSkills } from "react-icons/gi";
 
 
 export default function MyCV(props) {
@@ -104,7 +104,8 @@ export default function MyCV(props) {
           <tr>
             <td style={{ width: '10%' }}></td>
             <td style={{ width: '1%' }}></td>
-            <td style={{ width: '48%' }}><img src={Image} /></td>
+            {/* <td style={{ width: '48%' }}><img src={Image} /></td> */}
+            <td style={{ width: '48%' }}></td>
             <td style={{ width: '1%' }}></td>
             <td style={{ width: '10%' }}></td>
           </tr>
@@ -155,8 +156,9 @@ export default function MyCV(props) {
               </th>
             </tr>
 
-
-            <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionSummary} style={{ cursor: 'pointer' }}><b>Professional Summary</b>
+            <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionSummary} style={{ cursor: 'pointer' }}>
+            <MdOutlineSummarize style={{ color: '#336791', display: 'round', margin: 'auto', fontSize: '30px', cursor: 'pointer' }} />
+            &nbsp;<b>Professional Summary</b>
               {isExpandedSummary && (
                 <div className="mycvhover">
                   {mycvcareersummary && mycvcareersummary.map((summary) =>
@@ -171,7 +173,9 @@ export default function MyCV(props) {
             </div>
             <div>&nbsp;</div>
 
-            <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionExpertise} style={{ cursor: 'pointer' }}><b>Areas of Expertise</b>
+            <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionExpertise} style={{ cursor: 'pointer' }}>
+            <GiSkills style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} />
+            &nbsp;<b>Areas of Expertise</b>
               {isExpandedExpertise && (
                 <div>
                   <table className="expertise-table">
@@ -199,7 +203,9 @@ export default function MyCV(props) {
             <div>&nbsp;</div>
 
 
-            <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionHighlights} style={{ cursor: 'pointer' }}><b>Career Highlights</b>
+            <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionHighlights} style={{ cursor: 'pointer' }}>
+            <FaHighlighter style={{ color: '#336791', display: 'round', margin: 'auto', fontSize: '28px', cursor: 'pointer' }} />
+            &nbsp;<b>Career Highlights</b>
               {isExpandedHighlights && (
                 <div>
                   {mycvcareerhighlights && mycvcareerhighlights.map((highlight) =>
@@ -215,7 +221,9 @@ export default function MyCV(props) {
             <div>&nbsp;</div>
 
 
-            <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionTestimonials} style={{ cursor: 'pointer' }}><b>Testimonials</b>
+            <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionTestimonials} style={{ cursor: 'pointer' }}>
+            <IoTrophyOutline style={{ color: '#336791', display: 'round', margin: 'auto', fontSize: '28px', cursor: 'pointer' }} />
+            &nbsp;<b>Testimonials</b>
               {isExpandedTestimonials &&
                 (
                   <div >
