@@ -9,55 +9,44 @@ import { FaRegTrashAlt } from 'react-icons/fa'; //Delete
 import Tenure from './Tenure';
 import MyCVEmployerRoleDetails from './MyCVEmployerRoleDetails';
 import { BsPencil } from "react-icons/bs";
-import { FaVirusCovid } from "react-icons/fa6";
-import GM from './GM.png'
 import { Image } from 'react-bootstrap';
-import { SiGeneralmotors, SiDell,  } from "react-icons/si";
+
 
 function MyCVEmployerRoles({ mycvdata1, employer_id1, employer_name, checkForRecords, setCheckForRecords }) {
-    const date = new Date();
-    const [isExpanded, setExpanded] = useState(false);
     const [editing, setEditing] = useState(false);
     const [roledesc, setRole_desc] = useState();
     const [expandedRole, setExpandedRole] = useState(null);
+    const toggleAccordionRoles = () => { setExpandedRoles(!isExpandedRoles); };
+    const [isExpandedRoles, setExpandedRoles] = useState(false);
 
     const filteredEmployers = mycvdata1.filter(employer => employer.employer_id === employer_id1);
     
     const filteredRoles = filteredEmployers[0].employer_roles;
     
     const sortedRoles = filteredRoles.sort((a, b) => b.role_id - a.role_id);
-    console.log(sortedRoles)
 
-    const toggleAccordion = () => { setExpanded(!isExpanded); };
-
-    const handleRoleClick = (role_id) => {
-        setExpandedRole(expandedRole === role_id ? null : role_id);
-    };
+    const handleRoleClick = (role_id) => {setExpandedRole(expandedRole === role_id ? null : role_id); };
 
     const handleEdit = (role_id, role_desc) => {
         setEditing(role_id);
         setRole_desc(role_desc);
     }
 
-    const onEditCancel = () => {
-        setEditing(false);
-    }
+    const onEditCancel = () => { setEditing(false); }
 
-    const onEditSave = async (role_id, role_name) => 
-    {
+    const onEditSave = async (role_id, role_name) => {
         const MyCVEmployerRolePUT =
         {
             'role_desc': roledesc
         }
 
-    const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/role_desc/update/${role_id}`, MyCVEmployerRolePUT)
-    setCheckForRecords(!checkForRecords)
-    toast.success(`${role_id} amended.`)
-    onEditCancel();
+        const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/role_desc/update/${role_id}`, MyCVEmployerRolePUT)
+        setCheckForRecords(!checkForRecords)
+        toast.success(`${role_id} amended.`)
+        onEditCancel();
     }
 
-    const onEditDelete = (steprecord_id) => 
-    {
+    const onEditDelete = (steprecord_id) => {
         axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/delete/${steprecord_id}`)
             .then((response) => {
                 setCheckForRecords(!checkForRecords);
@@ -74,7 +63,7 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, employer_name, checkForRec
         "BSR": require('./BSR.jpg'),
     };
 
-    function editableEmployerRole(role_id, role_desc, role_employer) {
+    function editableEmployerRole(role_id, role_desc) {
         return (
             <div style={{ display: 'flex', float: 'right' }}>
                 {
@@ -86,7 +75,6 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, employer_name, checkForRec
                             style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '80.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '9px', width: '1150px' }} />
                         :
                         null
-                    // <div className="CV-Font-Calibri-Large-Italic-PG"><i onClick={toggleAccordion} /></div> //smoke and mirrors here!
                 }
 
 
@@ -108,40 +96,37 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, employer_name, checkForRec
                             </Tooltip>
                         )
                     }
-
                 </div>
-
             </div>
         )
     }
 
 
     return (
-        <>
-            {sortedRoles.map(({ role_id, role_name, role_desc, role_start, role_end, role_employer }) => (
-                <React.Fragment key={role_id}>
-                    <div className='Font-Spacer-White'>Make this spacer white</div>
-                    {/* {editableEmployerRole(role_id, role_desc)} */}
-
-                    <div style={{ cursor: 'pointer' }} className="CV-Font-Calibri-Large-Italic-PG" onClick={() => handleRoleClick(role_id)}><b><Image src={employerImages[role_employer]} width="27" height="27" alt="Employer Logo" />&nbsp;&nbsp;{role_name}</b>&nbsp; &nbsp;&nbsp; &nbsp;-&nbsp; &nbsp;&nbsp; &nbsp;<Tenure startYear={role_start} endYear={role_end} /> from {role_start} to {role_end}</div>
-                    
-                    
-                    {expandedRole === role_id && (
-                        <><div className="mycvhover">{role_desc}</div>
-                        
-                        <div>
-                            <MyCVEmployerRoleDetails mycvdata2={mycvdata1} employer_id2={employer_id1} role_id2={role_id} role_idd={role_id} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
-                        </div>
-                        </>
+        <table className="TableCV" style={{ width: '1350px' }}>
+          {sortedRoles && sortedRoles.map((role) => (
+            <tbody>
+              {
+                  <tr>
+                    <td className="CV-Font-Calibri-Large-Italic-PG" onClick={() => handleRoleClick(role.role_id)} style={{ cursor: 'pointer' }}><b><Image src={employerImages[role.role_employer]} width="27" height="27" alt="Employer Logo" />&nbsp;&nbsp;{role.role_name}</b>&nbsp;-&nbsp;<Tenure startYear={role.role_start} endYear={role.role_end} /> from {role.role_start} to {role.role_end}
+                    {expandedRole === role.role_id && 
+                    (
+                    <div>
+                        <MyCVEmployerRoleDetails mycvdata2={mycvdata1} employer_id2={employer_id1} role_id2={role.role_id} role_idd={role.role_id} role_desc={role.role_desc} role_name={role.role_name} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
+                    </div>
                     )
                     }
-                </React.Fragment>
-            )
-            )
-            }
-        </>
+                    </td>
+                  </tr>
+              }        <div>&nbsp;</div>
+            </tbody>
+          )
+          )
+          }
+
+        </table>
+
     );
 }
 
 export default MyCVEmployerRoles;
-

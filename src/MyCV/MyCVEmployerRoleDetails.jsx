@@ -11,7 +11,7 @@ import MyCVEmployerRoleDetailsCreate from './MyCVEmployerRoleDetailsCreate';
 import { MdAddCircleOutline } from "react-icons/md";
 
 
-function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, checkForRecords, setCheckForRecords }) {
+function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, role_desc, role_name, checkForRecords, setCheckForRecords }) {
     const date = new Date();
     const [isExpanded, setExpanded] = useState(false);
     const toggleAccordion = () => { setExpanded(!isExpanded); };
@@ -58,7 +58,7 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
 
     function editableEmployerRoleDetails(roledetail_id, roledetail_year, roledetail_desc, roledetail_name, parent_role_id) {
         return (
-            <div>
+            <div >
                 <div style={{ display: 'flex' }}>
                     <div>
                         {editing === roledetail_id ?
@@ -112,9 +112,9 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
 
 
     return (
-        <div >
+        <div className="Font-Segoe-Large-Howto">{role_desc} 
             {filteredRoleDetails.map(({ roledetail_id, roledetail_year, roledetail_desc, roledetail_name, parent_role_id }) => (
-                <div >
+                <div className="mycvhover">
                     {editableEmployerRoleDetails(roledetail_id, roledetail_year, roledetail_desc, roledetail_name, parent_role_id)}
                 </div>
             )

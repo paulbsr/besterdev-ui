@@ -26,16 +26,21 @@ export default function MyCV(props) {
   const [isExpandedExpertise, setExpandedExpertise] = useState(false);
   const [isExpandedHighlights, setExpandedHighlights] = useState(false);
   const [isExpandedTestimonials, setExpandedTestimonials] = useState(false);
+  const [isExpandedRoles, setExpandedRoles] = useState(false);
+
   const [mycvdata, setMycvdata] = useState([]);
   const [mycvcareersummary, setMycvcareersummary] = useState([]);
   const [mycvcareerexpertise, setMycvcareerexpertise] = useState([]);
   const [mycvcareerhighlights, setMycvcareerhighlights] = useState([]);
+  const [mycvcareertestimonials, setMycvcareertestimonials] = useState([]);
   const [error, setError] = useState(null);
 
   const toggleAccordionSummary = () => { setExpandedSummary(!isExpandedSummary); };
   const toggleAccordionExpertise = () => { setExpandedExpertise(!isExpandedExpertise); };
   const toggleAccordionHighlights = () => { setExpandedHighlights(!isExpandedHighlights); };
   const toggleAccordionTestimonials = () => { setExpandedTestimonials(!isExpandedTestimonials); };
+  const toggleAccordionRoles = () => { setExpandedRoles(!isExpandedRoles); };
+
 
 
   useEffect(() => {
@@ -76,7 +81,7 @@ export default function MyCV(props) {
       });
   }, [checkForRecords]);
 
-  
+
 
   useEffect(() => {
     axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/mycv/highlights`)
@@ -90,9 +95,7 @@ export default function MyCV(props) {
       });
   }, [checkForRecords]);
 
-console.log(mycvcareerexpertise)
-
-  if (error) return <p>An error in Task_Accordion occurred</p>
+  if (error) return <p>Error fetching mycvcareerhighlights data</p>
 
   const OuterTable = () => (
     <div>
@@ -115,7 +118,6 @@ console.log(mycvcareerexpertise)
         </tbody>
       </table>
     </div>
-
   );
 
 
@@ -149,7 +151,7 @@ console.log(mycvcareerexpertise)
 
             <tr className="Font-Calibri-Medium-MyCV">
               <th >
-                This web presence was developed by me personally. You are welcome to review the <a href={'https://github.com/paulbsr/besterdev-ui'} target="_blank">front-end UI</a> and the <a href={'https://github.com/paulbsr/besterdev-api'} target="_blank">back-end API</a> repos on Github. The Tech Stack is JavaScript and NodeJS for the FE/UI hosted on AWS Amplify. The back-end API/MicroServices are developed in Java using the SpringBoot Framework hosted on Heroku alongisde the PostgreSQL database. Identity and Authorization (IAM) is porvided by Google's Firebase. I use Git for VCS and Maven for Builds. Swagger is available by clicking on the icon above.
+                This web presence is developed by me personally. You are welcome to review the <a href={'https://github.com/paulbsr/besterdev-ui'} target="_blank">front-end UI</a> and the <a href={'https://github.com/paulbsr/besterdev-api'} target="_blank">back-end API</a> repos on Github. The Tech Stack is JavaScript and NodeJS for the FE/UI hosted on AWS Amplify. The back-end API/MicroServices are developed in Java using the SpringBoot Framework hosted on Heroku alongisde the PostgreSQL database. Identity and Authorization (IAM) is porvided by Google's Firebase. I use Git for VCS and Maven for Builds. Swagger is available by clicking on the icon above.
               </th>
             </tr>
 
@@ -168,51 +170,6 @@ console.log(mycvcareerexpertise)
               }
             </div>
             <div>&nbsp;</div>
-
-
-            {/* <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionExpertise}><b>Areas of Expertise</b>
-              {isExpandedExpertise && (
-                <div>
-                  {mycvcareerexpertise && mycvcareerexpertise.map((expertise) =>
-                  (
-                    <tr className="mycvhover" key={expertise.id}> <GiAchievement style={{ color: '#169247', display: 'round', margin: 'auto', fontSize: '20px', cursor: 'pointer' }} />{expertise.expertise_desc}</tr>
-                  )
-                  )
-                  }
-                </div>
-                )
-                }
-            </div>
-            <div>&nbsp;</div> */}
-
-            {/* <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionExpertise}>
-              <b>Areas of Expertise</b>
-              {isExpandedExpertise && (
-                <div>
-                  <table>
-                    <tbody>
-                      {mycvcareerexpertise &&
-                        mycvcareerexpertise.reduce((rows, expertise, index) => 
-                        {
-                          if (index % 4 === 0) rows.push([]);
-                          rows[rows.length - 1].push(expertise);
-                          return rows;
-                        }, []).map((row, rowIndex) => (
-                          <tr key={rowIndex} className="mycvhover">
-                            {row.map((expertise) => (
-                              <td key={expertise.id}>
-                                <GiAchievement style={{ color: '#169247', display: 'round', margin: 'auto', fontSize: '20px', cursor: 'pointer' }} />
-                                {expertise.expertise_desc}
-                              </td>
-                            ))}
-                          </tr>
-                        ))}
-                    </tbody>
-                  </table>
-                </div>
-              )}
-            </div> */}
-
 
             <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionExpertise} style={{ cursor: 'pointer' }}><b>Areas of Expertise</b>
               {isExpandedExpertise && (
@@ -271,29 +228,18 @@ console.log(mycvcareerexpertise)
               }
             </div>
             <div>&nbsp;</div>
-          </thead>
 
-
-          <tbody>
             {mycvdata && mycvdata.map((emp) => (
               <tr key={emp.employer_id}>
                 <td >
-                  {/* <MyCVEmployers
-                    mycvdata={mycvdata}
-                    employer_name={emp.employer_name}
-                    employer_start={emp.employer_start}
-                    employer_end={emp.employer_end}
-                    employer_id={emp.employer_id}
-                    employer_desc={emp.employer_desc}
-                    checkForRecords={checkForRecords}
-                    setCheckForRecords={setCheckForRecords}
-                  /> */}
-                    <MyCVEmployerRoles mycvdata1={mycvdata} employer_id1={emp.employer_id} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
+                  <MyCVEmployerRoles mycvdata1={mycvdata} employer_id1={emp.employer_id} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
                 </td>
               </tr>
             )
             )
             }
+          </thead>
+          <tbody>
           </tbody>
         </table>
       </div>
