@@ -112,7 +112,7 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
 
 
     return (
-        <div className="Font-Segoe-Large-Howto">{role_desc} 
+        <div>{role_desc} 
             {filteredRoleDetails.map(({ roledetail_id, roledetail_year, roledetail_desc, roledetail_name, parent_role_id }) => (
                 <div className="mycvhover">
                     {editableEmployerRoleDetails(roledetail_id, roledetail_year, roledetail_desc, roledetail_name, parent_role_id)}

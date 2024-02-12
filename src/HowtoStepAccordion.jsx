@@ -31,7 +31,7 @@ function HowtoStepAccordion({ howto_ids }) {
       <div>
         <table className="Table4" style={{ width: '1350px' }}>
           <thead>
-            <tr>
+            <tr className="TableHowto">
               <th>{howtodata.howto_name}</th>
             </tr>
           </thead>

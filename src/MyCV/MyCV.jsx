@@ -167,12 +167,17 @@ export default function MyCV(props) {
                   )
                   )
                   }
-                </div>
+            </div>
               )
               }
             </div>
             <div>&nbsp;</div>
 
+            
+            
+            
+            
+            
             <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionExpertise} style={{ cursor: 'pointer' }}>
             <GiSkills style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} />
             &nbsp;<b>Areas of Expertise</b>
@@ -237,6 +242,8 @@ export default function MyCV(props) {
             </div>
             <div>&nbsp;</div>
 
+            
+            
             {mycvdata && mycvdata.map((emp) => (
               <tr key={emp.employer_id}>
                 <td >

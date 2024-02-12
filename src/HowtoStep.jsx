@@ -2,9 +2,8 @@ import React, { useState, useContext } from 'react';
 import './Fonts.css'
 import HowtoStepRecordAccordion from './HowtoStepRecordAccordion';
 import axios from 'axios'
-import { MdOutlineCancel } from "react-icons/md";
 import { Tooltip } from '@mui/material';
-import { AiOutlineCheckCircle, AiOutlineEdit } from "react-icons/ai";
+import { AiOutlineEdit } from "react-icons/ai";
 import { GiCheckMark } from "react-icons/gi"; //Commit
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard
 import { FaRegTrashAlt } from 'react-icons/fa'; //Delete
@@ -99,9 +98,15 @@ export default function HowtoStep({ howto_id, step_id, step_number, step_name, s
           </>
           </>
           :
-          <><i onClick={toggleAccordion}>
-            <i className="Font-Segoe-Large-Howto">Step-{step_number}:&nbsp;</i><b className="Font-Segoe-Large-Howto">{step_name}</b></i>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i className="Font-Spacer-White">HowtoStepID#{step_id}&nbsp;</i></>
+          <>
+            <i onClick={toggleAccordion}>
+              <i className="Font-Segoe-Large-Howto">Step-{step_number}:&nbsp;</i><b className="Font-Segoe-Large-Howto">{step_name}</b>
+            </i>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <i className="Font-Spacer-White">
+              HowtoStepID#{step_id}&nbsp;
+            </i>
+          </>
 
         }
       </div>

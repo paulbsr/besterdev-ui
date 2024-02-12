@@ -140,8 +140,8 @@ function CyclopediaManage({ }) {
 
         <Tooltip id="insert" />
         <div onClick={toggleAccordion}>
-          &nbsp; &nbsp; <a data-tooltip-id="insert" data-tooltip-content="Amend"><BsQuestionOctagonFill style={{ color: '#336791', fontSize: '38px', cursor: 'pointer' }} /></a>
-          &nbsp;<b>Manage Cyclopedia Entries ({cyclopediadata.length})</b>
+          &nbsp; &nbsp; <BsQuestionOctagonFill style={{ color: '#336791', fontSize: '38px', cursor: 'pointer' }} />
+          &nbsp;<b>Manage the {cyclopediadata.length} Cyclopedia Entries</b>
         </div>
 
         <CyclopediaCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />

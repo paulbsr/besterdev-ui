@@ -104,28 +104,27 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, employer_name, checkForRec
 
     return (
         <table className="TableCV" style={{ width: '1350px' }}>
-          {sortedRoles && sortedRoles.map((role) => (
-            <tbody>
-              {
-                  <tr>
-                    <td className="CV-Font-Calibri-Large-Italic-PG" onClick={() => handleRoleClick(role.role_id)} style={{ cursor: 'pointer' }}><b><Image src={employerImages[role.role_employer]} width="27" height="27" alt="Employer Logo" />&nbsp;&nbsp;{role.role_name}</b>&nbsp;-&nbsp;<Tenure startYear={role.role_start} endYear={role.role_end} /> from {role.role_start} to {role.role_end}
-                    {expandedRole === role.role_id && 
-                    (
-                    <div>
-                        <MyCVEmployerRoleDetails mycvdata2={mycvdata1} employer_id2={employer_id1} role_id2={role.role_id} role_idd={role.role_id} role_desc={role.role_desc} role_name={role.role_name} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
-                    </div>
-                    )
-                    }
-                    </td>
-                  </tr>
-              }        <div>&nbsp;</div>
-            </tbody>
-          )
-          )
-          }
-
+            {sortedRoles && sortedRoles.map((role) => (
+                <tbody>
+                    {
+                        <tr>
+                            <td className="CV-Font-Calibri-Large-Italic-PG" onClick={() => handleRoleClick(role.role_id)} style={{ cursor: 'pointer' }}><b><Image src={employerImages[role.role_employer]} width="27" height="27" alt="Employer Logo" />&nbsp;&nbsp;{role.role_name}</b>&nbsp;-&nbsp;<Tenure startYear={role.role_start} endYear={role.role_end} /> from {role.role_start} to {role.role_end}
+                                {expandedRole === role.role_id &&
+                                    (
+                                        <div>
+                                            <MyCVEmployerRoleDetails mycvdata2={mycvdata1} employer_id2={employer_id1} role_id2={role.role_id} role_idd={role.role_id} role_desc={role.role_desc} role_name={role.role_name} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
+                                        </div>
+                                    )
+                                }
+                            </td>
+                        </tr>
+                    }        
+                    <div>&nbsp;</div>
+                </tbody>
+            )
+            )
+            }
         </table>
-
     );
 }
 
