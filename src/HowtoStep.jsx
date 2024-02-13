@@ -100,16 +100,16 @@ export default function HowtoStep({ howto_id, step_id, step_number, step_name, s
           :
           <>
             <i onClick={toggleAccordion}>
-              <i className="Font-Segoe-Large-Howto">Step-{step_number}:&nbsp;</i><b className="Font-Segoe-Large-Howto">{step_name}</b>
+              <i className="Font-Segoe-Large-Howto">Step-{step_number}:&nbsp;</i>
+              <b className="Font-Segoe-Large-Howto">{step_name}</b>
             </i>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <i className="Font-Spacer-White">
-              HowtoStepID#{step_id}&nbsp;
-            </i>
+            <i className="Font-Spacer-White">HowtoStepID#{step_id}&nbsp;</i>
           </>
-
         }
+
       </div>
+
       <div></div>
 
       {isExpanded &&

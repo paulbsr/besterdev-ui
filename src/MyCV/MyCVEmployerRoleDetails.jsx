@@ -77,7 +77,8 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
                                     style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '800px', padding: 0, paddingLeft: '9px', }} />
                             </>
                             :
-                            <div className="Font-Segoe-Medium-Howto-CV">
+                            <div className="mycvhover">
+                                &nbsp;
                                 <GiCheckMark style={{ color: '#169247', display: 'round', margin: 'auto', fontSize: '10px' }} />
                                 &nbsp;&nbsp;
                                 {roledetail_name}&nbsp; - &nbsp;{roledetail_desc} {role_idd}
@@ -97,9 +98,9 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
                                 )
                                 :
                                 (
-                                    <Tooltip title='Edit Role Detail' placement="top-end">
+                                    <Tooltip title='Edit Role Detail' placement="top-end">&nbsp;&nbsp;
                                         <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(roledetail_id, roledetail_name, roledetail_desc) }}>
-                                            <BsPencil style={{ color: '#DDDDDD', display: 'round', margin: 'auto', fontSize: '15px' }} /></button>
+                                        <BsPencil style={{ color: '#DDDDDD', display: 'round', margin: 'auto', fontSize: '15px' }} /></button>
                                     </Tooltip>
                                 )
                             }
@@ -112,9 +113,10 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
 
 
     return (
-        <div>{role_desc} 
+        <div>
+            <div className="mycvhover">{role_desc}</div> 
             {filteredRoleDetails.map(({ roledetail_id, roledetail_year, roledetail_desc, roledetail_name, parent_role_id }) => (
-                <div className="mycvhover">
+                <div>
                     {editableEmployerRoleDetails(roledetail_id, roledetail_year, roledetail_desc, roledetail_name, parent_role_id)}
                 </div>
             )

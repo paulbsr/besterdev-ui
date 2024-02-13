@@ -18,14 +18,16 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, employer_name, checkForRec
     const [expandedRole, setExpandedRole] = useState(null);
     const toggleAccordionRoles = () => { setExpandedRoles(!isExpandedRoles); };
     const [isExpandedRoles, setExpandedRoles] = useState(false);
+    const [isExpanded, setExpanded] = useState(false);
+    const toggleAccordion = () => { setExpanded(!isExpanded); };
 
     const filteredEmployers = mycvdata1.filter(employer => employer.employer_id === employer_id1);
-    
+
     const filteredRoles = filteredEmployers[0].employer_roles;
-    
+
     const sortedRoles = filteredRoles.sort((a, b) => b.role_id - a.role_id);
 
-    const handleRoleClick = (role_id) => {setExpandedRole(expandedRole === role_id ? null : role_id); };
+    const handleRoleClick = (role_id) => { setExpandedRole(expandedRole === role_id ? null : role_id); };
 
     const handleEdit = (role_id, role_desc) => {
         setEditing(role_id);
@@ -55,7 +57,7 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, employer_name, checkForRec
             )
     };
 
-    const employerImages = 
+    const employerImages =
     {
         "GM": require('./GM.png'),
         "HP": require('./HP.png'),
@@ -108,17 +110,24 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, employer_name, checkForRec
                 <tbody>
                     {
                         <tr>
-                            <td className="CV-Font-Calibri-Large-Italic-PG" onClick={() => handleRoleClick(role.role_id)} style={{ cursor: 'pointer' }}><b><Image src={employerImages[role.role_employer]} width="27" height="27" alt="Employer Logo" />&nbsp;&nbsp;{role.role_name}</b>&nbsp;-&nbsp;<Tenure startYear={role.role_start} endYear={role.role_end} /> from {role.role_start} to {role.role_end}
-                                {expandedRole === role.role_id &&
-                                    (
-                                        <div>
-                                            <MyCVEmployerRoleDetails mycvdata2={mycvdata1} employer_id2={employer_id1} role_id2={role.role_id} role_idd={role.role_id} role_desc={role.role_desc} role_name={role.role_name} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
-                                        </div>
-                                    )
-                                }
-                            </td>
+
+                            <div className="CV-Font-Calibri-Large-Italic-PG" onClick={() => handleRoleClick(role.role_id)} style={{ cursor: 'pointer' }}>
+                                <b><Image src={employerImages[role.role_employer]} width="27" height="27" alt="Employer Logo" />
+                                    &nbsp;&nbsp;
+                                    {role.role_name}
+                                </b>
+                                &nbsp;-&nbsp;
+                                <Tenure startYear={role.role_start} endYear={role.role_end} /> from {role.role_start} to {role.role_end}
+                            </div>
+
+
+                            {expandedRole === role.role_id &&
+                                <i className="Font-Segoe-Large-Howto">
+                                    <MyCVEmployerRoleDetails mycvdata2={mycvdata1} employer_id2={employer_id1} role_id2={role.role_id} role_idd={role.role_id} role_desc={role.role_desc} role_name={role.role_name} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
+                                </i>
+                            }
                         </tr>
-                    }        
+                    }
                     <div>&nbsp;</div>
                 </tbody>
             )
