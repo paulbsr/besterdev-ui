@@ -112,10 +112,10 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, employer_name, checkForRec
                         <tr>
 
                             <div className="CV-Font-Calibri-Large-Italic-PG" onClick={() => handleRoleClick(role.role_id)} style={{ cursor: 'pointer' }}>
-                                <b><Image src={employerImages[role.role_employer]} width="27" height="27" alt="Employer Logo" />
+                                <Image src={employerImages[role.role_employer]} width="27" height="27" alt="Employer Logo" />
                                     &nbsp;&nbsp;
                                     {role.role_name}
-                                </b>
+                                
                                 &nbsp;-&nbsp;
                                 <Tenure startYear={role.role_start} endYear={role.role_end} /> from {role.role_start} to {role.role_end}
                             </div>

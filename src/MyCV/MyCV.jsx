@@ -150,9 +150,10 @@ export default function MyCV(props) {
               <th>Curriculum Vitae of Paul Bester</th>
             </tr>
 
-            <tr className="Font-Calibri-Medium-MyCV">
-              <th >
-                This web presence is developed by me personally. You are welcome to review the <a href={'https://github.com/paulbsr/besterdev-ui'} target="_blank">front-end UI</a> and the <a href={'https://github.com/paulbsr/besterdev-api'} target="_blank">back-end API</a> repos on Github. The Tech Stack is JavaScript and NodeJS for the FE/UI hosted on AWS Amplify. The back-end API/MicroServices are developed in Java using the SpringBoot Framework hosted on Heroku alongisde the PostgreSQL database. Identity and Authorization (IAM) is porvided by Google's Firebase. I use Git for VCS and Maven for Builds. Swagger is available by clicking on the icon above.
+            <tr>
+              <th className="Font-Segoe-Medium-Howto-CV">
+                This web presence is developed by me personally. You are welcome to review the <a href={'https://github.com/paulbsr/besterdev-ui'} target="_blank">front-end UI</a> and the <a href={'https://github.com/paulbsr/besterdev-api'} target="_blank">back-end API</a> repos on Github. 
+                The FE is developed using ReactJS and hosted on AWS Aplify. The BE MicroService is developed with Java/Spring hosted on Heroku alongisde a PostgreSQL database. Identity and Authorization (IAM) is porvided by Google's Firebase. I use Git for VCS and Maven for Builds. Swagger is available by clicking on the icon above.
               </th>
             </tr>
 
@@ -217,7 +218,7 @@ export default function MyCV(props) {
                 <div>
                   {mycvcareerhighlights && mycvcareerhighlights.map((highlight) =>
                   (
-                    <tr className="mycvhover" key={highlight.id}> <RiMedal2Line style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '16px', cursor: 'pointer' }} />&nbsp;{highlight.highlight_desc}</tr>
+                    <tr className="mycvhover" key={highlight.id}> <GiCheckMark style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} />&nbsp;{highlight.highlight_desc}</tr>
                   )
                   )
                   }

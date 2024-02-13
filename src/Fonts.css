@@ -189,12 +189,13 @@
 .CV-Font-Calibri-Large-Italic-PG {
     border: 1px solid rgb(233, 228, 228);
     background-color: #ffffff;
-    font-family: "Calibri";
+    font-family: "Segoe UI";
     font-size: large;
     font-style: italic;
     color: #336791;
     padding: 14px;
-    font-weight: lighter;
+    font-weight:normal;
+    border-radius: 6px;
 }
 
 .Font-Calibri-Large-Howto-Italic-Rusty-CV-2 {
@@ -217,7 +218,9 @@
 .Font-Segoe-Medium-Howto-CV {
     font-family: "Segoe UI";
     font-size: medium;
-    color: #336791
+    color: #336791;
+    font-style: italic;
+    font-weight: normal;
 }
 
 .Font-Segoe-Large-Howto {
