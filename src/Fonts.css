@@ -217,8 +217,8 @@
 
 .Font-Segoe-Medium-Howto-CV {
     font-family: "Segoe UI";
-    font-size: medium;
-    color: #336791;
+    font-size: small;
+    color: #8f9192;
     font-style: italic;
     font-weight: normal;
 }
@@ -310,6 +310,15 @@
     font-family: "Calibri";
     font-size: xx-large;
     min-width: 50%;
+    border-radius: 8px;
+}
+
+.TableCVhover {
+    border: 1px solid rgb(233, 228, 228);
+    background-color: #b3360d;
+    padding: 10px;
+    font-family: "Segoe UI";
+    font-size: 25px;
     border-radius: 8px;
 }
 

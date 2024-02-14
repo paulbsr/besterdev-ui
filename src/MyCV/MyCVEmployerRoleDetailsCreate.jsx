@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 export default function MyCVEmployerRoleDetailsCreate(props) {
   const current = new Date();
-  const [checkForRecords, setCheckForRecords] = useState(true);
+  // const [checkForRecords, setCheckForRecords] = useState(true);
   const [roledetaildesc, setRoledetaildesc] = useState("");
   const [roledetailname, setRoledetailname] = useState("");
 
@@ -22,7 +22,7 @@ export default function MyCVEmployerRoleDetailsCreate(props) {
 
       const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/role_detail/create`, RoleDetailPost);
       if (response.status === 200) {
-        setCheckForRecords(!checkForRecords);
+        props.setCheckForRecords(!props.checkForRecords);
         toast.success(`Role Detail added.`)
       }
       else { toast.error(`oops! Something went wrong in TaskRecordCreate`); }

@@ -11,7 +11,6 @@ import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard
 import { FaRegTrashAlt } from 'react-icons/fa'; //Delete
 
 function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, checkForRecords, setCheckForRecords }) {
-    console.log(howtodata)
     const date = new Date();
     const [isExpanded, setExpanded] = useState(false);
     const toggleAccordion = () => { setExpanded(!isExpanded); };

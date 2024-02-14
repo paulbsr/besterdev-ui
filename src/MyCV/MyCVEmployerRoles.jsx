@@ -126,6 +126,7 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, employer_name, checkForRec
                                     <MyCVEmployerRoleDetails mycvdata2={mycvdata1} employer_id2={employer_id1} role_id2={role.role_id} role_idd={role.role_id} role_desc={role.role_desc} role_name={role.role_name} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
                                 </i>
                             }
+                        
                         </tr>
                     }
                     <div>&nbsp;</div>

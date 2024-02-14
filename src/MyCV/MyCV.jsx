@@ -159,10 +159,10 @@ export default function MyCV(props) {
 
             <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionSummary} style={{ cursor: 'pointer' }}>
               <MdOutlineSummarize style={{ color: '#336791', display: 'round', margin: 'auto', fontSize: '30px', cursor: 'pointer' }} />
-              &nbsp;<b>Professional Summary</b>
-              {isExpandedSummary &&
+              &nbsp;&nbsp;Professional Summary
+              {/* {isExpandedSummary && */}
 
-                (
+                {/* ( */}
                   <div className="mycvhover">
                     {mycvcareersummary && mycvcareersummary.map((summary) =>
                     (
@@ -171,8 +171,8 @@ export default function MyCV(props) {
                     )
                     }
                   </div>
-                )
-              }
+                {/* ) */}
+              {/* } */}
             </div>
             <div>&nbsp;</div>
 
@@ -183,7 +183,7 @@ export default function MyCV(props) {
 
             <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionExpertise} style={{ cursor: 'pointer' }}>
               <GiSkills style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} />
-              &nbsp;<b>Areas of Expertise</b>
+              &nbsp;&nbsp;Areas of Expertise
               {isExpandedExpertise && (
                 <div>
                   <table className="expertise-table">
@@ -213,7 +213,7 @@ export default function MyCV(props) {
 
             <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionHighlights} style={{ cursor: 'pointer' }}>
               <FaHighlighter style={{ color: '#336791', display: 'round', margin: 'auto', fontSize: '28px', cursor: 'pointer' }} />
-              &nbsp;<b>Career Highlights</b>
+              &nbsp;&nbsp;Career Highlights
               {isExpandedHighlights && (
                 <div>
                   {mycvcareerhighlights && mycvcareerhighlights.map((highlight) =>
@@ -231,7 +231,7 @@ export default function MyCV(props) {
 
             <div className="CV-Font-Calibri-Large-Italic-PG" onClick={toggleAccordionTestimonials} style={{ cursor: 'pointer' }}>
               <IoTrophyOutline style={{ color: '#336791', display: 'round', margin: 'auto', fontSize: '28px', cursor: 'pointer' }} />
-              &nbsp;<b>Testimonials</b>
+              &nbsp;&nbsp;Testimonials
               {isExpandedTestimonials &&
                 (
                   <div >

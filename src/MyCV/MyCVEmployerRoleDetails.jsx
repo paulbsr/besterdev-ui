@@ -47,6 +47,7 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
         onEditCancel();
     }
 
+    
     const onEditDelete = (roledetail_id) => {
         axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/delete/${roledetail_id}`)
             .then((response) => {
@@ -81,7 +82,7 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
                                 &nbsp;
                                 <GiCheckMark style={{ color: '#169247', display: 'round', margin: 'auto', fontSize: '10px' }} />
                                 &nbsp;&nbsp;
-                                {roledetail_name}&nbsp; - &nbsp;{roledetail_desc} {role_idd}
+                                {roledetail_name}&nbsp; - &nbsp;{roledetail_desc} {role_idd} {roledetail_id}
                             </div>
                         }
                     </div>
