@@ -12,7 +12,6 @@ import { MdAddCircleOutline } from "react-icons/md";
 
 
 function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, role_desc, role_name, checkForRecords, setCheckForRecords }) {
-    const date = new Date();
     const [isExpanded, setExpanded] = useState(false);
     const toggleAccordion = () => { setExpanded(!isExpanded); };
     const [editing, setEditing] = useState(false);
@@ -21,13 +20,13 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
     const filteredEmployers = mycvdata2.filter(employer => employer.employer_id === employer_id2); //HIERDIE WERK GOED, HY RETURN SLEGS DIE EMPLOYER WAAROP JY KLIEK!
     const filteredRoles = filteredEmployers[0].employer_roles.sort((a, b) => b.role_id - a.role_id); //HIERDIE WER GOED,  HY RETURN SLEGS DIE ROLLE VIR DIE GEGEWE EMPLOYER!
     const specificRole = filteredRoles.filter((detail, key) => { return detail.role_id === role_idd });
-    const filteredRoleDetails = specificRole[0].role_detail;
+    const filteredRoleDetails = specificRole[0].role_detail.sort((a, b) => b.roledetail_id - a.roledetail_id);
 
 
-    const handleEdit = (roledetail_id, newsteprecordnumber, newsteprecord) => {
+    const handleEdit = (roledetail_id, newroledetailname, newroledetaildesc) => {
         setEditing(roledetail_id);
-        setRoledetail_name(newsteprecordnumber);
-        setRoledetail_desc(newsteprecord);
+        setRoledetail_name(newroledetailname);
+        setRoledetail_desc(newroledetaildesc);
     }
 
     const onEditCancel = () => {
@@ -35,19 +34,19 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
     }
 
     const onEditSave = async (roledetail_id) => {
-        const MyCVEmployerRolePUT =
+        const RoleDetailPUT =
         {
             'roledetail_name': roledetail_name,
             'roledetail_desc': roledetail_desc,
         }
 
-        const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/update/${roledetail_id}`, MyCVEmployerRolePUT)
+        const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/role_detail/update/${roledetail_id}`, RoleDetailPUT)
         setCheckForRecords(!checkForRecords)
-        toast.success(`Employer Role amended.`)
+        toast.success(`Role Detail amended. ${roledetail_id} ${roledetail_name} ${roledetail_desc}`)
         onEditCancel();
     }
 
-    
+
     const onEditDelete = (roledetail_id) => {
         axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/delete/${roledetail_id}`)
             .then((response) => {
@@ -57,18 +56,20 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
             )
     };
 
-    function editableEmployerRoleDetails(roledetail_id, roledetail_year, roledetail_desc, roledetail_name, parent_role_id) {
+    function editableEmployerRoleDetails(roledetail_id, roledetail_name, roledetail_desc, checkForRecords, setCheckForRecords) {
         return (
             <div >
-                <div style={{ display: 'flex' }}>
+                <div style={{ display: 'flex', cursor: 'pointer' }}>
                     <div>
                         {editing === roledetail_id ?
-                            <>
+                            <>&nbsp;
+                                <GiCheckMark style={{ color: '#169247', display: 'round', margin: 'auto', fontSize: '10px' }} />
+                                &nbsp;&nbsp;
                                 <input
                                     required
                                     defaultValue={roledetail_name}
                                     onChange={(e) => setRoledetail_name(e.target.value)}
-                                    style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '200px', padding: 0, paddingLeft: '9px', }} />
+                                    style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '200px', padding: 0, paddingLeft: '2px', }} />
                                 &nbsp;&nbsp;
 
                                 <input
@@ -82,7 +83,7 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
                                 &nbsp;
                                 <GiCheckMark style={{ color: '#169247', display: 'round', margin: 'auto', fontSize: '10px' }} />
                                 &nbsp;&nbsp;
-                                {roledetail_name}&nbsp; - &nbsp;{roledetail_desc} {role_idd} {roledetail_id}
+                                {roledetail_name}&nbsp; - &nbsp;{roledetail_desc}
                             </div>
                         }
                     </div>
@@ -101,7 +102,7 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
                                 (
                                     <Tooltip title='Edit Role Detail' placement="top-end">&nbsp;&nbsp;
                                         <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(roledetail_id, roledetail_name, roledetail_desc) }}>
-                                        <BsPencil style={{ color: '#DDDDDD', display: 'round', margin: 'auto', fontSize: '15px' }} /></button>
+                                            <BsPencil style={{ color: '#DDDDDD', display: 'round', margin: 'auto', fontSize: '15px' }} /></button>
                                     </Tooltip>
                                 )
                             }
@@ -112,13 +113,13 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
         )
     }
 
-
     return (
         <div>
-            <div className="mycvhover">{role_desc}</div> 
-            {filteredRoleDetails.map(({ roledetail_id, roledetail_year, roledetail_desc, roledetail_name, parent_role_id }) => (
+            <div className="mycvhover" style={{ cursor: 'pointer' }}>{role_desc}</div>
+
+            {filteredRoleDetails.map(({ roledetail_id, roledetail_name, roledetail_desc }) => (
                 <div>
-                    {editableEmployerRoleDetails(roledetail_id, roledetail_year, roledetail_desc, roledetail_name, parent_role_id)}
+                    {editableEmployerRoleDetails(roledetail_id, roledetail_name, roledetail_desc, checkForRecords, setCheckForRecords)}
                 </div>
             )
             )
