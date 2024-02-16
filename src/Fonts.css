@@ -382,8 +382,17 @@
 
 .Table-home-left{
     background-color: #ffffff;
-    font-family: "Calibri";
+    font-family: "Verdana";
     font-size: large;
+    font-weight: normal;
+    text-align: right;
+    vertical-align: top;
+}
+
+.Table-home-left-text{
+    background-color: #ffffff;
+    font-family: "Verdana";
+    font-size: small;
     font-weight: normal;
     text-align: right;
     vertical-align: top;
@@ -391,8 +400,8 @@
 
 .Table-home-left-heading{
     background-color: #ffffff;
-    font-family: "Calibri";
-    font-size: larger;
+    font-family: "Verdana";
+    font-size: large;
     font-weight: normal;
     text-align: right;
     vertical-align: top;
@@ -411,7 +420,7 @@
 
 .Table-home-right{
     background-color: #ffffff;
-    font-family: "Calibri";
+    font-family: "Verdana";
     font-size: large;
     font-weight: normal;
     text-align: left;

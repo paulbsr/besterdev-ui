@@ -84,7 +84,7 @@ export default function HomePage22(props) {
                 </tr>
                 {groupedData[category].map((record, index) => (
                   <tr key={index}>
-                    <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left">
+                    <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left-text">
                       <a href={record.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.website_desc}>{record.website_name}</a>
                     </td>
                   </tr>
