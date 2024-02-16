@@ -99,8 +99,8 @@ export default function HowtoManage() {
               <thead>
                 <tr>
                   <th style={{ width: '20px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='left'></th>
-                  <th style={{ width: '700px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='left'>Howto Name</th>
-                  <th style={{ width: '1000px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='left'>Howto Description</th>
+                  <th style={{ width: '450px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='left'>Howto Name</th>
+                  <th style={{ width: '1300px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='left'>Howto Description</th>
                   <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='left'>Created</th>
                 </tr>
               </thead>
@@ -131,8 +131,8 @@ export default function HowtoManage() {
                         </>
                       </td>
 
-                      <td className="asmshover Table6 td">{row.howto_id === editing ? (<input style={{ height: '22.5px', width: '690px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={howto_name} onChange={(e) => setHowto_name(e.target.value)} />) : (row.howto_name)}</td>
-                      <td className="asmshover Table6 td">{row.howto_id === editing ? (<input style={{ height: '22.5px', width: '990px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={howto_desc} onChange={(e) => setHowto_desc(e.target.value)} />) : (row.howto_desc)}</td>
+                      <td className="asmshover Table6 td">{row.howto_id === editing ? (<input style={{ height: '22.5px', width: '440px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={howto_name} onChange={(e) => setHowto_name(e.target.value)} />) : (row.howto_name)}</td>
+                      <td className="asmshover Table6 td">{row.howto_id === editing ? (<input style={{ height: '22.5px', width: '1290px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={howto_desc} onChange={(e) => setHowto_desc(e.target.value)} />) : (row.howto_desc)}</td>
                       <td className="asmshover Table6 td">{row.howto_id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={howto_date} onChange={(e) => setHowto_date(e.target.value)} />) : new Date(row.howto_date).toLocaleDateString("en-CA")}</td> 
                     </tr>
                   )

@@ -159,16 +159,16 @@ export default function HomePage22(props) {
   
     return (
       <div>
-        <table>
+        <table className="Table-home-centre">
           <tbody>
             {howtodata.map((row, index) => (
               <tr key={index}>
                 <td>
                   {row && (
                     <div>
-                      <BsQuestionOctagon style={{ color: '#D5441C', fontSize: '15px', cursor: 'pointer' }} />
+                      <BsQuestionOctagon style={{ color: '#D5441C', fontSize: '11px', cursor: 'pointer' }} />
                       &nbsp;<a href={`/howtoedit/${row.howto_id}`} target="_blank">{row.howto_name}</a>
-                      <div>&nbsp;</div>
+                      {/* <div>&nbsp;</div> */}
                     </div>
                   )}
                 </td>

@@ -79,7 +79,7 @@ function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, checkForRe
                             </>
                             :
                             <div className="Font-Segoe-Large-Howto">
-                                <b style={{ fontSize: 'medium', color: 'black'}}>{step_number}.{steprecord_number})</b>
+                                <b style={{ fontSize: 'medium', color: 'black', cursor: 'pointer'}}>{step_number}.{steprecord_number})</b>
                                 &nbsp;&nbsp;&nbsp;
                                 {steprecord}
                                 &nbsp;&nbsp;&nbsp;
