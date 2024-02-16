@@ -133,7 +133,7 @@ export default function HomePage22(props) {
                 <td className="fphover">
                   {rowc && (
                     <div>
-                      <BsQuestionOctagon style={{ color: '#D5441C', fontSize: '12px', cursor: 'pointer' }} />
+                      
                       <b>&nbsp;{rowc.cyclopedia_name}:</b>&nbsp;<i>{rowc.cyclopedia_desc}</i>
                       <div className='Font-Spacer-White'>Make this spacer white</div>
                     </div>
@@ -166,7 +166,8 @@ export default function HomePage22(props) {
                 <td>
                   {row && (
                     <div>
-                      <a href={`/howtoedit/${row.howto_id}`} target="_blank">{row.howto_name}</a>
+                      <BsQuestionOctagon style={{ color: '#D5441C', fontSize: '15px', cursor: 'pointer' }} />
+                      &nbsp;<a href={`/howtoedit/${row.howto_id}`} target="_blank">{row.howto_name}</a>
                       <div>&nbsp;</div>
                     </div>
                   )}

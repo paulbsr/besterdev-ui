@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 
 export default function MyCVEmployerRoleDetailsCreate(props) {
   const current = new Date();
-  // const [checkForRecords, setCheckForRecords] = useState(true);
   const [roledetaildesc, setRoledetaildesc] = useState("");
   const [roledetailname, setRoledetailname] = useState("");
 
@@ -13,7 +12,6 @@ export default function MyCVEmployerRoleDetailsCreate(props) {
     event.preventDefault();
     var RoleDetailPost =
     {
-      // roledetail_year: roledetailyear,
       roledetail_desc: roledetaildesc,
       roledetail_name: roledetailname,
       fk_role_id: props.parent_role_id1,

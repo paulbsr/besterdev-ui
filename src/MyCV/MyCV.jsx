@@ -218,7 +218,7 @@ export default function MyCV(props) {
                 <div>
                   {mycvcareerhighlights && mycvcareerhighlights.map((highlight) =>
                   (
-                    <tr className="mycvhover" key={highlight.id}> <GiCheckMark style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} />&nbsp;{highlight.highlight_desc}</tr>
+                    <tr className='mycvhover' key={highlight.id}> <GiCheckMark style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} />&nbsp;{highlight.highlight_desc}</tr>
                   )
                   )
                   }
