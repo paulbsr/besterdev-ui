@@ -37,13 +37,13 @@ export default function HowtoStepRecordCreate_original(props) {
         <input
           required
           onChange={(e) => setSteprecord_number(e.target.value)}
-          style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '20px', padding: 0, paddingLeft: '7px' }} />
+          style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '20px', padding: 0, paddingLeft: '7px' }} />
 
         &nbsp;
         <input
           required
           onChange={(e) => setSteprecord(e.target.value)}
-          style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1210px' }} />
+          style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1210px' }} />
         &nbsp;&nbsp;
 
         <button

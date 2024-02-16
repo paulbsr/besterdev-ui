@@ -69,14 +69,14 @@ function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, checkForRe
                                     required
                                     defaultValue={steprecord_number}
                                     onChange={(e) => setStepRecord_number(e.target.value)}
-                                    style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '20px', padding: 0, paddingLeft: '9px', }} />
+                                    style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '21.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '20px', padding: 0, paddingLeft: '9px', }} />
                                 &nbsp;&nbsp;
 
                                 <input
                                     required
                                     defaultValue={steprecord}
                                     onChange={(e) => setStepRecord(e.target.value)}
-                                    style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1200px' }} />
+                                    style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '21.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1200px' }} />
                             </>
                             :
                             <div className="Font-Segoe-Large-Howto">

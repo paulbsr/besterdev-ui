@@ -85,14 +85,14 @@ export default function HowtoStep({ howto_id, step_id, step_number, step_name, s
               required
               defaultValue={step_number}
               onChange={(e) => setStepNumber(e.target.value)}
-              style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '25px' }} />
+              style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '25px' }} />
 
             <>&nbsp;&nbsp;<i>Step Name:</i>&nbsp;&nbsp;<>
               <input
                 required
                 defaultValue={step_name}
                 onChange={(e) => setName(e.target.value)}
-                style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '970px' }} />
+                style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '970px' }} />
               <div className="Font-Spacer-White">Make this Spacer White</div>
             </>
             </>
@@ -123,7 +123,7 @@ export default function HowtoStep({ howto_id, step_id, step_number, step_name, s
                   required
                   defaultValue={step_url}
                   onChange={(e) => setStepURL(e.target.value)}
-                  style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1100px' }} />
+                  style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1100px' }} />
                 <div className='Font-Spacer-White'>Make this Spacer White</div>
               </>
               </>
@@ -138,7 +138,7 @@ export default function HowtoStep({ howto_id, step_id, step_number, step_name, s
                   defaultValue={step_obj}
                   onChange={(e) => setStepObjective(e.target.value)}
                   size='Large'
-                  style={{ fontFamily: 'Calibri', fontSize: 'Large', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1112px' }} />
+                  style={{ fontFamily: 'Segoe UI', fontSize: 'Large', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1112px' }} />
                 
                 <div className='Font-Spacer-White'>Make this Spacer White</div>
               </>

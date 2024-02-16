@@ -16,9 +16,7 @@ export default function WebsiteManage(props) {
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [checkForRecords, setCheckForRecords] = useState(true);
-  const [checkForRecordsA, setCheckForRecordsA] = useState(true);
   const [tabledata, setTabledata] = useState([]);
-  const [error, setError] = useState(null);
   const [editing, setEditing] = useState("")
   const [website_name, setWebsite_name] = useState('');
   const [website_desc, setWebsite_desc] = useState('');

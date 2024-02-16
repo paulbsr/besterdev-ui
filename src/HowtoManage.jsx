@@ -134,7 +134,7 @@ export default function HowtoManage() {
                       </td>
 
                       <td className="asmshover Table6 td">{row.howto_id === editing ? (<input style={{ height: '22.5px', width: '440px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={howto_name} onChange={(e) => setHowto_name(e.target.value)} />) : (row.howto_name)}</td>
-                      <td className="asmshover Table6 td">{row.howto_id === editing ? (<input style={{ height: '22.5px', width: '1250px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={howto_desc} onChange={(e) => setHowto_desc(e.target.value)} />) : (row.howto_desc)}</td>
+                      <td className="asmshover Table6 td">{row.howto_id === editing ? (<textarea style={{ height: '62.5px', width: '1250px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={howto_desc} onChange={(e) => setHowto_desc(e.target.value)} />) : (row.howto_desc)}</td>
                       <td className="asmshover Table6 td">{row.howto_id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={howto_date} onChange={(e) => setHowto_date(e.target.value)} />) : new Date(row.howto_date).toLocaleDateString("en-CA")}</td> 
                     </tr>
                   )

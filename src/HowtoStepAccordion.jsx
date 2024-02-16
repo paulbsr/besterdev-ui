@@ -34,7 +34,7 @@ function HowtoStepAccordion({ howto_ids }) {
             <tr >
               <th>
                 {howtodata.howto_name}
-                <div className='Font-Segoe-Medium-Howto-CV'>{howtodata.howto_desc}</div>
+                <div className='Font-Segoe-Medium-Howto-Desc'>{howtodata.howto_desc}</div>
               </th>
               
             </tr>
