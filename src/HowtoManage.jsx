@@ -99,9 +99,9 @@ export default function HowtoManage() {
               <thead>
                 <tr>
                   <th style={{ width: '20px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='left'></th>
-                  <th style={{ width: '500px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='left'>Howto Name</th>
-                  <th style={{ width: '1110px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='left'>Howto Description</th>
-                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='left'>Howto Created</th>
+                  <th style={{ width: '700px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='left'>Howto Name</th>
+                  <th style={{ width: '1000px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='left'>Howto Description</th>
+                  <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='left'>Howto Created</th>
                 </tr>
               </thead>
 
