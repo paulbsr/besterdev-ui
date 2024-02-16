@@ -7,6 +7,7 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { GiCheckMark } from "react-icons/gi"; //Commit
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard
 import { FaRegTrashAlt } from 'react-icons/fa'; //Delete
+import { BsPencil } from 'react-icons/bs';
 import { toast } from 'react-toastify';
 
 export default function HowtoStep({ howto_id, step_id, step_number, step_name, step_url, step_obj, howtodata, checkForRecords, setCheckForRecords }) {
@@ -70,7 +71,7 @@ export default function HowtoStep({ howto_id, step_id, step_number, step_name, s
               :
               (
                 isExpanded && step_name !== 'DONE' ?
-                  <Tooltip title='Edit Step Header' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => { handleEdit() }}><AiOutlineEdit style={{ color: '#DDDDDD', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
+                  <Tooltip title='Edit Step Header' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => { handleEdit() }}><BsPencil style={{ color: '#C0C0C0', display: 'block', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
               :
               null
               )

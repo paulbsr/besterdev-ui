@@ -12,8 +12,7 @@ import utc from 'dayjs/plugin/utc';
 import { toast } from 'react-toastify';
 import GradientLineRusty from './GradientLineRusty';
 import HowtoCreate from './HowtoCreate';
-import HowtoStep from './HowtoStep';
-import { IoLibrary } from "react-icons/io5";
+import { BsQuestionOctagonFill } from "react-icons/bs";
 dayjs.extend(utc);
 
 
@@ -34,7 +33,6 @@ export default function HowtoManage() {
       .then((response) => {const sortedTabledata = response.data.sort((b, a) => b.howto_name.localeCompare(a.howto_name)); 
         setTabledata(sortedTabledata);}) //sort firstname alphabetically
       .catch((e)=> console.error(e));}, 
-      // console.log(tabledata)
       [checkForRecords]);
 
         const handleEdit = (row) => {
@@ -72,14 +70,17 @@ export default function HowtoManage() {
            onEditCancel();
         }
 
-          const onEditDelete = (row) => {
-            axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howto/delete/${row.howto_id}`)
-            .then((response) => {
-              setCheckForRecords(!checkForRecords); 
-              toast.success(`${howto_name} purged.`)
-            }
-            )
-       };       
+            const onEditDelete = () => {
+              axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howto/delete/${editing}`)
+                .then((response) => {
+                  setCheckForRecords(!checkForRecords);
+                  toast.success(`${howto_name} purged.`);
+                })
+                .catch((error) => {
+                  toast.error(`Can't delete Record#${editing}  - ensure it has no Steps or Step Records associated still.`);
+                });
+
+                };       
 
   return (
     
@@ -89,7 +90,8 @@ export default function HowtoManage() {
     
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-        &nbsp; &nbsp; <a data-tooltip-id="insert" data-tooltip-content="Amend"><IoLibrary style={{ color: '#336791', fontSize: '38px', cursor: 'pointer' }} /></a>
+        &nbsp; &nbsp; <a data-tooltip-id="insert" data-tooltip-content="Amend">
+          <BsQuestionOctagonFill style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>
         &nbsp;<b>Manage Howto Library ({tabledata.length})</b>
       </div>
 
@@ -132,7 +134,7 @@ export default function HowtoManage() {
                       </td>
 
                       <td className="asmshover Table6 td">{row.howto_id === editing ? (<input style={{ height: '22.5px', width: '440px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={howto_name} onChange={(e) => setHowto_name(e.target.value)} />) : (row.howto_name)}</td>
-                      <td className="asmshover Table6 td">{row.howto_id === editing ? (<input style={{ height: '22.5px', width: '1290px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={howto_desc} onChange={(e) => setHowto_desc(e.target.value)} />) : (row.howto_desc)}</td>
+                      <td className="asmshover Table6 td">{row.howto_id === editing ? (<input style={{ height: '22.5px', width: '1250px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={howto_desc} onChange={(e) => setHowto_desc(e.target.value)} />) : (row.howto_desc)}</td>
                       <td className="asmshover Table6 td">{row.howto_id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={howto_date} onChange={(e) => setHowto_date(e.target.value)} />) : new Date(row.howto_date).toLocaleDateString("en-CA")}</td> 
                     </tr>
                   )

@@ -5,10 +5,9 @@ import { Tooltip } from '@mui/material';
 import { toast } from 'react-toastify';
 import { FaPen, FaCheck, FaRegTrashAlt } from 'react-icons/fa';
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
-import { GiGiftOfKnowledge } from "react-icons/gi";
 import CyclopediaCreate from './CyclopediaCreate';
 import GradientLineRusty from './GradientLineRusty';
-import { BsQuestionOctagonFill } from "react-icons/bs";
+import { IoLibrary } from "react-icons/io5";
 
 
 function CyclopediaManage({ }) {
@@ -71,76 +70,14 @@ function CyclopediaManage({ }) {
     onEditCancel();
   }
 
-  // function editableCyclopediaRecord(cyclopedia_id, cyclopedia_name, cyclopedia_desc, cyclopedia_ref, checkForRecords, setCheckForRecords) {
-  //     return (
-  //         <div>
-  //             <div style={{ display: 'flex' }}>
-  //                 <div>
-  //                     {editing === cyclopedia_id ?
-  //                         <><img alt="1" src={spacer} /><img alt="1" src={spacer} />
-
-
-  //                             <input
-  //                                 required
-  //                                 defaultValue={cyclopedia_name}
-  //                                 onChange={(e) => setCyclopediaName(e.target.value)}
-  //                                 style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '250px', padding: 0, paddingLeft: '9px', }} />
-  //                             <img alt="1" src={spacer2} /><img alt="1" src={spacer2} /><img alt="1" src={spacer2} /><img alt="1" src={spacer2} /><img alt="1" src={spacer2} />
-
-  //                             <input
-  //                                 required
-  //                                 defaultValue={cyclopedia_desc}
-  //                                 onChange={(e) => setCyclopediaDesc(e.target.value)}
-  //                                 style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '600px' }} />
-  //                         </>
-  //                         :
-
-  //                         <div className="Font-Calibri-Large-Howto">
-  //                             <Tooltip title='Edit Cyclopedia' placement="top-end">&nbsp;&nbsp;&nbsp;
-  //                                 <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(cyclopedia_id, cyclopedia_name, cyclopedia_desc) }}>
-  //                                     <AiOutlineEdit style={{ color: '#DDDDDD', display: 'round', margin: 'auto', fontSize: '18px' }} /></button>
-  //                             </Tooltip>
-  //                             <img alt="1" src={spacer} /><img alt="1" src={spacer} />{cyclopedia_name}.
-  //                             <img alt="1" src={spacer2} /><img alt="1" src={spacer2} /><img alt="1" src={spacer2} /><img alt="1" src={spacer2} /><img alt="1" src={spacer2} />{cyclopedia_desc}
-  //                         </div>
-  //                     }
-  //                 </div>
-
-  //                 <div style={{ display: 'flex', float: 'right' }}>
-  //                     <>
-  //                         {editing === cyclopedia_id ?
-  //                             (
-  //                                 <>&nbsp;&nbsp;
-  //                                     <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave(cyclopedia_id)}><AiOutlineCheckCircle style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>&nbsp;
-  //                                     <Tooltip title='Discard' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditCancel()}><MdOutlineCancel style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
-  //                                 </>
-  //                             )
-  //                             :
-  //                             (
-  //                                 <Tooltip title='Edit Cyclopedia' placement="top-end">&nbsp;&nbsp;&nbsp;
-  //                                     <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(cyclopedia_id, cyclopedia_name, cyclopedia_desc) }}>
-  //                                         <AiOutlineEdit style={{ color: '#DDDDDD', display: 'round', margin: 'auto', fontSize: '18px' }} /></button>
-  //                                 </Tooltip>
-  //                             )
-  //                         }
-  //                     </>
-  //                 </div>
-  //             </div>
-  //         </div>
-  //     )
-  // }
-
   return (
     <div>
-      {/* <div>
-                {cyclopediadata.map(({ cyclopedia_id, cyclopedia_name, cyclopedia_desc, cyclopedia_ref }) => (editableCyclopediaRecord(cyclopedia_id, cyclopedia_name, cyclopedia_desc, cyclopedia_ref)))}
-            </div> */}
 
       <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
 
         <Tooltip id="insert" />
         <div onClick={toggleAccordion}>
-          &nbsp; &nbsp; <BsQuestionOctagonFill style={{ color: '#336791', fontSize: '38px', cursor: 'pointer' }} />
+          &nbsp; &nbsp; <IoLibrary style={{ color: '#336791', fontSize: '38px', cursor: 'pointer' }} />
           &nbsp;<b>Manage the {cyclopediadata.length} Cyclopedia Entries</b>
         </div>
 
@@ -185,7 +122,6 @@ function CyclopediaManage({ }) {
                   <td className="asmshover Table6 td">{row.cyclopedia_id === editing ? (<input style={{ height: '22.5px', width: '190px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={cyclopedianame} onChange={(e) => setCyclopediaName(e.target.value)} />) : (row.cyclopedia_name)}</td>
                   <td className="asmshover Table6 td">{row.cyclopedia_id === editing ? (<textarea style={{ height: '22.5px', width: '1400px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={cyclopediadesc} onChange={(e) => setCyclopediaDesc(e.target.value)} />) : (row.cyclopedia_desc)}</td>
                   <td className="asmshover Table6 td">{row.cyclopedia_id === editing ? (<input style={{ height: '22.5px', width: '210px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={cyclopediaref} onChange={(e) => setCyclopediaRef(e.target.value)} />) : (row.cyclopedia_ref)}</td>
-                  {/* <td className="asmshover Table6 td">{row.cyclopedia_id === editing ? (<input style={{ height: '22.5px', width: '90px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={howto_date} onChange={(e) => setHowto_date(e.target.value)} className='cr_edit_inputfield' />) : (row.howto_date)}</td>  */}
                 </tr>
               )
             })

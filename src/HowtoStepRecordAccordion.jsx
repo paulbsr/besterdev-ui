@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import { GiCheckMark } from "react-icons/gi"; //Commit
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard
 import { FaRegTrashAlt } from 'react-icons/fa'; //Delete
+import { BsPencil } from 'react-icons/bs'; //Edit
 
 function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, checkForRecords, setCheckForRecords }) {
     const date = new Date();
@@ -101,7 +102,7 @@ function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, checkForRe
                                 (
                                     <Tooltip title='Edit Step Record' placement="top-end">
                                         <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(steprecord_id, steprecord_number, steprecord) }}>
-                                            <AiOutlineEdit style={{ color: '#DDDDDD', display: 'round', margin: 'auto', fontSize: '18px' }} /></button>
+                                            <BsPencil style={{ color: '#C0C0C0', display: 'round', margin: 'auto', fontSize: '15px' }} /></button>
                                     </Tooltip>
                                 )
                             }
