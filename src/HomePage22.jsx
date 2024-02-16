@@ -167,7 +167,7 @@ export default function HomePage22(props) {
                   {row && (
                     <div>
                       <BsQuestionOctagon style={{ color: '#D5441C', fontSize: '11px', cursor: 'pointer' }} />
-                      &nbsp;<a href={`/howtoedit/${row.howto_id}`} target="_blank">{row.howto_name}</a>
+                      &nbsp;<a href={`/howtoedit/${row.howto_id}`}>{row.howto_name}</a>
                       {/* <div>&nbsp;</div> */}
                     </div>
                   )}
