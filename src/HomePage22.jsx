@@ -134,7 +134,7 @@ export default function HomePage22(props) {
                   {rowc && (
                     <div>
                       
-                      <b>&nbsp;{rowc.cyclopedia_name}:</b>&nbsp;<i>{rowc.cyclopedia_desc}</i>
+                      <b>{rowc.cyclopedia_name}:</b>&nbsp;<i>{rowc.cyclopedia_desc}</i>
                       <div className='Font-Spacer-White'>Make this spacer white</div>
                     </div>
                   )}
