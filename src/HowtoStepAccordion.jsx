@@ -4,6 +4,7 @@ import HowtoStep from './HowtoStep';
 import GradientLineRusty from "./GradientLineRusty";
 import HowtoStepCreate from './HowtoStepCreate';
 import './Fonts.css'
+import HowtoUrlCreate from './HowtoUrlCreate';
 
 
 function HowtoStepAccordion({ howto_ids }) {
@@ -28,7 +29,9 @@ function HowtoStepAccordion({ howto_ids }) {
   return (
     <div>
       <HowtoStepCreate howto_idb={howto_ids} howto_name={howtodata.howto_name} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
+      <HowtoUrlCreate howto_idb={howto_ids} howto_name={howtodata.howto_name} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
       <div>
+        
         <table className="Table4" style={{ width: '1350px' }}>
           <thead>
             <tr >
