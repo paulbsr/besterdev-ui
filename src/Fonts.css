@@ -528,6 +528,16 @@
     padding-right: 5px;
 }
 
+.steprecordhover:hover {
+    font-family: "Segoe UI";
+    font-size: large;
+    color: #D5441C;
+    background-color: #f7f4f3;
+    border-radius: 4px;
+    border: 1px solid #336791;
+    padding-right: 5px;
+}
+
 
 .banner-light {
     background-color: #f7f4f3;

@@ -82,7 +82,8 @@ function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, checkForRe
                             <div className="Font-Segoe-Large-Howto">
                                 <b style={{ fontSize: 'medium', color: 'black', cursor: 'pointer'}}>{step_number}.{steprecord_number})</b>
                                 &nbsp;&nbsp;&nbsp;
-                                {steprecord}
+                                {/* <span style={{ fontFamily: 'Segoe UI', fontSize: 'large', cursor: 'pointer', color: '#000000', backgroundColor: '#f7f4f3', borderRadius: '4px', border: '1px solid #336791' }}>{steprecord}</span> */}
+                                <span className="steprecordhover">{steprecord}</span>
                                 &nbsp;&nbsp;&nbsp;
                             </div>
                         }
@@ -100,7 +101,7 @@ function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, checkForRe
                                 )
                                 :
                                 (
-                                    <Tooltip title='Edit Step Record' placement="top-end">
+                                    <Tooltip title={`Edit StepRecord: ${steprecord_id}`} placement="top-end">
                                         <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(steprecord_id, steprecord_number, steprecord) }}>
                                             <BsPencil style={{ color: '#C0C0C0', display: 'round', margin: 'auto', fontSize: '15px' }} /></button>
                                     </Tooltip>
