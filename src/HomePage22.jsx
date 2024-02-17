@@ -151,30 +151,75 @@ export default function HomePage22(props) {
 
 
   const InnerTableRight = () => {
-    const amazonIframes = [
+
+    const amazonIframes = 
+    [
       "https://read.amazon.co.uk/kp/card?asin=B077WWRK8B&preview=inline&linkCode=kpe&ref_=cm_sw_r_kb_dp_F3HQKNR4EF2MMXB0WS0D",
       "https://read.amazon.co.uk/kp/card?asin=B081Y5262X&preview=inline&linkCode=kpe&ref_=cm_sw_r_kb_dp_H757NZNCTQK525FX3349",
       
     ];
+
+    const groupedHowtoData = {};
+    howtodata.forEach((row) => 
+    {
+      if (!groupedHowtoData[row.howto_cat]) 
+      {
+        groupedHowtoData[row.howto_cat] = [];
+      }
+      groupedHowtoData[row.howto_cat].push(row);
+    }
+    );
+  
+    const sortedHowtoCategories = Object.keys(groupedHowtoData).sort();
+    console.log(groupedHowtoData)
+    console.log(sortedHowtoCategories)
+
   
     return (
       <div>
         <table className="Table-home-centre">
           <tbody>
-            {howtodata.map((row, index) => (
+
+          {sortedHowtoCategories.map((category) => (
+              <>&nbsp;
+                <tr key={category}>
+                  <th colSpan="2" style={{ textAlign: 'left', borderBottom: '1px solid #ddd' }} className="Table-home-right-heading">{category}</th>
+                </tr>
+                {groupedHowtoData[category].map((record, index) => (
+                  <tr key={index}>
+                    <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-right-text">
+                      <a href={`/howtoedit/${record.howto_id}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.howto_summary}>{record.howto_name}</a>
+                    </td>
+                  </tr>
+                ))}
+              </>
+            ))}
+            
+            
+            
+            
+            
+            
+            {/* {howtodata.map((row, index) => (
               <tr key={index}>
                 <td>
                   {row && (
                     <div>
                       <BsQuestionOctagon style={{ color: '#D5441C', fontSize: '11px', cursor: 'pointer' }} />
                       &nbsp;<a href={`/howtoedit/${row.howto_id}`}>{row.howto_name}</a>
-                      {/* <div>&nbsp;</div> */}
                     </div>
                   )}
                 </td>
               </tr>
-            ))}
+            )
+            )
+            } */}
+            
             {/* Render iframes after the last iteration */}
+            
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
             {howtodata.length > 0 && (
               <tr>
                 <td>

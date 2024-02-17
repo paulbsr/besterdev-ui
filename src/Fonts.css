@@ -421,14 +421,33 @@
     vertical-align: top;
 }
 
+.Table-home-right-text{
+    background-color: #ffffff;
+    font-family: "Verdana";
+    font-size: small;
+    font-weight: normal;
+    text-align: left;
+    vertical-align: top;
+}
+
 .Table-home-left-heading{
+    background-color: #ffffff;
+    font-family: "Verdana";
+    font-size: large;
+    font-weight: normal;
+    text-align: left;
+    vertical-align: top;
+    color: #D5441C;
+}
+
+.Table-home-right-heading{
     background-color: #ffffff;
     font-family: "Verdana";
     font-size: large;
     font-weight: normal;
     text-align: right;
     vertical-align: top;
-    color: #336791;
+    color: #D5441C;
 }
 
 .Table-home-centre{
@@ -447,6 +466,16 @@
     font-size: large;
     font-weight: normal;
     text-align: left;
+    vertical-align: top;
+}
+
+.Table-home-right-cats{
+    background-color: #ffffff;
+    padding: 4px;
+    font-family: "Verdana";
+    font-size: small ;
+    text-align: justify;
+    font-weight: normal;
     vertical-align: top;
 }
 
