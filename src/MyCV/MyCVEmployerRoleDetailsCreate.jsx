@@ -34,7 +34,7 @@ export default function MyCVEmployerRoleDetailsCreate(props) {
           required
           defaultValue={props.parent_role_id1}
           onChange={(e) => setRoledetailname(e.target.value)}
-          style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '7px', width: '300px' }} />
+          style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '7px', width: '300px' }} />
 
         &nbsp;
 
@@ -42,7 +42,7 @@ export default function MyCVEmployerRoleDetailsCreate(props) {
           required
           defaultValue={props.parent_role_id1}
           onChange={(e) => setRoledetaildesc(e.target.value)}
-          style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '7px', width: '780px' }} />
+          style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '7px', width: '780px' }} />
           
         &nbsp;
         

@@ -120,7 +120,7 @@ function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, checkForRe
             </div>
 
             <div className='Font-Verdana-Small'>
-                <Tooltip title='Insert an additional Step Record' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={toggleAccordion}><MdAddCircleOutline style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button>&nbsp;Insert an additional Step Record</Tooltip>
+                <Tooltip title='Insert an additional Step Record' placement="top"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={toggleAccordion}><MdAddCircleOutline style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
             </div>
 
             {isExpanded &&

@@ -69,14 +69,14 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
                                     required
                                     defaultValue={roledetail_name}
                                     onChange={(e) => setRoledetail_name(e.target.value)}
-                                    style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '200px', padding: 0, paddingLeft: '2px', }} />
+                                    style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '200px', padding: 0, paddingLeft: '2px', }} />
                                 &nbsp;&nbsp;
 
                                 <input
                                     required
                                     defaultValue={roledetail_desc}
                                     onChange={(e) => setRoledetail_desc(e.target.value)}
-                                    style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '800px', padding: 0, paddingLeft: '9px', }} />
+                                    style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '800px', padding: 0, paddingLeft: '9px', }} />
                             </>
                             :
                             <div className="mycvhover">

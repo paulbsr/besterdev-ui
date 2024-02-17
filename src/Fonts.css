@@ -186,6 +186,29 @@
     font-weight: lighter;
 }
 
+.Font-Segoe-Small {
+    /* border: 1px solid rgb(233, 228, 228); */
+    /* background-color: #f7f4f3; */
+    font-family: "Segoe UI";
+    font-size: small;
+    /* font-style: italic; */
+    color: #336791;
+    /* padding: 14px; */
+    /* font-weight: lighter; */
+}
+
+.Font-Segoe-Medium {
+    /* border: 1px solid rgb(233, 228, 228); */
+    /* background-color: #f7f4f3; */
+    font-family: "Segoe UI";
+    font-size: medium;
+    /* font-style: italic; */
+    color: #336791;
+    /* padding: 14px; */
+    /* font-weight: lighter; */
+}
+
+
 .CV-Font-Calibri-Large-Italic-PG {
     border: 1px solid rgb(233, 228, 228);
     background-color: #ffffff;

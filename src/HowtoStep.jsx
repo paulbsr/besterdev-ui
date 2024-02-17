@@ -144,7 +144,7 @@ export default function HowtoStep({ howto_id, step_id, step_number, step_name, s
               </>
               </>
               :
-              <div><i>{step_obj}</i></div>}
+              <div className="Font-Segoe-Medium"><i>{step_obj}</i></div>}
           </div>
           <HowtoStepRecordAccordion step_idd={step_id} howto_id={howto_id} howtodata={howtodata} step_number={step_number} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
         </div>

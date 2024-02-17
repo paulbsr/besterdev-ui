@@ -59,8 +59,8 @@ const App = () => {
     <UserProvider>
       <Router>
         <Routes>
+          
           <Route element={<PrivateRoutes />}>
-            <Route path='/home' element={<PageHome />} />
             <Route path='/search' element={<PageSearch />} />
             <Route path='/screen' element={<PageSearch />} />
             <Route path='/candidatemanage' element={<PageManage />} />
@@ -74,6 +74,7 @@ const App = () => {
           </Route>
 
           <Route path='/howtoedit/:howto_id' element={<PageHowtoEdit />} />
+          <Route path='/home' element={<PageHome />} />
           <Route path='/login' element={<PageLogin />} />
           <Route path='/swagger' element={<PageSwagger />} />
           <Route path='/' element={<PageLogin />} />
