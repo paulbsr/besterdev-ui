@@ -1,11 +1,12 @@
-import { useState, useEffect, useContext, React } from 'react'
+import { useState, useEffect, React } from 'react'
 import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
 import './Fonts.css';
 import 'react-dropdown/style.css';
 import axios from 'axios'
 import Image from './graphix/12.png'
-import { BsQuestionOctagon } from "react-icons/bs";
+import HowtoEdit from './HowtoEdit';
+import { Link } from 'react-router-dom';
 
 
 
@@ -32,8 +33,9 @@ export default function HomePage22(props) {
         const sortedwebsitedata = response.data.sort((b, a) => b.website_name.localeCompare(a.website_name));
         setWebsitedata(sortedwebsitedata);
       })
-      .catch((e) => console.error(e));
+      .catch((e) => console.error(e));  
   }, [props.checkForRecords]);
+
 
 
 
@@ -61,7 +63,7 @@ export default function HomePage22(props) {
 
 
 
-  const InnerTableLeft = () => {
+  const InnerTableLeft = () => {  
 
     const groupedData = {};
     websitedata.forEach((row) => {
@@ -72,7 +74,7 @@ export default function HomePage22(props) {
     });
   
     const sortedCategories = Object.keys(groupedData).sort();
-  
+    
     return (
       <div className="scrollable-container">  <Tooltip id="insert" />
         <table className="Table-home-left">
@@ -94,6 +96,8 @@ export default function HomePage22(props) {
           </tbody>
         </table>
       </div>
+      
+      
       
     );
   };
@@ -148,8 +152,6 @@ export default function HomePage22(props) {
   };
 
 
-
-
   const InnerTableRight = () => {
 
     const amazonIframes = 
@@ -171,10 +173,7 @@ export default function HomePage22(props) {
     );
   
     const sortedHowtoCategories = Object.keys(groupedHowtoData).sort();
-    console.log(groupedHowtoData)
-    console.log(sortedHowtoCategories)
 
-  
     return (
       <div>
         <table className="Table-home-centre">
@@ -196,27 +195,7 @@ export default function HomePage22(props) {
             ))}
             
             
-            
-            
-            
-            
-            {/* {howtodata.map((row, index) => (
-              <tr key={index}>
-                <td>
-                  {row && (
-                    <div>
-                      <BsQuestionOctagon style={{ color: '#D5441C', fontSize: '11px', cursor: 'pointer' }} />
-                      &nbsp;<a href={`/howtoedit/${row.howto_id}`}>{row.howto_name}</a>
-                    </div>
-                  )}
-                </td>
-              </tr>
-            )
-            )
-            } */}
-            
-            {/* Render iframes after the last iteration */}
-            
+
             <div>&nbsp;</div>
             <div>&nbsp;</div>
             <div>&nbsp;</div>

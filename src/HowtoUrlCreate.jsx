@@ -4,7 +4,8 @@ import './Fonts.css';
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
 import spacer2 from './graphix/besterdev_spacer_white_half.png';
-import { GiHummingbird } from "react-icons/gi";
+import { GiHummingbird, GiSpiderWeb  } from "react-icons/gi";
+
 import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';
 import { toast } from 'react-toastify';
@@ -46,7 +47,7 @@ export default function HowtoUrlCreate(props) {
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
         <a data-tooltip-id="insert" data-tooltip-content="Add a Step"><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
-        <b>Add a Website to <i>"{props.howto_name}"</i></b>
+        <b>Add a Website <GiSpiderWeb style={{ color: '#D5441C', fontSize: '16px', cursor: 'pointer' }} /> to <i>"{props.howto_name}"</i></b>
         <div>&nbsp;</div>
       </div>
 
@@ -72,7 +73,7 @@ export default function HowtoUrlCreate(props) {
 
                 <div>&nbsp;</div>
 
-                <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>Add this Website to {props.howto_name}</button>
+                <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#D5441C', cursor: 'pointer' }}>Add this Website to {props.howto_name}</button>
                 <div>&nbsp;</div>
               </div>
             </form>

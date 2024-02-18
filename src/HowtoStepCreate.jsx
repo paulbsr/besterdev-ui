@@ -4,10 +4,11 @@ import './Fonts.css';
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
 import spacer2 from './graphix/besterdev_spacer_white_half.png';
-import { GiHummingbird } from "react-icons/gi";
+import { GiHummingbird, GiFootsteps } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';
 import { toast } from 'react-toastify';
+import { IoFootstepsSharp } from "react-icons/io5";
 dayjs.extend(utc);
 
 
@@ -42,14 +43,6 @@ export default function HowtoStepCreate(props) {
     }
   }
 
-  // useEffect(() => {
-  //   axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtos')
-  //     .then((response) => {
-  //       const howtos = response.data.sort((b, a) => b.howto_name.localeCompare(a.howto_name));
-  //       setHowtos(howtos);
-  //     })
-  // },
-  //   []);
 
   return (
 
@@ -57,7 +50,7 @@ export default function HowtoStepCreate(props) {
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
         <a data-tooltip-id="insert" data-tooltip-content="Add a Step"><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
-        <b>Add a Step to <i>"{props.howto_name}"</i></b>
+        <b>Add a Step <IoFootstepsSharp style={{ color: '#D5441C', fontSize: '16px', cursor: 'pointer' }} /> to <i>"{props.howto_name}"</i></b>
         <div>&nbsp;</div>
       </div>
 
@@ -82,42 +75,9 @@ export default function HowtoStepCreate(props) {
 
                 <textarea style={{ fontFamily: 'Verdana', fontSize: 'Small', height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} placeholder="Optional" type="text" value={step_obj} onChange={(event) => setStep_obj(event.target.value)} />
 
-                {/* <img alt="1" src={spacer} />
-                <label htmlFor="dropdown">Attach to Howto:&nbsp;&nbsp;</label>
-                <select className='Font-Verdana-Small-Postgres'
-                  onChange={(event) => {
-                    const selectedIndex = event.target.selectedIndex;
-                    const selectedOption = event.target.options[selectedIndex];
-                    const howto_name = selectedOption.getAttribute("data-howto_name");
-                    const howto_id = selectedOption.getAttribute("data-howto_id");
-                    setHowto_name(howto_name);
-                    setHowto_id(howto_id);
-                  }}
-                  id="dropdown"
-                  style={{
-                    height: '27.5px',
-                    border: '1.25px solid #c4c4c4',
-                    borderRadius: '4px',
-                    padding: 0,
-                    paddingLeft: '10px',
-                    width: '300px'
-                  }}
-                >
-                  <option disabled selected value="">Howto Name</option>
-                  {howtos && howtos.map(option => (
-                    <option
-                      key={option.id}
-                      value={option.id}
-                      data-howto_name={option.howto_name} // Store company data as an attribute
-                      data-howto_id={option.howto_id} // Store company data as an attribute
-                    >{option.howto_name}
-                    </option>
-                  ))}
-                </select> */}
-
                 <div>&nbsp;</div>
 
-                <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>Add this Step to {props.howto_name}</button>
+                <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#D5441C', cursor: 'pointer' }}>Add this Step to {props.howto_name}</button>
                 <div>&nbsp;</div>
               </div>
             </form>
