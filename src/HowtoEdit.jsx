@@ -1,20 +1,16 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import 'react-tooltip/dist/react-tooltip.css'
-import 'react-tooltip/dist/react-tooltip.css'
-import './Fonts.css';
+import { Tooltip } from '@mui/material';
+                                                                                            import './Fonts.css';
 import 'react-dropdown/style.css';
 import Image from './graphix/15.png'
 import HowtoStepAccordion from './HowtoStepAccordion';
-import { Tooltip } from 'react-tooltip';
-import { BrowserRouter as Router, Route, Switch, useParams } from 'react-router-dom';
 
 
 export default function HowtoEdit(props) {
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [websitedata, setWebsitedata] = useState([])
-  let { howtoid } = useParams();
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites')
@@ -98,6 +94,11 @@ export default function HowtoEdit(props) {
             <th style={{ width: '20%' }}></th>
             <th style={{ width: '50%' }}></th>
             <th style={{ width: '20%' }}></th>
+          {/* <td style={{width: '25%' }}></td>
+          <td style={{width: '1%' }}></td>
+          <td style={{width: '48%' }}></td>
+          <td style={{width: '1%' }}></td>
+          <td style={{width: '25%' }}></td> */}
           </tr>
         </thead>
 
@@ -106,6 +107,11 @@ export default function HowtoEdit(props) {
             <td className="Table-home-left"><InnerTableLeft/></td>
             <td className="Table-home-right"><HowtoStepAccordion howto_ids={props.howto_id} /></td>
             <td className="Table-home-right"></td>
+          {/* <td style={{width: '25%' }} className="Table-home-left"><InnerTableLeft/></td>
+          <td style={{width: '1%' }}></td>
+          <td style={{width: '48%' }} className="Table-home-centre"><HowtoStepAccordion howto_ids={props.howto_id} /></td>
+          <td style={{width: '1%' }}></td>
+          <td style={{width: '25%' }} className="Table-home-right"></td> */}
           </tr>
         </tbody>
       </table>

@@ -5,11 +5,6 @@ import './Fonts.css';
 import 'react-dropdown/style.css';
 import axios from 'axios'
 import Image from './graphix/12.png'
-import HowtoEdit from './HowtoEdit';
-import { Link } from 'react-router-dom';
-
-
-
 
 export default function HomePage22(props) {
   const [checkForRecords, setCheckForRecords] = useState(true);
@@ -61,8 +56,6 @@ export default function HomePage22(props) {
 
   
 
-
-
   const InnerTableLeft = () => {  
 
     const groupedData = {};
@@ -96,9 +89,6 @@ export default function HomePage22(props) {
           </tbody>
         </table>
       </div>
-      
-      
-      
     );
   };
   
