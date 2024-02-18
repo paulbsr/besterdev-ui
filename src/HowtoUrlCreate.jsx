@@ -31,10 +31,10 @@ export default function HowtoUrlCreate(props) {
         'website_cat': props.howto_name
       }
 
-      const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtostep/create`, newRecord);
+      const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/create`, newRecord);
       if (response.status === 200) {
         props.setCheckForRecords(!props.checkForRecords);
-        toast.success(`URL ${website_name} memorialized.`)
+        toast.success(`URL ${website_name} memorialized and associated with ${props.howto_name}.`)
       }
       else { toast.error('Nee') }
     }
