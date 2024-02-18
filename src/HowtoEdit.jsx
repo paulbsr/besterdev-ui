@@ -92,7 +92,7 @@ export default function HowtoEdit(props) {
           <tr>
             <td style={{ width: '25%' }}></td>
             <td style={{ width: '1%' }}></td>
-            <td style={{ width: '48%' }}><img src={Image} /></td>
+            <td style={{ width: '48%' }}></td>
             <td style={{ width: '1%' }}></td>
             <td style={{ width: '25%' }}></td>
             {/* <td style={{width: '25%' }}></td>

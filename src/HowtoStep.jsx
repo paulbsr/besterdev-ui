@@ -52,7 +52,7 @@ export default function HowtoStep({ howto_id, step_id, step_number, step_name, s
       }
       )
     onEditCancel();
-  }
+  };
 
 
   return (

@@ -38,7 +38,9 @@ export default function HowtoUrlCreate(props) {
         toast.success(`${website_name} memorialized.`)
       }
       else { toast.error('Nee') }
+      
     }
+
   }
 
   return (
@@ -57,17 +59,17 @@ export default function HowtoUrlCreate(props) {
             <form onSubmit={handleSubmit}>
               <div><img alt="1" src={spacer2} /></div>
               <div className='Font-Verdana-Small-Postgres'>
-                URL Display Name:&nbsp;&nbsp;<input style={{ fontFamily: 'Verdana', fontSize: 'Small', height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '985px' }} placeholder="Required" type="text" value={website_name} onChange={(event) => setWebsite_name(event.target.value)} required />
+                Website Display Name:&nbsp;&nbsp;<input style={{ fontFamily: 'Verdana', fontSize: 'Small', height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '985px' }} placeholder="Required" type="text" value={website_name} onChange={(event) => setWebsite_name(event.target.value)} required />
 
                 <div>&nbsp;</div>
 
                 <div>
-                  URL Link:&nbsp;&nbsp;
+                  Website Link:&nbsp;&nbsp;
                   <input style={{ fontFamily: 'Verdana', fontSize: 'Small', height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1050px' }} placeholder="Required" type="text" value={website_url} onChange={(event) => setWebsite_url(event.target.value)} />
                 </div>
 
                 <div>&nbsp;</div>
-                URL Description:&nbsp;&nbsp;&nbsp;
+                Website Description:&nbsp;&nbsp;&nbsp;
 
                 <input style={{ fontFamily: 'Verdana', fontSize: 'Small', height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} placeholder="Optional" type="text" value={website_desc} onChange={(event) => setWebsite_desc(event.target.value)} />
 
