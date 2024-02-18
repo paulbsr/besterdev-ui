@@ -4,7 +4,6 @@ import axios from "axios";
 import './Fonts.css'
 import { Tooltip } from '@mui/material';
 import { MdAddCircleOutline } from "react-icons/md";
-import { AiOutlineEdit } from "react-icons/ai";
 import { toast } from 'react-toastify';
 import { GiCheckMark } from "react-icons/gi"; //Commit
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard
@@ -81,8 +80,7 @@ function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, checkForRe
                             :
                             <div className="Font-Segoe-Large-Howto">
                                 <b style={{ fontSize: 'medium', color: 'black', cursor: 'pointer'}}>{step_number}.{steprecord_number})</b>
-                                &nbsp;&nbsp;&nbsp;
-                                {/* <span style={{ fontFamily: 'Segoe UI', fontSize: 'large', cursor: 'pointer', color: '#000000', backgroundColor: '#f7f4f3', borderRadius: '4px', border: '1px solid #336791' }}>{steprecord}</span> */}
+                                &nbsp;
                                 <span className="steprecordhover">{steprecord}</span>
                                 &nbsp;&nbsp;&nbsp;
                             </div>

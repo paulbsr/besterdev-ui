@@ -102,7 +102,7 @@ export default function HowtoStep({ howto_id, step_id, step_number, step_name, s
           :
           <>
             <i onClick={toggleAccordion}>
-              <i className="Font-Segoe-Large-Howto">Step<IoFootstepsSharp style={{ color: '#D5441C', fontSize: '13px', cursor: 'pointer' }}/>{step_number}:&nbsp;</i>
+              <i className="Font-Segoe-Large-Howto"><u>Step<IoFootstepsSharp style={{ color: '#D5441C', fontSize: '13px', cursor: 'pointer' }}/>{step_number}</u>:&nbsp;</i>
               <b className="Font-Segoe-Large-Howto">{step_name}</b>
             </i>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

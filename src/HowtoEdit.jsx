@@ -15,11 +15,11 @@ export default function HowtoEdit(props) {
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites')
       .then((response) => {
-        const filteredwebsites = response.data.filter(site => {return site.howto_id_fk === props.howto_id});
+        const filteredwebsites = response.data.filter(site => { return site.howto_id_fk === props.howto_id });
         const sortedfilteredwebsites = filteredwebsites.sort((a, b) => a.website_name.localeCompare(b.website_name));
         setWebsitedata(sortedfilteredwebsites);
-              })
-      .catch((e) => console.error(e));  
+      })
+      .catch((e) => console.error(e));
   }, [props.checkForRecords]);
 
 
@@ -30,27 +30,26 @@ export default function HowtoEdit(props) {
 
 
     websitedata.forEach((row) => {
-      if (!groupedData[row.website_cat]) 
-      {
+      if (!groupedData[row.website_cat]) {
         groupedData[row.website_cat] = [];
       }
       groupedData[row.website_cat].push(row);
     });
-  
+
     const sortedCategories = Object.keys(groupedData).sort();
-  
+
     return (
       <div className="scrollable-container">  <Tooltip id="insert" />
         <table className="Table-home-left">
           <tbody>
             {sortedCategories.map((category) => (
-              
+
               <>&nbsp;
-              <div>&nbsp;</div>
-              <div>&nbsp;</div>
-              <div>&nbsp;</div>
-              <div>&nbsp;</div>
-              <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
 
                 {groupedData[category].map((record, index) => (
                   <tr key={index}>
@@ -64,15 +63,15 @@ export default function HowtoEdit(props) {
           </tbody>
         </table>
       </div>
-      
+
     );
   };
 
   return (
 
-        <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
+    <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
 
-      <table style={{ width: '100%' }}>
+      {/* <table style={{ width: '100%' }}>
 
         <thead>
           <tr>
@@ -85,16 +84,18 @@ export default function HowtoEdit(props) {
             <td></td>
           </tr>
         </tbody>
-      </table>
+      </table> */}
 
 
       <table style={{ width: '100%' }}>
         <thead>
           <tr>
-            <th style={{ width: '20%' }}></th>
-            <th style={{ width: '50%' }}></th>
-            <th style={{ width: '20%' }}></th>
-          {/* <td style={{width: '25%' }}></td>
+            <td style={{ width: '25%' }}></td>
+            <td style={{ width: '1%' }}></td>
+            <td style={{ width: '48%' }}><img src={Image} /></td>
+            <td style={{ width: '1%' }}></td>
+            <td style={{ width: '25%' }}></td>
+            {/* <td style={{width: '25%' }}></td>
           <td style={{width: '1%' }}></td>
           <td style={{width: '48%' }}></td>
           <td style={{width: '1%' }}></td>
@@ -104,10 +105,15 @@ export default function HowtoEdit(props) {
 
         <tbody>
           <tr>
-            <td className="Table-home-left"><InnerTableLeft/></td>
+          <td style={{width: '25%' }} className="Table-home-left"><InnerTableLeft/></td>
+          <td style={{width: '1%' }}></td>
+          <td style={{width: '48%' }} className="Table-home-centre"><HowtoStepAccordion howto_ids={props.howto_id} /></td>
+          <td style={{width: '1%' }}></td>
+          <td style={{width: '25%' }} className="Table-home-right"></td>
+            {/* <td className="Table-home-left"><InnerTableLeft /></td>
             <td className="Table-home-right"><HowtoStepAccordion howto_ids={props.howto_id} /></td>
-            <td className="Table-home-right"></td>
-          {/* <td style={{width: '25%' }} className="Table-home-left"><InnerTableLeft/></td>
+            <td className="Table-home-right"></td> */}
+            {/* <td style={{width: '25%' }} className="Table-home-left"><InnerTableLeft/></td>
           <td style={{width: '1%' }}></td>
           <td style={{width: '48%' }} className="Table-home-centre"><HowtoStepAccordion howto_ids={props.howto_id} /></td>
           <td style={{width: '1%' }}></td>
