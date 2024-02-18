@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import axios from 'axios';
 import './Fonts.css';
 import spacer from './graphix/besterdev_spacer_white.png';

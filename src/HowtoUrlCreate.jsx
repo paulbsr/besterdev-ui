@@ -4,7 +4,7 @@ import './Fonts.css';
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
 import spacer2 from './graphix/besterdev_spacer_white_half.png';
-import { GiHummingbird, GiSpiderWeb  } from "react-icons/gi";
+import { GiHummingbird, GiSpiderWeb } from "react-icons/gi";
 
 import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';
@@ -35,7 +35,7 @@ export default function HowtoUrlCreate(props) {
       const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/create`, newRecord);
       if (response.status === 200) {
         props.setCheckForRecords(!props.checkForRecords);
-        toast.success(`URL ${website_name} memorialized and associated with ${props.howto_name}.`)
+        toast.success(`${website_name} memorialized.`)
       }
       else { toast.error('Nee') }
     }
