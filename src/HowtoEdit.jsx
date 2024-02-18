@@ -5,7 +5,6 @@ import './Fonts.css';
 import 'react-dropdown/style.css';
 import Image from './graphix/15.png'
 import HowtoStepAccordion from './HowtoStepAccordion';
-import { GiHummingbird, GiSpiderWeb } from "react-icons/gi";
 
 
 export default function HowtoEdit(props) {
@@ -56,8 +55,7 @@ export default function HowtoEdit(props) {
                 {groupedData[category].map((record, index) => (
                   <tr key={index}>
                     <td style={{ width: '20%', verticalAlign: 'top' }} className="Font-Segoe-Medium-Howto">
-                    <GiSpiderWeb style={{ color: '#D5441C', fontSize: '13px', cursor: 'pointer' }} />
-                    &nbsp;<a href={record.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.website_desc}>{record.website_name}</a>
+                      <a href={record.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.website_desc}>{record.website_name}</a>
                     </td>
                   </tr>
                 ))}

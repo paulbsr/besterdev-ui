@@ -56,6 +56,8 @@ export default function HomePage22(props) {
 
   
 
+
+
   const InnerTableLeft = () => {  
 
     const groupedData = {};
@@ -89,6 +91,9 @@ export default function HomePage22(props) {
           </tbody>
         </table>
       </div>
+      
+      
+      
     );
   };
   

@@ -25,7 +25,7 @@ export default function HowtoManage() {
   const [editing, setEditing] = useState("")
   const [howto_name, setHowto_name] = useState(null)
   const [howto_desc, setHowto_desc] = useState(null)
-  const [howto_author, setHowto_author] = useState(null)
+  const [howto_cat, setHowto_cat] = useState("Jy moet nog regmaak")
   const [howto_date, setHowto_date] = useState(null)
    
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function HowtoManage() {
           setEditing(row.howto_id)
           setHowto_name(row.howto_name)
           setHowto_desc(row.howto_desc)
-          setHowto_author(row.howto_author)
+          setHowto_cat(row.howto_cat)
           setHowto_date(row.howto_date)
         };
 
@@ -47,7 +47,7 @@ export default function HowtoManage() {
           setEditing("");
           setHowto_name(null)
           setHowto_desc(null)
-          setHowto_author(null)
+          setHowto_cat(null)
           setHowto_date(null)
         };
 
@@ -57,7 +57,7 @@ export default function HowtoManage() {
         {
           "howto_name": howto_name,
           "howto_desc": howto_desc,
-          "howto_author": howto_author,
+          "howto_cat": howto_cat,
           "howto_date": howto_date,
         } 
         
