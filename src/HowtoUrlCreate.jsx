@@ -48,8 +48,8 @@ export default function HowtoUrlCreate(props) {
     <div className='Font-Verdana-Small-Postgres'>&nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-        <a data-tooltip-id="insert" data-tooltip-content="Add a Step"><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
-        <b>Add a Website <GiSpiderWeb style={{ color: '#D5441C', fontSize: '16px', cursor: 'pointer' }} /> to <i>"{props.howto_name}"</i></b>
+        <a data-tooltip-id="insert" data-tooltip-content="Add a Web-based Resource"><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
+        <b>Add a Web-based Resource <GiSpiderWeb style={{ color: '#D5441C', fontSize: '16px', cursor: 'pointer' }} /> to <i>"{props.howto_name}"</i></b>
         <div>&nbsp;</div>
       </div>
 

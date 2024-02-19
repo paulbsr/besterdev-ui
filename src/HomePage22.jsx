@@ -5,6 +5,7 @@ import './Fonts.css';
 import 'react-dropdown/style.css';
 import axios from 'axios'
 import Image from './graphix/12.png'
+// import { Tooltip } from '@mui/material';
 
 export default function HomePage22(props) {
   const [checkForRecords, setCheckForRecords] = useState(true);
@@ -71,7 +72,7 @@ export default function HomePage22(props) {
     const sortedCategories = Object.keys(groupedData).sort();
     
     return (
-      <div className="scrollable-container">  <Tooltip id="insert" />
+      <div className="scrollable-container">   <Tooltip id="insert" />
         <table className="Table-home-left">
           <tbody>
             {sortedCategories.map((category) => (

@@ -100,7 +100,7 @@ export default function WebsiteManage(props) {
           <tr>
             <th style={{ width: '20px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'></th>
             <th style={{ width: '400px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Tool / Website / Book</th>
-            <th style={{ width: '900px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Value / Description / Action</th>
+            <th style={{ width: '800px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Value / Description / Action</th>
             <th style={{ width: '400px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>URL</th>
             <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Catagory</th>
           </tr>

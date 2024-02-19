@@ -3,7 +3,6 @@ import axios from 'axios'
 import { Tooltip } from '@mui/material';
 import './Fonts.css';
 import 'react-dropdown/style.css';
-import Image from './graphix/15.png'
 import HowtoStepAccordion from './HowtoStepAccordion';
 
 
@@ -71,22 +70,6 @@ export default function HowtoEdit(props) {
 
     <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
 
-      {/* <table style={{ width: '100%' }}>
-
-        <thead>
-          <tr>
-            <th style={{ width: '100%' }}><img src={Image} /></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td></td>
-          </tr>
-        </tbody>
-      </table> */}
-
-
       <table style={{ width: '100%' }}>
         <thead>
           <tr>
@@ -95,29 +78,16 @@ export default function HowtoEdit(props) {
             <td style={{ width: '48%' }}></td>
             <td style={{ width: '1%' }}></td>
             <td style={{ width: '25%' }}></td>
-            {/* <td style={{width: '25%' }}></td>
-          <td style={{width: '1%' }}></td>
-          <td style={{width: '48%' }}></td>
-          <td style={{width: '1%' }}></td>
-          <td style={{width: '25%' }}></td> */}
           </tr>
         </thead>
 
         <tbody>
           <tr>
-          <td style={{width: '25%' }} className="Table-home-left"><InnerTableLeft/></td>
-          <td style={{width: '1%' }}></td>
-          <td style={{width: '48%' }} className="Table-home-centre"><HowtoStepAccordion howto_ids={props.howto_id} /></td>
-          <td style={{width: '1%' }}></td>
-          <td style={{width: '25%' }} className="Table-home-right"></td>
-            {/* <td className="Table-home-left"><InnerTableLeft /></td>
-            <td className="Table-home-right"><HowtoStepAccordion howto_ids={props.howto_id} /></td>
-            <td className="Table-home-right"></td> */}
-            {/* <td style={{width: '25%' }} className="Table-home-left"><InnerTableLeft/></td>
-          <td style={{width: '1%' }}></td>
-          <td style={{width: '48%' }} className="Table-home-centre"><HowtoStepAccordion howto_ids={props.howto_id} /></td>
-          <td style={{width: '1%' }}></td>
-          <td style={{width: '25%' }} className="Table-home-right"></td> */}
+            <td style={{ width: '25%' }} className="Table-home-left"><InnerTableLeft /></td>
+            <td style={{ width: '1%' }}></td>
+            <td style={{ width: '48%' }} className="Table-home-centre"><HowtoStepAccordion howto_ids={props.howto_id} /></td>
+            <td style={{ width: '1%' }}></td>
+            <td style={{ width: '25%' }} className="Table-home-right"></td>
           </tr>
         </tbody>
       </table>

@@ -14,7 +14,7 @@ export default function WebSiteCreate(props) {
   const [website_name, setWebsite_name] = useState('');
   const [website_desc, setWebsite_desc] = useState('');
   const [website_url, setWebsite_url] = useState('');
-  const [website_owner, setWebsite_owner] = useState('');
+  const [website_cat, setWebsite_cat] = useState('');
 
 
   const handleSubmit = async (event) => {
@@ -26,7 +26,7 @@ export default function WebSiteCreate(props) {
         'website_name': website_name,
         'website_desc': website_desc,
         'website_url': website_url,
-        'website_owner': website_owner,
+        'website_cat': website_cat,
       }
 
       {
@@ -60,7 +60,7 @@ export default function WebSiteCreate(props) {
               <div className='Font-Verdana-Small-Postgres'>
                 <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Resource Name:&nbsp;&nbsp;<input style={{ height: '25.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} placeholder="Required" type="text" value={website_name} onChange={(event) => setWebsite_name(event.target.value)} required />
                 <img alt="1" src={spacer} />Resource Description:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '830px' }} placeholder="Required" type="text" value={website_desc} onChange={(event) => setWebsite_desc(event.target.value)} required />
-                <img alt="1" src={spacer} />Resource Owner:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} type="text" value={website_owner} onChange={(event) => setWebsite_owner(event.target.value)} />
+                <img alt="1" src={spacer} />Resource Catagory:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} type="text" value={website_cat} onChange={(event) => setWebsite_cat(event.target.value)} />
                 <div>&nbsp;</div>
                 <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Resource URL:&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '890px' }} placeholder="Required" type="text" value={website_url} onChange={(event) => setWebsite_url(event.target.value)} required />
                 <img alt="1" src={spacer} /><button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Memorialize Website</button>
