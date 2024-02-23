@@ -515,6 +515,7 @@
     background-color: #f7f4f3;
     border-radius: 3px;
     border: 1px solid #336791;
+    cursor: 'pointer';
 }
 
 .mycvhover:hover {

@@ -78,9 +78,10 @@ export default function HomePage22(props) {
             {sortedCategories.map((category) => (
               <>&nbsp;
                 <tr key={category}>
-                  <th colSpan="2" style={{ textAlign: 'right', borderBottom: '1px solid #ddd' }} className="Table-home-left-heading">{category}</th>
+                  <th colSpan="2" style={{ textAlign: 'right', borderBottom: '1px solid #ddd' }} className="Table-home-left-heading">{category.includes("HOWTO") ? category.replace("HOWTO :: CMM ->", "").replace("HOWTO :: ", "") : category} </th>
                 </tr>
-                {groupedData[category].map((record, index) => (
+                {
+                  groupedData[category].map((record, index) => (
                   <tr key={index}>
                     <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left-text">
                       <a href={record.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.website_desc}>{record.website_name}</a>
@@ -132,7 +133,7 @@ export default function HomePage22(props) {
               <tr key={index}>
                 <td className="fphover">
                   {rowc && (
-                    <div>
+                    <div style={{ cursor: 'pointer'}}>
                       
                       <b>{rowc.cyclopedia_name}:</b>&nbsp;<i>{rowc.cyclopedia_desc}</i>
                       <div className='Font-Spacer-White'>Make this spacer white</div>
@@ -180,7 +181,7 @@ export default function HomePage22(props) {
                 <tr key={category}>
                   <th colSpan="2" style={{ textAlign: 'left', borderBottom: '1px solid #ddd' }} className="Table-home-right-heading">{category}</th>
                 </tr>
-                {groupedHowtoData[category].map((record, index) => (
+                { groupedHowtoData[category].map((record, index) => (
                   <tr key={index}>
                     <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-right-text">
                       <a href={`/howtoedit/${record.howto_id}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.howto_summary}>{record.howto_name}</a>
