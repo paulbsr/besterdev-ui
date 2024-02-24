@@ -69,10 +69,10 @@ const App = () => {
             <Route path='/hunt' element={<PageSearch />} />
             <Route path='/cyclopediamanage' element={<PageCyclopedia />} />
             <Route path='/webresourcemanage' element={<PageResources/>} />
-            <Route path='/howtodocs' element={<PageHowtoDocs />} />
             <Route path='/mycv' element={<PageMyCV />} />
           </Route>
-
+          
+          
           <Route path='/howtoedit/:howto_id' element={<PageHowtoEdit />} />
           <Route path='/home' element={<PageHome />} />
           <Route path='/login' element={<PageLogin />} />

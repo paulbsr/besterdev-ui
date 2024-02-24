@@ -134,7 +134,7 @@ export default function WebsiteManage(props) {
 
                 <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '400px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_name} onChange={(e) => setWebsite_name(e.target.value)} />) : (<a href={row.website_url} target="_blank">{row.website_name}</a>)}</td>
                 <td className="asmshover">{row.id === editing ? (<textarea style={{ height: '30px', width: '900px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_desc} onChange={(e) => setWebsite_desc(e.target.value)} />) : (row.website_desc)}</td>
-                <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '600px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_url} onChange={(e) => setWebsite_url(e.target.value)} />) : (row.website_url)}</td>
+                <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '600px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_url} onChange={(e) => setWebsite_url(e.target.value)} />) : "URL is te lank"}</td>
                 <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '200px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_cat} onChange={(e) => setWebsite_cat(e.target.value)} />) : (row.website_cat)}</td>
               </tr>
             )
