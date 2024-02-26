@@ -179,7 +179,7 @@ export default function HomePageNew(props) {
 
                   <td style={{ width: '20%' }} className="Table-home-left">
                     <Tooltip id="edit" />
-                    <a data-tooltip-id="edit" data-tooltip-content={row.website_desc} href={row.website_url} target="_blank">{row.website_name}</a>
+                    <a data-tooltip-id="edit" data-tooltip-content={row.website_desc} href={row.website_url} target="_blank" rel="noreferrer">{row.website_name}</a>
                   </td>
 
                   <td></td>
@@ -201,7 +201,7 @@ export default function HomePageNew(props) {
                   <td style={{ width: '20%' }} className="Table-home-right">
                     {howtoRow && (
                       <div>
-                        <a href={`/howtoedit/${howtoRow.howto_id}`} target="_blank">{howtoRow.howto_name}</a>
+                        <a href={`/howtoedit/${howtoRow.howto_id}`} target="_blank" rel="noreferrer">{howtoRow.howto_name}</a>
                       </div>
                     )}
                   </td>

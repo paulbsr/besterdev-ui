@@ -9,7 +9,6 @@ import PageSearch from './PageSearch';
 import PageManage from './PageManage';
 import PageLogin from './PageLogin';
 import PageLogout from './PageLogout';
-import PageHowtoDocs from './PageHowtoDocs';
 import PageHowtoManage from './PageHowtoManage';
 import PageResources from './PageResources';
 import firebase from 'firebase/compat/app';

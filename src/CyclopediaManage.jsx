@@ -10,7 +10,7 @@ import GradientLineRusty from './GradientLineRusty';
 import { IoLibrary } from "react-icons/io5";
 
 
-function CyclopediaManage({ }) {
+function CyclopediaManage() {
   const [checkForRecords, setCheckForRecords] = useState(true);
   const [editing, setEditing] = useState(false);
   const [cyclopedianame, setCyclopediaName] = useState();
@@ -26,6 +26,7 @@ function CyclopediaManage({ }) {
       .then((response) => {
         const sortedCyclopediaData = response.data.sort((a, b) => a.cyclopedia_name.localeCompare(b.cyclopedia_name));
         setCyclopediaData(sortedCyclopediaData);
+        setCheckForRecords(!checkForRecords);
       })
       .catch((e) => console.error(e));
   }, [checkForRecords]);
@@ -48,8 +49,8 @@ function CyclopediaManage({ }) {
   const onEditDelete = (row) => {
     axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/delete/${row.cyclopedia_id}`)
       .then((response) => {
-        setCheckForRecords(!checkForRecords);
         toast.success(`${cyclopedianame} purged.`)
+        setCheckForRecords(!checkForRecords);
       }
       )
   };
@@ -65,8 +66,8 @@ function CyclopediaManage({ }) {
     }
 
     const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${editing}`, CyclopediaRecordPUT)
-    setCheckForRecords(!checkForRecords);
     toast.success(`Cyclopedia Record amended.`)
+    setCheckForRecords(!checkForRecords);
     onEditCancel();
   }
 

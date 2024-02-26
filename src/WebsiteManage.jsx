@@ -1,7 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
-import { Tooltip } from 'react-tooltip'
-import 'react-tooltip/dist/react-tooltip.css'
-import 'react-tooltip/dist/react-tooltip.css'
+import { useState, useEffect } from 'react'
 import './Fonts.css';
 import 'react-dropdown/style.css';
 import axios from 'axios'
@@ -18,18 +15,20 @@ export default function WebsiteManage(props) {
   const [checkForRecords, setCheckForRecords] = useState(true);
   const [tabledata, setTabledata] = useState([]);
   const [editing, setEditing] = useState("")
-  const [website_name, setWebsite_name] = useState('');
-  const [website_desc, setWebsite_desc] = useState('');
-  const [website_url, setWebsite_url] = useState('');
-  const [website_cat, setWebsite_cat] = useState('');
+  const [website_name, setWebsite_name] = useState();
+  const [website_desc, setWebsite_desc] = useState();
+  const [website_url, setWebsite_url] = useState();
+  const [website_cat, setWebsite_cat] = useState();
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites')
       .then((response) => {
         const sortedTabledata = response.data.sort((b, a) => b.website_name.localeCompare(a.website_name));
-        setTabledata(sortedTabledata);})
+        setTabledata(sortedTabledata);
+        setCheckForRecords(!checkForRecords);})
       .catch((e) => console.error(e));
-  }, [checkForRecords] [props.checkForRecordsA]
+  }, [checkForRecords] 
+  [props.checkForRecordsA]
   
   );
 
@@ -112,27 +111,24 @@ export default function WebsiteManage(props) {
               <tr key={row.id}>
                 <td>
                   <>
-                    <Tooltip id="edit" />
-                    <Tooltip id="commit" />
-                    <Tooltip id="revert" />
-                    <Tooltip id="purge" />
+
                     {row.id === editing ?
                       (
                         <>
-                          <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#169247', outline: 'none' }} type='button' onClick={() => onEditSave()}><a data-tooltip-id="commit" data-tooltip-content="Commit"><FaCheck style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>&nbsp;
-                          <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'silver', outline: 'none' }} type='button' onClick={() => onEditCancel()}><a data-tooltip-id="revert" data-tooltip-content="Revert"><PiArrowCounterClockwiseBold style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>&nbsp;
-                          <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#D5441C', outline: 'none' }} type='button' onClick={() => onEditDelete(row)}><a data-tooltip-id="purge" data-tooltip-content="Purge"><FaRegTrashAlt style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>
+                          <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#169247', outline: 'none' }} type='button' onClick={() => onEditSave()}><a><FaCheck style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>&nbsp;
+                          <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'silver', outline: 'none' }} type='button' onClick={() => onEditCancel()}><a><PiArrowCounterClockwiseBold style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>&nbsp;
+                          <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#D5441C', outline: 'none' }} type='button' onClick={() => onEditDelete(row)}><a><FaRegTrashAlt style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>
                         </>
                       )
                       :
                       (
-                        <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#336791', outline: 'none' }} type='button' onClick={() => handleEdit(row)}><a data-tooltip-id="edit" data-tooltip-content="Edit"><FaPen style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>
+                        <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#336791', outline: 'none' }} type='button' onClick={() => handleEdit(row)}><a><FaPen style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>
                       )
                     }
                   </>
                 </td>
 
-                <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '400px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_name} onChange={(e) => setWebsite_name(e.target.value)} />) : (<a href={row.website_url} target="_blank">{row.website_name}</a>)}</td>
+                <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '400px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_name} onChange={(e) => setWebsite_name(e.target.value)} />) : (<a href={row.website_url} target="_blank" rel="noreferrer">{row.website_name}</a>)}</td>
                 <td className="asmshover">{row.id === editing ? (<textarea style={{ height: '30px', width: '900px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_desc} onChange={(e) => setWebsite_desc(e.target.value)} />) : (row.website_desc)}</td>
                 <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '600px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_url} onChange={(e) => setWebsite_url(e.target.value)} />) : "URL is te lank"}</td>
                 <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '200px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_cat} onChange={(e) => setWebsite_cat(e.target.value)} />) : (row.website_cat)}</td>

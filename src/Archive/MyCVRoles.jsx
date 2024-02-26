@@ -112,19 +112,6 @@ export default function MyCVRoles({ employer_name, role_name, howto_id, step_id,
         <div>
           <div className="Font-Segoe-Large-Howto" >
 
-            {/* {editing === true ?
-              <><i>Supporting URL:</i>&nbsp;&nbsp;<>
-                <input
-                  required
-                  defaultValue={step_url}
-                  onChange={(e) => setStepURL(e.target.value)}
-                  style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1100px' }} />
-                <div className='Font-Spacer-White'>Make this Spacer White</div>
-              </>
-              </>
-              :
-              <a className="Font-Segoe-Small" href={step_url} target="_blank">{step_url}</a>} */}
-
             {editing === true ?
               <><i>Role Description:</i>&nbsp;&nbsp;<>
                 <textarea
@@ -141,8 +128,7 @@ export default function MyCVRoles({ employer_name, role_name, howto_id, step_id,
               :
               <div>{step_obj}</div>}
           </div>
-          {/* <HowtoStepRecordAccordion step_idd={step_id} howto_id={howto_id} howtodata={howtodata} step_number={step_number} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /> */}
-        </div>
+                  </div>
       }
     </>
   );

@@ -129,7 +129,7 @@ export default function HowtoStep({ howto_id, step_id, step_number, step_name, s
               </>
               </>
               :
-              <a className="Font-Segoe-Small" href={step_url} target="_blank">{step_url}</a>}
+              <a className="Font-Segoe-Small" href={step_url} target="_blank" rel="noreferrer">{step_url}</a>}
 
             {editing === true ?
               <><i>Step Objective:</i>&nbsp;&nbsp;<>

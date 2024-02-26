@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, React } from 'react'
+import { useState, useEffect, React } from 'react'
 import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
 import '../Fonts.css';
@@ -11,10 +11,8 @@ import DCU from './DCU.png'
 import Testimonial_TB from './Testimonial_TB.png'
 import Testimonial_2 from './Testimonial_2.png'
 import { GiCheckMark } from "react-icons/gi";
-import { RiMedal2Line } from "react-icons/ri";
 import MyCVEmployerRoles from './MyCVEmployerRoles';
 import { MdOutlineSummarize } from "react-icons/md";
-import { GrUserExpert } from "react-icons/gr";
 import { FaHighlighter } from "react-icons/fa6";
 import { IoTrophyOutline } from "react-icons/io5";
 import { GiSkills } from "react-icons/gi";
@@ -27,20 +25,15 @@ export default function MyCV(props) {
   const [isExpandedHighlights, setExpandedHighlights] = useState(false);
   const [isExpandedTestimonials, setExpandedTestimonials] = useState(false);
   const [isExpandedRoles, setExpandedRoles] = useState(false);
-
   const [mycvdata, setMycvdata] = useState([]);
   const [mycvcareersummary, setMycvcareersummary] = useState([]);
   const [mycvcareerexpertise, setMycvcareerexpertise] = useState([]);
   const [mycvcareerhighlights, setMycvcareerhighlights] = useState([]);
-  const [mycvcareertestimonials, setMycvcareertestimonials] = useState([]);
   const [error, setError] = useState(null);
-
   const toggleAccordionSummary = () => { setExpandedSummary(!isExpandedSummary); };
   const toggleAccordionExpertise = () => { setExpandedExpertise(!isExpandedExpertise); };
   const toggleAccordionHighlights = () => { setExpandedHighlights(!isExpandedHighlights); };
   const toggleAccordionTestimonials = () => { setExpandedTestimonials(!isExpandedTestimonials); };
-  const toggleAccordionRoles = () => { setExpandedRoles(!isExpandedRoles); };
-
 
 
   useEffect(() => {
@@ -152,7 +145,7 @@ export default function MyCV(props) {
 
             <tr>
               <th className="Font-Segoe-Medium-Howto-CV">
-                This web presence is developed by me personally. You are welcome to review the <a href={'https://github.com/paulbsr/besterdev-ui'} target="_blank">front-end UI</a> and the <a href={'https://github.com/paulbsr/besterdev-api'} target="_blank">back-end API</a> repos on Github. 
+                This web presence is developed by me personally. You are welcome to review the <a href={'https://github.com/paulbsr/besterdev-ui'} target="_blank" rel="noreferrer">front-end UI</a> and the <a href={'https://github.com/paulbsr/besterdev-api'} target="_blank" rel="noreferrer">back-end API</a> repos on Github. 
                 The FE is developed using ReactJS and hosted on AWS Aplify. The BE MicroService is developed with Java/Spring hosted on Heroku alongisde a PostgreSQL database. Identity and Authorization (IAM) is porvided by Google's Firebase. I use Git for VCS and Maven for Builds. Swagger is available by clicking on the icon above.
               </th>
             </tr>

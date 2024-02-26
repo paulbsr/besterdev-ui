@@ -3,8 +3,8 @@ import './Fonts.css';
 import 'react-tooltip/dist/react-tooltip.css'
 import { FaReact, FaJava, FaNodeJs, FaAws, FaPeopleArrows } from 'react-icons/fa';
 import { SiSpringboot, SiGoogleanalytics, SiDocker, SiSwagger } from "react-icons/si";
-import { SlLogin, SlLogout, SlHome } from "react-icons/sl";
-import { RiOpenaiFill, RiHome3Line } from "react-icons/ri";
+import { SlLogin, SlLogout } from "react-icons/sl";
+import { RiOpenaiFill } from "react-icons/ri";
 import { GrVirtualMachine} from "react-icons/gr";
 import { BiLogoFirebase, BiLogoPostgresql, BiLogoHeroku, BiLogoGithub, BiLogoGoogle } from "react-icons/bi";
 import { MdManageAccounts, MdOutlineVpnLock, MdOutlineMailLock } from "react-icons/md";
@@ -15,6 +15,7 @@ import { BsQuestionOctagonFill } from "react-icons/bs";
 import { FaDigitalOcean, FaFileContract } from "react-icons/fa";
 import { IoLibrary } from "react-icons/io5";
 import { SiJavascript } from "react-icons/si";
+import { FaAlgolia } from "react-icons/fa6";
 
   const BannerLight = ({ user }) => {
     const navigate = useNavigate();
@@ -25,7 +26,7 @@ import { SiJavascript } from "react-icons/si";
     const handleNavigateHowtoManage = () => {navigate('/howtomanage');}
     const handleNavigateManage = () => {navigate('/candidatemanage');}
     const handleNavigateHunt = () => {navigate('/hunt');}
-                 const handleNavigateLogout = () => {navigate('/logout');}
+    const handleNavigateLogout = () => {navigate('/logout');}
     const handleNavigateSwagger = () => {navigate('/swagger');}
     const handleNavigateMyCV = () => {navigate('/mycv');}
  
@@ -61,6 +62,7 @@ import { SiJavascript } from "react-icons/si";
       <a data-tooltip-id="insert" data-tooltip-content="ProtonVPN (paulbsr)" href="https://protonvpn.com/" target="_blank" rel="noreferrer"><MdOutlineVpnLock style={{ color: 'brown', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="ProtonMail (kuberkont)" href="https://mail.proton.me/u/0/inbox" target="_blank" rel="noreferrer"><MdOutlineMailLock style={{ color: 'brown', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Swagger" onClick={handleNavigateSwagger}><SiSwagger style={{ color: '#85EA2D', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Algolia for Web Search" onClick={handleNavigateSwagger}><FaAlgolia style={{ color: '#003DFF', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Logout" onClick={handleNavigateLogout}><SlLogout style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
       
     </div>

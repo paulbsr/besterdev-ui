@@ -134,7 +134,7 @@ export default function MyCVEmployerRoles_new({ mycvdata1, employer_id1, role_id
               </>
               </>
               :
-              <a className="Font-Segoe-Small" href={role_name} target="_blank">{role_desc}</a>}
+              <a className="Font-Segoe-Small" href={role_name} target="_blank" rel="noreferrer">{role_desc}</a>}
 
             {editing === true ?
               <><i>Step Objective:</i>&nbsp;&nbsp;<>
