@@ -75,7 +75,9 @@ export default function WebsiteManage(props) {
 
   const onEditDelete = (row) => {
     axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/delete/${row.id}`)
-      .then((response) => {
+      .then((response) => 
+      {
+        window.alert('Are you sure you want to delete');
         setCheckForRecords(!checkForRecords);
         toast.success(`${website_name} purged.`)
       }

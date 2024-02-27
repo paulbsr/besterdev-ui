@@ -67,7 +67,10 @@ export default function RoleManage(props) {
 
   const onEditDelete = (row) => {
     axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/roles/delete/${row.id}`)
-      .then((response) => { setCheckForRecords(!checkForRecords); alert(`The Role ${rolename} has been purged.`) })
+      .then((response) => 
+      { 
+        setCheckForRecords(!checkForRecords); 
+        alert(`The Role ${rolename} has been purged.`) })
   };
 
 

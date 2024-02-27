@@ -73,7 +73,11 @@ export default function EmployerManage(props) {
 
   const onEditDelete = (row) => {
     axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers/delete/${row.id}`)
-      .then((response) => { setCheckForRecords(!checkForRecords); alert(`${empname} has been purged.`) })
+      .then((response) => 
+      { 
+        window.alert('Are you sure you want to delete');
+        setCheckForRecords(!checkForRecords); 
+        alert(`${empname} has been purged.`) })
   };
 
 

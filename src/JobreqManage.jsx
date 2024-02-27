@@ -100,7 +100,12 @@ export default function JobreqManage() {
 
           const onEditDelete = (row) => {
             axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs/delete/${row.id}`)
-            .then((response) => {setCheckForRecords(!checkForRecords); toast.success(`${jrnumber} has been purged.`)})
+            .then((response) => 
+            {
+              window.alert('Are you sure you want to delete');
+              setCheckForRecords(!checkForRecords); 
+              toast.success(`${jrnumber} has been purged.`)
+            })
         };       
 
   return (

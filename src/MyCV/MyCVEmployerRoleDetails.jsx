@@ -49,7 +49,9 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
 
     const onEditDelete = (roledetail_id) => {
         axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/delete/${roledetail_id}`)
-            .then((response) => {
+            .then((response) => 
+            {
+                window.alert('Are you sure you want to delete');
                 setCheckForRecords(!checkForRecords);
                 toast.success(`${roledetail_id} purged.`)
             }

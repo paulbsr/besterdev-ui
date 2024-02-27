@@ -122,6 +122,7 @@ export default function CandidateManage() {
             axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/delete/${row.id}`)
             .then((response) => {
               setCheckForRecords(!checkForRecords); 
+              window.alert('Are you sure you want to delete');
               toast.success(`${firstname} ${lastname} has been purged.`)
             }
             )

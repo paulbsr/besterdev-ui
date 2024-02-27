@@ -54,9 +54,11 @@ export default function MyCVEmployerRoles_new({ mycvdata1, employer_id1, role_id
 
     const onEditDelete = (steprecord_id) => {
         axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/delete/${steprecord_id}`)
-            .then((response) => {
-                setCheckForRecords(!checkForRecords);
-                toast.success(`${steprecord_id} purged.`)
+            .then((response) => 
+            {
+              window.alert('Are you sure you want to delete');  
+              setCheckForRecords(!checkForRecords);
+              toast.success(`${steprecord_id} purged.`)
             }
             )
     };

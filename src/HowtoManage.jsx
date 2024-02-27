@@ -72,7 +72,9 @@ export default function HowtoManage() {
 
             const onEditDelete = () => {
               axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howto/delete/${editing}`)
-                .then((response) => {
+                .then((response) => 
+                {
+                  window.alert('Are you sure you want to delete');
                   setCheckForRecords(!checkForRecords);
                   toast.success(`${howto_name} purged.`);
                 })

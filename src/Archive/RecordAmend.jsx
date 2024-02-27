@@ -83,7 +83,11 @@ export default function RecordAmend(props) {
 
           const onEditDelete = (row) => {
             axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/records/delete/${row.id}`)
-            .then((response) => {props.setCheckForRecords(!props.checkForRecords); alertCtx.success(`Suksesvolle DEL`)})
+            .then((response) => 
+            {
+              window.alert('Are you sure you want to delete');
+              props.setCheckForRecords(!props.checkForRecords); 
+              alertCtx.success(`Suksesvolle DEL`)})
             
             };       
 
