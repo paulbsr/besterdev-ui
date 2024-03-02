@@ -1,11 +1,9 @@
 import { useState, useEffect, React } from 'react'
 import { Tooltip } from 'react-tooltip'
-import 'react-tooltip/dist/react-tooltip.css'
 import './Fonts.css';
 import 'react-dropdown/style.css';
 import axios from 'axios'
 import Image from './graphix/12.png'
-// import { Tooltip } from '@mui/material';
 
 export default function HomePage22(props) {
   const [checkForRecords, setCheckForRecords] = useState(true);
@@ -72,7 +70,7 @@ export default function HomePage22(props) {
     const sortedCategories = Object.keys(groupedData).sort();
     
     return (
-      <div className="scrollable-container">   <Tooltip id="insert" />
+      <div className="scrollable-container">
         <table className="Table-home-left">
           <tbody>
             {sortedCategories.map((category) => (
@@ -173,7 +171,7 @@ export default function HomePage22(props) {
 
     return (
       <div>
-        <table className="Table-home-centre">
+        <table className="Table-home-centre"> <Tooltip id="insert" />
           <tbody>
 
           {sortedHowtoCategories.map((category) => (
