@@ -48,11 +48,11 @@ const BannerWhite = () => {
       &nbsp; &nbsp; &nbsp;
 
 
-      < TbLetterC style={{color: '#D5441C', fontSize: '18px' }}/>
-      < TbLetterO style={{color: '#336791', fontSize: '14px' }}/>
-      < TbLetterN style={{color: '#336791', fontSize: '14px' }}/>
-      < TbLetterT style={{color: '#336791', fontSize: '14px' }}/>
-      < TbLetterA style={{color: '#336791', fontSize: '14px' }}/>
+      < TbLetterC style={{color: '#D5441C', fontSize: '9px' }}/>
+      < TbLetterO style={{color: '#336791', fontSize: '10px' }}/>
+      < TbLetterN style={{color: '#336791', fontSize: '11px' }}/>
+      < TbLetterT style={{color: '#336791', fontSize: '12px' }}/>
+      < TbLetterA style={{color: '#336791', fontSize: '13px' }}/>
       < TbLetterI style={{color: '#336791', fontSize: '14px' }}/>
       < TbLetterN style={{color: '#336791', fontSize: '14px' }}/>
       < TbLetterI style={{color: '#336791', fontSize: '14px' }}/>
@@ -83,7 +83,8 @@ const BannerWhite = () => {
            
       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
       
       < TbLetterC style={{color: 'C0C0C0', fontSize: '14px' }}/>
       < TbLetterU style={{color: 'C0C0C0', fontSize: '10px' }}/>

@@ -618,3 +618,19 @@
     width: 100%;
   }
 
+  .ticker {
+    color: #336791;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    font-family: "Verdana";
+    font-size: small;
+    font-weight: normal;
+    text-align: right;
+    vertical-align: top;
+}
+
+
+
+

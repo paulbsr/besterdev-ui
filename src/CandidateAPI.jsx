@@ -11,7 +11,6 @@ import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';
 import ColouredBox from './ColouredBox';
 import spacer from './graphix/besterdev_spacer_white.png';
-import GradientLine from './GradientLine';
 import GradientLineLinkedIn from './GradientLineLinkedIn';
 
 

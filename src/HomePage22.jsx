@@ -4,6 +4,7 @@ import './Fonts.css';
 import 'react-dropdown/style.css';
 import axios from 'axios'
 import Image from './graphix/12.png'
+import BreakingNews from './BreakingNews';
 
 export default function HomePage22(props) {
   const [checkForRecords, setCheckForRecords] = useState(true);
@@ -223,7 +224,7 @@ export default function HomePage22(props) {
 
   const OuterTable = () => (
     <div>
-    <table style={{ width: '100%' }}>
+     <table style={{ width: '100%' }}>
       <tbody>
         <tr>
           <td style={{width: '25%' }}></td>
@@ -249,7 +250,7 @@ export default function HomePage22(props) {
   return (
     
 
-    <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
+    <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;<BreakingNews />
       <OuterTable />
       <table style={{ width: '100%' }}>
         <thead>
