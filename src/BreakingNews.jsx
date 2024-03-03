@@ -7,14 +7,17 @@ export default function BreakingNews() {
 
   useEffect(() => {
     const today = new Date();
-    const yesterday = new Date(today);
-    yesterday.setDate(today.getDate() - 1);
-    const formattedDate = yesterday.toISOString().split('T')[0]; // Convert to YYYY-MM-DD
+    const onedays = new Date(today);
+    onedays.setDate(today.getDate() - 1);
+    const dayOne = onedays.toISOString().split('T')[0]; // Convert to YYYY-MM-DD
+    const twodays = new Date(today);
+    twodays.setDate(today.getDate() - 2);
+    const dayTwo = twodays.toISOString().split('T')[0]; // Convert to YYYY-MM-DD
 
     axios
     //sien https://newsapi.org/docs/endpoints/everything
     //   .get(`https://newsapi.org/v2/everything?domains=wired.com,siliconrepublic.com&from=${formattedDate}&language=en&apiKey=b9451c67f79e404bb72c2a9460262fed`)
-      .get(`https://newsapi.org/v2/everything?q=cyber&from=${formattedDate}&language=en&apiKey=b9451c67f79e404bb72c2a9460262fed`)
+      .get(`https://newsapi.org/v2/everything?q=cyber&from=${dayTwo}&to=${dayOne}&language=en&apiKey=b9451c67f79e404bb72c2a9460262fed`)
       .then((response) => {
         const newsData = response.data.articles; // Accessing the articles data from the response
         console.log(newsData);
