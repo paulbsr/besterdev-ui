@@ -250,7 +250,7 @@ export default function HomePage22(props) {
   return (
     
 
-    <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;<BreakingNews />
+    <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
       <OuterTable />
       <table style={{ width: '100%' }}>
         <thead>

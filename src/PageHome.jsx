@@ -6,6 +6,7 @@ import Footer from './Footer';
 import Quicklinks3 from './Quicklinks3';
 import HomePage22 from './HomePage22';
 import ToastComponent from './ToastComponent';
+import BreakingNews from './BreakingNews';
 
 export default function PageHome() {
     return (
@@ -15,6 +16,8 @@ export default function PageHome() {
         <BannerLight />
         <GradientLineThin />
         <Quicklinks3 />
+        <GradientLineThin />
+        <BreakingNews/>
         <GradientLineThin />
         <HomePage22 />
         <Footer/>

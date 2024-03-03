@@ -5,6 +5,7 @@ import GradientLineThin from './GradientLineThin';
 import Quicklinks3 from './Quicklinks3';
 import WebsiteManage from './WebsiteManage';
 import ToastComponent from './ToastComponent';
+import BreakingNews from './BreakingNews';
 
 export default function PageResources() {
     return (
@@ -14,6 +15,8 @@ export default function PageResources() {
         <BannerLight />
         <GradientLineThin />
         <Quicklinks3 />
+        <GradientLineThin />
+        <BreakingNews />
         <GradientLineThin />
         <WebsiteManage />
         <ToastComponent />

@@ -6,6 +6,7 @@ import Quicklinks3 from './Quicklinks3';
 import HowtoEdit from './HowtoEdit';
 import { useParams } from 'react-router-dom';
 import ToastComponent from './ToastComponent';
+import BreakingNews from './BreakingNews';
 
 export default function PageCyclopedia() {
 
@@ -19,6 +20,8 @@ export default function PageCyclopedia() {
         <BannerLight />
         <GradientLineThin />
         <Quicklinks3 />
+        <GradientLineThin />
+        <BreakingNews />
         <GradientLineThin />
         <HowtoEdit howto_id={howto_id}/>
         <ToastComponent />

@@ -4,6 +4,7 @@ import GradientLineThin from './GradientLineThin';
 import ToastComponent from './ToastComponent';
 import MyCV from './MyCV/MyCV';
 import MyCV_BannerLight from './MyCV/MyCV_BannerLight';
+import BreakingNews from './BreakingNews';
 
 export default function PageMyCV() {
     return (
@@ -11,6 +12,8 @@ export default function PageMyCV() {
         <BannerWhite />
         <GradientLine />
         <MyCV_BannerLight />
+        <GradientLineThin />
+        <BreakingNews />
         <GradientLineThin />
         <MyCV />
         <ToastComponent />

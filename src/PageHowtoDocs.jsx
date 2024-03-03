@@ -5,6 +5,7 @@ import GradientLineThin from './GradientLineThin';
 import Quicklinks3 from './Quicklinks3';
 import Footer from './Footer';
 import ToastComponent from './ToastComponent';
+import BreakingNews from './BreakingNews';
 
 
 export default function PageHowtoDocs() {
@@ -15,6 +16,8 @@ export default function PageHowtoDocs() {
         <BannerLight />
         <GradientLineThin />
         <Quicklinks3 />
+        <GradientLineThin />
+        <BreakingNews />
         <GradientLineThin />
         <ToastComponent />
 

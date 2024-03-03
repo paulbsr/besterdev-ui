@@ -9,6 +9,7 @@ import JobreqManage from './JobreqManage';
 import Footer from './Footer';
 import 'react-toastify/dist/ReactToastify.css';
 import ToastComponent from './ToastComponent';
+import BreakingNews from './BreakingNews';
 
 export default function PageManage() {
   return (
@@ -18,6 +19,8 @@ export default function PageManage() {
       <BannerLight />
       <GradientLineThin />
       <Quicklinks3 />
+      <GradientLineThin />
+      <BreakingNews />
       <GradientLineThin />
       <CandidateManage />
       <EmployerManage1 />

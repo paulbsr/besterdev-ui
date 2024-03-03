@@ -6,6 +6,7 @@ import Quicklinks3 from './Quicklinks3';
 import Footer from './Footer';
 import HowtoManage from './HowtoManage';
 import ToastComponent from './ToastComponent';
+import BreakingNews from './BreakingNews';
 
 export default function PageHowtoManage() {
     return (
@@ -15,6 +16,8 @@ export default function PageHowtoManage() {
         <BannerLight />
         <GradientLineThin />
         <Quicklinks3 />
+        <GradientLineThin />
+        <BreakingNews />
         <GradientLineThin />
         <HowtoManage />
         <Footer/>

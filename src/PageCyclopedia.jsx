@@ -9,6 +9,7 @@ import 'react-tooltip/dist/react-tooltip.css'
 import 'react-toastify/dist/ReactToastify.css';
 import CyclopediaManage from './CyclopediaManage';
 import ToastComponent from './ToastComponent';
+import BreakingNews from './BreakingNews';
 
 
 
@@ -21,6 +22,8 @@ export default function PageCyclopedia(cyclopediadata) {
       <BannerLight />
       <GradientLineThin />
       <Quicklinks3 />
+      <GradientLineThin />
+      <BreakingNews />
       <GradientLineThin />
       <CyclopediaManage />
       <ToastComponent />
