@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Ticker from 'react-ticker';
 import {Stack} from "@mui/material";
 
 export default function BreakingNews() {
