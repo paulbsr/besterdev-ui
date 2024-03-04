@@ -29,7 +29,7 @@ export default function BreakingNews() {
   }, []);
 
   useEffect(() => {
-    console.log(breakingNewsDataAPI); // Now you can safely log it here
+    console.log('Hierdie is die GET vanaf NewsAPI:', breakingNewsDataAPI); // Now you can safely log it here
   }, [breakingNewsDataAPI]); // Log whenever breakingNewsDataAPI changes
 
 
@@ -41,7 +41,6 @@ export default function BreakingNews() {
     }));
 
     const serializedData = JSON.stringify(postData);
-    console.log('Hierdie is serializedData', serializedData);
 
     axios.post('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/news/create', serializedData, {
         headers: {
