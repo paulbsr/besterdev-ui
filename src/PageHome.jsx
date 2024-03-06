@@ -7,6 +7,7 @@ import Quicklinks3 from './Quicklinks3';
 import HomePage22 from './HomePage22';
 import ToastComponent from './ToastComponent';
 import BreakingNews from './BreakingNews';
+import CyclopediaTicker from './CyclopediaTicker';
 
 export default function PageHome() {
     return (
@@ -19,6 +20,7 @@ export default function PageHome() {
         <GradientLineThin />
         <BreakingNews/>
         <GradientLineThin />
+        <CyclopediaTicker />
         <HomePage22 />
         <Footer/>
         <ToastComponent />
