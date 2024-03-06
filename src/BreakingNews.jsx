@@ -23,12 +23,14 @@ export default function BreakingNews() {
         const postData = newsDataAPI.map(news => ({
           news_source: news.source.name,
           news_title: news.title,
-          news_url: news.url
+          news_url: news.url,
+          news_date: news.publishedAt
         }));
 
         const serializedData = JSON.stringify(postData);
 
         await axios.post('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/news/create', serializedData, {
+        // await axios.post('http://localhost:8000/api/v1/news/create', serializedData, {
           headers: {
             'Content-Type': 'application/json'
           }
@@ -45,7 +47,10 @@ export default function BreakingNews() {
     const fetchData = async () => {
       try {
         const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/news`);
+        // const response = await axios.get(`http://localhost:8000/api/v1/news`);
         const newsDataDB = response.data;
+        // newsDataDB.sort((a, b) => b.id - a.id);
+        shuffleArray(newsDataDB);
         setBreakingNewsDataDB(newsDataDB);
         console.log('Jou GET vanaf Heroku:', breakingNewsDataDB);
       } catch (error) {
@@ -56,6 +61,13 @@ export default function BreakingNews() {
     fetchData();
   }, []);
 
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  };
+
 
   return (
     <>
@@ -65,7 +77,7 @@ export default function BreakingNews() {
 
           {breakingNewsDataDB.map((news) => (
             <div className="ticker">
-               <a href={news.news_url} target="_blank" rel="noopener noreferrer" style={{ color: '#336791', textDecoration: 'none' }}>{news.news_source}: <i style={{ color: '#D5441C', textDecoration: 'none' }}>{news.news_title}</i></a>
+               <a href={news.news_url} target="_blank" rel="noopener noreferrer" style={{ color: '#336791', textDecoration: 'none' }}>{news.news_source}({news.news_date}): <i style={{ color: '#D5441C', textDecoration: 'none' }}>{news.news_title}</i></a>
             </div>
           )
           )

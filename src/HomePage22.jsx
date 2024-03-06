@@ -5,9 +5,10 @@ import 'react-dropdown/style.css';
 import axios from 'axios'
 import Image from './graphix/12.png'
 import BreakingNews from './BreakingNews';
+import VerticalScroll from './VerticalScroll';
 
 export default function HomePage22(props) {
-  const [checkForRecords, setCheckForRecords] = useState(true);
+  // const [checkForRecords, setCheckForRecords] = useState(true);
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [websitedata, setWebsitedata] = useState([]);
@@ -105,10 +106,10 @@ export default function HomePage22(props) {
   
     // Assuming cyclopediadata is an array of objects with a property 'cyclopedia_name'
     const filteredData = selectedLetter
-      ? cyclopediadata.filter(rowc => rowc.cyclopedia_name && rowc.cyclopedia_name.toLowerCase().startsWith(selectedLetter))
+      ? cyclopediadata.filter(rowc => rowc.cyclopedia_name && rowc.cyclopedia_name.startsWith(selectedLetter))
       : cyclopediadata;
   
-    const alphabet = 'a-b-c-d-e-f-g-h-i-j-k-l-m-n-o-p-q-r-s-t-u-v-w-x-y-z'; 
+    const alphabet = 'A-B-C-D-E-F-G-H-I-J-K-L-M-N-O-P-Q-R-S-T-U-V-W-X-Y-Z'; 
   
     return (
       <div>
@@ -229,7 +230,7 @@ export default function HomePage22(props) {
         <tr>
           <td style={{width: '25%' }}></td>
           <td style={{width: '1%' }}></td>
-          <td style={{width: '48%' }}>&nbsp;&nbsp;<img src={Image} /></td>
+          <td style={{width: '48%' }}><img src={Image} /></td>
           <td style={{width: '1%' }}></td>
           <td style={{width: '25%' }}></td>
         </tr>
