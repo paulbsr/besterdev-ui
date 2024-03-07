@@ -7,6 +7,7 @@ import HowtoEdit from './HowtoEdit';
 import { useParams } from 'react-router-dom';
 import ToastComponent from './ToastComponent';
 import BreakingNews from './BreakingNews';
+import CyclopediaTicker from './CyclopediaTicker';
 
 export default function PageCyclopedia() {
 
@@ -23,6 +24,7 @@ export default function PageCyclopedia() {
         <GradientLineThin />
         <BreakingNews />
         <GradientLineThin />
+        <CyclopediaTicker />
         <HowtoEdit howto_id={howto_id}/>
         <ToastComponent />
 

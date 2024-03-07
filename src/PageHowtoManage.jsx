@@ -7,6 +7,7 @@ import Footer from './Footer';
 import HowtoManage from './HowtoManage';
 import ToastComponent from './ToastComponent';
 import BreakingNews from './BreakingNews';
+import CyclopediaTicker from './CyclopediaTicker';
 
 export default function PageHowtoManage() {
     return (
@@ -19,6 +20,7 @@ export default function PageHowtoManage() {
         <GradientLineThin />
         <BreakingNews />
         <GradientLineThin />
+        <CyclopediaTicker />
         <HowtoManage />
         <Footer/>
         <ToastComponent />

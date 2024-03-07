@@ -71,7 +71,7 @@ export default function BreakingNews() {
 
   return (
     <>
-      {breakingNewsDataDB.length > 0 ? <marquee>
+      {breakingNewsDataDB.length > 0 ? <marquee scrollamount="7">
 
         <Stack direction="row">
 

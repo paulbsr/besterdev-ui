@@ -6,6 +6,7 @@ import Quicklinks3 from './Quicklinks3';
 import Footer from './Footer';
 import ToastComponent from './ToastComponent';
 import BreakingNews from './BreakingNews';
+import CyclopediaTicker from './CyclopediaTicker';
 
 
 export default function PageHowtoDocs() {
@@ -19,6 +20,7 @@ export default function PageHowtoDocs() {
         <GradientLineThin />
         <BreakingNews />
         <GradientLineThin />
+        <CyclopediaTicker />
         <ToastComponent />
 
       </div>

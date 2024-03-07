@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import CyclopediaManage from './CyclopediaManage';
 import ToastComponent from './ToastComponent';
 import BreakingNews from './BreakingNews';
+import CyclopediaTicker from './CyclopediaTicker';
 
 
 
@@ -25,6 +26,7 @@ export default function PageCyclopedia(cyclopediadata) {
       <GradientLineThin />
       <BreakingNews />
       <GradientLineThin />
+      <CyclopediaTicker />
       <CyclopediaManage />
       <ToastComponent />
     </div>

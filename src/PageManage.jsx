@@ -10,6 +10,7 @@ import Footer from './Footer';
 import 'react-toastify/dist/ReactToastify.css';
 import ToastComponent from './ToastComponent';
 import BreakingNews from './BreakingNews';
+import CyclopediaTicker from './CyclopediaTicker';
 
 export default function PageManage() {
   return (
@@ -22,6 +23,7 @@ export default function PageManage() {
       <GradientLineThin />
       <BreakingNews />
       <GradientLineThin />
+      <CyclopediaTicker />
       <CandidateManage />
       <EmployerManage1 />
       <JobreqManage />

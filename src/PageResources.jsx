@@ -6,6 +6,7 @@ import Quicklinks3 from './Quicklinks3';
 import WebsiteManage from './WebsiteManage';
 import ToastComponent from './ToastComponent';
 import BreakingNews from './BreakingNews';
+import CyclopediaTicker from './CyclopediaTicker';
 
 export default function PageResources() {
     return (
@@ -18,6 +19,7 @@ export default function PageResources() {
         <GradientLineThin />
         <BreakingNews />
         <GradientLineThin />
+        <CyclopediaTicker />
         <WebsiteManage />
         <ToastComponent />
 
