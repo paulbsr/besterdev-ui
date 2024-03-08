@@ -126,9 +126,10 @@ export default function HomePage22(props) {
         </div>
 
         <div className='Font-Spacer-White'>Make this spacer white</div>
-
+        
         <table className="Table-home-centre">
           <tbody>
+          
             {filteredData.map((rowc, index) => (
               <tr key={index}>
                 <td className="fphover">

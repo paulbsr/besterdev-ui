@@ -9,18 +9,19 @@ export default function BreakingNews() {
     const fetchData = async () => {
       const today = new Date();
       const onedays = new Date(today);
-      onedays.setDate(today.getDate() - 1);
+      onedays.setDate(today.getDate());
       const dayOne = onedays.toISOString().split('T')[0]; // Convert to YYYY-MM-DD
       const twodays = new Date(today);
       twodays.setDate(today.getDate() - 2);
       const dayTwo = twodays.toISOString().split('T')[0]; // Convert to YYYY-MM-DD
+      console.log(dayOne, dayTwo)
 
       try {
-        const response = await axios.get(`https://newsapi.org/v2/everything?q=cyber&from=${dayOne}&to=${dayOne}&language=en&apiKey=b9451c67f79e404bb72c2a9460262fed`);
-        const newsDataAPI = response.data.articles;
-        console.log('Jou GET vanaf NewsAPI:', newsDataAPI);
+        const response = await axios.get(`https://newsapi.org/v2/everything?q=cyber&from=${dayTwo}&to=${dayOne}&language=en&apiKey=b9451c67f79e404bb72c2a9460262fed`);
+        const newsapiData = response.data.articles;
+        console.log('Jou GET vanaf NewsAPI:', newsapiData);
 
-        const postData = newsDataAPI.map(news => ({
+        const postData = newsapiData.map(news => ({
           news_source: news.source.name,
           news_title: news.title,
           news_url: news.url,

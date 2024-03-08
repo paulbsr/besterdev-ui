@@ -1,5 +1,5 @@
 .scrolling-container {
-    height: 50px; /* Set height for the scrolling container */
+    height: 2300px; /* Set height for the scrolling container */
     overflow: hidden; /* Hide the overflow */
     position: relative; /* Position relative for the absolute positioning of the inner element */
     color: #336791;
@@ -14,11 +14,13 @@
   }
   
   @keyframes scroll {
-    0% {
-      top: 100%; /* Start at the bottom */
+    0% 
+    {
+      top: -100%; /* Start at the bottom */
     }
-    100% {
-      top: -100%; /* Scroll to the top */
+    100% 
+    {
+      top: 100%; /* Scroll to the top */
     }
   }
   
