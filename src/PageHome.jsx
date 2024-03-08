@@ -17,9 +17,9 @@ export default function PageHome() {
         <BannerLight />
         <GradientLineThin />
         <Quicklinks3 />
-        <GradientLineThin />
+        {/* <GradientLineThin /> */}
         <BreakingNews/>
-        <GradientLineThin />
+        {/* <GradientLineThin /> */}
         <CyclopediaTicker />
         <HomePage22 />
         <Footer/>

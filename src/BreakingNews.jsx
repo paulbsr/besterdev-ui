@@ -71,13 +71,14 @@ export default function BreakingNews() {
 
   return (
     <>
-      {breakingNewsDataDB.length > 0 ? <marquee scrollamount="7">
+      {breakingNewsDataDB.length > 0 ? <marquee scrollamount="6">
 
         <Stack direction="row">
 
-          {breakingNewsDataDB.map((news) => (
+          {breakingNewsDataDB.map((news) => (  
+                   
             <div className="ticker">
-               <a href={news.news_url} target="_blank" rel="noopener noreferrer" style={{ color: '#336791', textDecoration: 'none' }}>{news.news_source}({news.news_date}): <i style={{ color: '#D5441C', textDecoration: 'none' }}>{news.news_title}</i></a>
+               <a href={news.news_url} target="_blank" rel="noopener noreferrer" style={{ color: '#336791', textDecoration: 'none' }}>{news.news_source}: <i style={{ color: '#D5441C', textDecoration: 'none' }}>{news.news_title}</i></a>
             </div>
           )
           )
