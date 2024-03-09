@@ -6,6 +6,7 @@ import axios from 'axios'
 import Image from './graphix/12.png'
 import BreakingNews from './BreakingNews';
 import VerticalScroll from './VerticalScroll';
+import SearchComponent from './SearchComponent';
 
 export default function HomePage22(props) {
   // const [checkForRecords, setCheckForRecords] = useState(true);
@@ -46,16 +47,35 @@ export default function HomePage22(props) {
 
 
 
+  // useEffect(() => {
+  //   axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia')
+  //     .then((response) => {
+  //       // const sortedCyclopediaData = response.data.sort((a, b) => a.cyclopedia_name.localeCompare(b.cyclopedia_name));
+  //       const cyclopediaData = response.data;
+  //       shuffleCyclopediaArray(cyclopediaData);
+  //       setCyclopediaData(cyclopediaData);
+  //     })
+  //     .catch((e) => console.error(e));
+  // }, [props.checkForRecords]);
+
   useEffect(() => {
-    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia')
-      .then((response) => {
-        // const sortedCyclopediaData = response.data.sort((a, b) => a.cyclopedia_name.localeCompare(b.cyclopedia_name));
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia');
         const cyclopediaData = response.data;
         shuffleCyclopediaArray(cyclopediaData);
         setCyclopediaData(cyclopediaData);
-      })
-      .catch((e) => console.error(e));
-  }, [props.checkForRecords]);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+
+    const intervalId = setInterval(fetchData, 15000); // Fetch data every 60 seconds
+
+    return () => clearInterval(intervalId); // Clear interval on component unmount
+  }, []);
 
   
   const shuffleCyclopediaArray = (array) => {
@@ -259,7 +279,7 @@ export default function HomePage22(props) {
           <td style={{width: '1%' }}></td>
           <td style={{width: '48%' }}><img src={Image} /></td>
           <td style={{width: '1%' }}></td>
-          <td style={{width: '25%' }}></td>
+          <td style={{width: '25%' }}><SearchComponent /></td>
         </tr>
         <tr>
           <td style={{width: '25%' }} className="Table-home-left"><InnerTableLeft/></td>
