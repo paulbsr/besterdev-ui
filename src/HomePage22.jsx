@@ -49,14 +49,21 @@ export default function HomePage22(props) {
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia')
       .then((response) => {
-        const sortedCyclopediaData = response.data.sort((a, b) => a.cyclopedia_name.localeCompare(b.cyclopedia_name));
-        setCyclopediaData(sortedCyclopediaData);
+        // const sortedCyclopediaData = response.data.sort((a, b) => a.cyclopedia_name.localeCompare(b.cyclopedia_name));
+        const cyclopediaData = response.data;
+        shuffleCyclopediaArray(cyclopediaData);
+        setCyclopediaData(cyclopediaData);
       })
       .catch((e) => console.error(e));
   }, [props.checkForRecords]);
 
   
-
+  const shuffleCyclopediaArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  };
 
 
   const InnerTableLeft = () => {  
@@ -108,6 +115,8 @@ export default function HomePage22(props) {
     const filteredData = selectedLetter
       ? cyclopediadata.filter(rowc => rowc.cyclopedia_name && rowc.cyclopedia_name.startsWith(selectedLetter))
       : cyclopediadata;
+
+    const firstTwentyCyclopediaRecords = filteredData.slice(0, 30);
   
     const alphabet = 'A-B-C-D-E-F-G-H-I-J-K-L-M-N-O-P-Q-R-S-T-U-V-W-X-Y-Z'; 
   
@@ -125,12 +134,29 @@ export default function HomePage22(props) {
           ))}&nbsp; &nbsp; ({cyclopediadata.length})
         </div>
 
+{/* <div>
+      <div className="Font-Verdana-Larger-Howto-Rusty">
+        {alphabet.split('').map((letter, index) => (
+          <span style={{ cursor: 'pointer' }}
+            key={index}
+            className={selectedLetter === letter ? 'selected' : ''}
+            onClick={() => setSelectedLetter(letter)}
+            data-tooltip-id="insert" data-tooltip-content={`${filteredData.filter(rowc => rowc.cyclopedia_name && rowc.cyclopedia_name.startsWith(letter)).length}`}
+          >&nbsp;&nbsp;
+            {letter}
+          </span>
+        ))}&nbsp; &nbsp; ({cyclopediadata.length})
+      </div>
+    </div> */}
+
+
         <div className='Font-Spacer-White'>Make this spacer white</div>
         
         <table className="Table-home-centre">
           <tbody>
           
-            {filteredData.map((rowc, index) => (
+            {/* {filteredData.map((rowc, index) => ( */}
+              {firstTwentyCyclopediaRecords.map((rowc, index) => (
               <tr key={index}>
                 <td className="fphover">
                   {rowc && (
