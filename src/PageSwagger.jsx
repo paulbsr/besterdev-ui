@@ -17,8 +17,8 @@ const Swagger = () => {
       <GradientLineThin />
       <iframe
         title="Swagger UI"
-        // src="http://localhost:8000/swagger-ui.html"
-        src="https://www.bester.ie/swagger"
+        src="http://localhost:8000/swagger-ui.html"
+        // src="https://www.bester.ie/swagger"
         style={{ width: '100%', height: '800px', border: 'none' }}
       />
       

@@ -47,35 +47,35 @@ export default function HomePage22(props) {
 
 
 
-  // useEffect(() => {
-  //   axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia')
-  //     .then((response) => {
-  //       // const sortedCyclopediaData = response.data.sort((a, b) => a.cyclopedia_name.localeCompare(b.cyclopedia_name));
-  //       const cyclopediaData = response.data;
-  //       shuffleCyclopediaArray(cyclopediaData);
-  //       setCyclopediaData(cyclopediaData);
-  //     })
-  //     .catch((e) => console.error(e));
-  // }, [props.checkForRecords]);
-
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia');
+    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia')
+      .then((response) => {
+        // const sortedCyclopediaData = response.data.sort((a, b) => a.cyclopedia_name.localeCompare(b.cyclopedia_name));
         const cyclopediaData = response.data;
         shuffleCyclopediaArray(cyclopediaData);
         setCyclopediaData(cyclopediaData);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+      })
+      .catch((e) => console.error(e));
+  }, [props.checkForRecords]);
 
-    fetchData();
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia');
+  //       const cyclopediaData = response.data;
+  //       shuffleCyclopediaArray(cyclopediaData);
+  //       setCyclopediaData(cyclopediaData);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
 
-    const intervalId = setInterval(fetchData, 15000); // Fetch data every 60 seconds
+  //   fetchData();
 
-    return () => clearInterval(intervalId); // Clear interval on component unmount
-  }, []);
+  //   const intervalId = setInterval(fetchData,       230000); // Fetch data every 60 seconds
+
+  //   return () => clearInterval(intervalId); // Clear interval on component unmount
+  // }, []);
 
   
   const shuffleCyclopediaArray = (array) => {
@@ -142,7 +142,7 @@ export default function HomePage22(props) {
   
     return (
       <div>
-        <div className="Font-Verdana-Larger-Howto-Rusty">
+        <div className="Font-Verdana-Larger-Howto-Rusty-Bold">
           {alphabet.split('').map((letter, index) => (
             <span style={{ cursor: 'pointer' }} 
               key={index}

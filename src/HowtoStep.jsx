@@ -11,7 +11,7 @@ import { BsPencil } from 'react-icons/bs';
 import { toast } from 'react-toastify';
 import { IoFootstepsSharp } from "react-icons/io5";
 
-export default function HowtoStep({ howto_id, step_id, step_number, step_name, step_url, step_obj, howtodata, checkForRecords, setCheckForRecords }) {
+export default function HowtoStep({ howto_id, step_id, step_number, step_name, step_url, step_obj, step_image, howtodata, checkForRecords, setCheckForRecords }) {
 
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
@@ -145,7 +145,11 @@ export default function HowtoStep({ howto_id, step_id, step_number, step_name, s
               </>
               </>
               :
-              <div className="Font-Segoe-Medium"><i>{step_obj}</i></div>}
+              <div className="Font-Segoe-Medium"><i>{step_obj}</i>
+              <img src={'data:image/jpg;base64,'+step_image} />
+              </div>
+              
+              }
           </div>
           <HowtoStepRecordAccordion step_idd={step_id} howto_id={howto_id} howtodata={howtodata} step_number={step_number} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
         </div>

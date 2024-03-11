@@ -122,6 +122,13 @@
     color: #D5441C
 }
 
+.Font-Verdana-Larger-Howto-Rusty-Bold {
+    font-family: "Verdana";
+    font-size: larger;
+    color: #D5441C;
+    font-weight: bold;
+}
+
 .Font-Verdana-Larger-Howto-Postgres {
     font-family: "Verdana";
     font-size: larger;
