@@ -3,14 +3,15 @@ import HowtoStepRecordCreate from './HowtoStepRecordCreate';
 import axios from "axios";
 import './Fonts.css'
 import { Tooltip } from '@mui/material';
-import { MdAddCircleOutline } from "react-icons/md";
+import { MdAddCircleOutline, MdCamera } from "react-icons/md";
 import { toast } from 'react-toastify';
 import { GiCheckMark } from "react-icons/gi"; //Commit
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard
 import { FaRegTrashAlt } from 'react-icons/fa'; //Delete
 import { BsPencil } from 'react-icons/bs'; //Edit
+import { ImageUpload } from './ImageUpload';
 
-function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, checkForRecords, setCheckForRecords }) {
+function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, step_name, checkForRecords, setCheckForRecords }) {
     const date = new Date();
     const [isExpanded, setExpanded] = useState(false);
     const toggleAccordion = () => { setExpanded(!isExpanded); };
@@ -122,6 +123,8 @@ function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, checkForRe
 
             <div className='Font-Verdana-Small'>
                 <Tooltip title='Insert an additional Step Record' placement="top"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={toggleAccordion}><MdAddCircleOutline style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
+                
+                <ImageUpload stepidfk={step_idd} parentstepname={step_name} parentstepid={step_idd}/>
             </div>
 
             {isExpanded &&

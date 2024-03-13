@@ -153,7 +153,7 @@ export default function HowtoStep({ howto_id, step_id, step_number, step_name, s
               
               }
           </div>
-          <HowtoStepRecordAccordion step_idd={step_id} howto_id={howto_id} howtodata={howtodata} step_number={step_number} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
+          <HowtoStepRecordAccordion step_idd={step_id} howto_id={howto_id} howtodata={howtodata} step_number={step_number} step_name={step_name}checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
         </div>
       }
     </>

@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import ImageUploading from 'react-images-uploading';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { MdCamera } from "react-icons/md";
+import { Tooltip } from '@mui/material';
 
 export function ImageUpload(props) {
     const [image, setImage] = React.useState([]);
-
     const maxNumber = 1;
 
     const onImageSave = async (imageList, addUpdateIndex) => {
@@ -19,8 +20,8 @@ export function ImageUpload(props) {
         
 
         try {
-            const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/images/upload`, formData, {
-            // const response = await axios.post(`http://localhost:8000/api/v1/images/upload`, formData, {
+            // const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/images/upload`, formData, {
+            const response = await axios.post(`http://localhost:8000/api/v1/images/upload`, formData, {
                 
                 headers: {
                     'Content-Type': 'multipart/form-data'
@@ -38,7 +39,6 @@ export function ImageUpload(props) {
     };
 
     return (
-        // <div className="App">
             <ImageUploading
                 multiple
                 value={image}
@@ -55,26 +55,15 @@ export function ImageUpload(props) {
                     isDragging,
                     dragProps,
                 }) => (
-                    // write your building UI
                     <div className="upload__image-wrapper">
-                        <button onClick={onImageUpload} {...dragProps} className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#D5441C', cursor: 'pointer' }}>
-                        Select an image to attach to this "{props.parentstepname} {props.stepidfk}{props.parentstepid}" Step
-                        </button>
-                        {/* <button onClick={onImageUpload} {...dragProps}>Select an image to attach to {props.parentstepname}</button> */}
-                        {/* &nbsp; */}
-                        {/* <button onClick={onImageSave}>Save</button> */}
+                        <Tooltip title='Add an image to this Step' placement="top"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={onImageUpload}><MdCamera style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '19px' }} /></button></Tooltip>
                         {imageList.map((image, index) => (
                             <div key={index} className="image-item">
                                 <img src={image['data_url']} alt="" width="300" height="300"/>
-                                {/* <div className="image-item__btn-wrapper"> */}
-                                    {/* <button onClick={() => onImageUpdate(index)}>Change</button> */}
-                                    {/* <button onClick={() => onImageRemove(index)}>Drop</button> */}
-                                {/* </div> */}
                             </div>
                         ))}
                     </div>
                 )}
             </ImageUploading>
-        // </div>
     );
 }
