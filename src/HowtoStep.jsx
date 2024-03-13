@@ -148,7 +148,7 @@ export default function HowtoStep({ howto_id, step_id, step_number, step_name, s
               </>
               :
               <div className="Font-Segoe-Medium"><i>{step_obj}</i>
-              <img src={'data:image/jpg;base64,'+step_image} />
+              {step_image === undefined || step_image === null ? null : <img src={'data:image/jpg;base64,'+step_image} />} 
               </div>
               
               }

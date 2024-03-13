@@ -46,13 +46,16 @@ function HowtoStepAccordion({ howto_ids }) {
             </tr>
           </thead>
 
-          {howtodata.howto_steps && howtodata.howto_steps.map((step) => (
+          {howtodata.howto_steps && howtodata.howto_steps.map((step) => 
+            
+
+            (
             <tbody>
               {
                  
                   <tr>
                     <td>
-                      {<HowtoStep key={step.step_id} howto_id={step.howto_id} step_id={step.step_id} step_number={step.step_number} step_name={step.step_name} step_url={step.step_url} step_obj={step.step_obj} step_image={step.step_image.image_data} howtodata={howtodata} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />}
+                      {<HowtoStep key={step.step_id} howto_id={step.howto_id} step_id={step.step_id} step_number={step.step_number} step_name={step.step_name} step_url={step.step_url} step_obj={step.step_obj} step_image={step.step_image?.image_data} howtodata={howtodata} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />}
                     </td>
                   </tr>
 
