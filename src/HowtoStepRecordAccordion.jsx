@@ -3,7 +3,7 @@ import HowtoStepRecordCreate from './HowtoStepRecordCreate';
 import axios from "axios";
 import './Fonts.css'
 import { Tooltip } from '@mui/material';
-import { MdAddCircleOutline, MdCamera } from "react-icons/md";
+import { MdAddCircleOutline } from "react-icons/md";
 import { toast } from 'react-toastify';
 import { GiCheckMark } from "react-icons/gi"; //Commit
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard

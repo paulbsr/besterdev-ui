@@ -10,7 +10,6 @@ import { FaRegTrashAlt } from 'react-icons/fa'; //Delete
 import { BsPencil } from 'react-icons/bs';
 import { toast } from 'react-toastify';
 import { IoFootstepsSharp } from "react-icons/io5";
-import { ImageUpload } from './ImageUpload';
 
 export default function HowtoStep({ howto_id, step_id, step_number, step_name, step_url, step_obj, step_image, howtodata, checkForRecords, setCheckForRecords }) {
 
@@ -103,7 +102,7 @@ export default function HowtoStep({ howto_id, step_id, step_number, step_name, s
           :
           <>
             <i onClick={toggleAccordion}>
-              <i className="Font-Segoe-Large-Howto"><u>Step<IoFootstepsSharp style={{ color: '#D5441C', fontSize: '13px', cursor: 'pointer' }}/>{step_number}</u>:&nbsp;</i>
+              <i className="Font-Segoe-Large-Howto"><u>Step-{step_number}&nbsp;</u><IoFootstepsSharp style={{ color: '#D5441C', fontSize: '13px', cursor: 'pointer' }}/>&nbsp;</i>
               <b className="Font-Segoe-Large-Howto">{step_name}</b>
             </i>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
