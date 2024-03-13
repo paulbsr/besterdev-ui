@@ -124,7 +124,7 @@ function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, step_name,
             <div className='Font-Verdana-Small'>
                 <Tooltip title='Insert an additional Step Record' placement="top"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={toggleAccordion}><MdAddCircleOutline style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
                 
-                <ImageUpload stepidfk={step_idd} parentstepname={step_name} parentstepid={step_idd}/>
+                <ImageUpload stepidfk={step_idd} parentstepname={step_name} parentstepid={step_idd} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
             </div>
 
             {isExpanded &&
