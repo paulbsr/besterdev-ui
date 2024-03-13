@@ -143,7 +143,7 @@ export default function HowtoStep({ howto_id, step_id, step_number, step_name, s
                   style={{ fontFamily: 'Segoe UI', fontSize: 'Large', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1112px' }} />
                 
                 <div className='Font-Spacer-White'>Make this Spacer White</div>
-                <ImageUpload stepidfk={step_id} parentstepname={step_name} parentstepid={step_id}/>
+                <div><i>Step Graphix:</i>&nbsp; <ImageUpload stepidfk={step_id} parentstepname={step_name} parentstepid={step_id}/></div>
               </>
               </>
               :
