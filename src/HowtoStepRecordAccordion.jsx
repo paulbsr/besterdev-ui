@@ -22,21 +22,20 @@ function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, step_name,
     const filteredSteps = howtodata.howto_steps.filter((task, key) => { return task.step_id === step_idd });
     const SortedStepRecords = filteredSteps[0].step_records.sort((a, b) => a.steprecord_number - b.steprecord_number);
 
-    const handleEdit = (steprecord_id, newsteprecordnumber, newsteprecord ) => {
+    const handleEdit = (steprecord_id, newsteprecordnumber, newsteprecord) => {
         setEditing(steprecord_id);
         setStepRecord_number(newsteprecordnumber);
         setStepRecord(newsteprecord);
         setStepRecord_date(date);
     }
 
-    const onEditCancel = () => 
-    {
+    const onEditCancel = () => {
         setEditing(false);
     }
 
     const onEditSave = async (steprecord_id) => {
 
-        const StepRecordPUT = 
+        const StepRecordPUT =
         {
             'steprecord_number': steprecord_number,
             'steprecord': steprecord,
@@ -47,18 +46,17 @@ function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, step_name,
         setCheckForRecords(!checkForRecords)
         toast.success(`Step Record amended.`)
         onEditCancel();
-        }
+    }
 
-        const onEditDelete = (steprecord_id) => {
+    const onEditDelete = (steprecord_id) => {
         axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/delete/${steprecord_id}`)
-          .then((response) => 
-          {
-            window.alert('Are you sure you want to delete');
-            setCheckForRecords(!checkForRecords);
-            toast.success(`${steprecord_id} purged.`)
-          }
-          )
-      };
+            .then((response) => {
+                window.alert('Are you sure you want to delete');
+                setCheckForRecords(!checkForRecords);
+                toast.success(`${steprecord_id} purged.`)
+            }
+            )
+    };
 
     function editableStepRecord(steprecord_id, steprecord_number, steprecord, checkForRecords, setCheckForRecords) {
         return (
@@ -82,7 +80,7 @@ function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, step_name,
                             </>
                             :
                             <div className="Font-Segoe-Large-Howto">
-                                <b style={{ fontSize: 'medium', color: 'black', cursor: 'pointer'}}>{step_number}.{steprecord_number})</b>
+                                <b style={{ fontSize: 'medium', color: 'black', cursor: 'pointer' }}>{step_number}.{steprecord_number})</b>
                                 &nbsp;
                                 <span className="steprecordhover">{steprecord}</span>
                                 &nbsp;&nbsp;&nbsp;
@@ -95,7 +93,7 @@ function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, step_name,
                             {editing === steprecord_id ?
                                 (
                                     <>&nbsp;&nbsp;
-                                        <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave(steprecord_id)}><GiCheckMark  style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
+                                        <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave(steprecord_id)}><GiCheckMark style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
                                         <Tooltip title='Discard' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditCancel()}><PiArrowCounterClockwiseBold style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
                                         <Tooltip title='Purge' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditDelete(steprecord_id)}>< FaRegTrashAlt style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
                                     </>
@@ -123,8 +121,8 @@ function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, step_name,
 
             <div className='Font-Verdana-Small'>
                 <Tooltip title='Insert an additional Step Record' placement="top"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={toggleAccordion}><MdAddCircleOutline style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
-                
-                <ImageUpload stepidfk={step_idd} parentstepname={step_name} parentstepid={step_idd} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
+
+                <ImageUpload stepidfk={step_idd} parentstepname={step_name} parentstepid={step_idd} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
             </div>
 
             {isExpanded &&
