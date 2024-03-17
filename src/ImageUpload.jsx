@@ -20,8 +20,8 @@ export function ImageUpload(props) {
 
 
         try {
-            // const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/images/upload`, formData, {
-            const response = await axios.post(`http://localhost:8000/api/v1/images/upload`, formData, {
+            const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/images/upload`, formData, {
+            // const response = await axios.post(`http://localhost:8000/api/v1/images/upload`, formData, {
 
                 headers: {
                     'Content-Type': 'multipart/form-data'
