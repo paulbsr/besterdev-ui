@@ -8,6 +8,7 @@ import HomePage22 from './HomePage22';
 import ToastComponent from './ToastComponent';
 import BreakingNews from './BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
+import DBSearchComponent from './DBSearchComponent';
 
 export default function PageHome() {
     return (
@@ -21,6 +22,7 @@ export default function PageHome() {
         <BreakingNews/>
         <GradientLineThin />
         <CyclopediaTicker />
+        {/* <DBSearchComponent /> */}
         <HomePage22 />
         <Footer/>
         <ToastComponent />

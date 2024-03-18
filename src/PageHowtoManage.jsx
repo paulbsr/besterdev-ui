@@ -22,7 +22,7 @@ export default function PageHowtoManage() {
         <GradientLineThin />
         <CyclopediaTicker />
         <HowtoManage />
-        <Footer/>
+        {/* <Footer/> */}
         <ToastComponent />
 
       </div>

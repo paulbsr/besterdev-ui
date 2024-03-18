@@ -4,12 +4,9 @@ import './Fonts.css';
 import 'react-dropdown/style.css';
 import axios from 'axios'
 import Image from './graphix/12.png'
-import BreakingNews from './BreakingNews';
-import VerticalScroll from './VerticalScroll';
-import SearchComponent from './SearchComponent';
+import DBSearchComponent from './DBSearchComponent';
 
 export default function HomePage22(props) {
-  // const [checkForRecords, setCheckForRecords] = useState(true);
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [websitedata, setWebsitedata] = useState([]);
@@ -26,9 +23,11 @@ export default function HomePage22(props) {
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites')
+    // axios('http://localhost:8000/api/v1/websites')
       .then((response) => {
         const sortedwebsitedata = response.data.sort((b, a) => b.website_name.localeCompare(a.website_name));
         setWebsitedata(sortedwebsitedata);
+        console.log(sortedwebsitedata)
       })
       .catch((e) => console.error(e));  
   }, [props.checkForRecords]);
@@ -38,6 +37,7 @@ export default function HomePage22(props) {
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtos')
+    // axios('http://localhost:8000/api/v1/howtos')
       .then((response) => {
         const sortedHowtodata = response.data.sort((a, b) => a.howto_name.localeCompare(b.howto_name));
         setHowtodata(sortedHowtodata);
@@ -49,6 +49,7 @@ export default function HomePage22(props) {
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia')
+    // axios('http://localhost:8000/api/v1/cyclopedia')
       .then((response) => {
         // const sortedCyclopediaData = response.data.sort((a, b) => a.cyclopedia_name.localeCompare(b.cyclopedia_name));
         const cyclopediaData = response.data;
@@ -57,25 +58,6 @@ export default function HomePage22(props) {
       })
       .catch((e) => console.error(e));
   }, [props.checkForRecords]);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia');
-  //       const cyclopediaData = response.data;
-  //       shuffleCyclopediaArray(cyclopediaData);
-  //       setCyclopediaData(cyclopediaData);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-
-  //   fetchData();
-
-  //   const intervalId = setInterval(fetchData,       230000); // Fetch data every 60 seconds
-
-  //   return () => clearInterval(intervalId); // Clear interval on component unmount
-  // }, []);
 
   
   const shuffleCyclopediaArray = (array) => {
@@ -120,9 +102,6 @@ export default function HomePage22(props) {
           </tbody>
         </table>
       </div>
-      
-      
-      
     );
   };
   
@@ -141,57 +120,43 @@ export default function HomePage22(props) {
     const alphabet = 'A-B-C-D-E-F-G-H-I-J-K-L-M-N-O-P-Q-R-S-T-U-V-W-X-Y-Z'; 
   
     return (
-      <div>
-        <div className="Font-Verdana-Larger-Howto-Rusty-Bold">
-          {alphabet.split('').map((letter, index) => (
-            <span style={{ cursor: 'pointer' }} 
-              key={index}
-              className={selectedLetter === letter ? 'selected' : ''}
-              onClick={() => setSelectedLetter(letter)}
-            >&nbsp;&nbsp;
-              {letter}
-            </span>
-          ))}&nbsp; &nbsp; ({cyclopediadata.length})
-        </div>
-
-{/* <div>
-      <div className="Font-Verdana-Larger-Howto-Rusty">
-        {alphabet.split('').map((letter, index) => (
-          <span style={{ cursor: 'pointer' }}
-            key={index}
-            className={selectedLetter === letter ? 'selected' : ''}
-            onClick={() => setSelectedLetter(letter)}
-            data-tooltip-id="insert" data-tooltip-content={`${filteredData.filter(rowc => rowc.cyclopedia_name && rowc.cyclopedia_name.startsWith(letter)).length}`}
-          >&nbsp;&nbsp;
-            {letter}
-          </span>
-        ))}&nbsp; &nbsp; ({cyclopediadata.length})
-      </div>
-    </div> */}
-
-
+      <>
+        <div>
         <div className='Font-Spacer-White'>Make this spacer white</div>
-        
-        <table className="Table-home-centre">
-          <tbody>
-          
-            {/* {filteredData.map((rowc, index) => ( */}
+          <div className="Font-Verdana-Larger-Howto-Rusty-Bold">
+            {alphabet.split('').map((letter, index) => (
+              <span style={{ cursor: 'pointer' }}
+                key={index}
+                className={selectedLetter === letter ? 'selected' : ''}
+                onClick={() => setSelectedLetter(letter)}
+              >&nbsp;&nbsp;
+                {letter}
+              </span>
+            ))}&nbsp; &nbsp; ({cyclopediadata.length})
+          </div>
+
+          <div className='Font-Spacer-White'>Make this spacer white</div>
+
+          <table className="Table-home-centre">
+            <tbody>
+
               {firstTwentyCyclopediaRecords.map((rowc, index) => (
-              <tr key={index}>
-                <td className="fphover">
-                  {rowc && (
-                    <div style={{ cursor: 'pointer'}}>
-                      
-                      <b>{rowc.cyclopedia_name}:</b>&nbsp;<i>{rowc.cyclopedia_desc}</i>
-                      <div className='Font-Spacer-White'>Make this spacer white</div>
-                    </div>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+                <tr key={index}>
+                  <td className="fphover">
+                    {rowc && (
+                      <div style={{ cursor: 'pointer' }}>
+
+                        <b>{rowc.cyclopedia_name}:</b>&nbsp;<i>{rowc.cyclopedia_desc}</i>
+                        <div className='Font-Spacer-White'>Make this spacer white</div>
+                      </div>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </>
     );
   };
 
@@ -277,9 +242,9 @@ export default function HomePage22(props) {
         <tr>
           <td style={{width: '25%' }}></td>
           <td style={{width: '1%' }}></td>
-          <td style={{width: '48%' }}><img src={Image} /></td>
+          <td style={{width: '48%' }}><DBSearchComponent /><div className='Font-Spacer-White'>Make this spacer white</div><img src={Image} /></td>
           <td style={{width: '1%' }}></td>
-          <td style={{width: '25%' }}><SearchComponent /></td>
+          <td style={{width: '25%' }}></td>
         </tr>
         <tr>
           <td style={{width: '25%' }} className="Table-home-left"><InnerTableLeft/></td>
