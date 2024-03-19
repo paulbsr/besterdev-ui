@@ -8,6 +8,7 @@ import HowtoManage from './HowtoManage';
 import ToastComponent from './ToastComponent';
 import BreakingNews from './BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
+import DBSearchComponent from './DBSearchComponent';
 
 export default function PageHowtoManage() {
     return (
@@ -16,6 +17,7 @@ export default function PageHowtoManage() {
         <GradientLine />
         <BannerLight />
         <GradientLineThin />
+        {/* <DBSearchComponent /> */}
         <Quicklinks3 />
         <GradientLineThin />
         <BreakingNews />

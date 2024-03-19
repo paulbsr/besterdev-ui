@@ -10,6 +10,7 @@ import { useUserContext } from './UserContext';
 import GradientLineThin from './GradientLineThin';
 import QuickAddWebResource from './QuickAddWebResource';
 import QuickAddCyclopedia from './QuickAddCyclopedia';
+import DBSearchComponent from './DBSearchComponent';
 
 
 function TabPanel(props) {
@@ -64,7 +65,6 @@ export default function Quicklinks3(props) {
           <QuickAddCyclopedia checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
         </LinkTabs>
       </Box>
-      {/* <GradientLineThin /> */}
     </>
   )
 }
