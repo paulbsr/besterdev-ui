@@ -552,7 +552,7 @@
 .banner-light {
     background-color: #f7f4f3;
     padding: 1px;
-    text-align: left;
+    text-align: right;
   }
 
 .banner-white {
@@ -572,6 +572,12 @@
     width: 100%;
     height: 3px; 
     background: linear-gradient(to right, #336791, #f5f9fa);
+  }
+
+  .gradient-line-black {
+    width: 100%;
+    height: 3px; 
+    background: linear-gradient(to right, #000000, #f5f9fa);
   }
  
 

@@ -242,7 +242,7 @@ export default function HomePage22(props) {
         <tr>
           <td style={{width: '25%' }}></td>
           <td style={{width: '1%' }}></td>
-          <td style={{width: '48%' }}><div className='Font-Spacer-White'>Make this spacer white</div><img src={Image} /></td>
+          <td style={{width: '48%' }}><img src={Image} /></td>
           <td style={{width: '1%' }}></td>
           <td style={{width: '25%' }}></td>
         </tr>
