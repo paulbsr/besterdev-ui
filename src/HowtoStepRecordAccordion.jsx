@@ -80,7 +80,7 @@ function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, step_name,
                             </>
                             :
                             <div className="Font-Segoe-Large-Howto">
-                                <b style={{ fontSize: 'medium', color: 'black', cursor: 'pointer' }}>{step_number}.{steprecord_number})</b>
+                                <span style={{ fontSize: 'medium', color: 'black', cursor: 'pointer' }}>{step_number}.{steprecord_number})</span>
                                 &nbsp;
                                 <span className="steprecordhover">{steprecord}</span>
                                 &nbsp;&nbsp;&nbsp;
