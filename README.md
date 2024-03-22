@@ -1,10 +1,10 @@
 # The BesterDev Frontend User Interface
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+https://www.bester.ie
 
-## Available Scripts
+## Notes
 
-In the project directory, you can run:
+BesterDev is my private hobby project. It is developed using RectJS and hosted on AWS' Aplify free-tier platform with AuthN provided by Google's Firebase. The problem this tool attempts to solve is knowledge entropy. Creating, managing and maintaining current , relevant and up-to-date technical support socumentation is elusive as the best of times. Especiallially in the SDLC community where so much change so often.  
 
 ### `npm start`
 
