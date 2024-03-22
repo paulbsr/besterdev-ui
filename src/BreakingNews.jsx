@@ -17,7 +17,7 @@ export default function BreakingNews() {
       console.log(dayOne, dayTwo)
 
       try {
-        const response = await axios.get(`https://newsapi.org/v2/everything?q=cyber&from=${dayTwo}&to=${dayOne}&language=en&apiKey=b9451c67f79e404bb72c2a9460262fed`);
+        const response = await axios.get(`https://newsapi.org/v2/everything?q=cybersecurity&from=${dayTwo}&to=${dayOne}&language=en&apiKey=b9451c67f79e404bb72c2a9460262fed`);
         const newsapiData = response.data.articles;
         console.log('Jou GET vanaf NewsAPI:', newsapiData);
 

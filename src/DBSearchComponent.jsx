@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './Fonts.css';
 import { PiArrowFatLinesDownLight } from "react-icons/pi";
-import GradientLineBlack from './GradientLineBlack';
+import GradientLineRusty from './GradientLineRusty';
 
 
 const DBSearchComponent = () => {
@@ -66,7 +66,7 @@ const DBSearchComponent = () => {
               return (
                 <div className="fphover" key={result.id}>
                   A Cyclopedia Entry:&nbsp;&nbsp;
-                  <div className="Font-Segoe-Large-Howto">
+                  <div>
                     <PiArrowFatLinesDownLight style={{ color: '#336791', fontSize: '23px', cursor: 'pointer' }}/>&nbsp;
                     <b>{highlightKeyword(result.cyclopedia_name, searchQuery)}: </b>
                     {result.cyclopedia_desc}
@@ -78,7 +78,7 @@ const DBSearchComponent = () => {
               return (
                 <div className="fphover" key={result.id}>
                   A Web Resource Record:&nbsp;&nbsp;
-                  <div className="Font-Segoe-Large-Howto">
+                  <div>
                     <PiArrowFatLinesDownLight style={{ color: '#336791', fontSize: '23px', cursor: 'pointer' }}/>&nbsp;
                     <a href={result.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.website_desc}>
                       {highlightKeyword(result.website_name, searchQuery)}
@@ -92,7 +92,7 @@ const DBSearchComponent = () => {
               return (
                 <div className="fphover" key={result.id}>
                   This is a HOWTO document:&nbsp;&nbsp;
-                  <div className="Font-Segoe-Large-Howto">
+                  <div>
                     <PiArrowFatLinesDownLight style={{ color: '#336791', fontSize: '23px', cursor: 'pointer' }}/>&nbsp;
                     <a href={`/howtoedit/${result.howto_id}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.howto_summary}>
                       <b>{highlightKeyword(result.howto_name, searchQuery)}</b>
@@ -105,7 +105,7 @@ const DBSearchComponent = () => {
               return (
                 <div className="fphover" key={result.id}>
                   This is a Step Name in a HOWTO document:
-                  <div className="Font-Segoe-Large-Howto">
+                  <div>
                     <PiArrowFatLinesDownLight style={{ color: '#336791', fontSize: '23px', cursor: 'pointer' }}/>&nbsp;
                     <b>{highlightKeyword(result.step_name, searchQuery)}</b> which has a Step Objective to {result.step_obj}
                   </div>
@@ -116,7 +116,7 @@ const DBSearchComponent = () => {
               return (
                 <div className="fphover" key={result.id}>
                   In HOWTO Step Records:&nbsp;&nbsp;
-                  <div className="Font-Segoe-Large-Howto">
+                  <div>
                     <PiArrowFatLinesDownLight style={{ color: '#336791', fontSize: '23px', cursor: 'pointer' }}/>&nbsp;
                     {highlightKeyword(result.steprecord, searchQuery)}
                   </div>
@@ -129,7 +129,7 @@ const DBSearchComponent = () => {
         </div>
       )}
       <div className='Font-Spacer-White'>Make this spacer white</div>
-      <GradientLineBlack />
+      <GradientLineRusty />
     </form>
   );
 };

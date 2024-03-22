@@ -22,7 +22,6 @@ export default function PageHome() {
         <BreakingNews/>
         <GradientLineThin />
         <CyclopediaTicker />
-        {/* <DBSearchComponent /> */}
         <HomePage22 />
         <Footer/>
         <ToastComponent />

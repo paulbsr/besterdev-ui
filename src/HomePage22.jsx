@@ -3,7 +3,7 @@ import { Tooltip } from 'react-tooltip'
 import './Fonts.css';
 import 'react-dropdown/style.css';
 import axios from 'axios'
-import Image from './graphix/12.png'
+import Image from './graphix/Darknet12.png'
 import DBSearchComponent from './DBSearchComponent';
 
 export default function HomePage22(props) {
@@ -23,13 +23,13 @@ export default function HomePage22(props) {
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites')
-    // axios('http://localhost:8000/api/v1/websites')
+      // axios('http://localhost:8000/api/v1/websites')
       .then((response) => {
         const sortedwebsitedata = response.data.sort((b, a) => b.website_name.localeCompare(a.website_name));
         setWebsitedata(sortedwebsitedata);
         console.log(sortedwebsitedata)
       })
-      .catch((e) => console.error(e));  
+      .catch((e) => console.error(e));
   }, [props.checkForRecords]);
 
 
@@ -37,7 +37,7 @@ export default function HomePage22(props) {
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtos')
-    // axios('http://localhost:8000/api/v1/howtos')
+      // axios('http://localhost:8000/api/v1/howtos')
       .then((response) => {
         const sortedHowtodata = response.data.sort((a, b) => a.howto_name.localeCompare(b.howto_name));
         setHowtodata(sortedHowtodata);
@@ -49,7 +49,7 @@ export default function HomePage22(props) {
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia')
-    // axios('http://localhost:8000/api/v1/cyclopedia')
+      // axios('http://localhost:8000/api/v1/cyclopedia')
       .then((response) => {
         // const sortedCyclopediaData = response.data.sort((a, b) => a.cyclopedia_name.localeCompare(b.cyclopedia_name));
         const cyclopediaData = response.data;
@@ -59,7 +59,7 @@ export default function HomePage22(props) {
       .catch((e) => console.error(e));
   }, [props.checkForRecords]);
 
-  
+
   const shuffleCyclopediaArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -68,7 +68,7 @@ export default function HomePage22(props) {
   };
 
 
-  const InnerTableLeft = () => {  
+  const InnerTableLeft = () => {
 
     const groupedData = {};
     websitedata.forEach((row) => {
@@ -77,9 +77,9 @@ export default function HomePage22(props) {
       }
       groupedData[row.website_cat].push(row);
     });
-  
+
     const sortedCategories = Object.keys(groupedData).sort();
-    
+
     return (
       <div className="scrollable-container">
         <table className="Table-home-left">
@@ -91,12 +91,12 @@ export default function HomePage22(props) {
                 </tr>
                 {
                   groupedData[category].map((record, index) => (
-                  <tr key={index}>
-                    <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left-text">
-                      <a href={record.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.website_desc}>{record.website_name}</a>
-                    </td>
-                  </tr>
-                ))}
+                    <tr key={index}>
+                      <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left-text">
+                        <a href={record.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.website_desc}>{record.website_name}</a>
+                      </td>
+                    </tr>
+                  ))}
               </>
             ))}
           </tbody>
@@ -104,25 +104,25 @@ export default function HomePage22(props) {
       </div>
     );
   };
-  
-  
-  
+
+
+
   const InnerTableCentre = () => {
     const [selectedLetter, setSelectedLetter] = useState(null);
-  
+
     // Assuming cyclopediadata is an array of objects with a property 'cyclopedia_name'
     const filteredData = selectedLetter
       ? cyclopediadata.filter(rowc => rowc.cyclopedia_name && rowc.cyclopedia_name.startsWith(selectedLetter))
       : cyclopediadata;
 
     const firstTwentyCyclopediaRecords = filteredData.slice(0, 30);
-  
-    const alphabet = 'A-B-C-D-E-F-G-H-I-J-K-L-M-N-O-P-Q-R-S-T-U-V-W-X-Y-Z'; 
-  
+
+    const alphabet = 'A-B-C-D-E-F-G-H-I-J-K-L-M-N-O-P-Q-R-S-T-U-V-W-X-Y-Z';
+
     return (
-      <>
+      <>          <DBSearchComponent />
         <div>
-        <div className='Font-Spacer-White'>Make this spacer white</div>
+          <div className='Font-Spacer-White'>Make this spacer white</div>
           <div className="Font-Verdana-Larger-Howto-Rusty-Bold">
             {alphabet.split('').map((letter, index) => (
               <span style={{ cursor: 'pointer' }}
@@ -136,7 +136,7 @@ export default function HomePage22(props) {
           </div>
 
           <div className='Font-Spacer-White'>Make this spacer white</div>
-<DBSearchComponent />
+
           <table className="Table-home-centre">
             <tbody>
 
@@ -163,24 +163,22 @@ export default function HomePage22(props) {
 
   const InnerTableRight = () => {
 
-    const amazonIframes = 
-    [
-      "https://read.amazon.co.uk/kp/card?asin=B077WWRK8B&preview=inline&linkCode=kpe&ref_=cm_sw_r_kb_dp_F3HQKNR4EF2MMXB0WS0D",
-      "https://read.amazon.co.uk/kp/card?asin=B081Y5262X&preview=inline&linkCode=kpe&ref_=cm_sw_r_kb_dp_H757NZNCTQK525FX3349",
-      
-    ];
+    const amazonIframes =
+      [
+        "https://read.amazon.co.uk/kp/card?asin=B077WWRK8B&preview=inline&linkCode=kpe&ref_=cm_sw_r_kb_dp_F3HQKNR4EF2MMXB0WS0D",
+        "https://read.amazon.co.uk/kp/card?asin=B081Y5262X&preview=inline&linkCode=kpe&ref_=cm_sw_r_kb_dp_H757NZNCTQK525FX3349",
+
+      ];
 
     const groupedHowtoData = {};
-    howtodata.forEach((row) => 
-    {
-      if (!groupedHowtoData[row.howto_cat]) 
-      {
+    howtodata.forEach((row) => {
+      if (!groupedHowtoData[row.howto_cat]) {
         groupedHowtoData[row.howto_cat] = [];
       }
       groupedHowtoData[row.howto_cat].push(row);
     }
     );
-  
+
     const sortedHowtoCategories = Object.keys(groupedHowtoData).sort();
 
     return (
@@ -188,12 +186,12 @@ export default function HomePage22(props) {
         <table className="Table-home-centre"> <Tooltip id="insert" />
           <tbody>
 
-          {sortedHowtoCategories.map((category) => (
+            {sortedHowtoCategories.map((category) => (
               <>&nbsp;
                 <tr key={category}>
                   <th colSpan="2" style={{ textAlign: 'left', borderBottom: '1px solid #ddd' }} className="Table-home-right-heading">{category}</th>
                 </tr>
-                { groupedHowtoData[category].map((record, index) => (
+                {groupedHowtoData[category].map((record, index) => (
                   <tr key={index}>
                     <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-right-text">
                       <a href={`/howtoedit/${record.howto_id}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.howto_summary}>{record.howto_name}</a>
@@ -202,8 +200,8 @@ export default function HomePage22(props) {
                 ))}
               </>
             ))}
-            
-            
+
+
 
             <div>&nbsp;</div>
             <div>&nbsp;</div>
@@ -232,37 +230,39 @@ export default function HomePage22(props) {
       </div>
     );
   };
-  
+
 
 
   const OuterTable = () => (
-    <div>
-     <table style={{ width: '100%' }}>
-      <tbody>
-        <tr>
-          <td style={{width: '25%' }}></td>
-          <td style={{width: '1%' }}></td>
-          <td style={{width: '48%' }}><img src={Image} /></td>
-          <td style={{width: '1%' }}></td>
-          <td style={{width: '25%' }}></td>
-        </tr>
-        <tr>
-          <td style={{width: '25%' }} className="Table-home-left"><InnerTableLeft/></td>
-          <td style={{width: '1%' }}></td>
-          <td style={{width: '48%' }} className="Table-home-centre"><InnerTableCentre /></td>
-          <td style={{width: '1%' }}></td>
-          <td style={{width: '25%' }} className="Table-home-right"><InnerTableRight/></td>
-        </tr>
-      </tbody>
-    </table>
-    </div>
-    
+    <>
+      <table style={{ width: '100%' }}>
+        <tbody>
+          <tr style={{ height: '20px' }}>
+            <td style={{ width: '25%'}}></td>
+            <td style={{ width: '1%' }}></td>
+            <td style={{ width: '48%'}}><img src={Image} /></td>
+            <td style={{ width: '1%' }}></td>
+            <td style={{ width: '25%'}}></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table>
+        <tbody>
+          <tr>
+            <td style={{ width: '25%' }} className="Table-home-left"><InnerTableLeft /></td>
+            <td style={{ width: '1%' }}></td>
+            <td style={{ width: '48%' }} className="Table-home-centre"><InnerTableCentre /></td>
+            <td style={{ width: '1%' }}></td>
+            <td style={{ width: '25%' }} className="Table-home-right"><InnerTableRight /></td>
+          </tr>
+        </tbody>
+      </table>
+    </>
   );
 
 
   return (
-    
-
     <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
       <OuterTable />
       <table style={{ width: '100%' }}>
@@ -278,9 +278,6 @@ export default function HomePage22(props) {
         </tbody>
       </table>
 
-
-
-
       <table style={{ width: '100%' }}>
         <thead>
           <tr>
@@ -292,13 +289,11 @@ export default function HomePage22(props) {
           </tr>
         </thead>
 
-
         <tbody>
           {
             websitedata.map((row, index) => {
               const howtoRow = howtodata[index];
               const cyclopediaRow = cyclopediadata[index]
-              
 
               return (
                 <tr key={index}>
@@ -307,7 +302,7 @@ export default function HomePage22(props) {
                 </tr>
               );
             }
-           )
+            )
           }
         </tbody>
       </table>
