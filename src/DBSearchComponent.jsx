@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Fonts.css';
-import { PiArrowFatLinesDownLight } from "react-icons/pi";
+import { PiArticleMediumFill } from "react-icons/pi";
 import GradientLineRusty from './GradientLineRusty';
 import { GoLog } from "react-icons/go";
 import { BsQuestionOctagon } from "react-icons/bs";
 import { IoLibraryOutline } from "react-icons/io5";
 import { TbWorldWww } from "react-icons/tb";
+import { SiWritedotas } from "react-icons/si";
+import GradientLineGreen from './GradientLineGreen';
 
 
 const DBSearchComponent = () => {
@@ -97,7 +99,7 @@ const DBSearchComponent = () => {
                 <div className="dbsearchhover" key={result.id}>
                   Found the search phrase <i>"{searchQuery}"</i> in the following <b>Breaking News Article</b>:&nbsp;&nbsp;
                   <div>
-                    <GoLog style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }}/>&nbsp;
+                    <SiWritedotas style={{ color: '#169247', fontSize: '19px', cursor: 'pointer' }}/>&nbsp;
                     <a href={result.news_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.news_source}>
                       {highlightKeyword(result.news_title, searchQuery)}
                     </a>
@@ -147,7 +149,7 @@ const DBSearchComponent = () => {
         </div>
       )}
       <div className='Font-Spacer-White'>Make this spacer white</div>
-      <GradientLineRusty />
+      <GradientLineGreen />
     </form>
   );
 };
