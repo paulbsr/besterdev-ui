@@ -3,6 +3,7 @@ import axios from 'axios';
 import './Fonts.css';
 import { PiArrowFatLinesDownLight } from "react-icons/pi";
 import GradientLineRusty from './GradientLineRusty';
+import { GoLog } from "react-icons/go";
 
 
 const DBSearchComponent = () => {
@@ -66,8 +67,8 @@ const DBSearchComponent = () => {
               return (
                 <div className="fphover" key={result.id}>
                   A Cyclopedia Entry:&nbsp;&nbsp;
-                  <div>
-                    <PiArrowFatLinesDownLight style={{ color: '#336791', fontSize: '23px', cursor: 'pointer' }}/>&nbsp;
+                  <div classname="Font-Verdana-Medium-Bold">
+                    <GoLog style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }}/>&nbsp;
                     <b>{highlightKeyword(result.cyclopedia_name, searchQuery)}: </b>
                     {result.cyclopedia_desc}
                   </div>
@@ -79,9 +80,23 @@ const DBSearchComponent = () => {
                 <div className="fphover" key={result.id}>
                   A Web Resource Record:&nbsp;&nbsp;
                   <div>
-                    <PiArrowFatLinesDownLight style={{ color: '#336791', fontSize: '23px', cursor: 'pointer' }}/>&nbsp;
+                    <GoLog style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }}/>&nbsp;
                     <a href={result.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.website_desc}>
                       {highlightKeyword(result.website_name, searchQuery)}
+                    </a>
+                    -&nbsp;{result.website_desc}
+                  </div>
+                  <div className='Font-Spacer-White'>Make this spacer white</div>
+                </div>
+              );
+            } else if (result.news_title) {
+              return (
+                <div className="fphover" key={result.id}>
+                  A Breaking News Article:&nbsp;&nbsp;
+                  <div>
+                    <GoLog style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }}/>&nbsp;
+                    <a href={result.news_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.news_source}>
+                      {highlightKeyword(result.news_title, searchQuery)}
                     </a>
                     -&nbsp;{result.website_desc}
                   </div>
@@ -93,7 +108,7 @@ const DBSearchComponent = () => {
                 <div className="fphover" key={result.id}>
                   This is a HOWTO document:&nbsp;&nbsp;
                   <div>
-                    <PiArrowFatLinesDownLight style={{ color: '#336791', fontSize: '23px', cursor: 'pointer' }}/>&nbsp;
+                    <GoLog style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }}/>&nbsp;
                     <a href={`/howtoedit/${result.howto_id}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.howto_summary}>
                       <b>{highlightKeyword(result.howto_name, searchQuery)}</b>
                     </a>
@@ -106,8 +121,8 @@ const DBSearchComponent = () => {
                 <div className="fphover" key={result.id}>
                   This is a Step Name in a HOWTO document:
                   <div>
-                    <PiArrowFatLinesDownLight style={{ color: '#336791', fontSize: '23px', cursor: 'pointer' }}/>&nbsp;
-                    <b>{highlightKeyword(result.step_name, searchQuery)}</b> which has a Step Objective to {result.step_obj}
+                    <GoLog style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }}/>&nbsp;
+                    <b>{highlightKeyword(result.step_name, searchQuery)}</b> which has a Step Objective to: <i>" {result.step_obj} " </i>
                   </div>
                   <div className='Font-Spacer-White'>Make this spacer white</div>
                 </div>
@@ -117,7 +132,7 @@ const DBSearchComponent = () => {
                 <div className="fphover" key={result.id}>
                   In HOWTO Step Records:&nbsp;&nbsp;
                   <div>
-                    <PiArrowFatLinesDownLight style={{ color: '#336791', fontSize: '23px', cursor: 'pointer' }}/>&nbsp;
+                    <GoLog style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }}/>&nbsp;
                     {highlightKeyword(result.steprecord, searchQuery)}
                   </div>
                   <div className='Font-Spacer-White'>Make this spacer white</div>
