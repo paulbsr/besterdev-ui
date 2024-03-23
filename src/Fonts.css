@@ -43,6 +43,13 @@
     font-weight: bold;
 }
 
+.Font-Verdana-Medium-Bold-DBSearch {
+    font-family: "Verdana";
+    font-size: medium;
+    font-weight: bold;
+    color: #169247;
+}
+
 .Font-Verdana-Medium-Italic-Rusty {
     font-family: "Verdana";
     font-size: medium;
@@ -515,6 +522,20 @@
     border-radius: 3px;
     border: 1px solid #336791;
     cursor: 'pointer';
+}
+
+.dbsearchhover:hover {
+    font-family: "Verdana";
+    font-size: small;
+    color: #169247;
+    background-color: #f7f4f3;
+    border-radius: 3px;
+    border: 1px solid #169247;
+    cursor: 'pointer';
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .searchhover:hover {

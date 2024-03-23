@@ -12,7 +12,6 @@ import { IoLibrary, IoHome } from "react-icons/io5";
 import { SlLogin, SlLogout } from "react-icons/sl";
 import { GrVirtualMachine} from "react-icons/gr";
 import { RiOpenaiFill } from "react-icons/ri";
-import { FaAlgolia } from "react-icons/fa6";
 
 
   const BannerLight = ({ user }) => {

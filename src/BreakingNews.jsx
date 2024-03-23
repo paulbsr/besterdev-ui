@@ -23,7 +23,7 @@ export default function BreakingNews() {
             }
             const response = await axios.get(apiUrl);
             const newsapiData = response.data.articles;
-            console.log('Jou GET vanaf NewsAPI met searchPharde:', searchPhrase, newsapiData);
+            console.log('Jou GET vanaf NewsAPI met searchPhrase:', searchPhrase, newsapiData);
 
             const postData = newsapiData.map(news => ({
                 news_source: news.source.name,
