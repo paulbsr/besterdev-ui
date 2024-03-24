@@ -3,7 +3,7 @@ import axios from 'axios';
 import './Fonts.css';
 import { toast } from 'react-toastify';
 
-export default function QuickAddWebResource() {
+export default function QuickAddWebResource(props) {
     const [website_name, setWebsite_name] = useState('');
     const [website_desc, setWebsite_desc] = useState('');
     const [website_url, setWebsite_url] = useState('');
@@ -23,6 +23,10 @@ export default function QuickAddWebResource() {
         [checkForRecords]
     )
 
+    // New functional component for displaying search phrase
+    function BreakingNewsSearchPhrase({ searchPhrase }) {
+        return <input type="text" value={searchPhrase} readOnly />;
+    }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -48,7 +52,11 @@ export default function QuickAddWebResource() {
         }
     }
 
+
+
     return (
+
+
 
         <div className='Font-Verdana-QuickAdd'>&nbsp;
 

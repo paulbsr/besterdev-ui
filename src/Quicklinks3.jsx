@@ -11,6 +11,7 @@ import GradientLineThin from './GradientLineThin';
 import QuickAddWebResource from './QuickAddWebResource';
 import QuickAddCyclopedia from './QuickAddCyclopedia';
 import DBSearchComponent from './DBSearchComponent';
+import QuickAddBreakingNewsAPI from './QuickAddBreakingNewsAPI';
 
 
 function TabPanel(props) {
@@ -56,11 +57,13 @@ const LinkTab = styled((props) => <Tab disableRipple {...props} />)(({ theme }) 
 export default function Quicklinks3(props) {
   const { loggedInUserEmail } = useUserContext();
   const [checkForRecords, setCheckForRecords] = useState(true);
+  console.log('QuickLinks3', props.searchPhrase)
 
   return (
     <>
       <Box>
         <LinkTabs variant="scrollable">
+          {/* <QuickAddBreakingNewsAPI/> */}
           <QuickAddWebResource checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
           <QuickAddCyclopedia checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
         </LinkTabs>

@@ -27,7 +27,6 @@ export default function HomePage22(props) {
       .then((response) => {
         const sortedwebsitedata = response.data.sort((b, a) => b.website_name.localeCompare(a.website_name));
         setWebsitedata(sortedwebsitedata);
-        console.log(sortedwebsitedata)
       })
       .catch((e) => console.error(e));
   }, [props.checkForRecords]);

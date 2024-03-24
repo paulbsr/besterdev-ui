@@ -27,8 +27,9 @@ import { UserProvider } from './UserContext';
 import { useUserContext } from './UserContext';
 import ReactGA from 'react-ga';
 import PageMyCV from './PageMyCV';
+import BreakingNewsAPI from './BreakingNewsAPI';
 
-const TRACKING_ID = "G-FCGGY1NE36"; 
+const TRACKING_ID = "G-FCGGY1NE36";
 ReactGA.initialize(TRACKING_ID);
 
 const PrivateRoutes = () => {
@@ -49,41 +50,47 @@ const firebaseConfig = {
   measurementId: "G-FCGGY1NE36"
 };
 
+
+
 firebase.initializeApp(firebaseConfig);
 const app = initializeApp(firebaseConfig);
 
 const App = () => {
 
   return (
-    <UserProvider>
-      <Router>
-        <Routes>
-          
-          <Route element={<PrivateRoutes />}>
-            <Route path='/search' element={<PageSearch />} />
-            <Route path='/screen' element={<PageSearch />} />
-            <Route path='/candidatemanage' element={<PageManage />} />
-            <Route path='/logout' element={<PageLogout />} />
-            <Route path='/howtomanage' element={<PageHowtoManage />} />
-            <Route path='/hunt' element={<PageSearch />} />
-            <Route path='/cyclopediamanage' element={<PageCyclopedia />} />
-            <Route path='/webresourcemanage' element={<PageResources/>} />
-            <Route path='/mycv' element={<PageMyCV />} />
-          </Route>
-          
-          
-          <Route path='/howtoedit/:howto_id' element={<PageHowtoEdit />} />
-          <Route path='/home' element={<PageHome />} />
-          <Route path='/login' element={<PageLogin />} />
-          <Route path='/swagger' element={<PageSwagger />} />
-          <Route path='/' element={<PageLogin />} />
-          <Route path='*' element={<PageLogin />} />
+    <>
+      <BreakingNewsAPI />
+      <UserProvider>
+        <Router>
+          <Routes>
 
-        </Routes>
-      </Router>
-    </UserProvider>
+            <Route element={<PrivateRoutes />}>
+              <Route path='/search' element={<PageSearch />} />
+              <Route path='/screen' element={<PageSearch />} />
+              <Route path='/candidatemanage' element={<PageManage />} />
+              <Route path='/logout' element={<PageLogout />} />
+              <Route path='/howtomanage' element={<PageHowtoManage />} />
+              <Route path='/hunt' element={<PageSearch />} />
+              <Route path='/cyclopediamanage' element={<PageCyclopedia />} />
+              <Route path='/webresourcemanage' element={<PageResources />} />
+              <Route path='/mycv' element={<PageMyCV />} />
+            </Route>
+
+
+            <Route path='/howtoedit/:howto_id' element={<PageHowtoEdit />} />
+            <Route path='/home' element={<PageHome />} />
+            <Route path='/login' element={<PageLogin />} />
+            <Route path='/swagger' element={<PageSwagger />} />
+            <Route path='/' element={<PageLogin />} />
+            <Route path='*' element={<PageLogin />} />
+
+          </Routes>
+        </Router>
+      </UserProvider></>
+
   );
 };
 export const auth = getAuth(app);
 ReactDOM.render(<App />, document.getElementById('root')); // Use ReactDOM.render to render the App component
+
 export default App;

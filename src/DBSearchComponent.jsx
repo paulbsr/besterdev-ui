@@ -83,7 +83,7 @@ const DBSearchComponent = () => {
             } else if (result.website_name) {
               return (
                 <div className="dbsearchhover" key={result.id}>
-                  Found the search phrase <i>"{searchQuery}"</i> in the following <b>Web Resource Record</b>:&nbsp;&nbsp;
+                  Found the search phrase <i>"{searchQuery}"</i> in the following <b>Web Resource</b>:&nbsp;&nbsp;
                   <div>
                   <TbWorldWww style={{ color: '#169247', fontSize: '19px', cursor: 'pointer' }}/>&nbsp;
                     <a href={result.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.website_desc}>
