@@ -67,7 +67,7 @@ const DBSearchComponent = () => {
       {/* Display search results */}
       {searchResults.length > 0 && (
         <div>
-          {searchResults.map((result) => {
+          {searchResults.map((result) => {console.log('Search Results:', searchResults)
             if (result.cyclopedia_name) {
               return (
                 <div className="dbsearchhover" key={result.id}>

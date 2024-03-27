@@ -24,9 +24,9 @@ export default function QuickAddWebResource(props) {
     )
 
     // New functional component for displaying search phrase
-    function BreakingNewsSearchPhrase({ searchPhrase }) {
-        return <input type="text" value={searchPhrase} readOnly />;
-    }
+    // function BreakingNewsSearchPhrase({ searchPhrase }) {
+    //     return <input type="text" value={searchPhrase} readOnly />;
+    // }
 
     const handleSubmit = async (event) => {
         event.preventDefault();

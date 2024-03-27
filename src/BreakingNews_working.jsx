@@ -4,7 +4,7 @@ import { Stack } from "@mui/material";
 
 export default function BreakingNews_working() {
   const [breakingNewsDataDB, setBreakingNewsDataDB] = useState([]);
-  const [searchPhrase, setSearchPhrase] = useState('cyber');
+  const [searchPhrase, setSearchPhrase] = useState('Microsoft');
 
   useEffect(() => {
     const fetchData = async () => {

@@ -28,6 +28,7 @@ import { useUserContext } from './UserContext';
 import ReactGA from 'react-ga';
 import PageMyCV from './PageMyCV';
 import BreakingNewsAPI from './BreakingNewsAPI';
+import { useState } from 'react';
 
 const TRACKING_ID = "G-FCGGY1NE36";
 ReactGA.initialize(TRACKING_ID);
@@ -52,14 +53,15 @@ const firebaseConfig = {
 
 
 
+
 firebase.initializeApp(firebaseConfig);
 const app = initializeApp(firebaseConfig);
 
 const App = () => {
-
+  const [searchPhrase, setSearchPhrase] = useState('Cisco') //alles begin hier
   return (
     <>
-      <BreakingNewsAPI />
+      <BreakingNewsAPI searchPhrase={searchPhrase}/> 
       <UserProvider>
         <Router>
           <Routes>
@@ -78,7 +80,7 @@ const App = () => {
 
 
             <Route path='/howtoedit/:howto_id' element={<PageHowtoEdit />} />
-            <Route path='/home' element={<PageHome />} />
+            <Route path='/home' element={<PageHome searchPhrase={searchPhrase}/>} />
             <Route path='/login' element={<PageLogin />} />
             <Route path='/swagger' element={<PageSwagger />} />
             <Route path='/' element={<PageLogin />} />

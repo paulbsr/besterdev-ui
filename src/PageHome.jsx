@@ -10,14 +10,14 @@ import BreakingNews from './BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
 import DBSearchComponent from './DBSearchComponent';
 
-export default function PageHome() {
+export default function PageHome(props) {
     return (
       <div>
         <BannerWhite />
         <GradientLine />
         <BannerLight />
         <GradientLineThin />
-        <Quicklinks3 />
+        <Quicklinks3 searchPhrase={props.searchPhrase}/>
         <GradientLineThin />
         <BreakingNews/>
         <GradientLineThin />

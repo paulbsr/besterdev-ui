@@ -54,16 +54,18 @@ const LinkTab = styled((props) => <Tab disableRipple {...props} />)(({ theme }) 
     '&.Mui-selected:hover': {color: '#D5441C',},})
     );
 
-export default function Quicklinks3(props) {
+export default function Quicklinks3(props) { //kom vanaf index.js
   const { loggedInUserEmail } = useUserContext();
   const [checkForRecords, setCheckForRecords] = useState(true);
-  console.log('QuickLinks3', props.searchPhrase)
+  const [newsAPI, setNewsAPI] = useState(props.searchPhrase);
+  console.log('Jou QuickLinks3.searchPhrase:', props.searchPhrase);
+  console.log('Jou QuickLinks3.newsAPI:', props.searchPhrase)
 
   return (
     <>
       <Box>
         <LinkTabs variant="scrollable">
-          {/* <QuickAddBreakingNewsAPI/> */}
+          <QuickAddBreakingNewsAPI searchPhrase={newsAPI}/>
           <QuickAddWebResource checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
           <QuickAddCyclopedia checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
         </LinkTabs>
