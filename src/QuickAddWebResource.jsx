@@ -16,7 +16,6 @@ export default function QuickAddWebResource(props) {
             .then((response) => {
                 const sortedwebsitedata = response.data.sort((b, a) => b.website_name.localeCompare(a.website_name));
                 setWebsitedata(sortedwebsitedata);
-                console.log(websitedata)
             })
             .catch((e) => console.error(e));
     },

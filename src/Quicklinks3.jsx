@@ -57,7 +57,7 @@ const LinkTab = styled((props) => <Tab disableRipple {...props} />)(({ theme }) 
 export default function Quicklinks3(props) { //kom vanaf index.js
   const { loggedInUserEmail } = useUserContext();
   const [checkForRecords, setCheckForRecords] = useState(true);
-  const [newsAPI, setNewsAPI] = useState(props.searchPhrase);
+  // const [newsAPI, setNewsAPI] = useState(props.searchPhrase);
   console.log('Jou QuickLinks3.searchPhrase:', props.searchPhrase);
   console.log('Jou QuickLinks3.newsAPI:', props.searchPhrase)
 
@@ -65,7 +65,7 @@ export default function Quicklinks3(props) { //kom vanaf index.js
     <>
       <Box>
         <LinkTabs variant="scrollable">
-          <QuickAddBreakingNewsAPI searchPhrase={newsAPI}/>
+          <QuickAddBreakingNewsAPI searchPhrase={props.searchPhrase}/> //waar kom dit vandaan??
           <QuickAddWebResource checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
           <QuickAddCyclopedia checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
         </LinkTabs>

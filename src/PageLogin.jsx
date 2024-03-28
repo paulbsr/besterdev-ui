@@ -24,7 +24,7 @@ const PageLogin = () => {
   const [password, setPassword] = useState('');
   const { setLoggedInUserEmail } = useUserContext();
   const [loginSuccessMessage, setLoginSuccessMessage] = useState('');
-  const [searchPhrase, setSearchPhrase] = useState('');
+  const [searchPhrase, setSearchPhrase] = useState('kingdom');
   const navigate = useNavigate();
   
 
@@ -46,8 +46,9 @@ const PageLogin = () => {
 
 
   return (
-    <div>
-      <BreakingNewsAPI searchPhrase={searchPhrase} />
+    <>
+      {/* <BreakingNewsAPI searchPhrase={searchPhrase} /> */}
+      <BreakingNewsAPI searchPhrase={searchPhrase}/> 
       <BannerWhite />
       <GradientLine />
       <div>&nbsp;</div>
@@ -65,7 +66,7 @@ const PageLogin = () => {
       <div>&nbsp;</div>
       <div>&nbsp;</div>
       <Footer/>
-    </div>
+    </>
   );
 };
 

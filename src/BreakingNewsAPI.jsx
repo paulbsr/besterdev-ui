@@ -1,10 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import BreakingNewsSearchPhrase from './QuickAddWebResource'
+// import BreakingNewsSearchPhrase from './QuickAddWebResource'
 
 export default function BreakingNewsAPI(props) {
     // const [breakingNewsDataDB, setBreakingNewsDataDB] = useState([]);
+    // const [newsapiSearchPhrase, setNewsapiSearchPhrase] = useState(props.searchPhrase);
     const [newsapiSearchPhrase, setNewsapiSearchPhrase] = useState(props.searchPhrase);
 
     useEffect(() => {
@@ -19,7 +20,7 @@ export default function BreakingNewsAPI(props) {
         const twodays = new Date(today);
         twodays.setDate(today.getDate() - 2);
         const dayTwo = twodays.toISOString().split('T')[0]; // Convert to YYYY-MM-DD
-        console.log('BreakingNewsAPI', dayOne, dayTwo, newsapiSearchPhrase)
+        console.log('In <BreakingNewsAPI /> is jou veranderlikes:', dayOne, dayTwo, newsapiSearchPhrase)
 
         try {
             let apiUrl = `https://newsapi.org/v2/everything?q=cyber&from=${dayTwo}&to=${dayOne}&language=en&apiKey=b9451c67f79e404bb72c2a9460262fed`;
@@ -28,7 +29,7 @@ export default function BreakingNewsAPI(props) {
             }
             const response = await axios.get(apiUrl);
             const newsapiData = response.data.articles;
-            console.log('Jou GET vanaf NewsAPI met searchPhrase:', newsapiSearchPhrase, newsapiData);
+            console.log('In <BreakingNewsAPI /> is jou GET vanaf NewsAPI met newsapiSearchPhrase:', newsapiSearchPhrase, newsapiData);
 
             const postData = newsapiData.map(news => ({
                 news_source: news.source.name,
@@ -44,7 +45,7 @@ export default function BreakingNewsAPI(props) {
                 {
                     headers: { 'Content-Type': 'application/json' }
                 });
-            console.log('Jou POST na Heroku:', serializedData);
+            console.log('In <BreakingyNewsAPI /> is jou POST na Heroku met searchPhrase:', newsapiSearchPhrase, serializedData);
         } catch (error) {
             console.error('Error fetching or posting breaking news data:', error);
         }

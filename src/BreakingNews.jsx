@@ -13,7 +13,7 @@ export default function BreakingNews(props) {
                 const newsDataDB = response.data;
                 shuffleArray(newsDataDB);
                 setBreakingNewsDataDB(newsDataDB);
-                console.log('Jou GET vanaf Heroku:', breakingNewsDataDB);
+                console.log('In <BreakingNews/> is jou GET vanaf Heroku met searchPhrase:', searchPhrase, breakingNewsDataDB);
             } catch (error) {
                 console.error('Error fetching breakingNewsData from Heroku:', error);
             }
