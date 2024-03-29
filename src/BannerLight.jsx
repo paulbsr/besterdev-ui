@@ -32,7 +32,7 @@ import { RiOpenaiFill } from "react-icons/ri";
 
     <div className="banner-light" >
       
-      {/* <a data-tooltip-id="insert" data-tooltip-content="Login" onClick={handleNavigateLogin}><SlLogin style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
+      <a data-tooltip-id="insert" data-tooltip-content="Login" onClick={handleNavigateLogin}><SlLogin style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       
       <a data-tooltip-id="insert" data-tooltip-content="Home" onClick={handleNavigateHome}><IoHome style={{ color: '#000000', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="MyCV" onClick={handleNavigateMyCV}><FaFileContract style={{ color: '#336791', fontSize: '26px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;

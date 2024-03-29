@@ -2,6 +2,11 @@
 //https://medium.com/@dennisivy/creating-protected-routes-with-react-router-v6-2c4bbaf7bc1c
 
 import React from 'react';
+import { useState, useEffect } from 'react'
+import { Tooltip } from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css'
+import './Fonts.css';
+import axios from 'axios'
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Routes, Navigate, Outlet } from 'react-router-dom';
 import './index.css';
@@ -28,7 +33,7 @@ import { useUserContext } from './UserContext';
 import ReactGA from 'react-ga';
 import PageMyCV from './PageMyCV';
 import BreakingNewsAPI from './BreakingNewsAPI';
-import { useState } from 'react';
+
 
 const TRACKING_ID = "G-FCGGY1NE36";
 ReactGA.initialize(TRACKING_ID);
@@ -58,10 +63,31 @@ firebase.initializeApp(firebaseConfig);
 const app = initializeApp(firebaseConfig);
 
 const App = () => {
-  const [searchPhrase, setSearchPhrase] = useState('ransomware') //alles begin hier
+  const [searchPhrase, setSearchPhrase] = useState(); //alles begin hier
+  const [checkForRecords, setCheckForRecords] = useState(true);
+
+  useEffect(() => 
+  {
+    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/searchphrase')
+    // axios('http://localhost:8000/api/v1/searchphrase')
+      .then((response) => 
+      {
+        const searchPhraseValue = response.data[0].searchphrase;
+        setSearchPhrase(searchPhraseValue);
+        console.log('In index.js is jou searchPhraseValue:', searchPhraseValue);
+        console.log('In index.js is jou searchPhrase:', searchPhrase);
+      }
+      ).catch((e)=> console.error(e));
+
+  }, 
+      [checkForRecords]);
+
+
+
+
   return (
     <>
-      <BreakingNewsAPI searchPhrase={searchPhrase}/> 
+      
       <UserProvider>
         <Router>
           <Routes>
@@ -82,14 +108,16 @@ const App = () => {
             <Route path='/howtoedit/:howto_id' element={<PageHowtoEdit />} />
             <Route path='/home' element={<PageHome searchPhrase={searchPhrase}/>} />
             {/* <Route path='/home' element={<PageHome/>} /> */}
-            <Route path='/login' element={<PageLogin/>} />
+            <Route path='/login' element={<PageLogin searchPhrase={searchPhrase}/>} />
             <Route path='/swagger' element={<PageSwagger />} />
             <Route path='/' element={<PageLogin />} />
             <Route path='*' element={<PageLogin />} />
 
           </Routes>
         </Router>
-      </UserProvider></>
+      </UserProvider>
+      <BreakingNewsAPI searchPhrase={searchPhrase}/> 
+      </>
 
   );
 };

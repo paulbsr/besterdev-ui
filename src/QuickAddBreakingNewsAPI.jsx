@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import './Fonts.css';
 import BreakingNewsAPI from "./BreakingNewsAPI";
 
 export default function QuickAddBreakingNewsAPI(props) {
+    const [newSearchPhrase, setNewSearchPhrase] = useState('microsoft')
+    
     const handleFormSubmit = (e) => {
-        e.preventDefault();
-        // Call a function passed down from props to handle form submission
-        props.onSubmit(props.searchPhrase);
+<BreakingNewsAPI searchPhrase={newSearchPhrase} />
+console.log('newSearchPhrase:',newSearchPhrase )
     };
 
     console.log('Jou QuickAddBreakingNewsAPI searchPhrase:', props.searchPhrase)
@@ -17,7 +18,7 @@ export default function QuickAddBreakingNewsAPI(props) {
                 <input 
                     style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '90px' }} 
                     value={props.searchPhrase} 
-                    onChange={(e) => props.onSearchPhraseChange(e.target.value)} 
+                    onChange={(e) => setNewSearchPhrase(e.target.value)} 
                 />
                 <button 
                     className="Font-Verdana-Small-Postgres" 
