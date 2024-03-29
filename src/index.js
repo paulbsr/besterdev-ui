@@ -27,7 +27,7 @@ import { UserProvider } from './UserContext';
 import { useUserContext } from './UserContext';
 import ReactGA from 'react-ga';
 import PageMyCV from './PageMyCV';
-// import BreakingNewsAPI from './BreakingNewsAPI';
+import BreakingNewsAPI from './BreakingNewsAPI';
 import { useState } from 'react';
 
 const TRACKING_ID = "G-FCGGY1NE36";
@@ -58,10 +58,10 @@ firebase.initializeApp(firebaseConfig);
 const app = initializeApp(firebaseConfig);
 
 const App = () => {
-  // const [searchPhrase, setSearchPhrase] = useState('ireland') //alles begin hier
+  const [searchPhrase, setSearchPhrase] = useState('ransomware') //alles begin hier
   return (
     <>
-      {/* <BreakingNewsAPI searchPhrase={searchPhrase}/>  */}
+      <BreakingNewsAPI searchPhrase={searchPhrase}/> 
       <UserProvider>
         <Router>
           <Routes>
@@ -80,9 +80,9 @@ const App = () => {
 
 
             <Route path='/howtoedit/:howto_id' element={<PageHowtoEdit />} />
-            {/* <Route path='/home' element={<PageHome searchPhrase={searchPhrase}/>} /> */}
-            <Route path='/home' element={<PageHome/>} />
-            <Route path='/login' element={<PageLogin />} />
+            <Route path='/home' element={<PageHome searchPhrase={searchPhrase}/>} />
+            {/* <Route path='/home' element={<PageHome/>} /> */}
+            <Route path='/login' element={<PageLogin/>} />
             <Route path='/swagger' element={<PageSwagger />} />
             <Route path='/' element={<PageLogin />} />
             <Route path='*' element={<PageLogin />} />

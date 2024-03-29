@@ -5,10 +5,11 @@ import { PiArticleMediumFill } from "react-icons/pi";
 import GradientLineRusty from './GradientLineRusty';
 import { GoLog } from "react-icons/go";
 import { BsQuestionOctagon } from "react-icons/bs";
-import { IoLibraryOutline } from "react-icons/io5";
+import { IoLibraryOutline, IoFootstepsSharp, IoRecordingOutline } from "react-icons/io5";
 import { TbWorldWww } from "react-icons/tb";
 import { SiWritedotas } from "react-icons/si";
 import GradientLineGreen from './GradientLineGreen';
+import { CiFileOn } from "react-icons/ci";
 
 
 const DBSearchComponent = () => {
@@ -71,7 +72,7 @@ const DBSearchComponent = () => {
             if (result.cyclopedia_name) {
               return (
                 <div className="dbsearchhover" key={result.id}>
-                  Found the search phrase <i>"{searchQuery}"</i> in the following <b>Cyclopedia entry</b>:&nbsp;&nbsp;
+                  Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247'}}>Cyclopedia entry</b>:&nbsp;&nbsp;
                   <div classname="Font-Verdana-Medium-Bold">
                     <IoLibraryOutline style={{ color: '#169247', fontSize: '19px', cursor: 'pointer' }}/>&nbsp;
                     <b>{highlightKeyword(result.cyclopedia_name, searchQuery)}: </b>
@@ -83,9 +84,9 @@ const DBSearchComponent = () => {
             } else if (result.website_name) {
               return (
                 <div className="dbsearchhover" key={result.id}>
-                  Found the search phrase <i>"{searchQuery}"</i> in the following <b>Web Resource</b>:&nbsp;&nbsp;
+                  Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247'}}>Web Resource</b>:&nbsp;&nbsp;
                   <div>
-                  <TbWorldWww style={{ color: '#169247', fontSize: '19px', cursor: 'pointer' }}/>&nbsp;
+                  <TbWorldWww style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }}/>&nbsp;
                     <a href={result.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.website_desc}>
                       {highlightKeyword(result.website_name, searchQuery)}
                     </a>
@@ -97,7 +98,7 @@ const DBSearchComponent = () => {
             } else if (result.news_title) {
               return (
                 <div className="dbsearchhover" key={result.id}>
-                  Found the search phrase <i>"{searchQuery}"</i> in the following <b>Breaking News Article</b>:&nbsp;&nbsp;
+                  Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247'}}>Breaking News Article</b>:&nbsp;&nbsp;
                   <div>
                     <SiWritedotas style={{ color: '#169247', fontSize: '19px', cursor: 'pointer' }}/>&nbsp;
                     <a href={result.news_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.news_source}>
@@ -111,7 +112,7 @@ const DBSearchComponent = () => {
             } else if (result.howto_name) {
               return (
                 <div className="dbsearchhover" key={result.id}>
-                  Found the search phrase <i>"{searchQuery}"</i> in the following <b>HOWTO document</b>:&nbsp;&nbsp;
+                  Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247'}}>HOWTO document</b>:&nbsp;&nbsp;
                   <div>
                     <BsQuestionOctagon style={{ color: '#169247', fontSize: '19px', cursor: 'pointer' }}/>&nbsp;
                     <a href={`/howtoedit/${result.howto_id}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.howto_summary}>
@@ -124,9 +125,10 @@ const DBSearchComponent = () => {
             } else if (result.step_name) {
               return (
                 <div className="dbsearchhover" key={result.id}>
-                  Found the search phrase <i>"{searchQuery}"</i> in the following <b>Step Name</b> in a HOWTO document:
+                  Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247'}}>Step Name</b> in a HOWTO document:
                   <div>
-                  <BsQuestionOctagon style={{ color: '#169247', fontSize: '19px', cursor: 'pointer' }}/>&nbsp;
+                  <BsQuestionOctagon style={{ color: '#169247', fontSize: '19px', cursor: 'pointer' }}/>
+                  <IoFootstepsSharp style={{ color: '#169247', fontSize: '19px', cursor: 'pointer' }}/>&nbsp;
                     <b>{highlightKeyword(result.step_name, searchQuery)}</b> which has a Step Objective to: <i>" {result.step_obj} " </i>
                   </div>
                   <div className='Font-Spacer-White'>Make this spacer white</div>
@@ -135,10 +137,12 @@ const DBSearchComponent = () => {
             } else if (result.steprecord_id) {
               return (
                 <div className="dbsearchhover" key={result.id}>
-                  Found the search phrase <i>"{searchQuery}"</i> in the following <b>Step Record</b>:&nbsp;&nbsp;
+                  Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247'}}>Step Record</b>:&nbsp;&nbsp;
                   <div>
-                  <BsQuestionOctagon style={{ color: '#169247', fontSize: '19px', cursor: 'pointer' }}/>&nbsp;
-                    <b>{highlightKeyword(result.steprecord, searchQuery)}</b>
+                  <BsQuestionOctagon style={{ color: '#169247', fontSize: '19px', cursor: 'pointer' }}/>
+                  <IoFootstepsSharp style={{ color: '#169247', fontSize: '19px', cursor: 'pointer' }}/>
+                  <CiFileOn style={{ color: '#169247', fontSize: '19px', cursor: 'pointer' }}/>&nbsp;
+                    {highlightKeyword(result.steprecord, searchQuery)}
                   </div>
                   <div className='Font-Spacer-White'>Make this spacer white</div>
                 </div>

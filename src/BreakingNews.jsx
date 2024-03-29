@@ -4,7 +4,7 @@ import { Stack } from "@mui/material";
 
 export default function BreakingNews(props) {
     const [breakingNewsDataDB, setBreakingNewsDataDB] = useState([]);
-    const [searchPhrase, setSearchPhrase] = useState(props.searchPhrase);
+    // const [searchPhrase, setSearchPhrase] = useState(props.searchPhrase);
 
     useEffect(() => {
         const fetchDataDB = async () => {
@@ -13,14 +13,14 @@ export default function BreakingNews(props) {
                 const newsDataDB = response.data;
                 shuffleArray(newsDataDB);
                 setBreakingNewsDataDB(newsDataDB);
-                console.log('In <BreakingNews/> is jou GET vanaf Heroku met searchPhrase:', searchPhrase, breakingNewsDataDB);
+                console.log('In <BreakingNews/> is jou GET vanaf Heroku met searchPhrase:', props.searchPhrase, breakingNewsDataDB);
             } catch (error) {
                 console.error('Error fetching breakingNewsData from Heroku:', error);
             }
         };
 
         fetchDataDB();
-    }, []);
+    }, [setBreakingNewsDataDB]); //Empty dependency Array resuts in only run once after the component mounts and not re-run again for any subsequent updates.
 
     const shuffleArray = (array) => {
         for (let i = array.length - 1; i > 0; i--) {

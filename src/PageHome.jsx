@@ -19,7 +19,7 @@ export default function PageHome(props) {
         <GradientLineThin />
         <Quicklinks3 searchPhrase={props.searchPhrase}/>
         <GradientLineThin />
-        <BreakingNews/>
+        <BreakingNews searchPhrase={props.searchPhrase}/>
         <GradientLineThin />
         <CyclopediaTicker />
         <HomePage22 />
