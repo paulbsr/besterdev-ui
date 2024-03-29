@@ -75,23 +75,22 @@ const App = () => {
         const searchPhraseValue = response.data[0].searchphrase;
         setSearchPhrase(searchPhraseValue);
         console.log('In index.js is jou searchPhraseValue:', searchPhraseValue);
-        console.log('In index.js is jou searchPhrase:', searchPhrase);
-      }
+        }
       ).catch((e)=> console.error(e));
 
   }, 
       [checkForRecords]);
+      console.log('In index.js is jou searchPhrase:', searchPhrase);
 
 
 
 
   return (
     <>
-      
+      {searchPhrase && <BreakingNewsAPI searchPhrase={searchPhrase}/>}
       <UserProvider>
         <Router>
           <Routes>
-
             <Route element={<PrivateRoutes />}>
               <Route path='/search' element={<PageSearch />} />
               <Route path='/screen' element={<PageSearch />} />
@@ -106,19 +105,16 @@ const App = () => {
 
 
             <Route path='/howtoedit/:howto_id' element={<PageHowtoEdit />} />
-            <Route path='/home' element={<PageHome searchPhrase={searchPhrase}/>} />
+            {searchPhrase &&  <Route path='/home' element={<PageHome searchPhrase={searchPhrase}/>} />}
             {/* <Route path='/home' element={<PageHome/>} /> */}
-            <Route path='/login' element={<PageLogin searchPhrase={searchPhrase}/>} />
+            {searchPhrase &&  <Route path='/login' element={<PageLogin searchPhrase={searchPhrase}/>} />}
             <Route path='/swagger' element={<PageSwagger />} />
-            <Route path='/' element={<PageLogin />} />
-            <Route path='*' element={<PageLogin />} />
-
+            {searchPhrase &&  <Route path='/' element={<PageLogin searchPhrase={searchPhrase}/>} />}
+            {searchPhrase &&  <Route path='*' element={<PageLogin searchPhrase={searchPhrase}/>} />}
           </Routes>
         </Router>
       </UserProvider>
-      <BreakingNewsAPI searchPhrase={searchPhrase}/> 
-      </>
-
+    </>
   );
 };
 export const auth = getAuth(app);
