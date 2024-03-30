@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './Fonts.css';
 import 'react-tooltip/dist/react-tooltip.css'
 import { useNavigate } from 'react-router-dom'; 
@@ -12,9 +13,11 @@ import { IoLibrary, IoHome } from "react-icons/io5";
 import { SlLogin, SlLogout } from "react-icons/sl";
 import { GrVirtualMachine} from "react-icons/gr";
 import { RiOpenaiFill } from "react-icons/ri";
+import { GiNewShoot } from "react-icons/gi";
 
 
-  const BannerLight = ({ user }) => {
+  // const BannerLight = ({ user }) => {
+    const BannerLight = () => {
     const navigate = useNavigate();
     const handleNavigateLogin = () => {navigate('/login');}
     const handleNavigateHome = () => {navigate('/home');}
@@ -26,14 +29,41 @@ import { RiOpenaiFill } from "react-icons/ri";
     const handleNavigateLogout = () => {navigate('/logout');}
     const handleNavigateSwagger = () => {navigate('/swagger');}
     const handleNavigateMyCV = () => {navigate('/mycv');}
+    const [searchPhrase, setSearchPhrase] = useState();
+    const [checkForRecords, setCheckForRecords] = useState(true);
+
+    useEffect(() => 
+    {
+      axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/searchphrase')
+      // axios('http://localhost:8000/api/v1/searchphrase')
+        .then((response) => 
+        {
+          const searchPhraseValue = response.data[0].searchphrase;
+          setSearchPhrase(searchPhraseValue);
+          console.log('In <BannerLight/> is jou searchPhraseValue:', searchPhraseValue);
+          }
+        ).catch((e)=> console.error(e));
+  
+    }, 
+        [checkForRecords]);
+        console.log('In <BannerLight/> is jou searchPhrase:', searchPhrase);
  
     
   return (
 
-    <div className="banner-light" >
+    <div className="banner-light-left" >
       
-      <a data-tooltip-id="insert" data-tooltip-content="Login" onClick={handleNavigateLogin}><SlLogin style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      
+      &nbsp;&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Breaking News" ><GiNewShoot style={{ color: '#169247', fontSize: '28px', cursor: 'pointer' }} />&nbsp;<span style={{ fontFamily: 'verdana', fontSize: 'small', color: '#336791' }}>Breaking News: </span><span style={{ fontFamily: 'verdana', fontSize: 'small', color: '#D5441C' }}>{searchPhrase}</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {/* <a data-tooltip-id="insert" data-tooltip-content="Login" onClick={handleNavigateLogin}><SlLogin style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
       <a data-tooltip-id="insert" data-tooltip-content="Home" onClick={handleNavigateHome}><IoHome style={{ color: '#000000', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="MyCV" onClick={handleNavigateMyCV}><FaFileContract style={{ color: '#336791', fontSize: '26px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Web Resources" onClick={handleNavigateResources}><TbWorldWww style={{ color: '#336791', fontSize: '32px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
@@ -42,6 +72,8 @@ import { RiOpenaiFill } from "react-icons/ri";
       <a data-tooltip-id="insert" data-tooltip-content="Hunt" onClick={handleNavigateHunt}><FaPeopleArrows style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Candidates" onClick={handleNavigateManage}><MdManageAccounts style={{ color: '#336791', fontSize: '35px', cursor: 'pointer' }} /></a>
 
+      &nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;
@@ -70,7 +102,6 @@ import { RiOpenaiFill } from "react-icons/ri";
       <a data-tooltip-id="insert" data-tooltip-content="ProtonVPN (paulbsr)" href="https://protonvpn.com/" target="_blank" rel="noreferrer"><MdOutlineVpnLock style={{ color: 'brown', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="ProtonMail (kuberkont)" href="https://mail.proton.me/u/0/inbox" target="_blank" rel="noreferrer"><MdOutlineMailLock style={{ color: 'brown', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Swagger" onClick={handleNavigateSwagger}><SiSwagger style={{ color: '#85EA2D', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      {/* <a data-tooltip-id="insert" data-tooltip-content="Algolia for Search" onClick={handleNavigateSwagger}><FaAlgolia style={{ color: '#003DFF', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
       <a data-tooltip-id="insert" data-tooltip-content="OAuth2.0 protected APIs" onClick={handleNavigateSwagger}><TbBrandOauth style={{ color: '#000000', fontSize: '31px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="ChatGPT v3.5" href="https://chat.openai.com/auth/login" target="_blank" rel="noreferrer"><RiOpenaiFill style={{ color: '#19c37c', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Logout" onClick={handleNavigateLogout}><SlLogout style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;

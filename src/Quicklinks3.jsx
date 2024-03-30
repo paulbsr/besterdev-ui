@@ -11,7 +11,6 @@ import GradientLineThin from './GradientLineThin';
 import QuickAddWebResource from './QuickAddWebResource';
 import QuickAddCyclopedia from './QuickAddCyclopedia';
 import DBSearchComponent from './DBSearchComponent';
-import QuickAddBreakingNewsAPI from './QuickAddBreakingNewsAPI';
 
 
 function TabPanel(props) {
@@ -65,7 +64,7 @@ export default function Quicklinks3(props) { //kom vanaf index.js
     <>
       <Box>
         <LinkTabs variant="scrollable">
-          <QuickAddBreakingNewsAPI searchPhrase={props.searchPhrase}/> //waar kom dit vandaan??
+          {/* <QuickAddBreakingNewsAPI searchPhrase={props.searchPhrase}/> //waar kom dit vandaan?? */}
           <QuickAddWebResource checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
           <QuickAddCyclopedia checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
         </LinkTabs>

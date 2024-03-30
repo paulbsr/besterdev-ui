@@ -9,17 +9,19 @@ import ToastComponent from './ToastComponent';
 import BreakingNews from './BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
 import DBSearchComponent from './DBSearchComponent';
+import BreakingNewsAPI from './BreakingNewsAPI';
 
-export default function PageHome(props) {
+export default function PageHome() {
     return (
       <div>
+        <BreakingNewsAPI />
         <BannerWhite />
         <GradientLine />
         <BannerLight />
         <GradientLineThin />
-        <Quicklinks3 searchPhrase={props.searchPhrase}/>
+        <Quicklinks3 />
         <GradientLineThin />
-        <BreakingNews searchPhrase={props.searchPhrase}/>
+        <BreakingNews />
         <GradientLineThin />
         <CyclopediaTicker />
         <HomePage22 />

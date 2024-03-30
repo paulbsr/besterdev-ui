@@ -87,7 +87,8 @@ const App = () => {
 
   return (
     <>
-      {searchPhrase && <BreakingNewsAPI searchPhrase={searchPhrase}/>}
+      {/* {searchPhrase && <BreakingNewsAPI searchPhrase={searchPhrase}/>} */}
+      {/* {searchPhrase && <BreakingNewsAPI />} */}
       <UserProvider>
         <Router>
           <Routes>

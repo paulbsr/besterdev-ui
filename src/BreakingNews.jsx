@@ -2,25 +2,25 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Stack } from "@mui/material";
 
-export default function BreakingNews(props) {
+export default function BreakingNews() {
     const [breakingNewsDataDB, setBreakingNewsDataDB] = useState([]);
-    // const [searchPhrase, setSearchPhrase] = useState(props.searchPhrase);
 
     useEffect(() => {
         const fetchDataDB = async () => {
             try {
+                // Introduce a delay of 2 seconds
+                await new Promise(resolve => setTimeout(resolve, 2000));
                 const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/news`);
                 const newsDataDB = response.data;
                 shuffleArray(newsDataDB);
                 setBreakingNewsDataDB(newsDataDB);
-                console.log('In <BreakingNews/> is jou GET vanaf Heroku met searchPhrase:', props.searchPhrase, breakingNewsDataDB);
-            } catch (error) {
+                } catch (error) {
                 console.error('Error fetching breakingNewsData from Heroku:', error);
             }
         };
 
         fetchDataDB();
-    }, [setBreakingNewsDataDB]); //Empty dependency Array resuts in only run once after the component mounts and not re-run again for any subsequent updates.
+    }, []); //Empty dependency Array resuts in only run once after the component mounts and not re-run again for any subsequent updates.
 
     const shuffleArray = (array) => {
         for (let i = array.length - 1; i > 0; i--) {

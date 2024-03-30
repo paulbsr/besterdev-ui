@@ -3,10 +3,24 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 // import BreakingNewsSearchPhrase from './QuickAddWebResource'
 
-export default function BreakingNewsAPI(props) {
-    // const [breakingNewsDataDB, setBreakingNewsDataDB] = useState([]);
-    // const [newsapiSearchPhrase, setNewsapiSearchPhrase] = useState(props.searchPhrase);
-    const [newsapiSearchPhrase, setNewsapiSearchPhrase] = useState(props.searchPhrase);
+export default function BreakingNewsAPI() {
+    const [newsapiSearchPhrase, setNewsapiSearchPhrase] = useState();
+    const [checkForRecords, setCheckForRecords] = useState(true);
+
+    useEffect(() => 
+    {
+      axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/searchphrase')
+      // axios('http://localhost:8000/api/v1/searchphrase')
+        .then((response) => 
+        {
+          const searchPhraseValue = response.data[0].searchphrase;
+          setNewsapiSearchPhrase(searchPhraseValue);
+        }
+        ).catch((e)=> console.error(e));
+  
+    }, 
+        [checkForRecords]);
+        console.log('In <BreakingNewsAPI/> is jou newsapiSearchPhrase:', newsapiSearchPhrase);
 
     useEffect(() => {
         fetchDataAPI();
@@ -23,10 +37,12 @@ export default function BreakingNewsAPI(props) {
         console.log('In <BreakingNewsAPI /> is jou veranderlikes:', dayOne, dayTwo, newsapiSearchPhrase)
 
         try {
+            await new Promise(resolve => setTimeout(resolve, 1000)); // Introduce a delay of 1 seconds
             let apiUrl = `https://newsapi.org/v2/everything?q=cyber&from=${dayTwo}&to=${dayOne}&language=en&apiKey=b9451c67f79e404bb72c2a9460262fed`;
             if (newsapiSearchPhrase) {
                 apiUrl = `https://newsapi.org/v2/everything?q=${newsapiSearchPhrase}&from=${dayTwo}&to=${dayOne}&language=en&apiKey=b9451c67f79e404bb72c2a9460262fed`;
             }
+            
             const response = await axios.get(apiUrl);
             const newsapiData = response.data.articles;
             console.log('In <BreakingNewsAPI /> is jou GET vanaf NewsAPI met newsapiSearchPhrase:', newsapiSearchPhrase, newsapiData);
@@ -40,6 +56,7 @@ export default function BreakingNewsAPI(props) {
 
             const serializedData = JSON.stringify(postData);
 
+            await new Promise(resolve => setTimeout(resolve, 1000)); // Introduce a delay of 1 seconds
             await axios.post('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/news/create', serializedData,
                 // await axios.post('http://localhost:8000/api/v1/news/create', serializedData, 
                 {

@@ -576,6 +576,12 @@
     text-align: right;
   }
 
+  .banner-light-left {
+    background-color: #f7f4f3;
+    padding: 1px;
+    text-align: left;
+  }
+
 .banner-white {
     background-color: #ffffff;
     padding: 1px;
