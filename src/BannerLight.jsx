@@ -13,7 +13,8 @@ import { IoLibrary, IoHome } from "react-icons/io5";
 import { SlLogin, SlLogout } from "react-icons/sl";
 import { GrVirtualMachine} from "react-icons/gr";
 import { RiOpenaiFill } from "react-icons/ri";
-import { GiNewShoot } from "react-icons/gi";
+import { GiNewShoot, GiRapidshareArrow  } from "react-icons/gi";
+
 
 
   // const BannerLight = ({ user }) => {
@@ -54,7 +55,7 @@ import { GiNewShoot } from "react-icons/gi";
     <div className="banner-light-left" >
       
       &nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Breaking News" ><GiNewShoot style={{ color: '#169247', fontSize: '28px', cursor: 'pointer' }} />&nbsp;<span style={{ fontFamily: 'verdana', fontSize: 'small', color: '#336791' }}>Breaking News: </span><span style={{ fontFamily: 'verdana', fontSize: 'small', color: '#D5441C' }}>{searchPhrase}</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Breaking News" ><GiRapidshareArrow  style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} />&nbsp;<span style={{ fontFamily: 'verdana', fontSize: 'small', color: '#336791' }}>Breaking News: </span><span style={{ fontFamily: 'verdana', fontSize: 'small', color: '#D5441C' }}>{searchPhrase}</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

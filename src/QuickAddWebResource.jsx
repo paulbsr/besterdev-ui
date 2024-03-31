@@ -22,11 +22,6 @@ export default function QuickAddWebResource(props) {
         [checkForRecords]
     )
 
-    // New functional component for displaying search phrase
-    // function BreakingNewsSearchPhrase({ searchPhrase }) {
-    //     return <input type="text" value={searchPhrase} readOnly />;
-    // }
-
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -51,25 +46,14 @@ export default function QuickAddWebResource(props) {
         }
     }
 
-
-
     return (
 
-
-
         <div className='Font-Verdana-QuickAdd'>&nbsp;
-
             <form onSubmit={handleSubmit}>
-
                 <div className='Font-Verdana-QuickAdd'>
-                    &nbsp;&nbsp;
-
                     &nbsp;&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '200px' }} placeholder="Web resource" type="text" value={website_name} onChange={(event) => setWebsite_name(event.target.value)} />
-
                     &nbsp;&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '300px' }} placeholder="Description" type="text" value={website_desc} onChange={(event) => setWebsite_desc(event.target.value)} />
-
                     &nbsp;&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '200px' }} placeholder="URL" type="text" value={website_url} onChange={(event) => setWebsite_url(event.target.value)} />
-
                     &nbsp;&nbsp;<select
                         className='Font-Verdana-QuickAdd'
                         onChange={(event) => {

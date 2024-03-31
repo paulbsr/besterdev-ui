@@ -1,4 +1,3 @@
-// import * as React from 'react';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
@@ -53,18 +52,14 @@ const LinkTab = styled((props) => <Tab disableRipple {...props} />)(({ theme }) 
     '&.Mui-selected:hover': {color: '#D5441C',},})
     );
 
-export default function Quicklinks3(props) { //kom vanaf index.js
+export default function Quicklinks3() { 
   const { loggedInUserEmail } = useUserContext();
   const [checkForRecords, setCheckForRecords] = useState(true);
-  // const [newsAPI, setNewsAPI] = useState(props.searchPhrase);
-  console.log('Jou QuickLinks3.searchPhrase:', props.searchPhrase);
-  console.log('Jou QuickLinks3.newsAPI:', props.searchPhrase)
 
   return (
     <>
       <Box>
         <LinkTabs variant="scrollable">
-          {/* <QuickAddBreakingNewsAPI searchPhrase={props.searchPhrase}/> //waar kom dit vandaan?? */}
           <QuickAddWebResource checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
           <QuickAddCyclopedia checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
         </LinkTabs>
