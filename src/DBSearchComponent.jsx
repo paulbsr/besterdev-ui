@@ -21,8 +21,7 @@ const DBSearchComponent = () => {
     try {
       const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/search?keyword=${searchQuery}`);
       setSearchResults(response.data);
-      console.log('Jou Soek Resultate:', searchResults);
-    } catch (error) {
+      } catch (error) {
       console.error('Error searching:', error);
     }
   };
