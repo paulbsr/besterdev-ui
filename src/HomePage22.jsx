@@ -242,7 +242,7 @@ export default function HomePage22(props) {
             <td style={{ width: '1%' }}></td>
             <td style={{ width: '48%'}}><img src={Image} /></td>
             <td style={{ width: '1%' }}></td>
-            <td style={{ width: '25%'}}><HowtoTicker/></td>
+            <td style={{ width: '25%'}}><HowtoTicker howtodataticker={howtodata}/></td>
           </tr>
         </tbody>
       </table>

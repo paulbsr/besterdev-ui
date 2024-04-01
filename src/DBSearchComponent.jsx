@@ -5,7 +5,7 @@ import { PiArticleMediumFill } from "react-icons/pi";
 import GradientLineRusty from './GradientLineRusty';
 import { GoLog } from "react-icons/go";
 import { BsQuestionOctagon } from "react-icons/bs";
-import { IoLibraryOutline, IoFootstepsSharp, IoRecordingOutline } from "react-icons/io5";
+import { IoLibraryOutline, IoFootstepsSharp, IoRecordingOutline, IoFootstepsOutline } from "react-icons/io5";
 import { TbWorldWww } from "react-icons/tb";
 import { SiWritedotas } from "react-icons/si";
 import GradientLineGreen from './GradientLineGreen';
@@ -127,7 +127,7 @@ const DBSearchComponent = () => {
                   Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247'}}>Step Name</b> in a HOWTO document:
                   <div>
                   <BsQuestionOctagon style={{ color: '#169247', fontSize: '19px', cursor: 'pointer' }}/>
-                  <IoFootstepsSharp style={{ color: '#169247', fontSize: '19px', cursor: 'pointer' }}/>&nbsp;
+                  <IoFootstepsOutline style={{ color: '#169247', fontSize: '19px', cursor: 'pointer' }}/>&nbsp;
                     <b>{highlightKeyword(result.step_name, searchQuery)}</b> which has a Step Objective to: <i>" {result.step_obj} " </i>
                   </div>
                   <div className='Font-Spacer-White'>Make this spacer white</div>
@@ -139,7 +139,7 @@ const DBSearchComponent = () => {
                   Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247'}}>Step Record</b>:&nbsp;&nbsp;
                   <div>
                   <BsQuestionOctagon style={{ color: '#169247', fontSize: '19px', cursor: 'pointer' }}/>
-                  <IoFootstepsSharp style={{ color: '#169247', fontSize: '19px', cursor: 'pointer' }}/>
+                  <IoFootstepsOutline style={{ color: '#169247', fontSize: '19px', cursor: 'pointer' }}/>
                   <CiFileOn style={{ color: '#169247', fontSize: '19px', cursor: 'pointer' }}/>&nbsp;
                     {highlightKeyword(result.steprecord, searchQuery)}
                   </div>
