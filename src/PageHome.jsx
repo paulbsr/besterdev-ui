@@ -10,6 +10,7 @@ import BreakingNews from './BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
 import DBSearchComponent from './DBSearchComponent';
 import BreakingNewsAPI from './BreakingNewsAPI';
+import HowtoTicker from './HowtoTicker';
 
 export default function PageHome() {
     return (
@@ -23,6 +24,8 @@ export default function PageHome() {
         <GradientLineThin />
         <CyclopediaTicker />
         <GradientLineThin />
+        {/* <HowtoTicker />
+        <GradientLineThin /> */}
         <Quicklinks3 />
         {/* <GradientLineThin /> */}
         <HomePage22 />

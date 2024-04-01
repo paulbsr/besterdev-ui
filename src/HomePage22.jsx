@@ -5,6 +5,7 @@ import 'react-dropdown/style.css';
 import axios from 'axios'
 import Image from './graphix/Darknet12.png'
 import DBSearchComponent from './DBSearchComponent';
+import HowtoTicker from './HowtoTicker';
 
 export default function HomePage22(props) {
   const [isExpanded, setExpanded] = useState(false);
@@ -241,7 +242,7 @@ export default function HomePage22(props) {
             <td style={{ width: '1%' }}></td>
             <td style={{ width: '48%'}}><img src={Image} /></td>
             <td style={{ width: '1%' }}></td>
-            <td style={{ width: '25%'}}></td>
+            <td style={{ width: '25%'}}><HowtoTicker/></td>
           </tr>
         </tbody>
       </table>

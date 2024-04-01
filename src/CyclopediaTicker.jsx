@@ -31,13 +31,13 @@ export default function CyclopediaTicker(props) {
 
   return (
     <>
-      {cyclopediadata.length > 0 ? <marquee scrollamount="10">
+      {cyclopediadata.length > 0 ? <marquee scrollamount="5">
 
         <Stack direction="row">
 
           {cyclopediadata.map((news) => (
             <div className="ticker">
-               <a href={news.cyclopedia_ref} target="_blank" rel="noopener noreferrer" style={{ color: '#336791', textDecoration: 'none' }}><b>{news.cyclopedia_name}:</b> <i style={{ color: '#336791', textDecoration: 'none' }}>{news.cyclopedia_desc}</i></a>
+               <a href={news.cyclopedia_ref} target="_blank" rel="noopener noreferrer" style={{ color: '#4D4D4D', textDecoration: 'none' }}><b>{news.cyclopedia_name}:</b> <i style={{ color: '#4D4D4D', textDecoration: 'none' }}>{news.cyclopedia_desc}</i></a>
             </div>
           )
           )
