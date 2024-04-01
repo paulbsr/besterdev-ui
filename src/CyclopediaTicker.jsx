@@ -8,6 +8,7 @@ export default function CyclopediaTicker(props) {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        await new Promise(resolve => setTimeout(resolve, 2000));
         const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia`);
         const cyclopediaDB = response.data;
         shuffleArray(cyclopediaDB);

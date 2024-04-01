@@ -19,11 +19,12 @@ export default function PageHome() {
         <GradientLine />
         <BannerLight />
         <GradientLineThin />
-        <Quicklinks3 />
-        <GradientLineThin />
         <BreakingNews />
         <GradientLineThin />
         <CyclopediaTicker />
+        <GradientLineThin />
+        <Quicklinks3 />
+        {/* <GradientLineThin /> */}
         <HomePage22 />
         <Footer/>
         <ToastComponent />
