@@ -8,7 +8,7 @@ import { GiHummingbird, GiFootsteps } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';
 import { toast } from 'react-toastify';
-import { IoFootstepsSharp } from "react-icons/io5";
+import { IoFootstepsSharp, IoFootstepsOutline } from "react-icons/io5";
 dayjs.extend(utc);
 
 
@@ -50,7 +50,7 @@ export default function HowtoStepCreate(props) {
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
         <a data-tooltip-id="insert" data-tooltip-content="Add a Step"><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
-        <b>Add a Step <IoFootstepsSharp style={{ color: '#D5441C', fontSize: '16px', cursor: 'pointer' }} /> to <i>"{props.howto_name}"</i></b>
+        <b>Add a Step <IoFootstepsOutline style={{ color: '#D5441C', fontSize: '18px', cursor: 'pointer' }} /> to <i>"{props.howto_name}"</i></b>
         <div>&nbsp;</div>
       </div>
 

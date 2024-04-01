@@ -9,7 +9,7 @@ import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard
 import { FaRegTrashAlt } from 'react-icons/fa'; //Delete
 import { BsPencil } from 'react-icons/bs';
 import { toast } from 'react-toastify';
-import { IoFootstepsSharp } from "react-icons/io5";
+import { IoFootstepsSharp, IoFootstepsOutline } from "react-icons/io5";
 
 export default function HowtoStep({ howto_id, step_id, step_number, step_name, step_url, step_obj, step_image, howtodata, checkForRecords, setCheckForRecords }) {
 
@@ -102,7 +102,7 @@ export default function HowtoStep({ howto_id, step_id, step_number, step_name, s
           :
           <>
             <i onClick={toggleAccordion}>
-              <i className="Font-Segoe-Large-Howto"><u>Step-{step_number}&nbsp;</u><IoFootstepsSharp style={{ color: '#D5441C', fontSize: '14px', cursor: 'pointer' }}/>&nbsp;</i>
+              <i className="Font-Segoe-Large-Howto"><u>Step-{step_number}&nbsp;</u><IoFootstepsOutline style={{ color: '#D5441C', fontSize: '18px', cursor: 'pointer' }}/>&nbsp;</i>
               <b className="Font-Segoe-Large-Howto">{step_name}</b>
             </i>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
