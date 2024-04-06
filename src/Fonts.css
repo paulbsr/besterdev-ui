@@ -678,6 +678,33 @@
     vertical-align: top;
 }
 
+.marquee-container {
+    width: 100%;
+    height: 100px; /* Adjust height as needed */
+    overflow: hidden;
+  }
+  
+  .marquee {
+    width: 100%;
+    white-space: nowrap;
+    animation: marquee 10s linear infinite;
+  }
+  
+  .marquee span {
+    display: inline-block;
+    padding-right: 10px; /* Adjust spacing between texts */
+  }
+  
+  @keyframes marquee {
+    0% {
+      transform: translateY(600%);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+  
+
 
 
 

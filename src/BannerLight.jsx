@@ -80,8 +80,6 @@ import { GiNewShoot, GiRapidshareArrow  } from "react-icons/gi";
       &nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="ReactJS v18.2.0" href="https://www.reactjs.com" target="_blank" rel="noreferrer"><FaReact style={{ color: '#61dafb', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="JavaScript" href="https://www.nodejs.org/en" target="_blank" rel="noreferrer"><SiJavascript style={{ color: '#F0DB4F', fontSize: '32px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="NodeJS v20.9.0" href="https://www.nodejs.org/en" target="_blank" rel="noreferrer"><FaNodeJs style={{ color: '#169247', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;

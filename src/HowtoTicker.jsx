@@ -31,23 +31,26 @@ export default function HowtoTicker(props) {
 
   return (
     <>
-      {howtodata.length > 0 ? <marquee scrollamount="6" >
+      {howtodata.length > 0 ? 
+      <marquee scrollamount="6" >
 
-        <Stack direction="row">
+        {/* <Stack direction="row"> */}
 
           {howtodata.map((howto) => (
-            <div className="ticker">
+            // <div className="ticker">
                <a href={`/howtoedit/${howto.howto_id}`} target="_blank" rel="noopener noreferrer" style={{ color: '#336791', textDecoration: 'none' }}><>{howto.howto_name}:</> 
                {/* <i style={{ color: '#336791', textDecoration: 'none' }}>{howto.howto_desc}</i> */}
                </a>
-            </div>
+            // </div>
           )
           )
           }
 
-        </Stack>
+        {/* </Stack> */}
 
-      </marquee> : <div style={{ paddingTop: 8 }}></div>}
+      </marquee> 
+      : 
+      <div style={{ paddingTop: 8 }}></div>}
     </>
   )
     ;

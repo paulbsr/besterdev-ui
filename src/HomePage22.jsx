@@ -4,8 +4,11 @@ import './Fonts.css';
 import 'react-dropdown/style.css';
 import axios from 'axios'
 import Image from './graphix/Darknet12.png'
+import ImageLeft from './graphix/1.jpg'
 import DBSearchComponent from './DBSearchComponent';
 import HowtoTicker from './HowtoTicker';
+import { BsQuestionOctagonFill } from "react-icons/bs";
+import { GiGiftOfKnowledge } from "react-icons/gi";
 
 export default function HomePage22(props) {
   const [isExpanded, setExpanded] = useState(false);
@@ -238,11 +241,13 @@ export default function HomePage22(props) {
       <table style={{ width: '100%' }}>
         <tbody>
           <tr style={{ height: '20px' }}>
+            {/* <td style={{ width: '25%'}}><div className="marquee-container"><div className="marquee"><span><GiGiftOfKnowledge fontSize={40}/> Life Long Learning</span></div></div></td> */}
             <td style={{ width: '25%'}}></td>
             <td style={{ width: '1%' }}></td>
             <td style={{ width: '48%'}}><img src={Image} /></td>
             <td style={{ width: '1%' }}></td>
-            <td style={{ width: '25%'}}><HowtoTicker howtodataticker={howtodata}/></td>
+            {/* <td style={{ width: '25%'}}><HowtoTicker howtodataticker={howtodata}/></td> */}
+            <td style={{ width: '25%'}}></td>
           </tr>
         </tbody>
       </table>
