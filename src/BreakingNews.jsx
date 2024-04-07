@@ -36,7 +36,7 @@ export default function BreakingNews() {
                 <Stack direction="row">
                     {breakingNewsDataDB.map((news) => (
                         <a className="ticker" key={news.news_url}>
-                            <a href={news.news_url} target="_blank" rel="noopener noreferrer" style={{ color: '#336791', textDecoration: 'none' }}>{news.news_source}: <i style={{ color: '#D5441C', textDecoration: 'none' }}>{news.news_title}</i></a>
+                            <a href={news.news_url} target="_blank" rel="noopener noreferrer" style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#336791', textDecoration: 'none' }}>{news.news_source}: <i style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#D5441C', textDecoration: 'none' }}>{news.news_title}</i></a>
                         </a>
                     )
                     )

@@ -37,7 +37,7 @@ export default function CyclopediaTicker(props) {
 
           {cyclopediadata.map((news) => (
             <div className="ticker">
-               <a href={news.cyclopedia_ref} target="_blank" rel="noopener noreferrer" style={{ color: '#4D4D4D', textDecoration: 'none' }}><b>{news.cyclopedia_name}:</b> <i style={{ color: '#4D4D4D', textDecoration: 'none' }}>{news.cyclopedia_desc}</i></a>
+               <a href={news.cyclopedia_ref} target="_blank" rel="noopener noreferrer" style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#4D4D4D', textDecoration: 'none' }}><b>{news.cyclopedia_name}:</b> <i style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#4D4D4D', textDecoration: 'none' }}>{news.cyclopedia_desc}</i></a>
             </div>
           )
           )

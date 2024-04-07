@@ -24,8 +24,8 @@ const DBSearchComponent = () => {
       setSearchResults(response.data);
       } catch (error) {
       console.error('Error searching:', error);
-    }
-  };
+    }      
+  };console.log(searchResults)
 
   const handleCancel = () => {
     setSearchQuery('');
