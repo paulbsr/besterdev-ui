@@ -211,18 +211,6 @@
     /* font-weight: lighter; */
 }
 
-.Font-Segoe-Medium {
-    /* border: 1px solid rgb(233, 228, 228); */
-    /* background-color: #f7f4f3; */
-    font-family: "Segoe UI";
-    font-size: medium;
-    /* font-style: italic; */
-    color: #336791;
-    /* padding: 14px; */
-    /* font-weight: lighter; */
-}
-
-
 .CV-Font-Calibri-Large-Italic-PG {
     border: 1px solid rgb(233, 228, 228);
     background-color: #ffffff;
@@ -244,6 +232,17 @@
     color: #336791;
     padding: 14px;
     font-weight: lighter;
+}
+
+.Font-Segoe-Medium {
+    /* border: 1px solid rgb(233, 228, 228); */
+    /* background-color: #f7f4f3; */
+    font-family: "Segoe UI";
+    font-size: medium;
+    /* font-style: italic; */
+    color: #336791;
+    /* padding: 14px; */
+    /* font-weight: lighter; */
 }
 
 .Font-Segoe-Medium-Howto {
@@ -273,6 +272,14 @@
     font-size: large;
     color: #0c0c0c;
     cursor: pointer;
+}
+
+.Font-Segoe-Large-FP {
+    font-family: "Segoe UI";
+    font-size: large;
+    color: #D5441C;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 .Font-Verdana-Medium-Indeed {
@@ -467,8 +474,8 @@
 .Table-home-centre{
     background-color: #ffffff;
     padding: 4px;
-    font-family: "Verdana";
-    font-size: small ;
+    font-family: "Segoe UI";
+    font-size: medium;
     text-align: justify;
     font-weight: normal;
     vertical-align: top;
@@ -517,6 +524,16 @@
 .fphover:hover {
     font-family: "Verdana";
     font-size: small;
+    color: #D5441C;
+    background-color: #f7f4f3;
+    border-radius: 3px;
+    border: 1px solid #336791;
+    cursor: 'pointer';
+}
+
+.fphover2:hover {
+    font-family: "Segoe UI";
+    font-size: medium;
     color: #D5441C;
     background-color: #f7f4f3;
     border-radius: 3px;

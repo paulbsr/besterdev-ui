@@ -55,7 +55,7 @@ import { GiNewShoot, GiRapidshareArrow  } from "react-icons/gi";
     <div className="banner-light-left" >
       
       &nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Breaking News" ><GiRapidshareArrow  style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} />&nbsp;<span style={{ fontFamily: 'verdana', fontSize: 'small', color: '#336791' }}>Breaking News is about </span><span style={{ fontFamily: 'verdana', fontSize: 'small', color: '#D5441C' }}>{searchPhrase}</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Breaking News" ><GiRapidshareArrow  style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} />&nbsp;<span style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#336791' }}>Breaking News is about: </span><i style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#D5441C' }}>{searchPhrase}</i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

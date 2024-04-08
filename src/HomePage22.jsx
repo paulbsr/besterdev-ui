@@ -126,7 +126,8 @@ export default function HomePage22(props) {
       <>          <DBSearchComponent />
         <div>
           <div className='Font-Spacer-White'>Make this spacer white</div>
-          <div className="Font-Verdana-Larger-Howto-Rusty-Bold">
+          {/* <div className="Font-Verdana-Larger-Howto-Rusty-Bold"> */}
+          <div className="Font-Segoe-Large-FP">
             {alphabet.split('').map((letter, index) => (
               <span style={{ cursor: 'pointer' }}
                 key={index}
@@ -145,7 +146,7 @@ export default function HomePage22(props) {
 
               {firstTwentyCyclopediaRecords.map((rowc, index) => (
                 <tr key={index}>
-                  <td className="fphover">
+                  <td className="fphover2">
                     {rowc && (
                       <div style={{ cursor: 'pointer' }}>
 
