@@ -435,8 +435,8 @@
 
 .Table-home-left-text{
     background-color: #ffffff;
-    font-family: "Verdana";
-    font-size: small;
+    font-family: "Segoe UI";
+    font-size: smaller;
     font-weight: normal;
     text-align: right;
     vertical-align: top;
@@ -444,8 +444,8 @@
 
 .Table-home-right-text{
     background-color: #ffffff;
-    font-family: "Verdana";
-    font-size: small;
+    font-family: "Segoe UI";
+    font-size: smaller;
     font-weight: normal;
     text-align: left;
     vertical-align: top;
@@ -453,7 +453,8 @@
 
 .Table-home-left-heading{
     background-color: #ffffff;
-    font-family: "Verdana";
+    /* font-family: "Verdana"; */
+    font-family: "Segoe UI";
     font-size: large;
     font-weight: normal;
     text-align: left;
@@ -463,7 +464,8 @@
 
 .Table-home-right-heading{
     background-color: #ffffff;
-    font-family: "Verdana";
+    /* font-family: "Verdana"; */
+    font-family: "Segoe UI";
     font-size: large;
     font-weight: normal;
     text-align: right;
@@ -542,8 +544,10 @@
 }
 
 .dbsearchhover:hover {
-    font-family: "Verdana";
-    font-size: small;
+    /* font-family: "Verdana"; */
+    font-family: "Segoe UI";
+    /* font-size: small; */
+    font-size: medium;
     color: #169247;
     background-color: #f7f4f3;
     border-radius: 3px;
