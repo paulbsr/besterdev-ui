@@ -118,7 +118,7 @@ export default function HomePage22(props) {
       ? cyclopediadata.filter(rowc => rowc.cyclopedia_name && rowc.cyclopedia_name.startsWith(selectedLetter))
       : cyclopediadata;
 
-    const firstTwentyCyclopediaRecords = filteredData.slice(0, 30);
+    const firstTwentyCyclopediaRecords = filteredData.slice(0, 90);
 
     const alphabet = 'A-B-C-D-E-F-G-H-I-J-K-L-M-N-O-P-Q-R-S-T-U-V-W-X-Y-Z';
 
