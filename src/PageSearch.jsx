@@ -10,6 +10,8 @@ import 'react-dropdown/style.css';
 import 'react-tooltip/dist/react-tooltip.css'
 import 'react-toastify/dist/ReactToastify.css';
 import ToastComponent from './ToastComponent';
+import BreakingNews from './BreakingNews';
+import CyclopediaTicker from './CyclopediaTicker';
 
 
 export default function PageSearch() {
@@ -18,6 +20,10 @@ export default function PageSearch() {
       <BannerWhite />
       <GradientLine />
       <BannerLight />
+      <GradientLineThin />
+      <BreakingNews />
+      <GradientLineThin />
+      <CyclopediaTicker />
       <GradientLineThin />
       <Quicklinks3 />
       <CandidateAPI />

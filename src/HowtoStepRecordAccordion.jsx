@@ -4,12 +4,12 @@ import axios from "axios";
 import './Fonts.css'
 import { Tooltip } from '@mui/material';
 import { MdAddCircleOutline } from "react-icons/md";
-import { toast } from 'react-toastify';
 import { GiCheckMark } from "react-icons/gi"; //Commit
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard
 import { FaRegTrashAlt } from 'react-icons/fa'; //Delete
 import { BsPencil } from 'react-icons/bs'; //Edit
 import { ImageUpload } from './ImageUpload';
+import { toast } from 'react-toastify';
 
 function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, step_name, checkForRecords, setCheckForRecords }) {
     const date = new Date();
@@ -22,18 +22,21 @@ function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, step_name,
     const filteredSteps = howtodata.howto_steps.filter((task, key) => { return task.step_id === step_idd });
     const SortedStepRecords = filteredSteps[0].step_records.sort((a, b) => a.steprecord_number - b.steprecord_number);
 
-    const handleEdit = (steprecord_id, newsteprecordnumber, newsteprecord) => {
+    const handleEdit = (steprecord_id, newsteprecordnumber, newsteprecord) => 
+    {
         setEditing(steprecord_id);
         setStepRecord_number(newsteprecordnumber);
         setStepRecord(newsteprecord);
         setStepRecord_date(date);
     }
 
-    const onEditCancel = () => {
+    const onEditCancel = () => 
+    {
         setEditing(false);
     }
 
-    const onEditSave = async (steprecord_id) => {
+    const onEditSave = async (steprecord_id) => 
+    {
 
         const StepRecordPUT =
         {

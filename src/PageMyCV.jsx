@@ -17,6 +17,7 @@ export default function PageMyCV() {
         <BreakingNews />
         <GradientLineThin />
         <CyclopediaTicker />
+        <GradientLineThin />
         <MyCV />
         <ToastComponent />
       </div>

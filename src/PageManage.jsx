@@ -19,11 +19,11 @@ export default function PageManage() {
       <GradientLine />
       <BannerLight />
       <GradientLineThin />
-      <Quicklinks3 />
-      <GradientLineThin />
       <BreakingNews />
       <GradientLineThin />
       <CyclopediaTicker />
+      <GradientLineThin />
+      <Quicklinks3 />
       <CandidateManage />
       <EmployerManage1 />
       <JobreqManage />

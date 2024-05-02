@@ -15,11 +15,11 @@ export default function PageResources() {
         <GradientLine />
         <BannerLight />
         <GradientLineThin />
-        <Quicklinks3 />
-        <GradientLineThin />
         <BreakingNews />
         <GradientLineThin />
         <CyclopediaTicker />
+        <GradientLineThin />
+        <Quicklinks3 />
         <WebsiteManage />
         <ToastComponent />
 

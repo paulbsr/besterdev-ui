@@ -22,11 +22,11 @@ export default function PageCyclopedia(cyclopediadata) {
       <GradientLine />
       <BannerLight />
       <GradientLineThin />
-      <Quicklinks3 />
-      <GradientLineThin />
       <BreakingNews />
       <GradientLineThin />
       <CyclopediaTicker />
+      <GradientLineThin />
+      <Quicklinks3 />
       <CyclopediaManage />
       <ToastComponent />
     </div>
