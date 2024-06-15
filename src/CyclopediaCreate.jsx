@@ -63,7 +63,7 @@ export default function CyclopediaCreate() {
                 <div>&nbsp;</div>
                 <div><img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Reference/URL:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1150px' }} type="text" value={cyclopedia_ref} onChange={(event) => setCyclopedia_ref(event.target.value)} /></div>
                 <div>&nbsp;</div>
-                <div><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#D5441C', cursor: 'pointer' }}>Add to Cyclopedia</button></div>
+                <div><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Add to Cyclopedia</button></div>
                 
                 <div>&nbsp;</div>
                 <div>&nbsp;</div>
