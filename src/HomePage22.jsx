@@ -3,7 +3,8 @@ import { Tooltip } from 'react-tooltip'
 import './Fonts.css';
 import 'react-dropdown/style.css';
 import axios from 'axios'
-import Image from './graphix/Darknet12.png'
+import Image from './graphix/12.png' //Lady Liberty
+// import Image from './graphix/Darknet12.png' //Blue Door
 import ImageLeft from './graphix/1.jpg'
 import DBSearchComponent from './DBSearchComponent';
 import HowtoTicker from './HowtoTicker';

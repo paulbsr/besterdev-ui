@@ -155,7 +155,7 @@ const DBSearchComponent = () => {
                           )
                           :
                           (
-                            <Tooltip title={`Edit this "${result.cyclopedia_name}" Cyclopedia_ID#${result.cyclopedia_id}`} placement="top-end">
+                            <Tooltip title={`Edit this "${result.cyclopedia_name}" CyclopediaID#${result.cyclopedia_id}`} placement="top-end">
                               <div style={{ cursor: 'pointer' }} onClick={() => { handleEdit(result.id, result.cyclopedia_id, result.cyclopedia_name, result.cyclopedia_desc) }}>
                                 <BsPencil style={{ color: '#C0C0C0', fontSize: '15px' }} /></div>
                             </Tooltip>
