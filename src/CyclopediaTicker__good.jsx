@@ -28,25 +28,25 @@ export default function CyclopediaTicker(props) {
     }
   };
 
-  const filteredCyclopediadata = cyclopediadata.filter(news => news.cyclopedia_ref === "CVCP");
 
   return (
     <>
-      {filteredCyclopediadata.length > 0 ? (
-        <marquee scrollamount="5">
-          <Stack direction="row">
-            {filteredCyclopediadata.map((news) => (
-              <div className="ticker" key={news.cyclopedia_name}>
-                <a href={news.cyclopedia_ref} target="_blank" rel="noopener noreferrer" style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#4D4D4D', textDecoration: 'none' }}>
-                  <b>{news.cyclopedia_name}:</b> <i style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#4D4D4D', textDecoration: 'none' }}>{news.cyclopedia_desc}</i>
-                </a>
-              </div>
-            ))}
-          </Stack>
-        </marquee>
-      ) : (
-        <div style={{ paddingTop: 8 }}></div>
-      )}
+      {cyclopediadata.length > 0 ? <marquee scrollamount="5">
+
+        <Stack direction="row">
+
+          {cyclopediadata.map((news) => (
+            <div className="ticker">
+               <a href={news.cyclopedia_ref} target="_blank" rel="noopener noreferrer" style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#4D4D4D', textDecoration: 'none' }}><b>{news.cyclopedia_name}:</b> <i style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#4D4D4D', textDecoration: 'none' }}>{news.cyclopedia_desc}</i></a>
+            </div>
+          )
+          )
+          }
+
+        </Stack>
+
+      </marquee> : <div style={{ paddingTop: 8 }}></div>}
     </>
-  );
+  )
+    ;
 }

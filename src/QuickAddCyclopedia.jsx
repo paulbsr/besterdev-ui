@@ -42,9 +42,9 @@ export default function QuickAddCyclopedia() {
                     <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />
                     &nbsp;&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '200px' }} placeholder="What exactly is a ..?" type="text" value={cyclopedia_name} onChange={(event) => setCyclopedia_name(event.target.value)} />
 
-                    &nbsp;&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '550px' }} placeholder="Description" type="text" value={cyclopedia_desc} onChange={(event) => setCyclopedia_desc(event.target.value)} />
+                    &nbsp;&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '400px' }} placeholder="Description" type="text" value={cyclopedia_desc} onChange={(event) => setCyclopedia_desc(event.target.value)} />
 
-                    {/* &nbsp;&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '200px' }} placeholder="URL" type="text" value={cyclopedia_ref} onChange={(event) => setCyclopedia_ref(event.target.value)} /> */}
+                    &nbsp;&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '100px' }} placeholder="Ref" type="text" value={cyclopedia_ref} onChange={(event) => setCyclopedia_ref(event.target.value)} />
                     
                     <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '20.5px', border: '1px solid #169247', borderRadius: '5px', backgroundColor: '#169247', color: '#FFFFFF', cursor: 'pointer' }}>Add</button>
                 </div>
