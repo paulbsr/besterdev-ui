@@ -31,64 +31,39 @@ export default function PeopleScorecardCreate(props) {
             'status_conor_lynch': "START",
             'comment_conor_lynch': "Nothing since " + date,
 
-            'status_declan_lawless': "START",
-            'comment_declan_lawless': "Nothing since " + date,
+            'status_dwayne_patel': "START",
+            'comment_dwayne_patel': "Nothing since " + date,
 
-
-            'status_julia_temple': "START",
-            'comment_julia_temple': "Nothing since " + date,
-
-            // 'status_julio_hernandez': "START",
-            // 'comment_julio_hernandez': "Nothing since " + date,
+            'status_felipe_mantov': "START",
+            'comment_felipe_mantov': "Nothing since " + date,
 
             'status_keex_nenyiaba': "START",
             'comment_keex_nenyiaba': "Nothing since " + date,
 
-            'status_kieran_hayter': "START",
-            'comment_kieran_hayter': "Nothing since " + date,
-
-            // 'status_kritina_stevoff': "START",
-            // 'comment_kritina_stevoff': "Nothing since " + date,
-
-            'status_liam_cearbhaill': "START",
-            'comment_liam_cearbhaill': "Nothing since " + date,
-
-            // 'status_matthew_mahon': "START",
-            // 'comment_matthew_mahon': "Nothing since " + date,
-
-            // 'status_mohamed_sheikhbashir': "START",
-            // 'comment_mohamed_sheikhbashir': "Nothing since " + date,
+            'status_leo_pinto': "START",
+            'comment_leo_pinto': "Nothing since " + date,
 
             'status_monique_borje': "START",
             'comment_monique_borje': "Nothing since " + date,
 
-            // 'status_nabeeha_ashfaq': "START",
-            // 'comment_nabeeha_ashfaq': "Nothing since " + date,
-
-            'status_patrick_haugh': "START",
-            'comment_patrick_haugh': "Nothing since " + date,
-
-            'status_ray_egan': "START",
-            'comment_ray_egan': "Nothing since " + date,
-
-            'status_rosie_curran': "START",
-            'comment_rosie_curran': "Nothing since " + date,
-
             'status_saoirse_seeber': "START",
             'comment_saoirse_seeber': "Nothing since " + date,
+
+            'status_shikha_seth': "START",
+            'comment_shikha_seth': "Nothing since " + date,
 
             'status_simon_dowling': "START",
             'comment_simon_dowling': "Nothing since " + date,
             
-            'status_stefan_manole': "START",
-            'comment_stefan_manole': "Nothing since " + date,
+            'status_thiago_cunha': "START",
+            'comment_thiago_cunha': "Nothing since " + date,
 
             'year': year,
         }
 
         try {
 
-            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/scorecard_people/create`, newtask);
+            const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/scorecard_people/create`, newtask);
             if (response.status === 200) {
                 props.setCheckForRecords(!props.checkForRecords); alertCtx.success("Task (" + (taskName) + ") has been added to the People Management Scorecard");
             }

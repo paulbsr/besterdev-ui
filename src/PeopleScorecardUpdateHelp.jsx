@@ -4,7 +4,7 @@ import './Fonts.css'
 export const PeopleScorecardUpdateHelp = async (id, person, newValues, setCheckForRecords, checkForRecords, alertHandler) => {
 
     try
-    {const response = await axios.put(`${process.env.REACT_APP_API_URL}/api/v1/scorecard_people/update/${person}/${id}`, newValues);
+    {const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/scorecard_people/update/${person}/${id}`, newValues);
 
         if(response.status === 202)
         {setCheckForRecords(!checkForRecords); alertHandler.success(`${person} has been updated`);}

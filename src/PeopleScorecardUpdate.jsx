@@ -34,13 +34,13 @@ export default function PeopleScorecardUpdate(props) {
         await PeopleScorecardUpdateHelp(id, props.person, newValues, setCheckForRecords, checkForRecords, alertHandler);
     }
     
-    const declanUpdate = async (id, comment_declan_lawless, status_declan_lawless, setCheckForRecords, checkForRecords, alertHandler) => {
-        let newValues = {'id': id, 'comment_declan_lawless': comment_declan_lawless, 'status_declan_lawless': status_declan_lawless,}
+    const dwayneUpdate = async (id, comment_dwayne_patel, status_dwayne_patel, setCheckForRecords, checkForRecords, alertHandler) => {
+        let newValues = {'id': id, 'comment_dwayne_patel': comment_dwayne_patel, 'status_dwayne_patel': status_dwayne_patel,}
         await PeopleScorecardUpdateHelp(id, props.person, newValues, setCheckForRecords, checkForRecords, alertHandler);
     }
 
-    const juliaUpdate = async (id, comment_julia_temple, status_julia_temple, setCheckForRecords, checkForRecords, alertHandler) => {
-        let newValues = {'id': id, 'comment_julia_temple': comment_julia_temple, 'status_julia_temple': status_julia_temple,}
+    const felipeUpdate = async (id, comment_felipe_mantov, status_felipe_mantov, setCheckForRecords, checkForRecords, alertHandler) => {
+        let newValues = {'id': id, 'comment_felipe_mantov': comment_felipe_mantov, 'status_felipe_mantov': status_felipe_mantov,}
         await PeopleScorecardUpdateHelp(id, props.person, newValues, setCheckForRecords, checkForRecords, alertHandler);
     }
 
@@ -49,13 +49,13 @@ export default function PeopleScorecardUpdate(props) {
         await PeopleScorecardUpdateHelp(id, props.person, newValues, setCheckForRecords, checkForRecords, alertHandler);
     }
 
-    const kieranUpdate = async (id, comment_kieran_hayter, status_kieran_hayter, setCheckForRecords, checkForRecords, alertHandler) => {
-        let newValues = {'id': id, 'comment_kieran_hayter': comment_kieran_hayter, 'status_kieran_hayter': status_kieran_hayter,}
+    const leoUpdate = async (id, comment_leo_pinto, status_leo_pinto, setCheckForRecords, checkForRecords, alertHandler) => {
+        let newValues = {'id': id, 'comment_leo_pinto': comment_leo_pinto, 'status_leo_pinto': status_leo_pinto,}
         await PeopleScorecardUpdateHelp(id, props.person, newValues, setCheckForRecords, checkForRecords, alertHandler);
     }
 
-    const liamUpdate = async (id, comment_liam_cearbhaill, status_liam_cearbhaill, setCheckForRecords, checkForRecords, alertHandler) => {
-        let newValues = {'id': id, 'comment_liam_cearbhaill': comment_liam_cearbhaill, 'status_liam_cearbhaill': status_liam_cearbhaill,}
+    const shikhaUpdate = async (id, comment_shikha_seth, status_shikha_seth, setCheckForRecords, checkForRecords, alertHandler) => {
+        let newValues = {'id': id, 'comment_shikha_seth': comment_shikha_seth, 'status_shikha_seth': status_shikha_seth,}
         await PeopleScorecardUpdateHelp(id, props.person, newValues, setCheckForRecords, checkForRecords, alertHandler);
     }
 
@@ -64,8 +64,8 @@ export default function PeopleScorecardUpdate(props) {
         await PeopleScorecardUpdateHelp(id, props.person, newValues, setCheckForRecords, checkForRecords, alertHandler);
     }
 
-    const patrickUpdate = async (id, comment_patrick_haugh, status_patrick_haugh, setCheckForRecords, checkForRecords, alertHandler) => {
-        let newValues = {'id': id, 'comment_patrick_haugh': comment_patrick_haugh, 'status_patrick_haugh': status_patrick_haugh,}
+    const thiagoUpdate = async (id, comment_thiago_cunha, status_thiago_cunha, setCheckForRecords, checkForRecords, alertHandler) => {
+        let newValues = {'id': id, 'comment_thiago_cunha': comment_thiago_cunha, 'status_thiago_cunha': status_thiago_cunha,}
         await PeopleScorecardUpdateHelp(id, props.person, newValues, setCheckForRecords, checkForRecords, alertHandler);
     }
 
@@ -128,41 +128,26 @@ export default function PeopleScorecardUpdate(props) {
             case "Conor":
                 return conorUpdate(props.id, taskComment, taskStatus, props.setCheckforRecords, props.checkForRecords, props.alertHandler);
 
-            case "Declan":
-                return declanUpdate(props.id, taskComment, taskStatus, props.setCheckforRecords, props.checkForRecords, props.alertHandler);
+            case "Dwayne":
+                return dwayneUpdate(props.id, taskComment, taskStatus, props.setCheckforRecords, props.checkForRecords, props.alertHandler);
 
-            // case "Eli":
-            //     return eliUpdate(props.id, taskComment, taskStatus, props.setCheckforRecords, props.checkForRecords, props.alertHandler);
-
-            case "Julia":
-                return juliaUpdate(props.id, taskComment, taskStatus, props.setCheckforRecords, props.checkForRecords, props.alertHandler);
-
-            // case "Julio":
-            //     return julioUpdate(props.id, taskComment, taskStatus, props.setCheckforRecords, props.checkForRecords, props.alertHandler);
+            case "Felipe":
+                return felipeUpdate(props.id, taskComment, taskStatus, props.setCheckforRecords, props.checkForRecords, props.alertHandler);
 
             case "Keex":
                 return keexUpdate(props.id, taskComment, taskStatus, props.setCheckforRecords, props.checkForRecords, props.alertHandler);
 
-            case "Kieran":
-                return kieranUpdate(props.id, taskComment, taskStatus, props.setCheckforRecords, props.checkForRecords, props.alertHandler);
+            case "Leo":
+                return leoUpdate(props.id, taskComment, taskStatus, props.setCheckforRecords, props.checkForRecords, props.alertHandler);
 
-            // case "Kristina":
-            //     return kristinaUpdate(props.id, taskComment, taskStatus, props.setCheckforRecords, props.checkForRecords, props.alertHandler);
-
-            case "Liam":
-                return liamUpdate(props.id, taskComment, taskStatus, props.setCheckforRecords, props.checkForRecords, props.alertHandler);
-
-            // case "Matthew":
-            //     return matthewUpdate(props.id, taskComment, taskStatus, props.setCheckforRecords, props.checkForRecords, props.alertHandler);
-
-            // case "Mohamed":
-            //     return mohamedUpdate(props.id, taskComment, taskStatus, props.setCheckforRecords, props.checkForRecords, props.alertHandler);
+            case "Shikha":
+                return shikhaUpdate(props.id, taskComment, taskStatus, props.setCheckforRecords, props.checkForRecords, props.alertHandler);
 
             case "Monique":
                 return moniqueUpdate(props.id, taskComment, taskStatus, props.setCheckforRecords, props.checkForRecords, props.alertHandler);
 
-            case "Patrick":
-                return patrickUpdate(props.id, taskComment, taskStatus, props.setCheckforRecords, props.checkForRecords, props.alertHandler);
+            case "Thiago":
+                return thiagoUpdate(props.id, taskComment, taskStatus, props.setCheckforRecords, props.checkForRecords, props.alertHandler);
 
             case "Ray":
                 return rayUpdate(props.id, taskComment, taskStatus, props.setCheckforRecords, props.checkForRecords, props.alertHandler);
@@ -178,9 +163,6 @@ export default function PeopleScorecardUpdate(props) {
 
             case "Stefan":
                 return stefanUpdate(props.id, taskComment, taskStatus, props.setCheckforRecords, props.checkForRecords, props.alertHandler);
-
-            // case "Tylor":
-            //     return tylorUpdate(props.id, taskComment, taskStatus, props.setCheckforRecords, props.checkForRecords, props.alertHandler);
         }
     };
 
