@@ -80,7 +80,7 @@ export default function PeopleScorecardCreate(props) {
     return (
         <div>
             <div onClick={toggleAccordion}>
-                &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<Tooltip title='Insert Record' placement="top-end"><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></Tooltip>
+                &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Tooltip title='Insert Record' placement="top-end"><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></Tooltip>
                 &nbsp;<b><a className='Font-Verdana-Small-Postgres'>Add Task to People Scorecard</a></b>
             </div>
 
