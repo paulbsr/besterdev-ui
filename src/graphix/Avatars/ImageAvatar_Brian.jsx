@@ -3,4 +3,4 @@ import Avatar from '@mui/material/Avatar';
 import Brian from './Brian.jpg'
 
 
-export default function ImageAvatar_Brian() {return (<Avatar src={Brian} sx={{ width: 75, height: 75 }}/>);}
+export default function ImageAvatar_Brian() {return (<Avatar src={Brian} sx={{ width: 100, height: 100 }}/>);}

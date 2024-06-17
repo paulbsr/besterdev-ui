@@ -18,7 +18,7 @@ import ImageAvatar_Bren from "./graphix/Avatars/ImageAvatar_Bren";
 import ImageAvatar_Keex from "./graphix/Avatars/ImageAvatar_Keex";
 // import ImageAvatar_Mohamed from "../../graphix/Avatars/ImageAvatar_Mohamed";
 import ImageAvatar_Monique from "./graphix/Avatars/ImageAvatar_Monique";
-// import ImageAvatar_Nabeeha from "../../graphix/Avatars/ImageAvatar_Nabeeha";
+import ImageAvatar_Leo from "./graphix/Avatars/ImageAvatar_Leo";
 import ImageAvatar_Saoirse from "./graphix/Avatars/ImageAvatar_Saoirse";
 import MouseoverPopover from "./MouseoverPopover";
 import { getStatusColor } from "./getStatusColor";
@@ -37,6 +37,10 @@ import Button from "@mui/material/Button";
 import { BsPeopleFill } from "react-icons/bs";
 import GradientLineRusty from "./GradientLineRusty";
 import { Tooltip } from '@mui/material';
+import ImageAvatar_Dwayne from "./graphix/Avatars/ImageAvatar_Dwayne";
+import ImageAvatar_Shika from "./graphix/Avatars/ImageAvatar_Shika";
+import ImageAvatar_Felipe from "./graphix/Avatars/ImageAvatar_Felipe";
+import ImageAvatar_Thiago from "./graphix/Avatars/ImageAvatar_Thiago";
 
 export default function PeopleScorecard() {
 
@@ -135,18 +139,15 @@ export default function PeopleScorecard() {
                                             <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Bren Keenan</th>
                                             <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Brian O'Rourke</th>
                                             <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Conor Lynch</th>
-                                            <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Declan Lawless</th>
-                                            <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Julia Temple</th>
+                                            <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Dwayne Patel</th>
+                                            <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Felipe Mantov</th>
                                             <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Keex Nenyiaba</th>
-                                            <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Kieran Hayter</th>
-                                            <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Liam Cearbhaill</th>
+                                            <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Leo Pinto</th>
                                             <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Monique Borje</th>
-                                            <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Patrick Haugh</th>
-                                            <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Ray Egan</th>
-                                            <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Rosie Curran</th>
                                             <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Saoirse Seeber</th>
+                                            <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Shika Seth</th>
                                             <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Simon Dowling</th>
-                                            <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Stefan Manole</th>
+                                            <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Thiago Cunha</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -167,18 +168,15 @@ export default function PeopleScorecard() {
                                             <td><ImageAvatar_Bren /></td>
                                             <td><ImageAvatar_Brian /></td>
                                             <td><ImageAvatar_Conor /></td>
-                                            <td><ImageAvatar_Bren /></td>
-                                            <td><ImageAvatar_Bren /></td>
+                                            <td><ImageAvatar_Dwayne /></td>
+                                            <td><ImageAvatar_Felipe /></td>
                                             <td><ImageAvatar_Keex /></td>
-                                            <td><ImageAvatar_Bren /></td>
-                                            <td><ImageAvatar_Bren /></td>
+                                            <td><ImageAvatar_Leo /></td>
                                             <td><ImageAvatar_Monique /></td>
-                                            <td><ImageAvatar_Bren /></td>
-                                            <td><ImageAvatar_Bren /></td>
-                                            <td><ImageAvatar_Bren /></td>
                                             <td><ImageAvatar_Saoirse /></td>
+                                            <td><ImageAvatar_Shika /></td>
                                             <td><ImageAvatar_Simon /></td>
-                                            <td><ImageAvatar_Bren /></td>
+                                            <td><ImageAvatar_Thiago /></td>
                                         </tr>
 
                                         {tasks.filter(row => row.year === year).map((row) => (
