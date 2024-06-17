@@ -725,7 +725,38 @@
     }
   }
   
+  .Table8 td {
+    border: 1px solid rgb(233, 228, 228);
+    color: #336791;
+    padding: 5px;
+    font-family: "Verdana";
+    font-size: 13px;
+    overflow-wrap: break-word;
+    cursor: pointer;
+}
 
+.Table8 th {
+    /* background-color: #f7f4f3; */
+    color: #336791;
+    /* color: #336791; */
+    /* color: #ff8500; */
+    /* color: #61dafb; */
+    padding: 5px;
+    font-family: "Verdana";
+    font-size: 13px;
+    border-radius: 3px;
+    border: 1px solid #336791;
+}
+
+ 
+.Table8hover td:hover {
+    /* color: #336791; background-color: #f7f4f3; */
+    color: #336791;
+    background-color: #fdf8f6;
+    /* border: 1px solid rgb(182, 172, 172); */
+    border: 1px solid #336791;
+    border-radius: 3px;
+}
 
 
 

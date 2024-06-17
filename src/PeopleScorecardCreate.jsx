@@ -23,40 +23,40 @@ export default function PeopleScorecardCreate(props) {
             'taskDescription': taskDescription,
             'effort': null,
             'status_bren_keenan': "START",
-            'comment_bren_keenan': "Nothing since " + date,
+            'comment_bren_keenan': "Nothing from Bren since " + date,
 
             'status_brian_orourke': "START",
-            'comment_brian_orourke': "Nothing since " + date,
+            'comment_brian_orourke': "Nothing from Brian since " + date,
 
             'status_conor_lynch': "START",
-            'comment_conor_lynch': "Nothing since " + date,
+            'comment_conor_lynch': "Nothing from Conor since " + date,
 
             'status_dwayne_patel': "START",
-            'comment_dwayne_patel': "Nothing since " + date,
+            'comment_dwayne_patel': "Nothing from Dwayne since " + date,
 
             'status_felipe_mantov': "START",
-            'comment_felipe_mantov': "Nothing since " + date,
+            'comment_felipe_mantov': "Nothing from Felipe since " + date,
 
             'status_keex_nenyiaba': "START",
-            'comment_keex_nenyiaba': "Nothing since " + date,
+            'comment_keex_nenyiaba': "Nothing from Keex since " + date,
 
             'status_leo_pinto': "START",
-            'comment_leo_pinto': "Nothing since " + date,
+            'comment_leo_pinto': "Nothing from Leo since " + date,
 
             'status_monique_borje': "START",
-            'comment_monique_borje': "Nothing since " + date,
+            'comment_monique_borje': "Nothing from Monique since " + date,
 
             'status_saoirse_seeber': "START",
-            'comment_saoirse_seeber': "Nothing since " + date,
+            'comment_saoirse_seeber': "Nothing from Saoirse since " + date,
 
             'status_shikha_seth': "START",
-            'comment_shikha_seth': "Nothing since " + date,
+            'comment_shikha_seth': "Nothing from Shikha since " + date,
 
             'status_simon_dowling': "START",
-            'comment_simon_dowling': "Nothing since " + date,
+            'comment_simon_dowling': "Nothing from Simon since " + date,
             
             'status_thiago_cunha': "START",
-            'comment_thiago_cunha': "Nothing since " + date,
+            'comment_thiago_cunha': "Nothing from Thiago since " + date,
 
             'year': year,
         }
@@ -64,6 +64,7 @@ export default function PeopleScorecardCreate(props) {
         try {
 
             const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/scorecard_people/create`, newtask);
+            // const response = await axios.post(`http://localhost:8000/api/v1/scorecard_people/create`, newtask);
             if (response.status === 200) {
                 props.setCheckForRecords(!props.checkForRecords); alertCtx.success("Task (" + (taskName) + ") has been added to the People Management Scorecard");
             }
@@ -79,8 +80,8 @@ export default function PeopleScorecardCreate(props) {
     return (
         <div>
             <div onClick={toggleAccordion}>
-                &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<Tooltip title='Insert Record' placement="top-end"><GiHummingbird style={{ color: '#D5441C', fontSize: '25px', cursor: 'pointer' }} /></Tooltip>
-                &nbsp;<b><a className='Font-Verdana-Small-Rusty-Normal'>Add Task to People Scorecard</a></b>
+                &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<Tooltip title='Insert Record' placement="top-end"><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></Tooltip>
+                &nbsp;<b><a className='Font-Verdana-Small-Postgres'>Add Task to People Scorecard</a></b>
             </div>
 
             {isExpanded && (
@@ -88,9 +89,14 @@ export default function PeopleScorecardCreate(props) {
                     <form onSubmit={handleSubmit}>
                         &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
                         <div className='Font-Verdana-Small-Postgres'>
-                            &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;Task Name:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '300px' }} placeholder="Required" type="text" value={taskName} onChange={(event) => setTaskName(event.target.value)} required />
-                            &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; Task Description:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '600px' }} type="text" value={taskDescription} onChange={(event) => setTaskDescription(event.target.value)} />
-                            <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#D5441C', cursor: 'pointer' }}>Add Task to People Scorecard</button>
+                            &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                            
+                            Task Name:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '300px' }} placeholder="Required" type="text" value={taskName} onChange={(event) => setTaskName(event.target.value)} required />
+                            &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+                            
+                            Task Description:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '600px' }} type="text" value={taskDescription} onChange={(event) => setTaskDescription(event.target.value)} />
+                            
+                            <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Add Task to People Scorecard</button>
                         </div>
                     </form>
                     <div>&nbsp;</div>
