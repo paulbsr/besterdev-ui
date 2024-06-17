@@ -9,13 +9,14 @@ import { BiLogoFirebase, BiLogoPostgresql, BiLogoHeroku, BiLogoGithub, BiLogoGoo
 import { SiSpringboot, SiGoogleanalytics, SiDocker, SiSwagger, SiJavascript } from "react-icons/si";
 import { MdManageAccounts, MdOutlineVpnLock, MdOutlineMailLock } from "react-icons/md";
 import { TbWorldWww, TbBrandOauth } from "react-icons/tb";
-import { BsQuestionOctagonFill } from "react-icons/bs";
+import { BsQuestionOctagonFill, BsPeopleFill } from "react-icons/bs";
 import { IoLibrary, IoHome } from "react-icons/io5";
 import { SlLogin, SlLogout } from "react-icons/sl";
 import { GrVirtualMachine} from "react-icons/gr";
 import { RiOpenaiFill } from "react-icons/ri";
 import { GiNewShoot, GiRapidshareArrow  } from "react-icons/gi";
-
+import { IoIosPeople } from "react-icons/io";
+import { FaPeopleGroup } from "react-icons/fa6";
 
 
   // const BannerLight = ({ user }) => {
@@ -31,6 +32,7 @@ import { GiNewShoot, GiRapidshareArrow  } from "react-icons/gi";
     const handleNavigateLogout = () => {navigate('/logout');}
     const handleNavigateSwagger = () => {navigate('/swagger');}
     const handleNavigateMyCV = () => {navigate('/mycv');}
+    const handleNavigatePeopleScorecard = () => {navigate('/peoplescorecard');}
     const [searchPhrase, setSearchPhrase] = useState();
     const [checkForRecords, setCheckForRecords] = useState(true);
 
@@ -70,7 +72,8 @@ import { GiNewShoot, GiRapidshareArrow  } from "react-icons/gi";
       <a data-tooltip-id="insert" data-tooltip-content="WhatExactlyIs? Cyclopedia" onClick={handleNavigateCyclopedia}><IoLibrary style={{ color: '#336791', fontSize: '31px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Howtos" onClick={handleNavigateHowtoManage}><BsQuestionOctagonFill style={{ color: '#336791', fontSize: '29px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Hunt" onClick={handleNavigateHunt}><FaPeopleArrows style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Candidates" onClick={handleNavigateManage}><MdManageAccounts style={{ color: '#336791', fontSize: '35px', cursor: 'pointer' }} /></a>
+      <a data-tooltip-id="insert" data-tooltip-content="Candidates" onClick={handleNavigateManage}><MdManageAccounts style={{ color: '#336791', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="People Scorecard" onClick={handleNavigatePeopleScorecard}><BsPeopleFill style={{ color: '#336791', fontSize: '32px', cursor: 'pointer' }} /></a>
       &nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;

@@ -15,6 +15,7 @@ import PageManage from './PageManage';
 import PageLogin from './PageLogin';
 import PageLogout from './PageLogout';
 import PageHowtoManage from './PageHowtoManage';
+import PagePeopleScorecard from './PagePeopleScorecard';
 import PageResources from './PageResources';
 import firebase from 'firebase/compat/app';
 import PageHome from './PageHome';
@@ -101,6 +102,7 @@ const App = () => {
               <Route path='/hunt' element={<PageSearch />} />
               <Route path='/cyclopediamanage' element={<PageCyclopedia />} />
               <Route path='/webresourcemanage' element={<PageResources />} />
+              <Route path='/peoplescorecard' element={<PagePeopleScorecard />} />
               <Route path='/mycv' element={<PageMyCV />} />
             </Route>
 
