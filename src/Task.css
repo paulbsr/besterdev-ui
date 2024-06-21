@@ -1,0 +1,21 @@
+/* styling for deadlines, sets all to initial due to nesting of class styles */
+.deadline {
+    all: initial;
+    white-space: nowrap;
+    color: #336791;
+    font-family: Verdana;
+    font-size: x-small;
+    font-weight: normal;
+    margin-top: 3px;
+    cursor: pointer;
+}
+.task-finished {
+    all: initial;
+    color: green;
+    font-family: Verdana;
+    font-size: small;
+    font-weight: 600;
+    margin-top: 3px;
+    cursor: pointer;
+    text-align: left;
+}

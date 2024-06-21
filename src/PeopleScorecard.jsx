@@ -109,6 +109,7 @@ export default function PeopleScorecard() {
                 <div>
                     <div><PeopleScorecardCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /></div>
                 </div>
+                
                 <div>&nbsp;</div>
                 {team === 'Dev' ?
                     <div style={{ overflow: "auto" }}>

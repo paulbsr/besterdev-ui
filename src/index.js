@@ -21,6 +21,7 @@ import firebase from 'firebase/compat/app';
 import PageHome from './PageHome';
 import PageHowtoEdit from './PageHowtoEdit';
 import PageCyclopedia from './PageCyclopedia';
+import PageTaskManage from './PageTaskManage';
 import PageSwagger from './PageSwagger';
 import 'react-tooltip/dist/react-tooltip.css';
 import 'firebase/firestore';
@@ -103,6 +104,7 @@ const App = () => {
               <Route path='/cyclopediamanage' element={<PageCyclopedia />} />
               <Route path='/webresourcemanage' element={<PageResources />} />
               <Route path='/peoplescorecard' element={<PagePeopleScorecard />} />
+              <Route path='/taskmanage' element={<PageTaskManage />} />
               <Route path='/mycv' element={<PageMyCV />} />
             </Route>
 

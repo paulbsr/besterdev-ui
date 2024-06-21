@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Fonts.css';
-import { Tooltip } from 'react-tooltip'
+// import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
 import { useNavigate } from 'react-router-dom'; 
-import { FaReact, FaJava, FaNodeJs, FaAws, FaPeopleArrows, FaDigitalOcean, FaFileContract } from 'react-icons/fa';
+import { FaReact, FaJava, FaNodeJs, FaAws, FaPeopleArrows, FaDigitalOcean, FaFileContract, FaTasks } from 'react-icons/fa';
 import { BiLogoFirebase, BiLogoPostgresql, BiLogoHeroku, BiLogoGithub, BiLogoGoogle } from "react-icons/bi";
 import { SiSpringboot, SiGoogleanalytics, SiDocker, SiSwagger, SiJavascript } from "react-icons/si";
-import { MdManageAccounts, MdOutlineVpnLock, MdOutlineMailLock } from "react-icons/md";
+import { MdManageAccounts, MdOutlineVpnLock, MdOutlineMailLock, MdTask } from "react-icons/md";
 import { TbWorldWww, TbBrandOauth } from "react-icons/tb";
 import { BsQuestionOctagonFill, BsPeopleFill } from "react-icons/bs";
 import { IoLibrary, IoHome } from "react-icons/io5";
-import { SlLogin, SlLogout } from "react-icons/sl";
+import { SlLogout } from "react-icons/sl";
 import { GrVirtualMachine} from "react-icons/gr";
 import { RiOpenaiFill } from "react-icons/ri";
-import { GiNewShoot, GiRapidshareArrow  } from "react-icons/gi";
-import { IoIosPeople } from "react-icons/io";
-import { FaPeopleGroup } from "react-icons/fa6";
+import { GiRapidshareArrow  } from "react-icons/gi";
+
 
 
   // const BannerLight = ({ user }) => {
@@ -33,8 +32,10 @@ import { FaPeopleGroup } from "react-icons/fa6";
     const handleNavigateSwagger = () => {navigate('/swagger');}
     const handleNavigateMyCV = () => {navigate('/mycv');}
     const handleNavigatePeopleScorecard = () => {navigate('/peoplescorecard');}
+    const handleNavigateTaskManage = () => {navigate('/taskmanage');}
     const [searchPhrase, setSearchPhrase] = useState();
     const [checkForRecords, setCheckForRecords] = useState(true);
+
 
     useEffect(() => 
     {
@@ -53,6 +54,8 @@ import { FaPeopleGroup } from "react-icons/fa6";
         console.log('In <BannerLight/> is jou searchPhrase:', searchPhrase);
  
     
+
+
   return (
 
     <div className="banner-light-left" >
@@ -73,10 +76,8 @@ import { FaPeopleGroup } from "react-icons/fa6";
       <a data-tooltip-id="insert" data-tooltip-content="Howtos" onClick={handleNavigateHowtoManage}><BsQuestionOctagonFill style={{ color: '#336791', fontSize: '29px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Hunt" onClick={handleNavigateHunt}><FaPeopleArrows style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Candidates" onClick={handleNavigateManage}><MdManageAccounts style={{ color: '#336791', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="People Scorecard" onClick={handleNavigatePeopleScorecard}><BsPeopleFill style={{ color: '#336791', fontSize: '32px', cursor: 'pointer' }} /></a>
-      &nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="People Scorecard" onClick={handleNavigatePeopleScorecard}><BsPeopleFill style={{ color: '#336791', fontSize: '32px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Task Manager" onClick={handleNavigateTaskManage}><MdTask style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>
       &nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;
@@ -105,7 +106,6 @@ import { FaPeopleGroup } from "react-icons/fa6";
       <a data-tooltip-id="insert" data-tooltip-content="OAuth2.0 protected APIs" onClick={handleNavigateSwagger}><TbBrandOauth style={{ color: '#000000', fontSize: '31px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="ChatGPT v3.5" href="https://chat.openai.com/auth/login" target="_blank" rel="noreferrer"><RiOpenaiFill style={{ color: '#19c37c', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Logout" onClick={handleNavigateLogout}><SlLogout style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
-      
     </div>
   );
 };

@@ -1,0 +1,9 @@
+.taskRow 
+{
+    display: flex;
+    white-space: nowrap;
+}
+
+.taskRow .deadline 
+{
+}

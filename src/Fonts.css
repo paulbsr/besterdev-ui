@@ -758,5 +758,61 @@
     border-radius: 3px;
 }
 
+.overview {
+    border-collapse: collapse;
+    border: 1px solid rgb(233, 228, 228);
+    width: 100%;
+}
+
+.overview th {
+    background-color: #e1ebf8;
+    padding: 2px;
+    font-family: "Segoe UI";
+    font-size: small;
+}
+
+.overview td {
+    border: 1px solid rgb(233, 228, 228);
+    padding: 5px;
+    font-family: "Segoe UI";
+    font-size: medium;
+}
+
+.overview-box {
+    width: 25%;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    margin-left: 1px;
+    margin-right: 1px;
+}
+
+.fit-eleven {
+    width: 9%;
+    min-width: 135px;
+    font-size: large;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.start-color {
+    background-color: #b2b2b2;
+}
+
+.wip-color {
+    background-color: rgb(0, 0, 190, .25);
+}
+
+.done-color {
+    background-color: rgb(0, 180, 0, .25);
+}
+
+.problem-color {
+    background-color: rgb(190, 0, 0, .25);
+}
+
+.fill {
+    width: 99%;
+}
 
 
