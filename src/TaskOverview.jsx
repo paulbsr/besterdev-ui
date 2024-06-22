@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
 import MouseoverPopover from "./MouseoverPopover";
-import { FaTasks } from "react-icons/fa";
 import { MdTask } from "react-icons/md";
 import GradientLineRusty from "./GradientLineRusty";
 import "./Fonts.css";
@@ -145,7 +144,7 @@ export default function TaskOverview() {
 
             <div>
                 <div>
-                    <div><Task_Create checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /></div>
+                    <div><Task_Create allTasks={allTask} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /></div>
                 </div>
 
                 <div>&nbsp;</div>

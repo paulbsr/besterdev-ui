@@ -6,6 +6,7 @@ import AlertContext from "./Generic/Alerts/AlertContext";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { GiHummingbird } from "react-icons/gi";
+import { TaskContext } from "./Contexts";
 
 
 const useStyles = styled((theme) => ({
@@ -37,8 +38,13 @@ export default function Task_Create(props) {
     const [tasknextstep, setTasknextstep] = useState("");
     const toggleAccordion = () => { setExpanded(!isExpanded); };
     const [isExpanded, setExpanded] = useState(false);
+    const [company, setCompany] = useState(null);
+    const [employerdropdown, setEmployerDropDown] = useState(null);
+    // const [allTasks, setAlltasks] = useState(props.allTasks)
+    const allTasks = useContext(TaskContext);
     const alertCtx = useContext(AlertContext);
     const classes = useStyles();
+    console.log('AllTasks via TaskContext:', allTasks)
     const handleSubmit = async (event) => {
         if (
             tasktargetdate !== null
@@ -91,17 +97,53 @@ export default function Task_Create(props) {
                         <form onSubmit={handleSubmit}>
                             <div className='Font-Verdana-Small-Postgres'>
                                 <div style={{ display: "flex" }}>
+
+                                <div>
+                                &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                                <select className='Font-Verdana-Small-Postgres'
+                                        onChange={(event) => {
+                                            const selectedIndex = event.target.selectedIndex;
+                                            const selectedOption = event.target.options[selectedIndex];
+                                            const company = selectedOption.getAttribute("data-company");
+
+                                            setCompany(company);
+
+                                        }}
+                                        id="dropdown"
+                                        style={{
+                                            height: '27.5px',
+                                            border: '1.25px solid #c4c4c4',
+                                            borderRadius: '4px',
+                                            padding: 0,
+                                            paddingLeft: '10px',
+                                            width: '150px'
+                                        }}
+                                    >
+                                        <option disabled selected value="">Domain</option>
+                                        {allTasks && allTasks.map(option => (
+                                            <option
+                                                key={option.id}
+                                                value={option.projecthandle}
+                                                data-company={option.projecthandle} // Store company data as an attribute
+
+                                            >
+                                                {option.projecthandle}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+
                                     <div>
-                                        &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;Task Name:&nbsp;
-                                        <input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '300px' }} type="text" onChange={(event) => setTaskname(event.target.value)} required />
+                                        &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                                        <input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '300px' }} placeholder="Task Name" type="text" onChange={(event) => setTaskname(event.target.value)} required />
                                     </div>
                                     <div>
-                                        &nbsp; &nbsp; &nbsp; &nbsp;Requirement:&nbsp;
-                                        <input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '400px' }} type="text" onChange={(event) => setTaskrequirement(event.target.value)} />
+                                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                        <input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '400px' }} placeholder="Requirement" type="text" onChange={(event) => setTaskrequirement(event.target.value)} />
                                     </div>
                                     <div>
-                                        &nbsp; &nbsp; &nbsp; &nbsp;Owner:&nbsp;
-                                        <select style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} id="dropdown" onChange={(event) => setTaskowner(event.target.value)}>
+                                        &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                                        <select style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} placeholder="Web resource" id="dropdown" onChange={(event) => setTaskowner(event.target.value)}>
                                             <option disabled selected value="">Responsible</option>
                                             <option value="Bren Keenan">Bren Keenan</option>
                                             <option value="Brian o'Rourke">Brian o'Rourke</option>
@@ -122,7 +164,7 @@ export default function Task_Create(props) {
                                         </select>
                                     </div>
                                     <div>
-                                        &nbsp; &nbsp; &nbsp; &nbsp;Due:&nbsp;
+                                        &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
                                     </div>
                                     <div>
                                         <DatePicker
@@ -130,8 +172,13 @@ export default function Task_Create(props) {
                                             onChange={(date) => setTasktargetdate(date)}
                                             dateFormat="yyyy.MM.dd"
                                             minDate={new Date()}
+                                            placeholderText="Target Date"
                                         />
                                     </div>
+
+
+
+
                                     <div>
                                         &nbsp; &nbsp; &nbsp; &nbsp;
                                         <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }} onClick={() => setTaskstatus("START")}>Commit new Task</button>
