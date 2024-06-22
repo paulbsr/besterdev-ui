@@ -7,6 +7,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { GiHummingbird } from "react-icons/gi";
 import { TaskContext } from "./Contexts";
+import TaskCreateDropdown from "./TaskCreateDropdown";
+import { toast } from 'react-toastify';
 
 
 const useStyles = styled((theme) => ({
@@ -25,7 +27,7 @@ const useStyles = styled((theme) => ({
 }));
 
 
-export default function Task_Create(props) {
+export default function TaskCreate(props) {
     const current = new Date();
     const [taskname, setTaskname] = useState("");
     const [taskrequirement, setTaskrequirement] = useState("");
@@ -33,18 +35,17 @@ export default function Task_Create(props) {
     const [tasktargetdate, setTasktargetdate] = useState(null);
     const [taskcreatedate, setTaskcreatedate] = useState(current);
     const [taskstatus, setTaskstatus] = useState("START");
-    const [projecthandle, setProjecthandle] = useState(props.project_handle);
-    const [asms, setAsms] = useState(props.asms_number);
+    const [projecthandle, setProjecthandle] = useState(props.projecthandle);
+    const [asms, setAsms] = useState("113092");
     const [tasknextstep, setTasknextstep] = useState("");
     const toggleAccordion = () => { setExpanded(!isExpanded); };
     const [isExpanded, setExpanded] = useState(false);
     const [company, setCompany] = useState(null);
     const [employerdropdown, setEmployerDropDown] = useState(null);
-    // const [allTasks, setAlltasks] = useState(props.allTasks)
     const allTasks = useContext(TaskContext);
     const alertCtx = useContext(AlertContext);
-    const classes = useStyles();
-    console.log('AllTasks via TaskContext:', allTasks)
+
+
     const handleSubmit = async (event) => {
         if (
             tasktargetdate !== null
@@ -63,16 +64,18 @@ export default function Task_Create(props) {
             };
             try {
                 const response = await axios.post(
-                    `${process.env.REACT_APP_API_URL}/api/v1/tasks/create`,
-                    newtask
-                );
+                    `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/create`, newtask);
                 if (response.status === 200) {
                     props.setCheckForRecords(!props.checkForRecords);
-                    alertCtx.success(`Task (${taskname}) has been memorialized`);
-                } else {
-                    alertCtx.error(`oops! Something went wrong#1!`);
+                    // alertCtx.success(`Task (${taskname}) has been memorialized`);
+                    { toast.success(`${taskname} added.`) }
                 }
-            } catch (err) {
+                else {
+                    // alertCtx.error(`oops! Something went wrong#1!`);
+                    toast.error('Nee');
+                }
+            }
+            catch (err) {
                 alertCtx.error(`oops! Something went wrong!#2`);
                 console.log(err);
             }
@@ -81,6 +84,7 @@ export default function Task_Create(props) {
             alertCtx.warning("Valid due date required");
         }
     };
+
 
 
 
@@ -97,41 +101,8 @@ export default function Task_Create(props) {
                         <form onSubmit={handleSubmit}>
                             <div className='Font-Verdana-Small-Postgres'>
                                 <div style={{ display: "flex" }}>
-
-                                <div>
-                                &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                                <select className='Font-Verdana-Small-Postgres'
-                                        onChange={(event) => {
-                                            const selectedIndex = event.target.selectedIndex;
-                                            const selectedOption = event.target.options[selectedIndex];
-                                            const company = selectedOption.getAttribute("data-company");
-
-                                            setCompany(company);
-
-                                        }}
-                                        id="dropdown"
-                                        style={{
-                                            height: '27.5px',
-                                            border: '1.25px solid #c4c4c4',
-                                            borderRadius: '4px',
-                                            padding: 0,
-                                            paddingLeft: '10px',
-                                            width: '150px'
-                                        }}
-                                    >
-                                        <option disabled selected value="">Domain</option>
-                                        {allTasks && allTasks.map(option => (
-                                            <option
-                                                key={option.id}
-                                                value={option.projecthandle}
-                                                data-company={option.projecthandle} // Store company data as an attribute
-
-                                            >
-                                                {option.projecthandle}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
+                                    &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                                    <TaskCreateDropdown allTasks={allTasks} setProjecthandle={setProjecthandle} />
 
                                     <div>
                                         &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
@@ -144,23 +115,16 @@ export default function Task_Create(props) {
                                     <div>
                                         &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
                                         <select style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} placeholder="Web resource" id="dropdown" onChange={(event) => setTaskowner(event.target.value)}>
-                                            <option disabled selected value="">Responsible</option>
-                                            <option value="Bren Keenan">Bren Keenan</option>
-                                            <option value="Brian o'Rourke">Brian o'Rourke</option>
                                             <option value="Conor Lynch">Conor Lynch</option>
-                                            <option value="Declan Lawless">Declan Lawless</option>
-                                            <option value="Julia Temple">Julia Temple</option>
+                                            <option value="Dwayne Patel">Dwayne</option>
+                                            <option value="Felipe">Felipe</option>
                                             <option value="Keex Nenyiaba">Keex Nenyiaba</option>
-                                            <option value="Kieran Hayter">Kieran Hayter</option>
-                                            <option value="Liam Cearbhaill">Liam Cearbhaill</option>
+                                            <option value="Leo Pinto">Leo Pinto</option>
                                             <option value="Monique Borje">Monique Borje</option>
-                                            <option value="Patrick Haugh">Patrick Haugh</option>
                                             <option value="Paul Bester">Paul Bester</option>
-                                            <option value="Ray Egan">Ray Egan</option>
-                                            <option value="Rosie Curran">Rosie Curran</option>
-                                            <option value="Saoirse Seeber">Saoirse Seeber</option>
+                                            <option value="Sikha">Sikha</option>
                                             <option value="Simon Dowling">Simon Dowling</option>
-                                            <option value="Stefan Manole">Stefan Manole</option>
+                                            <option value="Thiago Cunha">Thiago Cunha</option>
                                         </select>
                                     </div>
                                     <div>
@@ -175,9 +139,6 @@ export default function Task_Create(props) {
                                             placeholderText="Target Date"
                                         />
                                     </div>
-
-
-
 
                                     <div>
                                         &nbsp; &nbsp; &nbsp; &nbsp;

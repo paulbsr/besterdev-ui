@@ -3,7 +3,9 @@ import MouseoverPopover from "./MouseoverPopover";
 import { MdTask } from "react-icons/md";
 import GradientLineRusty from "./GradientLineRusty";
 import "./Fonts.css";
+import "./TaskOverview.css";
 import Task from "./Task";
+import TaskCreate from "./TaskCreate";
 import { TaskContext } from "./Contexts";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
@@ -11,12 +13,9 @@ import DialogContentText from "@mui/material/DialogContentText";
 import { DialogActions } from "@mui/material";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import "./TaskOverview.css";
 import dayjs from "dayjs";
 import ObjectSupport from "dayjs/plugin/objectSupport";
-import Task_Create from "./Task_Create";
 import { Tooltip } from '@mui/material';
-
 
 
 
@@ -32,11 +31,11 @@ class TaskStatusCounter {
 
 
 const projectNameMap = {
-    113092: "AppDashboard",
-    14718: "CCDNManagement",
-    181268: "DSTracker",
-    171593: "GMVCTracker",
-    168272: "MABRescue",
+    113092: "CVCP",
+    14718: "IDEMIA",
+    181268: "TELUS",
+    171593: "ATT",
+    168272: "CUBIC",
     188660: "MediaCast",
     190860: "MediaGen",
     191076: "TeamsDMV",
@@ -45,11 +44,11 @@ const projectNameMap = {
     111111: "BesterDev",
 };
 const projectAsmsMap = {
-    AppDashboard: "113092",
-    CCDNManagement: "14718",
-    DSTracker: "181268",
-    GMVCTracker: "171593",
-    MABRescue: "168272",
+    CVCP: "113092",
+    IDEMIA: "14718",
+    TELUS: "181268",
+    ATT: "171593",
+    CUBIC: "168272",
     MediaCast: "188660",
     MediaGen: "190860",
     TeamsDMV: "191076",
@@ -67,7 +66,7 @@ export default function TaskOverview() {
     const [isExpanded, setExpanded] = useState(false);
     const [currentStatus, setCurrentStatus] = useState("START");
     const [currentAsms, setCurrentAsms] = useState("113092");
-    const [currentName, setCurrentName] = useState("AppDashboard");
+    const [currentName, setCurrentName] = useState("CVCP");
     const [modalState, setModalState] = useState(null);
     //   const [tasks, setTasks] = useState([]);
     const [problems, setProblems] = useState([]);
@@ -78,11 +77,11 @@ export default function TaskOverview() {
 
 
     const projectTaskStatusCounters = {
-        AppDashboard: new TaskStatusCounter(),
-        CCDNManagement: new TaskStatusCounter(),
-        DSTracker: new TaskStatusCounter(),
-        GMVCTracker: new TaskStatusCounter(),
-        MABRescue: new TaskStatusCounter(),
+        CVCP: new TaskStatusCounter(),
+        IDEMIA: new TaskStatusCounter(),
+        TELUS: new TaskStatusCounter(),
+        ATT: new TaskStatusCounter(),
+        CUBIC: new TaskStatusCounter(),
         MediaCast: new TaskStatusCounter(),
         MediaGen: new TaskStatusCounter(),
         TeamsDMV: new TaskStatusCounter(),
@@ -144,7 +143,7 @@ export default function TaskOverview() {
 
             <div>
                 <div>
-                    <div><Task_Create allTasks={allTask} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /></div>
+                    <div><TaskCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /></div>
                 </div>
 
                 <div>&nbsp;</div>
