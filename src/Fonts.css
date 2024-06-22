@@ -74,6 +74,7 @@
     color: #336791
 }
 
+
 .Font-Verdana-Medium-Postgres {
     font-family: "Verdana";
     font-size: medium;
@@ -201,14 +202,9 @@
 }
 
 .Font-Segoe-Small {
-    /* border: 1px solid rgb(233, 228, 228); */
-    /* background-color: #f7f4f3; */
     font-family: "Segoe UI";
-    font-size: small;
-    /* font-style: italic; */
+    font-size: Small;
     color: #336791;
-    /* padding: 14px; */
-    /* font-weight: lighter; */
 }
 
 .CV-Font-Calibri-Large-Italic-PG {

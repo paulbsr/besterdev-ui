@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import TaskRecordCreate from "./TaskRecordCreate";
 import TaskRecordStatusByColourLong from "./TaskRecordStatusByColourLong";
 import { getStatusByColourTaskText } from "./getStatusByColourTaskText";
@@ -8,8 +8,13 @@ import { BsArrowCounterclockwise, BsPencil } from "react-icons/bs"; //revert
 import { GiCheckMark } from "react-icons/gi"; //Commit
 import { MdPlusOne } from "react-icons/md"; //+1
 import "./Fonts.css";
+import AlertContext from "./Generic/Alerts/AlertContext";
+import { toast } from 'react-toastify';
+
+
+
 function TaskRecordAccordion({
-    alertCtx,
+    // alertCtx,
     project_handle,
     asms_number,
     parentid,
@@ -17,40 +22,60 @@ function TaskRecordAccordion({
     checkForRecords,
     setCheckForRecords,
     taskstatus,
+    props,
 }) {
+    const alertCtx = useContext(AlertContext);
     const [isExpanded, setExpanded] = useState(false);
+    
     const toggleAccordion = () => {
         setExpanded(!isExpanded);
     };
+    
     const orderedTasks = parenttask.filter((task, key) => {
         return task.id === parentid;
     });
+    
     const taskRecords = orderedTasks[0].tasks.sort(
         (a, b) =>
             new Date(b.date[0], b.date[1], b.date[2]) -
             new Date(a.date[0], a.date[1], a.date[2]) || b.childid - a.childid
     );
+    
     const [editing, setEditing] = useState(false);
+    
     const [taskrecord, setTaskrecord] = useState(null);
+    
     const date = new Date();
+    
     const handleEdit = (id, childrecord) => {
         setEditing(id);
         setTaskrecord(childrecord);
     };
+    
     const onEditCancel = () => {
         setEditing(false);
         setTaskrecord(null);
     };
+    
     const onEditSave = async (childid) => {
         const updatedTaskRecord =
         {
             childrecord: taskrecord,
         };
-        const response = await axios.put(`${process.env.REACT_APP_API_URL}/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
-            .catch((error) => { alertCtx.error(error.message); });
-        setCheckForRecords(!checkForRecords);
-        alertCtx.success(`TaskRecord#${childid} has been edited`);
-        onEditCancel();
+        const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
+            // .catch((error) => { alertCtx.error(error.message); });
+        // setCheckForRecords(!checkForRecords);
+        // alertCtx.success(`TaskRecord#${childid} has been edited`);
+        // onEditCancel();
+        if (response.status === 200) {
+            // props.setCheckForRecords(!props.checkForRecords);
+            // alertCtx.success(`Task (${taskname}) has been memorialized`);
+            { toast.success(`TaskRecord amendment successfully.`) }
+        }
+        else {
+            // alertCtx.error(`oops! Something went wrong#1!`);
+            toast.error('TaskRecord amendment unsuccessfull');
+        }
     };
     function editableTaskRecord(
         alertCtx,
@@ -95,7 +120,7 @@ function TaskRecordAccordion({
                     <div>
                         {editing === childid ? (
                             <textarea
-                                cols="70"
+                                cols="700"
                                 variant="outlined"
                                 defaultValue={taskrecord}
                                 rows={3}

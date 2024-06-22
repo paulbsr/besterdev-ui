@@ -16,6 +16,8 @@ import CyclopediaTicker from './CyclopediaTicker';
 import PeopleScorecard from './PeopleScorecard'
 import TaskOverview from './TaskOverview';
 import { TaskContext } from "./Contexts";
+import AlertProvider from "./Generic/Alerts/AlertContext"; // Assuming AlertProvider
+import AlertContext from './Generic/Alerts/AlertContext';
 
 
 
@@ -51,9 +53,11 @@ export default function PageTaskManage() {
       <GradientLineThin />
       <Quicklinks3 />
       {/* <PeopleScorecard /> */}
+      {/* <AlertContext> */}
       <TaskContext.Provider value={tasks}>
       <TaskOverview />
       </TaskContext.Provider>
+      {/* </AlertContext> */}
       <ToastComponent />
     </div>
   )

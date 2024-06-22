@@ -46,7 +46,7 @@ export default function Task({
     useEffect(() => {
         if (taskstatus === "DONE") {
             axios(
-                `${process.env.REACT_APP_API_URL}/api/v1/taskrecords/duration/${id}`
+                `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/duration/${id}`
             )
                 .then((response) => {
                     setDuration(response.data);
@@ -105,7 +105,7 @@ export default function Task({
         }
         const response = await axios
             .put(
-                `${process.env.REACT_APP_API_URL}/api/v1/tasks/update/taskdetails/${id}`,
+                `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskdetails/${id}`,
                 updatedTask
             )
             .then((response) => {

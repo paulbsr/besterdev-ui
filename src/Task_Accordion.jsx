@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Task_Create from "./Task_Create__oorspronklik";
 import Task from "./Task";
-import "../Fonts.css";
+import "./Fonts.css";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { FaTasks } from "react-icons/fa";
-import GradientLineRusty from "../GradientLineRusty";
+import GradientLineRusty from "./GradientLineRusty";
 
 
 function Task_Accordion({
@@ -16,11 +16,8 @@ function Task_Accordion({
 }) {
     
     const [checkForRecords, setCheckForRecords] = useState(true); // update this value to be the opposite of its current value, every time a new CR is added
-    
     const [isExpanded, setExpanded] = useState(false);
-    
     const [parenttask, setParenttask] = useState([]);
-    
     const [error, setError] = useState(null);
     
     const toggleAccordion = () => {
@@ -42,7 +39,7 @@ function Task_Accordion({
         setExpanded_1(!isExpanded_1);
     };
     useEffect(() => {
-        axios(`${process.env.REACT_APP_API_URL}/api/v1/tasks/asms/${asms_number}`)
+        axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/asms/${asms_number}`)
             .then((response) => {
                 setParenttask(response.data.sort((a, b) => b.id - a.id));
                 setError(null);

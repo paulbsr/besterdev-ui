@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import "./Fonts.css";
 import AlertContext from "./Generic/Alerts/AlertContext";
+import { toast } from 'react-toastify';
 
 
 export default function TaskRecordCreate(props) {
@@ -24,40 +25,46 @@ export default function TaskRecordCreate(props) {
             asms: asms,
             handle: handle,
         };
+        
         var UpdateTaskStatus = { taskstatus: status };
+        
         try {
-            const response = await axios.post(
-                `${process.env.REACT_APP_API_URL}/api/v1/taskrecords/create`,
-                NewChildRecord
-            );
+            // const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/create`, NewChildRecord);
+            const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/create`, NewChildRecord);
+            console.log('NewChildRecord:', NewChildRecord);
             if (response.status === 200) {
-                alertCtx.success("Successful TaskRecordCreate");
+                // alertCtx.success("Successful TaskRecordCreate");
+                { toast.success(`${childrecord} added.`) }
             } else {
-                alertCtx.error(`Failed TaskRecordCreate`);
+                // alertCtx.error(`Failed TaskRecordCreate`);
+                toast.error('Nee');
             }
         } catch (err) {
             alertCtx.error(`Failed TaskRecordCreate`);
             console.log(err);
         }
+        
+        
+        
         try {
-            const response = await axios.put(
-                `${process.env.REACT_APP_API_URL}/api/v1/tasks/update/taskstatus/${parentid}`,
-                UpdateTaskStatus
-            );
+            // const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskstatus/${parentid}`, UpdateTaskStatus);
+            const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskstatus/${parentid}`, UpdateTaskStatus);
+            console.log('NewChildRecord:', NewChildRecord);
+            console.log('UpdateTaskStatus:', UpdateTaskStatus);
             if (response.status === 202) {
                 props.setCheckForRecords(!props.checkForRecords);
             } else {
-                alertCtx.error(
-                    `oops! Something went wrong in TaskRecordCreate not updating the status of the parent`
-                );
+                // alertCtx.error(`oops! Something went wrong in TaskRecordCreate not updating the status of the parent`);
+                toast.error('Nee');
             }
         } catch (err) {
-            alertCtx.error(
-                `oops! Something went wrong in TaskRecordCreate not updating the status of the parent#2`
-            );
+            alertCtx.error(`oops! Something went wrong in TaskRecordCreate not updating the status of the parent#2`);
             console.log(err);
         }
     };
+    
+    
+    
     return (
         <>
             <form onSubmit={handleSubmit}>
