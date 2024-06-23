@@ -12,6 +12,7 @@ import { GiCheckMark } from "react-icons/gi"; //Commit
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard
 import { Tooltip } from '@mui/material';
 import { toast } from 'react-toastify';
+import { MdTask } from 'react-icons/md';
 
 
 const DBSearchComponent = () => {
@@ -211,9 +212,11 @@ const DBSearchComponent = () => {
                 <div className="dbsearchhover" key={result.id}>
                   Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247' }}>Task Name:</b>
                   <div>
-                    <BsQuestionOctagonFill style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />
-                    <IoFootstepsSharp style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
-                    <b>{highlightKeyword(result.taskname, searchQuery)}</b> which has a Step Objective to: <i>" {result.step_obj} " </i>
+                    <MdTask style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
+                    {/* <IoFootstepsSharp style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />&nbsp; */}
+                    <b>{highlightKeyword(result.taskname, searchQuery)}</b>
+                     {/* which has a Step Objective to:  */}
+                     {/* <i>" {result.step_obj} " </i> */}
                   </div>
                   <div className='Font-Spacer-White'>Make this spacer white</div>
                 </div>
