@@ -8,6 +8,8 @@ import Dialog from "@mui/material/Dialog";
 import TaskRecordAccordion from "./TaskRecordAccordion";
 import DialogContentText from "@mui/material/DialogContentText";
 import { getStatusByColourTaskText } from "./getStatusByColourTaskText";
+
+
 export default function TaskPopOut({
     alertCtx,
     project_handle,
@@ -20,10 +22,14 @@ export default function TaskPopOut({
     asms,
     childrecord,
     parenttask,
-    checkForRecords,
-    setCheckForRecords,
+    // checkForRecords,
+    // setCheckForRecords,
 }) {
     const [open, setOpen] = useState(false);
+    const [checkForRecords, setCheckForRecords] = useState(true);
+
+
+
     return (
         <>
             <ZoomOutMapIcon

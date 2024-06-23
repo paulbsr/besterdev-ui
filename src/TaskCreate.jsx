@@ -33,10 +33,11 @@ export default function TaskCreate(props) {
     const [taskcreatedate, setTaskcreatedate] = useState(current);
     const [taskstatus, setTaskstatus] = useState("START");
     const [projecthandle, setProjecthandle] = useState("");
-    const [asms, setAsms] = useState("113092");
+    const [asms, setAsms] = useState("");
     const [tasknextstep, setTasknextstep] = useState("");
     const toggleAccordion = () => { setExpanded(!isExpanded); };
     const [isExpanded, setExpanded] = useState(false);
+    // const [checkForRecords, setCheckForRecords] = useState();
 
 
     const handleSubmit = async (event) => {
@@ -59,8 +60,8 @@ export default function TaskCreate(props) {
                 const response = await axios.post(
                     `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/create`, newtask);
                 if (response.status === 200) {
-                    console.log('Newtask:', newtask);
                     props.setCheckForRecords(!props.checkForRecords);
+                    // setCheckForRecords(!checkForRecords);
                     { toast.success(`${taskname} added.`) }
                 }
                 else {
@@ -126,7 +127,7 @@ export default function TaskCreate(props) {
                                             <option disabled selected value="Domain">Responsible</option>
                                             <option value="Conor Lynch">Conor Lynch</option>
                                             <option value="Dwayne Patel">Dwayne Patel</option>
-                                            <option value="Felipe">Felipe</option>
+                                            <option value="Felipe">Felipe Mantov</option>
                                             <option value="Keex Nenyiaba">Keex Nenyiaba</option>
                                             <option value="Leo Pinto">Leo Pinto</option>
                                             <option value="Monique Borje">Monique Borje</option>

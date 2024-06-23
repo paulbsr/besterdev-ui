@@ -67,11 +67,9 @@ export default function TaskOverview() {
     const [currentAsms, setCurrentAsms] = useState("113092");
     const [currentName, setCurrentName] = useState("CVCP");
     const [modalState, setModalState] = useState(null);
-    // const [problems, setProblems] = useState([]);
     dayjs.extend(ObjectSupport);
     const toggleAccordion = () => { setExpanded(!isExpanded); };
     const allTask = useContext(TaskContext);
-    console.log('TaskOverview se alltask:', allTask)
 
 
     const projectTaskStatusCounters = {
@@ -87,6 +85,7 @@ export default function TaskOverview() {
         WANVisualizer: new TaskStatusCounter(),
         BesterDev: new TaskStatusCounter(),
     };
+    
     for (const task of allTask) {
         let status = task.taskstatus;
         let asms = task.asms;
@@ -152,10 +151,10 @@ export default function TaskOverview() {
                             <div>
                                 <table className="Table8 Table8hover">
                                     <thead>
-                                        <th style={{ minWidth: "10vw", maxWidth: "40vw" }}>APPLICATIONS</th>
+                                        <th style={{ minWidth: "10vw", maxWidth: "40vw" }}>COMPANY</th>
                                         <th style={{ minWidth: "5vw", maxWidth: "20vw", whiteSpace: "nowrap" }}>START</th>
                                         <th style={{ minWidth: "5vw", maxWidth: "20vw" }}>WIP</th>
-                                        <th style={{ minWidth: "5vw", maxWidth: "20vw" }}>PROBLEM</th>
+                                        <th style={{ minWidth: "5vw", maxWidth: "20vw" }}>ISSUE</th>
                                         <th style={{ minWidth: "5vw", maxWidth: "20vw" }}>DONE</th>
 
                                     </thead>

@@ -13,6 +13,7 @@ export default function TaskRecordCreate(props) {
     const [status, setStatus] = useState("START");
     const [handle, setHandle] = useState(props.project_handle);
     const [asms, setAsms] = useState(props.asms_number);
+    const [checkForRecords, setCheckForRecords] = useState(true);
    
     
     const handleSubmit = async (event) => {
@@ -50,7 +51,8 @@ export default function TaskRecordCreate(props) {
             console.log('NewChildRecord:', NewChildRecord);
             console.log('UpdateTaskStatus:', UpdateTaskStatus);
             if (response.status === 202) {
-                props.setCheckForRecords(!props.checkForRecords);
+                // props.setCheckForRecords(!props.checkForRecords);
+                setCheckForRecords(!checkForRecords);
             } else {
                 toast.error('Nee');
             }
@@ -67,7 +69,7 @@ export default function TaskRecordCreate(props) {
             <form onSubmit={handleSubmit}>
                 <textarea
                     autoFocus
-                    cols="80"
+                    cols="160"
                     rows={5}
                     onChange={(e) => setChildrecord(e.target.value)}>
                 </textarea>
@@ -75,28 +77,28 @@ export default function TaskRecordCreate(props) {
                 <button
                     className="Font-Verdana-Small-Postgres"
                     type="submit"
-                    style={{ height: '22.5px', border: '1px solid #ffffff', borderRadius: '5px', backgroundColor: '#C0C0C0', color: '#FFFFFF', cursor: 'pointer' }}
+                    style={{ height: '22.5px', border: '1px solid #ffffff', borderRadius: '5px', backgroundColor: '#C0C0C080', color: '#336791', cursor: 'pointer' }}
                     onClick={() => setStatus("START")}>
                     START
                 </button>
                 <button
                     className="Font-Verdana-Small-Postgres"
                     type="submit"
-                    style={{ height: '22.5px', border: '1px solid #ffffff', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}
+                    style={{ height: '22.5px', border: '1px solid #ffffff', borderRadius: '5px', backgroundColor: '#0F9ED540', color: '#336791', cursor: 'pointer' }}
                     onClick={() => setStatus("WIP")}>
                     WIP
                 </button>
                 <button
                     className="Font-Verdana-Small-Postgres"
                     type="submit"
-                    style={{ height: '22.5px', border: '1px solid #ffffff', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}
+                    style={{ height: '22.5px', border: '1px solid #ffffff', borderRadius: '5px', backgroundColor: '#BE000040', color: '#336791', cursor: 'pointer' }}
                     onClick={() => setStatus("PROBLEM")}>
                     ISSUE
                 </button>
                 <button
                     className="Font-Verdana-Small-Postgres"
                     type="submit"
-                    style={{ height: '22.5px', border: '1px solid #ffffff', borderRadius: '5px', backgroundColor: '#169247', color: '#FFFFFF', cursor: 'pointer' }}
+                    style={{ height: '22.5px', border: '1px solid #ffffff', borderRadius: '5px', backgroundColor: '#00B40040', color: '#336791', cursor: 'pointer' }}
                     onClick={() => setStatus("DONE")}>
                     DONE
                 </button>
