@@ -5,8 +5,6 @@ import "./Fonts.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { GiHummingbird } from "react-icons/gi";
-import { TaskContext } from "./Contexts";
-import TaskCreateDropdown from "./TaskCreateDropdown";
 import { toast } from 'react-toastify';
 
 
@@ -39,9 +37,6 @@ export default function TaskCreate(props) {
     const [tasknextstep, setTasknextstep] = useState("");
     const toggleAccordion = () => { setExpanded(!isExpanded); };
     const [isExpanded, setExpanded] = useState(false);
-    // const [company, setCompany] = useState(null);
-    // const [employerdropdown, setEmployerDropDown] = useState(null);
-    // const allTasks = useContext(TaskContext);
 
 
     const handleSubmit = async (event) => {
@@ -94,7 +89,7 @@ export default function TaskCreate(props) {
         <div>
             <div onClick={toggleAccordion}>
                 &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} />
-                &nbsp;<b><a className='Font-Segoe-Small'>Add Task to the Task Manager</a></b>
+                &nbsp;<b><a className='Font-Verdana-Small-Postgres'>Add a Task to The Task Manager</a></b>
             </div>
             {isExpanded && (
                 <div>
@@ -119,11 +114,11 @@ export default function TaskCreate(props) {
 
                                     <div>
                                         &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                                        <input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '500px' }} placeholder="Task Name" type="text" onChange={(event) => setTaskname(event.target.value)} required />
+                                        <input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '400px' }} placeholder="Task Name" type="text" onChange={(event) => setTaskname(event.target.value)} required />
                                     </div>
                                     <div>
                                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                        <input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '400px' }} placeholder="Requirement / Problem / Description / Solution" type="text" onChange={(event) => setTaskrequirement(event.target.value)} />
+                                        <input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '500px' }} placeholder="Requirement / Problem / Description / Solution" type="text" onChange={(event) => setTaskrequirement(event.target.value)} />
                                     </div>
                                     <div>
                                         &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;

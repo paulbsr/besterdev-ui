@@ -42,6 +42,8 @@ export default function Task({
     const [error, setError] = useState(null);
     const [duration, setDuration] = useState(null);
     const alertCtx = useContext(AlertContext);
+
+    
     //send request for the task taskDuration if the task has been completed
     useEffect(() => {
         if (taskstatus === "DONE") {
@@ -105,9 +107,7 @@ export default function Task({
         }
         const response = await axios
             .put(
-                `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskdetails/${id}`,
-                updatedTask
-            )
+                `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskdetails/${id}`,updatedTask)
             .then((response) => {
                 updatedDetails.length
                     ? alertCtx.success(

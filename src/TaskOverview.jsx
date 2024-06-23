@@ -62,14 +62,12 @@ const projectAsmsMap = {
 export default function TaskOverview() {
     const [checkForRecords, setCheckForRecords] = useState(true);
     const [error, setError] = useState(null);
-    //const [allTask, setAlltask] = useState([]);
     const [isExpanded, setExpanded] = useState(false);
     const [currentStatus, setCurrentStatus] = useState("START");
     const [currentAsms, setCurrentAsms] = useState("113092");
     const [currentName, setCurrentName] = useState("CVCP");
     const [modalState, setModalState] = useState(null);
-    //   const [tasks, setTasks] = useState([]);
-    const [problems, setProblems] = useState([]);
+    // const [problems, setProblems] = useState([]);
     dayjs.extend(ObjectSupport);
     const toggleAccordion = () => { setExpanded(!isExpanded); };
     const allTask = useContext(TaskContext);
