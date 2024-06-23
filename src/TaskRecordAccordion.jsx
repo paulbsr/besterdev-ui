@@ -11,7 +11,6 @@ import "./Fonts.css";
 import { toast } from 'react-toastify';
 
 
-
 function TaskRecordAccordion({
     project_handle,
     asms_number,
@@ -63,10 +62,10 @@ function TaskRecordAccordion({
         const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
         // const response = await axios.put(`http://localhost:8000/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
         if (response.status === 202) {
-            { toast.success(`TaskRecord amendment successfully.`) }
+            { toast.success(`Task Record amendment successfully.`) }
         }
         else {
-            toast.error('TaskRecord amendment unsuccessfull');
+            toast.error('Task Record amendment unsuccessfull');
         }
     };
     function editableTaskRecord(
