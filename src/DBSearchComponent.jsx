@@ -206,6 +206,20 @@ const DBSearchComponent = () => {
             }
 
 
+            else if (result.taskname) {
+              return (
+                <div className="dbsearchhover" key={result.id}>
+                  Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247' }}>Task Name:</b>
+                  <div>
+                    <BsQuestionOctagonFill style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />
+                    <IoFootstepsSharp style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
+                    <b>{highlightKeyword(result.taskname, searchQuery)}</b> which has a Step Objective to: <i>" {result.step_obj} " </i>
+                  </div>
+                  <div className='Font-Spacer-White'>Make this spacer white</div>
+                </div>
+              );
+            }
+
             else if (result.howto_name) {
               return (
                 <div className="dbsearchhover" key={result.id}>
