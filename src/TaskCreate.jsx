@@ -56,17 +56,17 @@ export default function TaskCreate(props) {
                 projecthandle: projecthandle,
                 tasknextstep: tasknextstep,
             };
-            try {
-                const response = await axios.post(
-                    `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/create`, newtask);
-                if (response.status === 200) {
+            try 
+            {
+                const response = await axios.post
+                (`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/create`, newtask);
+                if (response.status === 200) 
+                {
                     props.setCheckForRecords(!props.checkForRecords);
                     // setCheckForRecords(!checkForRecords);
                     { toast.success(`${taskname} added.`) }
                 }
-                else {
-                    toast.error('Nee');
-                }
+                else {toast.error('Nee');}
             }
             catch (err) {
                 console.log(err);

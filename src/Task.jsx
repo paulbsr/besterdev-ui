@@ -15,6 +15,7 @@ import dayjs from "dayjs";
 import ObjectSupport from "dayjs/plugin/objectSupport";
 import TextField from "@mui/material/TextField";
 import TaskPopOut from "./TaskPopOut";
+import { toast } from 'react-toastify';
 
 
 export default function Task({
@@ -79,6 +80,7 @@ export default function Task({
     const deadlineDaysRemaining = getDeadlineInDays(tasktargetdate);
     const deadlineColor = calculateDeadlineTextColor(deadlineDaysRemaining);
     const handleChange = (e, newVal) => setOwner(newVal);
+    
     const onEditSave = async () => {
         let updatedDetails = [];
         let noDetails = [];
@@ -92,6 +94,7 @@ export default function Task({
         if (!owner?.trim()) noDetails.push("Owner");
         if (!requirement?.trim()) noDetails.push("Requirement");
         if (!name?.trim()) noDetails.push("Task Name");
+        
         const updatedTask = {
             tasktargetdate: newTargetDate,
             taskrequirement: requirement,
@@ -105,21 +108,28 @@ export default function Task({
             alertCtx.warning(`Please fill in ${noDetails.join(", ")}`);
             return;
         }
+        
         const response = await axios
             .put(
-                `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskdetails/${id}`,updatedTask)
-            .then((response) => {
-                updatedDetails.length
-                    ? alertCtx.success(
-                        ` "${taskname}" task successfully updated ${updatedDetails.join(
-                            ", "
-                        )}`
-                    )
-                    : alertCtx.warning(`No changes in "${taskname}"`);
-            })
-            .catch((error) => {
-                alertCtx.error(error.message);
-            });
+                // `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskdetails/${id}`,updatedTask)
+                `http://localhost:8000/api/v1/tasks/update/taskdetails/${id}`,updatedTask)
+                if (response.status === 202) 
+                    {
+                        setCheckForRecords(!checkForRecords);
+                        // setCheckForRecords(!checkForRecords);
+                        { toast.success(`${taskname} update successful.`) }
+                    }
+                    else {toast.error('Unsuccessful Task Update');}
+            // .then((response) => 
+            // {
+            //     updatedDetails.length 
+            //     ? 
+            //     alertCtx.success(` "${taskname}" task successfully updated ${updatedDetails.join(", ")}`)
+            //     : 
+            //     alertCtx.warning(`No changes in "${taskname}"`);
+            // }
+            // )
+            // .catch((error) => {alertCtx.error(error.message);});
         setCheckForRecords(!checkForRecords);
         onEditCancel();
     };

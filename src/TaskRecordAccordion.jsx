@@ -62,7 +62,7 @@ function TaskRecordAccordion({
         const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
         // const response = await axios.put(`http://localhost:8000/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
         if (response.status === 202) {
-            { toast.success(`Task Record amendment successfully.`) }
+            { toast.success(`Task Record amendment successfull.`) }
         }
         else {
             toast.error('Task Record amendment unsuccessfull');
