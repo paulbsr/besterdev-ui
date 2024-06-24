@@ -42,7 +42,7 @@ export default function Task({
     const [name, setName] = useState(null);
     const [error, setError] = useState(null);
     const [duration, setDuration] = useState(null);
-    const alertCtx = useContext(AlertContext);
+    // const alertCtx = useContext(AlertContext);
 
     
     //send request for the task taskDuration if the task has been completed
@@ -67,6 +67,7 @@ export default function Task({
         setOwner(taskowner);
         setRequirement(taskrequirement);
         setNewTargetDate(new Date(tasktargetdate));
+        // setNewTargetDate(new Date(...tasktargetdate));
         setName(taskname);
         setEditing(true);
     };
@@ -105,19 +106,19 @@ export default function Task({
         // so if noDetails.length doesn't return a truthy value(i.e. if its null, undefined, or 0),
         // the enclosed code is never executed.
         if (noDetails.length) {
-            alertCtx.warning(`Please fill in ${noDetails.join(", ")}`);
+            // alertCtx.warning(`Please fill in ${noDetails.join(", ")}`);
             return;
         }
         
         const response = await axios
             .put(
-                // `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskdetails/${id}`,updatedTask)
-                `http://localhost:8000/api/v1/tasks/update/taskdetails/${id}`,updatedTask)
+                `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskdetails/${id}`,updatedTask)
+                // `http://localhost:8000/api/v1/tasks/update/taskdetails/${id}`,updatedTask)
                 if (response.status === 202) 
                     {
                         setCheckForRecords(!checkForRecords);
                         // setCheckForRecords(!checkForRecords);
-                        { toast.success(`${taskname} update successful.`) }
+                        { toast.success(`Task Update successful.`) }
                     }
                     else {toast.error('Unsuccessful Task Update');}
             // .then((response) => 
@@ -130,6 +131,7 @@ export default function Task({
             // }
             // )
             // .catch((error) => {alertCtx.error(error.message);});
+            console.log('In <Task/> TaskTargetDate:', tasktargetdate)
         setCheckForRecords(!checkForRecords);
         onEditCancel();
     };
@@ -189,7 +191,7 @@ export default function Task({
                 <div style={{ float: "right" }}>
                     &nbsp;
                     <TaskPopOut
-                        alertCtx={alertCtx}
+                        // alertCtx={alertCtx}
                         project_handle={project_handle}
                         id={id}
                         taskname={taskname}
@@ -336,7 +338,7 @@ export default function Task({
                         )}
                     </div>
                     <TaskRecordAccordion
-                        alertCtx={alertCtx}
+                        // alertCtx={alertCtx}
                         project_handle={project_handle}
                         taskstatus={taskstatus}
                         parentid={id}
