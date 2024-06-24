@@ -63,8 +63,8 @@ import { GiRapidshareArrow  } from "react-icons/gi";
       &nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Breaking News" ><GiRapidshareArrow  style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} />&nbsp;<span style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#336791' }}>Breaking News is about: </span><i style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#D5441C' }}>{searchPhrase}</i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */}
+      {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */}
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
