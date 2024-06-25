@@ -27,7 +27,7 @@ function HowtoStepAccordion({ howto_ids }) {
   }, [checkForRecords]);
 
 
-  if (error) return <p>An error in Task_Accordion occurred</p>
+  if (error) return <p>An error in HowtoStepAccordion occurred</p>
 
   return (
     <div>

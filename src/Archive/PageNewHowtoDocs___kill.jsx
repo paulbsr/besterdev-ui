@@ -3,7 +3,7 @@ import GradientLine from './GradientLine';
 import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
 import Quicklinks3 from './Quicklinks3';
-import New_Task_Accordion from './New_Task_Accordion';
+// import New_Task_Accordion from './New_Task_Accordion';
 import ToastComponent from './ToastComponent';
 import BreakingNews from './BreakingNews';
 
@@ -19,7 +19,8 @@ export default function PageNewHowtoDocs() {
         <GradientLineThin />
         <BreakingNews />
         <GradientLineThin />
-        <New_Task_Accordion />
+        {/* <New_Task_Accordion /> */}
+        <TaskAccordion />
         <ToastComponent/>
 
       </div>

@@ -63,10 +63,9 @@ export default function TaskCreate(props) {
                 if (response.status === 200) 
                 {
                     props.setCheckForRecords(!props.checkForRecords);
-                    // setCheckForRecords(!checkForRecords);
-                    { toast.success(`${taskname} added.`) }
+                       { toast.success(`Task added.`) }
                 }
-                else {toast.error('Nee');}
+                else {toast.error('Task not added');}
             }
             catch (err) {
                 console.log(err);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Task_Create from "./Task_Create__oorspronklik";
+import TaskCreate from "./TaskCreate";
 import Task from "./Task";
 import "./Fonts.css";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
@@ -9,22 +9,21 @@ import { FaTasks } from "react-icons/fa";
 import GradientLineRusty from "./GradientLineRusty";
 
 
-function Task_Accordion({
-    asms_number,
-    project_handle,
-    ppm_id,
-}) {
+// function TaskAccordion({asms_number, project_handle, ppm_id,}) {
+    function TaskAccordion({props}) {
     
     const [checkForRecords, setCheckForRecords] = useState(true); // update this value to be the opposite of its current value, every time a new CR is added
     const [isExpanded, setExpanded] = useState(false);
     const [parenttask, setParenttask] = useState([]);
     const [error, setError] = useState(null);
+    const [isExpanded_1, setExpanded_1] = useState(false);
+    const [open, setOpen] = useState(false);    
     
     const toggleAccordion = () => {
         setExpanded(!isExpanded);
     };
     
-    const [open, setOpen] = useState(false);
+
     
     const doneList = parenttask
         .filter((status) => status.taskstatus === "DONE")
@@ -32,22 +31,28 @@ function Task_Accordion({
             a.tasks[0].date.join(":") > b.tasks[0].date.join(":") ? -1 : 1
         );
     
-        const [isExpanded_1, setExpanded_1] = useState(false);
+   
     
-    
-    const toggleAccordion_1 = () => {
+    const toggleAccordion_1 = () => 
+    {
         setExpanded_1(!isExpanded_1);
     };
-    useEffect(() => {
-        axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/asms/${asms_number}`)
-            .then((response) => {
-                setParenttask(response.data.sort((a, b) => b.id - a.id));
-                setError(null);
-            })
-            .catch(setError);
-    }, [checkForRecords]);
-    if (error) return <p>An error in Task_Accordion occurred</p>;
-    
+
+
+
+        useEffect(() => {
+            axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/asms/${asms_number}`)
+                .then((response) => {
+                    setParenttask(response.data.sort((a, b) => b.id - a.id));
+                    setCheckForRecords(!checkForRecords);
+                    setError(null);
+                })
+                .catch(setError);
+        },
+            // [checkForRecords]
+        );
+        if (error) return <p>An error in TaskAccordion occurred</p>;
+
     
     return (
         <>
@@ -72,7 +77,7 @@ function Task_Accordion({
                     <div>
                         <div>&nbsp;</div>
                         <div>
-                            <Task_Create
+                            <TaskCreate
                                 asms_number={asms_number}
                                 project_handle={project_handle}
                                 checkForRecords={checkForRecords}

@@ -19,7 +19,6 @@ function TaskRecordAccordion({
     checkForRecords,
     setCheckForRecords,
     taskstatus,
-    props,
 }) {
 
     const [isExpanded, setExpanded] = useState(false);
@@ -62,10 +61,11 @@ function TaskRecordAccordion({
         const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
         // const response = await axios.put(`http://localhost:8000/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
         if (response.status === 202) {
-            { toast.success(`Task Record amendment successfull.`) }
+            setCheckForRecords(!checkForRecords); 
+            { toast.success(`Task Record updated.`) }
         }
         else {
-            toast.error('Task Record amendment unsuccessfull');
+            toast.error('Task Record not updated.');
         }
     };
     function editableTaskRecord(
@@ -99,7 +99,7 @@ function TaskRecordAccordion({
                                     </Tooltip>
                                 </>
                             ) : status !== "DONE" ? (
-                                <Tooltip title="Edit Task Record" placement="top-end">
+                                <Tooltip title={`Edit Task Record: ${childid}`} placement="top-end">
                                     <div onClick={() => { handleEdit(childid, childrecord); }}>
                                         <BsPencil style={{ color: "#C0C0C0", fontSize: "15px", cursor: 'pointer' }} />
                                     </div>

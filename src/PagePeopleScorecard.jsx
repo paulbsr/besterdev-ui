@@ -7,7 +7,6 @@ import './Fonts.css'
 import 'react-dropdown/style.css';
 import 'react-tooltip/dist/react-tooltip.css'
 import 'react-toastify/dist/ReactToastify.css';
-import CyclopediaManage from './CyclopediaManage';
 import ToastComponent from './ToastComponent';
 import BreakingNews from './BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
@@ -28,7 +27,6 @@ export default function PagePeopleScorecard(cyclopediadata) {
       <CyclopediaTicker />
       <GradientLineThin />
       <Quicklinks3 />
-      {/* <CyclopediaManage /> */}
       <PeopleScorecard />
       <ToastComponent />
     </div>

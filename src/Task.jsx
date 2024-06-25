@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
-import AlertContext from "./Generic/Alerts/AlertContext";
 import "./Fonts.css";
 import "./Task.css";
 import TaskRecordAccordion from "./TaskRecordAccordion";
@@ -117,22 +116,9 @@ export default function Task({
                 if (response.status === 202) 
                     {
                         setCheckForRecords(!checkForRecords);
-                        // setCheckForRecords(!checkForRecords);
-                        { toast.success(`Task Update successful.`) }
+                        { toast.success(`Task Updated.`) }
                     }
-                    else {toast.error('Unsuccessful Task Update');}
-            // .then((response) => 
-            // {
-            //     updatedDetails.length 
-            //     ? 
-            //     alertCtx.success(` "${taskname}" task successfully updated ${updatedDetails.join(", ")}`)
-            //     : 
-            //     alertCtx.warning(`No changes in "${taskname}"`);
-            // }
-            // )
-            // .catch((error) => {alertCtx.error(error.message);});
-            console.log('In <Task/> TaskTargetDate:', tasktargetdate)
-        setCheckForRecords(!checkForRecords);
+                    else {toast.error('Task not Updated.');}
         onEditCancel();
     };
     const ownerOptions = [
@@ -191,7 +177,6 @@ export default function Task({
                 <div style={{ float: "right" }}>
                     &nbsp;
                     <TaskPopOut
-                        // alertCtx={alertCtx}
                         project_handle={project_handle}
                         id={id}
                         taskname={taskname}
@@ -246,13 +231,13 @@ export default function Task({
                     <>
                         <>
                             <u>TASK NAME</u>:
-                            <TextField
+                            <textarea
                                 required
                                 defaultValue={taskname}
                                 onChange={(e) => setName(e.target.value)}
                                 size="small"
                                 style={{
-                                    width: 575,
+                                    width: 600,
                                     height: "30px",
                                     marginBottom: "15px",
                                     marginTop: "5px",
@@ -272,14 +257,14 @@ export default function Task({
                     <div style={{ color: getStatusByColourTaskText(taskstatus) }}>
                         <u>REQUIREMENT</u>:
                         {editing === true ? (
-                            <TextField
+                            <textarea
                                 freeSolo
                                 required
                                 defaultValue={taskrequirement}
                                 onChange={(e) => setRequirement(e.target.value)}
                                 size="small"
                                 style={{
-                                    width: 575,
+                                    width: 1100,
                                     height: "30px",
                                     marginBottom: "15px",
                                     marginTop: "5px",
@@ -297,7 +282,7 @@ export default function Task({
                                 value={taskowner}
                                 freeSolo
                                 size="small"
-                                style={{ width: 575, height: "30px", marginBottom: "15px", marginTop: "5px" }}
+                                style={{ width: 250, height: "20px", marginBottom: "15px", marginTop: "5px" }}
                                 id="Taskowner"
                                 onChange={handleChange}
                                 options={ownerOptions.map((option) => option.name)}
@@ -338,7 +323,6 @@ export default function Task({
                         )}
                     </div>
                     <TaskRecordAccordion
-                        // alertCtx={alertCtx}
                         project_handle={project_handle}
                         taskstatus={taskstatus}
                         parentid={id}

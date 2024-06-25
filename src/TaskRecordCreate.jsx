@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "./Fonts.css";
 import { toast } from 'react-toastify';
@@ -13,7 +13,6 @@ export default function TaskRecordCreate(props) {
     const [status, setStatus] = useState("START");
     const [handle, setHandle] = useState(props.project_handle);
     const [asms, setAsms] = useState(props.asms_number);
-    const [checkForRecords, setCheckForRecords] = useState(true);
    
     
     const handleSubmit = async (event) => {
@@ -33,11 +32,13 @@ export default function TaskRecordCreate(props) {
         try {
             // const response = await axios.post(`http://localhost:8000/api/v1/taskrecords/create`, NewChildRecord);
             const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/create`, NewChildRecord);
-            console.log('NewChildRecord:', NewChildRecord);
-            if (response.status === 200) {
-                { toast.success(`Taskrecord added.`) }
-            } else {
-                toast.error('Nee');
+            if (response.status === 200) 
+                {
+                props.setCheckForRecords(!props.checkForRecords); 
+                { toast.success(`Task Record added.`) }
+                } 
+            else {
+                toast.error('Task Record add problem');
             }
         } catch (err) {
             console.log(err);
@@ -48,11 +49,9 @@ export default function TaskRecordCreate(props) {
         try {
             // const response = await axios.put(`http://localhost:8000/api/v1/tasks/update/taskstatus/${parentid}`, UpdateTaskStatus);
             const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskstatus/${parentid}`, UpdateTaskStatus);
-            console.log('NewChildRecord:', NewChildRecord);
-            console.log('UpdateTaskStatus:', UpdateTaskStatus);
             if (response.status === 202) {
-                // props.setCheckForRecords(!props.checkForRecords);
-                setCheckForRecords(!checkForRecords);
+                props.setCheckForRecords(!props.checkForRecords);
+                // setCheckForRecords(!checkForRecords);
             } else {
                 toast.error('Nee');
             }
