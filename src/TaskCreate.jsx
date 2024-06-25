@@ -110,6 +110,7 @@ export default function TaskCreate(props) {
                                         <option value="181268" data-value2="TELUS">TELUS</option>
                                         <option value="171593" data-value2="ATT">AT&T</option>
                                         <option value="168272" data-value2="CUBIC">CUBIC</option>
+                                        <option value="188660" data-value2="CUBIC">TELEFONICA</option>
                                         {/* <option value="FO" data-value2="Fully Onsite">Fully Onsite</option> */}
                                     </select>
 
