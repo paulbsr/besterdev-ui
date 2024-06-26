@@ -38,7 +38,7 @@ export default function PageTaskManage() {
   }, [checkForRecords]);
 
   useEffect(() => {
-    console.log('In <BannerLight/> is tasks:', tasks);
+    console.log('In <PageTaskManage/> is tasks:', tasks);
   }, [tasks]);
 
   return (
@@ -52,12 +52,9 @@ export default function PageTaskManage() {
       <CyclopediaTicker />
       <GradientLineThin />
       <Quicklinks3 />
-      {/* <PeopleScorecard /> */}
-      {/* <AlertContext> */}
       <TaskContext.Provider value={tasks}>
       <TaskOverview />
       </TaskContext.Provider>
-      {/* </AlertContext> */}
       <ToastComponent />
     </div>
   )

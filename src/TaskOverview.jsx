@@ -43,6 +43,8 @@ const projectNameMap = {
     188118: "WANVisualizer",
     111111: "BesterDev",
 };
+
+
 const projectAsmsMap = {
     CVCP: "113092",
     IDEMIA: "14718",
@@ -70,6 +72,14 @@ export default function TaskOverview() {
     dayjs.extend(ObjectSupport);
     const toggleAccordion = () => { setExpanded(!isExpanded); };
     const allTask = useContext(TaskContext);
+    const startTasks = allTask.filter(task => task.taskstatus === 'START');
+    const wipTasks = allTask.filter(task => task.taskstatus === 'WIP');
+    const problemTasks = allTask.filter(task => task.taskstatus === 'PROBLEM');
+    const doneTasks = allTask.filter(task => task.taskstatus === 'DONE');
+    const startTasksCount = startTasks.length;
+    const wipTasksCount = wipTasks.length;
+    const problemTasksCount = problemTasks.length;
+    const doneTasksCount = doneTasks.length;
 
 
     const projectTaskStatusCounters = {
@@ -102,6 +112,7 @@ export default function TaskOverview() {
         }
     }
     if (error) return <p>An error in TaskOverview occurred</p>;
+    
     const dateSorter = (list) => {
         return list.sort((a, b) => {
             const aCompareValue = a.tasks.length
@@ -113,11 +124,13 @@ export default function TaskOverview() {
             return aCompareValue > bCompareValue ? -1 : 1;
         });
     };
+    
     const setTable = (currentName, currentAsms, currentStatus) => {
         setCurrentName(currentName);
         setCurrentAsms(currentAsms);
         setCurrentStatus(currentStatus);
     };
+    
     const handleModal = (taskname, modalData) => {
         setModalState({
             taskname: taskname,
@@ -134,7 +147,7 @@ export default function TaskOverview() {
             <Tooltip id="insert" />
             <div className='Font-Verdana-Medium-Postgres' onClick={toggleAccordion}>
                 &nbsp; &nbsp; <MdTask style={{ color: '#336791', fontSize: '38px', cursor: 'pointer' }} />
-                &nbsp;<b>The Task Manager</b>
+                &nbsp;<b>The Task Manager ({allTask.length})</b>
             </div>
             <div>&nbsp;</div>
 
@@ -152,10 +165,10 @@ export default function TaskOverview() {
                                 <table className="Table8 Table8hover">
                                     <thead>
                                         <th style={{ minWidth: "10vw", maxWidth: "40vw" }}>COMPANY</th>
-                                        <th style={{ minWidth: "5vw", maxWidth: "20vw", whiteSpace: "nowrap" }}>START</th>
-                                        <th style={{ minWidth: "5vw", maxWidth: "20vw" }}>WIP</th>
-                                        <th style={{ minWidth: "5vw", maxWidth: "20vw" }}>ISSUE</th>
-                                        <th style={{ minWidth: "5vw", maxWidth: "20vw" }}>DONE</th>
+                                        <th style={{ minWidth: "5vw", maxWidth: "20vw", whiteSpace: "nowrap" }}>START ({startTasksCount})</th>
+                                        <th style={{ minWidth: "5vw", maxWidth: "20vw" }}>WIP ({wipTasksCount})</th>
+                                        <th style={{ minWidth: "5vw", maxWidth: "20vw" }}>ISSUE ({problemTasksCount})</th>
+                                        <th style={{ minWidth: "5vw", maxWidth: "20vw" }}>DONE ({doneTasksCount})</th>
 
                                     </thead>
                                     <tbody>

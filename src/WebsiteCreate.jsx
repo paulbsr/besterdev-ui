@@ -48,7 +48,7 @@ export default function WebSiteCreate(props) {
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
           <img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} />
-        <b>Memorialize a Website or Tool:</b>
+        <b>Memorialize a Website, Tool or Book:</b>
         <div>&nbsp;</div>
       </div>
 
@@ -63,7 +63,7 @@ export default function WebSiteCreate(props) {
                 <img alt="1" src={spacer} />Resource Catagory:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} type="text" value={website_cat} onChange={(event) => setWebsite_cat(event.target.value)} />
                 <div>&nbsp;</div>
                 <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Resource URL:&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '890px' }} placeholder="Required" type="text" value={website_url} onChange={(event) => setWebsite_url(event.target.value)} required />
-                <img alt="1" src={spacer} /><button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Memorialize Website</button>
+                <img alt="1" src={spacer} /><button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Memorialize</button>
                 <div>&nbsp;</div>
                 <div>&nbsp;</div>
               </div>

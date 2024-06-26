@@ -91,7 +91,7 @@ export default function WebsiteManage(props) {
       <div onClick={toggleAccordion}>
         &nbsp; &nbsp;
         <TbWorldWww style={{ color: '#336791', fontSize: '42px', cursor: 'pointer' }} />
-        &nbsp;<b>Manage Tool, Website or Book ({tabledata.length})</b>
+        &nbsp;<b>Manage the {tabledata.length} Tools, Websites or Books</b>
       </div>
 
       <WebsiteCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />

@@ -237,8 +237,8 @@ export default function Task({
                                 onChange={(e) => setName(e.target.value)}
                                 size="small"
                                 style={{
-                                    width: 600,
-                                    height: "30px",
+                                    width: 800,
+                                    height: "18px",
                                     marginBottom: "15px",
                                     marginTop: "5px",
                                     display: "flex",
@@ -265,7 +265,7 @@ export default function Task({
                                 size="small"
                                 style={{
                                     width: 1100,
-                                    height: "30px",
+                                    height: "18px",
                                     marginBottom: "15px",
                                     marginTop: "5px",
                                     display: "flex",
@@ -277,28 +277,46 @@ export default function Task({
                     </div>
                     <div style={{ color: getStatusByColourTaskText(taskstatus) }}>
                         <u>OWNER</u>:{" "}
-                        {editing === true ? (
-                            <Autocomplete
-                                value={taskowner}
-                                freeSolo
-                                size="small"
-                                style={{ width: 250, height: "20px", marginBottom: "15px", marginTop: "5px" }}
-                                id="Taskowner"
-                                onChange={handleChange}
-                                options={ownerOptions.map((option) => option.name)}
-                                renderInput={(params) => (
-                                    <TextField
-                                        required
-                                        onChange={(e) => {
-                                            setOwner(e.target.value);
-                                        }}
-                                        {...params}
-                                    />
-                                )}
-                            ></Autocomplete>
-                        ) : (
-                            taskowner
-                        )}
+                        {editing === true ? 
+                        (
+                            <textarea
+                            freeSolo
+                            required
+                            defaultValue={taskowner}
+                            onChange={(e) => setOwner(e.target.value)}
+                            size="small"
+                            style={{
+                                width: 170,
+                                height: "18px",
+                                marginBottom: "15px",
+                                marginTop: "5px",
+                                display: "flex",
+                            }}
+                        />
+                            // <Autocomplete
+                            //     value={taskowner}
+                            //     freeSolo
+                            //     size="small"
+                            //     style={{ width: 250, height: "20px", marginBottom: "15px", marginTop: "5px" }}
+                            //     id="Taskowner"
+                            //     onChange={handleChange}
+                            //     options={ownerOptions.map((option) => option.name)}
+                            //     renderInput={(params) => (
+                            //         <TextField
+                            //             required
+                            //             onChange={(e) => {
+                            //                 setOwner(e.target.value);
+                            //             }}
+                            //             {...params}
+                            //         />
+                            //     )}
+                            // ></Autocomplete>
+                        ) 
+                        : 
+                        (
+                        taskowner
+                        )
+                        }
                     </div>
                     <div style={{ color: getStatusByColourTaskText(taskstatus) }}>
                         <u>DUE</u>:{" "}
