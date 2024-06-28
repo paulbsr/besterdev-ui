@@ -36,7 +36,7 @@ export default function RecordAmend(props) {
    
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/records')
-      .then((response) => {const sortedTabledata = response.data.sort((b, a) => b.colone.localeCompare(a.colone)); setTabledata(sortedTabledata); setError(null); console.log(tabledata);}) //sort colone alphabetically
+      .then((response) => {const sortedTabledata = response.data.sort((b, a) => b.colone.localeCompare(a.colone)); setTabledata(sortedTabledata); setError(null);}) //sort colone alphabetically
       .catch((e)=> console.error(e));}, [props.checkForRecords]);
 
         const handleEdit = (row) => {

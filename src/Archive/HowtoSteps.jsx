@@ -21,7 +21,7 @@ export default function HowtoSteps ({ project_handle, activeAccount, id, tasknam
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteps')
       .then((response) => {const sortedStepsData = response.data.sort((b, a) => b.step_id.localeCompare(a.step_id)); 
-        setStepsdata(sortedStepsData); console.log(sortedStepsData)})
+        setStepsdata(sortedStepsData); })
       .catch((e)=> console.error(e));}, 
       [checkForRecords]);
 

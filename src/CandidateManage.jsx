@@ -7,7 +7,6 @@ import 'react-dropdown/style.css';
 import {FaPen, FaCheck, FaRegTrashAlt} from 'react-icons/fa';
 import {PiArrowCounterClockwiseBold} from 'react-icons/pi';
 import { MdManageAccounts } from "react-icons/md";
-import AlertContext from './Generic/Alerts/AlertContext';
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
@@ -42,7 +41,6 @@ export default function CandidateManage() {
   const [employer, setEmployer] = useState(null);
   const [cr_datehold, setCr_DateHold] = useState(null)
   const [crDate, setCrDate] = useState(null)
-  const alertCtx = useContext(AlertContext);
    
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates')

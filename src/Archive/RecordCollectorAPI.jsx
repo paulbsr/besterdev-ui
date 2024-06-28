@@ -11,17 +11,13 @@ export default function RecordCollectorAPI() {
   useEffect(() => {
     axios('https://datausa.io/api/data?drilldowns=Nation&measures=Population')
       .then((response) => {
-        setApidata(response.data.data);
-        console.log(response.data.data);
-        console.log(apidata);})}, []);
+        setApidata(response.data.data);})}, []);
 
 
   useEffect(() => {
       axios ('https://randomuser.me/api/')
       .then((response) => {
-        setApidata2(response.data.results);
-        console.log(response.data.results);
-        console.log(apidata2);})}, []);
+        setApidata2(response.data.results);})}, []);
 
 
   function GenderLabel({ gender }) {

@@ -45,7 +45,7 @@ export default function CandidateScreen() {
         'reqnum': reqnum,
         'employer': employer
       }
-      console.log(candidatePOST)
+
       const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/create`, candidatePOST);
       if (response.status === 200) { alert(`${firstname} ${lastname} has been memorialized.`) }
       else { alert(`oops! Something went wrong!`); }

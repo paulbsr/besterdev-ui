@@ -1,9 +1,8 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Fonts.css";
 import "./Task.css";
 import { getStatusByColourTaskText } from "./getStatusByColourTaskText";
-import { Autocomplete } from "@mui/material";
 import { BsArrowCounterclockwise, BsPencil } from "react-icons/bs"; //Revert & Pencil grey
 import { GiCheckMark } from "react-icons/gi"; //Commit grey
 import { Tooltip } from "@mui/material";
@@ -121,25 +120,7 @@ export default function Task_forTaskEdit({
                     else {toast.error('Task not Updated.');}
         onEditCancel();
     };
-    const ownerOptions = [
-        { name: "Brian O Rourke" },
-        { name: "Bren Keenan" },
-        { name: "Conor Lynch" },
-        { name: "Dwayne Patel" },
-        { name: "Felipe Mantov" },
-        { name: "Keex Nenyiaba" },
-        // { name: "Kieran Hayter" },
-        { name: "Leo Pinto" },
-        { name: "Monique Borje" },
-        // { name: "Patrick Haugh" },
-        { name: "Paul Bester" },
-        // { name: "Ray Egan" },
-        // { name: "Rosie Curran" },
-        { name: "Saoirse Seeber" },
-        { name: "Shika Seth" },
-        { name: "Simon Dowling" },
-        { name: "Thiago Cunha" },
-    ];
+
     // return number of days until/after deadline
     function getDeadlineInDays(deadline) {
         // add object support to dayjs
@@ -207,7 +188,7 @@ export default function Task_forTaskEdit({
                                 </Tooltip>
                             </>
                         ) : isExpanded && taskstatus !== "DONE" ? (
-                            <Tooltip title="Edit Task" placement="top-end">
+                            <Tooltip title={`Edit Task: ${id}`} placement="top-end">
                                 <div style={{ cursor: "pointer" }} onClick={() => { handleEdit(); }}>
                                     &nbsp;&nbsp;<BsPencil style={{ color: "#C0C0C0", fontSize: "15px" }} />
                                 </div>
@@ -297,7 +278,7 @@ export default function Task_forTaskEdit({
                                 <DatePicker
                                     selected={newTargetDate}
                                     onChange={(date) => setNewTargetDate(date)}
-                                    dateFormat="yyyy.MM.dd"
+                                    dateFormat="yyyy-MM-dd"
                                 />
                             </div>
                         ) : (

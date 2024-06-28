@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from "react";
-import AlertContext from "./Generic/Alerts/AlertContext";
 import axios from 'axios';
 import './Fonts.css';
 import dayjs from "dayjs";
@@ -16,7 +15,6 @@ dayjs.extend(utc);
 export default function CandidateCreate(props) {
   const today = new Date(); // Create a new Date object representing today's date
   const formattedDate = today.toISOString().split('T')[0]; // Convert the date to the desired format (YYYY-MM-DD)
-  const alertCtx = useContext(AlertContext);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [firstname, setfirstname] = useState('');
   const [lastname, setlastname] = useState('');
@@ -66,11 +64,10 @@ export default function CandidateCreate(props) {
         }
       }
 
-      catch (err) { alertCtx.error(`oops! Something went wrong!`); console.log(err); }
+      catch (err) { toast.error(`CandidateCreate issue!`); console.log(err); }
     }
     else {
       event.preventDefault();
-      alertCtx.warning("Valid CR date required");
     }
   }
 

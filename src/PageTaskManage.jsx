@@ -25,10 +25,8 @@ export default function PageTaskManage() {
   useEffect(() => {
     axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks`)
       .then((response) => {
-        // setProblems(response.data.filter((task) => task.taskstatus === "PROBLEM"));
         setTasks(response.data);
         setError(null);
-        // console.log(tasks)
       })
       .catch(setError);
   }, [checkForRecords]);

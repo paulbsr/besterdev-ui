@@ -45,7 +45,7 @@ export default function RecordCreate(props) {
         'colthree': colthree,
         'colfour': colfour,
       }
-      console.log(newRecord)
+
       try {
         const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/records/create`, newRecord);
         if (response.status === 200) { props.setCheckForRecords(!props.checkForRecords); alertCtx.success(`${colone} memorialized`); }

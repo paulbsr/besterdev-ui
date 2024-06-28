@@ -122,45 +122,6 @@ export default function HomePage22(props) {
         </table>
       </div>
     );
-
-
-    // const groupedData2 = {};
-    
-    // taskdata.forEach((row) => {
-    //   if (!groupedData2[row.taskstatus]) {
-    //     groupedData2[row.taskstatus] = [];
-    //   }
-    //   groupedData2[row.taskstatus].push(row);
-    //   console.log('In <InnerTableLeft> is jou groupdata2:', groupedData2)
-    // });
-
-    // const sortedCategories2 = Object.keys(groupedData2).sort();
-
-    // return (
-    //   <div className="scrollable-container">
-    //     <table className="Table-home-left">
-    //       <tbody>
-    //         {sortedCategories2.map((category) => (
-    //           <>&nbsp;
-    //             <tr key={category}>
-    //               <th colSpan="2" style={{ textAlign: 'right', borderBottom: '1px solid #ddd' }} className="Table-home-left-heading">{category.includes("HOWTO") ? category.replace("HOWTO :: CMM ->", "").replace("HOWTO :: ", "") : category} </th>
-    //             </tr>
-    //             {
-    //               groupedData2[category].map((record, index) => (
-    //                 <tr key={index}>
-    //                   <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left-text">
-    //                     <a href={record.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.website_desc}>{record.taskname}</a>
-    //                   </td>
-    //                 </tr>
-    //               ))}
-    //           </>
-    //         ))}
-    //       </tbody>
-    //     </table>
-    //   </div>
-    // );
-
-
   };
 
 
@@ -173,7 +134,7 @@ export default function HomePage22(props) {
       ? cyclopediadata.filter(rowc => rowc.cyclopedia_name && rowc.cyclopedia_name.startsWith(selectedLetter))
       : cyclopediadata;
 
-    const firstTwentyCyclopediaRecords = filteredData.slice(0, 90);
+    const firstTwentyCyclopediaRecords = filteredData.slice(0, 30);
 
     const alphabet = 'A-B-C-D-E-F-G-H-I-J-K-L-M-N-O-P-Q-R-S-T-U-V-W-X-Y-Z';
 
@@ -184,7 +145,6 @@ export default function HomePage22(props) {
         groupedData2[row.taskstatus] = [];
       }
       groupedData2[row.taskstatus].push(row);
-      // console.log('In <InnerTableLeft> is jou groupdata2:', groupedData2)
     });
 
     const sortedCategories2 = Object.keys(groupedData2).sort();

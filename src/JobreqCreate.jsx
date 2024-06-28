@@ -70,8 +70,6 @@ export default function JobreqCreate(props) {
         "status": status,
         "wa": wa
       }
-      console.log(jobreqPOST)
-
 
       try {
         const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs/create`, jobreqPOST);

@@ -15,9 +15,6 @@ export default function TaskEdit(props) {
   const [taskdata, setTaskData] = useState([]);
   const [error, setError] = useState(null);
   const [parenttask1, setParenttask1] = useState(props.parenttask);
-  console.log('In <TaskEdit> is jou props.task_id:', props.task_id);
-  console.log('In <TaskEdit> is jou props.parenttask:', props.parenttask);
-  console.log('In <TaskEdit> is jou parenttask1:', parenttask1);
 
   useEffect(() => {
     axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/${props.task_id}`)
@@ -110,7 +107,7 @@ export default function TaskEdit(props) {
                 taskrequirement={taskdata.taskrequirement}
                 taskowner={taskdata.taskowner}
                 asms={taskdata.asms}
-                tasktargetdate={"1999-01-01"}
+                tasktargetdate={"2024-06-01"}
                 taskstatus={taskdata.taskstatus}
                 checkForRecords={fetchRecords}
                 setCheckForRecords={setFetchRecords}

@@ -52,7 +52,6 @@ export default function BreakingNews_working() {
         const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/news`);
         // const response = await axios.get(`http://localhost:8000/api/v1/news`);
         const newsDataDB = response.data;
-        // newsDataDB.sort((a, b) => b.id - a.id);
         shuffleArray(newsDataDB);
         setBreakingNewsDataDB(newsDataDB);
         console.log('Jou GET vanaf Heroku:', breakingNewsDataDB);

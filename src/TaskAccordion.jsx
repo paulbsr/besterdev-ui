@@ -53,7 +53,6 @@ import TaskEdit from "./TaskEdit";
             // [checkForRecords]
         );
         if (error) return <p>An error in TaskAccordion occurred</p>;
-        console.log('In <TaskAccordion /> is jou parenttask:', parenttask)
 
     
     return (

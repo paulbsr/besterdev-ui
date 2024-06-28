@@ -263,7 +263,7 @@ export default function Task({
                                 size="small"
                                 style={{
                                     width: 1100,
-                                    height: "18px",
+                                    height: "38px",
                                     marginBottom: "15px",
                                     marginTop: "5px",
                                     display: "flex",

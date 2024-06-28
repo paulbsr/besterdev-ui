@@ -35,7 +35,6 @@ const DBSearchComponent = () => {
   };
 
   const handleEdit = (crap, cyclopediaID, cyclopediaNAME, cyclopediaDESC) => {
-    console.log(crap, cyclopediaID, cyclopediaNAME, cyclopediaDESC);
     setCyclopediaidedit(cyclopediaID);
     setEditing(crap);
     setCyclopedianame(cyclopediaNAME);

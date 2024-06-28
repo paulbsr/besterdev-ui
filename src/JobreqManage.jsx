@@ -38,7 +38,7 @@ export default function JobreqManage() {
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs')
-      .then((response) => {const SortedJobreqData = response.data.sort((b, a) => b.jrnumber.localeCompare(a.jrnumber)); setJobreqdata(SortedJobreqData); console.log(jobreqdata)}) //sort reqnumber alphabetically
+      .then((response) => {const SortedJobreqData = response.data.sort((b, a) => b.jrnumber.localeCompare(a.jrnumber)); setJobreqdata(SortedJobreqData);}) //sort reqnumber alphabetically
       .catch((e)=> console.error(e));}, [checkForRecords]);
 
         const handleEdit = (row) => {

@@ -10,7 +10,7 @@ export const PeopleScorecardUpdateHelp = async (id, person, newValues, setCheckF
         {setCheckForRecords(!checkForRecords); alertHandler.success(`${person} has been updated`);}
 
         else {alertHandler.error(`Error in ${person} update`); 
-        // console.log(err);
+
     }
     }
 

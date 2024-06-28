@@ -54,11 +54,10 @@ export default function EmployerCreate(props) {
 
       }
 
-      catch (err) { alertCtx.error(`oops! Something went wrong!`); console.log(err); }
+      catch (err) { toast.error(`oops! Something went wrong!`); console.log(err); }
     }
     else {
       event.preventDefault();
-      alertCtx.warning("Valid CR date required");
     }
   }
 
