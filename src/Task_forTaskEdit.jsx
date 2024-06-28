@@ -224,7 +224,7 @@ export default function Task_forTaskEdit({
             {isExpanded && (
                 <div>
                     <div style={{ color: getStatusByColourTaskText(taskstatus) }}>
-                        <u>REQUIREMENT</u>:
+                        <u>REQUIREMENT</u>:{" "}
                         {editing === true ? (
                             <textarea
                                 freeSolo

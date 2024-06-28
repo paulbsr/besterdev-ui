@@ -5,8 +5,8 @@ import "./StatusByColourLong_forTaskEdit.css";
 export default function StatusByColourLong_forTaskEdit(props) {
   let color = "";
   const bringUpDetails = (detail, recordID) => {
-    props.setpprecord(detail);
-    props.setRecordID(recordID);
+    // props.setpprecord(detail);
+    // props.setRecordID(recordID);
   };
   if (props.status === "DONE") {
     color = "grey";

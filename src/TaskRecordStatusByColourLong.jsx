@@ -4,8 +4,8 @@ import './StatusByColourLong.css';
 function TaskRecordStatusByColourLong(props) {
   let color = '';
   const bringUpDetails = (detail, recordID) => {
-    props.setpprecord(detail);
-    props.setRecordID(recordID);
+    // props.setpprecord(detail);
+    // props.setRecordID(recordID);
   };
 
  

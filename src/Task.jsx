@@ -253,7 +253,7 @@ export default function Task({
             {isExpanded && (
                 <div>
                     <div style={{ color: getStatusByColourTaskText(taskstatus) }}>
-                        <u>REQUIREMENT</u>:
+                        <u>REQUIREMENT</u>:{" "}
                         {editing === true ? (
                             <textarea
                                 freeSolo
