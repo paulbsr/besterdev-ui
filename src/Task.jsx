@@ -4,7 +4,6 @@ import "./Fonts.css";
 import "./Task.css";
 import TaskRecordAccordion from "./TaskRecordAccordion";
 import { getStatusByColourTaskText } from "./getStatusByColourTaskText";
-import { Autocomplete } from "@mui/material";
 import { BsArrowCounterclockwise, BsPencil } from "react-icons/bs"; //Revert & Pencil grey
 import { GiCheckMark } from "react-icons/gi"; //Commit grey
 import { Tooltip } from "@mui/material";
@@ -12,7 +11,6 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import dayjs from "dayjs";
 import ObjectSupport from "dayjs/plugin/objectSupport";
-import TextField from "@mui/material/TextField";
 import TaskPopOut from "./TaskPopOut";
 import { toast } from 'react-toastify';
 
@@ -41,8 +39,6 @@ export default function Task({
     const [name, setName] = useState(null);
     const [error, setError] = useState(null);
     const [duration, setDuration] = useState(null);
-    // const alertCtx = useContext(AlertContext);
-
     
     //send request for the task taskDuration if the task has been completed
     useEffect(() => {
@@ -295,24 +291,6 @@ export default function Task({
                                 display: "flex",
                             }}
                         />
-                            // <Autocomplete
-                            //     value={taskowner}
-                            //     freeSolo
-                            //     size="small"
-                            //     style={{ width: 250, height: "20px", marginBottom: "15px", marginTop: "5px" }}
-                            //     id="Taskowner"
-                            //     onChange={handleChange}
-                            //     options={ownerOptions.map((option) => option.name)}
-                            //     renderInput={(params) => (
-                            //         <TextField
-                            //             required
-                            //             onChange={(e) => {
-                            //                 setOwner(e.target.value);
-                            //             }}
-                            //             {...params}
-                            //         />
-                            //     )}
-                            // ></Autocomplete>
                         ) 
                         : 
                         (

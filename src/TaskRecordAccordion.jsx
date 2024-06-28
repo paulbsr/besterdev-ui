@@ -23,7 +23,7 @@ function TaskRecordAccordion({
 }
 
 )
-{console.log('In <TaskRecordAccordion> is jou parenttask:', parenttask)
+{
 
     const [isExpanded, setExpanded] = useState(false);
     const [editing, setEditing] = useState(false);

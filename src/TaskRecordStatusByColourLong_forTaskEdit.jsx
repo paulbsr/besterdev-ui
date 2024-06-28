@@ -1,7 +1,7 @@
 import React from 'react';
-import './StatusByColourLong.css';
+import './StatusByColourLong_forTaskEdit.css';
 
-function TaskRecordStatusByColourLong(props) {
+function TaskRecordStatusByColourLong_forTaskEdit(props) {
   let color = '';
   const bringUpDetails = (detail, recordID) => {
     props.setpprecord(detail);
@@ -23,4 +23,4 @@ function TaskRecordStatusByColourLong(props) {
   );
 }
 
-export default TaskRecordStatusByColourLong;
+export default TaskRecordStatusByColourLong_forTaskEdit;

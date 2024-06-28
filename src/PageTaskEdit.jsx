@@ -22,8 +22,8 @@ export default function PageTaskEdit() {
         <BannerLight />
         <GradientLineThin />
         <Quicklinks3 />
-        {/* <GradientLineThin />
-        <BreakingNews /> */}
+        <GradientLineThin />
+        <BreakingNews />
         <GradientLineThin />
         <CyclopediaTicker />
         <TaskEdit task_id={task_id}/>

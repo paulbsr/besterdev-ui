@@ -43,10 +43,10 @@ export default function TaskEdit(props) {
         setError(error);
         console.error('Error fetching website data:', error);
       }
-    )
+      )
       ;
   }, [fetchRecords, props.howto_id]);
-  
+
 
   if (error) return <p>An error occurred: {error.message}</p>;
 
@@ -102,7 +102,6 @@ export default function TaskEdit(props) {
             <td style={{ width: '20%' }} className="Table-home-left"><InnerTableLeft /></td>
             <td style={{ width: '1%' }}></td>
             <td style={{ width: '58%' }} className="Table-home-centre">
-              {/* <HowtoStepAccordion howto_ids={props.howto_id} /> */}
               <Task_forTaskEdit
                 key={taskdata.id}
                 project_handle={taskdata.project_handle}
@@ -111,13 +110,11 @@ export default function TaskEdit(props) {
                 taskrequirement={taskdata.taskrequirement}
                 taskowner={taskdata.taskowner}
                 asms={taskdata.asms}
-                // tasktargetdate={taskdata.tasktargetdate}
                 tasktargetdate={"1999-01-01"}
                 taskstatus={taskdata.taskstatus}
                 checkForRecords={fetchRecords}
                 setCheckForRecords={setFetchRecords}
                 parenttask={taskdata}
-                // handleModal={handleModal}
               />
             </td>
             <td style={{ width: '1%' }}></td>

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import TaskRecordCreate from "./TaskRecordCreate";
-import TaskRecordStatusByColourLong from "./TaskRecordStatusByColourLong";
+import TaskRecordStatusByColourLong_forTaskEdit from "./TaskRecordStatusByColourLong_forTaskEdit";
 import { getStatusByColourTaskText } from "./getStatusByColourTaskText";
 import axios from "axios";
 import { Tooltip } from "@mui/material";
@@ -23,7 +23,7 @@ function TaskRecordAccordion_forTaskEdit({
 }
 
 )
-{console.log('In <TaskRecordAccordion1> is jou parenttask:', parenttask)
+{
 
     const [isExpanded, setExpanded] = useState(false);
     const [editing, setEditing] = useState(false);
@@ -34,12 +34,7 @@ function TaskRecordAccordion_forTaskEdit({
         setExpanded(!isExpanded);
     };
     
-    // const orderedTasks = parenttask.filter((task, key) => {
-    //     return task.id === parentid;
-    // });
-
     const orderedTasks = parenttask;
-    console.log('xxxxxxxxxxxxxxxxxorderedtasks', orderedTasks)
     
     const taskRecords = orderedTasks.tasks.sort(
         (a, b) =>
@@ -47,8 +42,7 @@ function TaskRecordAccordion_forTaskEdit({
             new Date(a.date[0], a.date[1], a.date[2]) || b.childid - a.childid
     );
     
-
-    
+   
     const handleEdit = (id, childrecord) => {
         setEditing(id);
         setTaskrecord(childrecord);
@@ -120,12 +114,12 @@ function TaskRecordAccordion_forTaskEdit({
                                 cols="150"
                                 variant="outlined"
                                 defaultValue={taskrecord}
-                                rows={3}
+                                rows={5}
                                 onChange={(e) => setTaskrecord(e.target.value)}
                             ></textarea>
                         ) : (
                             <div>
-                                <TaskRecordStatusByColourLong
+                                <TaskRecordStatusByColourLong_forTaskEdit
                                     childid={childid}
                                     childrecord={childrecord}
                                     parentid={parentid}
@@ -148,7 +142,7 @@ function TaskRecordAccordion_forTaskEdit({
         if (taskRecords[0].status === "DONE") {
             return (
                 <div>
-                    <TaskRecordStatusByColourLong
+                    <TaskRecordStatusByColourLong_forTaskEdit
                         childid={taskRecords[0].childid}
                         childrecord={taskRecords[0].childrecord}
                         parentid={taskRecords[0].parentid}
@@ -173,7 +167,7 @@ function TaskRecordAccordion_forTaskEdit({
                                     handle,
                                     future,
                                 }) => (
-                                    <TaskRecordStatusByColourLong
+                                    <TaskRecordStatusByColourLong_forTaskEdit
                                         childid={childid}
                                         childrecord={childrecord}
                                         parentid={parentid}

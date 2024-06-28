@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import "./Fonts.css";
 import "./Task.css";
-import TaskRecordAccordion from "./TaskRecordAccordion";
 import { getStatusByColourTaskText } from "./getStatusByColourTaskText";
 import { Autocomplete } from "@mui/material";
 import { BsArrowCounterclockwise, BsPencil } from "react-icons/bs"; //Revert & Pencil grey
@@ -12,8 +11,6 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import dayjs from "dayjs";
 import ObjectSupport from "dayjs/plugin/objectSupport";
-import TextField from "@mui/material/TextField";
-// import TaskPopOut from "./TaskPopOut"; 
 import { toast } from 'react-toastify';
 import TaskRecordAccordion_forTaskEdit from "./TaskRecordAccordion_forTaskEdit";
 
@@ -179,19 +176,7 @@ export default function Task_forTaskEdit({
             <div style={{ color: getStatusByColourTaskText(taskstatus) }}>
                 <div style={{ float: "right" }}>
                     &nbsp;
-                    {/* <TaskPopOut
-                        project_handle={project_handle}
-                        id={id}
-                        taskname={taskname}
-                        taskrequirement={taskrequirement}
-                        taskowner={taskowner}
-                        asms={asms}
-                        tasktargetdate={tasktargetdate}
-                        taskstatus={taskstatus}
-                        parenttask={parenttask}
-                        checkForRecords={checkForRecords}
-                        setCheckForRecords={setCheckForRecords}
-                    /> */}
+
                 </div>
                 <div style={{ display: "flex", float: "right" }}>
                     {taskstatus !== "DONE" && ( // only render this div if the task is not already done.
@@ -268,7 +253,7 @@ export default function Task_forTaskEdit({
                                 size="small"
                                 style={{
                                     width: 1000,
-                                    height: "18px",
+                                    height: "50px",
                                     marginBottom: "15px",
                                     marginTop: "5px",
                                     display: "flex",
@@ -278,6 +263,8 @@ export default function Task_forTaskEdit({
                             taskrequirement
                         )}
                     </div>
+                    
+                    
                     <div style={{ color: getStatusByColourTaskText(taskstatus) }}>
                         <u>OWNER</u>:{" "}
                         {editing === true ? 
