@@ -12,7 +12,7 @@ import { toast } from 'react-toastify';
 
 
 
-function TaskRecordAccordion({
+function TaskRecordAccordion_forTaskEdit({
     project_handle,
     asms_number,
     parentid,
@@ -23,7 +23,7 @@ function TaskRecordAccordion({
 }
 
 )
-{console.log('In <TaskRecordAccordion> is jou parenttask:', parenttask)
+{console.log('In <TaskRecordAccordion1> is jou parenttask:', parenttask)
 
     const [isExpanded, setExpanded] = useState(false);
     const [editing, setEditing] = useState(false);
@@ -34,11 +34,14 @@ function TaskRecordAccordion({
         setExpanded(!isExpanded);
     };
     
-    const orderedTasks = parenttask.filter((task, key) => {
-        return task.id === parentid;
-    });
+    // const orderedTasks = parenttask.filter((task, key) => {
+    //     return task.id === parentid;
+    // });
+
+    const orderedTasks = parenttask;
+    console.log('xxxxxxxxxxxxxxxxxorderedtasks', orderedTasks)
     
-    const taskRecords = orderedTasks[0].tasks.sort(
+    const taskRecords = orderedTasks.tasks.sort(
         (a, b) =>
             new Date(b.date[0], b.date[1], b.date[2]) -
             new Date(a.date[0], a.date[1], a.date[2]) || b.childid - a.childid
@@ -237,4 +240,4 @@ function TaskRecordAccordion({
         </div>
     );
 }
-export default TaskRecordAccordion;
+export default TaskRecordAccordion_forTaskEdit;

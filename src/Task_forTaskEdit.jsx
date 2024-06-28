@@ -13,11 +13,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import dayjs from "dayjs";
 import ObjectSupport from "dayjs/plugin/objectSupport";
 import TextField from "@mui/material/TextField";
-import TaskPopOut from "./TaskPopOut";
+// import TaskPopOut from "./TaskPopOut"; 
 import { toast } from 'react-toastify';
+import TaskRecordAccordion_forTaskEdit from "./TaskRecordAccordion_forTaskEdit";
 
 
-export default function Task({
+export default function Task_forTaskEdit({
     project_handle,
     id,
     taskname,
@@ -178,7 +179,7 @@ export default function Task({
             <div style={{ color: getStatusByColourTaskText(taskstatus) }}>
                 <div style={{ float: "right" }}>
                     &nbsp;
-                    <TaskPopOut
+                    {/* <TaskPopOut
                         project_handle={project_handle}
                         id={id}
                         taskname={taskname}
@@ -190,7 +191,7 @@ export default function Task({
                         parenttask={parenttask}
                         checkForRecords={checkForRecords}
                         setCheckForRecords={setCheckForRecords}
-                    />
+                    /> */}
                 </div>
                 <div style={{ display: "flex", float: "right" }}>
                     {taskstatus !== "DONE" && ( // only render this div if the task is not already done.
@@ -239,7 +240,7 @@ export default function Task({
                                 onChange={(e) => setName(e.target.value)}
                                 size="small"
                                 style={{
-                                    width: 800,
+                                    width: 1000,
                                     height: "18px",
                                     marginBottom: "15px",
                                     marginTop: "5px",
@@ -266,7 +267,7 @@ export default function Task({
                                 onChange={(e) => setRequirement(e.target.value)}
                                 size="small"
                                 style={{
-                                    width: 1100,
+                                    width: 1000,
                                     height: "18px",
                                     marginBottom: "15px",
                                     marginTop: "5px",
@@ -295,24 +296,6 @@ export default function Task({
                                 display: "flex",
                             }}
                         />
-                            // <Autocomplete
-                            //     value={taskowner}
-                            //     freeSolo
-                            //     size="small"
-                            //     style={{ width: 250, height: "20px", marginBottom: "15px", marginTop: "5px" }}
-                            //     id="Taskowner"
-                            //     onChange={handleChange}
-                            //     options={ownerOptions.map((option) => option.name)}
-                            //     renderInput={(params) => (
-                            //         <TextField
-                            //             required
-                            //             onChange={(e) => {
-                            //                 setOwner(e.target.value);
-                            //             }}
-                            //             {...params}
-                            //         />
-                            //     )}
-                            // ></Autocomplete>
                         ) 
                         : 
                         (
@@ -342,7 +325,7 @@ export default function Task({
                                 : tasktargetdate[2])
                         )}
                     </div>
-                    <TaskRecordAccordion
+                    <TaskRecordAccordion_forTaskEdit
                         project_handle={project_handle}
                         taskstatus={taskstatus}
                         parentid={id}

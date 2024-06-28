@@ -9,15 +9,11 @@ import './Fonts.css'
 import 'react-dropdown/style.css';
 import 'react-tooltip/dist/react-tooltip.css'
 import 'react-toastify/dist/ReactToastify.css';
-import CyclopediaManage from './CyclopediaManage';
 import ToastComponent from './ToastComponent';
 import BreakingNews from './BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
-import PeopleScorecard from './PeopleScorecard'
 import TaskOverview from './TaskOverview';
 import { TaskContext } from "./Contexts";
-import AlertProvider from "./Generic/Alerts/AlertContext"; // Assuming AlertProvider
-import AlertContext from './Generic/Alerts/AlertContext';
 
 
 

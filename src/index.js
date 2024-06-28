@@ -20,6 +20,7 @@ import PageResources from './PageResources';
 import firebase from 'firebase/compat/app';
 import PageHome from './PageHome';
 import PageHowtoEdit from './PageHowtoEdit';
+import PageTaskEdit from './PageTaskEdit';
 import PageCyclopedia from './PageCyclopedia';
 import PageTaskManage from './PageTaskManage';
 import PageSwagger from './PageSwagger';
@@ -34,7 +35,7 @@ import { UserProvider } from './UserContext';
 import { useUserContext } from './UserContext';
 import ReactGA from 'react-ga';
 import PageMyCV from './PageMyCV';
-import BreakingNewsAPI from './BreakingNewsAPI';
+// import BreakingNewsAPI from './BreakingNewsAPI';
 
 
 const TRACKING_ID = "G-FCGGY1NE36";
@@ -109,6 +110,7 @@ const App = () => {
             </Route>
 
 
+            <Route path='/taskedit/:task_id' element={<PageTaskEdit />} />
             <Route path='/howtoedit/:howto_id' element={<PageHowtoEdit />} />
             {searchPhrase &&  <Route path='/home' element={<PageHome searchPhrase={searchPhrase}/>} />}
             {/* <Route path='/home' element={<PageHome/>} /> */}

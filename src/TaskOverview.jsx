@@ -7,12 +7,12 @@ import "./TaskOverview.css";
 import Task from "./Task";
 import TaskCreate from "./TaskCreate";
 import { TaskContext } from "./Contexts";
+import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import { DialogActions } from "@mui/material";
 import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
 import dayjs from "dayjs";
 import ObjectSupport from "dayjs/plugin/objectSupport";
 import { Tooltip } from '@mui/material';
@@ -158,6 +158,7 @@ export default function TaskOverview() {
 
                 <div>&nbsp;</div>
                 <div>&nbsp;</div>
+
                 <div>
                     <div style={{ overflow: "auto" }}>
                         <div style={{ display: "flex" }}>
@@ -169,7 +170,6 @@ export default function TaskOverview() {
                                         <th style={{ minWidth: "5vw", maxWidth: "20vw" }}>WIP ({wipTasksCount})</th>
                                         <th style={{ minWidth: "5vw", maxWidth: "20vw" }}>ISSUE ({problemTasksCount})</th>
                                         <th style={{ minWidth: "5vw", maxWidth: "20vw" }}>DONE ({doneTasksCount})</th>
-
                                     </thead>
                                     <tbody>
                                         {Object.keys(projectTaskStatusCounters).map((project_name) => {
@@ -335,21 +335,7 @@ export default function TaskOverview() {
                                                                             handleModal={handleModal}
                                                                         />
                                                                     }
-                                                                // read={
-                                                                //   tasks.length > 0
-                                                                //     ? "Last updated: " +
-                                                                //       tasks[0].date[0] +
-                                                                //       "." +
-                                                                //       tasks[0].date[1] +
-                                                                //       "." +
-                                                                //       tasks[0].date[2]
-                                                                //     : "Created: " +
-                                                                //       taskcreatedate[0] +
-                                                                //       "." +
-                                                                //       taskcreatedate[1] +
-                                                                //       "." +
-                                                                //       taskcreatedate[2]
-                                                                // }
+
                                                                 ></MouseoverPopover>
                                                             </td>
                                                         </tr>

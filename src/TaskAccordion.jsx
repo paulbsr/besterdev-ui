@@ -7,6 +7,7 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { FaTasks } from "react-icons/fa";
 import GradientLineRusty from "./GradientLineRusty";
+import TaskEdit from "./TaskEdit";
 
 
 // function TaskAccordion({asms_number, project_handle, ppm_id,}) {
@@ -52,6 +53,7 @@ import GradientLineRusty from "./GradientLineRusty";
             // [checkForRecords]
         );
         if (error) return <p>An error in TaskAccordion occurred</p>;
+        console.log('In <TaskAccordion /> is jou parenttask:', parenttask)
 
     
     return (
@@ -83,6 +85,7 @@ import GradientLineRusty from "./GradientLineRusty";
                                 checkForRecords={checkForRecords}
                                 setCheckForRecords={setCheckForRecords}
                             />
+                            <TaskEdit parenttask={parenttask} />
                             {parenttask
                                 .filter((status) => status.taskstatus === "PROBLEM")
                                 .map(
@@ -112,6 +115,7 @@ import GradientLineRusty from "./GradientLineRusty";
                                                     checkForRecords={checkForRecords}
                                                     setCheckForRecords={setCheckForRecords}
                                                 />
+                                                
                                             }
                                         </div>
                                     )

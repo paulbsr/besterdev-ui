@@ -211,7 +211,8 @@ const DBSearchComponent = () => {
                   Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247' }}>Task Name:</b>
                   <div className="Font-Segoe-Large-Howto">
                     <MdTask style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
-                    <b>{highlightKeyword(result.taskname, searchQuery)}</b>
+                    <a href={`/taskedit/${result.id}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.id}>
+                    <b>{highlightKeyword(result.taskname, searchQuery)}</b></a>
                   </div>
                   <div className='Font-Spacer-White'>Make this spacer white</div>
                 </div>
@@ -225,7 +226,8 @@ const DBSearchComponent = () => {
                   Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247' }}>Task Record:</b>
                   <div className="Font-Segoe-Large-Howto">
                     <MdTask style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
-                    {highlightKeyword(result.childrecord, searchQuery)}
+                    <a href={`/taskedit/${result.id}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.id}>
+                    {highlightKeyword(result.childrecord, searchQuery)}</a>
                   </div>
                   <div className='Font-Spacer-White'>Make this spacer white</div>
                 </div>

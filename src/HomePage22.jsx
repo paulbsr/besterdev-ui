@@ -10,10 +10,12 @@ import DBSearchComponent from './DBSearchComponent';
 import HowtoTicker from './HowtoTicker';
 import { BsQuestionOctagonFill } from "react-icons/bs";
 import { GiGiftOfKnowledge } from "react-icons/gi";
+import TaskSummaryHomepage from './TaskSummaryHomepage';
 
 export default function HomePage22(props) {
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
+  const [taskdata, setTaskdata] = useState([]);
   const [websitedata, setWebsitedata] = useState([]);
   const [howtodata, setHowtodata] = useState([]);
   const [cyclopediadata, setCyclopediaData] = useState([]);
@@ -24,6 +26,18 @@ export default function HomePage22(props) {
     setHowtoIdd(howtoId);
     setShowHowtoEdit(true);
   }
+
+
+  useEffect(() => {
+    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks')
+      // axios('http://localhost:8000/api/v1/tasks')
+      .then((response) => {
+        const sortedtaskdata = response.data.sort((b, a) => b.taskname.localeCompare(a.taskname));
+        setTaskdata(sortedtaskdata);
+        
+      })
+      .catch((e) => console.error(e));
+  }, [props.checkForRecords]);
 
 
   useEffect(() => {
@@ -59,6 +73,7 @@ export default function HomePage22(props) {
         const cyclopediaData = response.data;
         shuffleCyclopediaArray(cyclopediaData);
         setCyclopediaData(cyclopediaData);
+        
       })
       .catch((e) => console.error(e));
   }, [props.checkForRecords]);
@@ -109,39 +124,41 @@ export default function HomePage22(props) {
     );
 
 
-    const groupedData2 = {};
-    websitedata.forEach((row) => {
-      if (!groupedData2[row.website_cat]) {
-        groupedData2[row.website_cat] = [];
-      }
-      groupedData2[row.website_cat].push(row);
-    });
+    // const groupedData2 = {};
+    
+    // taskdata.forEach((row) => {
+    //   if (!groupedData2[row.taskstatus]) {
+    //     groupedData2[row.taskstatus] = [];
+    //   }
+    //   groupedData2[row.taskstatus].push(row);
+    //   console.log('In <InnerTableLeft> is jou groupdata2:', groupedData2)
+    // });
 
-    const sortedCategories2 = Object.keys(groupedData2).sort();
+    // const sortedCategories2 = Object.keys(groupedData2).sort();
 
-    return (
-      <div className="scrollable-container">
-        <table className="Table-home-left">
-          <tbody>
-            {sortedCategories2.map((category) => (
-              <>&nbsp;
-                <tr key={category}>
-                  <th colSpan="2" style={{ textAlign: 'right', borderBottom: '1px solid #ddd' }} className="Table-home-left-heading">{category.includes("HOWTO") ? category.replace("HOWTO :: CMM ->", "").replace("HOWTO :: ", "") : category} </th>
-                </tr>
-                {
-                  groupedData[category].map((record, index) => (
-                    <tr key={index}>
-                      <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left-text">
-                        <a href={record.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.website_desc}>{record.website_name}</a>
-                      </td>
-                    </tr>
-                  ))}
-              </>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    );
+    // return (
+    //   <div className="scrollable-container">
+    //     <table className="Table-home-left">
+    //       <tbody>
+    //         {sortedCategories2.map((category) => (
+    //           <>&nbsp;
+    //             <tr key={category}>
+    //               <th colSpan="2" style={{ textAlign: 'right', borderBottom: '1px solid #ddd' }} className="Table-home-left-heading">{category.includes("HOWTO") ? category.replace("HOWTO :: CMM ->", "").replace("HOWTO :: ", "") : category} </th>
+    //             </tr>
+    //             {
+    //               groupedData2[category].map((record, index) => (
+    //                 <tr key={index}>
+    //                   <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left-text">
+    //                     <a href={record.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.website_desc}>{record.taskname}</a>
+    //                   </td>
+    //                 </tr>
+    //               ))}
+    //           </>
+    //         ))}
+    //       </tbody>
+    //     </table>
+    //   </div>
+    // );
 
 
   };
@@ -160,8 +177,47 @@ export default function HomePage22(props) {
 
     const alphabet = 'A-B-C-D-E-F-G-H-I-J-K-L-M-N-O-P-Q-R-S-T-U-V-W-X-Y-Z';
 
+    const groupedData2 = {};
+    
+    taskdata.forEach((row) => {
+      if (!groupedData2[row.taskstatus]) {
+        groupedData2[row.taskstatus] = [];
+      }
+      groupedData2[row.taskstatus].push(row);
+      // console.log('In <InnerTableLeft> is jou groupdata2:', groupedData2)
+    });
+
+    const sortedCategories2 = Object.keys(groupedData2).sort();
+    
     return (
-      <>          <DBSearchComponent />
+      <>          
+      
+      <DBSearchComponent />
+
+      <TaskSummaryHomepage />
+
+      {/* <div className="scrollable-container">
+        <table className="Table-home-left">
+          <tbody>
+            {sortedCategories2.map((category) => (
+              <>&nbsp;
+                <tr key={category}>
+                  <th colSpan="2" style={{ textAlign: 'left', borderBottom: '1px solid #ddd' }} className="Table-home-left-heading">{category.includes("HOWTO") ? category.replace("HOWTO :: CMM ->", "").replace("HOWTO :: ", "") : category} </th>
+                </tr>
+                {
+                  groupedData2[category].map((record, index) => (
+                    <tr key={index}>
+                      <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-right-text">
+                        <a href={record.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.website_desc}>{record.taskname}</a>
+                      </td>
+                    </tr>
+                  ))}
+              </>
+            ))}
+          </tbody>
+        </table>
+      </div> */}
+
         <div>
           <div className='Font-Spacer-White'>Make this spacer white</div>
           {/* <div className="Font-Verdana-Larger-Howto-Rusty-Bold"> */}
