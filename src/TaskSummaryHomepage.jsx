@@ -49,13 +49,15 @@ const TaskSummaryHomepage = (props) => {
               </tr>
               {taskDataFP[category].map((record, index) => (
                 <tr key={index}>
-                  <td style={{ 
-                        width: '20%', 
-                        verticalAlign: 'top', 
-                        color: category === "PROBLEM" ? 'red' : (category === "WIP" ? 'rgb(0,0,255)' : (category === "START" ? 'black' : (category === "DONE" ? 'rgb(0,255,0)' : 'inherit')))
-                      }} 
-                      className="Table-home-right-text">
-                    <a href={`/taskedit/${record.id}`} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.website_desc}>{record.taskname}</a>
+                  <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-right-text">
+                    <a href={`/taskedit/${record.id}`} 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       data-tooltip-id="insert" 
+                       data-tooltip-content={record.website_desc}
+                       style={{ color: category === "PROBLEM" ? 'red' : (category === "WIP" ? 'rgb(0,0,255)' : (category === "START" ? 'black' : (category === "DONE" ? 'rgb(0,255,0)' : 'inherit'))) }}>
+                      {record.taskname}
+                    </a>
                   </td>
                 </tr>
               ))}
