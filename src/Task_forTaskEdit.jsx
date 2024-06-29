@@ -75,7 +75,7 @@ export default function Task_forTaskEdit({
         setName(null);
     };
     // const deadlineDaysRemaining = getDeadlineInDays(tasktargetdate);
-    console.log('In <Task> is jou tasktargetdate:', tasktargetdate)
+    console.log('In <Task_forTaskEdit> is jou tasktargetdate:', tasktargetdate)
     const deadlineDaysRemaining = getDeadlineInDays(tasktargetdate);
     const deadlineColor = calculateDeadlineTextColor(deadlineDaysRemaining);
     const handleChange = (e, newVal) => setOwner(newVal);
@@ -216,6 +216,7 @@ export default function Task_forTaskEdit({
                         </>
                     </>
                 ) : (
+                    // <u onClick={toggleAccordion}><b style={{cursor: 'pointer', fontFamily: 'Verdana'}}>{taskname}</b></u>
                     <u onClick={toggleAccordion}><b style={{cursor: 'pointer', fontFamily: 'Verdana'}}>{taskname}</b></u>
                 )}
             </div>
