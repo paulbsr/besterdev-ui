@@ -12,6 +12,8 @@ import { BsQuestionOctagonFill } from "react-icons/bs";
 import { GiGiftOfKnowledge } from "react-icons/gi";
 import TaskSummaryHomepage from './TaskSummaryHomepage';
 
+
+
 export default function HomePage22(props) {
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
