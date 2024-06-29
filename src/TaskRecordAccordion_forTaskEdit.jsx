@@ -93,11 +93,13 @@ function TaskRecordAccordion_forTaskEdit({
                                             <GiCheckMark style={{ color: "C0C0C0", fontSize: "15px", cursor: 'pointer' }} />
                                         </div>
                                     </Tooltip>
+                                    &nbsp;&nbsp;
                                     <Tooltip title="Revert" placement="top-end">
                                         <div onClick={() => onEditCancel()}>
                                             <BsArrowCounterclockwise style={{ color: "C0C0C0", fontSize: "17px", cursor: 'pointer' }} />
                                         </div>
                                     </Tooltip>
+                                    &nbsp;&nbsp;
                                 </>
                             ) : status !== "DONE" ? (
                                 <Tooltip title={`Edit Task Record: ${childid}`} placement="top-end">
@@ -111,7 +113,7 @@ function TaskRecordAccordion_forTaskEdit({
                     <div>
                         {editing === childid ? (
                             <textarea
-                                cols="150"
+                                cols="140"
                                 variant="outlined"
                                 defaultValue={taskrecord}
                                 rows={5}

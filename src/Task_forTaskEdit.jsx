@@ -190,7 +190,7 @@ export default function Task_forTaskEdit({
                         ) : isExpanded && taskstatus !== "DONE" ? (
                             <Tooltip title={`Edit Task: ${id}`} placement="top-end">
                                 <div style={{ cursor: "pointer" }} onClick={() => { handleEdit(); }}>
-                                    &nbsp;&nbsp;<BsPencil style={{ color: "#C0C0C0", fontSize: "15px" }} />
+                                    &nbsp;&nbsp;<BsPencil style={{ color: "#C0C0C0", fontSize: "15px", cursor: 'pointer', }} />
                                 </div>
                             </Tooltip>
                         ) : null}
@@ -216,9 +216,7 @@ export default function Task_forTaskEdit({
                         </>
                     </>
                 ) : (
-                    <u onClick={toggleAccordion}>
-                        <b>{taskname}</b>
-                    </u>
+                    <u onClick={toggleAccordion}><b style={{cursor: 'pointer', fontFamily: 'Verdana'}}>{taskname}</b></u>
                 )}
             </div>
             {isExpanded && (

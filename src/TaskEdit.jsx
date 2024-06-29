@@ -67,7 +67,7 @@ export default function TaskEdit(props) {
               <React.Fragment key={category}>
                 {groupedData[category].map((record, index) => (
                   <tr key={index}>
-                    <td style={{ width: '20%', verticalAlign: 'top' }} className="Font-Segoe-Medium-Howto">
+                    <td style={{ width: '20%', verticalAlign: 'top', cursor: 'pointer', }} className="Font-Segoe-Medium-Howto">
                       <a href={record.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.website_desc}>
                         {record.website_name}
                       </a>
@@ -98,7 +98,7 @@ export default function TaskEdit(props) {
           <tr>
             <td style={{ width: '20%' }} className="Table-home-left"><InnerTableLeft /></td>
             <td style={{ width: '1%' }}></td>
-            <td style={{ width: '58%' }} className="Table-home-centre">
+            <td style={{ width: '58%', cursor: 'pointer', }} className="Table-home-centre">
               <Task_forTaskEdit
                 key={taskdata.id}
                 project_handle={taskdata.project_handle}
