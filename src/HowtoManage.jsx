@@ -5,7 +5,6 @@ import './Fonts.css';
 import axios from 'axios'
 import 'react-dropdown/style.css';
 import {FaPen, FaCheck, FaRegTrashAlt} from 'react-icons/fa';
-import { FaFileCircleQuestion } from "react-icons/fa6";
 import {PiArrowCounterClockwiseBold} from 'react-icons/pi';
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
@@ -13,6 +12,7 @@ import { toast } from 'react-toastify';
 import GradientLineRusty from './GradientLineRusty';
 import HowtoCreate from './HowtoCreate';
 import { BsQuestionOctagonFill } from "react-icons/bs";
+import { useHowtoApi } from './HowtoAPIProvider';
 dayjs.extend(utc);
 
 
@@ -21,19 +21,15 @@ export default function HowtoManage() {
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => {setExpanded(!isExpanded);};  
   const [checkForRecords, setCheckForRecords] = useState(true);
-  const [tabledata, setTabledata] = useState([]);
   const [editing, setEditing] = useState("")
   const [howto_name, setHowto_name] = useState(null)
   const [howto_desc, setHowto_desc] = useState(null)
   const [howto_cat, setHowto_cat] = useState("Jy moet nog regmaak")
   const [howto_date, setHowto_date] = useState(null)
+  const { howtorootdata, loading, error } = useHowtoApi(); //gebruik van die nuwe useContext :-)
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
    
-  useEffect(() => {
-    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtos')
-      .then((response) => {const sortedTabledata = response.data.sort((b, a) => b.howto_name.localeCompare(a.howto_name)); 
-        setTabledata(sortedTabledata);}) //sort firstname alphabetically
-      .catch((e)=> console.error(e));}, 
-      [checkForRecords]);
 
         const handleEdit = (row) => {
           setEditing(row.howto_id)
@@ -94,7 +90,7 @@ export default function HowtoManage() {
       <div onClick={toggleAccordion}>
         &nbsp; &nbsp; <a data-tooltip-id="insert" data-tooltip-content="Amend">
           <BsQuestionOctagonFill style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>
-        &nbsp;<b>Manage Howto Library ({tabledata.length})</b>
+        &nbsp;<b>Manage Howto Library ({howtorootdata.length})</b>
       </div>
 
       <HowtoCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
@@ -110,7 +106,7 @@ export default function HowtoManage() {
               </thead>
 
               <tbody>
-                {tabledata.map((row) => {
+                {howtorootdata.map((row) => {
                   return (
                     <tr key={row.howto_id}>
                       <td className="Table6 td ">

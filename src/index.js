@@ -31,6 +31,7 @@ import ReactGA from 'react-ga';
 import PageMyCV from './PageMyCV';
 import { WebSiteAPIProvider } from './WebSiteAPIProvider';
 import { CyclopediaAPIProvider } from './CyclopediaAPIProvider';
+import { HowtoAPIProvider } from './HowtoAPIProvider';
 
 const TRACKING_ID = "G-FCGGY1NE36";
 ReactGA.initialize(TRACKING_ID);
@@ -105,11 +106,13 @@ export const auth = getAuth(app);
 
 ReactDOM.render(
   <React.StrictMode>
-    <CyclopediaAPIProvider>
-      <WebSiteAPIProvider>
-        <App />
-      </WebSiteAPIProvider>
-    </CyclopediaAPIProvider>
+    <HowtoAPIProvider>
+      <CyclopediaAPIProvider>
+        <WebSiteAPIProvider>
+          <App />
+        </WebSiteAPIProvider>
+      </CyclopediaAPIProvider>
+    </HowtoAPIProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

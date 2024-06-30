@@ -7,12 +7,13 @@ import Image from './graphix/12.png' //Lady Liberty
 // import Image from './graphix/Darknet12.png' //Blue Door
 // import ImageLeft from './graphix/1.jpg'
 import DBSearchComponent from './DBSearchComponent';
-import HowtoTicker from './HowtoTicker';
+// import HowtoTicker from './HowtoTicker';
 // import { BsQuestionOctagonFill } from "react-icons/bs";
 // import { GiGiftOfKnowledge } from "react-icons/gi";
 import TaskSummaryHomepage from './TaskSummaryHomepage';
 import { useWebsiteApi } from './WebSiteAPIProvider';
 import { useCyclopediaApi } from './CyclopediaAPIProvider';
+import { useHowtoApi } from './HowtoAPIProvider';
 
 
 
@@ -27,6 +28,7 @@ export default function HomePage22(props) {
   const [howtoIdd, setHowtoIdd] = useState(null);
   const { websiterootdata, loading, error } = useWebsiteApi(); //gebruik van die nuwe useContext :-)
   const { cyclopediarootdata } = useCyclopediaApi(); //gebruik van die nuwe useContext :-)
+  const { howtorootdata } = useHowtoApi(); //gebruik van die nuwe useContext :-)
   // if (loading) return <div>Loading...</div>;
   // if (error) return <div>Error: {error.message}</div>;
 
@@ -40,15 +42,15 @@ export default function HomePage22(props) {
       .catch((e) => console.error(e));
   }, [props.checkForRecords]);
 
-  useEffect(() => {
-    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtos')
-      // axios('http://localhost:8000/api/v1/howtos')
-      .then((response) => {
-        const sortedHowtodata = response.data.sort((a, b) => a.howto_name.localeCompare(b.howto_name));
-        setHowtodata(sortedHowtodata);
-      })
-      .catch((e) => console.error(e));
-  }, [props.checkForRecords]);
+  // useEffect(() => {
+  //   axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtos')
+  //     // axios('http://localhost:8000/api/v1/howtos')
+  //     .then((response) => {
+  //       const sortedHowtodata = response.data.sort((a, b) => a.howto_name.localeCompare(b.howto_name));
+  //       setHowtodata(sortedHowtodata);
+  //     })
+  //     .catch((e) => console.error(e));
+  // }, [props.checkForRecords]);
 
   // useEffect(() => {
   //   axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia')
@@ -189,7 +191,7 @@ export default function HomePage22(props) {
     ];
 
     const groupedHowtoData = {};
-    howtodata.forEach((row) => {
+    howtorootdata.forEach((row) => {
       if (!groupedHowtoData[row.howto_cat]) {
         groupedHowtoData[row.howto_cat] = [];
       }
@@ -226,7 +228,7 @@ export default function HomePage22(props) {
             <div>&nbsp;</div>
             <div>&nbsp;</div>
             <div>&nbsp;</div>
-            {howtodata.length > 0 && (
+            {howtorootdata.length > 0 && (
               <tr>
                 <td>
                   {amazonIframes.map((iframeUrl, iframeIndex) => (
@@ -315,7 +317,7 @@ export default function HomePage22(props) {
 
         <tbody>
           {websiterootdata.map((row, index) => {
-            const howtoRow = howtodata[index];
+            const howtoRow = howtorootdata[index];
             const cyclopediaRow = cyclopediarootdata[index];
 
             return (
