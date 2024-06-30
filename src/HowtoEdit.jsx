@@ -1,34 +1,31 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useState, useEffect } from 'react';
 import { Tooltip } from '@mui/material';
 import './Fonts.css';
 import 'react-dropdown/style.css';
 import HowtoStepAccordion from './HowtoStepAccordion';
-
+import { useWebsiteApi } from './WebSiteAPIProvider';
 
 export default function HowtoEdit(props) {
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
-  const [websitedata, setWebsitedata] = useState([])
+  const [websitedata1, setWebsitedata1] = useState([]);
+  const { websiterootdata, loading, error } = useWebsiteApi(); //gebruik van die nuwe useContect :-)
 
   useEffect(() => {
-    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites')
-      .then((response) => {
-        const filteredwebsites = response.data.filter(site => { return site.howto_id_fk === props.howto_id });
-        const sortedfilteredwebsites = filteredwebsites.sort((a, b) => a.website_name.localeCompare(b.website_name));
-        setWebsitedata(sortedfilteredwebsites);
-      })
-      .catch((e) => console.error(e));
-  }, [props.checkForRecords]);
+    if (websiterootdata && Array.isArray(websiterootdata)) {
+      const filteredwebsites = websiterootdata.filter(site => site.howto_id_fk === props.howto_id);
+      const sortedfilteredwebsites = filteredwebsites.sort((a, b) => a.website_name.localeCompare(b.website_name));
+      setWebsitedata1(sortedfilteredwebsites);
+    }
+  }, [websiterootdata, props.howto_id]);
 
-
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   const InnerTableLeft = () => {
-
     const groupedData = {};
 
-
-    websitedata.forEach((row) => {
+    websitedata1.forEach((row) => {
       if (!groupedData[row.website_cat]) {
         groupedData[row.website_cat] = [];
       }
@@ -38,22 +35,24 @@ export default function HowtoEdit(props) {
     const sortedCategories = Object.keys(groupedData).sort();
 
     return (
-      <div className="scrollable-container">  <Tooltip id="insert" /> 
+      <div className="scrollable-container">
+        <Tooltip id="insert" />
         <table className="Table-home-left">
           <tbody>
             {sortedCategories.map((category) => (
-
-              <>&nbsp;
+              <>
+                &nbsp;
                 <div>&nbsp;</div>
                 <div>&nbsp;</div>
                 <div>&nbsp;</div>
                 <div>&nbsp;</div>
                 <div>&nbsp;</div>
-
                 {groupedData[category].map((record, index) => (
                   <tr key={index}>
                     <td style={{ width: '20%', verticalAlign: 'top' }} className="Font-Segoe-Medium-Howto">
-                      <a href={record.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.website_desc}>{record.website_name}</a>
+                      <a href={record.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.website_desc}>
+                        {record.website_name}
+                      </a>
                     </td>
                   </tr>
                 ))}
@@ -62,14 +61,11 @@ export default function HowtoEdit(props) {
           </tbody>
         </table>
       </div>
-
     );
   };
 
   return (
-
     <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
-
       <table style={{ width: '100%' }}>
         <thead>
           <tr>
@@ -80,7 +76,6 @@ export default function HowtoEdit(props) {
             <td style={{ width: '25%' }}></td>
           </tr>
         </thead>
-
         <tbody>
           <tr>
             <td style={{ width: '25%' }} className="Table-home-left"><InnerTableLeft /></td>
@@ -94,4 +89,3 @@ export default function HowtoEdit(props) {
     </div>
   );
 }
-

@@ -8,32 +8,25 @@ import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
 import { toast } from 'react-toastify';
 import GradientLineRusty from './GradientLineRusty';
 import WebsiteCreate from './WebsiteCreate';
+import { useWebsiteApi } from './WebSiteAPIProvider';
+
+
 
 export default function WebsiteManage(props) {
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [checkForRecords, setCheckForRecords] = useState(true);
-  const [tabledata, setTabledata] = useState([]);
   const [editing, setEditing] = useState("")
   const [website_name, setWebsite_name] = useState();
   const [website_desc, setWebsite_desc] = useState();
   const [website_url, setWebsite_url] = useState();
   const [website_cat, setWebsite_cat] = useState();
+  const { websiterootdata, loading, error } = useWebsiteApi(); //gebruik van die nuwe useContect :-)
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
-  useEffect(() => {
-    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites')
-      .then((response) => {
-        const sortedTabledata = response.data.sort((b, a) => b.website_name.localeCompare(a.website_name));
-        setTabledata(sortedTabledata);
-        setCheckForRecords(!checkForRecords);})
-      .catch((e) => console.error(e));
-  }, [checkForRecords] 
-  [props.checkForRecordsA]
-  
-  );
 
-  const handleEdit = (row) => 
-  {
+  const handleEdit = (row) => {
     setEditing(row.id)
     setWebsite_name(row.website_name)
     setWebsite_desc(row.website_desc)
@@ -41,8 +34,7 @@ export default function WebsiteManage(props) {
     setWebsite_cat(row.website_cat)
   };
 
-  const onEditCancel = () => 
-  {
+  const onEditCancel = () => {
     setEditing("");
     setWebsite_name(null)
     setWebsite_desc(null)
@@ -54,7 +46,7 @@ export default function WebsiteManage(props) {
   const onEditSave = async () => {
     {
 
-      const websitePUT = 
+      const websitePUT =
       {
         'website_name': website_name,
         'website_desc': website_desc,
@@ -66,7 +58,7 @@ export default function WebsiteManage(props) {
       await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/update/${editing}`, websitePUT)
         .then((response) => {
           setCheckForRecords(!checkForRecords);
-          toast.success(`${website_name} updated.`)
+          toast.success(`Website updated.`)
         }
         )
       onEditCancel();
@@ -75,8 +67,7 @@ export default function WebsiteManage(props) {
 
   const onEditDelete = (row) => {
     axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/delete/${row.id}`)
-      .then((response) => 
-      {
+      .then((response) => {
         window.alert('Are you sure you want to delete');
         setCheckForRecords(!checkForRecords);
         toast.success(`${website_name} purged.`)
@@ -91,7 +82,8 @@ export default function WebsiteManage(props) {
       <div onClick={toggleAccordion}>
         &nbsp; &nbsp;
         <TbWorldWww style={{ color: '#336791', fontSize: '42px', cursor: 'pointer' }} />
-        &nbsp;<b>Manage the {tabledata.length} Tools, Websites or Books</b>
+        {/* &nbsp;<b>Manage the {websitedata.length} Tools, Websites or Books</b> */}
+        &nbsp;<b>Manage the {websiterootdata.length} Tools, Websites or Books</b>
       </div>
 
       <WebsiteCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
@@ -103,12 +95,14 @@ export default function WebsiteManage(props) {
             <th style={{ width: '400px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Tool / Website / Book</th>
             <th style={{ width: '800px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Value / Description / Action</th>
             <th style={{ width: '400px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>URL</th>
-            <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Catagory</th>
+            <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Category</th>
           </tr>
         </thead>
 
         <tbody>
-          {tabledata.map((row) => {
+          {/* {websitedata.map((row) => { */}
+          {websiterootdata.map((row) => {
+
             return (
               <tr key={row.id}>
                 <td>
@@ -134,7 +128,7 @@ export default function WebsiteManage(props) {
                 <td className="asmshover">{row.id === editing ? (<textarea style={{ height: '30px', width: '780px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_desc} onChange={(e) => setWebsite_desc(e.target.value)} />) : (row.website_desc)}</td>
                 <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '380px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_url} onChange={(e) => setWebsite_url(e.target.value)} />) : "URL is te lank"}</td>
                 <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '180px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_cat} onChange={(e) => setWebsite_cat(e.target.value)} />) : (row.website_cat)}</td>
-              
+
               </tr>
             )
           })

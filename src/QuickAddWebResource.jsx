@@ -2,25 +2,29 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import './Fonts.css';
 import { toast } from 'react-toastify';
+import { useWebsiteApi } from './WebSiteAPIProvider';
 
 export default function QuickAddWebResource(props) {
     const [website_name, setWebsite_name] = useState('');
     const [website_desc, setWebsite_desc] = useState('');
     const [website_url, setWebsite_url] = useState('');
     const [website_cat, setWebsite_cat] = useState('');
-    const [websitedata, setWebsitedata] = useState(null);
+    // const [websitedata, setWebsitedata] = useState(null);
     const [checkForRecords, setCheckForRecords] = useState(true);
+    const {websiterootdata, loading, error} = useWebsiteApi(); //gebruik van die nuwe useContect :-)
+    if (loading) return <div>Loading...</div>;
+    if (error) return <div>Error: {error.message}</div>;
 
-    useEffect(() => {
-        axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites')
-            .then((response) => {
-                const sortedwebsitedata = response.data.sort((b, a) => b.website_name.localeCompare(a.website_name));
-                setWebsitedata(sortedwebsitedata);
-            })
-            .catch((e) => console.error(e));
-    },
-        [checkForRecords]
-    )
+    // useEffect(() => {
+    //     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites')
+    //         .then((response) => {
+    //             const sortedwebsitedata = response.data.sort((b, a) => b.website_name.localeCompare(a.website_name));
+    //             setWebsitedata(sortedwebsitedata);
+    //         })
+    //         .catch((e) => console.error(e));
+    // },
+    //     [checkForRecords]
+    // )
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -75,8 +79,8 @@ export default function QuickAddWebResource(props) {
                         }}
                     >
                         <option disabled selected value="">Category</option>
-                        {websitedata &&
-                            Array.from(new Set(websitedata.map(option => option.website_cat)))
+                        {websiterootdata &&
+                            Array.from(new Set(websiterootdata.map(option => option.website_cat)))
                                 .sort()
                                 .map(category => (
                                     <option key={category} value={category} data-category={category}>
