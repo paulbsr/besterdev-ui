@@ -278,6 +278,14 @@
     font-weight: bold;
 }
 
+.Font-Segoe-XLarge-FP {
+    font-family: "Segoe UI";
+    font-size: x-large;
+    color: #D5441C;
+    cursor: pointer;
+    font-weight: bold;
+}
+
 .Font-Verdana-Medium-Indeed {
     font-family: "Verdana";
     font-size: medium;

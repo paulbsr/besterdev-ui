@@ -8,6 +8,7 @@ import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
 import CyclopediaCreate from './CyclopediaCreate';
 import GradientLineRusty from './GradientLineRusty';
 import { IoLibrary } from "react-icons/io5";
+import { useCyclopediaApi } from './CyclopediaAPIProvider';
 
 
 function CyclopediaManage() {
@@ -16,20 +17,23 @@ function CyclopediaManage() {
   const [cyclopedianame, setCyclopediaName] = useState();
   const [cyclopediadesc, setCyclopediaDesc] = useState();
   const [cyclopediaref, setCyclopediaRef] = useState();
-  const [cyclopediadata, setCyclopediaData] = useState([]);
+  // const [cyclopediadata, setCyclopediaData] = useState([]);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [isExpanded, setExpanded] = useState(false);
+  const { cyclopediarootdata, loading, error } = useCyclopediaApi(); //gebruik van die nuwexuseContect :-)
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
 
-  useEffect(() => {
-    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia')
-      .then((response) => {
-        const sortedCyclopediaData = response.data.sort((a, b) => a.cyclopedia_name.localeCompare(b.cyclopedia_name));
-        setCyclopediaData(sortedCyclopediaData);
-        setCheckForRecords(!checkForRecords);
-      })
-      .catch((e) => console.error(e));
-  }, [checkForRecords]);
+  // useEffect(() => {
+  //   axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia')
+  //     .then((response) => {
+  //       const sortedCyclopediaData = response.data.sort((a, b) => a.cyclopedia_name.localeCompare(b.cyclopedia_name));
+  //       setCyclopediaData(sortedCyclopediaData);
+  //       setCheckForRecords(!checkForRecords);
+  //     })
+  //     .catch((e) => console.error(e));
+  // }, [checkForRecords]);
 
 
 
@@ -81,7 +85,7 @@ function CyclopediaManage() {
         <Tooltip id="insert" />
         <div onClick={toggleAccordion}>
           &nbsp; &nbsp; <IoLibrary style={{ color: '#336791', fontSize: '38px', cursor: 'pointer' }} />
-          &nbsp;<b>Manage the {cyclopediadata.length} Cyclopedia Entries</b>
+          &nbsp;<b>Manage the {cyclopediarootdata.length} Cyclopedia Entries</b>
         </div>
 
         <CyclopediaCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
@@ -97,7 +101,7 @@ function CyclopediaManage() {
           </thead>
 
           <tbody>
-            {cyclopediadata.map((row) => {
+            {cyclopediarootdata.map((row) => {
               return (
                 <tr key={row.cyclopedia_id}>
                   <td className="Table6 td ">

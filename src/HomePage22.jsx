@@ -5,13 +5,16 @@ import 'react-dropdown/style.css';
 import axios from 'axios'
 import Image from './graphix/12.png' //Lady Liberty
 // import Image from './graphix/Darknet12.png' //Blue Door
-import ImageLeft from './graphix/1.jpg'
+// import ImageLeft from './graphix/1.jpg'
 import DBSearchComponent from './DBSearchComponent';
 import HowtoTicker from './HowtoTicker';
-import { BsQuestionOctagonFill } from "react-icons/bs";
-import { GiGiftOfKnowledge } from "react-icons/gi";
+// import { BsQuestionOctagonFill } from "react-icons/bs";
+// import { GiGiftOfKnowledge } from "react-icons/gi";
 import TaskSummaryHomepage from './TaskSummaryHomepage';
 import { useWebsiteApi } from './WebSiteAPIProvider';
+import { useCyclopediaApi } from './CyclopediaAPIProvider';
+
+
 
 export default function HomePage22(props) {
   const [isExpanded, setExpanded] = useState(false);
@@ -23,6 +26,9 @@ export default function HomePage22(props) {
   const [showHowtoEdit, setShowHowtoEdit] = useState(false);
   const [howtoIdd, setHowtoIdd] = useState(null);
   const { websiterootdata, loading, error } = useWebsiteApi(); //gebruik van die nuwe useContext :-)
+  const { cyclopediarootdata } = useCyclopediaApi(); //gebruik van die nuwe useContext :-)
+  // if (loading) return <div>Loading...</div>;
+  // if (error) return <div>Error: {error.message}</div>;
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks')
@@ -44,17 +50,17 @@ export default function HomePage22(props) {
       .catch((e) => console.error(e));
   }, [props.checkForRecords]);
 
-  useEffect(() => {
-    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia')
-      // axios('http://localhost:8000/api/v1/cyclopedia')
-      .then((response) => {
-        // const sortedCyclopediaData = response.data.sort((a, b) => a.cyclopedia_name.localeCompare(b.cyclopedia_name));
-        const cyclopediaData = response.data;
-        shuffleCyclopediaArray(cyclopediaData);
-        setCyclopediaData(cyclopediaData);
-      })
-      .catch((e) => console.error(e));
-  }, [props.checkForRecords]);
+  // useEffect(() => {
+  //   axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia')
+  //     // axios('http://localhost:8000/api/v1/cyclopedia')
+  //     .then((response) => {
+  //       // const sortedCyclopediaData = response.data.sort((a, b) => a.cyclopedia_name.localeCompare(b.cyclopedia_name));
+  //       const cyclopediaData = response.data;
+  //       shuffleCyclopediaArray(cyclopediaData);
+  //       setCyclopediaData(cyclopediaData);
+  //     })
+  //     .catch((e) => console.error(e));
+  // }, [props.checkForRecords]);
 
   const shuffleCyclopediaArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -115,7 +121,7 @@ export default function HomePage22(props) {
     const [selectedLetter, setSelectedLetter] = useState(null);
 
     // Assuming cyclopediadata is an array of objects with a property 'cyclopedia_name'
-    const filteredData = selectedLetter ? cyclopediadata.filter((rowc) => rowc.cyclopedia_name && rowc.cyclopedia_name.startsWith(selectedLetter)) : cyclopediadata;
+    const filteredData = selectedLetter ? cyclopediarootdata.filter((rowc) => rowc.cyclopedia_name && rowc.cyclopedia_name.startsWith(selectedLetter)) : cyclopediarootdata;
 
     const firstTwentyCyclopediaRecords = filteredData.slice(0, 30);
 
@@ -150,7 +156,7 @@ export default function HomePage22(props) {
                 &nbsp;&nbsp;{letter}
               </span>
             ))}
-            &nbsp; &nbsp; ({cyclopediadata.length})
+            &nbsp; &nbsp; ({cyclopediarootdata.length})
           </div>
 
           <div className='Font-Spacer-White'>Make this spacer white</div>
@@ -310,7 +316,7 @@ export default function HomePage22(props) {
         <tbody>
           {websiterootdata.map((row, index) => {
             const howtoRow = howtodata[index];
-            const cyclopediaRow = cyclopediadata[index];
+            const cyclopediaRow = cyclopediarootdata[index];
 
             return (
               <tr key={index}>

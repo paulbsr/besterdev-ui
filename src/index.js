@@ -30,6 +30,7 @@ import { useUserContext } from './UserContext';
 import ReactGA from 'react-ga';
 import PageMyCV from './PageMyCV';
 import { WebSiteAPIProvider } from './WebSiteAPIProvider';
+import { CyclopediaAPIProvider } from './CyclopediaAPIProvider';
 
 const TRACKING_ID = "G-FCGGY1NE36";
 ReactGA.initialize(TRACKING_ID);
@@ -40,7 +41,7 @@ const PrivateRoutes = () => {
   return (
     loggedInUserEmail ? <Outlet /> : <Navigate to='/login' />
   );
-}
+};
 
 const firebaseConfig = {
   apiKey: "AIzaSyCwDLcoI45eQU61Y7GVXlBDAx-3Du_gQuA",
@@ -56,49 +57,47 @@ firebase.initializeApp(firebaseConfig);
 const app = initializeApp(firebaseConfig);
 
 const App = () => {
-  const [searchPhrase, setSearchPhrase] = useState(); //alles begin hier
+  const [searchPhrase, setSearchPhrase] = useState();
   const [checkForRecords, setCheckForRecords] = useState(true);
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/searchphrase')
-    // axios('http://localhost:8000/api/v1/searchphrase')
       .then((response) => {
         const searchPhraseValue = response.data[0].searchphrase;
         setSearchPhrase(searchPhraseValue);
         console.log('In <index.js> is jou searchPhraseValue:', searchPhraseValue);
       }).catch((e) => console.error(e));
   }, [checkForRecords]);
+
   console.log('In <index.js> is jou searchPhrase:', searchPhrase);
 
   return (
-    <>
-      <UserProvider>
-        <Router>
-          <Routes>
-            <Route element={<PrivateRoutes />}>
-              <Route path='/search' element={<PageSearch />} />
-              <Route path='/screen' element={<PageSearch />} />
-              <Route path='/candidatemanage' element={<PageManage />} />
-              <Route path='/logout' element={<PageLogout />} />
-              <Route path='/howtomanage' element={<PageHowtoManage />} />
-              <Route path='/hunt' element={<PageSearch />} />
-              <Route path='/cyclopediamanage' element={<PageCyclopedia />} />
-              <Route path='/webresourcemanage' element={<PageResources />} />
-              <Route path='/peoplescorecard' element={<PagePeopleScorecard />} />
-              <Route path='/taskmanage' element={<PageTaskManage />} />
-              <Route path='/mycv' element={<PageMyCV />} />
-            </Route>
-            <Route path='/taskedit/:task_id' element={<PageTaskEdit />} />
-            <Route path='/howtoedit/:howto_id' element={<PageHowtoEdit />} />
-            {searchPhrase && <Route path='/home' element={<PageHome searchPhrase={searchPhrase} />} />}
-            {searchPhrase && <Route path='/login' element={<PageLogin searchPhrase={searchPhrase} />} />}
-            <Route path='/swagger' element={<PageSwagger />} />
-            {searchPhrase && <Route path='/' element={<PageLogin searchPhrase={searchPhrase} />} />}
-            {searchPhrase && <Route path='*' element={<PageLogin searchPhrase={searchPhrase} />} />}
-          </Routes>
-        </Router>
-      </UserProvider>
-    </>
+    <UserProvider>
+      <Router>
+        <Routes>
+          <Route element={<PrivateRoutes />}>
+            <Route path='/search' element={<PageSearch />} />
+            <Route path='/screen' element={<PageSearch />} />
+            <Route path='/candidatemanage' element={<PageManage />} />
+            <Route path='/logout' element={<PageLogout />} />
+            <Route path='/howtomanage' element={<PageHowtoManage />} />
+            <Route path='/hunt' element={<PageSearch />} />
+            <Route path='/cyclopediamanage' element={<PageCyclopedia />} />
+            <Route path='/webresourcemanage' element={<PageResources />} />
+            <Route path='/peoplescorecard' element={<PagePeopleScorecard />} />
+            <Route path='/taskmanage' element={<PageTaskManage />} />
+            <Route path='/mycv' element={<PageMyCV />} />
+          </Route>
+          <Route path='/taskedit/:task_id' element={<PageTaskEdit />} />
+          <Route path='/howtoedit/:howto_id' element={<PageHowtoEdit />} />
+          {searchPhrase && <Route path='/home' element={<PageHome searchPhrase={searchPhrase} />} />}
+          {searchPhrase && <Route path='/login' element={<PageLogin searchPhrase={searchPhrase} />} />}
+          <Route path='/swagger' element={<PageSwagger />} />
+          {searchPhrase && <Route path='/' element={<PageLogin searchPhrase={searchPhrase} />} />}
+          {searchPhrase && <Route path='*' element={<PageLogin searchPhrase={searchPhrase} />} />}
+        </Routes>
+      </Router>
+    </UserProvider>
   );
 };
 
@@ -106,10 +105,14 @@ export const auth = getAuth(app);
 
 ReactDOM.render(
   <React.StrictMode>
-    <WebSiteAPIProvider>
-      <App />
-    </WebSiteAPIProvider>
+    <CyclopediaAPIProvider>
+      <WebSiteAPIProvider>
+        <App />
+      </WebSiteAPIProvider>
+    </CyclopediaAPIProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
+
 export default App;
+
