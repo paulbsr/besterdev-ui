@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Fonts.css';
-import { Tooltip } from 'react-tooltip';
+import ReactTooltip from 'react-tooltip';
 
 const TaskSummaryHomepage = (props) => {
   const [taskdata, setTaskdata] = useState([]);
@@ -78,8 +78,8 @@ const TaskSummaryHomepage = (props) => {
                     <a href={`/taskedit/${record.id}`} 
                        target="_blank" 
                        rel="noopener noreferrer" 
-                       data-tooltip-id="task-tooltip" 
-                       data-tooltip-content={getMostRecentTaskRecord(record.tasks)}
+                       data-tip={getMostRecentTaskRecord(record.tasks)}
+                       data-for="taskTooltip"
                        style={{ color: category === "PROBLEM" ? 'red' : (category === "WIP" ? 'rgb(0,0,255)' : (category === "START" ? 'black' : (category === "DONE" ? 'rgb(0,255,0)' : 'inherit'))) }}>
                       {record.taskname}
                     </a>
@@ -90,22 +90,21 @@ const TaskSummaryHomepage = (props) => {
           ))}
         </tbody>
       </table>
-      
-      <Tooltip id="task-tooltip" 
-      style={{
-        backgroundColor: '#333',
-        color: '#fff',
-        fontSize: '16px',
-        padding: '10px',
-        borderRadius: '5px',
-        maxWidth: '900px',
-      }}
-      place="top" 
-      type="dark" 
-      effect="solid"/>
+      <ReactTooltip id="taskTooltip" 
+        className="custom-tooltip" 
+        style={{
+          backgroundColor: '#333',
+          color: '#fff',
+          fontSize: '16px',
+          padding: '10px',
+          borderRadius: '5px',
+          maxWidth: '800px',
+        }}
+        place="top" 
+        type="dark" 
+        effect="solid"/>
     </div>
   );
 };
 
 export default TaskSummaryHomepage;
-
