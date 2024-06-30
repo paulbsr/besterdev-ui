@@ -2,12 +2,10 @@ import React from 'react';
 import { Stack } from "@mui/material";
 import { useCyclopediaApi } from './CyclopediaAPIProvider';
 
-
 export default function CyclopediaTicker(props) {
-  const { cyclopediarootdata, loading, error } = useCyclopediaApi(); //gebruik van die nuwe API Context :-)
+  const { cyclopediarootdata, loading, error } = useCyclopediaApi(); // gebruik van die nuwe API Context :-)
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
-
 
   const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -15,6 +13,9 @@ export default function CyclopediaTicker(props) {
       [array[i], array[j]] = [array[j], array[i]];
     }
   };
+
+  // Shuffle the data before filtering
+  shuffleArray(cyclopediarootdata);
 
   const filteredCyclopediadata = cyclopediarootdata.filter(news => news.cyclopedia_ref === "CVCP");
 
