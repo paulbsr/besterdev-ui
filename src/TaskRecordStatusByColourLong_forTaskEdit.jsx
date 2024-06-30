@@ -1,5 +1,5 @@
 import React from 'react';
-import './StatusByColourLong_forTaskEdit.css';
+// import './StatusByColourLong_forTaskEdit.css';
 
 function TaskRecordStatusByColourLong_forTaskEdit(props) {
   let color = '';

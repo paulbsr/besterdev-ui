@@ -96,11 +96,13 @@ function TaskRecordAccordion({
                                             <GiCheckMark style={{ color: "C0C0C0", fontSize: "15px", cursor: 'pointer' }} />
                                         </div>
                                     </Tooltip>
+                                    &nbsp;&nbsp;
                                     <Tooltip title="Revert" placement="top-end">
                                         <div onClick={() => onEditCancel()}>
                                             <BsArrowCounterclockwise style={{ color: "C0C0C0", fontSize: "17px", cursor: 'pointer' }} />
                                         </div>
                                     </Tooltip>
+                                    &nbsp;&nbsp;
                                 </>
                             ) : status !== "DONE" ? (
                                 <Tooltip title={`Edit Task Record: ${childid}`} placement="top-end">
