@@ -11,6 +11,7 @@ import ToastComponent from './ToastComponent';
 import BreakingNews from './BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
 import PeopleScorecard from './PeopleScorecard'
+import DBSearchComponentBanner from './DBSearchComponentBanner';
 
 
 

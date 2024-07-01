@@ -14,6 +14,8 @@ import BreakingNews from './BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
 import TaskOverview from './TaskOverview';
 import { TaskContext } from "./Contexts";
+import DBSearchComponent from './DBSearchComponent';
+import DBSearchComponentBanner from './DBSearchComponentBanner';
 
 
 

@@ -10,6 +10,7 @@ import GradientLineThin from './GradientLineThin';
 import QuickAddWebResource from './QuickAddWebResource';
 import QuickAddCyclopedia from './QuickAddCyclopedia';
 import DBSearchComponent from './DBSearchComponent';
+import DBSearchComponentBanner from './DBSearchComponentBanner';
 
 
 function TabPanel(props) {
@@ -60,6 +61,7 @@ export default function Quicklinks3() {
     <>
       <Box>
         <LinkTabs variant="scrollable">
+          <DBSearchComponentBanner />
           <QuickAddWebResource checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
           <QuickAddCyclopedia checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
         </LinkTabs>

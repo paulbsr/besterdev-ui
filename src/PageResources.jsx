@@ -7,6 +7,7 @@ import WebsiteManage from './WebsiteManage';
 import ToastComponent from './ToastComponent';
 import BreakingNews from './BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
+import DBSearchComponentBanner from './DBSearchComponentBanner';
 
 export default function PageResources() {
     return (
