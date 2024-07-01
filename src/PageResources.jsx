@@ -21,6 +21,7 @@ export default function PageResources() {
         <CyclopediaTicker />
         <GradientLineThin />
         <Quicklinks3 />
+        {/* <DBSearchComponentBanner /> */}
         <WebsiteManage />
         <ToastComponent />
 

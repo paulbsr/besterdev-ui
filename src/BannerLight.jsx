@@ -59,7 +59,8 @@ import DBSearchComponentBanner from './DBSearchComponentBanner';
 
   return (
 
-    <div className="banner-light-left" >
+    <div className="banner-light-left">
+
       &nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Breaking News" ><GiRapidshareArrow  style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} />&nbsp;<span style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#336791' }}>Breaking News is about: </span><i style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#D5441C' }}>{searchPhrase}</i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -106,7 +107,7 @@ import DBSearchComponentBanner from './DBSearchComponentBanner';
       <a data-tooltip-id="insert" data-tooltip-content="OAuth2.0 protected APIs" onClick={handleNavigateSwagger}><TbBrandOauth style={{ color: '#000000', fontSize: '31px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="ChatGPT v3.5" href="https://chat.openai.com/auth/login" target="_blank" rel="noreferrer"><RiOpenaiFill style={{ color: '#19c37c', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Logout" onClick={handleNavigateLogout}><SlLogout style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
-
+      {/* <DBSearchComponentBanner /> */}
     </div>
   );
 };

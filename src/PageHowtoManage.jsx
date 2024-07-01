@@ -21,6 +21,7 @@ export default function PageHowtoManage() {
         <CyclopediaTicker />
         <GradientLineThin />
         <Quicklinks3 />
+        {/* <DBSearchComponentBanner /> */}
         <HowtoManage />
         <ToastComponent />
 

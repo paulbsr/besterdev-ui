@@ -133,7 +133,7 @@ const DBSearchComponent = () => {
                               </div>
                             </>
                             :
-                            <div className="Font-Segoe-Large-Howto">
+                            <div className="Font-Segoe-Small-Howto">
                               <IoLibrarySharp style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                               <b>{highlightKeyword(result.cyclopedia_name, searchQuery)}: </b>{highlightKeyword(result.cyclopedia_desc, searchQuery)}
                               &nbsp;&nbsp;&nbsp;
@@ -174,7 +174,7 @@ const DBSearchComponent = () => {
               return (
                 <div className="dbsearchhover" key={result.id}>
                   Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247' }}>Web Resource</b>:&nbsp;&nbsp;
-                  <div className="Font-Segoe-Large-Howto">
+                  <div className="Font-Segoe-Small-Howto">
                     <TbWorldWww style={{ color: '#169247', fontSize: '23px', cursor: 'pointer' }} />&nbsp;
                     <a href={result.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.website_desc}>
                       <b>{highlightKeyword(result.website_name, searchQuery)}</b>
@@ -191,7 +191,7 @@ const DBSearchComponent = () => {
               return (
                 <div className="dbsearchhover" key={result.id}>
                   Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247' }}>Breaking News Article</b>:&nbsp;&nbsp;
-                  <div className="Font-Segoe-Large-Howto">
+                  <div className="Font-Segoe-Small-Howto">
                     <SiWritedotas style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                     <a href={result.news_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.news_source}>
                       {highlightKeyword(result.news_title, searchQuery)}
@@ -208,7 +208,7 @@ const DBSearchComponent = () => {
               return (
                 <div className="dbsearchhover" key={result.id}>
                   Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247' }}>Task Name:</b>
-                  <div className="Font-Segoe-Large-Howto">
+                  <div className="Font-Segoe-Small-Howto">
                     <MdTask style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                     <a href={`/taskedit/${result.id}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.id}>
                     <b>{highlightKeyword(result.taskname, searchQuery)}</b></a>
@@ -223,7 +223,7 @@ const DBSearchComponent = () => {
               return (
                 <div className="dbsearchhover" key={result.id}>
                   Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247' }}>Task Record:</b>
-                  <div className="Font-Segoe-Large-Howto">
+                  <div className="Font-Segoe-Small-Howto">
                     <MdTask style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />
                     <a href={`/taskedit/${result.id}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.id}>
                     <GiFiles style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
@@ -238,7 +238,7 @@ const DBSearchComponent = () => {
               return (
                 <div className="dbsearchhover" key={result.id}>
                   Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247' }}>HOWTO document</b>:&nbsp;&nbsp;
-                  <div className="Font-Segoe-Large-Howto">
+                  <div className="Font-Segoe-Small-Howto">
                     <BsQuestionOctagonFill style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                     <a href={`/howtoedit/${result.howto_id}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.howto_summary}>
                       <b>{highlightKeyword(result.howto_name, searchQuery)}</b>
@@ -254,7 +254,7 @@ const DBSearchComponent = () => {
               return (
                 <div className="dbsearchhover" key={result.id}>
                   Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247' }}>Step Name</b> in a HOWTO document:
-                  <div className="Font-Segoe-Large-Howto">
+                  <div className="Font-Segoe-Small-Howto">
                     <BsQuestionOctagonFill style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />
                     <IoFootstepsSharp style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                     <b>{highlightKeyword(result.step_name, searchQuery)}</b> which has a Step Objective to: <i>" {result.step_obj} " </i>
@@ -269,7 +269,7 @@ const DBSearchComponent = () => {
               return (
                 <div className="dbsearchhover" key={result.id}>
                   Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247' }}>Step Record</b>:&nbsp;&nbsp;
-                  <div className="Font-Segoe-Large-Howto">
+                  <div className="Font-Segoe-Small-Howto">
                     <BsQuestionOctagonFill style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />
                     <IoFootstepsSharp style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />
                     <GiFiles style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />&nbsp;

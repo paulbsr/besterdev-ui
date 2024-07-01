@@ -9,6 +9,8 @@ import ToastComponent from './ToastComponent';
 import BreakingNews from './BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
 import BreakingNewsAPI from './BreakingNewsAPI';
+import DBSearchComponent from './DBSearchComponent';
+import DBSearchComponentBanner from './DBSearchComponentBanner';
 
 export default function PageHome() {
     return (

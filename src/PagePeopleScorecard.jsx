@@ -28,6 +28,7 @@ export default function PagePeopleScorecard(cyclopediadata) {
       <CyclopediaTicker />
       <GradientLineThin />
       <Quicklinks3 />
+      {/* <DBSearchComponentBanner /> */}
       <PeopleScorecard />
       <ToastComponent />
     </div>

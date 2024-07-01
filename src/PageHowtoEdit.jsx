@@ -27,6 +27,7 @@ export default function PageHowtoEdit() {
         <BreakingNews />
         <GradientLineThin />
         <CyclopediaTicker />
+        <DBSearchComponentBanner />
         <HowtoEdit howto_id={howto_id}/>
         <ToastComponent />
 

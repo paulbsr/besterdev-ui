@@ -22,13 +22,12 @@ export default function PageTaskEdit() {
         <GradientLine />
         <BannerLight />
         <GradientLineThin />
-        <Quicklinks3 />
-        <GradientLineThin />
         <BreakingNews />
         <GradientLineThin />
         <CyclopediaTicker />
         <GradientLineThin />
         <Quicklinks3 />
+        {/* <DBSearchComponentBanner /> */}
         <TaskEdit task_id={task_id}/>
         <ToastComponent />
 

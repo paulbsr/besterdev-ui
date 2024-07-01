@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import ToastComponent from './ToastComponent';
 import BreakingNews from './BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
+import DBSearchComponentBanner from './DBSearchComponentBanner';
 
 export default function PageManage() {
   return (
@@ -24,6 +25,7 @@ export default function PageManage() {
       <CyclopediaTicker />
       <GradientLineThin />
       <Quicklinks3 />
+      {/* <DBSearchComponentBanner /> */}
       <CandidateManage />
       <EmployerManage1 />
       <JobreqManage />

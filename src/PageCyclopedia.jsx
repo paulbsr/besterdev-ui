@@ -11,6 +11,7 @@ import CyclopediaManage from './CyclopediaManage';
 import ToastComponent from './ToastComponent';
 import BreakingNews from './BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
+import DBSearchComponentBanner from './DBSearchComponentBanner';
 
 
 
@@ -27,6 +28,7 @@ export default function PageCyclopedia(cyclopediadata) {
       <CyclopediaTicker />
       <GradientLineThin />
       <Quicklinks3 />
+      {/* <DBSearchComponentBanner /> */}
       <CyclopediaManage />
       <ToastComponent />
     </div>

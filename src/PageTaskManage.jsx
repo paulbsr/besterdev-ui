@@ -48,6 +48,7 @@ export default function PageTaskManage() {
       <CyclopediaTicker />
       <GradientLineThin />
       <Quicklinks3 />
+      {/* <DBSearchComponentBanner /> */}
       <TaskContext.Provider value={tasks}>
       <TaskOverview />
       </TaskContext.Provider>

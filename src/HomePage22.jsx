@@ -287,7 +287,7 @@ export default function HomePage22(props) {
           </tr>
         </thead>
 
-        <tbody>
+        {/* <tbody>
           {websiterootdata.map((row, index) => {
             const howtoRow = howtorootdata[index];
             const cyclopediaRow = cyclopediarootdata[index];
@@ -298,8 +298,10 @@ export default function HomePage22(props) {
                 <td></td>
               </tr>
             );
-          })}
-        </tbody>
+          }
+          )
+          }
+        </tbody> */}
       </table>
     </div>
   );
