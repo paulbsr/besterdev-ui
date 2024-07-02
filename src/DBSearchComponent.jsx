@@ -225,7 +225,7 @@ const DBSearchComponent = () => {
                   Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247' }}>Task Record:</b>
                   <div className="Font-Segoe-Small-Howto">
                     <MdTask style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />
-                    <a href={`/taskedit/${result.id}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.id}>
+                    <a href={`/taskedit/${result.parentid}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={`TaskID#${result.parentid}`}>
                     <GiFiles style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                     {highlightKeyword(result.childrecord, searchQuery)}</a>
                   </div>
