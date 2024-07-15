@@ -13,6 +13,7 @@ import dayjs from "dayjs";
 import ObjectSupport from "dayjs/plugin/objectSupport";
 import TaskPopOut from "./TaskPopOut";
 import { toast } from 'react-toastify';
+import { PiRocketLaunchLight } from "react-icons/pi";
 
 
 export default function Task({
@@ -216,13 +217,27 @@ export default function Task({
                                     </div>
                                 </Tooltip>
                             </>
-                        ) : isExpanded && taskstatus !== "DONE" ? (
-                            <Tooltip title="Edit Task" placement="top-end">
-                                <div style={{ cursor: "pointer" }} onClick={() => { handleEdit(); }}>
-                                    &nbsp;&nbsp;<BsPencil style={{ color: "#C0C0C0", fontSize: "15px" }} />
-                                </div>
-                            </Tooltip>
-                        ) : null}
+                        ) 
+                        : 
+                        isExpanded && taskstatus !== "DONE" ? 
+                        (
+                                    <>
+                                        <Tooltip title={`Edit Task: ${id}`} placement="top-end">
+                                            <div style={{ cursor: "pointer" }} onClick={() => { handleEdit(); }}>
+                                                &nbsp;&nbsp;<BsPencil style={{ color: "#C0C0C0", fontSize: "15px" }} />
+                                            </div>
+                                        </Tooltip>
+                                    
+                                        <Tooltip title={`Launch TaskEditor on #${id}`} placement="top-end">
+                                        <div style={{ cursor: "pointer" }} onClick={() => { window.open(`/taskedit/${id}`, '_blank'); }}>
+                                                &nbsp;&nbsp;<PiRocketLaunchLight style={{ color: "#C0C0C0", fontSize: "20px" }} />&nbsp;&nbsp;
+                                            </div>
+                                        </Tooltip>
+
+                                    </>
+                        ) 
+                        : 
+                        null}
                     </>
                 </div>
                 {editing === true ? (

@@ -188,7 +188,8 @@ export default function TaskOverview() {
                                                                     "START"
                                                                 )
                                                             }
-                                                        ><MouseoverPopover
+                                                        >
+                                                            <MouseoverPopover
                                                                 see={rowdata.START.length}
                                                                 read={
                                                                     rowdata.START.length > 0
@@ -199,7 +200,8 @@ export default function TaskOverview() {
                                                                         )
                                                                         : "No Tasks"
                                                                 }
-                                                            ></MouseoverPopover>
+                                                            >
+                                                            </MouseoverPopover>
                                                         </div>
                                                     </td>
                                                     <td>
