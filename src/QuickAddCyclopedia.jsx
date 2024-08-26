@@ -41,7 +41,7 @@ export default function QuickAddCyclopedia() {
                     &nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '250px' }} placeholder="What exactly is a ..?" type="text" value={cyclopedia_name} onChange={(event) => setCyclopedia_name(event.target.value)} />
                     &nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '250px' }} placeholder="Description" type="text" value={cyclopedia_desc} onChange={(event) => setCyclopedia_desc(event.target.value)} />
                     &nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '100px' }} placeholder="Ref" type="text" value={cyclopedia_ref} onChange={(event) => setCyclopedia_ref(event.target.value)} />
-                    <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '20.5px', border: '1px solid #169247', borderRadius: '5px', backgroundColor: '#169247', color: '#FFFFFF', cursor: 'pointer' }}>Add</button>
+                    <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '20.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>Add</button>
                 </div>
             </form>
         </div>

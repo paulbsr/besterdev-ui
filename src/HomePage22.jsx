@@ -9,6 +9,7 @@ import TaskSummaryHomepage from './TaskSummaryHomepage';
 import { useWebsiteApi } from './WebSiteAPIProvider';
 import { useCyclopediaApi } from './CyclopediaAPIProvider';
 import { useHowtoApi } from './HowtoAPIProvider';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -23,6 +24,8 @@ export default function HomePage22(props) {
   const { websiterootdata, loading, error } = useWebsiteApi(); //gebruik van die nuwe useContext :-)
   const { cyclopediarootdata } = useCyclopediaApi(); //gebruik van die nuwe useContext :-)
   const { howtorootdata } = useHowtoApi(); //gebruik van die nuwe useContext :-)
+
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -142,7 +145,9 @@ export default function HomePage22(props) {
                   <td className="fphover2">
                     {rowc && (
                       <div style={{ cursor: 'pointer' }}>
+                        <a onClick={() => navigate(`/cyclopediaedit/${rowc.cyclopedia_id}`)}>
                         <b>{rowc.cyclopedia_name}:</b>&nbsp;<i>{rowc.cyclopedia_desc}</i>
+                        </a>
                         <div className='Font-Spacer-White'>Make this spacer white</div>
                       </div>
                     )}

@@ -33,6 +33,7 @@ import { WebSiteAPIProvider } from './WebSiteAPIProvider';
 import { CyclopediaAPIProvider } from './CyclopediaAPIProvider';
 import { HowtoAPIProvider } from './HowtoAPIProvider';
 import { BreakingNewsAPIProvider } from './BreakingNewsAPIProvider';
+import PageCyclopediaEdit from './PageCyclopediaEdit';
 
 const TRACKING_ID = "G-FCGGY1NE36";
 ReactGA.initialize(TRACKING_ID);
@@ -91,6 +92,7 @@ const App = () => {
             <Route path='/mycv' element={<PageMyCV />} />
           </Route>
           <Route path='/taskedit/:task_id' element={<PageTaskEdit />} />
+          <Route path='/cyclopediaedit/:cyclopedia_id' element={<PageCyclopediaEdit />} />
           <Route path='/howtoedit/:howto_id' element={<PageHowtoEdit />} />
           {searchPhrase && <Route path='/home' element={<PageHome searchPhrase={searchPhrase} />} />}
           {searchPhrase && <Route path='/login' element={<PageLogin searchPhrase={searchPhrase} />} />}

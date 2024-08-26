@@ -43,7 +43,7 @@ export default function BreakingNewsAPI() {
                             headers: { 'Content-Type': 'application/json' }
                         })
                             .then(() => console.log('In <BreakingyNewsAPI /> is jou POST na Heroku met searchPhrase:', newsapiSearchPhrase, serializedData),)
-                            .catch((error) => console.error('Error posting data:', error));
+                            .catch((error) => console.error('In <BreakingyNewsAPI /> is jou POST na Heroku met searchPhrase gefok omdat:', error));
                     })
                     .catch((error) => console.error('Error fetching data:', error));
                     

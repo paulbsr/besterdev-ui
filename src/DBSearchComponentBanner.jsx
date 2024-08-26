@@ -77,7 +77,7 @@ const DBSearchComponentBanner = () => {
     <form onSubmit={handleSearch}>
           <div>.</div>
           <input
-        style={{ height: '19.5px', border: '0.75px solid #169247', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }}
+        style={{ height: '19.5px', border: '0.75px solid #C0C0C0', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }}
         placeholder="Search BesterDev"
         type="text"
         value={searchQuery}
@@ -86,14 +86,14 @@ const DBSearchComponentBanner = () => {
       />
       <button
         type="submit"
-        style={{ marginLeft: '10px', height: '19.5px', border: '1px solid #169247', borderRadius: '5px', backgroundColor: '#169247', color: '#FFFFFF', cursor: 'pointer' }}
+        style={{ marginLeft: '10px', height: '19.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}
       >
         Search
       </button>
       <button
         type="button"
         onClick={handleCancel}
-        style={{ marginLeft: '10px', height: '20.5px', border: '1px solid #169247', borderRadius: '5px', backgroundColor: '#169247', color: '#FFFFFF', cursor: 'pointer' }}
+        style={{ marginLeft: '10px', height: '20.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}
       >
         Clear
       </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -105,7 +105,7 @@ const DBSearchComponentBanner = () => {
             if (result.cyclopedia_name) {
               return (
                 <div className="dbsearchhover" key={result.id}>
-                  Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247' }}>Cyclopedia entry</b>:&nbsp;&nbsp;
+                  Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Cyclopedia entry</b>:&nbsp;&nbsp;
                   {editing === result.id ? (
                     <>
                       <input
@@ -123,7 +123,7 @@ const DBSearchComponentBanner = () => {
                     </>
                   ) : (
                     <div className="Font-Segoe-Small-Howto">
-                      <IoLibrarySharp style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
+                      <IoLibrarySharp style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                       <b>{highlightKeyword(result.cyclopedia_name, searchQuery)}: </b>{highlightKeyword(result.cyclopedia_desc, searchQuery)}
                       &nbsp;&nbsp;&nbsp;
                     </div>
@@ -155,9 +155,9 @@ const DBSearchComponentBanner = () => {
             } else if (result.website_name) {
               return (
                 <div className="dbsearchhover" key={result.id}>
-                  Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247' }}>Web Resource</b>:&nbsp;&nbsp;
+                  Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Web Resource</b>:&nbsp;&nbsp;
                   <div className="Font-Segoe-Small-Howto">
-                    <TbWorldWww style={{ color: '#169247', fontSize: '23px', cursor: 'pointer' }} />&nbsp;
+                    <TbWorldWww style={{ color: '#336791', fontSize: '23px', cursor: 'pointer' }} />&nbsp;
                     <a href={result.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.website_desc}>
                       <b>{highlightKeyword(result.website_name, searchQuery)}</b>
                     </a>
@@ -168,9 +168,9 @@ const DBSearchComponentBanner = () => {
             } else if (result.news_title) {
               return (
                 <div className="dbsearchhover" key={result.id}>
-                  Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247' }}>Breaking News Article</b>:&nbsp;&nbsp;
+                  Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Breaking News Article</b>:&nbsp;&nbsp;
                   <div className="Font-Segoe-Small-Howto">
-                    <SiWritedotas style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
+                    <SiWritedotas style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                     <a href={result.news_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.news_source}>
                       {highlightKeyword(result.news_title, searchQuery)}
                     </a>
@@ -181,9 +181,9 @@ const DBSearchComponentBanner = () => {
             } else if (result.taskname) {
               return (
                 <div className="dbsearchhover" key={result.id}>
-                  Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247' }}>Task Name:</b>
+                  Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Task Name:</b>
                   <div className="Font-Segoe-Small-Howto">
-                    <MdTask style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
+                    <MdTask style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                     <a href={`/taskedit/${result.id}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={`TaskID#${result.id}`}>
                       <b>{highlightKeyword(result.taskname, searchQuery)}</b>
                     </a>
@@ -193,11 +193,11 @@ const DBSearchComponentBanner = () => {
             } else if (result.childrecord) {
               return (
                 <div className="dbsearchhover" key={result.id}>
-                  Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247' }}>Task Record:</b>
+                  Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Task Record:</b>
                   <div className="Font-Segoe-Small-Howto">
-                    <MdTask style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />
+                    <MdTask style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />
                     <a href={`/taskedit/${result.parentid}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={`TaskID#${result.parentid}`}>
-                      <GiFiles style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
+                      <GiFiles style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                       {highlightKeyword(result.childrecord, searchQuery)}
                     </a>
                   </div>
@@ -206,9 +206,9 @@ const DBSearchComponentBanner = () => {
             } else if (result.howto_name) {
               return (
                 <div className="dbsearchhover" key={result.id}>
-                  Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247' }}>HOWTO document</b>:&nbsp;&nbsp;
+                  Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>HOWTO document</b>:&nbsp;&nbsp;
                   <div className="Font-Segoe-Small-Howto">
-                    <BsQuestionOctagonFill style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
+                    <BsQuestionOctagonFill style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                     <a href={`/howtoedit/${result.howto_id}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.howto_summary}>
                       <b>{highlightKeyword(result.howto_name, searchQuery)}</b>
                     </a>
@@ -218,10 +218,10 @@ const DBSearchComponentBanner = () => {
             } else if (result.step_name) {
               return (
                 <div className="dbsearchhover" key={result.id}>
-                  Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247' }}>Step Name</b> in a HOWTO document:
+                  Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Step Name</b> in a HOWTO document:
                   <div className="Font-Segoe-Small-Howto">
-                    <BsQuestionOctagonFill style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />
-                    <IoFootstepsSharp style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
+                    <BsQuestionOctagonFill style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />
+                    <IoFootstepsSharp style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                     <b>{highlightKeyword(result.step_name, searchQuery)}</b> which has a Step Objective to: <i>" {result.step_obj} " </i>
                   </div>
                 </div>
@@ -229,11 +229,11 @@ const DBSearchComponentBanner = () => {
             } else if (result.steprecord_id) {
               return (
                 <div className="dbsearchhover" key={result.id}>
-                  Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#169247' }}>Step Record</b>:&nbsp;&nbsp;
+                  Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Step Record</b>:&nbsp;&nbsp;
                   <div className="Font-Segoe-Small-Howto">
-                    <BsQuestionOctagonFill style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />
-                    <IoFootstepsSharp style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />
-                    <GiFiles style={{ color: '#169247', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
+                    <BsQuestionOctagonFill style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />
+                    <IoFootstepsSharp style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />
+                    <GiFiles style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                     {highlightKeyword(result.steprecord, searchQuery)}
                   </div>
                 </div>

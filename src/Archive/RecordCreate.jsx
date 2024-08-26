@@ -95,7 +95,7 @@ export default function RecordCreate(props) {
                   sx={{ height: '30px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.3px' } }}
                 />
               </LocalizationProvider>
-                <button className="Font-Verdana-Small" type="submit" style={{ marginLeft: '10px', height: '30px', border: '1px solid #169247', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#169247 ', cursor: 'pointer' }}>Commit</button>
+                <button className="Font-Verdana-Small" type="submit" style={{ marginLeft: '10px', height: '30px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#336791 ', cursor: 'pointer' }}>Commit</button>
               </div>
             </form>
           </div>

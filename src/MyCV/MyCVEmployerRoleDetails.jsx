@@ -65,7 +65,7 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
                     <div>
                         {editing === roledetail_id ?
                             <>&nbsp;
-                                <GiCheckMark style={{ color: '#169247', display: 'round', margin: 'auto', fontSize: '10px' }} />
+                                <GiCheckMark style={{ color: '#336791', display: 'round', margin: 'auto', fontSize: '10px' }} />
                                 &nbsp;&nbsp;
                                 <input
                                     required
@@ -83,7 +83,7 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
                             :
                             <div className="mycvhover">
                                 &nbsp;
-                                <GiCheckMark style={{ color: '#169247', display: 'round', margin: 'auto', fontSize: '10px' }} />
+                                <GiCheckMark style={{ color: '#336791', display: 'round', margin: 'auto', fontSize: '10px' }} />
                                 &nbsp;&nbsp;
                                 {roledetail_name}&nbsp; - &nbsp;{roledetail_desc}
                             </div>
