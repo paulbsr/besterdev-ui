@@ -13,7 +13,7 @@ export default function CyclopediaCreate() {
   const [isExpanded, setExpanded] = useState(false);
   const [cyclopedia_name, setCyclopedia_name] = useState('');
   const [cyclopedia_desc, setCyclopedia_desc] = useState('');
-  const [cyclopedia_ref, setCyclopedia_ref] = useState('');
+  const [cyclopedia_url, setCyclopedia_url] = useState('');
   const [checkForRecords, setCheckForRecords] = useState(true);
 
 
@@ -25,7 +25,7 @@ export default function CyclopediaCreate() {
       {
         'cyclopedia_name': cyclopedia_name,
         'cyclopedia_desc': cyclopedia_desc,
-        'cyclopedia_ref': cyclopedia_ref,
+        'cyclopedia_url': cyclopedia_url,
       }
 
       {
@@ -61,7 +61,7 @@ export default function CyclopediaCreate() {
                 <div>&nbsp;</div>
                 <div><img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Description:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea rows={2} style={{ fontFamily:'Verdana',border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1150px' }} placeholder="Required" type="text" value={cyclopedia_desc} onChange={(event) => setCyclopedia_desc(event.target.value)} required /></div>
                 <div>&nbsp;</div>
-                <div><img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Reference/URL:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1150px' }} type="text" value={cyclopedia_ref} onChange={(event) => setCyclopedia_ref(event.target.value)} /></div>
+                <div><img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />URL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1150px' }} type="text" value={cyclopedia_url} onChange={(event) => setCyclopedia_url(event.target.value)} /></div>
                 <div>&nbsp;</div>
                 <div><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Add to Cyclopedia</button></div>
                 

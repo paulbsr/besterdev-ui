@@ -79,10 +79,10 @@ function CyclopediaManage() {
         <table className="Table6">
           <thead>
             <tr>
-              <th style={{ width: '20px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'></th>
-              <th style={{ width: '290px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Name</th>
-              <th style={{ width: '1400px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Description</th>
-              <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Reference</th>
+              <th style={{ width: '30px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'></th>
+              <th style={{ width: '400px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Name</th>
+              <th style={{ width: '1500px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Description</th>
+              {/* <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Reference</th> */}
             </tr>
           </thead>
 
@@ -114,7 +114,7 @@ function CyclopediaManage() {
 
                   <td className="asmshover Table6 td">{row.cyclopedia_id === editing ? (<input style={{ height: '22.5px', width: '270px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={cyclopedianame} onChange={(e) => setCyclopediaName(e.target.value)} />) : (row.cyclopedia_name)}</td>
                   <td className="asmshover Table6 td">{row.cyclopedia_id === editing ? (<textarea style={{ height: '22.5px', width: '1240px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={cyclopediadesc} onChange={(e) => setCyclopediaDesc(e.target.value)} />) : (row.cyclopedia_desc)}</td>
-                  <td className="asmshover Table6 td">{row.cyclopedia_id === editing ? (<input style={{ height: '22.5px', width: '250px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={cyclopediaref} onChange={(e) => setCyclopediaRef(e.target.value)} />) : (row.cyclopedia_ref)}</td>
+                  {/* <td className="asmshover Table6 td">{row.cyclopedia_id === editing ? (<input style={{ height: '22.5px', width: '250px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={cyclopediaref} onChange={(e) => setCyclopediaRef(e.target.value)} />) : (row.cyclopedia_ref)}</td> */}
                 </tr>
               )
             })

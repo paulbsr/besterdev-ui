@@ -25,6 +25,10 @@ import { TbNumberR } from "react-icons/tb";
 import { TbLetterP } from "react-icons/tb";
 import { TbLetterY } from "react-icons/tb";
 import { SiMaildotru } from "react-icons/si";
+import { SiCyberdefenders } from "react-icons/si";
+import { SiKalilinux } from "react-icons/si";
+import { LiaTeamspeak } from "react-icons/lia";
+import { FaTeamspeak } from "react-icons/fa";
 
 
 const BannerWhite = () => {
@@ -33,16 +37,16 @@ const BannerWhite = () => {
       <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;
 
-      <SiMaildotru style={{color: '#D5441C', fontSize: '36px' }}/>
+      <FaTeamspeak style={{color: '#D5441C', fontSize: '46px' }}/>
       <TbLetterB style={{color: '#336791', fontSize: '40px' }}/>
       <TbLetterE style={{color: '#336791', fontSize: '40px' }}/>
       <TbLetterS style={{color: '#336791', fontSize: '40px' }}/>
       <TbLetterT style={{color: '#336791', fontSize: '40px' }}/>
       <TbLetterE style={{color: '#336791', fontSize: '40px' }}/>
       <TbLetterR style={{color: '#336791', fontSize: '40px' }}/>
-      <TbLetterD style={{color: '#D5441C', fontSize: '40px' }}/>
+      <TbLetterS style={{color: '#D5441C', fontSize: '40px' }}/>
       <TbLetterE style={{color: '#D5441C', fontSize: '40px' }}/>
-      <TbLetterV style={{color: '#D5441C', fontSize: '40px' }}/>
+      <TbLetterC style={{color: '#D5441C', fontSize: '40px' }}/>
 
       &nbsp; &nbsp; &nbsp;
       &nbsp; &nbsp; &nbsp;

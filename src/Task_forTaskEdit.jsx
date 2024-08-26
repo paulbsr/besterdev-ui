@@ -121,25 +121,47 @@ export default function Task_forTaskEdit({
         onEditCancel();
     };
 
+    // // return number of days until/after deadline
+    // function getDeadlineInDays(deadline) {
+    //     // add object support to dayjs
+    //     dayjs.extend(ObjectSupport);
+    //     // current time
+    //     const now = dayjs();
+    //     // create js Date object using
+    //     const t = new Date(deadline[0], deadline[1], deadline[2]);
+    //     // convert date object into a dayjs object
+    //     let targetdate = dayjs(t);
+    //     // Subtract extra month which is there for some reason TODO: fix it
+    //     targetdate = targetdate.subtract(1, 'month');
+    //     //return negative if the deadline has already passed.
+    //     if (now.unix() - targetdate.unix() > 0) {
+    //         return -1 * now.diff(targetdate, "day");
+    //     } else {
+    //         return targetdate.diff(now, "day");
+    //     }
+    // }
+
     // return number of days until/after deadline
-    function getDeadlineInDays(deadline) {
-        // add object support to dayjs
-        dayjs.extend(ObjectSupport);
-        // current time
-        const now = dayjs();
-        // create js Date object using
-        const t = new Date(deadline[0], deadline[1], deadline[2]);
-        // convert date object into a dayjs object
-        let targetdate = dayjs(t);
-        // Subtract extra month which is there for some reason TODO: fix it
-        targetdate = targetdate.subtract(1, 'month');
-        //return negative if the deadline has already passed.
-        if (now.unix() - targetdate.unix() > 0) {
-            return -1 * now.diff(targetdate, "day");
-        } else {
-            return targetdate.diff(now, "day");
-        }
-    }
+function getDeadlineInDays(deadline) {
+    // add object support to dayjs
+    dayjs.extend(ObjectSupport);
+    // current time
+    const now = dayjs();
+    // create js Date object using
+    const t = new Date(deadline[0], deadline[1] - 1, deadline[2]); // Adjust month for JS Date object
+    // convert date object into a dayjs object
+    let targetdate = dayjs(t);
+
+    // Calculate the difference in days
+    const differenceInDays = targetdate.diff(now, "day");
+
+    return differenceInDays;
+}
+
+
+
+
+    
     // return a hex color to be used in styling based on days until/after deadline
     function calculateDeadlineTextColor(noOfDays) {
         if (noOfDays > 5) {
@@ -280,7 +302,9 @@ export default function Task_forTaskEdit({
                                     dateFormat="yyyy-MM-dd"
                                 />
                             </div>
-                        ) : (
+                        ) 
+                        : 
+                        (
                             tasktargetdate[0] +
                             "." +
                             (tasktargetdate[1] < 10
@@ -290,7 +314,8 @@ export default function Task_forTaskEdit({
                             (tasktargetdate[2] < 10
                                 ? "0" + tasktargetdate[2]
                                 : tasktargetdate[2])
-                        )}
+                        )
+                        }
                     </div>
                     <TaskRecordAccordion_forTaskEdit
                         project_handle={project_handle}

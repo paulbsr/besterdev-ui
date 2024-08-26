@@ -22,12 +22,11 @@ export default function PageHowtoEdit() {
         <GradientLine />
         <BannerLight />
         <GradientLineThin />
-        <Quicklinks3 />
-        <GradientLineThin />
         <BreakingNews />
         <GradientLineThin />
         <CyclopediaTicker />
-        {/* <DBSearchComponentBanner /> */}
+        <GradientLineThin />
+        <Quicklinks3 />
         <HowtoEdit howto_id={howto_id}/>
         <ToastComponent />
 

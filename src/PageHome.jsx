@@ -11,6 +11,7 @@ import CyclopediaTicker from './CyclopediaTicker';
 import BreakingNewsAPI from './BreakingNewsAPI';
 import DBSearchComponent from './DBSearchComponent';
 import DBSearchComponentBanner from './DBSearchComponentBanner';
+import QuicklinksFP from './QuicklinksFP';
 
 export default function PageHome() {
     return (
@@ -24,7 +25,7 @@ export default function PageHome() {
         <GradientLineThin />
         <CyclopediaTicker />
         <GradientLineThin />
-        <Quicklinks3 />
+        <QuicklinksFP />
         <HomePage22 />
         <Footer/>
         <ToastComponent />

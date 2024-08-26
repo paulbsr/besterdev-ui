@@ -28,6 +28,7 @@ export default function TaskEdit(props) {
   if (error) return <p>An error occurred: {error.message}</p>;
 
   const InnerTableLeft = () => { };
+  console.log('In <Taskedit> is jou taskdata:', taskdata)
 
   return (
     <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
@@ -54,7 +55,7 @@ export default function TaskEdit(props) {
                 taskrequirement={taskdata.taskrequirement}
                 taskowner={taskdata.taskowner}
                 asms={taskdata.asms}
-                tasktargetdate={"2024-06-01"}
+                tasktargetdate={"2000.01.01"}
                 taskstatus={taskdata.taskstatus}
                 checkForRecords={fetchRecords}
                 setCheckForRecords={setFetchRecords}
