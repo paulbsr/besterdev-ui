@@ -19,10 +19,6 @@ export default function CyclopediaEdit(props) {
     const [cyclopedia_ref, setCyclopedia_ref] = useState('');
     const [cyclopedia_url, setCyclopedia_url] = useState('');
     const [checkForRecords, setCheckForRecords] = useState(true);
-    // const [cyclopedianame, setCyclopedianame] = useState();
-    // const [cyclopediadesc, setCyclopediadesc] = useState();
-
-    // console.log('In <CyclopediaEdit> is jou cyclopediarootdata:', cyclopediarootdata)
 
     const handleEdit = (item) => 
     {
@@ -31,6 +27,7 @@ export default function CyclopediaEdit(props) {
         setCyclopedia_ref(item.cyclopedia_ref);
         setCyclopedia_url(item.cyclopedia_url);
         setEditing(true);
+        console.log('In <CyclopediaEdit> is jou cyclopedia_url:', item.cyclopedia_url)
     };
 
     const onEditCancel = () => {
@@ -38,32 +35,9 @@ export default function CyclopediaEdit(props) {
     };
 
 
-
-    // const onEditSave = async () => {
-    //     const updatedCyclopedia = {
-    //         'cyclopedia_name': cyclopedia_name,
-    //         'cyclopedia_desc': cyclopedia_desc,
-    //         'cyclopedia_ref': cyclopedia_ref,
-    //         'cyclopediaUrl': cyclopediaurl,
-    //     };
-
-
-
-    //     try {
-    //         await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${props.cyclopedia_id}`, updatedCyclopedia);
-    //         // await axios.put(`http://localhost:8000/api/v1/cyclopedia/update/${props.cyclopedia_id}`, updatedCyclopedia);
-    //         setRefresh(prev => !prev); // Trigger data refresh
-    //         toast.success(`Cyclopedia updated`);
-    //     } catch (error) {
-    //         toast.error('CyclopediaEdit failed:');
-    //     }
-
-    //     onEditCancel();
-    // };
-
-
     const onEditSave = async () => {
-        const CyclopediaRecordPUT = {
+        const CyclopediaRecordPUT = 
+        {
           'cyclopedia_name': cyclopedia_name,
           'cyclopedia_desc': cyclopedia_desc,
           'cyclopedia_ref': cyclopedia_ref,
@@ -71,8 +45,8 @@ export default function CyclopediaEdit(props) {
         }
     
         try {
-        //   await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${props.cyclopedia_id}`, CyclopediaRecordPUT);
-          await axios.put(`http://localhost:8000/api/v1/cyclopedia/update/${props.cyclopedia_id}`, CyclopediaRecordPUT);
+          await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${props.cyclopedia_id}`, CyclopediaRecordPUT);
+        //   await axios.put(`http://localhost:8000/api/v1/cyclopedia/update/${props.cyclopedia_id}`, CyclopediaRecordPUT);
           toast.success(`Cyclopedia Record amended.`);
           setCheckForRecords(!checkForRecords);
           onEditCancel();
@@ -142,12 +116,12 @@ export default function CyclopediaEdit(props) {
 
                                                                 <div></div>
 
-                                                                <i>Cyclopedia Name:</i>&nbsp;&nbsp;
+                                                                <i>Cyclopedia Name:</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 <input
                                                                     required
                                                                     defaultValue={item.cyclopedia_name}
                                                                     onChange={(e) => setCyclopedia_name(e.target.value)}
-                                                                    style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '950px' }}
+                                                                    style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '910px' }}
                                                                 />
                                                                 <div>&nbsp;&nbsp;</div>
 
@@ -164,23 +138,23 @@ export default function CyclopediaEdit(props) {
 
                                                                 <div className="Font-Spacer-White">Make this Spacer White</div>
 
-                                                                <i>Cyclopedia Reference:</i>&nbsp;&nbsp;
+                                                                {/* <i>Cyclopedia Reference:</i>&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 <input
                                                                     required
                                                                     defaultValue={item.cyclopedia_ref}
                                                                     onChange={(e) => setCyclopedia_ref(e.target.value)}
-                                                                    style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '925px' }}
+                                                                    style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '910px' }}
                                                                 />
                                                                 <div>&nbsp;&nbsp;</div>
 
-                                                                <div className='Font-Spacer-White'>Make this Spacer White</div>
+                                                                <div className='Font-Spacer-White'>Make this Spacer White</div> */}
 
-                                                                <i>Cyclopedia URL:</i>&nbsp;&nbsp;
+                                                                <i>Cyclopedia URL:</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 <input
                                                                     required
                                                                     defaultValue={item.cyclopedia_url}
                                                                     onChange={(e) => setCyclopedia_url(e.target.value)}
-                                                                    style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '970px' }}
+                                                                    style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '910px' }}
                                                                 />
                                                                 <div>&nbsp;&nbsp;</div>
                                                                 <div className='Font-Spacer-White'>Make this Spacer White</div>
