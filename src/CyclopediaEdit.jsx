@@ -14,22 +14,24 @@ export default function CyclopediaEdit(props) {
     const [cyclopediadata, setCyclopediadata] = useState([]);
     const { cyclopediarootdata, loading, error, setRefresh } = useCyclopediaApi();
     const [editing, setEditing] = useState(false);
-    const [cyclopedia_name, setcyclopedia_name] = useState('');
-    const [cyclopedia_desc, setcyclopedia_desc] = useState('');
-    const [cyclopedia_ref, setcyclopedia_ref] = useState('');
-    const [cyclopediaurl, setCyclopediaurl] = useState('');
+    const [cyclopedia_name, setCyclopedia_name] = useState('');
+    const [cyclopedia_desc, setCyclopedia_desc] = useState('');
+    const [cyclopedia_ref, setCyclopedia_ref] = useState('');
+    const [cyclopedia_url, setCyclopedia_url] = useState('');
+    const [checkForRecords, setCheckForRecords] = useState(true);
+    // const [cyclopedianame, setCyclopedianame] = useState();
+    // const [cyclopediadesc, setCyclopediadesc] = useState();
 
-    console.log('In <CyclopediaEdit> is jou cyclopediarootdata:', cyclopediarootdata)
+    // console.log('In <CyclopediaEdit> is jou cyclopediarootdata:', cyclopediarootdata)
 
-    const handleEdit = (item) => {
-        setcyclopedia_name(item.cyclopedia_name);
-        setcyclopedia_desc(item.cyclopedia_desc);
-        setcyclopedia_ref(item.cyclopedia_ref);
-        setCyclopediaurl(item.cyclopediaUrl);
+    const handleEdit = (item) => 
+    {
+        setCyclopedia_name(item.cyclopedia_name);
+        setCyclopedia_desc(item.cyclopedia_desc);
+        setCyclopedia_ref(item.cyclopedia_ref);
+        setCyclopedia_url(item.cyclopedia_url);
         setEditing(true);
     };
-
-
 
     const onEditCancel = () => {
         setEditing(false);
@@ -37,29 +39,48 @@ export default function CyclopediaEdit(props) {
 
 
 
+    // const onEditSave = async () => {
+    //     const updatedCyclopedia = {
+    //         'cyclopedia_name': cyclopedia_name,
+    //         'cyclopedia_desc': cyclopedia_desc,
+    //         'cyclopedia_ref': cyclopedia_ref,
+    //         'cyclopediaUrl': cyclopediaurl,
+    //     };
+
+
+
+    //     try {
+    //         await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${props.cyclopedia_id}`, updatedCyclopedia);
+    //         // await axios.put(`http://localhost:8000/api/v1/cyclopedia/update/${props.cyclopedia_id}`, updatedCyclopedia);
+    //         setRefresh(prev => !prev); // Trigger data refresh
+    //         toast.success(`Cyclopedia updated`);
+    //     } catch (error) {
+    //         toast.error('CyclopediaEdit failed:');
+    //     }
+
+    //     onEditCancel();
+    // };
+
+
     const onEditSave = async () => {
-        const updatedCyclopedia = {
-            'cyclopedia_name': cyclopedia_name,
-            'cyclopedia_desc': cyclopedia_desc,
-            'cyclopedia_ref': cyclopedia_ref,
-            'cyclopediaUrl': cyclopediaurl,
-        };
-
-
-
-        try {
-            await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${props.cyclopedia_id}`, updatedCyclopedia);
-            // await axios.put(`http://localhost:8000/api/v1/cyclopedia/update/${props.cyclopedia_id}`, updatedCyclopedia);
-            setRefresh(prev => !prev); // Trigger data refresh
-            toast.success(`Cyclopedia updated`);
-        } catch (error) {
-            toast.error('CyclopediaEdit failed:');
+        const CyclopediaRecordPUT = {
+          'cyclopedia_name': cyclopedia_name,
+          'cyclopedia_desc': cyclopedia_desc,
+          'cyclopedia_ref': cyclopedia_ref,
+          'cyclopedia_url': cyclopedia_url,
         }
-
-        onEditCancel();
-    };
-
-
+    
+        try {
+        //   await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${props.cyclopedia_id}`, CyclopediaRecordPUT);
+          await axios.put(`http://localhost:8000/api/v1/cyclopedia/update/${props.cyclopedia_id}`, CyclopediaRecordPUT);
+          toast.success(`Cyclopedia Record amended.`);
+          setCheckForRecords(!checkForRecords);
+          onEditCancel();
+        } catch (error) {
+          console.error('Error updating:', error);
+          toast.error('Failed to amend Cyclopedia Record.');
+        }
+      }
 
     useEffect(() => {
         if (cyclopediarootdata && Array.isArray(cyclopediarootdata)) {
@@ -125,7 +146,7 @@ export default function CyclopediaEdit(props) {
                                                                 <input
                                                                     required
                                                                     defaultValue={item.cyclopedia_name}
-                                                                    onChange={(e) => setcyclopedia_name(e.target.value)}
+                                                                    onChange={(e) => setCyclopedia_name(e.target.value)}
                                                                     style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '950px' }}
                                                                 />
                                                                 <div>&nbsp;&nbsp;</div>
@@ -136,7 +157,7 @@ export default function CyclopediaEdit(props) {
                                                                 <textarea
                                                                     required
                                                                     defaultValue={item.cyclopedia_desc}
-                                                                    onChange={(e) => setcyclopedia_desc(e.target.value)}
+                                                                    onChange={(e) => setCyclopedia_desc(e.target.value)}
                                                                     style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '150px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '910px' }}
                                                                 />
                                                                 <div>&nbsp;&nbsp;</div>
@@ -147,7 +168,7 @@ export default function CyclopediaEdit(props) {
                                                                 <input
                                                                     required
                                                                     defaultValue={item.cyclopedia_ref}
-                                                                    onChange={(e) => setcyclopedia_ref(e.target.value)}
+                                                                    onChange={(e) => setCyclopedia_ref(e.target.value)}
                                                                     style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '925px' }}
                                                                 />
                                                                 <div>&nbsp;&nbsp;</div>
@@ -157,8 +178,8 @@ export default function CyclopediaEdit(props) {
                                                                 <i>Cyclopedia URL:</i>&nbsp;&nbsp;
                                                                 <input
                                                                     required
-                                                                    defaultValue={item.cyclopediaUrl}
-                                                                    onChange={(e) => setCyclopediaurl(e.target.value)}
+                                                                    defaultValue={item.cyclopedia_url}
+                                                                    onChange={(e) => setCyclopedia_url(e.target.value)}
                                                                     style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '970px' }}
                                                                 />
                                                                 <div>&nbsp;&nbsp;</div>
@@ -186,7 +207,7 @@ export default function CyclopediaEdit(props) {
                                                                 <div>&nbsp;</div>
                                                                 {/* <div>Reference: {item.cyclopedia_ref}</div> */}
                                                                 <div><u>Cyclopedia URL</u>:&nbsp;<GiSpiderWeb style={{ color: '#336791', fontSize: '19px' }} />&nbsp;</div>
-                                                                <div><a className="Font-Segoe-Large" href={item.cyclopediaUrl} target="_blank" rel="noreferrer">{item.cyclopediaUrl}</a></div>
+                                                                <div><a className="Font-Segoe-Large" href={item.cyclopedia_url} target="_blank" rel="noreferrer">{item.cyclopedia_url}</a></div>
                                                                 <div>&nbsp;</div>
 
                                                                 <u>Cyclopedia Graphix</u>:&nbsp;<CyclopediaImageUpload cyclopedia_id_fk={item.cyclopedia_id} cyclopedia_name={item.cyclopedia_name} cyclopedia_id={item.cyclopedia_id} />

@@ -148,7 +148,7 @@ const DBSearchComponent = () => {
                       </div>
                     </div>
 
-                    <div style={{ display: 'flex', float: 'right' }}>
+                    {/* <div style={{ display: 'flex', float: 'right' }}>
                       <>
                         {editing === result.id ?
                           (
@@ -167,7 +167,7 @@ const DBSearchComponent = () => {
                           )
                         }
                       </>
-                    </div>
+                    </div> */}
                   </div>
                   <div className='Font-Spacer-White'>Make this spacer white</div>
                 </div>
