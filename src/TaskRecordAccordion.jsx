@@ -9,6 +9,7 @@ import { GiCheckMark } from "react-icons/gi"; //Commit
 import { MdPlusOne } from "react-icons/md"; //+1
 import "./Fonts.css";
 import { toast } from 'react-toastify';
+import { BiSolidMessageRoundedAdd } from "react-icons/bi";
 
 
 
@@ -116,11 +117,19 @@ function TaskRecordAccordion({
                     <div>
                         {editing === childid ? (
                             <textarea
-                                cols="150"
-                                variant="outlined"
+                                // cols="150"
+                                // variant="outlined"
                                 defaultValue={taskrecord}
-                                rows={3}
+                                // rows={3}
                                 onChange={(e) => setTaskrecord(e.target.value)}
+                                style={{
+                                    width: 1000,
+                                    height: "18px",
+                                    marginBottom: "15px",
+                                    marginTop: "5px",
+                                    display: "flex",
+                                    border: "1px dotted grey"
+                                }}
                             ></textarea>
                         ) : (
                             <div>
@@ -195,8 +204,8 @@ function TaskRecordAccordion({
         <div>
             <div style={{ color: getStatusByColourTaskText(taskstatus) }} onClick={toggleAccordion}>
                 <u>STATUS</u>:&nbsp;
-                <Tooltip>
-                    <MdPlusOne style={{ color: "#C0C0C0", fontSize: "20px" }} />
+                <Tooltip title="Dit werk nie hier nie sonder 'n div" placement="top-end">
+                    <BiSolidMessageRoundedAdd style={{ color: "#C0C0C0", fontSize: "20px" }} />
                 </Tooltip>
             </div>
             {isExpanded && (

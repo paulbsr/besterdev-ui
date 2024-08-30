@@ -67,10 +67,18 @@ export default function TaskRecordCreate(props) {
         <>
             <form onSubmit={handleSubmit}>
                 <textarea
-                    autoFocus
-                    cols="120"
-                    rows={5}
-                    onChange={(e) => setChildrecord(e.target.value)}>
+                    // autoFocus
+                    // cols="140"
+                    // rows={5}
+                    onChange={(e) => setChildrecord(e.target.value)}
+                                                        style={{
+                                    width: 1000,
+                                    height: "80px",
+                                    marginBottom: "15px",
+                                    marginTop: "5px",
+                                    display: "flex",
+                                    border: "1px dotted grey"
+                                }}>
                 </textarea>
                 <div></div>
                 <button

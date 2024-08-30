@@ -29,15 +29,20 @@ import { SiCyberdefenders } from "react-icons/si";
 import { SiKalilinux } from "react-icons/si";
 import { LiaTeamspeak } from "react-icons/lia";
 import { FaTeamspeak } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom'; 
 
 
 const BannerWhite = () => {
+  const navigate = useNavigate();
+  const handleNavigateHome = () => {navigate('/home');}
+  
+
   return (
     <div className="banner-white">
       <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;
 
-      <FaTeamspeak style={{color: '#D5441C', fontSize: '46px' }}/>
+      <a data-tooltip-id="insert" data-tooltip-content="Home" onClick={handleNavigateHome}><FaTeamspeak style={{color: '#D5441C', fontSize: '40px', cursor: 'pointer'}}/></a>
       <TbLetterB style={{color: '#336791', fontSize: '40px' }}/>
       <TbLetterE style={{color: '#336791', fontSize: '40px' }}/>
       <TbLetterS style={{color: '#336791', fontSize: '40px' }}/>

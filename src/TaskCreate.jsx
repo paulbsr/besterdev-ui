@@ -103,13 +103,13 @@ export default function TaskCreate(props) {
 
                                     <select
                                         style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '150px' }} placeholder="Domain" id="dropdown" onChange={dropdownChange} >
-                                        <option disabled selected value="Domain">Company</option>
-                                        <option value="113092" data-value2="CVCP">CVCP</option>
-                                        <option value="14718" data-value2="IDEMIA">IDEMIA</option>
-                                        <option value="181268" data-value2="TELUS">TELUS</option>
-                                        <option value="171593" data-value2="ATT">AT&T</option>
-                                        <option value="168272" data-value2="CUBIC">CUBIC</option>
-                                        <option value="188660" data-value2="TELEFONICA">TELEFONICA</option>
+                                        <option disabled selected value="Domain">Module</option>
+                                        <option value="113092" data-value2="CVCP">NetworkSecurity</option>
+                                        <option value="14718" data-value2="IDEMIA">EnterpriseSecurity</option>
+                                        <option value="181268" data-value2="TELUS">ComputerCloudSecurity</option>
+                                        <option value="171593" data-value2="ATT">AppliedCryptography</option>
+                                        <option value="168272" data-value2="CUBIC">Dissertation</option>
+                                        {/* <option value="188660" data-value2="TELEFONICA">TELEFONICA</option> */}
                                         {/* <option value="FO" data-value2="Fully Onsite">Fully Onsite</option> */}
                                     </select>
 

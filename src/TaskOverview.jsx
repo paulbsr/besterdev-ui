@@ -31,32 +31,32 @@ class TaskStatusCounter {
 
 
 const projectNameMap = {
-    113092: "CVCP",
-    14718: "IDEMIA",
-    181268: "TELUS",
-    171593: "ATT",
-    168272: "CUBIC",
-    188660: "TELEFONICA",
-    190860: "MediaGen",
-    191076: "TeamsDMV",
-    221193: "VehicleDNA",
-    188118: "WANVisualizer",
-    111111: "BesterDev",
+    113092: "NetworkSecurity",
+    14718: "EnterpriseSecurity",
+    181268: "ComputerCloudSecurity",
+    171593: "AppliedCryptography",
+    168272: "Dissertation",
+    // 188660: "TELEFONICA",
+    // 190860: "MediaGen",
+    // 191076: "TeamsDMV",
+    // 221193: "VehicleDNA",
+    // 188118: "WANVisualizer",
+    // 111111: "BesterDev",
 };
 
 
 const projectAsmsMap = {
-    CVCP: "113092",
-    IDEMIA: "14718",
-    TELUS: "181268",
-    ATT: "171593",
-    CUBIC: "168272",
-    TELEFONICA: "188660",
-    MediaGen: "190860",
-    TeamsDMV: "191076",
-    VehicleDNA: "221193",
-    WANVisualizer: "188118",
-    BesterDev: "111111",
+    NetworkSecurity: "113092",
+    EnterpriseSecurity: "14718",
+    ComputerCloudSecurity: "181268",
+    AppliedCryptography: "171593",
+    Dissertation: "168272",
+    // TELEFONICA: "188660",
+    // MediaGen: "190860",
+    // TeamsDMV: "191076",
+    // VehicleDNA: "221193",
+    // WANVisualizer: "188118",
+    // BesterDev: "111111",
 };
 
 
@@ -83,17 +83,17 @@ export default function TaskOverview() {
 
 
     const projectTaskStatusCounters = {
-        CVCP: new TaskStatusCounter(),
-        IDEMIA: new TaskStatusCounter(),
-        TELUS: new TaskStatusCounter(),
-        ATT: new TaskStatusCounter(),
-        CUBIC: new TaskStatusCounter(),
-        TELEFONICA: new TaskStatusCounter(),
-        MediaGen: new TaskStatusCounter(),
-        TeamsDMV: new TaskStatusCounter(),
-        VehicleDNA: new TaskStatusCounter(),
-        WANVisualizer: new TaskStatusCounter(),
-        BesterDev: new TaskStatusCounter(),
+        NetworkSecurity: new TaskStatusCounter(),
+        EnterpriseSecurity: new TaskStatusCounter(),
+        ComputerCloudSecurity: new TaskStatusCounter(),
+        AppliedCryptography: new TaskStatusCounter(),
+        Dissertation: new TaskStatusCounter(),
+        // TELEFONICA: new TaskStatusCounter(),
+        // MediaGen: new TaskStatusCounter(),
+        // TeamsDMV: new TaskStatusCounter(),
+        // VehicleDNA: new TaskStatusCounter(),
+        // WANVisualizer: new TaskStatusCounter(),
+        // BesterDev: new TaskStatusCounter(),
     };
     
     for (const task of allTask) {

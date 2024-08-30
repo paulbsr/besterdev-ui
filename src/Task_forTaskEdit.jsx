@@ -182,14 +182,14 @@ function getDeadlineInDays(deadline) {
 
                 </div>
                 <div style={{ display: "flex", float: "right" }}>
-                    {taskstatus !== "DONE" && ( // only render this div if the task is not already done.
+                    {/* {taskstatus !== "DONE" && ( // only render this div if the task is not already done.
                         <div className="deadline" style={{ color: deadlineColor }}>
                             {deadlineDaysRemaining < 0
                                 ? -deadlineDaysRemaining + " days overdue" // minus symbol to invert value from negative
                                 : deadlineDaysRemaining + " days remaining"}
                         </div>
                     )
-                    }
+                    } */}
                     {taskstatus === "DONE" && duration !== null && duration >= 0 ? ( // render time taken to complete if task is DONE
                         <div className="task-finished">
                             {"Days to completion: " + duration}
@@ -200,19 +200,19 @@ function getDeadlineInDays(deadline) {
                             <>
                                 <Tooltip title="Commit" placement="top-end">
                                     <div onClick={() => onEditSave()}>
-                                        &nbsp;<GiCheckMark style={{ color: "C0C0C0", fontSize: "15px", cursor: "pointer" }} />
+                                        &nbsp;<GiCheckMark style={{ color: "#336791", fontSize: "15px", cursor: "pointer" }} />
                                     </div>
                                 </Tooltip>
                                 <Tooltip title="Revert" placement="top-end">
                                     <div onClick={() => onEditCancel()}>
-                                        &nbsp;<BsArrowCounterclockwise style={{ color: "C0C0C0", fontSize: "17px", cursor: "pointer" }} />
+                                        &nbsp;<BsArrowCounterclockwise style={{ color: "#336791", fontSize: "17px", cursor: "pointer" }} />
                                     </div>
                                 </Tooltip>
                             </>
                         ) : isExpanded && taskstatus !== "DONE" ? (
                             <Tooltip title={`Edit Task: ${id}`} placement="top-end">
                                 <div style={{ cursor: "pointer" }} onClick={() => { handleEdit(); }}>
-                                    &nbsp;&nbsp;<BsPencil style={{ color: "#C0C0C0", fontSize: "15px", cursor: 'pointer', }} />
+                                    &nbsp;&nbsp;<BsPencil style={{ color: "#336791", fontSize: "15px", cursor: 'pointer', }} />
                                 </div>
                             </Tooltip>
                         ) : null}
@@ -233,6 +233,7 @@ function getDeadlineInDays(deadline) {
                                     marginBottom: "15px",
                                     marginTop: "5px",
                                     display: "flex",
+                                    border: "1px dotted grey"
                                 }}
                             />
                         </>
@@ -259,6 +260,8 @@ function getDeadlineInDays(deadline) {
                                     marginBottom: "15px",
                                     marginTop: "5px",
                                     display: "flex",
+                                    border: "1px dotted grey"
+
                                 }}
                             />
                         ) : (
@@ -267,7 +270,7 @@ function getDeadlineInDays(deadline) {
                     </div>
                     
                     
-                    <div style={{ color: getStatusByColourTaskText(taskstatus) }}>
+                    {/* <div style={{ color: getStatusByColourTaskText(taskstatus) }}>
                         <u>OWNER</u>:{" "}
                         {editing === true ? 
                         (
@@ -291,8 +294,10 @@ function getDeadlineInDays(deadline) {
                         taskowner
                         )
                         }
-                    </div>
-                    <div style={{ color: getStatusByColourTaskText(taskstatus) }}>
+                    </div> */}
+
+
+                    {/* <div style={{ color: getStatusByColourTaskText(taskstatus) }}>
                         <u>DUE</u>:{" "}
                         {editing === true ? (
                             <div style={{ paddingBottom: "10px", marginTop: "5px" }}>
@@ -316,7 +321,7 @@ function getDeadlineInDays(deadline) {
                                 : tasktargetdate[2])
                         )
                         }
-                    </div>
+                    </div> */}
                     <TaskRecordAccordion_forTaskEdit
                         project_handle={project_handle}
                         taskstatus={taskstatus}

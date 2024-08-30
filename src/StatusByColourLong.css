@@ -14,4 +14,4 @@
 .scorecardhover {font-family: "Segoe UI"; font-size: small; cursor:pointer; border: 1px solid transparent;}
 .scorecardhover:hover {font-family: "Segoe UI"; font-size: x-small; color: hsl(0, 0%, 5%); background-color: #EFEFEF;}
 .taskrecordshover {font-family: "Segoe UI"; cursor:pointer; font-size: 16px; border: 1px solid transparent;}
-.taskrecordshover:hover {font-family: "Segoe UI";  cursor:pointer; font-size: 16px;  background-color: #fddfd5; border: 1px solid #336791; border-radius: 3px; cursor:pointer}
+.taskrecordshover:hover {font-family: "Segoe UI";  cursor:pointer; font-size: 16px;  background-color: #f1f1f1; border: 1px solid #336791; border-radius: 3px; cursor:pointer}

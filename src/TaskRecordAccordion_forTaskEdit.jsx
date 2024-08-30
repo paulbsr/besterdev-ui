@@ -9,6 +9,7 @@ import { GiCheckMark } from "react-icons/gi"; //Commit
 import { MdPlusOne } from "react-icons/md"; //+1
 import "./Fonts.css";
 import { toast } from 'react-toastify';
+import { BiSolidMessageRoundedAdd } from "react-icons/bi";
 
 
 
@@ -90,13 +91,13 @@ function TaskRecordAccordion_forTaskEdit({
                                 <>
                                     <Tooltip title="Commit" placement="top-end">
                                         <div onClick={() => onEditSave(childid)}>
-                                            <GiCheckMark style={{ color: "C0C0C0", fontSize: "15px", cursor: 'pointer' }} />
+                                            <GiCheckMark style={{ color: "#336791", fontSize: "15px", cursor: 'pointer' }} />
                                         </div>
                                     </Tooltip>
                                     &nbsp;&nbsp;
                                     <Tooltip title="Revert" placement="top-end">
                                         <div onClick={() => onEditCancel()}>
-                                            <BsArrowCounterclockwise style={{ color: "C0C0C0", fontSize: "17px", cursor: 'pointer' }} />
+                                            <BsArrowCounterclockwise style={{ color: "#336791", fontSize: "17px", cursor: 'pointer' }} />
                                         </div>
                                     </Tooltip>
                                     &nbsp;&nbsp;
@@ -104,7 +105,7 @@ function TaskRecordAccordion_forTaskEdit({
                             ) : status !== "DONE" ? (
                                 <Tooltip title={`Edit Task Record: ${childid}`} placement="top-end">
                                     <div onClick={() => { handleEdit(childid, childrecord); }}>
-                                        <BsPencil style={{ color: "#C0C0C0", fontSize: "15px", cursor: 'pointer' }} />
+                                        <BsPencil style={{ color: "#336791", fontSize: "15px", cursor: 'pointer' }} />
                                     </div>
                                 </Tooltip>
                             ) : null}
@@ -113,11 +114,19 @@ function TaskRecordAccordion_forTaskEdit({
                     <div>
                         {editing === childid ? (
                             <textarea
-                                cols="140"
-                                variant="outlined"
+                                // cols="140"
+                                // variant="outlined"
                                 defaultValue={taskrecord}
-                                rows={5}
+                                // rows={5}
                                 onChange={(e) => setTaskrecord(e.target.value)}
+                                style={{
+                                    width: 1000,
+                                    height: "80px",
+                                    marginBottom: "15px",
+                                    marginTop: "5px",
+                                    display: "flex",
+                                    border: "1px dotted grey"
+                                }}
                             ></textarea>
                         ) : (
                             <div>
@@ -192,8 +201,8 @@ function TaskRecordAccordion_forTaskEdit({
         <div>
             <div style={{ color: getStatusByColourTaskText(taskstatus) }} onClick={toggleAccordion}>
                 <u>STATUS</u>:&nbsp;
-                <Tooltip>
-                    <MdPlusOne style={{ color: "#C0C0C0", fontSize: "20px" }} />
+                <Tooltip title="xxxxxxxxxxx" placement="top-end">
+                    <BiSolidMessageRoundedAdd style={{ color: "#336791", fontSize: "20px" }} />
                 </Tooltip>
             </div>
             {isExpanded && (
