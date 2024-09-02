@@ -26,14 +26,15 @@ export default function Task_forTaskEdit({
     childrecord,
     parenttask,
     checkForRecords,
-    setCheckForRecords
+    setCheckForRecords,
+    taskUrl
 }) {
     
     const [isExpanded, setExpanded] = useState(false);
     const toggleAccordion = () => {setExpanded(!isExpanded);};
     const [editing, setEditing] = useState(false);
     const [requirement, setRequirement] = useState(null);
-    const [owner, setOwner] = useState(null);
+    const [taskurl, setTaskurl] = useState(null);
     const [newTargetDate, setNewTargetDate] = useState(null);
     const [name, setName] = useState(null);
     const [error, setError] = useState(null);
@@ -60,7 +61,7 @@ export default function Task_forTaskEdit({
         setDuration(1);
     }
     const handleEdit = () => {
-        setOwner(taskowner);
+        setTaskurl(taskurl);
         setRequirement(taskrequirement);
         setNewTargetDate(new Date(tasktargetdate));
         // setNewTargetDate(new Date(...tasktargetdate));
@@ -70,7 +71,7 @@ export default function Task_forTaskEdit({
     const onEditCancel = () => {
         setEditing(false);
         setRequirement(null);
-        setOwner(null);
+        setTaskurl(null);
         setNewTargetDate(null);
         setName(null);
     };
@@ -78,27 +79,28 @@ export default function Task_forTaskEdit({
     console.log('In <Task_forTaskEdit> is jou tasktargetdate:', tasktargetdate)
     const deadlineDaysRemaining = getDeadlineInDays(tasktargetdate);
     const deadlineColor = calculateDeadlineTextColor(deadlineDaysRemaining);
-    const handleChange = (e, newVal) => setOwner(newVal);
+    // const handleChange = (e, newVal) => setTaskurl(newVal);
     
     const onEditSave = async () => {
         let updatedDetails = [];
         let noDetails = [];
         // Check field changes
         if (newTargetDate !== tasktargetdate) updatedDetails.push("Due Date");
-        if (owner !== taskowner) updatedDetails.push("Owner");
+        // if (owner !== taskowner) updatedDetails.push("Owner");
         if (requirement !== taskrequirement) updatedDetails.push("Requirement");
         if (name !== taskname) updatedDetails.push("Task Name");
         //Check fields are not null
         if (!newTargetDate) noDetails.push("Due Date");
-        if (!owner?.trim()) noDetails.push("Owner");
+        // if (!owner?.trim()) noDetails.push("Owner");
         if (!requirement?.trim()) noDetails.push("Requirement");
         if (!name?.trim()) noDetails.push("Task Name");
         
         const updatedTask = {
             tasktargetdate: newTargetDate,
             taskrequirement: requirement,
-            taskowner: owner,
+            // taskowner: owner,
             taskname: name,
+            taskUrl: taskurl,
         };
         // using conditional on length evaluates whether or not it's a truthy value,
         // so if noDetails.length doesn't return a truthy value(i.e. if its null, undefined, or 0),
@@ -270,31 +272,32 @@ function getDeadlineInDays(deadline) {
                     </div>
                     
                     
-                    {/* <div style={{ color: getStatusByColourTaskText(taskstatus) }}>
-                        <u>OWNER</u>:{" "}
+                    <div style={{ color: getStatusByColourTaskText(taskstatus) }}>
+                        <u>URL</u>:{" "}
                         {editing === true ? 
                         (
                             <textarea
                             freeSolo
                             required
-                            defaultValue={taskowner}
-                            onChange={(e) => setOwner(e.target.value)}
+                            defaultValue={taskUrl}
+                            onChange={(e) => setTaskurl(e.target.value)}
                             size="small"
                             style={{
-                                width: 170,
+                                width: 1000,
                                 height: "18px",
                                 marginBottom: "15px",
                                 marginTop: "5px",
                                 display: "flex",
+                                border: "1px dotted grey"
                             }}
                         />
                         ) 
                         : 
                         (
-                        taskowner
+                        <a href={taskUrl} target="_blank" >{taskUrl}</a>
                         )
                         }
-                    </div> */}
+                    </div>
 
 
                     {/* <div style={{ color: getStatusByColourTaskText(taskstatus) }}>
