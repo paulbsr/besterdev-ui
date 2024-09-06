@@ -4,13 +4,13 @@ import './Fonts.css';
 // import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
 import { useNavigate } from 'react-router-dom'; 
-import { FaReact, FaJava, FaNodeJs, FaAws, FaPeopleArrows, FaDigitalOcean, FaFileContract, FaTasks } from 'react-icons/fa';
+import { FaReact, FaJava, FaNodeJs, FaAws, FaPeopleArrows, FaDigitalOcean, FaFileContract, FaTasks, FaUserGraduate } from 'react-icons/fa';
 import { BiLogoFirebase, BiLogoPostgresql, BiLogoHeroku, BiLogoGithub, BiLogoGoogle } from "react-icons/bi";
-import { SiSpringboot, SiGoogleanalytics, SiDocker, SiSwagger, SiJavascript } from "react-icons/si";
+import { SiSpringboot, SiGoogleanalytics, SiDocker, SiSwagger, SiJavascript, SiLucid } from "react-icons/si";
 import { MdManageAccounts, MdOutlineVpnLock, MdOutlineMailLock, MdTask } from "react-icons/md";
 import { TbWorldWww, TbBrandOauth } from "react-icons/tb";
 import { BsQuestionOctagonFill, BsPeopleFill } from "react-icons/bs";
-import { IoLibrary, IoHome } from "react-icons/io5";
+import { IoLibrary, IoHome, IoPieChartSharp } from "react-icons/io5";
 import { SlLogout } from "react-icons/sl";
 import { GrVirtualMachine} from "react-icons/gr";
 import { RiOpenaiFill } from "react-icons/ri";
@@ -78,7 +78,10 @@ import DBSearchComponentBanner from './DBSearchComponentBanner';
       <a data-tooltip-id="insert" data-tooltip-content="Hunt" onClick={handleNavigateHunt}><FaPeopleArrows style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Candidates" onClick={handleNavigateManage}><MdManageAccounts style={{ color: '#336791', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="People Scorecard" onClick={handleNavigatePeopleScorecard}><BsPeopleFill style={{ color: '#336791', fontSize: '32px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Tasks" onClick={handleNavigateTaskManage}><MdTask style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>
+      <a data-tooltip-id="insert" data-tooltip-content="Tasks" onClick={handleNavigateTaskManage}><MdTask style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="TUS" href="https://myapps.microsoft.com/" target="_blank" rel="noreferrer"><FaUserGraduate style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Lucid Charts" href="https://lucid.app/documents#/home?folder_id=recent" target="_blank" rel="noreferrer"><IoPieChartSharp style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
+      
       &nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;
@@ -98,15 +101,15 @@ import DBSearchComponentBanner from './DBSearchComponentBanner';
       <a data-tooltip-id="insert" data-tooltip-content="paul.besar@gmail.com" href="https://myaccount.google.com/" target="_blank" rel="noreferrer"><BiLogoGoogle style={{ color: '#4688F1', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Google Firebase for front-end IAM Authentication" href="https://console.firebase.google.com/project/besterdev-432e9/overview" target="_blank" rel="noreferrer"><BiLogoFirebase style={{ color: '#FFCB2B', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Google Analytics" href="https://analytics.google.com/analytics/web/?pli=1#/p400562922/reports/intelligenthome" target="_blank" rel="noreferrer"><SiGoogleanalytics style={{ color: 'orange', fontSize: '24px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Docker Containers - paulbsr" href="https://www.docker.com" target="_blank" rel="noreferrer"><SiDocker style={{ color: '#1D63ED', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="DigitalOcean" href="https://www.digitalocean.com" target="_blank" rel="noreferrer"><FaDigitalOcean style={{ color: '#0069FF', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
+      {/* <a data-tooltip-id="insert" data-tooltip-content="Docker Containers - paulbsr" href="https://www.docker.com" target="_blank" rel="noreferrer"><SiDocker style={{ color: '#1D63ED', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
+      {/* <a data-tooltip-id="insert" data-tooltip-content="DigitalOcean" href="https://www.digitalocean.com" target="_blank" rel="noreferrer"><FaDigitalOcean style={{ color: '#0069FF', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
       <a data-tooltip-id="insert" data-tooltip-content="Microsoft Hyper-V for Virtualization" href="https://www.docker.com" target="_blank" rel="noreferrer"><GrVirtualMachine style={{ color: '#336791', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="ProtonVPN (paulbsr)" href="https://protonvpn.com/" target="_blank" rel="noreferrer"><MdOutlineVpnLock style={{ color: 'brown', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="ProtonMail (kuberkont)" href="https://mail.proton.me/u/0/inbox" target="_blank" rel="noreferrer"><MdOutlineMailLock style={{ color: 'brown', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Swagger" onClick={handleNavigateSwagger}><SiSwagger style={{ color: '#85EA2D', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="OAuth2.0 protected APIs" onClick={handleNavigateSwagger}><TbBrandOauth style={{ color: '#000000', fontSize: '31px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="ChatGPT v3.5" href="https://chat.openai.com/auth/login" target="_blank" rel="noreferrer"><RiOpenaiFill style={{ color: '#19c37c', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Logout" onClick={handleNavigateLogout}><SlLogout style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
+      {/* <a data-tooltip-id="insert" data-tooltip-content="ChatGPT v3.5" href="https://chat.openai.com/auth/login" target="_blank" rel="noreferrer"><RiOpenaiFill style={{ color: '#19c37c', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
+      {/* <a data-tooltip-id="insert" data-tooltip-content="Logout" onClick={handleNavigateLogout}><SlLogout style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp; */}
       {/* <DBSearchComponentBanner /> */}
     </div>
   );
