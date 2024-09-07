@@ -20,9 +20,8 @@ export const CyclopediaAPIProvider = ({ children }) => {
         setError(err);
       } finally {
         setLoading(false);
-      }
+        }
     };
-
     fetchData();
   }, []);
 

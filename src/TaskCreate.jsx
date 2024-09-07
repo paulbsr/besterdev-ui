@@ -28,7 +28,7 @@ export default function TaskCreate(props) {
     const current = new Date();
     const [taskname, setTaskname] = useState("");
     const [taskrequirement, setTaskrequirement] = useState("");
-    const [taskowner, setTaskowner] = useState("");
+    const [taskowner, setTaskowner] = useState("Bester");
     const [tasktargetdate, setTasktargetdate] = useState(null);
     const [taskcreatedate, setTaskcreatedate] = useState(current);
     const [taskstatus, setTaskstatus] = useState("START");
@@ -104,11 +104,11 @@ export default function TaskCreate(props) {
                                     <select
                                         style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '150px' }} placeholder="Domain" id="dropdown" onChange={dropdownChange} >
                                         <option disabled selected value="Domain">Module</option>
-                                        <option value="113092" data-value2="CVCP">NetworkSecurity</option>
-                                        <option value="14718" data-value2="IDEMIA">EnterpriseSecurity</option>
-                                        <option value="181268" data-value2="TELUS">ComputerCloudSecurity</option>
-                                        <option value="171593" data-value2="ATT">AppliedCryptography</option>
-                                        <option value="168272" data-value2="CUBIC">Dissertation</option>
+                                        <option value="113092" data-value2="NetworkSecurity">NetworkSecurity</option>
+                                        <option value="14718" data-value2="EnterpriseSecurity">EnterpriseSecurity</option>
+                                        <option value="181268" data-value2="ComputerCloudSecurity">ComputerCloudSecurity</option>
+                                        <option value="171593" data-value2="AppliedCryptography">AppliedCryptography</option>
+                                        <option value="168272" data-value2="Dissertation">Dissertation</option>
                                         {/* <option value="188660" data-value2="TELEFONICA">TELEFONICA</option> */}
                                         {/* <option value="FO" data-value2="Fully Onsite">Fully Onsite</option> */}
                                     </select>
@@ -121,7 +121,7 @@ export default function TaskCreate(props) {
                                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                         <input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '500px' }} placeholder="Requirement / Problem / Description / Solution" type="text" onChange={(event) => setTaskrequirement(event.target.value)} />
                                     </div>
-                                    <div>
+                                    {/* <div>
                                         &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
                                         <select style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '150px' }} placeholder="Web resource" id="dropdown" onChange={(event) => setTaskowner(event.target.value)}>
                                             <option disabled selected value="Domain">Responsible</option>
@@ -136,7 +136,7 @@ export default function TaskCreate(props) {
                                             <option value="Simon Dowling">Simon Dowling</option>
                                             <option value="Thiago Cunha">Thiago Cunha</option>
                                         </select>
-                                    </div>
+                                    </div> */}
                                     <div>
                                         &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
                                     </div>
