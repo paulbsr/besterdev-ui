@@ -85,17 +85,18 @@ export default function Task_forTaskEdit({
         let updatedDetails = [];
         let noDetails = [];
         // Check field changes
-        if (newTargetDate !== tasktargetdate) updatedDetails.push("Due Date");
+        // if (newTargetDate !== tasktargetdate) updatedDetails.push("Due Date");
         // if (owner !== taskowner) updatedDetails.push("Owner");
-        if (requirement !== taskrequirement) updatedDetails.push("Requirement");
-        if (name !== taskname) updatedDetails.push("Task Name");
+        // if (requirement !== taskrequirement) updatedDetails.push("Requirement");
+        // if (name !== taskname) updatedDetails.push("Task Name");
         //Check fields are not null
-        if (!newTargetDate) noDetails.push("Due Date");
+        // if (!newTargetDate) noDetails.push("Due Date");
         // if (!owner?.trim()) noDetails.push("Owner");
-        if (!requirement?.trim()) noDetails.push("Requirement");
-        if (!name?.trim()) noDetails.push("Task Name");
+        // if (!requirement?.trim()) noDetails.push("Requirement");
+        // if (!name?.trim()) noDetails.push("Task Name");
         
-        const updatedTask = {
+        const updatedTask = 
+        {
             tasktargetdate: newTargetDate,
             taskrequirement: requirement,
             // taskowner: owner,
@@ -176,6 +177,10 @@ function getDeadlineInDays(deadline) {
             return "#212121";
         }
     }
+    
+    
+    
+    
     return (
         <>
             <div style={{ color: getStatusByColourTaskText(taskstatus) }}>
@@ -198,7 +203,8 @@ function getDeadlineInDays(deadline) {
                         </div>
                     ) : null}
                     <>
-                        {editing === true ? (
+                        {editing === true ? 
+                        (
                             <>
                                 <Tooltip title="Commit" placement="top-end">
                                     <div onClick={() => onEditSave()}>
@@ -211,16 +217,24 @@ function getDeadlineInDays(deadline) {
                                     </div>
                                 </Tooltip>
                             </>
-                        ) : isExpanded && taskstatus !== "DONE" ? (
+                        ) 
+                        : isExpanded && taskstatus !== "DONE" ? 
+                        (
                             <Tooltip title={`Edit Task: ${id}`} placement="top-end">
                                 <div style={{ cursor: "pointer" }} onClick={() => { handleEdit(); }}>
                                     &nbsp;&nbsp;<BsPencil style={{ color: "#336791", fontSize: "15px", cursor: 'pointer', }} />
                                 </div>
                             </Tooltip>
-                        ) : null}
+                        ) 
+                        : 
+                        null
+                        }
                     </>
                 </div>
-                {editing === true ? (
+                
+                
+                {editing === true ? 
+                (
                     <>
                         <>
                             <u>TASK NAME</u>:
@@ -240,11 +254,17 @@ function getDeadlineInDays(deadline) {
                             />
                         </>
                     </>
-                ) : (
-                    // <u onClick={toggleAccordion}><b style={{cursor: 'pointer', fontFamily: 'Verdana'}}>{taskname}</b></u>
+                ) 
+                : 
+                (
                     <u onClick={toggleAccordion}><b style={{cursor: 'pointer', fontFamily: 'Verdana'}}>{taskname}</b></u>
-                )}
+                )
+                }
             </div>
+            
+            
+            
+            
             {isExpanded && (
                 <div>
                     <div style={{ color: getStatusByColourTaskText(taskstatus) }}>

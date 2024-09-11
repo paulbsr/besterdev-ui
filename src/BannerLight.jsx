@@ -6,7 +6,7 @@ import 'react-tooltip/dist/react-tooltip.css'
 import { useNavigate } from 'react-router-dom'; 
 import { FaReact, FaJava, FaNodeJs, FaAws, FaPeopleArrows, FaDigitalOcean, FaFileContract, FaTasks, FaUserGraduate } from 'react-icons/fa';
 import { BiLogoFirebase, BiLogoPostgresql, BiLogoHeroku, BiLogoGithub, BiLogoGoogle } from "react-icons/bi";
-import { SiSpringboot, SiGoogleanalytics, SiDocker, SiSwagger, SiJavascript, SiLucid } from "react-icons/si";
+import { SiSpringboot, SiGoogleanalytics, SiDocker, SiSwagger, SiJavascript, SiLucid, SiTryhackme } from "react-icons/si";
 import { MdManageAccounts, MdOutlineVpnLock, MdOutlineMailLock, MdTask } from "react-icons/md";
 import { TbWorldWww, TbBrandOauth } from "react-icons/tb";
 import { BsQuestionOctagonFill, BsPeopleFill } from "react-icons/bs";
@@ -109,6 +109,7 @@ import DBSearchComponentBanner from './DBSearchComponentBanner';
       <a data-tooltip-id="insert" data-tooltip-content="ProtonMail (kuberkont)" href="https://mail.proton.me/u/0/inbox" target="_blank" rel="noreferrer"><MdOutlineMailLock style={{ color: 'brown', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Swagger" onClick={handleNavigateSwagger}><SiSwagger style={{ color: '#85EA2D', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="OAuth2.0 protected APIs" onClick={handleNavigateSwagger}><TbBrandOauth style={{ color: '#000000', fontSize: '31px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="TryHackMe" href="https://www.tryhackme.com" target="_blank"><SiTryhackme style={{ color: '#000000', fontSize: '31px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       {/* <a data-tooltip-id="insert" data-tooltip-content="ChatGPT v3.5" href="https://chat.openai.com/auth/login" target="_blank" rel="noreferrer"><RiOpenaiFill style={{ color: '#19c37c', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
       {/* <a data-tooltip-id="insert" data-tooltip-content="Logout" onClick={handleNavigateLogout}><SlLogout style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp; */}
       {/* <DBSearchComponentBanner /> */}

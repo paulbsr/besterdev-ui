@@ -84,15 +84,15 @@ export default function Task({
         let updatedDetails = [];
         let noDetails = [];
         // Check field changes
-        if (newTargetDate !== tasktargetdate) updatedDetails.push("Due Date");
-        if (owner !== taskowner) updatedDetails.push("Owner");
-        if (requirement !== taskrequirement) updatedDetails.push("Requirement");
-        if (name !== taskname) updatedDetails.push("Task Name");
+        // if (newTargetDate !== tasktargetdate) updatedDetails.push("Due Date");
+        // if (owner !== taskowner) updatedDetails.push("Owner");
+        // if (requirement !== taskrequirement) updatedDetails.push("Requirement");
+        // if (name !== taskname) updatedDetails.push("Task Name");
         //Check fields are not null
-        if (!newTargetDate) noDetails.push("Due Date");
-        if (!owner?.trim()) noDetails.push("Owner");
-        if (!requirement?.trim()) noDetails.push("Requirement");
-        if (!name?.trim()) noDetails.push("Task Name");
+        // if (!newTargetDate) noDetails.push("Due Date");
+        // if (!owner?.trim()) noDetails.push("Owner");
+        // if (!requirement?.trim()) noDetails.push("Requirement");
+        // if (!name?.trim()) noDetails.push("Task Name");
         
         const updatedTask = {
             tasktargetdate: newTargetDate,
