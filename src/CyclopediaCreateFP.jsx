@@ -16,29 +16,62 @@ export default function CyclopediaCreateFP() {
   const [checkForRecords, setCheckForRecords] = useState(true);
 
 
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+
+  //   {
+  //     var newRecord =
+  //     {
+  //       'cyclopedia_name': cyclopedia_name,
+  //       'cyclopedia_desc': cyclopedia_desc,
+  //       'cyclopedia_url': cyclopedia_url,
+  //     }
+
+  //     {
+  //       const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/create`, newRecord);
+  //       if (response.status === 200) {
+  //         setCheckForRecords(!checkForRecords);
+  //         toast.success(`${cyclopedia_name} memorialized.`)
+  //       }
+  //       else {
+  //         toast.error('Nee')
+  //       }
+  //     }
+  //   }
+  // }
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    {
-      var newRecord =
-      {
-        'cyclopedia_name': cyclopedia_name,
-        'cyclopedia_desc': cyclopedia_desc,
-        'cyclopedia_url': cyclopedia_url,
+  
+    var newRecord = {
+      'cyclopedia_name': cyclopedia_name,
+      'cyclopedia_desc': cyclopedia_desc,
+      'cyclopedia_url': cyclopedia_url,
+    };
+  
+    try {
+      const response = await axios.post(
+        `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/create`,
+        newRecord
+      );
+  
+      if (response.status === 200) {
+        setCheckForRecords(!checkForRecords);
+        toast.success(`${cyclopedia_name} memorialized.`);
+  
+        // Clear input fields after successful submission
+        setCyclopedia_name('');
+        setCyclopedia_desc('');
+        setCyclopedia_url('');
+      } else {
+        toast.error('Nee');
       }
-
-      {
-        const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/create`, newRecord);
-        if (response.status === 200) {
-          setCheckForRecords(!checkForRecords);
-          toast.success(`${cyclopedia_name} memorialized.`)
-        }
-        else {
-          toast.error('Nee')
-        }
-      }
+    } catch (error) {
+      console.error(error);
+      toast.error('Error submitting the form');
     }
-  }
+  };
 
   return (
 

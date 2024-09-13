@@ -14,6 +14,8 @@ import DBSearchComponentBanner from './DBSearchComponentBanner';
 import QuicklinksFP from './QuicklinksFP';
 import CyclopediaCreateFP from './CyclopediaCreateFP';
 import WebsiteCreateFP from './WebsiteCreateFP';
+import CombinedCreateFP from './CombinedCreateFP';
+
 
 export default function PageHome() {
     return (
@@ -23,14 +25,16 @@ export default function PageHome() {
         <GradientLine />
         <BannerLight />
         <GradientLineThin />
-        {/* <BreakingNews /> */}
-        <WebsiteCreateFP />
+        <BreakingNews />
+        {/* <WebsiteCreateFP /> */}
         <GradientLineThin />
-        {/* <CyclopediaTicker /> */}
-        <CyclopediaCreateFP />
+        <CyclopediaTicker />
+        {/* <CyclopediaCreateFP /> */}
         <GradientLineThin />
         {/* <QuicklinksFP /> */}
         {/* <CyclopediaCreateFP /> */}
+        <CombinedCreateFP />
+        {/* <UnifiedCreateFP /> */}
 
         <HomePage22 />
         <Footer/>

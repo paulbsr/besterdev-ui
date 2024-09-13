@@ -20,30 +20,64 @@ export default function WebSiteCreateFP(props) {
   const { websiterootdata, loading, error } = useWebsiteApi(); //gebruik van die nuwe useContect :-)
 
 
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+
+  //   {
+  //     var newRecord =
+  //     {
+  //       'website_name': website_name,
+  //       'website_desc': website_desc,
+  //       'website_url': website_url,
+  //       'website_cat': website_cat,
+  //     }
+
+  //     {
+  //       const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/create`, newRecord);
+  //       if (response.status === 200) {
+  //         //   props.setCheckForRecords(!props.checkForRecords);
+  //         toast.success(`${website_name} added.`)
+  //       }
+  //       else {
+  //         toast.error('Nee')
+  //       }
+  //     }
+  //   }
+  // }
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    {
-      var newRecord =
-      {
-        'website_name': website_name,
-        'website_desc': website_desc,
-        'website_url': website_url,
-        'website_cat': website_cat,
+  
+    var newRecord = {
+      'website_name': website_name,
+      'website_desc': website_desc,
+      'website_url': website_url,
+      'website_cat': website_cat,
+    };
+  
+    try {
+      const response = await axios.post(
+        `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/create`,
+        newRecord
+      );
+  
+      if (response.status === 200) {
+        toast.success(`${website_name} added.`);
+  
+        // Clear input fields after successful submission
+        setWebsite_name('');
+        setWebsite_desc('');
+        setWebsite_url('');
+        setWebsite_cat('');
+      } else {
+        toast.error('Nee');
       }
-
-      {
-        const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/create`, newRecord);
-        if (response.status === 200) {
-          //   props.setCheckForRecords(!props.checkForRecords);
-          toast.success(`${website_name} added.`)
-        }
-        else {
-          toast.error('Nee')
-        }
-      }
+    } catch (error) {
+      console.error(error);
+      toast.error('Error submitting the form');
     }
-  }
+  };
+  
 
   return (
     <div className='Font-Verdana-Small-Postgres'>&nbsp;&nbsp;&nbsp;
