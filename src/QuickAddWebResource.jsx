@@ -58,7 +58,9 @@ export default function QuickAddWebResource(props) {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '250px' }} placeholder="Web resource" type="text" value={website_name} onChange={(event) => setWebsite_name(event.target.value)} />
                     {/* &nbsp;&nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '300px' }} placeholder="Description" type="text" value={website_desc} onChange={(event) => setWebsite_desc(event.target.value)} /> */}
                     &nbsp;<input style={{ height: '19.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '5px', width: '250px' }} placeholder="URL" type="text" value={website_url} onChange={(event) => setWebsite_url(event.target.value)} />
-                    &nbsp;<select
+                    &nbsp;
+                    
+                    <select
                         className='Font-Verdana-QuickAdd'
                         onChange={(event) => {
                             const selectedIndex = event.target.selectedIndex;

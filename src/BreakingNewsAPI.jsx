@@ -25,7 +25,7 @@ export default function BreakingNewsAPI() {
                 twodays.setDate(today.getDate() - 2);
                 const dayTwo = twodays.toISOString().split('T')[0]; // Convert to YYYY-MM-DD
 
-                axios.get(`https://newsapi.org/v2/everything?q=${newsapiSearchPhrase}&from=${dayTwo}&to=${dayOne}&language=en&apiKey=b9451c67f79e404bb72c2a9460262fed`)
+                axios.get(` `)
                     .then((response) => {
                         const newsapiDataIB = response.data.articles;
                         setNewsapiData(newsapiDataIB);

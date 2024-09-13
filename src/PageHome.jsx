@@ -12,6 +12,8 @@ import BreakingNewsAPI from './BreakingNewsAPI';
 import DBSearchComponent from './DBSearchComponent';
 import DBSearchComponentBanner from './DBSearchComponentBanner';
 import QuicklinksFP from './QuicklinksFP';
+import CyclopediaCreateFP from './CyclopediaCreateFP';
+import WebsiteCreateFP from './WebsiteCreateFP';
 
 export default function PageHome() {
     return (
@@ -21,11 +23,15 @@ export default function PageHome() {
         <GradientLine />
         <BannerLight />
         <GradientLineThin />
-        <BreakingNews />
+        {/* <BreakingNews /> */}
+        <WebsiteCreateFP />
         <GradientLineThin />
-        <CyclopediaTicker />
+        {/* <CyclopediaTicker /> */}
+        <CyclopediaCreateFP />
         <GradientLineThin />
-        <QuicklinksFP />
+        {/* <QuicklinksFP /> */}
+        {/* <CyclopediaCreateFP /> */}
+
         <HomePage22 />
         <Footer/>
         <ToastComponent />

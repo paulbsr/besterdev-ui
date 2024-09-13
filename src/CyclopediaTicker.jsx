@@ -1,6 +1,7 @@
 import React from 'react';
 import { Stack } from "@mui/material";
 import { useCyclopediaApi } from './CyclopediaAPIProvider';
+import CyclopediaCreateFP from './CyclopediaCreateFP';
 
 export default function CyclopediaTicker(props) {
   const { cyclopediarootdata, loading, error } = useCyclopediaApi(); // gebruik van die nuwe API Context :-)
@@ -21,6 +22,7 @@ export default function CyclopediaTicker(props) {
 
   return (
     <>
+    {/* <CyclopediaCreateFP /> */}
       {filteredCyclopediadata.length > 0 ? (
         <marquee scrollamount="5">
           <Stack direction="row">

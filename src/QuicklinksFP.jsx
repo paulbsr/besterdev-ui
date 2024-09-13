@@ -63,6 +63,7 @@ export default function QuicklinksFP() {
         <LinkTabs variant="scrollable">
           <QuickAddWebResource checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
           <QuickAddCyclopedia checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
+          
         </LinkTabs>
       </Box>
     </>
