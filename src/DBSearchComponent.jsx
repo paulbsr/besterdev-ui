@@ -82,8 +82,8 @@ const DBSearchComponent = () => {
     <form onSubmit={handleSearch}>
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <input
-          style={{ height: '27.5px', border: '0.75px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '900px' }}
-          placeholder="Search BesterDev"
+          style={{ height: '40.5px', border: '0.75px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '900px' }}
+          placeholder="Search besterSec"
           type="text"
           value={searchQuery}
           onChange={(event) => setSearchQuery(event.target.value)}
@@ -91,14 +91,14 @@ const DBSearchComponent = () => {
         />
         <button
           type="submit"
-          style={{ marginLeft: '10px', height: '29.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}
+          style={{ marginLeft: '10px', height: '40.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}
         >
           Search
         </button>
         <button
           type="button"
           onClick={handleCancel}
-          style={{ marginLeft: '10px', height: '29.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}
+          style={{ marginLeft: '10px', height: '40.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}
         >
           Clear
         </button>
