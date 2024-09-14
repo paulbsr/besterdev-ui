@@ -11,7 +11,7 @@
 }
 .task-finished {
     all: initial;
-    color: green;
+    color: #169247;
     font-family: Verdana;
     font-size: small;
     font-weight: 600;

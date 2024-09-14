@@ -23,9 +23,12 @@ export default function QuickAddCyclopedia() {
                 const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/create`, newRecord);
                 if (response.status === 200) {
                     toast.success(`${cyclopedia_name} added.`)
+                    setCyclopedia_name('');
+                    setCyclopedia_desc('');
+                    setCyclopedia_url('');
                 }
                 else {
-                    toast.error('Nee')
+                    toast.error('Gefok')
                 }
             }
         }
