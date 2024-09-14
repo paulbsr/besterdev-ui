@@ -12,13 +12,12 @@ import { useHowtoApi } from './HowtoAPIProvider';
 import { useNavigate } from 'react-router-dom';
 
 
-
 export default function HomePage22(props) {
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [taskdata, setTaskdata] = useState([]);
-  const [howtodata, setHowtodata] = useState([]);
-  const [cyclopediadata, setCyclopediaData] = useState([]);
+  // const [howtodata, setHowtodata] = useState([]);
+  // const [cyclopediadata, setCyclopediaData] = useState([]);
   const [showHowtoEdit, setShowHowtoEdit] = useState(false);
   const [howtoIdd, setHowtoIdd] = useState(null);
   const { websiterootdata, loading, error } = useWebsiteApi(); //gebruik van die nuwe useContext :-)
@@ -54,88 +53,122 @@ export default function HomePage22(props) {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
-  const InnerTableLeft = () => {
-    const groupedData = {};
-    websiterootdata.forEach((row) => {
-      if (!groupedData[row.website_cat]) {
-        groupedData[row.website_cat] = [];
-      }
-      groupedData[row.website_cat].push(row);
-    });
+//   const InnerTableLeft = () => {
+//     const groupedData = {};
+//     websiterootdata.forEach((row) => {
+//       if (!groupedData[row.website_cat]) {
+//         groupedData[row.website_cat] = [];
+//       }
+//       groupedData[row.website_cat].push(row);
+//     });
 
-    const sortedCategories = Object.keys(groupedData).sort();
+//     const sortedCategories = Object.keys(groupedData).sort();
+    
 
-  //   return (
-  //     <div className="scrollable-container">
-  //       <table className="Table-home-left">
-  //         <tbody>
-  //           {sortedCategories.map((category) => (
-  //             <>
-  //               &nbsp;
-  //               <tr key={category}>
-  //                 <th colSpan="2" style={{ textAlign: 'right', borderBottom: '1px solid #ddd' }} className="Table-home-left-heading">
-  //                   {
-  //                   category.includes("HOWTO") ? 
-  //                   category.replace("HOWTO :: CMM ->", "").replace("HOWTO :: ", "") 
-  //                   : 
-  //                   category
-  //                   }
-  //                 </th>
-  //               </tr>
-  //               {groupedData[category].map((record, index) => (
-  //                 <tr key={index}>
-  //                   <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left-text">
-  //                     <a href={record.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.website_desc}>
-  //                       {record.website_name}
-  //                     </a>
-  //                   </td>
-  //                 </tr>
-  //               ))}
-  //             </>
-  //           ))}
-  //         </tbody>
-  //       </table>
-  //     </div>
-  //   );
-  // };
+//   return ( 
+//     <div className="scrollable-container">
+//       <table className="Table-home-left">
+//         <tbody>
+//           {sortedCategories
+//             .filter
+//             (
+//               category => 
+//               category !== "HOWTO :: CMM -> 2-Quality Engineering (QE)" && 
+//               category !== "HOWTO :: CMM -> 1-Site Reliability Engineering​ (SRE)" &&
+//               category !== "HOWTO :: CMM -> 3-Observability (OBS)" &&
+//               category !== "HOWTO :: CMM -> 4-Chaos Engineering (CE)"
+//             ) // Exclude the specific category
+//             .map((category) => (
+//             <>
+//               &nbsp;
+//               <tr key={category}>
+//                 <th colSpan="2" style={{ textAlign: 'right', borderBottom: '1px solid #ddd' }} className="Table-home-left-heading">
+//                   {category.includes("HOWTO") ? 
+//                     category.replace("HOWTO :: CMM ->", "").replace("HOWTO :: ", "") 
+//                     : 
+//                     category
+//                   }
+//                 </th>
+//               </tr>
+//               {groupedData[category].map((record, index) => (
+//                 <tr key={index}>
+//                   <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left-text">
+//                     <a href={record.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.website_desc}>
+//                       {record.website_name}
+//                     </a>
+//                   </td>
+//                 </tr>
+//               ))}
+//             </>
+//           ))}
+//         </tbody>
+//       </table>
+//     </div>
+//   );
+// };
 
 
-  return ( 
+const InnerTableLeft = () => {
+  const groupedData = {};
+  websiterootdata.forEach((row) => {
+    if (!groupedData[row.website_cat]) {
+      groupedData[row.website_cat] = [];
+    }
+    groupedData[row.website_cat].push(row);
+  });
+
+  const sortedCategories = Object.keys(groupedData).sort();
+  
+  // State to manage which categories are expanded
+  const [expandedCategories, setExpandedCategories] = useState({});
+
+  // Function to toggle category expansion
+  const toggleCategory = (category) => {
+    setExpandedCategories(prevState => ({
+      ...prevState,
+      [category]: !prevState[category]
+    }));
+  };
+
+  return (
     <div className="scrollable-container">
       <table className="Table-home-left">
         <tbody>
           {sortedCategories
-            .filter
-            (
-              category => 
-              category !== "HOWTO :: CMM -> 2-Quality Engineering (QE)" && 
-              category !== "HOWTO :: CMM -> 1-Site Reliability Engineering​ (SRE)" &&
-              category !== "HOWTO :: CMM -> 3-Observability (OBS)" &&
-              category !== "HOWTO :: CMM -> 4-Chaos Engineering (CE)"
-            ) // Exclude the specific category
+            .filter(
+              category =>
+                category !== "HOWTO :: CMM -> 2-Quality Engineering (QE)" &&
+                category !== "HOWTO :: CMM -> 1-Site Reliability Engineering​ (SRE)" &&
+                category !== "HOWTO :: CMM -> 3-Observability (OBS)" &&
+                category !== "HOWTO :: CMM -> 4-Chaos Engineering (CE)"
+            )
             .map((category) => (
-            <>
-              &nbsp;
-              <tr key={category}>
-                <th colSpan="2" style={{ textAlign: 'right', borderBottom: '1px solid #ddd' }} className="Table-home-left-heading">
-                  {category.includes("HOWTO") ? 
-                    category.replace("HOWTO :: CMM ->", "").replace("HOWTO :: ", "") 
-                    : 
-                    category
-                  }
-                </th>
-              </tr>
-              {groupedData[category].map((record, index) => (
-                <tr key={index}>
-                  <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left-text">
-                    <a href={record.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.website_desc}>
-                      {record.website_name}
-                    </a>
-                  </td>
+              <>
+                <tr key={category}>
+                  <th
+                    colSpan="2"
+                    style={{ textAlign: 'right', borderBottom: '1px solid #ddd', cursor: 'pointer' }}
+                    className="Table-home-left-heading"
+                    onClick={() => toggleCategory(category)}
+                  >
+                    {category.includes("HOWTO")
+                      ? category.replace("HOWTO :: CMM ->", "").replace("HOWTO :: ", "")
+                      : category}
+                  </th>
                 </tr>
-              ))}
-            </>
-          ))}
+
+                {/* Conditionally render the category's content based on expanded state */}
+                {expandedCategories[category] && groupedData[category].map((record, index) => (
+                  <tr key={index}>
+                    <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left-text">
+                      <a href={record.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.website_desc}>
+                        {record.website_name}
+                      </a>
+                    </td>
+                  </tr>
+                ))}
+              </>
+            ))}
         </tbody>
       </table>
     </div>
