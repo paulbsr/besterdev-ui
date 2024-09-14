@@ -65,35 +65,83 @@ export default function HomePage22(props) {
 
     const sortedCategories = Object.keys(groupedData).sort();
 
-    return (
-      <div className="scrollable-container">
-        <table className="Table-home-left">
-          <tbody>
-            {sortedCategories.map((category) => (
-              <>
-                &nbsp;
-                <tr key={category}>
-                  <th colSpan="2" style={{ textAlign: 'right', borderBottom: '1px solid #ddd' }} className="Table-home-left-heading">
-                    {category.includes("HOWTO") ? category.replace("HOWTO :: CMM ->", "").replace("HOWTO :: ", "") : category}
-                  </th>
-                </tr>
-                {groupedData[category].map((record, index) => (
-                  <tr key={index}>
-                    <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left-text">
-                      <a href={record.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.website_desc}>
-                        {record.website_name}
-                      </a>
-                    </td>
-                  </tr>
-                ))}
-              </>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    );
-  };
+  //   return (
+  //     <div className="scrollable-container">
+  //       <table className="Table-home-left">
+  //         <tbody>
+  //           {sortedCategories.map((category) => (
+  //             <>
+  //               &nbsp;
+  //               <tr key={category}>
+  //                 <th colSpan="2" style={{ textAlign: 'right', borderBottom: '1px solid #ddd' }} className="Table-home-left-heading">
+  //                   {
+  //                   category.includes("HOWTO") ? 
+  //                   category.replace("HOWTO :: CMM ->", "").replace("HOWTO :: ", "") 
+  //                   : 
+  //                   category
+  //                   }
+  //                 </th>
+  //               </tr>
+  //               {groupedData[category].map((record, index) => (
+  //                 <tr key={index}>
+  //                   <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left-text">
+  //                     <a href={record.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.website_desc}>
+  //                       {record.website_name}
+  //                     </a>
+  //                   </td>
+  //                 </tr>
+  //               ))}
+  //             </>
+  //           ))}
+  //         </tbody>
+  //       </table>
+  //     </div>
+  //   );
+  // };
 
+
+  return ( 
+    <div className="scrollable-container">
+      <table className="Table-home-left">
+        <tbody>
+          {sortedCategories
+            .filter
+            (
+              category => 
+              category !== "HOWTO :: CMM -> 2-Quality Engineering (QE)" && 
+              category !== "HOWTO :: CMM -> 1-Site Reliability Engineering​ (SRE)" &&
+              category !== "HOWTO :: CMM -> 3-Observability (OBS)" &&
+              category !== "HOWTO :: CMM -> 4-Chaos Engineering (CE)"
+            ) // Exclude the specific category
+            .map((category) => (
+            <>
+              &nbsp;
+              <tr key={category}>
+                <th colSpan="2" style={{ textAlign: 'right', borderBottom: '1px solid #ddd' }} className="Table-home-left-heading">
+                  {category.includes("HOWTO") ? 
+                    category.replace("HOWTO :: CMM ->", "").replace("HOWTO :: ", "") 
+                    : 
+                    category
+                  }
+                </th>
+              </tr>
+              {groupedData[category].map((record, index) => (
+                <tr key={index}>
+                  <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left-text">
+                    <a href={record.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.website_desc}>
+                      {record.website_name}
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+  
   const InnerTableCentre = () => {
     const [selectedLetter, setSelectedLetter] = useState(null);
 

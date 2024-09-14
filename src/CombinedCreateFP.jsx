@@ -158,7 +158,7 @@ export default function CombinedCreateFP() {
           />
           <img alt="spacer" src={spacer} />
           Category:&nbsp;&nbsp;
-          <select
+          {/* <select
             className='Font-Verdana-QuickAdd'
             onChange={(e) => setWebsite_cat(e.target.value)}
             style={{ height: '28.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '5px', width: '225px' }}
@@ -171,7 +171,37 @@ export default function CombinedCreateFP() {
                 </option>
               ))
             }
-          </select>
+          </select> */}
+
+<select
+                        className='Font-Verdana-QuickAdd'
+                        onChange={(event) => {
+                            const selectedIndex = event.target.selectedIndex;
+                            const selectedOption = event.target.options[selectedIndex];
+                            const category = selectedOption.getAttribute("data-category");
+                            setWebsite_cat(category);
+                        }}
+                        id="dropdown"
+                        style={{
+                            height: '27.5px',
+                            border: '1.25px solid #336791',
+                            borderRadius: '4px',
+                            padding: 0,
+                            paddingLeft: '5px',
+                            width: '125px'
+                        }}
+                    >&nbsp;
+                        <option disabled selected value="">Category</option>
+                        {websiterootdata &&
+                            Array.from(new Set(websiterootdata.map(option => option.website_cat)))
+                                .sort()
+                                .map(category => (
+                                    <option key={category} value={category} data-category={category}>
+                                        {category}
+                                    </option>
+                                ))}
+                    </select>
+
           <button
             className="Font-Verdana-Small-Postgres"
             type="submit"
