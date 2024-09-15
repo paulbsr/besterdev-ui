@@ -111,10 +111,10 @@ export default function HomePage22(props) {
 const InnerTableLeft = () => {
   const groupedData = {};
   websiterootdata.forEach((row) => {
-    if (!groupedData[row.website_cat]) {
-      groupedData[row.website_cat] = [];
+    if (!groupedData[row.websiteCat]) {
+      groupedData[row.websiteCat] = [];
     }
-    groupedData[row.website_cat].push(row);
+    groupedData[row.websiteCat].push(row);
   });
 
   const sortedCategories = Object.keys(groupedData).sort();
@@ -161,8 +161,8 @@ const InnerTableLeft = () => {
                 {expandedCategories[category] && groupedData[category].map((record, index) => (
                   <tr key={index}>
                     <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left-text">
-                      <a href={record.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.website_desc}>
-                        {record.website_name}
+                      <a href={record.websiteUrl} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.websiteDesc}>
+                        {record.websiteName}
                       </a>
                     </td>
                   </tr>

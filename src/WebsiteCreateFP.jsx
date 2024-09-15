@@ -49,17 +49,15 @@ export default function WebSiteCreateFP(props) {
     event.preventDefault();
   
     var newRecord = {
-      'website_name': website_name,
-      'website_desc': website_desc,
-      'website_url': website_url,
-      'website_cat': website_cat,
+      'websiteName': website_name,
+      'websiteDesc': website_desc,
+      'websiteUrl': website_url,
+      'websiteCat': website_cat,
     };
   
     try {
       const response = await axios.post(
-        `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/create`,
-        newRecord
-      );
+        `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/create`, newRecord);
   
       if (response.status === 200) {
         toast.success(`${website_name} added.`);
@@ -115,12 +113,10 @@ export default function WebSiteCreateFP(props) {
             >&nbsp;
               <option disabled selected value="">Category</option>
               {websiterootdata &&
-                Array.from(new Set(websiterootdata.map(option => option.website_cat)))
+                Array.from(new Set(websiterootdata.map(option => option.websiteCat)))
                   .sort()
                   .map(category => (
-                    <option key={category} value={category} data-category={category}>
-                      {category}
-                    </option>
+                    <option key={category} value={category} data-category={category}>{category}</option>
                   ))}
             </select>
             <img alt="1" src={spacer} /><button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid  #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>Memorialize</button>

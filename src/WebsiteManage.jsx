@@ -27,11 +27,11 @@ export default function WebsiteManage(props) {
 
 
   const handleEdit = (row) => {
-    setEditing(row.id)
-    setWebsite_name(row.website_name)
-    setWebsite_desc(row.website_desc)
-    setWebsite_url(row.website_url)
-    setWebsite_cat(row.website_cat)
+    setEditing(row.websiteId)
+    setWebsite_name(row.websiteName)
+    setWebsite_desc(row.websiteDesc)
+    setWebsite_url(row.websiteUrl)
+    setWebsite_cat(row.websiteCat)
   };
 
   const onEditCancel = () => {
@@ -48,10 +48,10 @@ export default function WebsiteManage(props) {
 
       const websitePUT =
       {
-        'website_name': website_name,
-        'website_desc': website_desc,
-        'website_url': website_url,
-        'website_cat': website_cat,
+        'websiteName': website_name,
+        'websiteDesc': website_desc,
+        'websiteUrl': website_url,
+        'websiteCat': website_cat,
       }
 
 
@@ -66,7 +66,7 @@ export default function WebsiteManage(props) {
   }
 
   const onEditDelete = (row) => {
-    axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/delete/${row.id}`)
+    axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/delete/${row.websiteId}`)
       .then((response) => {
         window.alert('Are you sure you want to delete');
         setCheckForRecords(!checkForRecords);
@@ -104,11 +104,11 @@ export default function WebsiteManage(props) {
           {websiterootdata.map((row) => {
 
             return (
-              <tr key={row.id}>
+              <tr key={row.websiteId}>
                 <td>
                   <>
 
-                    {row.id === editing ?
+                    {row.websiteId === editing ?
                       (
                         <>
                           <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#336791', outline: 'none' }} type='button' onClick={() => onEditSave()}><a><FaCheck style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>&nbsp;
@@ -124,10 +124,10 @@ export default function WebsiteManage(props) {
                   </>
                 </td>
 
-                <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '380px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_name} onChange={(e) => setWebsite_name(e.target.value)} />) : (<a href={row.website_url} target="_blank" rel="noreferrer">{row.website_name}</a>)}</td>
-                <td className="asmshover">{row.id === editing ? (<textarea style={{ height: '30px', width: '780px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_desc} onChange={(e) => setWebsite_desc(e.target.value)} />) : (row.website_desc)}</td>
-                <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '380px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_url} onChange={(e) => setWebsite_url(e.target.value)} />) : "URL is te lank"}</td>
-                <td className="asmshover">{row.id === editing ? (<input style={{ height: '30px', width: '180px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_cat} onChange={(e) => setWebsite_cat(e.target.value)} />) : (row.website_cat)}</td>
+                <td className="asmshover">{row.websiteId === editing ? (<input style={{ height: '30px', width: '380px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_name} onChange={(e) => setWebsite_name(e.target.value)} />) : (<a href={row.websiteUrl} target="_blank" rel="noreferrer">{row.websiteName}</a>)}</td>
+                <td className="asmshover">{row.websiteId === editing ? (<textarea style={{ height: '30px', width: '780px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_desc} onChange={(e) => setWebsite_desc(e.target.value)} />) : (row.websiteDesc)}</td>
+                <td className="asmshover">{row.websiteId === editing ? (<input style={{ height: '30px', width: '380px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_url} onChange={(e) => setWebsite_url(e.target.value)} />) : "URL is te lank"}</td>
+                <td className="asmshover">{row.websiteId === editing ? (<input style={{ height: '30px', width: '180px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_cat} onChange={(e) => setWebsite_cat(e.target.value)} />) : (row.websiteCat)}</td>
 
               </tr>
             )

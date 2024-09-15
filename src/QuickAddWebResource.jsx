@@ -32,10 +32,10 @@ export default function QuickAddWebResource(props) {
         {
             var newRecord =
             {
-                'website_name': website_name,
-                'website_desc': website_desc,
-                'website_url': website_url,
-                'website_cat': website_cat,
+                'websiteName': website_name,
+                'websiteDesc': website_desc,
+                'websiteUrl': website_url,
+                'websiteCat': website_cat,
             }
 
             {
@@ -84,7 +84,7 @@ export default function QuickAddWebResource(props) {
                     >&nbsp;
                         <option disabled selected value="">Category</option>
                         {websiterootdata &&
-                            Array.from(new Set(websiterootdata.map(option => option.website_cat)))
+                            Array.from(new Set(websiterootdata.map(option => option.websiteCat)))
                                 .sort()
                                 .map(category => (
                                     <option key={category} value={category} data-category={category}>

@@ -18,10 +18,10 @@ export default function CombinedCreateFP() {
   const [cyclopedia_url, setCyclopedia_url] = useState('');
   const [checkForRecords, setCheckForRecords] = useState(true);
   
-  const [website_name, setWebsite_name] = useState('');
-  const [website_desc, setWebsite_desc] = useState('');
-  const [website_url, setWebsite_url] = useState('');
-  const [website_cat, setWebsite_cat] = useState('');
+  const [websiteName, setWebsiteName] = useState('');
+  const [websiteDesc, setWebsiteDesc] = useState('');
+  const [websiteUrl, setWebsiteUrl] = useState('');
+  const [websiteCat, setWebsiteCat] = useState('');
   
   const { websiterootdata } = useWebsiteApi();
 
@@ -51,19 +51,19 @@ export default function CombinedCreateFP() {
   const handleSubmitWebsite = async (event) => {
     event.preventDefault();
     const newRecord = {
-      website_name,
-      website_desc,
-      website_url,
-      website_cat,
+      websiteName,
+      websiteDesc,
+      websiteUrl,
+      websiteCat,
     };
     try {
       const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/create`, newRecord);
       if (response.status === 200) {
-        toast.success(`${website_name} added.`);
-        setWebsite_name('');
-        setWebsite_desc('');
-        setWebsite_url('');
-        setWebsite_cat('');
+        toast.success(`${websiteName} added.`);
+        setWebsiteName('');
+        setWebsiteDesc('');
+        setWebsiteUrl('');
+        setWebsiteCat('');
       } else {
         toast.error('Nee');
       }
@@ -142,8 +142,8 @@ export default function CombinedCreateFP() {
             style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '10px', width: '500px' }}
             placeholder="Required"
             type="text"
-            value={website_name}
-            onChange={(e) => setWebsite_name(e.target.value)}
+            value={websiteName}
+            onChange={(e) => setWebsiteName(e.target.value)}
             required
           />
           <img alt="spacer" src={spacer} />
@@ -152,22 +152,22 @@ export default function CombinedCreateFP() {
             style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '10px', width: '650px' }}
             placeholder="Required"
             type="text"
-            value={website_url}
-            onChange={(e) => setWebsite_url(e.target.value)}
+            value={websiteUrl}
+            onChange={(e) => setWebsiteUrl(e.target.value)}
             required
           />
           <img alt="spacer" src={spacer} />
           Category:&nbsp;&nbsp;
           {/* <select
             className='Font-Verdana-QuickAdd'
-            onChange={(e) => setWebsite_cat(e.target.value)}
+            onChange={(e) => setWebsiteCat(e.target.value)}
             style={{ height: '28.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '5px', width: '225px' }}
           >
             <option disabled selected value="">Select Category</option>
             {websiterootdata &&
               websiterootdata.map(option => (
-                <option key={option.website_cat} value={option.website_cat}>
-                  {option.website_cat}
+                <option key={option.websiteCat} value={option.websiteCat}>
+                  {option.websiteCat}
                 </option>
               ))
             }
@@ -179,7 +179,7 @@ export default function CombinedCreateFP() {
               const selectedIndex = event.target.selectedIndex;
               const selectedOption = event.target.options[selectedIndex];
               const category = selectedOption.getAttribute("data-category");
-              setWebsite_cat(category);
+              setWebsiteCat(category);
             }}
             id="dropdown"
             style={{
@@ -193,7 +193,7 @@ export default function CombinedCreateFP() {
           >&nbsp;
             <option disabled selected value="">Category</option>
             {websiterootdata &&
-              Array.from(new Set(websiterootdata.map(option => option.website_cat)))
+              Array.from(new Set(websiterootdata.map(option => option.websiteCat)))
                 .sort()
                 .map(category => (
                   <option key={category} value={category} data-category={category}>
@@ -208,7 +208,7 @@ export default function CombinedCreateFP() {
     const selectedIndex = event.target.selectedIndex;
     const selectedOption = event.target.options[selectedIndex];
     const category = selectedOption.getAttribute("data-category");
-    setWebsite_cat(category);
+    setWebsiteCat(category);
   }}
   id="dropdown"
   style={{
@@ -222,7 +222,7 @@ export default function CombinedCreateFP() {
 >&nbsp;
   <option disabled selected value="">Category</option>
   {websiterootdata &&
-    Array.from(new Set(websiterootdata.map(option => option.website_cat)))
+    Array.from(new Set(websiterootdata.map(option => option.websiteCat)))
       .sort()
       .filter(category => !category.startsWith("HOWTO")) // Exclude "HOWTO"
       .map(category => (

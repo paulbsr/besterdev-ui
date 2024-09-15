@@ -13,7 +13,7 @@ export const WebSiteAPIProvider = ({ children }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites');
-        const sortedwebsitedata = response.data.sort((b, a) => b.website_name.localeCompare(a.website_name));
+        const sortedwebsitedata = response.data.sort((b, a) => b.websiteName.localeCompare(a.websiteName));
         setWebsiterootdata(sortedwebsitedata);
       } catch (err) {
         setError(err);
@@ -22,7 +22,7 @@ export const WebSiteAPIProvider = ({ children }) => {
       }
     };
 
-    fetchData();
+    fetchData();console.log('in <WebSiteAPIProvider> is jou websiterootdata:', websiterootdata)
   }, []);
 
   return (

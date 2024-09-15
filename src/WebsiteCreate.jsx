@@ -23,10 +23,10 @@ export default function WebSiteCreate(props) {
     {
       var newRecord =
       {
-        'website_name': website_name,
-        'website_desc': website_desc,
-        'website_url': website_url,
-        'website_cat': website_cat,
+        'websiteName': website_name,
+        'websiteDesc': website_desc,
+        'websiteUrl': website_url,
+        'websiteCat': website_cat,
       }
 
       {
