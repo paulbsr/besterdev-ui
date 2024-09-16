@@ -108,7 +108,7 @@ export default function CandidateAPI() {
 
   return (
     <>
-      <GradientLineThin />&nbsp;
+      {/* <GradientLineThin />&nbsp; */}
 
       <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
         <Tooltip id="insert" />

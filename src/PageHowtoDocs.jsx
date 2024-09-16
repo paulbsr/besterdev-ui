@@ -5,7 +5,7 @@ import GradientLineThin from './GradientLineThin';
 import Quicklinks3 from './Quicklinks3';
 import ToastComponent from './ToastComponent';
 import BreakingNews from './BreakingNews';
-import DBSearchComponentBanner from './DBSearchComponentBanner';
+import CombinedCreateFP from './CombinedCreateFP';
 
 
 export default function PageNewHowtoDocs() {
@@ -19,7 +19,6 @@ export default function PageNewHowtoDocs() {
         <GradientLineThin />
         <BreakingNews />
         <GradientLineThin />
-        {/* <DBSearchComponentBanner /> */}
         <TaskAccordion />
         <ToastComponent/>
 

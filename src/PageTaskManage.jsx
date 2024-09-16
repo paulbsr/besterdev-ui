@@ -14,8 +14,7 @@ import BreakingNews from './BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
 import TaskOverview from './TaskOverview';
 import { TaskContext } from "./Contexts";
-import DBSearchComponent from './DBSearchComponent';
-import DBSearchComponentBanner from './DBSearchComponentBanner';
+import CombinedCreateFP from './CombinedCreateFP';
 
 
 
@@ -47,8 +46,7 @@ export default function PageTaskManage() {
       <GradientLineThin />
       <CyclopediaTicker />
       <GradientLineThin />
-      <Quicklinks3 />
-      {/* <DBSearchComponentBanner /> */}
+      <CombinedCreateFP />
       <TaskContext.Provider value={tasks}>
       <TaskOverview />
       </TaskContext.Provider>

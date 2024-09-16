@@ -9,6 +9,7 @@ import BreakingNews from './BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
 import { Tooltip } from 'react-tooltip';
 import CyclopediaEdit from './CyclopediaEdit';
+import CombinedCreateFP from './CombinedCreateFP';
 
 
 export default function PageCyclopediaEdit() {
@@ -24,7 +25,8 @@ export default function PageCyclopediaEdit() {
         <GradientLineThin />
         <CyclopediaTicker />
         <GradientLineThin />
-        <Quicklinks3 />
+        {/* <Quicklinks3 /> */}
+        <CombinedCreateFP />
         <CyclopediaEdit cyclopediaId={cyclopediaId}/>
         <ToastComponent />
       </div>

@@ -109,8 +109,6 @@ export default function TaskCreate(props) {
                                         <option value="181268" data-value2="ComputerCloudSecurity">ComputerCloudSecurity</option>
                                         <option value="171593" data-value2="AppliedCryptography">AppliedCryptography</option>
                                         <option value="168272" data-value2="Dissertation">Dissertation</option>
-                                        {/* <option value="188660" data-value2="TELEFONICA">TELEFONICA</option> */}
-                                        {/* <option value="FO" data-value2="Fully Onsite">Fully Onsite</option> */}
                                     </select>
 
                                     <div>
@@ -121,22 +119,7 @@ export default function TaskCreate(props) {
                                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                         <input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '500px' }} placeholder="Requirement / Problem / Description / Solution" type="text" onChange={(event) => setTaskrequirement(event.target.value)} />
                                     </div>
-                                    {/* <div>
-                                        &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-                                        <select style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '150px' }} placeholder="Web resource" id="dropdown" onChange={(event) => setTaskowner(event.target.value)}>
-                                            <option disabled selected value="Domain">Responsible</option>
-                                            <option value="Conor Lynch">Conor Lynch</option>
-                                            <option value="Dwayne Patel">Dwayne Patel</option>
-                                            <option value="Felipe">Felipe Mantov</option>
-                                            <option value="Keex Nenyiaba">Keex Nenyiaba</option>
-                                            <option value="Leo Pinto">Leo Pinto</option>
-                                            <option value="Monique Borje">Monique Borje</option>
-                                            <option value="Paul Bester">Paul Bester</option>
-                                            <option value="Shikha Seth">Shikha Seth</option>
-                                            <option value="Simon Dowling">Simon Dowling</option>
-                                            <option value="Thiago Cunha">Thiago Cunha</option>
-                                        </select>
-                                    </div> */}
+
                                     <div>
                                         &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
                                     </div>

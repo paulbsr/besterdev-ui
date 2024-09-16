@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import ToastComponent from './ToastComponent';
 import BreakingNews from './BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
+import CombinedCreateFP from './CombinedCreateFP';
 
 
 export default function PageSearch() {
@@ -25,7 +26,7 @@ export default function PageSearch() {
       <GradientLineThin />
       <CyclopediaTicker />
       <GradientLineThin />
-      <Quicklinks3 />
+      <CombinedCreateFP/>
       <CandidateAPI />
       <Footer/>
       <ToastComponent />

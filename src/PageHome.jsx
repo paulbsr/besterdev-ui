@@ -26,16 +26,10 @@ export default function PageHome() {
         <BannerLight />
         <GradientLineThin />
         <BreakingNews />
-        {/* <WebsiteCreateFP /> */}
         <GradientLineThin />
         <CyclopediaTicker />
-        {/* <CyclopediaCreateFP /> */}
         <GradientLineThin />
-        {/* <QuicklinksFP /> */}
-        {/* <CyclopediaCreateFP /> */}
         <CombinedCreateFP />
-        {/* <UnifiedCreateFP /> */}
-
         <HomePage22 />
         <Footer/>
         <ToastComponent />

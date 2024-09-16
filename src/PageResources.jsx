@@ -7,7 +7,7 @@ import WebsiteManage from './WebsiteManage';
 import ToastComponent from './ToastComponent';
 import BreakingNews from './BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
-import DBSearchComponentBanner from './DBSearchComponentBanner';
+import CombinedCreateFP from './CombinedCreateFP';
 
 export default function PageResources() {
     return (
@@ -20,8 +20,7 @@ export default function PageResources() {
         <GradientLineThin />
         <CyclopediaTicker />
         <GradientLineThin />
-        <Quicklinks3 />
-        {/* <DBSearchComponentBanner /> */}
+        <CombinedCreateFP />
         <WebsiteManage />
         <ToastComponent />
 

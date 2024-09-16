@@ -11,7 +11,7 @@ import ToastComponent from './ToastComponent';
 import BreakingNews from './BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
 import PeopleScorecard from './PeopleScorecard'
-import DBSearchComponentBanner from './DBSearchComponentBanner';
+import CombinedCreateFP from './CombinedCreateFP';
 
 
 
@@ -27,8 +27,7 @@ export default function PagePeopleScorecard(cyclopediadata) {
       <GradientLineThin />
       <CyclopediaTicker />
       <GradientLineThin />
-      <Quicklinks3 />
-      {/* <DBSearchComponentBanner /> */}
+      <CombinedCreateFP />
       <PeopleScorecard />
       <ToastComponent />
     </div>

@@ -4,7 +4,7 @@ import { Stack } from "@mui/material";
 import { useBreakingNewsApi } from './BreakingNewsAPIProvider';
 
 export default function BreakingNews() {
-    const { breakingnewsrootdata, loading, error } = useBreakingNewsApi(); //gebruik van die nuwexuseContect :-)
+    const { breakingnewsrootdata, loading, error } = useBreakingNewsApi(); //gebruik van die nuwe useContext :-)
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;
 

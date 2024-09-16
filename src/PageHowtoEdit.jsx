@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 import ToastComponent from './ToastComponent';
 import BreakingNews from './BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
-import DBSearchComponentBanner from './DBSearchComponentBanner';
+import CombinedCreateFP from './CombinedCreateFP';
 
 // export default function PageCyclopedia() {
 export default function PageHowtoEdit() {
@@ -26,7 +26,7 @@ export default function PageHowtoEdit() {
         <GradientLineThin />
         <CyclopediaTicker />
         <GradientLineThin />
-        <Quicklinks3 />
+        <CombinedCreateFP />
         <HowtoEdit howto_id={howto_id}/>
         <ToastComponent />
 

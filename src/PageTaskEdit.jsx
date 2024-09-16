@@ -9,7 +9,7 @@ import ToastComponent from './ToastComponent';
 import BreakingNews from './BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
 import TaskEdit from './TaskEdit';
-import DBSearchComponentBanner from './DBSearchComponentBanner';
+import CombinedCreateFP from './CombinedCreateFP';
 
 export default function PageTaskEdit() {
 
@@ -26,8 +26,7 @@ export default function PageTaskEdit() {
         <GradientLineThin />
         <CyclopediaTicker />
         <GradientLineThin />
-        <Quicklinks3 />
-        {/* <DBSearchComponentBanner /> */}
+        <CombinedCreateFP />
         <TaskEdit task_id={task_id}/>
         <ToastComponent />
 
