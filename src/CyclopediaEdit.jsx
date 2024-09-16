@@ -34,26 +34,59 @@ export default function CyclopediaEdit(props) {
     };
 
 
+    // const onEditSave = async () => {
+    //     const CyclopediaRecordPUT = 
+    //     {
+    //       'cyclopediaName': cyclopediaName,
+    //       'cyclopediaDesc': cyclopediaDesc,
+    //       'cyclopediaRef': cyclopediaRef,
+    //       'cyclopediaUrl': cyclopediaUrl,
+    //     }
+    
+    //     try {
+    //       await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${props.cyclopediaId}`, CyclopediaRecordPUT);
+    //     //   await axios.put(`http://localhost:8000/api/v1/cyclopedia/update/${props.cyclopediaId}`, CyclopediaRecordPUT);
+    //       toast.success(`Cyclopedia Record amended.`);
+    //       setCheckForRecords(!checkForRecords);
+    //       onEditCancel();
+    //     } catch (error) {
+    //       console.error('Error updating:', error);
+    //       toast.error('Failed to amend Cyclopedia Record.');
+    //     }
+    //   }
+
     const onEditSave = async () => {
-        const CyclopediaRecordPUT = 
-        {
-          'cyclopediaName': cyclopediaName,
-          'cyclopediaDesc': cyclopediaDesc,
-          'cyclopediaRef': cyclopediaRef,
-          'cyclopediaUrl': cyclopediaUrl,
-        }
+        const CyclopediaRecordPUT = {
+            'cyclopediaName': cyclopediaName,
+            'cyclopediaDesc': cyclopediaDesc,
+            'cyclopediaRef': cyclopediaRef,
+            'cyclopediaUrl': cyclopediaUrl,
+        };
     
         try {
-          await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${props.cyclopediaId}`, CyclopediaRecordPUT);
-        //   await axios.put(`http://localhost:8000/api/v1/cyclopedia/update/${props.cyclopediaId}`, CyclopediaRecordPUT);
-          toast.success(`Cyclopedia Record amended.`);
-          setCheckForRecords(!checkForRecords);
-          onEditCancel();
+            await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${props.cyclopediaId}`, CyclopediaRecordPUT);
+            toast.success(`Cyclopedia Record amended.`);
+            setEditing(false);
+            setRefresh(prev => !prev);  // Assuming setRefresh triggers a data refetch
         } catch (error) {
-          console.error('Error updating:', error);
-          toast.error('Failed to amend Cyclopedia Record.');
+            console.error('Error updating:', error);
+            toast.error('Failed to amend Cyclopedia Record.');
         }
-      }
+    };
+
+    
+    // useEffect(() => {
+    //     if (cyclopediarootdata && Array.isArray(cyclopediarootdata)) {
+    //         const filteredcyclopedia = cyclopediarootdata.filter(site => {
+    //             const cyclopediaId = site.cyclopediaId;
+    //             return String(cyclopediaId) === String(props.cyclopediaId);
+    //         });
+    //         const sortedfilteredcyclopedia = filteredcyclopedia.sort((a, b) =>
+    //             a.cyclopediaName.localeCompare(b.cyclopediaName)
+    //         );
+    //         setCyclopediadata(sortedfilteredcyclopedia);
+    //     }
+    // }, [cyclopediarootdata, props.cyclopediaId]);
 
     useEffect(() => {
         if (cyclopediarootdata && Array.isArray(cyclopediarootdata)) {
@@ -66,7 +99,7 @@ export default function CyclopediaEdit(props) {
             );
             setCyclopediadata(sortedfilteredcyclopedia);
         }
-    }, [cyclopediarootdata, props.cyclopediaId]);
+    }, [cyclopediarootdata, props.cyclopediaId, setRefresh]);
 
 
     if (loading) return <div>Loading Cyclopedias...</div>;

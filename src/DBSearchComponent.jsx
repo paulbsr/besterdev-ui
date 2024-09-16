@@ -82,7 +82,7 @@ const DBSearchComponent = () => {
     <form onSubmit={handleSearch}>
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <input
-          style={{ height: '40.5px', border: '0.75px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '900px' }}
+          style={{ height: '40.5px', border: '0.75px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '900px', fontFamily: 'Segoe UI', fontSize:'18px'}}
           placeholder="Search besterSec"
           type="text"
           value={searchQuery}
