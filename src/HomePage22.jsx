@@ -16,8 +16,6 @@ export default function HomePage22(props) {
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [taskdata, setTaskdata] = useState([]);
-  // const [howtodata, setHowtodata] = useState([]);
-  // const [cyclopediadata, setCyclopediaData] = useState([]);
   const [showHowtoEdit, setShowHowtoEdit] = useState(false);
   const [howtoIdd, setHowtoIdd] = useState(null);
   const { websiterootdata, loading, error } = useWebsiteApi(); //gebruik van die nuwe useContext :-)
@@ -53,135 +51,83 @@ export default function HomePage22(props) {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
-//   const InnerTableLeft = () => {
-//     const groupedData = {};
-//     websiterootdata.forEach((row) => {
-//       if (!groupedData[row.website_cat]) {
-//         groupedData[row.website_cat] = [];
-//       }
-//       groupedData[row.website_cat].push(row);
-//     });
 
-//     const sortedCategories = Object.keys(groupedData).sort();
-    
+  const InnerTableLeft = () => {
+    const groupedData = {};
+    websiterootdata.forEach((row) => {
+      if (!groupedData[row.websiteCat]) {
+        groupedData[row.websiteCat] = [];
+      }
+      groupedData[row.websiteCat].push(row);
+    });
 
-//   return ( 
-//     <div className="scrollable-container">
-//       <table className="Table-home-left">
-//         <tbody>
-//           {sortedCategories
-//             .filter
-//             (
-//               category => 
-//               category !== "HOWTO :: CMM -> 2-Quality Engineering (QE)" && 
-//               category !== "HOWTO :: CMM -> 1-Site Reliability Engineering​ (SRE)" &&
-//               category !== "HOWTO :: CMM -> 3-Observability (OBS)" &&
-//               category !== "HOWTO :: CMM -> 4-Chaos Engineering (CE)"
-//             ) // Exclude the specific category
-//             .map((category) => (
-//             <>
-//               &nbsp;
-//               <tr key={category}>
-//                 <th colSpan="2" style={{ textAlign: 'right', borderBottom: '1px solid #ddd' }} className="Table-home-left-heading">
-//                   {category.includes("HOWTO") ? 
-//                     category.replace("HOWTO :: CMM ->", "").replace("HOWTO :: ", "") 
-//                     : 
-//                     category
-//                   }
-//                 </th>
-//               </tr>
-//               {groupedData[category].map((record, index) => (
-//                 <tr key={index}>
-//                   <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left-text">
-//                     <a href={record.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.website_desc}>
-//                       {record.website_name}
-//                     </a>
-//                   </td>
-//                 </tr>
-//               ))}
-//             </>
-//           ))}
-//         </tbody>
-//       </table>
-//     </div>
-//   );
-// };
+    const sortedCategories = Object.keys(groupedData).sort();
 
+    // State to manage which categories are expanded
+    const [expandedCategories, setExpandedCategories] = useState({});
 
-const InnerTableLeft = () => {
-  const groupedData = {};
-  websiterootdata.forEach((row) => {
-    if (!groupedData[row.websiteCat]) {
-      groupedData[row.websiteCat] = [];
-    }
-    groupedData[row.websiteCat].push(row);
-  });
+    // Function to toggle category expansion
+    const toggleCategory = (category) => {
+      setExpandedCategories(prevState => ({
+        ...prevState,
+        [category]: !prevState[category]
+      }));
+    };
 
-  const sortedCategories = Object.keys(groupedData).sort();
-  
-  // State to manage which categories are expanded
-  const [expandedCategories, setExpandedCategories] = useState({});
+    return (
+      <div className="scrollable-container">
+        <table className="Table-home-left">
+          <tbody>
+            {sortedCategories
+              .filter(
+                category =>
+                  category !== "HOWTO :: CMM -> 2-Quality Engineering (QE)" &&
+                  category !== "HOWTO :: CMM -> 1-Site Reliability Engineering​ (SRE)" &&
+                  category !== "HOWTO :: CMM -> 3-Observability (OBS)" &&
+                  category !== "HOWTO :: CMM -> 4-Chaos Engineering (CE)"
+              )
+              .map((category) => (
+                <>
+                  <tr key={category}>
+                    <th
+                      colSpan="2"
+                      style={{ textAlign: 'right', borderBottom: '1px solid #ddd', cursor: 'pointer' }}
+                      className="Table-home-left-heading"
+                      onClick={() => toggleCategory(category)}
+                    >
+                      {category.includes("HOWTO")
+                        ? category.replace("HOWTO :: CMM ->", "").replace("HOWTO :: ", "")
+                        : category}
+                    </th>
+                  </tr>
 
-  // Function to toggle category expansion
-  const toggleCategory = (category) => {
-    setExpandedCategories(prevState => ({
-      ...prevState,
-      [category]: !prevState[category]
-    }));
+                  {/* Conditionally render the category's content based on expanded state */}
+                  {expandedCategories[category] && groupedData[category].map((record, index) => (
+                    <tr key={index}>
+                      <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left-text">
+                        <a href={record.websiteUrl} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.websiteDesc}>
+                          {record.websiteName}
+                        </a>
+                        <div>&nbsp;</div>
+                      </td>
+                    </tr>
+
+                  ))}
+                </>
+              ))}
+          </tbody>
+        </table>
+      </div>
+    );
   };
 
-  return (
-    <div className="scrollable-container">
-      <table className="Table-home-left">
-        <tbody>
-          {sortedCategories
-            .filter(
-              category =>
-                category !== "HOWTO :: CMM -> 2-Quality Engineering (QE)" &&
-                category !== "HOWTO :: CMM -> 1-Site Reliability Engineering​ (SRE)" &&
-                category !== "HOWTO :: CMM -> 3-Observability (OBS)" &&
-                category !== "HOWTO :: CMM -> 4-Chaos Engineering (CE)"
-            )
-            .map((category) => (
-              <>
-                <tr key={category}>
-                  <th
-                    colSpan="2"
-                    style={{ textAlign: 'right', borderBottom: '1px solid #ddd', cursor: 'pointer' }}
-                    className="Table-home-left-heading"
-                    onClick={() => toggleCategory(category)}
-                  >
-                    {category.includes("HOWTO")
-                      ? category.replace("HOWTO :: CMM ->", "").replace("HOWTO :: ", "")
-                      : category}
-                  </th>
-                </tr>
-
-                {/* Conditionally render the category's content based on expanded state */}
-                {expandedCategories[category] && groupedData[category].map((record, index) => (
-                  <tr key={index}>
-                    <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left-text">
-                      <a href={record.websiteUrl} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.websiteDesc}>
-                        {record.websiteName}
-                      </a>
-                    </td>
-                  </tr>
-                ))}
-              </>
-            ))}
-        </tbody>
-      </table>
-    </div>
-  );
-};
-  
   const InnerTableCentre = () => {
     const [selectedLetter, setSelectedLetter] = useState(null);
 
-    // Assuming cyclopediadata is an array of objects with a property 'cyclopedia_name'
-    const filteredData = selectedLetter ? cyclopediarootdata.filter((rowc) => rowc.cyclopedia_name && rowc.cyclopedia_name.startsWith(selectedLetter)) : cyclopediarootdata;
+    // Assuming cyclopediadata is an array of objects with a property 'cyclopediaName'
+    const filteredData = selectedLetter ? cyclopediarootdata.filter((rowc) => rowc.cyclopediaName && rowc.cyclopediaName.startsWith(selectedLetter)) : cyclopediarootdata;
 
-    const firstTwentyCyclopediaRecords = filteredData.slice(0, 30);
+    const firstTwentyCyclopediaRecords = filteredData.slice(0, 40);
 
     const alphabet = 'A-B-C-D-E-F-G-H-I-J-K-L-M-N-O-P-Q-R-S-T-U-V-W-X-Y-Z';
 
@@ -226,8 +172,8 @@ const InnerTableLeft = () => {
                   <td className="fphover2">
                     {rowc && (
                       <div style={{ cursor: 'pointer' }}>
-                        <a onClick={() => navigate(`/cyclopediaedit/${rowc.cyclopedia_id}`)}>
-                        <b>{rowc.cyclopedia_name}:</b>&nbsp;<i>{rowc.cyclopedia_desc}</i>
+                        <a onClick={() => navigate(`/cyclopediaedit/${rowc.cyclopediaId}`)}>
+                          <b>{rowc.cyclopediaName}:</b>&nbsp;<i>{rowc.cyclopediaDesc}</i>
                         </a>
                         <div className='Font-Spacer-White'>Make this spacer white</div>
                       </div>
@@ -372,22 +318,6 @@ const InnerTableLeft = () => {
             <th style={{ width: '25%' }}></th>
           </tr>
         </thead>
-
-        {/* <tbody>
-          {websiterootdata.map((row, index) => {
-            const howtoRow = howtorootdata[index];
-            const cyclopediaRow = cyclopediarootdata[index];
-
-            return (
-              <tr key={index}>
-                <td></td>
-                <td></td>
-              </tr>
-            );
-          }
-          )
-          }
-        </tbody> */}
       </table>
     </div>
   );

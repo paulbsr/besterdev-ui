@@ -14,7 +14,7 @@ export const CyclopediaAPIProvider = ({ children }) => {
       try {
         const response = await axios.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia');
         // const response = await axios.get('http://localhost:8000/api/v1/cyclopedia');
-        const sortedcyclopediadata = response.data.sort((b, a) => b.cyclopedia_name.localeCompare(a.cyclopedia_name));
+        const sortedcyclopediadata = response.data.sort((b, a) => b.cyclopediaName.localeCompare(a.cyclopediaName));
         setCyclopediarootdata(sortedcyclopediadata);
       } catch (err) {
         setError(err);

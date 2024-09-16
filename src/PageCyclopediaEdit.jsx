@@ -12,7 +12,7 @@ import CyclopediaEdit from './CyclopediaEdit';
 
 
 export default function PageCyclopediaEdit() {
-  const { cyclopedia_id } = useParams();
+  const { cyclopediaId } = useParams();
 
     return (
       <div>
@@ -25,7 +25,7 @@ export default function PageCyclopediaEdit() {
         <CyclopediaTicker />
         <GradientLineThin />
         <Quicklinks3 />
-        <CyclopediaEdit cyclopedia_id={cyclopedia_id}/>
+        <CyclopediaEdit cyclopediaId={cyclopediaId}/>
         <ToastComponent />
       </div>
     )

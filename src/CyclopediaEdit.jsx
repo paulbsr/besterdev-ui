@@ -14,20 +14,19 @@ export default function CyclopediaEdit(props) {
     const [cyclopediadata, setCyclopediadata] = useState([]);
     const { cyclopediarootdata, loading, error, setRefresh } = useCyclopediaApi();
     const [editing, setEditing] = useState(false);
-    const [cyclopedia_name, setCyclopedia_name] = useState('');
-    const [cyclopedia_desc, setCyclopedia_desc] = useState('');
-    const [cyclopedia_ref, setCyclopedia_ref] = useState('');
-    const [cyclopedia_url, setCyclopedia_url] = useState('');
+    const [cyclopediaName, setCyclopediaName] = useState('');
+    const [cyclopediaDesc, setCyclopediaDesc] = useState('');
+    const [cyclopediaRef, setCyclopediaRef] = useState('');
+    const [cyclopediaUrl, setCyclopediaUrl] = useState('');
     const [checkForRecords, setCheckForRecords] = useState(true);
 
     const handleEdit = (item) => 
     {
-        setCyclopedia_name(item.cyclopedia_name);
-        setCyclopedia_desc(item.cyclopedia_desc);
-        setCyclopedia_ref(item.cyclopedia_ref);
-        setCyclopedia_url(item.cyclopedia_url);
+        setCyclopediaName(item.cyclopediaName);
+        setCyclopediaDesc(item.cyclopediaDesc);
+        setCyclopediaRef(item.cyclopediaRef);
+        setCyclopediaUrl(item.cyclopediaUrl);
         setEditing(true);
-        console.log('In <CyclopediaEdit> is jou cyclopedia_url:', item.cyclopedia_url)
     };
 
     const onEditCancel = () => {
@@ -38,15 +37,15 @@ export default function CyclopediaEdit(props) {
     const onEditSave = async () => {
         const CyclopediaRecordPUT = 
         {
-          'cyclopedia_name': cyclopedia_name,
-          'cyclopedia_desc': cyclopedia_desc,
-          'cyclopedia_ref': cyclopedia_ref,
-          'cyclopedia_url': cyclopedia_url,
+          'cyclopediaName': cyclopediaName,
+          'cyclopediaDesc': cyclopediaDesc,
+          'cyclopediaRef': cyclopediaRef,
+          'cyclopediaUrl': cyclopediaUrl,
         }
     
         try {
-          await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${props.cyclopedia_id}`, CyclopediaRecordPUT);
-        //   await axios.put(`http://localhost:8000/api/v1/cyclopedia/update/${props.cyclopedia_id}`, CyclopediaRecordPUT);
+          await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${props.cyclopediaId}`, CyclopediaRecordPUT);
+        //   await axios.put(`http://localhost:8000/api/v1/cyclopedia/update/${props.cyclopediaId}`, CyclopediaRecordPUT);
           toast.success(`Cyclopedia Record amended.`);
           setCheckForRecords(!checkForRecords);
           onEditCancel();
@@ -59,15 +58,15 @@ export default function CyclopediaEdit(props) {
     useEffect(() => {
         if (cyclopediarootdata && Array.isArray(cyclopediarootdata)) {
             const filteredcyclopedia = cyclopediarootdata.filter(site => {
-                const cyclopedia_id = site.cyclopedia_id;
-                return String(cyclopedia_id) === String(props.cyclopedia_id);
+                const cyclopediaId = site.cyclopediaId;
+                return String(cyclopediaId) === String(props.cyclopediaId);
             });
             const sortedfilteredcyclopedia = filteredcyclopedia.sort((a, b) =>
-                a.cyclopedia_name.localeCompare(b.cyclopedia_name)
+                a.cyclopediaName.localeCompare(b.cyclopediaName)
             );
             setCyclopediadata(sortedfilteredcyclopedia);
         }
-    }, [cyclopediarootdata, props.cyclopedia_id]);
+    }, [cyclopediarootdata, props.cyclopediaId]);
 
 
     if (loading) return <div>Loading Cyclopedias...</div>;
@@ -95,7 +94,7 @@ export default function CyclopediaEdit(props) {
                             {cyclopediadata.length > 0 ?
                                 (
                                     cyclopediadata.map((item) => (
-                                        <div key={item.cyclopedia_id}>
+                                        <div key={item.cyclopediaId}>
                                             <div className="Font-Segoe-Large-Howto">
                                                 {
                                                     editing ?
@@ -119,8 +118,8 @@ export default function CyclopediaEdit(props) {
                                                                 <i>Cyclopedia Name:</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 <input
                                                                     required
-                                                                    defaultValue={item.cyclopedia_name}
-                                                                    onChange={(e) => setCyclopedia_name(e.target.value)}
+                                                                    defaultValue={item.cyclopediaName}
+                                                                    onChange={(e) => setCyclopediaName(e.target.value)}
                                                                     style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '910px' }}
                                                                 />
                                                                 <div>&nbsp;&nbsp;</div>
@@ -130,8 +129,8 @@ export default function CyclopediaEdit(props) {
                                                                 <i>Cyclopedia Description:</i>&nbsp;&nbsp;
                                                                 <textarea
                                                                     required
-                                                                    defaultValue={item.cyclopedia_desc}
-                                                                    onChange={(e) => setCyclopedia_desc(e.target.value)}
+                                                                    defaultValue={item.cyclopediaDesc}
+                                                                    onChange={(e) => setCyclopediaDesc(e.target.value)}
                                                                     style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '150px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '910px' }}
                                                                 />
                                                                 <div>&nbsp;&nbsp;</div>
@@ -152,8 +151,8 @@ export default function CyclopediaEdit(props) {
                                                                 <i>Cyclopedia URL:</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 <input
                                                                     required
-                                                                    defaultValue={item.cyclopedia_url}
-                                                                    onChange={(e) => setCyclopedia_url(e.target.value)}
+                                                                    defaultValue={item.cyclopediaUrl}
+                                                                    onChange={(e) => setCyclopediaUrl(e.target.value)}
                                                                     style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '910px' }}
                                                                 />
                                                                 <div>&nbsp;&nbsp;</div>
@@ -163,12 +162,12 @@ export default function CyclopediaEdit(props) {
                                                         :
                                                         (
                                                             <>
-                                                                <Tooltip title={`Edit Cyclopedia#${item.cyclopedia_id}`} placement="top-end">
+                                                                <Tooltip title={`Edit Cyclopedia#${item.cyclopediaId}`} placement="top-end">
                                                                     <button style={{ height: '20px', width: '25px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(item) }}>
                                                                         <IoLibrary style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></button>&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 </Tooltip>
-                                                                <b>{item.cyclopedia_name}</b><i className="Font-Spacer-White">cyclopedia_id#{item.cyclopedia_id}</i>
-                                                                <Tooltip title={`Edit Cyclopedia#${item.cyclopedia_id}`} placement="top-end">
+                                                                <b>{item.cyclopediaName}</b><i className="Font-Spacer-White">cyclopediaId#{item.cyclopediaId}</i>
+                                                                <Tooltip title={`Edit Cyclopedia#${item.cyclopediaId}`} placement="top-end">
                                                                     <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(item) }}>
                                                                         <BsPencil style={{ color: '#336791', display: 'block', margin: 'auto', fontSize: '15px' }} />
                                                                     </button>
@@ -177,20 +176,19 @@ export default function CyclopediaEdit(props) {
 
 
                                                                 <div><u>Cyclopedia Description</u>:&nbsp;<IoInformationCircleOutline style={{ color: '#336791', fontSize: '21px' }} />&nbsp;</div>
-                                                                <div>{item.cyclopedia_desc}</div>
+                                                                <div>{item.cyclopediaDesc}</div>
                                                                 <div>&nbsp;</div>
-                                                                {/* <div>Reference: {item.cyclopedia_ref}</div> */}
                                                                 <div><u>Cyclopedia URL</u>:&nbsp;<GiSpiderWeb style={{ color: '#336791', fontSize: '19px' }} />&nbsp;</div>
-                                                                <div><a className="Font-Segoe-Large" href={item.cyclopedia_url} target="_blank" rel="noreferrer">{item.cyclopedia_url}</a></div>
+                                                                <div><a className="Font-Segoe-Large" href={item.cyclopediaUrl} target="_blank" rel="noreferrer">{item.cyclopediaUrl}</a></div>
                                                                 <div>&nbsp;</div>
 
-                                                                <u>Cyclopedia Graphix</u>:&nbsp;<CyclopediaImageUpload cyclopedia_id_fk={item.cyclopedia_id} cyclopedia_name={item.cyclopedia_name} cyclopedia_id={item.cyclopedia_id} />
+                                                                <u>Cyclopedia Graphix</u>:&nbsp;<CyclopediaImageUpload cyclopedia_id_fk={item.cyclopediaId} cyclopedia_name={item.cyclopediaName} cyclopedia_id={item.cyclopediaId} />
                                                                 <div>
                                                                     {item.cyclopediaImageEntity && item.cyclopediaImageEntity.cyclopediaimage_data ?
                                                                         (
                                                                             <img
                                                                                 src={`data:image/jpeg;base64,${item.cyclopediaImageEntity.cyclopediaimage_data}`}
-                                                                                alt={item.cyclopedia_name}
+                                                                                alt={item.cyclopediaName}
                                                                                 style={{ maxWidth: '100%', height: 'auto' }}
                                                                             />
                                                                         )

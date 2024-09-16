@@ -16,38 +16,13 @@ export default function CyclopediaCreateFP() {
   const [checkForRecords, setCheckForRecords] = useState(true);
 
 
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-
-  //   {
-  //     var newRecord =
-  //     {
-  //       'cyclopedia_name': cyclopedia_name,
-  //       'cyclopedia_desc': cyclopedia_desc,
-  //       'cyclopedia_url': cyclopedia_url,
-  //     }
-
-  //     {
-  //       const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/create`, newRecord);
-  //       if (response.status === 200) {
-  //         setCheckForRecords(!checkForRecords);
-  //         toast.success(`${cyclopedia_name} memorialized.`)
-  //       }
-  //       else {
-  //         toast.error('Nee')
-  //       }
-  //     }
-  //   }
-  // }
-
-
   const handleSubmit = async (event) => {
     event.preventDefault();
   
     var newRecord = {
-      'cyclopedia_name': cyclopedia_name,
-      'cyclopedia_desc': cyclopedia_desc,
-      'cyclopedia_url': cyclopedia_url,
+      'cyclopediaName': cyclopedia_name,
+      'cyclopediaDesc': cyclopedia_desc,
+      'cyclopediaUrl': cyclopedia_url,
     };
   
     try {
@@ -88,11 +63,15 @@ export default function CyclopediaCreateFP() {
           <img alt="1" src={spacer} />
           <img alt="1" src={spacer} />
           <img alt="1" src={spacer} />URL:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '850px' }} type="text" value={cyclopedia_url} onChange={(event) => setCyclopedia_url(event.target.value)} />
+          
           <div>&nbsp;</div>
+          
           <img alt="1" src={spacer} />
           <img alt="1" src={spacer} />Description:&nbsp;&nbsp;<textarea style={{ fontFamily: 'Verdana', height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1500px' }} placeholder="Required" type="text" value={cyclopedia_desc} onChange={(event) => setCyclopedia_desc(event.target.value)} required />
           <img alt="1" src={spacer} />
+          
           <div><img alt="1" src={spacer} /></div>
+          
           <img alt="1" src={spacer} />
           <img alt="1" src={spacer} />
           <img alt="1" src={spacer} />

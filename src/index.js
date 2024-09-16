@@ -92,7 +92,7 @@ const App = () => {
             <Route path='/mycv' element={<PageMyCV />} />
           </Route>
           <Route path='/taskedit/:task_id' element={<PageTaskEdit />} />
-          <Route path='/cyclopediaedit/:cyclopedia_id' element={<PageCyclopediaEdit />} />
+          <Route path='/cyclopediaedit/:cyclopediaId' element={<PageCyclopediaEdit />} />
           <Route path='/howtoedit/:howto_id' element={<PageHowtoEdit />} />
           {searchPhrase && <Route path='/home' element={<PageHome searchPhrase={searchPhrase} />} />}
           {searchPhrase && <Route path='/login' element={<PageLogin searchPhrase={searchPhrase} />} />}

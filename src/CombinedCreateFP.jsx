@@ -13,9 +13,9 @@ export default function CombinedCreateFP() {
   const [isExpandedCyclopedia, setExpandedCyclopedia] = useState(false);
   const [isExpandedWebsite, setExpandedWebsite] = useState(false);
   
-  const [cyclopedia_name, setCyclopedia_name] = useState('');
-  const [cyclopedia_desc, setCyclopedia_desc] = useState('');
-  const [cyclopedia_url, setCyclopedia_url] = useState('');
+  const [cyclopediaName, setCyclopediaName] = useState('');
+  const [cyclopediaDesc, setCyclopediaDesc] = useState('');
+  const [cyclopediaUrl, setCyclopediaUrl] = useState('');
   const [checkForRecords, setCheckForRecords] = useState(true);
   
   const [websiteName, setWebsiteName] = useState('');
@@ -27,19 +27,20 @@ export default function CombinedCreateFP() {
 
   const handleSubmitCyclopedia = async (event) => {
     event.preventDefault();
-    const newRecord = {
-      cyclopedia_name,
-      cyclopedia_desc,
-      cyclopedia_url,
+    const newRecord = 
+    {
+      cyclopediaName,
+      cyclopediaDesc,
+      cyclopediaUrl,
     };
     try {
       const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/create`, newRecord);
       if (response.status === 200) {
         setCheckForRecords(!checkForRecords);
-        toast.success(`${cyclopedia_name} memorialized.`);
-        setCyclopedia_name('');
-        setCyclopedia_desc('');
-        setCyclopedia_url('');
+        toast.success(`${cyclopediaName} memorialized.`);
+        setCyclopediaName('');
+        setCyclopediaDesc('');
+        setCyclopediaUrl('');
       } else {
         toast.error('Nee');
       }
@@ -93,8 +94,8 @@ export default function CombinedCreateFP() {
             style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '10px', width: '500px' }}
             placeholder="Required"
             type="text"
-            value={cyclopedia_name}
-            onChange={(e) => setCyclopedia_name(e.target.value)}
+            value={cyclopediaName}
+            onChange={(e) => setCyclopediaName(e.target.value)}
             required
           />
           <img alt="spacer" src={spacer} />
@@ -102,8 +103,8 @@ export default function CombinedCreateFP() {
           <input
             style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '10px', width: '865px' }}
             type="text"
-            value={cyclopedia_url}
-            onChange={(e) => setCyclopedia_url(e.target.value)}
+            value={cyclopediaUrl}
+            onChange={(e) => setCyclopediaUrl(e.target.value)}
           />
 
                   <button
@@ -120,8 +121,8 @@ export default function CombinedCreateFP() {
           <textarea
             style={{ fontFamily: 'Verdana', height: '26.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '10px', width: '1450px' }}
             placeholder="Required"
-            value={cyclopedia_desc}
-            onChange={(e) => setCyclopedia_desc(e.target.value)}
+            value={cyclopediaDesc}
+            onChange={(e) => setCyclopediaDesc(e.target.value)}
             required
           />
           {/* <button

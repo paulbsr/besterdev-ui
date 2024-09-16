@@ -18,7 +18,7 @@ export default function CyclopediaTicker(props) {
   // Shuffle the data before filtering
   shuffleArray(cyclopediarootdata);
 
-  const filteredCyclopediadata = cyclopediarootdata.filter(news => news.cyclopedia_ref === "CVCP");
+  const filteredCyclopediadata = cyclopediarootdata.filter(news => news.cyclopediaRef === "CVCP");
 
   return (
     <>
@@ -27,9 +27,9 @@ export default function CyclopediaTicker(props) {
         <marquee scrollamount="5">
           <Stack direction="row">
             {filteredCyclopediadata.map((news) => (
-              <div className="ticker" key={news.cyclopedia_name}>
-                <a href={news.cyclopedia_ref} target="_blank" rel="noopener noreferrer" style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#4D4D4D', textDecoration: 'none' }}>
-                  <b>{news.cyclopedia_name}:</b> <i style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#4D4D4D', textDecoration: 'none' }}>{news.cyclopedia_desc}</i>
+              <div className="ticker" key={news.cyclopediaName}>
+                <a href={news.cyclopediaRef} target="_blank" rel="noopener noreferrer" style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#4D4D4D', textDecoration: 'none' }}>
+                  <b>{news.cyclopediaName}:</b> <i style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#4D4D4D', textDecoration: 'none' }}>{news.cyclopediaDesc}</i>
                 </a>
               </div>
             ))}

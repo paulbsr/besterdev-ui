@@ -14,9 +14,9 @@ import { useCyclopediaApi } from './CyclopediaAPIProvider';
 function CyclopediaManage() {
   const [checkForRecords, setCheckForRecords] = useState(true);
   const [editing, setEditing] = useState(false);
-  const [cyclopedianame, setCyclopediaName] = useState();
-  const [cyclopediadesc, setCyclopediaDesc] = useState();
-  const [cyclopediaref, setCyclopediaRef] = useState();
+  const [cyclopediaName, setCyclopediaName] = useState();
+  const [cyclopediaDesc, setCyclopediaDesc] = useState();
+  const [cyclopediaRef, setCyclopediaRef] = useState();
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [isExpanded, setExpanded] = useState(false);
   const { cyclopediarootdata, loading, error } = useCyclopediaApi(); //gebruik van die nuwexuseContect :-)
@@ -25,10 +25,10 @@ function CyclopediaManage() {
 
 
   const handleEdit = (row) => {
-    setEditing(row.cyclopedia_id);
-    setCyclopediaName(row.cyclopedia_name);
-    setCyclopediaDesc(row.cyclopedia_desc);
-    setCyclopediaRef(row.cyclopedia_ref);
+    setEditing(row.cyclopediaId);
+    setCyclopediaName(row.cyclopediaName);
+    setCyclopediaDesc(row.cyclopediaDesc);
+    setCyclopediaRef(row.cyclopediaRef);
   }
 
   const onEditCancel = () => {
@@ -37,11 +37,11 @@ function CyclopediaManage() {
 
 
   const onEditDelete = (row) => {
-    axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/delete/${row.cyclopedia_id}`)
+    axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/delete/${row.cyclopediaId}`)
       .then((response) => 
       {
         window.alert('Are you sure you want to delete');
-        toast.success(`${cyclopedianame} purged.`)
+        toast.success(`${cyclopediaName} purged.`)
         setCheckForRecords(!checkForRecords);
       }
       )
@@ -52,9 +52,9 @@ function CyclopediaManage() {
 
     const CyclopediaRecordPUT =
     {
-      'cyclopedia_name': cyclopedianame,
-      'cyclopedia_desc': cyclopediadesc,
-      'cyclopedia_ref': cyclopediaref,
+      'cyclopediaName': cyclopediaName,
+      'cyclopediaDesc': cyclopediaDesc,
+      'cyclopediaRef': cyclopediaRef,
     }
 
     const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${editing}`, CyclopediaRecordPUT)
@@ -89,14 +89,14 @@ function CyclopediaManage() {
           <tbody>
             {cyclopediarootdata.map((row) => {
               return (
-                <tr key={row.cyclopedia_id}>
+                <tr key={row.cyclopediaId}>
                   <td className="Table6 td ">
                     <>
                       <Tooltip id="edit" />
                       <Tooltip id="commit" />
                       <Tooltip id="revert" />
                       <Tooltip id="purge" />
-                      {row.cyclopedia_id === editing ?
+                      {row.cyclopediaId === editing ?
                         (
                           <>
                             <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#336791', outline: 'none' }} type='button' onClick={() => onEditSave()}><a data-tooltip-id="commit" data-tooltip-content="Commit"><FaCheck style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>&nbsp;
@@ -112,10 +112,9 @@ function CyclopediaManage() {
                     </>
                   </td>
 
-                  <td className="asmshover Table6 td">{row.cyclopedia_id === editing ? (<input style={{ height: '22.5px', width: '270px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={cyclopedianame} onChange={(e) => setCyclopediaName(e.target.value)} />) : (row.cyclopedia_name)}</td>
-                  <td className="asmshover Table6 td">{row.cyclopedia_id === editing ? (<textarea style={{ height: '22.5px', width: '1240px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={cyclopediadesc} onChange={(e) => setCyclopediaDesc(e.target.value)} />) : (row.cyclopedia_desc)}</td>
-                  {/* <td className="asmshover Table6 td">{row.cyclopedia_id === editing ? (<input style={{ height: '22.5px', width: '250px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={cyclopediaref} onChange={(e) => setCyclopediaRef(e.target.value)} />) : (row.cyclopedia_ref)}</td> */}
-                </tr>
+                  <td className="asmshover Table6 td">{row.cyclopediaId === editing ? (<input style={{ height: '22.5px', width: '270px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={cyclopediaName} onChange={(e) => setCyclopediaName(e.target.value)} />) : (row.cyclopediaName)}</td>
+                  <td className="asmshover Table6 td">{row.cyclopediaId === editing ? (<textarea style={{ height: '22.5px', width: '1240px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={cyclopediaDesc} onChange={(e) => setCyclopediaDesc(e.target.value)} />) : (row.cyclopediaDesc)}</td>
+                  </tr>
               )
             })
             }

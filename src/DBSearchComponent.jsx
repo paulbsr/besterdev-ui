@@ -50,8 +50,8 @@ const DBSearchComponent = () => {
 
   const onEditSave = async () => {
     const CyclopediaRecordPUT = {
-      'cyclopedia_name': cyclopedianame,
-      'cyclopedia_desc': cyclopediadesc,
+      'cyclopediaName': cyclopedianame,
+      'cyclopediaDesc': cyclopediadesc,
     }
 
     try {
@@ -110,7 +110,7 @@ const DBSearchComponent = () => {
           {searchResults.map((result) => {
             console.log('Search Results:', searchResults)
 
-            if (result.cyclopedia_name) {
+            if (result.cyclopediaName) {
               return (
                 <div className="dbsearchhover" key={result.id}>
                   {/* Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Cyclopedia entry</b>:&nbsp;&nbsp; */}
@@ -123,24 +123,24 @@ const DBSearchComponent = () => {
                             <>
                               <input
                                 required
-                                defaultValue={result.cyclopedia_name}
+                                defaultValue={result.cyclopediaName}
                                 onChange={(e) => setCyclopedianame(e.target.value)}
                                 style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '21.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '350px', padding: 0, paddingLeft: '9px', }} />
                               <div>&nbsp;&nbsp;</div>
                               <div>
                                 <textarea
                                   required
-                                  defaultValue={result.cyclopedia_desc}
+                                  defaultValue={result.cyclopediaDesc}
                                   onChange={(e) => setCyclopediadesc(e.target.value)}
                                   style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '21.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} />
                               </div>
                             </>
                             :
                             <div className="Font-Segoe-Small-Howto">
-                              <a onClick={() => navigate(`/cyclopediaedit/${result.cyclopedia_id}`)}>
+                              <a onClick={() => navigate(`/cyclopediaedit/${result.cyclopediaId}`)}>
                               <IoLibrarySharp style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
-                              <b>{highlightKeyword(result.cyclopedia_name, searchQuery)}: </b>
-                              {highlightKeyword(result.cyclopedia_desc, searchQuery)}
+                              <b>{highlightKeyword(result.cyclopediaName, searchQuery)}: </b>
+                              {highlightKeyword(result.cyclopediaDesc, searchQuery)}
                               &nbsp;&nbsp;&nbsp;
                               </a>
                             </div>
@@ -148,27 +148,6 @@ const DBSearchComponent = () => {
                         </div>
                       </div>
                     </div>
-
-                    {/* <div style={{ display: 'flex', float: 'right' }}>
-                      <>
-                        {editing === result.id ?
-                          (
-                            <>&nbsp;&nbsp;
-                              <Tooltip title='Commit' placement="top-end"><div style={{ cursor: 'pointer' }} onClick={() => onEditSave()}><GiCheckMark style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></div></Tooltip>
-                              &nbsp;&nbsp;&nbsp;
-                              <Tooltip title='Discard' placement="top-end"><div style={{ cursor: 'pointer' }} onClick={() => onEditCancel()}><PiArrowCounterClockwiseBold style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></div></Tooltip>
-                            </>
-                          )
-                          :
-                          (
-                            <Tooltip title={`Edit this "${result.cyclopedia_name}" Cyclopedia_ID#${result.cyclopedia_id}`} placement="top-end">
-                              <div style={{ cursor: 'pointer' }} onClick={() => { handleEdit(result.id, result.cyclopedia_id, result.cyclopedia_name, result.cyclopedia_desc) }}>
-                                <BsPencil style={{ color: '#C0C0C0', fontSize: '15px' }} /></div>
-                            </Tooltip>
-                          )
-                        }
-                      </>
-                    </div> */}
                   </div>
                   <div className='Font-Spacer-White'>Make this spacer white</div>
                 </div>

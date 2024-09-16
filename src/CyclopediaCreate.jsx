@@ -23,9 +23,9 @@ export default function CyclopediaCreate() {
     {
       var newRecord =
       {
-        'cyclopedia_name': cyclopedia_name,
-        'cyclopedia_desc': cyclopedia_desc,
-        'cyclopedia_url': cyclopedia_url,
+        'cyclopediaName': cyclopedia_name,
+        'cyclopediaDesc': cyclopedia_desc,
+        'cyclopediaUrl': cyclopedia_url,
       }
 
       {
@@ -47,7 +47,7 @@ export default function CyclopediaCreate() {
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
           <img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} />
-        <b style={{ cursor: 'pointer' }}>Add a <i>"WhatExactlyIs?"</i> entry:</b>
+        <b style={{ cursor: 'pointer' }}>Add a <i>"Cyclopedia"</i> entry:</b>
         <div>&nbsp;</div>
       </div>
 
@@ -57,13 +57,30 @@ export default function CyclopediaCreate() {
             <form onSubmit={handleSubmit}>
               <div><img alt="1" src={spacer2} /></div>
               <div className='Font-Verdana-Small-Postgres'>
-                <div><img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />WhatExactlyIs:&nbsp;&nbsp;<input style={{ height: '25.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1150px' }} placeholder="Required" type="text" value={cyclopedia_name} onChange={(event) => setCyclopedia_name(event.target.value)} required /></div>
+                <div>
+                  <img alt="1" src={spacer} />
+                  <img alt="1" src={spacer} />
+                  <img alt="1" src={spacer} />WhatExactlyIs:&nbsp;&nbsp;<input style={{ height: '25.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1150px' }} placeholder="Required" type="text" value={cyclopedia_name} onChange={(event) => setCyclopedia_name(event.target.value)} required /></div>
+                
                 <div>&nbsp;</div>
-                <div><img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Description:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea rows={2} style={{ fontFamily:'Verdana',border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1150px' }} placeholder="Required" type="text" value={cyclopedia_desc} onChange={(event) => setCyclopedia_desc(event.target.value)} required /></div>
+                
+                <div>
+                  <img alt="1" src={spacer} />
+                  <img alt="1" src={spacer} />
+                  <img alt="1" src={spacer} />Description:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea rows={2} style={{ fontFamily:'Verdana',border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1150px' }} placeholder="Required" type="text" value={cyclopedia_desc} onChange={(event) => setCyclopedia_desc(event.target.value)} required /></div>
+
                 <div>&nbsp;</div>
-                <div><img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />URL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1150px' }} type="text" value={cyclopedia_url} onChange={(event) => setCyclopedia_url(event.target.value)} /></div>
+
+                <div>
+                  <img alt="1" src={spacer} />
+                  <img alt="1" src={spacer} />
+                  <img alt="1" src={spacer} />URL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1150px' }} type="text" value={cyclopedia_url} onChange={(event) => setCyclopedia_url(event.target.value)} /></div>
+                
                 <div>&nbsp;</div>
-                <div><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Add to Cyclopedia</button></div>
+                
+                <div>
+                  <img alt="1" src={spacer} />
+                  <img alt="1" src={spacer} />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Add to Cyclopedia</button></div>
                 
                 <div>&nbsp;</div>
                 <div>&nbsp;</div>
