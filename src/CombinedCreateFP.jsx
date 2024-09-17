@@ -5,8 +5,6 @@ import spacer from './graphix/besterdev_spacer_white.png';
 import { GiHummingbird } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css';
 import { toast } from 'react-toastify';
-import CyclopediaTicker from "./CyclopediaTicker";
-import BreakingNews from "./BreakingNews";
 import { useWebsiteApi } from './WebSiteAPIProvider';
 import DatePicker from "react-datepicker";
 

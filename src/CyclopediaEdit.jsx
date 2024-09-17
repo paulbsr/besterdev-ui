@@ -20,8 +20,7 @@ export default function CyclopediaEdit(props) {
     const [cyclopediaUrl, setCyclopediaUrl] = useState('');
     const [checkForRecords, setCheckForRecords] = useState(true);
 
-    const handleEdit = (item) => 
-    {
+    const handleEdit = (item) => {
         setCyclopediaName(item.cyclopediaName);
         setCyclopediaDesc(item.cyclopediaDesc);
         setCyclopediaRef(item.cyclopediaRef);
@@ -42,7 +41,7 @@ export default function CyclopediaEdit(props) {
     //       'cyclopediaRef': cyclopediaRef,
     //       'cyclopediaUrl': cyclopediaUrl,
     //     }
-    
+
     //     try {
     //       await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${props.cyclopediaId}`, CyclopediaRecordPUT);
     //     //   await axios.put(`http://localhost:8000/api/v1/cyclopedia/update/${props.cyclopediaId}`, CyclopediaRecordPUT);
@@ -62,7 +61,7 @@ export default function CyclopediaEdit(props) {
             'cyclopediaRef': cyclopediaRef,
             'cyclopediaUrl': cyclopediaUrl,
         };
-    
+
         try {
             await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${props.cyclopediaId}`, CyclopediaRecordPUT);
             toast.success(`Cyclopedia Record amended.`);
@@ -74,19 +73,6 @@ export default function CyclopediaEdit(props) {
         }
     };
 
-    
-    // useEffect(() => {
-    //     if (cyclopediarootdata && Array.isArray(cyclopediarootdata)) {
-    //         const filteredcyclopedia = cyclopediarootdata.filter(site => {
-    //             const cyclopediaId = site.cyclopediaId;
-    //             return String(cyclopediaId) === String(props.cyclopediaId);
-    //         });
-    //         const sortedfilteredcyclopedia = filteredcyclopedia.sort((a, b) =>
-    //             a.cyclopediaName.localeCompare(b.cyclopediaName)
-    //         );
-    //         setCyclopediadata(sortedfilteredcyclopedia);
-    //     }
-    // }, [cyclopediarootdata, props.cyclopediaId]);
 
     useEffect(() => {
         if (cyclopediarootdata && Array.isArray(cyclopediarootdata)) {
@@ -170,17 +156,6 @@ export default function CyclopediaEdit(props) {
 
                                                                 <div className="Font-Spacer-White">Make this Spacer White</div>
 
-                                                                {/* <i>Cyclopedia Reference:</i>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                <input
-                                                                    required
-                                                                    defaultValue={item.cyclopedia_ref}
-                                                                    onChange={(e) => setCyclopedia_ref(e.target.value)}
-                                                                    style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '910px' }}
-                                                                />
-                                                                <div>&nbsp;&nbsp;</div>
-
-                                                                <div className='Font-Spacer-White'>Make this Spacer White</div> */}
-
                                                                 <i>Cyclopedia URL:</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 <input
                                                                     required
@@ -217,10 +192,10 @@ export default function CyclopediaEdit(props) {
 
                                                                 <u>Cyclopedia Graphix</u>:&nbsp;<CyclopediaImageUpload cyclopedia_id_fk={item.cyclopediaId} cyclopedia_name={item.cyclopediaName} cyclopedia_id={item.cyclopediaId} />
                                                                 <div>
-                                                                    {item.cyclopediaImageEntity && item.cyclopediaImageEntity.cyclopediaimage_data ?
+                                                                    {item.cyclopediaImageEntity && item.cyclopediaImageEntity.cyclopediaImage ?
                                                                         (
                                                                             <img
-                                                                                src={`data:image/jpeg;base64,${item.cyclopediaImageEntity.cyclopediaimage_data}`}
+                                                                                src={`data:image/jpeg;base64,${item.cyclopediaImageEntity.cyclopediaImage}`}
                                                                                 alt={item.cyclopediaName}
                                                                                 style={{ maxWidth: '100%', height: 'auto' }}
                                                                             />
