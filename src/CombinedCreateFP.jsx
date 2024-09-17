@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import axios from 'axios';
 import './Fonts.css';
 import spacer from './graphix/besterdev_spacer_white.png';
-import { GiHummingbird } from "react-icons/gi";
+import { GiHummingbird, GiSpiderWeb } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css';
 import { toast } from 'react-toastify';
 import { useWebsiteApi } from './WebSiteAPIProvider';
 import DatePicker from "react-datepicker";
+import DBSearchComponentBanner from './DBSearchComponentBanner'
+import { MdTask } from "react-icons/md";
+import { IoLibrary } from "react-icons/io5";
 
 
 export default function CombinedCreateFP() {
@@ -130,12 +133,18 @@ export default function CombinedCreateFP() {
   return (
     <div className='Font-Verdana-Small-Postgres'>
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
+        
         <b onClick={() => setExpandedCyclopedia(!isExpandedCyclopedia)}>&nbsp;&nbsp;&nbsp;&nbsp;
-          <GiHummingbird style={{ color: '#336791', fontSize: '25px' }} />Add to Cyclopedia</b>
+          <GiHummingbird style={{ color: '#336791', fontSize: '25px' }} />
+          <IoLibrary style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }} /> Add to Cyclopedia</b>
+        
         <b onClick={() => setExpandedWebsite(!isExpandedWebsite)}>&nbsp;&nbsp;&nbsp;&nbsp;
-          <GiHummingbird style={{ color: '#336791', fontSize: '25px' }} />Add a Website</b>
+          <GiHummingbird style={{ color: '#336791', fontSize: '25px' }} />
+          <GiSpiderWeb style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }} /> Add a Website</b>
+        
         <b onClick={() => setExpandedTask(!isExpandedTask)}>&nbsp;&nbsp;&nbsp;&nbsp;
-          <GiHummingbird style={{ color: '#336791', fontSize: '25px' }} />Add a Task</b>
+          <GiHummingbird style={{ color: '#336791', fontSize: '25px' }} />
+          <MdTask style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }} /> Add a Task</b>
       </div>
 
       {isExpandedCyclopedia && (
