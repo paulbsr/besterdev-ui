@@ -24,6 +24,7 @@ const DBSearchComponent = () => {
   const [cyclopediadesc, setCyclopediadesc] = useState();
   const [cyclopediaidedit, setCyclopediaidedit] = useState();
   const [checkForRecords, setCheckForRecords] = useState(true);
+  const [noRecordsFound, setNorecordsFound] = useState(false);
 
   const navigate = useNavigate();
 
@@ -32,6 +33,7 @@ const DBSearchComponent = () => {
     try {
       const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/search?keyword=${searchQuery}`);
       setSearchResults(response.data);
+      setNorecordsFound(response.data.length === 0);
     } catch (error) {
       console.error('Error searching:', error);
     }
@@ -46,6 +48,7 @@ const DBSearchComponent = () => {
 
   const onEditCancel = () => {
     setEditing(false);
+    setNorecordsFound(false);
   }
 
   const onEditSave = async () => {
@@ -105,9 +108,11 @@ const DBSearchComponent = () => {
       </div>
 
       {/* Display search results */}
-      {searchResults.length > 0 && (
+      {searchResults.length > 0 ?
+      (
         <div>
-          {searchResults.map((result) => {
+          {searchResults.map((result) => 
+          {
             console.log('Search Results:', searchResults)
 
             if (result.cyclopediaName) {
@@ -267,7 +272,15 @@ const DBSearchComponent = () => {
             return null; // Ignore other types of results
           })}
         </div>
-      )}
+
+      )
+      :
+      noRecordsFound ? (<div>No record exists for search phase: "{searchQuery}"</div>)
+      :
+      null
+    }
+
+
       <div className='Font-Spacer-White'>Make this spacer white</div>
       <GradientLineGreen />
     </form>

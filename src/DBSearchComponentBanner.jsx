@@ -22,6 +22,7 @@ const DBSearchComponentBanner = () => {
   const [cyclopediadesc, setCyclopediadesc] = useState('');
   const [cyclopediaidedit, setCyclopediaidedit] = useState('');
   const [checkForRecords, setCheckForRecords] = useState(true);
+  const [noRecordsFound, setNorecordsFound] = useState(false);
 
   const navigate = useNavigate();
 
@@ -30,6 +31,7 @@ const DBSearchComponentBanner = () => {
     try {
       const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/search?keyword=${searchQuery}`);
       setSearchResults(response.data);
+      setNorecordsFound(response.data.length === 0);
     } catch (error) {
       console.error('Error searching:', error);
     }
@@ -44,6 +46,7 @@ const DBSearchComponentBanner = () => {
 
   const onEditCancel = () => {
     setEditing(false);
+    setNorecordsFound(false);
   }
 
   const onEditSave = async () => {
@@ -102,7 +105,7 @@ const DBSearchComponentBanner = () => {
       </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
       {/* Display search results */}
-      {searchResults.length > 0 && (
+      {searchResults.length > 0 ? (
         <>
           {searchResults.map((result) => {
             if (result.cyclopediaName) {
@@ -226,7 +229,14 @@ const DBSearchComponentBanner = () => {
             return null; // Ignore other types of results
           })}
         </>
-      )}
+              )
+              :
+              noRecordsFound ? (<div>No record exists for search phase: "{searchQuery}"</div>)
+              :
+              null
+            }
+        
+      
     </form>
   );
 };

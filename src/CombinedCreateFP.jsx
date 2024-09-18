@@ -133,15 +133,15 @@ export default function CombinedCreateFP() {
   return (
     <div className='Font-Verdana-Small-Postgres'>
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
-        
+
         <b onClick={() => setExpandedCyclopedia(!isExpandedCyclopedia)}>&nbsp;&nbsp;&nbsp;&nbsp;
           <GiHummingbird style={{ color: '#336791', fontSize: '25px' }} />
           <IoLibrary style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }} /> Add to Cyclopedia</b>
-        
+
         <b onClick={() => setExpandedWebsite(!isExpandedWebsite)}>&nbsp;&nbsp;&nbsp;&nbsp;
           <GiHummingbird style={{ color: '#336791', fontSize: '25px' }} />
           <GiSpiderWeb style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }} /> Add a Website</b>
-        
+
         <b onClick={() => setExpandedTask(!isExpandedTask)}>&nbsp;&nbsp;&nbsp;&nbsp;
           <GiHummingbird style={{ color: '#336791', fontSize: '25px' }} />
           <MdTask style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }} /> Add a Task</b>
@@ -160,7 +160,7 @@ export default function CombinedCreateFP() {
             required
           />
           <img alt="spacer" src={spacer} />URL:&nbsp;&nbsp;
-          
+
           <input
             style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '10px', width: '865px' }}
             type="text"
@@ -273,17 +273,17 @@ export default function CombinedCreateFP() {
                   </select>
 
                   <div>
-                    
-                  <img alt="spacer" src={spacer} />Task Name:&nbsp;&nbsp;
+
+                    <img alt="spacer" src={spacer} />Task Name:&nbsp;&nbsp;
                     <input style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '400px' }} placeholder="Required" type="text" onChange={(event) => setTaskname(event.target.value)} required />
                   </div>
                   <div>
-                  <img alt="spacer" src={spacer} />Description:&nbsp;&nbsp;
+                    <img alt="spacer" src={spacer} />Description:&nbsp;&nbsp;
                     <input style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '550px' }} type="text" onChange={(event) => setTaskrequirement(event.target.value)} />
                   </div>
 
                   <div>
-                  <img alt="spacer" src={spacer} />Target:&nbsp;&nbsp;
+                    <img alt="spacer" src={spacer} />Target:&nbsp;&nbsp;
                   </div>
                   <div>
                     <DatePicker
@@ -300,11 +300,11 @@ export default function CombinedCreateFP() {
                     &nbsp; &nbsp; &nbsp; &nbsp;
                     {/* <button className="Font-Segoe-Small" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }} onClick={() => setTaskstatus("START")}>Commit new Task</button> */}
                     <button
-            className="Font-Segoe-Small"
-            type="submit"
-            style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>
-            Memorialize
-          </button>
+                      className="Font-Segoe-Small"
+                      type="submit"
+                      style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>
+                      Memorialize
+                    </button>
                   </div>
                 </div>
               </div>
