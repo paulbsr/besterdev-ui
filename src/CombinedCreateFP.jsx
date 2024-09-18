@@ -134,17 +134,22 @@ export default function CombinedCreateFP() {
     <div className='Font-Verdana-Small-Postgres'>
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
 
-        <b onClick={() => setExpandedCyclopedia(!isExpandedCyclopedia)}>&nbsp;&nbsp;&nbsp;&nbsp;
+        {/* <b onClick={() => setExpandedCyclopedia(!isExpandedCyclopedia)}>&nbsp;&nbsp;&nbsp;&nbsp;
           <GiHummingbird style={{ color: '#336791', fontSize: '25px' }} />
-          <IoLibrary style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }} /> Add to Cyclopedia</b>
+          <IoLibrary style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }} /> Add to Cyclopedia</b> */}
 
-        <b onClick={() => setExpandedWebsite(!isExpandedWebsite)}>&nbsp;&nbsp;&nbsp;&nbsp;
-          <GiHummingbird style={{ color: '#336791', fontSize: '25px' }} />
-          <GiSpiderWeb style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }} /> Add a Website</b>
+<span onClick={() => setExpandedCyclopedia(!isExpandedCyclopedia)}>&nbsp;&nbsp;&nbsp;&nbsp;
+  <GiHummingbird style={{ color: '#336791', fontSize: '25px' }} />
+  <IoLibrary style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }} /> Add to Cyclopedia</span>
 
-        <b onClick={() => setExpandedTask(!isExpandedTask)}>&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <span onClick={() => setExpandedWebsite(!isExpandedWebsite)}>&nbsp;&nbsp;&nbsp;&nbsp;
           <GiHummingbird style={{ color: '#336791', fontSize: '25px' }} />
-          <MdTask style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }} /> Add a Task</b>
+          <GiSpiderWeb style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }} /> Add a Website</span>
+
+        <span onClick={() => setExpandedTask(!isExpandedTask)}>&nbsp;&nbsp;&nbsp;&nbsp;
+          <GiHummingbird style={{ color: '#336791', fontSize: '25px' }} />
+          <MdTask style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }} /> Add a Task</span>
       </div>
 
       {isExpandedCyclopedia && (
