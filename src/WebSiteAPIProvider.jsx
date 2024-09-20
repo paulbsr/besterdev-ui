@@ -8,6 +8,7 @@ export const WebSiteAPIProvider = ({ children }) => {
   const [websiterootdata, setWebsiterootdata] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,10 +24,10 @@ export const WebSiteAPIProvider = ({ children }) => {
     };
 
     fetchData();console.log('in <WebSiteAPIProvider> is jou websiterootdata:', websiterootdata)
-  }, []);
+  }, [refresh]);
 
   return (
-    <WebsiteApiContext.Provider value={{ websiterootdata, loading, error }}>
+    <WebsiteApiContext.Provider value={{ websiterootdata, loading, error, setRefresh }}>
       {children}
     </WebsiteApiContext.Provider>
   );

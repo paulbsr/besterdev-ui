@@ -38,6 +38,7 @@ function CyclopediaManage() {
 
   const onEditDelete = (row) => {
     axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/delete/${row.cyclopediaId}`)
+    // axios.delete(`http://localhost:8000/api/v1/cyclopedia/delete/${row.cyclopediaId}`)
       .then((response) => 
       {
         window.alert('Are you sure you want to delete');

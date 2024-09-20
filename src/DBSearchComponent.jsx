@@ -160,16 +160,16 @@ const DBSearchComponent = () => {
             }
 
 
-            else if (result.website_name) {
+            else if (result.websiteName) {
               return (
                 <div className="dbsearchhover" key={result.id}>
                   {/* Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Web Resource</b>:&nbsp;&nbsp; */}
                   <div className="Font-Segoe-Small-Howto">
                     <TbWorldWww style={{ color: '#336791', fontSize: '23px', cursor: 'pointer' }} />&nbsp;
-                    <a href={result.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.website_desc}>
-                      <b>{highlightKeyword(result.website_name, searchQuery)}</b>
+                    <a href={result.websiteUrl} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.websiteDesc}>
+                      <b>{highlightKeyword(result.websiteName, searchQuery)}</b>
                     </a>
-                    -&nbsp;{result.website_desc}
+                    -&nbsp;{result.websiteDesc}
                   </div>
                   <div className='Font-Spacer-White'>Make this spacer white</div>
                 </div>

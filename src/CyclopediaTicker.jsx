@@ -1,7 +1,7 @@
 import React from 'react';
 import { Stack } from "@mui/material";
 import { useCyclopediaApi } from './CyclopediaAPIProvider';
-import CyclopediaCreateFP from './CyclopediaCreateFP';
+
 
 export default function CyclopediaTicker(props) {
   const { cyclopediarootdata, loading, error } = useCyclopediaApi(); // gebruik van die nuwe API Context :-)
@@ -18,7 +18,8 @@ export default function CyclopediaTicker(props) {
   // Shuffle the data before filtering
   shuffleArray(cyclopediarootdata);
 
-  const filteredCyclopediadata = cyclopediarootdata.filter(news => news.cyclopediaRef === "CVCP");
+  // const filteredCyclopediadata = cyclopediarootdata.filter(news => news.cyclopediaRef === "CVCP");
+  const filteredCyclopediadata = cyclopediarootdata;
 
   return (
     <>
