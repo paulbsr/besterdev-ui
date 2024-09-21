@@ -12,13 +12,13 @@ import { CyclopediaImageUpload } from './CyclopediaImageUpload';
 
 export default function CyclopediaEdit(props) {
     const [cyclopediadata, setCyclopediadata] = useState([]);
-    const { cyclopediarootdata, loading, error, setRefresh } = useCyclopediaApi();
+    const { cyclopediarootdata, loading, error, setRefreshCyclopediarootdata } = useCyclopediaApi();
     const [editing, setEditing] = useState(false);
     const [cyclopediaName, setCyclopediaName] = useState('');
     const [cyclopediaDesc, setCyclopediaDesc] = useState('');
     const [cyclopediaRef, setCyclopediaRef] = useState('');
     const [cyclopediaUrl, setCyclopediaUrl] = useState('');
-    const [checkForRecords, setCheckForRecords] = useState(true);
+    // const [checkForRecords, setCheckForRecords] = useState(true);
 
     const handleEdit = (item) => {
         setCyclopediaName(item.cyclopediaName);
@@ -33,27 +33,6 @@ export default function CyclopediaEdit(props) {
     };
 
 
-    // const onEditSave = async () => {
-    //     const CyclopediaRecordPUT = 
-    //     {
-    //       'cyclopediaName': cyclopediaName,
-    //       'cyclopediaDesc': cyclopediaDesc,
-    //       'cyclopediaRef': cyclopediaRef,
-    //       'cyclopediaUrl': cyclopediaUrl,
-    //     }
-
-    //     try {
-    //       await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${props.cyclopediaId}`, CyclopediaRecordPUT);
-    //     //   await axios.put(`http://localhost:8000/api/v1/cyclopedia/update/${props.cyclopediaId}`, CyclopediaRecordPUT);
-    //       toast.success(`Cyclopedia Record amended.`);
-    //       setCheckForRecords(!checkForRecords);
-    //       onEditCancel();
-    //     } catch (error) {
-    //       console.error('Error updating:', error);
-    //       toast.error('Failed to amend Cyclopedia Record.');
-    //     }
-    //   }
-
     const onEditSave = async () => {
         const CyclopediaRecordPUT = {
             'cyclopediaName': cyclopediaName,
@@ -66,7 +45,7 @@ export default function CyclopediaEdit(props) {
             await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${props.cyclopediaId}`, CyclopediaRecordPUT);
             toast.success(`Cyclopedia Record amended.`);
             setEditing(false);
-            setRefresh(prev => !prev);  // Assuming setRefresh triggers a data refetch
+            setRefreshCyclopediarootdata(prev => !prev);  // Assuming setRefresh triggers a data refetch
         } catch (error) {
             console.error('Error updating:', error);
             toast.error('Failed to amend Cyclopedia Record.');
@@ -85,7 +64,7 @@ export default function CyclopediaEdit(props) {
             );
             setCyclopediadata(sortedfilteredcyclopedia);
         }
-    }, [cyclopediarootdata, props.cyclopediaId, setRefresh]);
+    }, [cyclopediarootdata, props.cyclopediaId, setRefreshCyclopediarootdata]);
 
 
     if (loading) return <div>Loading Cyclopedias...</div>;
@@ -175,9 +154,14 @@ export default function CyclopediaEdit(props) {
                                                                         <IoLibrary style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></button>&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 </Tooltip>
                                                                 <b>{item.cyclopediaName}</b><i className="Font-Spacer-White">cyclopediaId#{item.cyclopediaId}</i>
+
                                                                 <Tooltip title={`Edit Cyclopedia#${item.cyclopediaId}`} placement="top-end">
-                                                                    <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(item) }}>
-                                                                        <BsPencil style={{ color: '#336791', display: 'block', margin: 'auto', fontSize: '15px' }} />
+                                                                    <button
+                                                                        // style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} 
+                                                                        style={{ marginLeft: '5px', height: '20.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#336791', cursor: 'pointer', fontSize: '12px' }}
+                                                                        type='button'
+                                                                        onClick={() => { handleEdit(item) }}>Edit
+                                                                        {/* <BsPencil style={{ color: '#336791', display: 'block', margin: 'auto', fontSize: '15px' }} /> */}
                                                                     </button>
                                                                 </Tooltip>
                                                                 <div>&nbsp;</div>

@@ -5,11 +5,11 @@ import spacer from './graphix/besterdev_spacer_white.png';
 import { GiHummingbird, GiSpiderWeb } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css';
 import { toast } from 'react-toastify';
-import { useWebsiteApi } from './WebSiteAPIProvider';
 import DatePicker from "react-datepicker";
-import DBSearchComponentBanner from './DBSearchComponentBanner'
 import { MdTask } from "react-icons/md";
 import { IoLibrary } from "react-icons/io5";
+import { useWebsiteApi } from './WebSiteAPIProvider';
+import { useCyclopediaApi } from './CyclopediaAPIProvider';
 
 
 export default function CombinedCreateFP() {
@@ -21,12 +21,13 @@ export default function CombinedCreateFP() {
   const [cyclopediaDesc, setCyclopediaDesc] = useState('');
   const [cyclopediaUrl, setCyclopediaUrl] = useState('');
   const [checkForRecords, setCheckForRecords] = useState(true);
+  const { cyclopediarootdata, setRefreshCyclopediarootdata } = useCyclopediaApi();
 
   const [websiteName, setWebsiteName] = useState('');
   const [websiteDesc, setWebsiteDesc] = useState('');
   const [websiteUrl, setWebsiteUrl] = useState('');
   const [websiteCat, setWebsiteCat] = useState('');
-  const { websiterootdata } = useWebsiteApi();
+  const { websiterootdata, setRefreshWebsiterootdata } = useWebsiteApi();
 
   const current = new Date();
   const [taskname, setTaskname] = useState("");
@@ -60,6 +61,7 @@ export default function CombinedCreateFP() {
       const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/create`, newRecord);
       if (response.status === 200) {
         setCheckForRecords(!checkForRecords);
+        setRefreshCyclopediarootdata(prev => !prev); 
         toast.success(`${cyclopediaName} memorialized.`);
         setCyclopediaName('');
         setCyclopediaDesc('');
@@ -83,6 +85,7 @@ export default function CombinedCreateFP() {
     try {
       const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/create`, newRecord);
       if (response.status === 200) {
+        setRefreshWebsiterootdata(prev => !prev);
         toast.success(`${websiteName} added.`);
         setWebsiteName('');
         setWebsiteDesc('');
@@ -139,17 +142,17 @@ export default function CombinedCreateFP() {
           <IoLibrary style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }} /> Add to Cyclopedia</b> */}
 
 <span onClick={() => setExpandedCyclopedia(!isExpandedCyclopedia)}>&nbsp;&nbsp;&nbsp;&nbsp;
-  <GiHummingbird style={{ color: '#336791', fontSize: '25px' }} />
-  <IoLibrary style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }} /> Add to Cyclopedia</span>
+  <GiHummingbird style={{ color: '#4D4D4D', fontSize: '25px' }} />
+  <IoLibrary style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} /> Add to Cyclopedia</span>
 
 
         <span onClick={() => setExpandedWebsite(!isExpandedWebsite)}>&nbsp;&nbsp;&nbsp;&nbsp;
-          <GiHummingbird style={{ color: '#336791', fontSize: '25px' }} />
-          <GiSpiderWeb style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }} /> Add a Website</span>
+          <GiHummingbird style={{ color: '#4D4D4D', fontSize: '25px' }} />
+          <GiSpiderWeb style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} /> Add a Website</span>
 
         <span onClick={() => setExpandedTask(!isExpandedTask)}>&nbsp;&nbsp;&nbsp;&nbsp;
-          <GiHummingbird style={{ color: '#336791', fontSize: '25px' }} />
-          <MdTask style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }} /> Add a Task</span>
+          <GiHummingbird style={{ color: '#4D4D4D', fontSize: '25px' }} />
+          <MdTask style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} /> Add a Task</span>
       </div>
 
       {isExpandedCyclopedia && (
@@ -157,7 +160,7 @@ export default function CombinedCreateFP() {
           <div>&nbsp;</div>
           <img alt="spacer" src={spacer} />Cyclopedia:&nbsp;&nbsp;
           <input
-            style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '10px', width: '500px' }}
+            style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '500px' }}
             placeholder="Required"
             type="text"
             value={cyclopediaName}
@@ -167,7 +170,7 @@ export default function CombinedCreateFP() {
           <img alt="spacer" src={spacer} />URL:&nbsp;&nbsp;
 
           <input
-            style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '10px', width: '865px' }}
+            style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '865px' }}
             type="text"
             value={cyclopediaUrl}
             onChange={(e) => setCyclopediaUrl(e.target.value)}
@@ -184,7 +187,7 @@ export default function CombinedCreateFP() {
           <div>&nbsp;</div>
           <img alt="spacer" src={spacer} />Description:&nbsp;&nbsp;
           <textarea
-            style={{ fontFamily: 'Verdana', height: '26.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '10px', width: '1450px' }}
+            style={{ fontFamily: 'Verdana', height: '26.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '1450px' }}
             placeholder="Required"
             value={cyclopediaDesc}
             onChange={(e) => setCyclopediaDesc(e.target.value)}
@@ -199,7 +202,7 @@ export default function CombinedCreateFP() {
           <div>&nbsp;</div>
           <img alt="spacer" src={spacer} />Website:&nbsp;&nbsp;
           <input
-            style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '10px', width: '500px' }}
+            style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '500px' }}
             placeholder="Required"
             type="text"
             value={websiteName}
@@ -208,7 +211,7 @@ export default function CombinedCreateFP() {
           />
           <img alt="spacer" src={spacer} />URL:&nbsp;&nbsp;
           <input
-            style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '10px', width: '650px' }}
+            style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '650px' }}
             placeholder="Required"
             type="text"
             value={websiteUrl}
@@ -268,7 +271,7 @@ export default function CombinedCreateFP() {
 
                   <img alt="spacer" src={spacer} />Module:&nbsp;&nbsp;
                   <select
-                    style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '150px' }} placeholder="Domain" id="dropdown" onChange={dropdownChange} >
+                    style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '150px' }} placeholder="Domain" id="dropdown" onChange={dropdownChange} >
                     <option disabled selected value="Domain">Module</option>
                     <option value="113092" data-value2="NetworkSecurity">NetworkSecurity</option>
                     <option value="14718" data-value2="EnterpriseSecurity">EnterpriseSecurity</option>
@@ -280,11 +283,11 @@ export default function CombinedCreateFP() {
                   <div>
 
                     <img alt="spacer" src={spacer} />Task Name:&nbsp;&nbsp;
-                    <input style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '400px' }} placeholder="Required" type="text" onChange={(event) => setTaskname(event.target.value)} required />
+                    <input style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '400px' }} placeholder="Required" type="text" onChange={(event) => setTaskname(event.target.value)} required />
                   </div>
                   <div>
                     <img alt="spacer" src={spacer} />Description:&nbsp;&nbsp;
-                    <input style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '550px' }} type="text" onChange={(event) => setTaskrequirement(event.target.value)} />
+                    <input style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '550px' }} type="text" onChange={(event) => setTaskrequirement(event.target.value)} />
                   </div>
 
                   <div>

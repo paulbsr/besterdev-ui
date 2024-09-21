@@ -1,4 +1,3 @@
-// WebsiteApiContext.js
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -8,12 +7,14 @@ export const WebSiteAPIProvider = ({ children }) => {
   const [websiterootdata, setWebsiterootdata] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [refresh, setRefresh] = useState(false);
+  const [refreshwebsiterootdata, setRefreshWebsiterootdata] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true); // Start loading before the fetch
       try {
         const response = await axios.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites');
+
         const sortedwebsitedata = response.data.sort((b, a) => b.websiteName.localeCompare(a.websiteName));
         setWebsiterootdata(sortedwebsitedata);
       } catch (err) {
@@ -23,11 +24,11 @@ export const WebSiteAPIProvider = ({ children }) => {
       }
     };
 
-    fetchData();console.log('in <WebSiteAPIProvider> is jou websiterootdata:', websiterootdata)
-  }, [refresh]);
+    fetchData();
+  }, [refreshwebsiterootdata]); // Refetch data when `refresh` state changes
 
   return (
-    <WebsiteApiContext.Provider value={{ websiterootdata, loading, error, setRefresh }}>
+    <WebsiteApiContext.Provider value={{ websiterootdata, loading, error, setRefreshWebsiterootdata }}>
       {children}
     </WebsiteApiContext.Provider>
   );
