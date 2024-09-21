@@ -4,9 +4,11 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { MdCamera } from "react-icons/md";
 import { Tooltip } from '@mui/material';
+import { useCyclopediaApi } from './CyclopediaAPIProvider';
 
 export function CyclopediaImageUpload(props) {
     const [image, setImage] = React.useState([]);
+    const { cyclopediarootdata, loading, error, setRefreshCyclopediarootdata } = useCyclopediaApi();
     const maxNumber = 1;
 
     const onImageSave = async (imageList, addUpdateIndex) => {
@@ -26,6 +28,7 @@ export function CyclopediaImageUpload(props) {
             });
             if (response.status === 200) {
                 toast.success(`Image saved`);
+                setRefreshCyclopediarootdata(prev => !prev);  // Assuming setRefresh triggers a data refetch
             } else {
                 toast.error('An error occurred while saving the image.');
             }
@@ -33,8 +36,6 @@ export function CyclopediaImageUpload(props) {
             console.error('In <CyclopediaImageUpload> het jy n probleem:', error);
             toast.error('An error occurred while saving the image', error);
         }
-        console.log("In <CyclopediaImageUpload> is jou props.cyclopediaId", props.cyclopediaId)
-        console.log("In <CyclopediaImageUpload> is jou props.cyclopediaIdFk", props.cyclopediaIdFk)
     };
 
 
