@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
-import AlertContext from "./Generic/Alerts/AlertContext";
+import AlertContext from "../Generic/Alerts/AlertContext";
 import axios from 'axios';
-import './Fonts.css';
+import '../Fonts.css';
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
 import spacer from './graphix/besterdev_spacer_white.png';

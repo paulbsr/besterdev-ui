@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import './Fonts.css';
-import spacer from './graphix/besterdev_spacer_white.png';
-import spacer2 from './graphix/besterdev_spacer_white_half.png';
+import '../Fonts.css';
+import spacer from '../graphix/besterdev_spacer_white.png';
+import spacer2 from '../graphix/besterdev_spacer_white_half.png';
 import { GiHummingbird } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';

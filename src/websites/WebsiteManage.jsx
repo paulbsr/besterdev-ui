@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
-import './Fonts.css';
+import '../Fonts.css';
 import 'react-dropdown/style.css';
 import axios from 'axios'
 import { FaPen, FaCheck, FaRegTrashAlt } from 'react-icons/fa';
 import { TbWorldWww } from "react-icons/tb";
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
 import { toast } from 'react-toastify';
-import GradientLineRusty from './GradientLineRusty';
+import GradientLineRusty from '../GradientLineRusty';
 import WebsiteCreate from './WebsiteCreate';
 import { useWebsiteApi } from './WebSiteAPIProvider';
 

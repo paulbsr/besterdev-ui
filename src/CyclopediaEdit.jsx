@@ -143,6 +143,22 @@ export default function CyclopediaEdit(props) {
                                                                     style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '910px' }}
                                                                 />
                                                                 <div>&nbsp;&nbsp;</div>
+                                                                <div>&nbsp;&nbsp;</div>
+
+                                                                <div>
+                                                                    {item.cyclopediaImageEntity && item.cyclopediaImageEntity.cyclopediaImage ?
+                                                                        (
+                                                                            <img src={`data:image/jpeg;base64,${item.cyclopediaImageEntity.cyclopediaImage}`} alt={item.cyclopediaName} style={{ maxWidth: '100%', height: 'auto' }} />
+                                                                        )
+                                                                        :
+                                                                        (
+                                                                            <div>No image associated</div>
+                                                                        )
+                                                                    }
+                                                                </div>
+
+
+
                                                                 <div className='Font-Spacer-White'>Make this Spacer White</div>
                                                             </>
                                                         )
@@ -174,7 +190,8 @@ export default function CyclopediaEdit(props) {
                                                                 <div><a className="Font-Segoe-Large" href={item.cyclopediaUrl} target="_blank" rel="noreferrer">{item.cyclopediaUrl}</a></div>
                                                                 <div>&nbsp;</div>
 
-                                                                <u>Cyclopedia Graphix</u>:&nbsp;<CyclopediaImageUpload cyclopedia_id_fk={item.cyclopediaId} cyclopedia_name={item.cyclopediaName} cyclopedia_id={item.cyclopediaId} />
+                                                                <u>Cyclopedia Graphix</u>:&nbsp;
+                                                                <CyclopediaImageUpload cyclopedia_id_fk={item.cyclopediaId} cyclopedia_name={item.cyclopediaName} cyclopedia_id={item.cyclopediaId} />
                                                                 <div>
                                                                     {item.cyclopediaImageEntity && item.cyclopediaImageEntity.cyclopediaImage ?
                                                                         (

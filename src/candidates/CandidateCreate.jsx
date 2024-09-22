@@ -1,10 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
 import axios from 'axios';
-import './Fonts.css';
+import '../Fonts.css';
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
-import spacer from './graphix/besterdev_spacer_white.png';
-import spacer2 from './graphix/besterdev_spacer_white_half.png';
+import spacer from '../graphix/besterdev_spacer_white.png';
+import spacer2 from '../graphix/besterdev_spacer_white_half.png';
 import { GiHummingbird } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';

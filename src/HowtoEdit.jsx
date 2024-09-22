@@ -3,7 +3,7 @@ import { Tooltip } from '@mui/material';
 import './Fonts.css';
 import 'react-dropdown/style.css';
 import HowtoStepAccordion from './HowtoStepAccordion';
-import { useWebsiteApi } from './WebSiteAPIProvider';
+import { useWebsiteApi } from './websites/WebSiteAPIProvider';
 
 export default function HowtoEdit(props) {
   const [isExpanded, setExpanded] = useState(false);

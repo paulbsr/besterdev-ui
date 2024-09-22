@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
-import './Fonts.css';
+import '../Fonts.css';
 import axios from 'axios'
 import 'react-dropdown/style.css';
 import {FaPen, FaCheck, FaRegTrashAlt} from 'react-icons/fa';
@@ -12,9 +12,9 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
 import CandidateCreate from './CandidateCreate';
-import GradientLine from './GradientLine';
+import GradientLine from '../GradientLine';
 import { toast } from 'react-toastify';
-import GradientLineRusty from './GradientLineRusty';
+import GradientLineRusty from '../GradientLineRusty';
 dayjs.extend(utc);
 
 

@@ -201,7 +201,10 @@ function getDeadlineInDays(deadline) {
                         <div className="task-finished">
                             {"Days to completion: " + duration}
                         </div>
-                    ) : null}
+                    ) 
+                    : null
+                    }
+
                     <>
                         {editing === true ? 
                         (
@@ -220,11 +223,19 @@ function getDeadlineInDays(deadline) {
                         ) 
                         : isExpanded && taskstatus !== "DONE" ? 
                         (
-                            <Tooltip title={`Edit Task: ${id}`} placement="top-end">
-                                <div style={{ cursor: "pointer" }} onClick={() => { handleEdit(); }}>
-                                    &nbsp;&nbsp;<BsPencil style={{ color: "#336791", fontSize: "15px", cursor: 'pointer', }} />
-                                </div>
-                            </Tooltip>
+                                    <Tooltip title={`Edit Task: ${id}`} placement="top-end">
+                                        {/* <div style={{ cursor: "pointer" }} onClick={() => { handleEdit(); }}> */}
+                                            {/* &nbsp;&nbsp; */}
+                                            {/* <BsPencil style={{ color: "#336791", fontSize: "15px", cursor: 'pointer', }} /> */}
+                                            <button
+                                                // style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} 
+                                                style={{ marginLeft: '5px', height: '20.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#336791', cursor: 'pointer', fontSize: '12px' }}
+                                                type='button'
+                                                onClick={() => { handleEdit() }}>Edit
+                                                {/* <BsPencil style={{ color: '#336791', display: 'block', margin: 'auto', fontSize: '15px' }} /> */}
+                                            </button>
+                                        {/* </div> */}
+                                    </Tooltip>
                         ) 
                         : 
                         null
@@ -257,6 +268,7 @@ function getDeadlineInDays(deadline) {
                 ) 
                 : 
                 (
+                    
                     <u onClick={toggleAccordion}><b style={{cursor: 'pointer', fontFamily: 'Verdana'}}>{taskname}</b></u>
                 )
                 }
@@ -286,9 +298,10 @@ function getDeadlineInDays(deadline) {
 
                                 }}
                             />
-                        ) : (
-                            taskrequirement
-                        )}
+                        ) 
+                        : 
+                        (taskrequirement)
+                        }
                     </div>
                     
                     

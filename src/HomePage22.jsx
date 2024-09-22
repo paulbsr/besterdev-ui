@@ -6,7 +6,7 @@ import axios from 'axios'
 import Image from './graphix/12.png' //Lady Liberty
 import DBSearchComponent from './DBSearchComponent';
 import TaskSummaryHomepage from './TaskSummaryHomepage';
-import { useWebsiteApi } from './WebSiteAPIProvider';
+import { useWebsiteApi } from './websites/WebSiteAPIProvider';
 import { useCyclopediaApi } from './CyclopediaAPIProvider';
 import { useHowtoApi } from './HowtoAPIProvider';
 import { useNavigate } from 'react-router-dom';

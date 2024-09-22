@@ -29,7 +29,7 @@ import { UserProvider } from './UserContext';
 import { useUserContext } from './UserContext';
 import ReactGA from 'react-ga';
 import PageMyCV from './PageMyCV';
-import { WebSiteAPIProvider } from './WebSiteAPIProvider';
+import { WebSiteAPIProvider } from './websites/WebSiteAPIProvider';
 import { CyclopediaAPIProvider } from './CyclopediaAPIProvider';
 import { HowtoAPIProvider } from './HowtoAPIProvider';
 import { BreakingNewsAPIProvider } from './BreakingNewsAPIProvider';
