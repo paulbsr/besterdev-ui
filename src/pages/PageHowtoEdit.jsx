@@ -1,14 +1,13 @@
-import BannerWhite from './BannerWhite';
-import GradientLine from './GradientLine';
-import BannerLight from './BannerLight';
-import GradientLineThin from './GradientLineThin';
-import Quicklinks3 from './Quicklinks3';
-import HowtoEdit from './HowtoEdit';
+import BannerWhite from '../BannerWhite';
+import GradientLine from '../GradientLine';
+import BannerLight from '../BannerLight';
+import GradientLineThin from '../GradientLineThin';
+import HowtoEdit from '../HowtoEdit';
 import { useParams } from 'react-router-dom';
-import ToastComponent from './ToastComponent';
-import BreakingNews from './breakingnews/BreakingNews';
-import CyclopediaTicker from './CyclopediaTicker';
-import CombinedCreateFP from './CombinedCreateFP';
+import ToastComponent from '../ToastComponent';
+import BreakingNews from '../breakingnews/BreakingNews';
+import CyclopediaTicker from '../CyclopediaTicker';
+import CombinedCreateFP from '../CombinedCreateFP';
 
 // export default function PageCyclopedia() {
 export default function PageHowtoEdit() {

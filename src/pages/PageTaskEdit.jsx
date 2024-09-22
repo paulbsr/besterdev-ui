@@ -1,13 +1,13 @@
-import BannerWhite from './BannerWhite';
-import GradientLine from './GradientLine';
-import BannerLight from './BannerLight';
-import GradientLineThin from './GradientLineThin';
+import BannerWhite from '../BannerWhite';
+import GradientLine from '../GradientLine';
+import BannerLight from '../BannerLight';
+import GradientLineThin from '../GradientLineThin';
 import { useParams } from 'react-router-dom';
-import ToastComponent from './ToastComponent';
-import BreakingNews from './breakingnews/BreakingNews';
-import CyclopediaTicker from './CyclopediaTicker';
-import TaskEdit from './TaskEdit';
-import CombinedCreateFP from './CombinedCreateFP';
+import ToastComponent from '../ToastComponent';
+import BreakingNews from '../breakingnews/BreakingNews';
+import CyclopediaTicker from '../CyclopediaTicker';
+import TaskEdit from '../TaskEdit';
+import CombinedCreateFP from '../CombinedCreateFP';
 
 export default function PageTaskEdit() {
 

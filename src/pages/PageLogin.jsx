@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useUserContext } from './UserContext';
+import { useUserContext } from '../UserContext';
 import { useNavigate } from 'react-router-dom'; 
-import BannerWhite from './BannerWhite';
-import GradientLine from './GradientLine';
+import BannerWhite from '../BannerWhite';
+import GradientLine from '../GradientLine';
 import firebase from 'firebase/compat/app';
-import spacer from './graphix/besterdev_spacer_white.png';
+import spacer from '../graphix/besterdev_spacer_white.png';
 import { Flip, ToastContainer, toast, Zoom } from 'react-toastify';
 import 'firebase/auth';
 import 'firebase/compat/auth';
@@ -12,10 +12,9 @@ import 'firebase/compat/firestore';
 import 'react-dropdown/style.css';
 import 'react-tooltip/dist/react-tooltip.css';
 import 'react-toastify/dist/ReactToastify.css';
-import './Fonts.css';
-import Footer from './Footer';
-import ToastComponent from './ToastComponent';
-import BreakingNewsAPI from './breakingnews/BreakingNewsAPI';
+import '../Fonts.css';
+import Footer from '../Footer';
+import ToastComponent from '../ToastComponent';
 import axios from 'axios'
 
 

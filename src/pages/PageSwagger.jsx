@@ -1,10 +1,10 @@
 import React from 'react';
-import BannerWhite from './BannerWhite';
-import GradientLine from './GradientLine';
-import BannerLight from './BannerLight';
-import GradientLineThin from './GradientLineThin';
-import Footer from './Footer';
-import './Fonts.css';
+import BannerWhite from '../BannerWhite';
+import GradientLine from '../GradientLine';
+import BannerLight from '../BannerLight';
+import GradientLineThin from '../GradientLineThin';
+import Footer from '../Footer';
+import '../Fonts.css';
 
 const Swagger = () => {
 
