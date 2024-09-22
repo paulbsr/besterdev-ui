@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import AlertContext from "./Generic/Alerts/AlertContext";
+import AlertContext from "../Generic/Alerts/AlertContext";
 import axios from "axios";
 import { GiHummingbird } from "react-icons/gi";
 import { Tooltip } from '@mui/material';

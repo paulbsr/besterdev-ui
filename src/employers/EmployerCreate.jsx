@@ -1,13 +1,13 @@
 import React, { useState, useContext } from "react";
 import axios from 'axios';
-import './Fonts.css';
-import spacer from './graphix/besterdev_spacer_white.png'
-import spacer2 from './graphix/besterdev_spacer_white_half.png'
+import '../Fonts.css';
+import spacer from '../graphix/besterdev_spacer_white.png'
+import spacer2 from '../graphix/besterdev_spacer_white_half.png'
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 import { GiHummingbird, GiNestBirds } from "react-icons/gi";
 import { toast } from 'react-toastify';
-import AlertContext from "./Generic/Alerts/AlertContext";
+import AlertContext from "../Generic/Alerts/AlertContext";
 
 export default function EmployerCreate(props) {
 

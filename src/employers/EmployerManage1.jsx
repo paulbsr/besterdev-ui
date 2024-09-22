@@ -1,17 +1,17 @@
 import { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
-import './Fonts.css'
+import '../Fonts.css'
 import 'react-dropdown/style.css';
 import { FaPen, FaCheck, FaRegTrashAlt } from 'react-icons/fa';
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
-import GradientLine from './GradientLine';
+import GradientLine from '../GradientLine';
 import EmployerCreate from './EmployerCreate';
 import { MdManageAccounts } from "react-icons/md";
 import { FaPeopleGroup } from "react-icons/fa6";
 import { toast } from 'react-toastify';
-import GradientLineRusty from './GradientLineRusty';
+import GradientLineRusty from '../GradientLineRusty';
 
 
 export default function EmployerManage1(props) {

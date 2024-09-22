@@ -1,5 +1,5 @@
 import axios from 'axios';
-import './Fonts.css'
+import '../Fonts.css'
 
 export const PeopleScorecardUpdateHelp = async (id, person, newValues, setCheckForRecords, checkForRecords, alertHandler) => {
 

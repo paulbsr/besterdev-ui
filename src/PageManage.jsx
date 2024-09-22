@@ -3,7 +3,7 @@ import GradientLine from './GradientLine';
 import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
 import CandidateManage from './candidates/CandidateManage';
-import EmployerManage1 from './EmployerManage1';
+import EmployerManage1 from './employers/EmployerManage1';
 import JobreqManage from './JobreqManage';
 import Footer from './Footer';
 import 'react-toastify/dist/ReactToastify.css';

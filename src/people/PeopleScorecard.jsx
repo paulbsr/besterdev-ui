@@ -1,22 +1,22 @@
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import './Fonts.css'
+import '../Fonts.css'
 import * as React from "react";
-import ImageAvatar_Simon from "./graphix/Avatars/ImageAvatar_Simon";
-import ImageAvatar_Conor from "./graphix/Avatars/ImageAvatar_Conor";
-import ImageAvatar_Brian from "./graphix/Avatars/ImageAvatar_Brian";
-import ImageAvatar_Bren from "./graphix/Avatars/ImageAvatar_Bren";
-import ImageAvatar_Keex from "./graphix/Avatars/ImageAvatar_Keex";
-import ImageAvatar_Monique from "./graphix/Avatars/ImageAvatar_Monique";
-import ImageAvatar_Leo from "./graphix/Avatars/ImageAvatar_Leo";
-import ImageAvatar_Saoirse from "./graphix/Avatars/ImageAvatar_Saoirse";
-import ImageAvatar_Dwayne from "./graphix/Avatars/ImageAvatar_Dwayne";
-import ImageAvatar_Shikha from "./graphix/Avatars/ImageAvatar_Shikha";
-import ImageAvatar_Felipe from "./graphix/Avatars/ImageAvatar_Felipe";
-import ImageAvatar_Thiago from "./graphix/Avatars/ImageAvatar_Thiago";
-import MouseoverPopover from "./MouseoverPopover";
-import { getStatusColor } from "./getStatusColor";
-import AlertContext from "./Generic/Alerts/AlertContext";
+import ImageAvatar_Simon from "../graphix/Avatars/ImageAvatar_Simon";
+import ImageAvatar_Conor from "../graphix/Avatars/ImageAvatar_Conor";
+import ImageAvatar_Brian from "../graphix/Avatars/ImageAvatar_Brian";
+import ImageAvatar_Bren from "../graphix/Avatars/ImageAvatar_Bren";
+import ImageAvatar_Keex from "../graphix/Avatars/ImageAvatar_Keex";
+import ImageAvatar_Monique from "../graphix/Avatars/ImageAvatar_Monique";
+import ImageAvatar_Leo from "../graphix/Avatars/ImageAvatar_Leo";
+import ImageAvatar_Saoirse from "../graphix/Avatars/ImageAvatar_Saoirse";
+import ImageAvatar_Dwayne from "../graphix/Avatars/ImageAvatar_Dwayne";
+import ImageAvatar_Shikha from "../graphix/Avatars/ImageAvatar_Shikha";
+import ImageAvatar_Felipe from "../graphix/Avatars/ImageAvatar_Felipe";
+import ImageAvatar_Thiago from "../graphix/Avatars/ImageAvatar_Thiago";
+import MouseoverPopover from "../MouseoverPopover";
+import { getStatusColor } from "../getStatusColor";
+import AlertContext from "../Generic/Alerts/AlertContext";
 import PeopleScorecardUpdate from "./PeopleScorecardUpdate";
 import PeopleScorecardCreate from "./PeopleScorecardCreate";
 import { FaCheck, FaPen, FaUndo, FaArrowAltCircleDown } from "react-icons/fa";
@@ -27,7 +27,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
 import { BsPeopleFill } from "react-icons/bs";
-import GradientLineRusty from "./GradientLineRusty";
+import GradientLineRusty from "../GradientLineRusty";
 import { Tooltip } from '@mui/material';
 
 
