@@ -8,7 +8,7 @@ import JobreqManage from './JobreqManage';
 import Footer from './Footer';
 import 'react-toastify/dist/ReactToastify.css';
 import ToastComponent from './ToastComponent';
-import BreakingNews from './BreakingNews';
+import BreakingNews from './breakingnews/BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
 import CombinedCreateFP from './CombinedCreateFP';
 

@@ -4,7 +4,7 @@ import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
 import Quicklinks3 from './Quicklinks3';
 import ToastComponent from './ToastComponent';
-import BreakingNews from './BreakingNews';
+import BreakingNews from './breakingnews/BreakingNews';
 import CombinedCreateFP from './CombinedCreateFP';
 
 

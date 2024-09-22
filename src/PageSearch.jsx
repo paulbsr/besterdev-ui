@@ -2,7 +2,6 @@ import BannerWhite from './BannerWhite';
 import GradientLine from './GradientLine';
 import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
-import Quicklinks3 from './Quicklinks3';
 import CandidateAPI from './candidates/CandidateAPI';
 import Footer from './Footer';
 import './Fonts.css'
@@ -10,7 +9,7 @@ import 'react-dropdown/style.css';
 import 'react-tooltip/dist/react-tooltip.css'
 import 'react-toastify/dist/ReactToastify.css';
 import ToastComponent from './ToastComponent';
-import BreakingNews from './BreakingNews';
+import BreakingNews from './breakingnews/BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
 import CombinedCreateFP from './CombinedCreateFP';
 

@@ -10,7 +10,7 @@ import 'react-dropdown/style.css';
 import 'react-tooltip/dist/react-tooltip.css'
 import 'react-toastify/dist/ReactToastify.css';
 import ToastComponent from './ToastComponent';
-import BreakingNews from './BreakingNews';
+import BreakingNews from './breakingnews/BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
 import TaskOverview from './TaskOverview';
 import { TaskContext } from "./Contexts";

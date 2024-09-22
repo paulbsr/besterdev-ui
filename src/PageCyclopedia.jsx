@@ -9,7 +9,7 @@ import 'react-tooltip/dist/react-tooltip.css'
 import 'react-toastify/dist/ReactToastify.css';
 import CyclopediaManage from './CyclopediaManage';
 import ToastComponent from './ToastComponent';
-import BreakingNews from './BreakingNews';
+import BreakingNews from './breakingnews/BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
 import DBSearchComponentBanner from './DBSearchComponentBanner';
 import CombinedCreateFP from './CombinedCreateFP';

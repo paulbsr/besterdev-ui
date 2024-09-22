@@ -32,7 +32,7 @@ import PageMyCV from './PageMyCV';
 import { WebSiteAPIProvider } from './websites/WebSiteAPIProvider';
 import { CyclopediaAPIProvider } from './CyclopediaAPIProvider';
 import { HowtoAPIProvider } from './HowtoAPIProvider';
-import { BreakingNewsAPIProvider } from './BreakingNewsAPIProvider';
+import { BreakingNewsAPIProvider } from './breakingnews/BreakingNewsAPIProvider';
 import PageCyclopediaEdit from './PageCyclopediaEdit';
 
 const TRACKING_ID = "G-FCGGY1NE36";

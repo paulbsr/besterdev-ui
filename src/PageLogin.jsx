@@ -15,7 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './Fonts.css';
 import Footer from './Footer';
 import ToastComponent from './ToastComponent';
-import BreakingNewsAPI from './BreakingNewsAPI';
+import BreakingNewsAPI from './breakingnews/BreakingNewsAPI';
 import axios from 'axios'
 
 

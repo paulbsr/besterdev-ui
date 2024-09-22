@@ -5,7 +5,7 @@ import GradientLineThin from './GradientLineThin';
 import Quicklinks3 from './Quicklinks3';
 import HowtoManage from './HowtoManage';
 import ToastComponent from './ToastComponent';
-import BreakingNews from './BreakingNews';
+import BreakingNews from './breakingnews/BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
 import CombinedCreateFP from './CombinedCreateFP';
 

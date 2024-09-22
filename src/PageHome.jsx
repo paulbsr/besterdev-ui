@@ -5,9 +5,9 @@ import GradientLineThin from './GradientLineThin';
 import Footer from './Footer';
 import HomePage22 from './HomePage22';
 import ToastComponent from './ToastComponent';
-import BreakingNews from './BreakingNews';
+import BreakingNews from './breakingnews/BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
-import BreakingNewsAPI from './BreakingNewsAPI';
+import BreakingNewsAPI from './breakingnews/BreakingNewsAPI';
 import CombinedCreateFP from './CombinedCreateFP';
 
 

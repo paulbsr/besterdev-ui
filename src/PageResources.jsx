@@ -4,7 +4,7 @@ import BannerLight from './BannerLight';
 import GradientLineThin from './GradientLineThin';
 import WebsiteManage from './websites/WebsiteManage';
 import ToastComponent from './ToastComponent';
-import BreakingNews from './BreakingNews';
+import BreakingNews from './breakingnews/BreakingNews';
 import CyclopediaTicker from './CyclopediaTicker';
 import CombinedCreateFP from './CombinedCreateFP';
 
