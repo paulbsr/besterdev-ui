@@ -1,13 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
-import AlertContext from "./Generic/Alerts/AlertContext";
+import AlertContext from "../Generic/Alerts/AlertContext";
 import axios from 'axios';
-import './Fonts.css';
+import '../Fonts.css';
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
-import spacer from './graphix/besterdev_spacer_white.png'
-import spacer2 from './graphix/besterdev_spacer_white_half.png'
+import spacer from '../graphix/besterdev_spacer_white.png'
+import spacer2 from '../graphix/besterdev_spacer_white_half.png'
 import { GiHummingbird } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'

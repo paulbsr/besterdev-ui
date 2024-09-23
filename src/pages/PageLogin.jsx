@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useUserContext } from '../UserContext';
 import { useNavigate } from 'react-router-dom'; 
-import BannerWhite from '../BannerWhite';
+import BannerWhite from '../banners/BannerWhite';
 import GradientLine from '../GradientLine';
 import firebase from 'firebase/compat/app';
 import spacer from '../graphix/besterdev_spacer_white.png';

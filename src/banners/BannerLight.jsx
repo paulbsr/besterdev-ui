@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Fonts.css';
-// import { Tooltip } from 'react-tooltip'
+import '../Fonts.css';
 import 'react-tooltip/dist/react-tooltip.css'
 import { useNavigate } from 'react-router-dom'; 
 import { FaReact, FaJava, FaNodeJs, FaAws, FaPeopleArrows, FaDigitalOcean, FaFileContract, FaTasks, FaUserGraduate } from 'react-icons/fa';
@@ -11,12 +10,8 @@ import { MdManageAccounts, MdOutlineVpnLock, MdOutlineMailLock, MdTask } from "r
 import { TbWorldWww, TbBrandOauth } from "react-icons/tb";
 import { BsQuestionOctagonFill, BsPeopleFill } from "react-icons/bs";
 import { IoLibrary, IoHome, IoPieChartSharp } from "react-icons/io5";
-import { SlLogout } from "react-icons/sl";
 import { GrVirtualMachine} from "react-icons/gr";
-import { RiOpenaiFill } from "react-icons/ri";
 import { GiRapidshareArrow  } from "react-icons/gi";
-import DBSearchComponentBanner from './DBSearchComponentBanner';
-
 
 
   // const BannerLight = ({ user }) => {

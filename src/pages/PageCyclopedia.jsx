@@ -1,8 +1,7 @@
-import BannerWhite from '../BannerWhite';
+import BannerWhite from '../banners/BannerWhite';
 import GradientLine from '../GradientLine';
-import BannerLight from '../BannerLight';
+import BannerLight from '../banners/BannerLight';
 import GradientLineThin from '../GradientLineThin';
-import Quicklinks3 from '../Quicklinks3';
 import '../Fonts.css'
 import 'react-dropdown/style.css';
 import 'react-tooltip/dist/react-tooltip.css'
@@ -11,7 +10,6 @@ import CyclopediaManage from '../CyclopediaManage';
 import ToastComponent from '../ToastComponent';
 import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../CyclopediaTicker';
-import DBSearchComponentBanner from '../DBSearchComponentBanner';
 import CombinedCreateFP from '../CombinedCreateFP';
 
 

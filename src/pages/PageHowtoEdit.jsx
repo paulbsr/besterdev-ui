@@ -1,6 +1,6 @@
-import BannerWhite from '../BannerWhite';
+import BannerWhite from '../banners/BannerWhite';
 import GradientLine from '../GradientLine';
-import BannerLight from '../BannerLight';
+import BannerLight from '../banners/BannerLight';
 import GradientLineThin from '../GradientLineThin';
 import HowtoEdit from '../HowtoEdit';
 import { useParams } from 'react-router-dom';

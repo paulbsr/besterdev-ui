@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useUserContext } from '../UserContext';
 import { useNavigate } from 'react-router-dom'; 
-import BannerWhite from '../BannerWhite';
+import BannerWhite from '../banners/BannerWhite';
 import GradientLine from '../GradientLine';
-import BannerLight from '../BannerLight';
+import BannerLight from '../banners/BannerLight';
 import GradientLineThin from '../GradientLineThin';
 import Quicklinks from '../Quicklinks';
 import firebase from 'firebase/compat/app';

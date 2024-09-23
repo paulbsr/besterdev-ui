@@ -1,7 +1,7 @@
 import React from 'react';
-import BannerWhite from '../BannerWhite';
+import BannerWhite from '../banners/BannerWhite';
 import GradientLine from '../GradientLine';
-import BannerLight from '../BannerLight';
+import BannerLight from '../banners/BannerLight';
 import GradientLineThin from '../GradientLineThin';
 import Footer from '../Footer';
 import '../Fonts.css';

@@ -1,6 +1,4 @@
 import React from 'react';
-import logo from './graphix/logo_transparent2.png';
-import Darknet13 from './graphix/Darknet13.png'
 import { TbLetterA } from "react-icons/tb";
 import { TbLetterT } from "react-icons/tb";
 import { TbLetterR } from "react-icons/tb";

@@ -1,4 +1,4 @@
-import BannerWhite from '../BannerWhite';
+import BannerWhite from '../banners/BannerWhite';
 import GradientLine from '../GradientLine';
 import GradientLineThin from '../GradientLineThin';
 import ToastComponent from '../ToastComponent';

@@ -1,10 +1,10 @@
-import BannerWhite from '../BannerWhite';
+import BannerWhite from '../banners/BannerWhite';
 import GradientLine from '../GradientLine';
-import BannerLight from '../BannerLight';
+import BannerLight from '../banners/BannerLight';
 import GradientLineThin from '../GradientLineThin';
 import CandidateManage from '../candidates/CandidateManage';
 import EmployerManage1 from '../employers/EmployerManage1';
-import JobreqManage from '../JobreqManage';
+import JobreqManage from '../jobs/JobreqManage';
 import Footer from '../Footer';
 import 'react-toastify/dist/ReactToastify.css';
 import ToastComponent from '../ToastComponent';
