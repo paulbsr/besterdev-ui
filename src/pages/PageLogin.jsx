@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useUserContext } from '../UserContext';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import BannerWhite from '../banners/BannerWhite';
 import GradientLine from '../gradientlines/GradientLine';
 import firebase from 'firebase/compat/app';
@@ -15,9 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import '../Fonts.css';
 import Footer from '../Footer';
 import ToastComponent from '../ToastComponent';
-import axios from 'axios'
-
-
+import axios from 'axios';
 
 const PageLogin = (props) => {
   const [email, setEmail] = useState('');
@@ -26,12 +24,21 @@ const PageLogin = (props) => {
   const [loginSuccessMessage, setLoginSuccessMessage] = useState('');
   const [searchPhrase, setSearchPhrase] = useState(props.searchPhrase);
   const [newSearchPhrase, setNewSearchPhrase] = useState(props.searchPhrase);
+  const [showLoginButton, setShowLoginButton] = useState(false); // New state for button visibility
   const navigate = useNavigate();
 
-  
   useEffect(() => {
     setSearchPhrase(props.searchPhrase);
   }, [props.searchPhrase]);
+
+  // Set a 5-second delay before showing the login button
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowLoginButton(true);
+    }, 2500); // 2.5 seconds
+
+    return () => clearTimeout(timer); // Cleanup the timer
+  }, []);
 
   const handleLogin = () => {
     firebase.auth().signInWithEmailAndPassword(email, password)
@@ -40,7 +47,7 @@ const PageLogin = (props) => {
         setLoggedInUserEmail(user.email);
         setLoginSuccessMessage('Login successful!');
         handleSearchPhraseUpdate();
-        navigate('/home'); 
+        navigate('/home');
       })
       .catch((error) => {
         setLoginSuccessMessage('Auth failed.');
@@ -49,12 +56,9 @@ const PageLogin = (props) => {
       });
   };
 
-  const handleSearchPhraseUpdate = async () => 
-  {
-    const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/searchphrase/update?newValue=${newSearchPhrase}`)
-  }
-  
-
+  const handleSearchPhraseUpdate = async () => {
+    const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/searchphrase/update?newValue=${newSearchPhrase}`);
+  };
 
   return (
     <>
@@ -63,18 +67,28 @@ const PageLogin = (props) => {
       <div>&nbsp;</div>
       <div>&nbsp;</div>
       <div>&nbsp;</div>
-      <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp; &nbsp;Username:<img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp;<input className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '350px' }} type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp; &nbsp;Username:
+      <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp;
+      <input className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '350px' }} type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
       <div>&nbsp;</div>
-      <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp; &nbsp;Password:<img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp;<input className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '350px' }} type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp; &nbsp;Password:
+      <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp;
+      <input className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '350px' }} type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
       <div>&nbsp;</div>
-      <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp; &nbsp;Breaking News:<img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp;<input className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '350px' }} type="text" value={newSearchPhrase} onChange={(e) => setNewSearchPhrase(e.target.value)} />
+      <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp; &nbsp;Breaking News:
+      <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp;
+      <input className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '350px' }} type="text" value={newSearchPhrase} onChange={(e) => setNewSearchPhrase(e.target.value)} />
       <div>&nbsp;</div>
-      <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} /><button style={{marginLeft: '10px', height: '37.5px', width: '100px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#336791', cursor: 'pointer'}} onClick={handleLogin}><b>Login</b></button>
+      {showLoginButton && (
+        <><img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} /><button style={{ marginLeft: '10px', height: '37.5px', width: '100px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#336791', cursor: 'pointer' }} onClick={handleLogin}>
+          <b>Login</b>
+        </button></>
+      )}
       {loginSuccessMessage && <ToastComponent />}
       <div>&nbsp;</div>
       <div>&nbsp;</div>
       <div>&nbsp;</div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

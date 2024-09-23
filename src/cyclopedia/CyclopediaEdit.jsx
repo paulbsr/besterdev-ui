@@ -165,11 +165,15 @@ export default function CyclopediaEdit(props) {
                                                         :
                                                         (
                                                             <>
-                                                                <Tooltip title={`Edit Cyclopedia#${item.cyclopediaId}`} placement="top-end">
+                                                            <div>&nbsp;</div>
+                                                            <div>&nbsp;</div>
+                                                                <Tooltip title={`Cyclopedia#${item.cyclopediaId}`} placement="top-end">
                                                                     <button style={{ height: '20px', width: '25px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(item) }}>
-                                                                        <IoLibrary style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                        <IoLibrary style={{ color: '#336791', fontSize: '40px', cursor: 'pointer' }} /></button>&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 </Tooltip>
-                                                                <b>{item.cyclopediaName}</b><i className="Font-Spacer-White">cyclopediaId#{item.cyclopediaId}</i>
+                                                                <a className="Font-Segoe-Large" href={item.cyclopediaUrl} target="_blank" rel="noreferrer"><b>{item.cyclopediaName}</b></a>&nbsp;&nbsp;&nbsp;
+                                                                {/* <GiSpiderWeb style={{ color: '#336791', fontSize: '19px' }} /> */}
+                                                                {/* <i className="Font-Spacer-White">cyclopediaId#{item.cyclopediaId}</i> */}
 
                                                                 <Tooltip title={`Edit Cyclopedia#${item.cyclopediaId}`} placement="top-end">
                                                                     <button
@@ -178,19 +182,48 @@ export default function CyclopediaEdit(props) {
                                                                         type='button'
                                                                         onClick={() => { handleEdit(item) }}>Edit
                                                                         {/* <BsPencil style={{ color: '#336791', display: 'block', margin: 'auto', fontSize: '15px' }} /> */}
-                                                                    </button>
+                                                                    </button>&nbsp;&nbsp;&nbsp;
                                                                 </Tooltip>
+
+                                                                <CyclopediaImageUpload cyclopedia_id_fk={item.cyclopediaId} cyclopedia_name={item.cyclopediaName} cyclopedia_id={item.cyclopediaId} />
+                                                                <div>
+                                                                    {item.cyclopediaImageEntity && item.cyclopediaImageEntity.cyclopediaImage ?
+                                                                        (
+                                                                            <img
+                                                                                src={`data:image/jpeg;base64,${item.cyclopediaImageEntity.cyclopediaImage}`}
+                                                                                alt={item.cyclopediaName}
+                                                                                style={{ maxWidth: '100%', height: 'auto' }}
+                                                                            />
+                                                                        )
+                                                                        :
+                                                                        (
+                                                                            <div>No image available</div>
+                                                                        )
+                                                                    }
+                                                                </div>
                                                                 <div>&nbsp;</div>
 
 
-                                                                <div><u>Cyclopedia Description</u>:&nbsp;<IoInformationCircleOutline style={{ color: '#336791', fontSize: '21px' }} />&nbsp;</div>
-                                                                <div>{item.cyclopediaDesc}</div>
-                                                                <div>&nbsp;</div>
+                                                                <div><u>Cyclopedia Description</u>:&nbsp;
+                                                                {/* <IoInformationCircleOutline style={{ color: '#336791', fontSize: '21px' }} /> */}
+                                                                &nbsp;
+                                                                </div>
+                                                                <div>
+                                                                    {/* {item.cyclopediaDesc} */}
+                                                                    <textarea
+                                                                    required
+                                                                    defaultValue={item.cyclopediaDesc}
+                                                                    // onChange={(e) => setCyclopediaDesc(e.target.value)}
+                                                                    style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '300px', border: '1.25px solid #FFFFFF', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1110px' }}
+                                                                />
+                                                                </div>
+
+                                                                {/* <div>&nbsp;</div>
                                                                 <div><u>Cyclopedia URL</u>:&nbsp;<GiSpiderWeb style={{ color: '#336791', fontSize: '19px' }} />&nbsp;</div>
                                                                 <div><a className="Font-Segoe-Large" href={item.cyclopediaUrl} target="_blank" rel="noreferrer">{item.cyclopediaUrl}</a></div>
-                                                                <div>&nbsp;</div>
+                                                                <div>&nbsp;</div> */}
 
-                                                                <u>Cyclopedia Graphix</u>:&nbsp;
+                                                                {/* <u>Cyclopedia Graphix</u>:&nbsp;
                                                                 <CyclopediaImageUpload cyclopedia_id_fk={item.cyclopediaId} cyclopedia_name={item.cyclopediaName} cyclopedia_id={item.cyclopediaId} />
                                                                 <div>
                                                                     {item.cyclopediaImageEntity && item.cyclopediaImageEntity.cyclopediaImage ?
@@ -206,7 +239,7 @@ export default function CyclopediaEdit(props) {
                                                                             <div>No image associated</div>
                                                                         )
                                                                     }
-                                                                </div>
+                                                                </div> */}
                                                             </>
                                                         )
                                                 }
