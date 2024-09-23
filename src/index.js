@@ -30,7 +30,7 @@ import { useUserContext } from './UserContext';
 import ReactGA from 'react-ga';
 import PageMyCV from './pages/PageMyCV';
 import { WebSiteAPIProvider } from './websites/WebSiteAPIProvider';
-import { CyclopediaAPIProvider } from './CyclopediaAPIProvider';
+import { CyclopediaAPIProvider } from './cyclopedia/CyclopediaAPIProvider';
 import { HowtoAPIProvider } from './HowtoAPIProvider';
 import { BreakingNewsAPIProvider } from './breakingnews/BreakingNewsAPIProvider';
 import PageCyclopediaEdit from './pages/PageCyclopediaEdit';

@@ -6,7 +6,7 @@ import HowtoEdit from '../HowtoEdit';
 import { useParams } from 'react-router-dom';
 import ToastComponent from '../ToastComponent';
 import BreakingNews from '../breakingnews/BreakingNews';
-import CyclopediaTicker from '../CyclopediaTicker';
+import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import CombinedCreateFP from '../CombinedCreateFP';
 
 // export default function PageCyclopedia() {

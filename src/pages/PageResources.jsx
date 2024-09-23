@@ -5,7 +5,7 @@ import GradientLineThin from '../gradientlines/GradientLineThin';
 import WebsiteManage from '../websites/WebsiteManage';
 import ToastComponent from '../ToastComponent';
 import BreakingNews from '../breakingnews/BreakingNews';
-import CyclopediaTicker from '../CyclopediaTicker';
+import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import CombinedCreateFP from '../CombinedCreateFP';
 
 export default function PageResources() {

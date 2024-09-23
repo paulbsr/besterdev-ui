@@ -9,7 +9,7 @@ import DatePicker from "react-datepicker";
 import { MdTask } from "react-icons/md";
 import { IoLibrary } from "react-icons/io5";
 import { useWebsiteApi } from './websites/WebSiteAPIProvider';
-import { useCyclopediaApi } from './CyclopediaAPIProvider';
+import { useCyclopediaApi } from './cyclopedia/CyclopediaAPIProvider';
 
 
 export default function CombinedCreateFP() {

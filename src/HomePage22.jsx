@@ -7,7 +7,7 @@ import Image from './graphix/12.png' //Lady Liberty
 import DBSearchComponent from './DBSearchComponent';
 import TaskSummaryHomepage from './TaskSummaryHomepage';
 import { useWebsiteApi } from './websites/WebSiteAPIProvider';
-import { useCyclopediaApi } from './CyclopediaAPIProvider';
+import { useCyclopediaApi } from './cyclopedia/CyclopediaAPIProvider';
 import { useHowtoApi } from './HowtoAPIProvider';
 import { useNavigate } from 'react-router-dom';
 

@@ -10,7 +10,7 @@ import 'react-tooltip/dist/react-tooltip.css'
 import 'react-toastify/dist/ReactToastify.css';
 import ToastComponent from '../ToastComponent';
 import BreakingNews from '../breakingnews/BreakingNews';
-import CyclopediaTicker from '../CyclopediaTicker';
+import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import TaskOverview from '../TaskOverview';
 import { TaskContext } from "../Contexts";
 import CombinedCreateFP from '../CombinedCreateFP';

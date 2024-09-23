@@ -6,10 +6,10 @@ import '../Fonts.css'
 import 'react-dropdown/style.css';
 import 'react-tooltip/dist/react-tooltip.css'
 import 'react-toastify/dist/ReactToastify.css';
-import CyclopediaManage from '../CyclopediaManage';
+import CyclopediaManage from '../cyclopedia/CyclopediaManage';
 import ToastComponent from '../ToastComponent';
 import BreakingNews from '../breakingnews/BreakingNews';
-import CyclopediaTicker from '../CyclopediaTicker';
+import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import CombinedCreateFP from '../CombinedCreateFP';
 
 

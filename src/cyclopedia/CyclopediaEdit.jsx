@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Tooltip } from '@mui/material';
-import './Fonts.css';
+import '../Fonts.css';
 import { useCyclopediaApi } from './CyclopediaAPIProvider';
 import { BsPencil } from "react-icons/bs"; // Pencil grey
 import { GiCheckMark, GiSpiderWeb } from "react-icons/gi"; // Commit grey

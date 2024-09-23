@@ -5,7 +5,7 @@ import GradientLineThin from '../gradientlines/GradientLineThin';
 import { useParams } from 'react-router-dom';
 import ToastComponent from '../ToastComponent';
 import BreakingNews from '../breakingnews/BreakingNews';
-import CyclopediaTicker from '../CyclopediaTicker';
+import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import TaskEdit from '../TaskEdit';
 import CombinedCreateFP from '../CombinedCreateFP';
 

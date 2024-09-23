@@ -5,8 +5,8 @@ import GradientLineThin from '../gradientlines/GradientLineThin';
 import { useParams } from 'react-router-dom';
 import ToastComponent from '../ToastComponent';
 import BreakingNews from '../breakingnews/BreakingNews';
-import CyclopediaTicker from '../CyclopediaTicker';
-import CyclopediaEdit from '../CyclopediaEdit';
+import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
+import CyclopediaEdit from '../cyclopedia/CyclopediaEdit';
 import CombinedCreateFP from '../CombinedCreateFP';
 
 
