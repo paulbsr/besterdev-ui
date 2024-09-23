@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import BannerWhite from '../banners/BannerWhite';
-import GradientLine from '../GradientLine';
+import GradientLine from '../gradientlines/GradientLine';
 import BannerLight from '../banners/BannerLight';
-import GradientLineThin from '../GradientLineThin';
+import GradientLineThin from '../gradientlines/GradientLineThin';
 import '../Fonts.css'
 import 'react-dropdown/style.css';
 import 'react-tooltip/dist/react-tooltip.css'

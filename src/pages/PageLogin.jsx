@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useUserContext } from '../UserContext';
 import { useNavigate } from 'react-router-dom'; 
 import BannerWhite from '../banners/BannerWhite';
-import GradientLine from '../GradientLine';
+import GradientLine from '../gradientlines/GradientLine';
 import firebase from 'firebase/compat/app';
 import spacer from '../graphix/besterdev_spacer_white.png';
 import { Flip, ToastContainer, toast, Zoom } from 'react-toastify';

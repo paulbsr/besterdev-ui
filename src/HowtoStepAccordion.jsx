@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import HowtoStep from './HowtoStep';
-import GradientLineRusty from "./GradientLineRusty";
+import GradientLineRusty from "./gradientlines/GradientLineRusty";
 import HowtoStepCreate from './HowtoStepCreate';
 import './Fonts.css'
 import HowtoUrlCreate from './HowtoUrlCreate';

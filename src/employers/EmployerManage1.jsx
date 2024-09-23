@@ -6,12 +6,12 @@ import { FaPen, FaCheck, FaRegTrashAlt } from 'react-icons/fa';
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
-import GradientLine from '../GradientLine';
+import GradientLine from '../gradientlines/GradientLine';
 import EmployerCreate from './EmployerCreate';
 import { MdManageAccounts } from "react-icons/md";
 import { FaPeopleGroup } from "react-icons/fa6";
 import { toast } from 'react-toastify';
-import GradientLineRusty from '../GradientLineRusty';
+import GradientLineRusty from '../gradientlines/GradientLineRusty';
 
 
 export default function EmployerManage1(props) {

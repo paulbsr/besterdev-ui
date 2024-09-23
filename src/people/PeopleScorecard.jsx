@@ -27,7 +27,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
 import { BsPeopleFill } from "react-icons/bs";
-import GradientLineRusty from "../GradientLineRusty";
+import GradientLineRusty from "../gradientlines/GradientLineRusty";
 import { Tooltip } from '@mui/material';
 
 

@@ -12,9 +12,8 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
 import CandidateCreate from './CandidateCreate';
-import GradientLine from '../GradientLine';
 import { toast } from 'react-toastify';
-import GradientLineRusty from '../GradientLineRusty';
+import GradientLineRusty from '../gradientlines/GradientLineRusty';
 dayjs.extend(utc);
 
 

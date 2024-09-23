@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import MouseoverPopover from "./MouseoverPopover";
 import { MdTask } from "react-icons/md";
-import GradientLineRusty from "./GradientLineRusty";
+import GradientLineRusty from "./gradientlines/GradientLineRusty";
 import "./Fonts.css";
 import "./TaskOverview.css";
 import Task from "./Task";

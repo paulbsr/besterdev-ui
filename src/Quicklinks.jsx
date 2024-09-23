@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import './Fonts.css'
 import {styled} from "@mui/material/styles";
 import { useUserContext } from './UserContext';
-import GradientLineThin from './GradientLineThin';
+import GradientLineThin from './gradientlines/GradientLineThin';
 import QuickAddWebResource from './QuickAddWebResource';
 
 

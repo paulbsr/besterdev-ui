@@ -1,4 +1,4 @@
-import React, { useState, useEffect, } from 'react';
+import React, { useState } from 'react';
 import axios from "axios";
 import './Fonts.css'
 import { Tooltip } from '@mui/material';
@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { FaPen, FaCheck, FaRegTrashAlt } from 'react-icons/fa';
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
 import CyclopediaCreate from './CyclopediaCreate';
-import GradientLineRusty from './GradientLineRusty';
+import GradientLineRusty from './gradientlines/GradientLineRusty';
 import { IoLibrary } from "react-icons/io5";
 import { useCyclopediaApi } from './CyclopediaAPIProvider';
 

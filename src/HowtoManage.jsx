@@ -9,7 +9,7 @@ import {PiArrowCounterClockwiseBold} from 'react-icons/pi';
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
 import { toast } from 'react-toastify';
-import GradientLineRusty from './GradientLineRusty';
+import GradientLineRusty from './gradientlines/GradientLineRusty';
 import HowtoCreate from './HowtoCreate';
 import { BsQuestionOctagonFill } from "react-icons/bs";
 import { useHowtoApi } from './HowtoAPIProvider';

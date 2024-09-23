@@ -1,5 +1,5 @@
 import React from 'react';
-import './Fonts.css'
+import '../Fonts.css'
 
 const GradientLineGreen = () => {
   return (

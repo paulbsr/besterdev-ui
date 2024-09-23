@@ -5,13 +5,12 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../Fonts.css';
-import GradientLineThin from '../GradientLineThin';
 import { FaPersonCircleQuestion, FaLinkedin } from "react-icons/fa6";
 import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';
 import ColouredBox from '../ColouredBox';
 import spacer from '../graphix/besterdev_spacer_white.png';
-import GradientLineLinkedIn from '../GradientLineLinkedIn';
+import GradientLineLinkedIn from '../gradientlines/GradientLineLinkedIn';
 
 
 export default function CandidateAPI() {

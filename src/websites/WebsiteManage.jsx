@@ -6,7 +6,7 @@ import { FaPen, FaCheck, FaRegTrashAlt } from 'react-icons/fa';
 import { TbWorldWww } from "react-icons/tb";
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
 import { toast } from 'react-toastify';
-import GradientLineRusty from '../GradientLineRusty';
+import GradientLineRusty from '../gradientlines/GradientLineRusty';
 import WebsiteCreate from './WebsiteCreate';
 import { useWebsiteApi } from './WebSiteAPIProvider';
 

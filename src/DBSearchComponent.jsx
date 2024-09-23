@@ -5,12 +5,8 @@ import { BsQuestionOctagonFill } from "react-icons/bs";
 import { IoLibrarySharp, IoFootstepsSharp } from "react-icons/io5";
 import { TbWorldWww } from "react-icons/tb";
 import { SiWritedotas } from "react-icons/si";
-import GradientLineGreen from './GradientLineGreen';
+import GradientLineGreen from './gradientlines/GradientLineGreen';
 import { GiFiles } from "react-icons/gi";
-import { BsPencil } from 'react-icons/bs'; //Edit
-import { GiCheckMark } from "react-icons/gi"; //Commit
-import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard
-import { Tooltip } from '@mui/material';
 import { toast } from 'react-toastify';
 import { MdTask } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
