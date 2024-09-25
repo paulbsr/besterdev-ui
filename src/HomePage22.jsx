@@ -150,6 +150,7 @@ export default function HomePage22(props) {
         <div>
           <div className='Font-Spacer-White'>Make this spacer white</div>
           <div className="Font-Segoe-Large-FP">
+          {cyclopediarootdata.length}:
             {alphabet.split('').map((letter, index) => (
               <span
                 style={{ cursor: 'pointer' }}
@@ -160,7 +161,7 @@ export default function HomePage22(props) {
                 &nbsp;&nbsp;{letter}
               </span>
             ))}
-            &nbsp; &nbsp; ({cyclopediarootdata.length})
+            {/* &nbsp; &nbsp; ({cyclopediarootdata.length}) */}
           </div>
 
           <div className='Font-Spacer-White'>Make this spacer white</div>

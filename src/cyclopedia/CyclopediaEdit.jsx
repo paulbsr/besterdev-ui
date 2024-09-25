@@ -171,7 +171,7 @@ export default function CyclopediaEdit(props) {
                                                                     <button style={{ height: '20px', width: '25px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(item) }}>
                                                                         <IoLibrary style={{ color: '#336791', fontSize: '40px', cursor: 'pointer' }} /></button>&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 </Tooltip>
-                                                                <a className="Font-Segoe-Large" href={item.cyclopediaUrl} target="_blank" rel="noreferrer"><b>{item.cyclopediaName}</b></a>&nbsp;&nbsp;&nbsp;
+                                                                <a className="Font-Segoe-XLarge-FP" href={item.cyclopediaUrl} target="_blank" rel="noreferrer"><b>{item.cyclopediaName}</b></a>&nbsp;&nbsp;&nbsp;
                                                                 {/* <GiSpiderWeb style={{ color: '#336791', fontSize: '19px' }} /> */}
                                                                 {/* <i className="Font-Spacer-White">cyclopediaId#{item.cyclopediaId}</i> */}
 
@@ -187,6 +187,7 @@ export default function CyclopediaEdit(props) {
 
                                                                 <CyclopediaImageUpload cyclopedia_id_fk={item.cyclopediaId} cyclopedia_name={item.cyclopediaName} cyclopedia_id={item.cyclopediaId} />
                                                                 <div>
+                                                                <div>&nbsp;</div>
                                                                     {item.cyclopediaImageEntity && item.cyclopediaImageEntity.cyclopediaImage ?
                                                                         (
                                                                             <img
