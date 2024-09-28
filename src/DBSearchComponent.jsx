@@ -10,6 +10,7 @@ import { GiFiles } from "react-icons/gi";
 import { toast } from 'react-toastify';
 import { MdTask } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
+import { GiGiftOfKnowledge } from "react-icons/gi";
 
 
 const DBSearchComponent = () => {
@@ -102,6 +103,7 @@ const DBSearchComponent = () => {
           Clear
         </button>
       </div>
+      <div>&nbsp;&nbsp;</div>
 
       {/* Display search results */}
       {searchResults.length > 0 ?
@@ -109,7 +111,7 @@ const DBSearchComponent = () => {
         <div>
           {searchResults.map((result) => 
           {
-            console.log('Search Results:', searchResults)
+            // console.log('Search Results:', searchResults)
 
             if (result.cyclopediaName) {
               return (
@@ -139,7 +141,7 @@ const DBSearchComponent = () => {
                             :
                             <div className="Font-Segoe-Small-Howto">
                               <a onClick={() => navigate(`/cyclopediaedit/${result.cyclopediaId}`)}>
-                              <IoLibrarySharp style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
+                              <GiGiftOfKnowledge style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                               <b>{highlightKeyword(result.cyclopediaName, searchQuery)}: </b>
                               {highlightKeyword(result.cyclopediaDesc, searchQuery)}
                               &nbsp;&nbsp;&nbsp;

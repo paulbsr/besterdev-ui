@@ -9,6 +9,7 @@ import { IoLibrary, IoInformationCircleOutline } from "react-icons/io5";
 import { toast } from 'react-toastify';
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
 import { CyclopediaImageUpload } from './CyclopediaImageUpload';
+import { GiGiftOfKnowledge } from "react-icons/gi";
 
 export default function CyclopediaEdit(props) {
     const [cyclopediadata, setCyclopediadata] = useState([]);
@@ -169,7 +170,7 @@ export default function CyclopediaEdit(props) {
                                                             <div>&nbsp;</div>
                                                                 <Tooltip title={`Cyclopedia#${item.cyclopediaId}`} placement="top-end">
                                                                     <button style={{ height: '20px', width: '25px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(item) }}>
-                                                                        <IoLibrary style={{ color: '#336791', fontSize: '40px', cursor: 'pointer' }} /></button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                        < GiGiftOfKnowledge style={{ color: '#4D4D4D', fontSize: '40px', cursor: 'pointer' }} /></button>&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 </Tooltip>
                                                                 <a className="Font-Segoe-XLarge-FP" href={item.cyclopediaUrl} target="_blank" rel="noreferrer"><b>{item.cyclopediaName}</b></a>&nbsp;&nbsp;&nbsp;
                                                                 {/* <GiSpiderWeb style={{ color: '#336791', fontSize: '19px' }} /> */}

@@ -16,6 +16,8 @@ import '../Fonts.css';
 import Footer from '../Footer';
 import ToastComponent from '../ToastComponent';
 import axios from 'axios';
+import LinearDeterminate from '../LinearProgressBar';
+import { LinearProgress } from '@mui/material';
 
 const PageLogin = (props) => {
   const [email, setEmail] = useState('');
@@ -64,6 +66,7 @@ const PageLogin = (props) => {
     <>
       <BannerWhite />
       <GradientLine />
+      {/* <LinearDeterminate /> */}
       <div>&nbsp;</div>
       <div>&nbsp;</div>
       <div>&nbsp;</div>
@@ -78,6 +81,8 @@ const PageLogin = (props) => {
       <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp; &nbsp;Breaking News:
       <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />&nbsp;
       <input className='Font-Verdana-Medium' style={{ height: '37.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '350px' }} type="text" value={newSearchPhrase} onChange={(e) => setNewSearchPhrase(e.target.value)} />
+      <div>&nbsp;</div>
+      <LinearDeterminate />
       <div>&nbsp;</div>
       {showLoginButton && (
         <><img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} /><button style={{ marginLeft: '10px', height: '37.5px', width: '100px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#f7f4f3', color: '#336791', cursor: 'pointer' }} onClick={handleLogin}>

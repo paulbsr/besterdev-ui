@@ -13,6 +13,7 @@ import { Tooltip } from '@mui/material';
 import { toast } from 'react-toastify';
 import { MdTask } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
+import { GiGiftOfKnowledge } from "react-icons/gi";
 
 const DBSearchComponentBanner = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -130,7 +131,7 @@ const DBSearchComponentBanner = () => {
                   ) : (
                     <div className="Font-Segoe-Small-Howto">
                       <a onClick={() => navigate(`/cyclopediaedit/${result.cyclopediaId}`)}>
-                      <IoLibrarySharp style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
+                      <GiGiftOfKnowledge style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                       <b>{highlightKeyword(result.cyclopediaName, searchQuery)}: </b>
                       {highlightKeyword(result.cyclopediaDesc, searchQuery)}
                       &nbsp;&nbsp;&nbsp;
