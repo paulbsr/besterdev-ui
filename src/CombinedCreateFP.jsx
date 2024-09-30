@@ -10,6 +10,7 @@ import { MdTask } from "react-icons/md";
 import { IoLibrary } from "react-icons/io5";
 import { useWebsiteApi } from './websites/WebSiteAPIProvider';
 import { useCyclopediaApi } from './cyclopedia/CyclopediaAPIProvider';
+import { GiGiftOfKnowledge } from "react-icons/gi";
 
 
 export default function CombinedCreateFP() {
@@ -143,7 +144,7 @@ export default function CombinedCreateFP() {
 
 <span onClick={() => setExpandedCyclopedia(!isExpandedCyclopedia)}>&nbsp;&nbsp;&nbsp;&nbsp;
   <GiHummingbird style={{ color: '#4D4D4D', fontSize: '25px' }} />
-  <IoLibrary style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} /> Add to Cyclopedia</span>
+  <GiGiftOfKnowledge style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} /> Add to Cyclopedia</span>
 
 
         <span onClick={() => setExpandedWebsite(!isExpandedWebsite)}>&nbsp;&nbsp;&nbsp;&nbsp;

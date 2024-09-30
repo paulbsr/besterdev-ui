@@ -9,6 +9,7 @@ import CyclopediaCreate from './CyclopediaCreate';
 import GradientLineRusty from '../gradientlines/GradientLineRusty';
 import { IoLibrary } from "react-icons/io5";
 import { useCyclopediaApi } from './CyclopediaAPIProvider';
+import { GiGiftOfKnowledge } from "react-icons/gi";
 
 
 function CyclopediaManage() {
@@ -71,7 +72,7 @@ function CyclopediaManage() {
 
         <Tooltip id="insert" />
         <div onClick={toggleAccordion}>
-          &nbsp; &nbsp; <IoLibrary style={{ color: '#336791', fontSize: '38px', cursor: 'pointer' }} />
+          &nbsp; &nbsp; <GiGiftOfKnowledge style={{ color: '#336791', fontSize: '38px', cursor: 'pointer' }} />
           &nbsp;<b>Manage the {cyclopediarootdata.length} Cyclopedia Entries</b>
         </div>
 
@@ -91,7 +92,7 @@ function CyclopediaManage() {
             {cyclopediarootdata.map((row) => {
               return (
                 <tr key={row.cyclopediaId}>
-                  <td className="Table6 td ">
+                  <td className="Table6">
                     <>
                       <Tooltip id="edit" />
                       <Tooltip id="commit" />
@@ -113,8 +114,8 @@ function CyclopediaManage() {
                     </>
                   </td>
 
-                  <td className="asmshover Table6 td">{row.cyclopediaId === editing ? (<input style={{ height: '22.5px', width: '270px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={cyclopediaName} onChange={(e) => setCyclopediaName(e.target.value)} />) : (row.cyclopediaName)}</td>
-                  <td className="asmshover Table6 td">{row.cyclopediaId === editing ? (<textarea style={{ height: '22.5px', width: '1240px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={cyclopediaDesc} onChange={(e) => setCyclopediaDesc(e.target.value)} />) : (row.cyclopediaDesc)}</td>
+                  <td className="asmshover">{row.cyclopediaId === editing ? (<input style={{ height: '22.5px', width: '270px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={cyclopediaName} onChange={(e) => setCyclopediaName(e.target.value)} />) : (row.cyclopediaName)}</td>
+                  <td className="asmshover">{row.cyclopediaId === editing ? (<textarea style={{ height: '22.5px', width: '1240px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={cyclopediaDesc} onChange={(e) => setCyclopediaDesc(e.target.value)} />) : (row.cyclopediaDesc)}</td>
                   </tr>
               )
             })
@@ -122,7 +123,7 @@ function CyclopediaManage() {
           </tbody>
         </table>
         <div>&nbsp;</div>
-        <GradientLineRusty />
+        <GradientLineRusty />;
         <div>&nbsp;</div>
       </div>
     </div>
