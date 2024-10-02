@@ -108,7 +108,7 @@ export default function HomePage22(props) {
                         <a href={record.websiteUrl} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.websiteDesc}>
                           {record.websiteName}
                         </a>
-                        <div>&nbsp;</div>
+                        {/* <div>&nbsp;</div> */}
                       </td>
                     </tr>
 

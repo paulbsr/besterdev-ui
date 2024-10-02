@@ -10,7 +10,7 @@ import { GiFiles } from "react-icons/gi";
 import { toast } from 'react-toastify';
 import { MdTask } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
-import { GiGiftOfKnowledge } from "react-icons/gi";
+import { GiGiftOfKnowledge, GiSpiderWeb } from "react-icons/gi";
 
 
 const DBSearchComponent = () => {
@@ -163,7 +163,7 @@ const DBSearchComponent = () => {
                 <div className="dbsearchhover" key={result.id}>
                   {/* Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Web Resource</b>:&nbsp;&nbsp; */}
                   <div className="Font-Segoe-Small-Howto">
-                    <TbWorldWww style={{ color: '#336791', fontSize: '23px', cursor: 'pointer' }} />&nbsp;
+                    <GiSpiderWeb style={{ color: '#336791', fontSize: '23px', cursor: 'pointer' }} />&nbsp;
                     <a href={result.websiteUrl} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.websiteDesc}>
                       <b>{highlightKeyword(result.websiteName, searchQuery)}</b>
                     </a>
@@ -180,7 +180,7 @@ const DBSearchComponent = () => {
                 <div className="dbsearchhover" key={result.id}>
                   {/* Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Breaking News Article</b>:&nbsp;&nbsp; */}
                   <div className="Font-Segoe-Small-Howto">
-                    <SiWritedotas style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
+                    <TbWorldWww style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                     <a href={result.news_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.news_source}>
                       {highlightKeyword(result.news_title, searchQuery)}
                     </a>
