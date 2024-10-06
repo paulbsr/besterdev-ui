@@ -142,7 +142,7 @@ const DBSearchComponent = () => {
                             <div className="Font-Segoe-Small-Howto">
                               <a onClick={() => navigate(`/cyclopediaedit/${result.cyclopediaId}`)}>
                               <GiGiftOfKnowledge style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
-                              <b>{highlightKeyword(result.cyclopediaName, searchQuery)}: </b>
+                              <b>{highlightKeyword(result.cyclopediaName, searchQuery)}</b>
                               {/* {highlightKeyword(result.cyclopediaDesc, searchQuery)} */}
                               &nbsp;&nbsp;&nbsp;
                               </a>
