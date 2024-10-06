@@ -40,7 +40,7 @@ const projectNameMap = {
     // 190860: "MediaGen",
     // 191076: "TeamsDMV",
     // 221193: "VehicleDNA",
-    // 188118: "WANVisualizer",
+    188118: "UserStory",
     // 111111: "BesterDev",
 };
 
@@ -55,7 +55,7 @@ const projectAsmsMap = {
     // MediaGen: "190860",
     // TeamsDMV: "191076",
     // VehicleDNA: "221193",
-    // WANVisualizer: "188118",
+    UserStory: "188118",
     // BesterDev: "111111",
 };
 
@@ -88,11 +88,10 @@ export default function TaskOverview() {
         ComputerCloudSecurity: new TaskStatusCounter(),
         AppliedCryptography: new TaskStatusCounter(),
         Dissertation: new TaskStatusCounter(),
-        // TELEFONICA: new TaskStatusCounter(),
+        UserStory: new TaskStatusCounter(),
         // MediaGen: new TaskStatusCounter(),
         // TeamsDMV: new TaskStatusCounter(),
         // VehicleDNA: new TaskStatusCounter(),
-        // WANVisualizer: new TaskStatusCounter(),
         // BesterDev: new TaskStatusCounter(),
     };
     

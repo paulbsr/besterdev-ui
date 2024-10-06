@@ -109,6 +109,7 @@ export default function TaskCreate(props) {
                                         <option value="181268" data-value2="ComputerCloudSecurity">ComputerCloudSecurity</option>
                                         <option value="171593" data-value2="AppliedCryptography">AppliedCryptography</option>
                                         <option value="168272" data-value2="Dissertation">Dissertation</option>
+                                        <option value="188118" data-value2="UserStory">UserStory</option>
                                     </select>
 
                                     <div>
