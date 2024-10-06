@@ -188,7 +188,7 @@ export default function CombinedCreateFP() {
           <div>&nbsp;</div>
           <img alt="spacer" src={spacer} />Description:&nbsp;&nbsp;
           <textarea
-            style={{ fontFamily: 'Verdana', height: '26.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '1450px' }}
+            style={{ fontFamily: 'Verdana', height: '50px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '2px', width: '1450px' }}
             placeholder="Required"
             value={cyclopediaDesc}
             onChange={(e) => setCyclopediaDesc(e.target.value)}

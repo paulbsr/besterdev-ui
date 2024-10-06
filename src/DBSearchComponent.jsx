@@ -143,7 +143,7 @@ const DBSearchComponent = () => {
                               <a onClick={() => navigate(`/cyclopediaedit/${result.cyclopediaId}`)}>
                               <GiGiftOfKnowledge style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                               <b>{highlightKeyword(result.cyclopediaName, searchQuery)}: </b>
-                              {highlightKeyword(result.cyclopediaDesc, searchQuery)}
+                              {/* {highlightKeyword(result.cyclopediaDesc, searchQuery)} */}
                               &nbsp;&nbsp;&nbsp;
                               </a>
                             </div>
@@ -215,7 +215,8 @@ const DBSearchComponent = () => {
                     <MdTask style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />
                     <a href={`/taskedit/${result.parentid}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={`TaskID#${result.parentid}`}>
                     <GiFiles style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
-                    {highlightKeyword(result.childrecord, searchQuery)}</a>
+                    {highlightKeyword(result.childrecord, searchQuery)}
+                    </a>
                   </div>
                   <div className='Font-Spacer-White'>Make this spacer white</div>
                 </div>
@@ -245,7 +246,8 @@ const DBSearchComponent = () => {
                   <div className="Font-Segoe-Small-Howto">
                     <BsQuestionOctagonFill style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />
                     <IoFootstepsSharp style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
-                    <b>{highlightKeyword(result.step_name, searchQuery)}</b> which has a Step Objective to: <i>" {result.step_obj} " </i>
+                    <b>{highlightKeyword(result.step_name, searchQuery)}</b> 
+                    {/* which has a Step Objective to: <i>" {result.step_obj} " </i> */}
                   </div>
                   <div className='Font-Spacer-White'>Make this spacer white</div>
                 </div>
