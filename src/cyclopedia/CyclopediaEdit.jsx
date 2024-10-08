@@ -130,7 +130,7 @@ export default function CyclopediaEdit(props) {
                                                                     required
                                                                     defaultValue={item.cyclopediaDesc}
                                                                     onChange={(e) => setCyclopediaDesc(e.target.value)}
-                                                                    style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '150px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '910px' }}
+                                                                    style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '150px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '1px', width: '910px' }}
                                                                 />
                                                                 <div>&nbsp;&nbsp;</div>
 
@@ -206,7 +206,8 @@ export default function CyclopediaEdit(props) {
                                                                 <div>&nbsp;</div>
 
 
-                                                                <div><u>Cyclopedia Description</u>:&nbsp;
+                                                                <div>
+                                                                    {/* <u>Cyclopedia Description</u>:&nbsp; */}
                                                                 {/* <IoInformationCircleOutline style={{ color: '#336791', fontSize: '21px' }} /> */}
                                                                 &nbsp;
                                                                 </div>
@@ -216,7 +217,7 @@ export default function CyclopediaEdit(props) {
                                                                     required
                                                                     defaultValue={item.cyclopediaDesc}
                                                                     // onChange={(e) => setCyclopediaDesc(e.target.value)}
-                                                                    style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '300px', border: '1.25px solid #FFFFFF', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1110px' }}
+                                                                    style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '400px', border: '1.25px solid #FFFFFF', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1300px' }}
                                                                 />
                                                                 </div>
 

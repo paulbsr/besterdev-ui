@@ -167,7 +167,7 @@ const DBSearchComponent = () => {
                     <a href={result.websiteUrl} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.websiteDesc}>
                       <b>{highlightKeyword(result.websiteName, searchQuery)}</b>
                     </a>
-                    -&nbsp;{result.websiteDesc}
+                    {/* -&nbsp;{result.websiteDesc} */}
                   </div>
                   <div className='Font-Spacer-White'>Make this spacer white</div>
                 </div>
