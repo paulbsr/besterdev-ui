@@ -13,9 +13,9 @@ dayjs.extend(utc);
 
 export default function HowtoUrlCreate(props) {
   const toggleAccordion = () => { setExpanded(!isExpanded); };
-  const [website_name, setWebsite_name] = useState();
-  const [website_url, setWebsite_url] = useState();
-  const [website_desc, setWebsite_desc] = useState();
+  const [websiteName, setWebsiteName] = useState();
+  const [websiteUrl, setWebsiteUrl] = useState();
+  const [websiteDesc, setwebsiteDesc] = useState();
   const [isExpanded, setExpanded] = useState(false);
 
   const handleSubmit = async (event) => {
@@ -24,17 +24,20 @@ export default function HowtoUrlCreate(props) {
     {
       var newRecord =
       {
-        'howto_id_fk': props.howto_idb,
-        'website_name': website_name,
-        'website_url': website_url,
-        'website_desc': website_desc,
-        'website_cat': props.howto_name
+        'howtoIdFk': props.howto_idb,
+        'websiteName': websiteName,
+        'websiteUrl': websiteUrl,
+        'websiteDesc': websiteDesc,
+        'websiteCat': props.howto_name
       }
 
       const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/create`, newRecord);
       if (response.status === 200) {
         props.setCheckForRecords(!props.checkForRecords);
-        toast.success(`${website_name} memorialized.`)
+        toast.success(`${websiteName} memorialized.`);
+        setWebsiteName('');
+        setwebsiteDesc('');
+        setWebsiteUrl('');
       }
       else { toast.error('Nee') }
       
@@ -58,19 +61,19 @@ export default function HowtoUrlCreate(props) {
             <form onSubmit={handleSubmit}>
               <div><img alt="1" src={spacer2} /></div>
               <div className='Font-Verdana-Small-Postgres'>
-                Website Display Name:&nbsp;&nbsp;<input style={{ fontFamily: 'Verdana', fontSize: 'Small', height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '985px' }} placeholder="Required" type="text" value={website_name} onChange={(event) => setWebsite_name(event.target.value)} required />
+                Website Display Name:&nbsp;&nbsp;<input style={{ fontFamily: 'Verdana', fontSize: 'Small', height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '985px' }} placeholder="Required" type="text" value={websiteName} onChange={(event) => setWebsiteName(event.target.value)} required />
 
                 <div>&nbsp;</div>
 
                 <div>
                   Website Link:&nbsp;&nbsp;
-                  <input style={{ fontFamily: 'Verdana', fontSize: 'Small', height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1050px' }} placeholder="Required" type="text" value={website_url} onChange={(event) => setWebsite_url(event.target.value)} />
+                  <input style={{ fontFamily: 'Verdana', fontSize: 'Small', height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1050px' }} placeholder="Required" type="text" value={websiteUrl} onChange={(event) => setWebsiteUrl(event.target.value)} />
                 </div>
 
                 <div>&nbsp;</div>
                 Website Description:&nbsp;&nbsp;&nbsp;
 
-                <input style={{ fontFamily: 'Verdana', fontSize: 'Small', height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} placeholder="Optional" type="text" value={website_desc} onChange={(event) => setWebsite_desc(event.target.value)} />
+                <input style={{ fontFamily: 'Verdana', fontSize: 'Small', height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} placeholder="Optional" type="text" value={websiteDesc} onChange={(event) => setwebsiteDesc(event.target.value)} />
 
                 <div>&nbsp;</div>
 

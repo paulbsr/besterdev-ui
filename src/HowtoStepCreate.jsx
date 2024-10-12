@@ -37,7 +37,11 @@ export default function HowtoStepCreate(props) {
       const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtostep/create`, newRecord);
       if (response.status === 200) {
         props.setCheckForRecords(!props.checkForRecords);
-        toast.success(`Step ${step_name} memorialized.`)
+        toast.success(`Step ${step_name} memorialized.`);
+        setStep_number('');
+        setStep_name('');
+        setStep_obj('');
+        setStep_url('');
       }
       else { toast.error('Nee') }
     }

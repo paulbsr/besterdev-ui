@@ -119,7 +119,7 @@ export default function CyclopediaEdit(props) {
                                                                     required
                                                                     defaultValue={item.cyclopediaName}
                                                                     onChange={(e) => setCyclopediaName(e.target.value)}
-                                                                    style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '910px' }}
+                                                                    style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '1px', width: '910px' }}
                                                                 />
                                                                 <div>&nbsp;&nbsp;</div>
 
@@ -141,7 +141,7 @@ export default function CyclopediaEdit(props) {
                                                                     required
                                                                     defaultValue={item.cyclopediaUrl}
                                                                     onChange={(e) => setCyclopediaUrl(e.target.value)}
-                                                                    style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '910px' }}
+                                                                    style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '1px', width: '910px' }}
                                                                 />
                                                                 <div>&nbsp;&nbsp;</div>
                                                                 <div>&nbsp;&nbsp;</div>
@@ -217,7 +217,7 @@ export default function CyclopediaEdit(props) {
                                                                     required
                                                                     defaultValue={item.cyclopediaDesc}
                                                                     // onChange={(e) => setCyclopediaDesc(e.target.value)}
-                                                                    style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '400px', border: '1.25px solid #FFFFFF', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1300px' }}
+                                                                    style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '400px', border: '1.25px solid #FFFFFF', borderRadius: '4px', padding: 0, paddingLeft: '1px', width: '1300px' }}
                                                                 />
                                                                 </div>
 

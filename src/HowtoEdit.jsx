@@ -9,12 +9,12 @@ export default function HowtoEdit(props) {
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [websitedata1, setWebsitedata1] = useState([]);
-  const { websiterootdata, loading, error } = useWebsiteApi(); //gebruik van die nuwe useContect :-)
+  const { websiterootdata, loading, error } = useWebsiteApi(); //gebruik van die nuwe useContext :-)
 
   useEffect(() => {
     if (websiterootdata && Array.isArray(websiterootdata)) {
-      const filteredwebsites = websiterootdata.filter(site => site.howto_id_fk === props.howto_id);
-      const sortedfilteredwebsites = filteredwebsites.sort((a, b) => a.website_name.localeCompare(b.website_name));
+      const filteredwebsites = websiterootdata.filter(site => site.howtoIdFk === props.howto_id);
+      const sortedfilteredwebsites = filteredwebsites.sort((a, b) => a.websiteName.localeCompare(b.websiteName));
       setWebsitedata1(sortedfilteredwebsites);
     }
   }, [websiterootdata, props.howto_id]);
@@ -26,10 +26,10 @@ export default function HowtoEdit(props) {
     const groupedData = {};
 
     websitedata1.forEach((row) => {
-      if (!groupedData[row.website_cat]) {
-        groupedData[row.website_cat] = [];
+      if (!groupedData[row.websiteCat]) {
+        groupedData[row.websiteCat] = [];
       }
-      groupedData[row.website_cat].push(row);
+      groupedData[row.websiteCat].push(row);
     });
 
     const sortedCategories = Object.keys(groupedData).sort();
@@ -50,8 +50,8 @@ export default function HowtoEdit(props) {
                 {groupedData[category].map((record, index) => (
                   <tr key={index}>
                     <td style={{ width: '20%', verticalAlign: 'top' }} className="Font-Segoe-Medium-Howto">
-                      <a href={record.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.website_desc}>
-                        {record.website_name}
+                      <a href={record.websiteUrl} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.websiteDesc}>
+                        {record.websiteName}
                       </a>
                     </td>
                   </tr>
