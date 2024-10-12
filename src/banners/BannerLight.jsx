@@ -8,7 +8,7 @@ import { BiLogoFirebase, BiLogoPostgresql, BiLogoHeroku, BiLogoGithub, BiLogoGoo
 import { SiSpringboot, SiGoogleanalytics, SiDocker, SiSwagger, SiJavascript, SiLucid, SiTryhackme } from "react-icons/si";
 import { MdManageAccounts, MdOutlineVpnLock, MdOutlineMailLock, MdTask } from "react-icons/md";
 import { TbWorldWww, TbBrandOauth } from "react-icons/tb";
-import { BsQuestionOctagonFill, BsPeopleFill } from "react-icons/bs";
+import { BsPatchQuestion, BsPeopleFill } from "react-icons/bs";
 import { IoLibrary, IoHome, IoPieChartSharp } from "react-icons/io5";
 import { GrVirtualMachine} from "react-icons/gr";
 import { GiRapidshareArrow, GiGiftOfKnowledge, GiSpiderWeb } from "react-icons/gi";
@@ -70,7 +70,7 @@ import { IoMdInfinite } from "react-icons/io";
       {/* <a data-tooltip-id="insert" data-tooltip-content="MyCV" onClick={handleNavigateMyCV}><FaFileContract style={{ color: '#336791', fontSize: '26px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
       <a data-tooltip-id="insert" data-tooltip-content="Web Resources" onClick={handleNavigateResources}><GiSpiderWeb style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="WhatExactlyIs? Cyclopedia" onClick={handleNavigateCyclopedia}><GiGiftOfKnowledge style={{ color: '#336791', fontSize: '31px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Howtos" onClick={handleNavigateHowtoManage}><BsQuestionOctagonFill style={{ color: '#336791', fontSize: '29px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Howtos" onClick={handleNavigateHowtoManage}><BsPatchQuestion style={{ color: '#336791', fontSize: '29px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Hunt" onClick={handleNavigateHunt}><FaPeopleArrows style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Candidates" onClick={handleNavigateManage}><MdManageAccounts style={{ color: '#336791', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="People Scorecard" onClick={handleNavigatePeopleScorecard}><BsPeopleFill style={{ color: '#336791', fontSize: '32px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;

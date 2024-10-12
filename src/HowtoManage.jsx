@@ -11,7 +11,7 @@ import utc from 'dayjs/plugin/utc';
 import { toast } from 'react-toastify';
 import GradientLineRusty from './gradientlines/GradientLineRusty';
 import HowtoCreate from './HowtoCreate';
-import { BsQuestionOctagonFill } from "react-icons/bs";
+import { BsPatchQuestion } from "react-icons/bs";
 import { useHowtoApi } from './HowtoAPIProvider';
 dayjs.extend(utc);
 
@@ -89,7 +89,7 @@ export default function HowtoManage() {
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
         &nbsp; &nbsp; <a data-tooltip-id="insert" data-tooltip-content="Amend">
-          <BsQuestionOctagonFill style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>
+          <BsPatchQuestion style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>
         &nbsp;<b>Manage Howto Library ({howtorootdata.length})</b>
       </div>
 

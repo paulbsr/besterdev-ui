@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Fonts.css';
-import { BsQuestionOctagonFill } from "react-icons/bs";
+import { BsPatchQuestion } from "react-icons/bs";
 import { IoLibrarySharp, IoFootstepsSharp } from "react-icons/io5";
 import { TbWorldWww } from "react-icons/tb";
 import { SiWritedotas } from "react-icons/si";
@@ -196,7 +196,7 @@ const DBSearchComponentBanner = () => {
                 <div className="dbsearchhover" key={result.id}>
                   {/* Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>HOWTO document</b>:&nbsp;&nbsp; */}
                   <div className="Font-Segoe-Small-Howto">
-                    <BsQuestionOctagonFill style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
+                    <BsPatchQuestion style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                     <a href={`/howtoedit/${result.howto_id}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.howto_summary}>
                       <b>{highlightKeyword(result.howto_name, searchQuery)}</b>
                     </a>
@@ -208,7 +208,7 @@ const DBSearchComponentBanner = () => {
                 <div className="dbsearchhover" key={result.id}>
                   {/* Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Step Name</b> in a HOWTO document: */}
                   <div className="Font-Segoe-Small-Howto">
-                    <BsQuestionOctagonFill style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />
+                    <BsPatchQuestion style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />
                     <IoFootstepsSharp style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                     <b>{highlightKeyword(result.step_name, searchQuery)}</b> which has a Step Objective to: <i>" {result.step_obj} " </i>
                   </div>
@@ -219,7 +219,7 @@ const DBSearchComponentBanner = () => {
                 <div className="dbsearchhover" key={result.id}>
                   {/* Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Step Record</b>:&nbsp;&nbsp; */}
                   <div className="Font-Segoe-Small-Howto">
-                    <BsQuestionOctagonFill style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />
+                    <BsPatchQuestion style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />
                     <IoFootstepsSharp style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />
                     <GiFiles style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                     {highlightKeyword(result.steprecord, searchQuery)}
