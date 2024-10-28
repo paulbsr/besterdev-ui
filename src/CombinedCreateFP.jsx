@@ -198,7 +198,7 @@ export default function CombinedCreateFP() {
       )
       }
 
-      {isExpandedWebsite && (
+      {/* {isExpandedWebsite && (
         <form onSubmit={handleSubmitWebsite}>
           <div>&nbsp;</div>
           <img alt="spacer" src={spacer} />Website:&nbsp;&nbsp;
@@ -260,7 +260,7 @@ export default function CombinedCreateFP() {
           </button>
         </form>
       )
-      }
+      } */}
 
       {isExpandedTask && (
         <div>

@@ -88,9 +88,9 @@ export default function HomePage22(props) {
               )
               .map((category) => (
                 <>
-                  <tr key={category}>
+                  <tr key={category}>&nbsp; 
                     <th
-                      colSpan="2"
+                      colSpan="3"
                       style={{ textAlign: 'right', borderBottom: '1px solid #ddd', cursor: 'pointer' }}
                       className="Table-home-left-heading"
                       onClick={() => toggleCategory(category)}
@@ -104,7 +104,7 @@ export default function HomePage22(props) {
                   {/* Conditionally render the category's content based on expanded state */}
                   {expandedCategories[category] && groupedData[category].map((record, index) => (
                     <tr key={index}>
-                      <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-left-text">
+                      <td style={{ width: '1%', verticalAlign: 'top' }} className="Table-home-left-text">
                         <a href={record.websiteUrl} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.websiteDesc}>
                           {record.websiteName}
                         </a>

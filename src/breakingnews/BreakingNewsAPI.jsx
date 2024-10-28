@@ -36,15 +36,16 @@ export default function BreakingNewsAPI() {
                             news_url: news.url,
                             news_date: news.publishedAt
                         }));
-                        // console.log('In <BreakingNewsAPI /> is jou GET vanaf NewsAPI met newsapiSearchPhrase:', newsapiSearchPhrase, newsapiDataIB);
+                        console.log('In <BreakingNewsAPI /> is jou GET vanaf NewsAPI met newsapiSearchPhrase:', newsapiSearchPhrase, newsapiDataIB);
 
                         const serializedData = JSON.stringify(postData);
 
                         axios.post('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/news/create', serializedData, {
+                            // axios.post('http://localhost:8000/api/v1/news/create', serializedData, {
                             headers: { 'Content-Type': 'application/json' }
                         })
                             .then(
-                                // () => console.log('In <BreakingyNewsAPI /> is jou POST na Heroku met searchPhrase:', newsapiSearchPhrase, serializedData),
+                                () => console.log('In <BreakingyNewsAPI /> is jou POST na Heroku met searchPhrase:', newsapiSearchPhrase, serializedData),
                             )
                             .catch((error) => console.error('In <BreakingyNewsAPI /> is jou POST na Heroku met searchPhrase gefok omdat:', error));
                     })

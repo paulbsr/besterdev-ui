@@ -5,7 +5,7 @@ import 'react-tooltip/dist/react-tooltip.css'
 import { useNavigate } from 'react-router-dom'; 
 import { FaReact, FaJava, FaNodeJs, FaAws, FaPeopleArrows, FaDigitalOcean, FaFileContract, FaTasks, FaUserGraduate, FaInfinity } from 'react-icons/fa';
 import { BiLogoFirebase, BiLogoPostgresql, BiLogoHeroku, BiLogoGithub, BiLogoGoogle } from "react-icons/bi";
-import { SiSpringboot, SiGoogleanalytics, SiDocker, SiSwagger, SiJavascript, SiLucid, SiTryhackme } from "react-icons/si";
+import { SiSpringboot, SiGoogleanalytics, SiDocker, SiSwagger, SiJavascript, SiLucid, SiTryhackme, SiBurpsuite } from "react-icons/si";
 import { MdManageAccounts, MdOutlineVpnLock, MdOutlineMailLock, MdTask } from "react-icons/md";
 import { TbWorldWww, TbBrandOauth } from "react-icons/tb";
 import { BsPatchQuestion, BsPeopleFill } from "react-icons/bs";
