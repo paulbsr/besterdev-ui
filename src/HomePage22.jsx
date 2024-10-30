@@ -88,7 +88,7 @@ export default function HomePage22(props) {
               )
               .map((category) => (
                 <>
-                  <tr key={category}>&nbsp; 
+                  <tr key={category}>
                     <th
                       colSpan="3"
                       style={{ textAlign: 'right', borderBottom: '1px solid #ddd', cursor: 'pointer' }}
