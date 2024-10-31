@@ -88,7 +88,7 @@ export default function HomePage22(props) {
               )
               .map((category) => (
                 <>
-                  <tr key={category}>
+                  {/* <tr key={category}>
                     <th
                       colSpan="3"
                       style={{ textAlign: 'right', borderBottom: '1px solid #ddd', cursor: 'pointer' }}
@@ -99,7 +99,7 @@ export default function HomePage22(props) {
                         ? category.replace("HOWTO :: CMM ->", "").replace("HOWTO :: ", "")
                         : category}
                     </th>
-                  </tr>
+                  </tr> */}
 
                   {/* Conditionally render the category's content based on expanded state */}
                   {expandedCategories[category] && groupedData[category].map((record, index) => (
