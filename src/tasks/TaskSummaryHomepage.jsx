@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Fonts.css';
+import '../Fonts.css';
 import { Tooltip } from 'react-tooltip';
 
 const TaskSummaryHomepage = (props) => {

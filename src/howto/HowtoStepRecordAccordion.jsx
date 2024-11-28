@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import HowtoStepRecordCreate from './HowtoStepRecordCreate';
 import axios from "axios";
-import './Fonts.css'
+import '../Fonts.css'
 import { Tooltip } from '@mui/material';
 import { MdAddCircleOutline } from "react-icons/md";
 import { GiCheckMark } from "react-icons/gi"; //Commit
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard
 import { FaRegTrashAlt } from 'react-icons/fa'; //Delete
 import { BsPencil } from 'react-icons/bs'; //Edit
-import { ImageUpload } from './ImageUpload';
+import { ImageUpload } from '../ImageUpload';
 import { toast } from 'react-toastify';
 
 function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, step_name, checkForRecords, setCheckForRecords }) {

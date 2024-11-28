@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import ToastComponent from '../ToastComponent';
 import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
-import TaskOverview from '../TaskOverview';
+import TaskOverview from '../tasks/TaskOverview';
 import { TaskContext } from "../Contexts";
 import CombinedCreateFP from '../CombinedCreateFP';
 

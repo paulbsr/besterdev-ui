@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Tooltip } from '@mui/material';
-import './Fonts.css';
+import '../Fonts.css';
 import 'react-dropdown/style.css';
 import HowtoStepAccordion from './HowtoStepAccordion';
-import { useWebsiteApi } from './websites/WebSiteAPIProvider';
+import { useWebsiteApi } from '../websites/WebSiteAPIProvider';
 
 export default function HowtoEdit(props) {
   const [isExpanded, setExpanded] = useState(false);

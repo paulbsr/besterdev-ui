@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
-import MouseoverPopover from "./MouseoverPopover";
+import MouseoverPopover from "../MouseoverPopover";
 import { MdTask } from "react-icons/md";
-import GradientLineRusty from "./gradientlines/GradientLineRusty";
-import "./Fonts.css";
+import GradientLineRusty from "../gradientlines/GradientLineRusty";
+import "../Fonts.css";
 import "./TaskOverview.css";
 import Task from "./Task";
 import TaskCreate from "./TaskCreate";
-import { TaskContext } from "./Contexts";
+import { TaskContext } from "../Contexts";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";

@@ -5,10 +5,10 @@ import 'react-dropdown/style.css';
 import axios from 'axios'
 import Image from './graphix/12.png' //Lady Liberty
 import DBSearchComponent from './DBSearchComponent';
-import TaskSummaryHomepage from './TaskSummaryHomepage';
+import TaskSummaryHomepage from './tasks/TaskSummaryHomepage';
 import { useWebsiteApi } from './websites/WebSiteAPIProvider';
 import { useCyclopediaApi } from './cyclopedia/CyclopediaAPIProvider';
-import { useHowtoApi } from './HowtoAPIProvider';
+import { useHowtoApi } from './howto/HowtoAPIProvider';
 import { useNavigate } from 'react-router-dom';
 
 

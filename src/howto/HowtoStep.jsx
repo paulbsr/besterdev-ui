@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import './Fonts.css'
+import '../Fonts.css'
 import HowtoStepRecordAccordion from './HowtoStepRecordAccordion';
 import axios from 'axios'
 import { Tooltip } from '@mui/material';

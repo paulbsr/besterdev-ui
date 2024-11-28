@@ -5,12 +5,12 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import './Fonts.css'
 import {styled} from "@mui/material/styles";
-import { useUserContext } from './UserContext';
+import { useUserContext } from '../UserContext';
 import GradientLineThin from './GradientLineThin';
 import QuickAddWebResource from './QuickAddWebResource';
 import QuickAddCyclopedia from './QuickAddCyclopedia';
-import DBSearchComponent from './DBSearchComponent';
-import DBSearchComponentBanner from './DBSearchComponentBanner';
+import DBSearchComponent from '../DBSearchComponent';
+import DBSearchComponentBanner from '../DBSearchComponentBanner';
 
 
 function TabPanel(props) {
@@ -53,7 +53,7 @@ const LinkTab = styled((props) => <Tab disableRipple {...props} />)(({ theme }) 
     '&.Mui-selected:hover': {color: '#D5441C',},})
     );
 
-export default function QuicklinksFP() { 
+export default function Quicklinks3() { 
   const { loggedInUserEmail } = useUserContext();
   const [checkForRecords, setCheckForRecords] = useState(true);
 
@@ -61,9 +61,9 @@ export default function QuicklinksFP() {
     <>
       <Box>
         <LinkTabs variant="scrollable">
+          <DBSearchComponentBanner />
           <QuickAddWebResource checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
           <QuickAddCyclopedia checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
-          
         </LinkTabs>
       </Box>
     </>

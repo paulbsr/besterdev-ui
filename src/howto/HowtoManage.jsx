@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
-import './Fonts.css';
+import '../Fonts.css';
 import axios from 'axios'
 import 'react-dropdown/style.css';
 import {FaPen, FaCheck, FaRegTrashAlt} from 'react-icons/fa';
@@ -9,7 +9,7 @@ import {PiArrowCounterClockwiseBold} from 'react-icons/pi';
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
 import { toast } from 'react-toastify';
-import GradientLineRusty from './gradientlines/GradientLineRusty';
+import GradientLineRusty from '../gradientlines/GradientLineRusty';
 import HowtoCreate from './HowtoCreate';
 import { BsPatchQuestion } from "react-icons/bs";
 import { useHowtoApi } from './HowtoAPIProvider';

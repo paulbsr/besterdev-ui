@@ -11,6 +11,10 @@ import { TbSquareRoundedLetterT } from "react-icons/tb";
 import { TbSquareRoundedLetterR } from "react-icons/tb";
 import { TbSquareRoundedLetterC } from "react-icons/tb";
 import { TbSquareRoundedLetterM } from "react-icons/tb";
+import { SiParamountplus, SiNetflix, SiPrimevideo } from "react-icons/si";
+import { TbBrandDisney } from "react-icons/tb";
+
+
 
 
 

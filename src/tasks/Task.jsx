@@ -1,9 +1,9 @@
 import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
-import "./Fonts.css";
+import "../Fonts.css";
 import "./Task.css";
 import TaskRecordAccordion from "./TaskRecordAccordion";
-import { getStatusByColourTaskText } from "./getStatusByColourTaskText";
+import { getStatusByColourTaskText } from "../getStatusByColourTaskText";
 import { BsArrowCounterclockwise, BsPencil } from "react-icons/bs"; //Revert & Pencil grey
 import { GiCheckMark } from "react-icons/gi"; //Commit grey
 import { Tooltip } from "@mui/material";

@@ -5,7 +5,7 @@ import BannerWhite from '../banners/BannerWhite';
 import GradientLine from '../gradientlines/GradientLine';
 import BannerLight from '../banners/BannerLight';
 import GradientLineThin from '../gradientlines/GradientLineThin';
-import Quicklinks from '../Quicklinks';
+import Quicklinks from '../quicks/Quicklinks';
 import firebase from 'firebase/compat/app';
 import Footer from '../Footer';
 import 'firebase/auth';

@@ -1,9 +1,9 @@
 import React, { useState, useContext, useEffect } from "react";
 import axios from 'axios';
-import './Fonts.css';
+import '../Fonts.css';
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
-import spacer2 from './graphix/besterdev_spacer_white_half.png';
+import spacer2 from '../graphix/besterdev_spacer_white_half.png';
 import { GiHummingbird, GiFootsteps } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';
@@ -37,7 +37,7 @@ export default function HowtoStepCreate(props) {
       const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtostep/create`, newRecord);
       if (response.status === 200) {
         props.setCheckForRecords(!props.checkForRecords);
-        toast.success(`Step ${step_name} memorialized.`);
+        toast.success(`Step ${step_number} added.`);
         setStep_number('');
         setStep_name('');
         setStep_obj('');

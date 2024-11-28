@@ -1,19 +1,19 @@
 import React, { useContext, useState } from "react";
 import TaskRecordCreate from "./TaskRecordCreate";
-import TaskRecordStatusByColourLong_forTaskEdit from "./TaskRecordStatusByColourLong_forTaskEdit";
-import { getStatusByColourTaskText } from "./getStatusByColourTaskText";
+import TaskRecordStatusByColourLong from "./TaskRecordStatusByColourLong";
+import { getStatusByColourTaskText } from "../getStatusByColourTaskText";
 import axios from "axios";
 import { Tooltip } from "@mui/material";
 import { BsArrowCounterclockwise, BsPencil } from "react-icons/bs"; //revert
 import { GiCheckMark } from "react-icons/gi"; //Commit
 import { MdPlusOne } from "react-icons/md"; //+1
-import "./Fonts.css";
+import "../Fonts.css";
 import { toast } from 'react-toastify';
 import { BiSolidMessageRoundedAdd } from "react-icons/bi";
 
 
 
-function TaskRecordAccordion_forTaskEdit({
+function TaskRecordAccordion({
     project_handle,
     asms_number,
     parentid,
@@ -35,15 +35,18 @@ function TaskRecordAccordion_forTaskEdit({
         setExpanded(!isExpanded);
     };
     
-    const orderedTasks = parenttask;
+    const orderedTasks = parenttask.filter((task, key) => {
+        return task.id === parentid;
+    });
     
-    const taskRecords = orderedTasks.tasks.sort(
+    const taskRecords = orderedTasks[0].tasks.sort(
         (a, b) =>
             new Date(b.date[0], b.date[1], b.date[2]) -
             new Date(a.date[0], a.date[1], a.date[2]) || b.childid - a.childid
     );
     
-   
+
+    
     const handleEdit = (id, childrecord) => {
         setEditing(id);
         setTaskrecord(childrecord);
@@ -91,13 +94,13 @@ function TaskRecordAccordion_forTaskEdit({
                                 <>
                                     <Tooltip title="Commit" placement="top-end">
                                         <div onClick={() => onEditSave(childid)}>
-                                            <GiCheckMark style={{ color: "#336791", fontSize: "15px", cursor: 'pointer' }} />
+                                            <GiCheckMark style={{ color: "C0C0C0", fontSize: "15px", cursor: 'pointer' }} />
                                         </div>
                                     </Tooltip>
                                     &nbsp;&nbsp;
                                     <Tooltip title="Revert" placement="top-end">
                                         <div onClick={() => onEditCancel()}>
-                                            <BsArrowCounterclockwise style={{ color: "#336791", fontSize: "17px", cursor: 'pointer' }} />
+                                            <BsArrowCounterclockwise style={{ color: "C0C0C0", fontSize: "17px", cursor: 'pointer' }} />
                                         </div>
                                     </Tooltip>
                                     &nbsp;&nbsp;
@@ -105,7 +108,7 @@ function TaskRecordAccordion_forTaskEdit({
                             ) : status !== "DONE" ? (
                                 <Tooltip title={`Edit Task Record: ${childid}`} placement="top-end">
                                     <div onClick={() => { handleEdit(childid, childrecord); }}>
-                                        <BsPencil style={{ color: "#336791", fontSize: "15px", cursor: 'pointer' }} />
+                                        <BsPencil style={{ color: "#C0C0C0", fontSize: "15px", cursor: 'pointer' }} />
                                     </div>
                                 </Tooltip>
                             ) : null}
@@ -114,14 +117,14 @@ function TaskRecordAccordion_forTaskEdit({
                     <div>
                         {editing === childid ? (
                             <textarea
-                                // cols="140"
+                                // cols="150"
                                 // variant="outlined"
                                 defaultValue={taskrecord}
-                                // rows={5}
+                                // rows={3}
                                 onChange={(e) => setTaskrecord(e.target.value)}
                                 style={{
                                     width: 1000,
-                                    height: "80px",
+                                    height: "18px",
                                     marginBottom: "15px",
                                     marginTop: "5px",
                                     display: "flex",
@@ -130,7 +133,7 @@ function TaskRecordAccordion_forTaskEdit({
                             ></textarea>
                         ) : (
                             <div>
-                                <TaskRecordStatusByColourLong_forTaskEdit
+                                <TaskRecordStatusByColourLong
                                     childid={childid}
                                     childrecord={childrecord}
                                     parentid={parentid}
@@ -153,7 +156,7 @@ function TaskRecordAccordion_forTaskEdit({
         if (taskRecords[0].status === "DONE") {
             return (
                 <div>
-                    <TaskRecordStatusByColourLong_forTaskEdit
+                    <TaskRecordStatusByColourLong
                         childid={taskRecords[0].childid}
                         childrecord={taskRecords[0].childrecord}
                         parentid={taskRecords[0].parentid}
@@ -178,7 +181,7 @@ function TaskRecordAccordion_forTaskEdit({
                                     handle,
                                     future,
                                 }) => (
-                                    <TaskRecordStatusByColourLong_forTaskEdit
+                                    <TaskRecordStatusByColourLong
                                         childid={childid}
                                         childrecord={childrecord}
                                         parentid={parentid}
@@ -201,8 +204,8 @@ function TaskRecordAccordion_forTaskEdit({
         <div>
             <div style={{ color: getStatusByColourTaskText(taskstatus) }} onClick={toggleAccordion}>
                 <u>STATUS</u>:&nbsp;
-                <Tooltip title="xxxxxxxxxxx" placement="top-end">
-                    <BiSolidMessageRoundedAdd style={{ color: "#336791", fontSize: "20px" }} />
+                <Tooltip title="Dit werk nie hier nie sonder 'n div" placement="top-end">
+                    <BiSolidMessageRoundedAdd style={{ color: "#C0C0C0", fontSize: "20px" }} />
                 </Tooltip>
             </div>
             {isExpanded && (
@@ -245,4 +248,4 @@ function TaskRecordAccordion_forTaskEdit({
         </div>
     );
 }
-export default TaskRecordAccordion_forTaskEdit;
+export default TaskRecordAccordion;

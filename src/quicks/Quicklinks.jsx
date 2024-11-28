@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import './Fonts.css'
+import '../Fonts.css'
 import {styled} from "@mui/material/styles";
-import { useUserContext } from './UserContext';
-import GradientLineThin from './gradientlines/GradientLineThin';
+import { useUserContext } from '../UserContext';
+import GradientLineThin from '../gradientlines/GradientLineThin';
 import QuickAddWebResource from './QuickAddWebResource';
 
 

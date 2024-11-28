@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { styled } from "@mui/material/styles";
 import axios from "axios";
-import "./Fonts.css";
+import "../Fonts.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { GiHummingbird } from "react-icons/gi";

@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import TaskRecordAccordion from "./TaskRecordAccordion";
 import DialogContentText from "@mui/material/DialogContentText";
-import { getStatusByColourTaskText } from "./getStatusByColourTaskText";
+import { getStatusByColourTaskText } from "../getStatusByColourTaskText";
 
 
 export default function TaskPopOut({

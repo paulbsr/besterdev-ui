@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./Fonts.css";
+import "../Fonts.css";
 import { toast } from 'react-toastify';
 
 export default function HowtoStepRecordCreate_original(props) {

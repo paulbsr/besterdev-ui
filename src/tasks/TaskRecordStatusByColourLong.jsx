@@ -1,5 +1,5 @@
 import React from 'react';
-import './StatusByColourLong.css';
+import '../StatusByColourLong.css';
 
 function TaskRecordStatusByColourLong(props) {
   let color = '';

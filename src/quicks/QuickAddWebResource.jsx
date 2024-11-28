@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import './Fonts.css';
+import '../Fonts.css';
 import { toast } from 'react-toastify';
-import { useWebsiteApi } from './websites/WebSiteAPIProvider';
+import { useWebsiteApi } from '../websites/WebSiteAPIProvider';
 
 export default function QuickAddWebResource(props) {
     const [website_name, setWebsite_name] = useState('');

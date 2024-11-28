@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import ToastComponent from '../ToastComponent';
 import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
-import TaskEdit from '../TaskEdit';
+import TaskEdit from '../tasks/TaskEdit';
 import CombinedCreateFP from '../CombinedCreateFP';
 
 export default function PageTaskEdit() {
