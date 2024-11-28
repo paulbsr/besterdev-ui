@@ -13,7 +13,7 @@ import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import TaskOverview from '../tasks/TaskOverview';
 import { TaskContext } from "../Contexts";
-import CombinedCreateFP from '../CombinedCreateFP';
+import CombinedCreateFP from '../quicks/CombinedCreateFP';
 
 
 

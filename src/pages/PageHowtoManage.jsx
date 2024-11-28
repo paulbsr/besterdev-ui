@@ -6,7 +6,7 @@ import HowtoManage from '../howto/HowtoManage';
 import ToastComponent from '../ToastComponent';
 import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
-import CombinedCreateFP from '../CombinedCreateFP';
+import CombinedCreateFP from '../quicks/CombinedCreateFP';
 
 export default function PageHowtoManage() {
     return (

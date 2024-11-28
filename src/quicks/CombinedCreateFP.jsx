@@ -1,47 +1,42 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import './Fonts.css';
-import spacer from './graphix/besterdev_spacer_white.png';
+import '../Fonts.css';
+import spacer from '../graphix/besterdev_spacer_white.png';
 import { GiHummingbird, GiSpiderWeb } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css';
 import { toast } from 'react-toastify';
 import DatePicker from "react-datepicker";
 import { MdTask } from "react-icons/md";
-import { IoLibrary } from "react-icons/io5";
-import { useWebsiteApi } from './websites/WebSiteAPIProvider';
-import { useCyclopediaApi } from './cyclopedia/CyclopediaAPIProvider';
+import { useWebsiteApi } from '../websites/WebSiteAPIProvider';
+import { useCyclopediaApi } from '../cyclopedia/CyclopediaAPIProvider';
 import { GiGiftOfKnowledge } from "react-icons/gi";
 
 
 export default function CombinedCreateFP() {
+  const current = new Date();
   const [isExpandedCyclopedia, setExpandedCyclopedia] = useState(false);
   const [isExpandedWebsite, setExpandedWebsite] = useState(false);
   const [isExpandedTask, setExpandedTask] = useState(false);
-
   const [cyclopediaName, setCyclopediaName] = useState('');
   const [cyclopediaDesc, setCyclopediaDesc] = useState('');
   const [cyclopediaUrl, setCyclopediaUrl] = useState('');
   const [checkForRecords, setCheckForRecords] = useState(true);
-  const { cyclopediarootdata, setRefreshCyclopediarootdata } = useCyclopediaApi();
-
   const [websiteName, setWebsiteName] = useState('');
   const [websiteDesc, setWebsiteDesc] = useState('');
   const [websiteUrl, setWebsiteUrl] = useState('');
   const [websiteCat, setWebsiteCat] = useState('');
-  const { websiterootdata, setRefreshWebsiterootdata } = useWebsiteApi();
-
-  const current = new Date();
   const [taskname, setTaskname] = useState("");
   const [taskrequirement, setTaskrequirement] = useState("");
-  const [taskowner, setTaskowner] = useState("Bester");
+  const [taskowner ] = useState("Bester");
   const [tasktargetdate, setTasktargetdate] = useState(null);
-  const [taskcreatedate, setTaskcreatedate] = useState(current);
-  const [taskstatus, setTaskstatus] = useState("START");
+  const [taskcreatedate ] = useState(current);
+  const [taskstatus ] = useState("START");
   const [projecthandle, setProjecthandle] = useState("");
   const [asms, setAsms] = useState("");
-  const [tasknextstep, setTasknextstep] = useState("");
-  const toggleAccordion = () => { setExpanded(!isExpanded); };
-  const [isExpanded, setExpanded] = useState(false);
+  const [tasknextstep ] = useState("");
+  const { setRefreshCyclopediarootdata } = useCyclopediaApi();
+  const { websiterootdata, setRefreshWebsiterootdata } = useWebsiteApi();
+
 
   const dropdownChange = (event) => {
     const selectedIndex = event.target.options.selectedIndex;

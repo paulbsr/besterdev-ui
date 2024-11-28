@@ -10,7 +10,7 @@ import CyclopediaManage from '../cyclopedia/CyclopediaManage';
 import ToastComponent from '../ToastComponent';
 import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
-import CombinedCreateFP from '../CombinedCreateFP';
+import CombinedCreateFP from '../quicks/CombinedCreateFP';
 
 
 

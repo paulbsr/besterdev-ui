@@ -3,14 +3,13 @@ import axios from 'axios';
 import '../Fonts.css';
 import 'react-tooltip/dist/react-tooltip.css'
 import { useNavigate } from 'react-router-dom'; 
-import { FaReact, FaJava, FaNodeJs, FaAws, FaPeopleArrows, FaDigitalOcean, FaFileContract, FaTasks, FaUserGraduate, FaInfinity, FaConfluence } from 'react-icons/fa';
-import { BiLogoFirebase, BiLogoPostgresql, BiLogoHeroku, BiLogoGithub, BiLogoGoogle } from "react-icons/bi";
-import { SiSpringboot, SiGoogleanalytics, SiDocker, SiSwagger, SiJavascript, SiJira } from "react-icons/si";
-import { MdManageAccounts, MdOutlineVpnLock, MdOutlineMailLock, MdTask } from "react-icons/md";
-import { TbWorldWww, TbBrandOauth } from "react-icons/tb";
+import { FaReact, FaJava, FaNodeJs, FaAws, FaPeopleArrows, FaFileContract, FaUserGraduate, FaConfluence } from 'react-icons/fa';
+import { BiLogoPostgresql, BiLogoHeroku, BiLogoGithub, BiLogoGoogle } from "react-icons/bi";
+import { SiSpringboot, SiFirebase, SiSwagger, SiJavascript, SiJira, SiAuth0 } from "react-icons/si";
+import { MdManageAccounts, MdTask } from "react-icons/md";
+import { TbBrandOauth } from "react-icons/tb";
 import { BsPatchQuestion, BsPeopleFill } from "react-icons/bs";
-import { IoLibrary, IoHome, IoPieChartSharp } from "react-icons/io5";
-import { GrVirtualMachine} from "react-icons/gr";
+import { IoHome, IoPieChartSharp } from "react-icons/io5";
 import { GiRapidshareArrow, GiGiftOfKnowledge, GiSpiderWeb } from "react-icons/gi";
 import { IoMdInfinite } from "react-icons/io";
 
@@ -77,8 +76,7 @@ import { IoMdInfinite } from "react-icons/io";
       <a data-tooltip-id="insert" data-tooltip-content="TUS myapps" href="https://myapps.microsoft.com/" target="_blank" rel="noreferrer"><FaUserGraduate style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Lucid Charts" href="https://lucid.app/documents#/home?folder_id=recent" target="_blank" rel="noreferrer"><IoPieChartSharp style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Tasks" onClick={handleNavigateTaskManage}><MdTask style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Jira Your work (atlassian)" href="https://besterdev.atlassian.net/jira/your-work" target="_blank" rel="noreferrer"><SiJira style={{ color: '#116BE8', fontSize: '26px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Confluence (atlassian)" href="https://besterdev.atlassian.net/wiki/home" target="_blank" rel="noreferrer"><FaConfluence style={{ color: '#116BE8', fontSize: '26px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
+      
 
       &nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;
@@ -104,7 +102,7 @@ import { IoMdInfinite } from "react-icons/io";
       <a data-tooltip-id="insert" data-tooltip-content="AWS Amplify-hosted front-end UI" href="https://eu-west-1.console.aws.amazon.com/amplify/home?installation_id=39421369&setup_action=install&region=eu-west-1#/dv43gyvsmgsn1/settings/domains/" target="_blank" rel="noreferrer"><FaAws style={{ color: '#ff8500', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Heroku-hosted back-end API" href="https://dashboard.heroku.com/apps" target="_blank" rel="noreferrer"><BiLogoHeroku style={{ color: '#6762a6', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="paul.besar@gmail.com" href="https://myaccount.google.com/" target="_blank" rel="noreferrer"><BiLogoGoogle style={{ color: '#4688F1', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Google Firebase for front-end IAM Authentication" href="https://console.firebase.google.com/project/besterdev-432e9/overview" target="_blank" rel="noreferrer"><BiLogoFirebase style={{ color: '#FFCB2B', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Google Firebase for front-end IAM Authentication" href="https://console.firebase.google.com/project/besterdev-432e9/overview" target="_blank" rel="noreferrer"><SiFirebase style={{ color: '#FFCB2B', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
       {/* <a data-tooltip-id="insert" data-tooltip-content="Google Analytics" href="https://analytics.google.com/analytics/web/?pli=1#/p400562922/reports/intelligenthome" target="_blank" rel="noreferrer"><SiGoogleanalytics style={{ color: 'orange', fontSize: '24px', cursor: 'pointer' }} /></a>&nbsp;&nbsp; */}
       {/* <a data-tooltip-id="insert" data-tooltip-content="Docker Containers - paulbsr" href="https://www.docker.com" target="_blank" rel="noreferrer"><SiDocker style={{ color: '#1D63ED', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
       {/* <a data-tooltip-id="insert" data-tooltip-content="DigitalOcean" href="https://www.digitalocean.com" target="_blank" rel="noreferrer"><FaDigitalOcean style={{ color: '#0069FF', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
@@ -115,9 +113,10 @@ import { IoMdInfinite } from "react-icons/io";
       <a data-tooltip-id="insert" data-tooltip-content="OAuth2.0 protected APIs" onClick={handleNavigateSwagger}><TbBrandOauth style={{ color: '#000000', fontSize: '31px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       {/* <a data-tooltip-id="insert" data-tooltip-content="TryHackMe" href="https://www.tryhackme.com" target="_blank"><SiTryhackme style={{ color: '#000000', fontSize: '31px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
       <a data-tooltip-id="insert" data-tooltip-content="Infisical Vault" href="https://eu.infisical.com/org/70bd9f69-4bb7-4753-89a0-ef0eac6ae454/overview" target="_blank"><IoMdInfinite style={{ color: '#000000', fontSize: '40px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      {/* <a data-tooltip-id="insert" data-tooltip-content="ChatGPT v3.5" href="https://chat.openai.com/auth/login" target="_blank" rel="noreferrer"><RiOpenaiFill style={{ color: '#19c37c', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
+      <a data-tooltip-id="insert" data-tooltip-content="Auth0 as Identity Provider" href="https://auth0.com/" target="_blank" rel="noreferrer"><SiAuth0 style={{ color: '#000000', fontSize: '25px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       {/* <a data-tooltip-id="insert" data-tooltip-content="Logout" onClick={handleNavigateLogout}><SlLogout style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp; */}
-      {/* <DBSearchComponentBanner /> */}
+      <a data-tooltip-id="insert" data-tooltip-content="Jira Your work (atlassian)" href="https://besterdev.atlassian.net/jira/your-work" target="_blank" rel="noreferrer"><SiJira style={{ color: '#116BE8', fontSize: '26px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Confluence (atlassian)" href="https://besterdev.atlassian.net/wiki/home" target="_blank" rel="noreferrer"><FaConfluence style={{ color: '#116BE8', fontSize: '26px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
     </div>
   );
 };

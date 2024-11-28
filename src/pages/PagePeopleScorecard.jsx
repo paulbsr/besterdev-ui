@@ -10,7 +10,7 @@ import ToastComponent from '../ToastComponent';
 import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import PeopleScorecard from '../people/PeopleScorecard'
-import CombinedCreateFP from '../CombinedCreateFP';
+import CombinedCreateFP from '../quicks/CombinedCreateFP';
 
 
 
