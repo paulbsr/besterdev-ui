@@ -4,7 +4,7 @@ import './Fonts.css';
 import 'react-dropdown/style.css';
 import axios from 'axios'
 import Image from './graphix/12.png' //Lady Liberty
-import DBSearchComponent from './DBSearchComponent';
+import DBSearchComponent from './dbsearch/DBSearchComponent';
 import TaskSummaryHomepage from './tasks/TaskSummaryHomepage';
 import { useWebsiteApi } from './websites/WebSiteAPIProvider';
 import { useCyclopediaApi } from './cyclopedia/CyclopediaAPIProvider';

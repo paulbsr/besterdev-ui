@@ -4,25 +4,10 @@
     color: #ffffff;
 }
 
-.Font-Verdana-XSmall {
-    font-family: "Verdana";
-    font-size: x-small;
-    color: #c4b0aa;
-}
-
 .Font-Verdana-Small-Footer {
     font-family: "Verdana";
     font-size: x-small;
     color: #5c5a5a;
-}
-
-.Font-Calibri-Medium-MyCV {
-    font-family: "Candara";
-    font-size: small;
-    font-style: italic;
-    font-weight: bolder;
-    color: #336791;
-    justify-content:stretch;
 }
 
 .Font-Verdana-Small {
@@ -69,25 +54,6 @@
 }
 
 .Font-Verdana-Small-Postgres {
-    font-family: "Verdana";
-    font-size: small;
-    color: #336791
-}
-
-
-.Font-Verdana-Medium-Postgres {
-    font-family: "Verdana";
-    font-size: medium;
-    color: #336791
-}
-
-.Font-Verdana-Medium-T {
-    font-family: "Verdana";
-    font-size: medium;
-    color: #336791
-}
-
-.Font-Verdana-Small-T {
     font-family: "Verdana";
     font-size: small;
     color: #336791
@@ -143,31 +109,6 @@
     color: #336791
 }
 
-
-.Font-Calibri-Large-Howto {
-    font-family: "Calibri";
-    font-size: large;
-    color: #0c0c0c
-}
-
-.Font-Calibri-Larger-Howto {
-    font-family: "Calibri";
-    font-size: larger;
-    color: #0c0c0c
-}
-
-.Font-Calibri-XLarge-Howto {
-    font-family: "Calibri";
-    font-size: x-large;
-    color: #0c0c0c
-}
-
-.Font-Calibri-XXLarge-Howto {
-    font-family: "Calibri";
-    font-size: xx-large;
-    color: #0c0c0c
-}
-
 .Font-Verdana-Large-Howto-Italic-Rusty {
     font-family: "Verdana";
     font-size: large;
@@ -175,59 +116,41 @@
     color: #D5441C;
 }
 
-.Font-Calibri-Large-Howto-Italic-Rusty {
-    font-family: "Calibri";
-    font-size: large;
-    font-style: italic;
-    color: #D5441C;
+
+.Font-Verdana-Medium-Indeed {
+    font-family: "Verdana";
+    font-size: medium;
+    color: #003A9B
 }
 
-.CV-Font-Calibri-Large-Black {
-    font-family: "Calibri";
-    font-size: large;
-    color: #000000;
-    font-weight: lighter;
-    
+
+.Font-Verdana-Smaller_Insert {
+    font-family: "Verdana";
+    font-size: smaller;
+    color: #444342
 }
 
-.CV-Font-Segoe-Large-Italic {
-    border: 1px solid rgb(233, 228, 228);
-    background-color: #f7f4f3;
-    font-family: "Segoe";
-    font-size: large;
-    font-style: italic;
-    color: #336791;
-    padding: 14px;
-    font-weight: lighter;
+.Font-Verdana-Small_Compliment_Blue {
+    font-family: "Verdana";
+    font-size: small;
+    color: #1CADD5
 }
+
+
+.Font-Verdana-QuickAdd {
+    font-family: "Verdana";
+    font-size: small;
+    color: grey
+}
+
+
+
+
 
 .Font-Segoe-Small {
     font-family: "Segoe UI";
     font-size: Small;
     color: #336791;
-}
-
-.CV-Font-Calibri-Large-Italic-PG {
-    border: 1px solid rgb(233, 228, 228);
-    background-color: #ffffff;
-    font-family: "Segoe UI";
-    font-size: large;
-    font-style: italic;
-    color: #336791;
-    padding: 14px;
-    font-weight:normal;
-    border-radius: 6px;
-}
-
-.Font-Calibri-Large-Howto-Italic-Rusty-CV-2 {
-    border: 1px solid rgb(233, 228, 228);
-    background-color: #ffffff;
-    font-family: "Calibri";
-    font-size: large;
-    font-style: italic;
-    color: #336791;
-    padding: 14px;
-    font-weight: lighter;
 }
 
 .Font-Segoe-Medium {
@@ -293,31 +216,6 @@
     font-weight: n;
 }
 
-.Font-Verdana-Medium-Indeed {
-    font-family: "Verdana";
-    font-size: medium;
-    color: #003A9B
-}
-
-
-.Font-Verdana-Smaller_Insert {
-    font-family: "Verdana";
-    font-size: smaller;
-    color: #444342
-}
-
-.Font-Verdana-Small_Compliment_Blue {
-    font-family: "Verdana";
-    font-size: small;
-    color: #1CADD5
-}
-
-
-.Font-Verdana-QuickAdd {
-    font-family: "Verdana";
-    font-size: small;
-    color: grey
-}
 
 /* .Table-Column-200 {width: 200px;} */
 
@@ -337,28 +235,7 @@
     /* min-width: 50%; */
 }
 
-.Table5{
-    /* background-color: #f7f4f3; */
-    background-color: #ffffff;
-    padding: 4px;
-    font-family: "Verdana";
-    font-size: small ;
-    border: 1px solid rgb(233, 228, 228);
-    font-weight: normal;
-    text-align: right;
-    /* min-width: 50%; */
-}e-right
 
-.Table5-hover:hover {
-    font-family: "Verdana";
-    font-size: small;
-    color: #D5441C;
-    background-color: #f7f4f3;
-    border-radius: 4px;
-    border: 1px solid #336791;
-    /* padding: 4px; */
-    font-weight: normal;
-}
 
 .Table4 th {
     background-color: #f7f4f3;
@@ -405,12 +282,6 @@
 }
 
 
-
-.scrollable-container {
-    /* background-color: #ffffff; */
-    /* max-height: 2300px;  */
-    /* overflow-y: auto; */
-  }
 
 .Table-home-left{
     background-color: #ffffff;
@@ -585,7 +456,7 @@
     text-align: right;
   }
 
-  .banner-light-left {
+.banner-light-left {
     background-color: #f7f4f3;
     padding: 1px;
     text-align: left;
@@ -597,7 +468,11 @@
     text-align: left;
   }
 
+ 
   
+
+
+
 .gradient-line-linkedin {
     width: 100%;
     height: 3px; 
@@ -616,7 +491,6 @@
     background: linear-gradient(to right, #000000, #f5f9fa);
   }
  
-
   .gradient-line-rusty {
     width: 100%;
     height: 3px; 
@@ -640,6 +514,10 @@
     font-size: x-large;
     color: #f7f4f3
 }
+
+
+
+
 
 .tooltip {
     background-color: #333;
@@ -724,11 +602,7 @@
 }
 
 .Table8 th {
-    /* background-color: #f7f4f3; */
     color: #336791;
-    /* color: #336791; */
-    /* color: #ff8500; */
-    /* color: #61dafb; */
     padding: 5px;
     font-family: "Verdana";
     font-size: 13px;
@@ -784,24 +658,11 @@
     white-space: nowrap;
 }
 
-.start-color {
-    background-color: rgb(192, 192, 192, .50);
-}
-
-.wip-color {
-    background-color: rgb(15, 158, 213, .25);
-}
-
-.done-color {
-    background-color: rgb(0, 180, 0, .25);
-}
-
-.problem-color {
-    background-color: rgb(190, 0, 0, .25);
-}
-
-.fill {
-    width: 99%;
-}
 
 
+
+.start-color {background-color: rgb(192, 192, 192, .50);}
+.wip-color {background-color: rgb(15, 158, 213, .25);}
+.done-color {background-color: rgb(0, 180, 0, .25);}
+.problem-color {background-color: rgb(190, 0, 0, .25);}
+.fill {width: 99%;}
