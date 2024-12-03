@@ -12,7 +12,7 @@ export default function LinearDeterminate() {
           return 0;
         }
         const diff = Math.random() * 8;
-        return Math.min(oldProgress + diff, 100);
+        return Math.min(oldProgress + diff, 400);
       });
     }, 100);
 
@@ -22,7 +22,7 @@ export default function LinearDeterminate() {
   }, []);
 
   return (
-    <Box sx={{ width: '11%' }}>
+    <Box sx={{ width: '36%' }}>
       <LinearProgress variant="determinate" value={progress} />
     </Box>
   );

@@ -5,7 +5,7 @@ import 'react-tooltip/dist/react-tooltip.css'
 import { useNavigate } from 'react-router-dom'; 
 import { FaReact, FaJava, FaNodeJs, FaAws, FaPeopleArrows, FaFileContract, FaUserGraduate, FaConfluence } from 'react-icons/fa';
 import { BiLogoPostgresql, BiLogoHeroku, BiLogoGithub, BiLogoGoogle } from "react-icons/bi";
-import { SiSpringboot, SiFirebase, SiSwagger, SiJavascript, SiJira, SiAuth0 } from "react-icons/si";
+import { SiSpringboot, SiFirebase, SiSwagger, SiJavascript, SiJira, SiAuth0, SiAwsamplify, SiAmazonrds } from "react-icons/si";
 import { MdManageAccounts, MdTask } from "react-icons/md";
 import { TbBrandOauth } from "react-icons/tb";
 import { BsPatchQuestion, BsPeopleFill } from "react-icons/bs";
@@ -99,7 +99,7 @@ import { IoMdInfinite } from "react-icons/io";
       <a data-tooltip-id="insert" data-tooltip-content="Spring Boot v3.1.2" href="https://spring.io/projects/spring-boot" target="_blank" rel="noreferrer"><SiSpringboot style={{ color: '#336791', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="PostgreSQL DB hosted on Heroku" href="https://spring.io/projects/spring-boot" target="_blank" rel="noreferrer"><BiLogoPostgresql style={{ color: '#336791', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Github for Repos" href="https://github.com" target="_blank" rel="noreferrer"><BiLogoGithub style={{ color: '#000000', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="AWS Amplify-hosted front-end UI" href="https://eu-west-1.console.aws.amazon.com/amplify/home?installation_id=39421369&setup_action=install&region=eu-west-1#/dv43gyvsmgsn1/settings/domains/" target="_blank" rel="noreferrer"><FaAws style={{ color: '#ff8500', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="AWS Amplify-hosted front-end UI" href="https://eu-west-1.console.aws.amazon.com/amplify/home?installation_id=39421369&setup_action=install&region=eu-west-1#/dv43gyvsmgsn1/settings/domains/" target="_blank" rel="noreferrer"><SiAwsamplify style={{ color: '#ff8500', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Heroku-hosted back-end API" href="https://dashboard.heroku.com/apps" target="_blank" rel="noreferrer"><BiLogoHeroku style={{ color: '#6762a6', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="paul.besar@gmail.com" href="https://myaccount.google.com/" target="_blank" rel="noreferrer"><BiLogoGoogle style={{ color: '#4688F1', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Google Firebase for front-end IAM Authentication" href="https://console.firebase.google.com/project/besterdev-432e9/overview" target="_blank" rel="noreferrer"><SiFirebase style={{ color: '#FFCB2B', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
@@ -112,7 +112,7 @@ import { IoMdInfinite } from "react-icons/io";
       <a data-tooltip-id="insert" data-tooltip-content="Swagger" onClick={handleNavigateSwagger}><SiSwagger style={{ color: '#85EA2D', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="OAuth2.0 protected APIs" onClick={handleNavigateSwagger}><TbBrandOauth style={{ color: '#000000', fontSize: '31px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       {/* <a data-tooltip-id="insert" data-tooltip-content="TryHackMe" href="https://www.tryhackme.com" target="_blank"><SiTryhackme style={{ color: '#000000', fontSize: '31px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
-      <a data-tooltip-id="insert" data-tooltip-content="Infisical Vault" href="https://eu.infisical.com/org/70bd9f69-4bb7-4753-89a0-ef0eac6ae454/overview" target="_blank"><IoMdInfinite style={{ color: '#000000', fontSize: '40px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Infisical for Vault" href="https://eu.infisical.com/org/2742398f-dfc5-4b9a-a024-7c8c30db2c42/overview" target="_blank"><SiAmazonrds style={{ color: '#000000', fontSize: '40px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Auth0 as Identity Provider" href="https://auth0.com/" target="_blank" rel="noreferrer"><SiAuth0 style={{ color: '#000000', fontSize: '25px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       {/* <a data-tooltip-id="insert" data-tooltip-content="Logout" onClick={handleNavigateLogout}><SlLogout style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp; */}
       <a data-tooltip-id="insert" data-tooltip-content="Jira Your work (atlassian)" href="https://besterdev.atlassian.net/jira/your-work" target="_blank" rel="noreferrer"><SiJira style={{ color: '#116BE8', fontSize: '26px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;

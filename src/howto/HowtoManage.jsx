@@ -90,7 +90,7 @@ export default function HowtoManage() {
       <div onClick={toggleAccordion}>
         &nbsp; &nbsp; <a data-tooltip-id="insert" data-tooltip-content="Amend">
           <BsPatchQuestion style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>
-        &nbsp;<b>Manage Howto Library ({howtorootdata.length})</b>
+        &nbsp;<b style={{ fontFamily: "Verdana", fontSize: "medium", fontWeight: "bold", color: "#336791" }}>Manage Howto Library ({howtorootdata.length})</b>
       </div>
 
       <HowtoCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>

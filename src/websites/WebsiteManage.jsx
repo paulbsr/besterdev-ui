@@ -83,7 +83,7 @@ export default function WebsiteManage(props) {
       <div onClick={toggleAccordion}>
         &nbsp; &nbsp;
         <GiSpiderWeb style={{ color: '#336791', fontSize: '42px', cursor: 'pointer' }} />
-        &nbsp;<b>Manage the {websiterootdata.length} Tools, Websites or Books</b>
+        &nbsp;<b style={{ fontFamily: "Verdana", fontSize: "medium", fontWeight: "bold", color: "#336791" }}>Manage the {websiterootdata.length} Tools, Websites or Books</b>
       </div>
 
       <WebsiteCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />

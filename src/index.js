@@ -34,6 +34,38 @@ import { CyclopediaAPIProvider } from './cyclopedia/CyclopediaAPIProvider';
 import { HowtoAPIProvider } from './howto/HowtoAPIProvider';
 import { BreakingNewsAPIProvider } from './breakingnews/BreakingNewsAPIProvider';
 import PageCyclopediaEdit from './pages/PageCyclopediaEdit';
+// import { SecretsManagerClient, GetSecretValueCommand, } from "@aws-sdk/client-secrets-manager";
+
+// const secret_name = "bester";
+// const AWS_ACCESS_KEY_ID=your-access-key-id
+// const AWS_SECRET_ACCESS_KEY=your-secret-access-key
+// const AWS_REGION=your-region
+
+
+// const client = new SecretsManagerClient({
+//   region: "eu-west-1",
+// });
+
+// let response;
+
+// try {
+//   response = await client.send(
+//     new GetSecretValueCommand({
+//       SecretId: secret_name,
+//       VersionStage: "AWSCURRENT", // VersionStage defaults to AWSCURRENT if unspecified
+//     })
+//   );
+// } catch (error) {
+//   // For a list of exceptions thrown, see
+//   // https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
+//   throw error;
+// }
+// console.log(response);
+// const secret = response.SecretString;
+
+
+
+
 
 const TRACKING_ID = "G-FCGGY1NE36";
 ReactGA.initialize(TRACKING_ID);
@@ -73,6 +105,10 @@ const App = () => {
   }, [checkForRecords]);
 
   console.log('In <index.js> is jou searchPhrase:', searchPhrase);
+
+
+
+
 
   return (
     <UserProvider>
@@ -121,6 +157,8 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+
 
 export default App;
 

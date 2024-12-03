@@ -37,7 +37,7 @@ const PageLogin = (props) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowLoginButton(true);
-    }, 2500); // 2.5 seconds
+    }, 5000); // 5 seconds
 
     return () => clearTimeout(timer); // Cleanup the timer
   }, []);

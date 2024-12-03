@@ -114,7 +114,7 @@ export default function JobreqManage() {
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
         &nbsp; &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Amend"><BsSignpostFill style={{ color: '#336791', fontSize: '42px', cursor: 'pointer' }} /></a>
-        &nbsp;<b>Manage Job Postings / JRs ({jobreqdata.length})</b>
+        &nbsp;<b style={{ fontFamily: "Verdana", fontSize: "medium", fontWeight: "bold", color: "#336791" }}>Manage Job Postings / JRs ({jobreqdata.length})</b>
       </div>
 
       {isExpanded && (
