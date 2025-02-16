@@ -10,6 +10,7 @@ import { MdTask } from "react-icons/md";
 import { useWebsiteApi } from '../websites/WebSiteAPIProvider';
 import { useCyclopediaApi } from '../cyclopedia/CyclopediaAPIProvider';
 import { GiGiftOfKnowledge } from "react-icons/gi";
+import DBSearchComponentBanner from "../dbsearch/DBSearchComponentBanner";
 
 
 export default function CombinedCreateFP() {
@@ -131,15 +132,17 @@ export default function CombinedCreateFP() {
 
   return (
     <div className='Font-Verdana-Small-Postgres'>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
+      
+
+      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>      <DBSearchComponentBanner />
 
         {/* <b onClick={() => setExpandedCyclopedia(!isExpandedCyclopedia)}>&nbsp;&nbsp;&nbsp;&nbsp;
           <GiHummingbird style={{ color: '#336791', fontSize: '25px' }} />
           <IoLibrary style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }} /> Add to Cyclopedia</b> */}
 
-<span onClick={() => setExpandedCyclopedia(!isExpandedCyclopedia)}>&nbsp;&nbsp;&nbsp;&nbsp;
-  <GiHummingbird style={{ color: '#4D4D4D', fontSize: '25px' }} />
-  <GiGiftOfKnowledge style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} /> Add to Cyclopedia</span>
+        <span onClick={() => setExpandedCyclopedia(!isExpandedCyclopedia)}>&nbsp;&nbsp;&nbsp;&nbsp;
+          <GiHummingbird style={{ color: '#4D4D4D', fontSize: '25px' }} />
+          <GiGiftOfKnowledge style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} /> Add to Cyclopedia</span>
 
 
         <span onClick={() => setExpandedWebsite(!isExpandedWebsite)}>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -150,6 +153,8 @@ export default function CombinedCreateFP() {
           <GiHummingbird style={{ color: '#4D4D4D', fontSize: '25px' }} />
           <MdTask style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} /> Add a Task</span>
       </div>
+
+
 
       {isExpandedCyclopedia && (
         <form onSubmit={handleSubmitCyclopedia}>
@@ -310,6 +315,9 @@ export default function CombinedCreateFP() {
                       style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>
                       Memorialize
                     </button>
+
+
+
                   </div>
                 </div>
               </div>
