@@ -99,7 +99,27 @@ export default function CyclopediaEdit(props) {
                                                     editing ?
                                                         (
                                                             <>
-                                                                <Tooltip title='Commit' placement="top-end">
+                                                                <Tooltip title='Save Changes' placement="top-end">
+                                                                    <button
+                                                                        // style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} 
+                                                                        style={{ marginLeft: '5px', height: '20.5px', border: '1px solid #D5441C', borderRadius: '4px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer', fontSize: '12px' }}
+                                                                        type='button'
+                                                                        onClick={() => onEditSave()}>Commit
+                                                                        {/* <BsPencil style={{ color: '#336791', display: 'block', margin: 'auto', fontSize: '15px' }} /> */}
+                                                                    </button>&nbsp;&nbsp;&nbsp;
+                                                                </Tooltip>
+
+                                                                <Tooltip title='Cancel and Exit' placement="top-end">
+                                                                    <button
+                                                                        // style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} 
+                                                                        style={{ marginLeft: '5px', height: '20.5px', border: '1px solid #336791', borderRadius: '4px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer', fontSize: '12px' }}
+                                                                        type='button'
+                                                                        onClick={() => onEditCancel()}>Revert
+                                                                        {/* <BsPencil style={{ color: '#336791', display: 'block', margin: 'auto', fontSize: '15px' }} /> */}
+                                                                    </button>&nbsp;&nbsp;&nbsp;
+                                                                </Tooltip>
+
+                                                                {/* <Tooltip title='Commit' placement="top-end">
                                                                     <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave()}>
                                                                         <GiCheckMark style={{ color: '#336791', display: 'block', margin: 'auto', fontSize: '15px' }} />
                                                                     </button>
@@ -110,7 +130,9 @@ export default function CyclopediaEdit(props) {
                                                                     <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditCancel()}>
                                                                         <PiArrowCounterClockwiseBold style={{ color: '#336791', display: 'block', margin: 'auto', fontSize: '15px' }} />
                                                                     </button>
-                                                                </Tooltip>
+                                                                </Tooltip> */}
+
+                                                                
 
                                                                 <div></div>
 

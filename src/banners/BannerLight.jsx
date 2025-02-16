@@ -66,6 +66,8 @@ import { IoMdInfinite } from "react-icons/io";
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       {/* <a data-tooltip-id="insert" data-tooltip-content="Login" onClick={handleNavigateLogin}><SlLogin style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
       <a data-tooltip-id="insert" data-tooltip-content="Home" onClick={handleNavigateHome}><IoHome style={{ color: '#D5441C', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Jira Your work (atlassian)" href="https://besterdev.atlassian.net/jira/your-work" target="_blank" rel="noreferrer"><SiJira style={{ color: '#116BE8', fontSize: '26px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Confluence (atlassian)" href="https://besterdev.atlassian.net/wiki/home" target="_blank" rel="noreferrer"><FaConfluence style={{ color: '#116BE8', fontSize: '26px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="MyCV" onClick={handleNavigateMyCV}><FaFileContract style={{ color: '#336791', fontSize: '26px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Web Resources" onClick={handleNavigateResources}><GiSpiderWeb style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="WhatExactlyIs? Cyclopedia" onClick={handleNavigateCyclopedia}><GiGiftOfKnowledge style={{ color: '#336791', fontSize: '31px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
@@ -115,8 +117,7 @@ import { IoMdInfinite } from "react-icons/io";
       {/* <a data-tooltip-id="insert" data-tooltip-content="Infisical for Vault" href="https://eu.infisical.com/org/2742398f-dfc5-4b9a-a024-7c8c30db2c42/overview" target="_blank"><SiAmazonrds style={{ color: '#000000', fontSize: '40px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
       {/* <a data-tooltip-id="insert" data-tooltip-content="Auth0 as Identity Provider" href="https://auth0.com/" target="_blank" rel="noreferrer"><SiAuth0 style={{ color: '#000000', fontSize: '25px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
       {/* <a data-tooltip-id="insert" data-tooltip-content="Logout" onClick={handleNavigateLogout}><SlLogout style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp; */}
-      <a data-tooltip-id="insert" data-tooltip-content="Jira Your work (atlassian)" href="https://besterdev.atlassian.net/jira/your-work" target="_blank" rel="noreferrer"><SiJira style={{ color: '#116BE8', fontSize: '26px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Confluence (atlassian)" href="https://besterdev.atlassian.net/wiki/home" target="_blank" rel="noreferrer"><FaConfluence style={{ color: '#116BE8', fontSize: '26px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
+
     </div>
   );
 };
