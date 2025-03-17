@@ -104,7 +104,7 @@ export default function CyclopediaEdit(props) {
                                                                         // style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} 
                                                                         style={{ marginLeft: '5px', height: '20.5px', border: '1px solid #D5441C', borderRadius: '4px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer', fontSize: '12px' }}
                                                                         type='button'
-                                                                        onClick={() => onEditSave()}>Commit
+                                                                        onClick={() => onEditSave()}>Update
                                                                         {/* <BsPencil style={{ color: '#336791', display: 'block', margin: 'auto', fontSize: '15px' }} /> */}
                                                                     </button>&nbsp;&nbsp;&nbsp;
                                                                 </Tooltip>

@@ -130,7 +130,7 @@ const DBSearchComponentBanner = () => {
                     </>
                   ) : (
                     <div className="Font-Segoe-Small-Howto">
-                      <a onClick={() => navigate(`/cyclopediaedit/${result.cyclopediaId}`)}>
+                      <a onClick={() => navigate(`/cyclopediaedit/${result.cyclopediaId}`)}>&nbsp;&nbsp;&nbsp;
                       <GiGiftOfKnowledge style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                       <b>{highlightKeyword(result.cyclopediaName, searchQuery)}: </b>
                       {highlightKeyword(result.cyclopediaDesc, searchQuery)}
@@ -144,7 +144,7 @@ const DBSearchComponentBanner = () => {
               return (
                 <div className="dbsearchhover" key={result.id}>
                   {/* Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Web Resource</b>:&nbsp;&nbsp; */}
-                  <div className="Font-Segoe-Small-Howto">
+                  <div className="Font-Segoe-Small-Howto">&nbsp;&nbsp;&nbsp;
                     <TbWorldWww style={{ color: '#336791', fontSize: '23px', cursor: 'pointer' }} />&nbsp;
                     <a href={result.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.website_desc}>
                       <b>{highlightKeyword(result.website_name, searchQuery)}</b>
@@ -157,7 +157,7 @@ const DBSearchComponentBanner = () => {
               return (
                 <div className="dbsearchhover" key={result.id}>
                   {/* Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Breaking News Article</b>:&nbsp;&nbsp; */}
-                  <div className="Font-Segoe-Small-Howto">
+                  <div className="Font-Segoe-Small-Howto">&nbsp;&nbsp;&nbsp;
                     <SiWritedotas style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                     <a href={result.news_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.news_source}>
                       {highlightKeyword(result.news_title, searchQuery)}
@@ -170,7 +170,7 @@ const DBSearchComponentBanner = () => {
               return (
                 <div className="dbsearchhover" key={result.id}>
                   {/* Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Task Name:</b> */}
-                  <div className="Font-Segoe-Small-Howto">
+                  <div className="Font-Segoe-Small-Howto">&nbsp;&nbsp;&nbsp;
                     <MdTask style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                     <a href={`/taskedit/${result.id}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={`TaskID#${result.id}`}>
                       <b>{highlightKeyword(result.taskname, searchQuery)}</b>
@@ -182,7 +182,7 @@ const DBSearchComponentBanner = () => {
               return (
                 <div className="dbsearchhover" key={result.id}>
                   {/* Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Task Record:</b> */}
-                  <div className="Font-Segoe-Small-Howto">
+                  <div className="Font-Segoe-Small-Howto">&nbsp;&nbsp;&nbsp;
                     <MdTask style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />
                     <a href={`/taskedit/${result.parentid}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={`TaskID#${result.parentid}`}>
                       <GiFiles style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
@@ -195,7 +195,7 @@ const DBSearchComponentBanner = () => {
               return (
                 <div className="dbsearchhover" key={result.id}>
                   {/* Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>HOWTO document</b>:&nbsp;&nbsp; */}
-                  <div className="Font-Segoe-Small-Howto">
+                  <div className="Font-Segoe-Small-Howto">&nbsp;&nbsp;&nbsp;
                     <BsPatchQuestion style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                     <a href={`/howtoedit/${result.howto_id}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.howto_summary}>
                       <b>{highlightKeyword(result.howto_name, searchQuery)}</b>
@@ -207,7 +207,7 @@ const DBSearchComponentBanner = () => {
               return (
                 <div className="dbsearchhover" key={result.id}>
                   {/* Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Step Name</b> in a HOWTO document: */}
-                  <div className="Font-Segoe-Small-Howto">
+                  <div className="Font-Segoe-Small-Howto">&nbsp;&nbsp;&nbsp;
                     <BsPatchQuestion style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />
                     <IoFootstepsSharp style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                     <b>{highlightKeyword(result.step_name, searchQuery)}</b> which has a Step Objective to: <i>" {result.step_obj} " </i>
@@ -218,7 +218,7 @@ const DBSearchComponentBanner = () => {
               return (
                 <div className="dbsearchhover" key={result.id}>
                   {/* Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Step Record</b>:&nbsp;&nbsp; */}
-                  <div className="Font-Segoe-Small-Howto">
+                  <div className="Font-Segoe-Small-Howto">&nbsp;&nbsp;&nbsp;
                     <BsPatchQuestion style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />
                     <IoFootstepsSharp style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />
                     <GiFiles style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
