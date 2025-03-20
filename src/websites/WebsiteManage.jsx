@@ -78,7 +78,8 @@ export default function WebsiteManage(props) {
 
   return (
 
-    <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
+    // <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
+        <div>&nbsp; &nbsp;
 
       <div onClick={toggleAccordion}>
         &nbsp; &nbsp;
@@ -100,14 +101,12 @@ export default function WebsiteManage(props) {
         </thead>
 
         <tbody>
-          {/* {websitedata.map((row) => { */}
           {websiterootdata.map((row) => {
 
             return (
               <tr key={row.websiteId}>
                 <td>
                   <>
-
                     {row.websiteId === editing ?
                       (
                         <>
@@ -124,7 +123,7 @@ export default function WebsiteManage(props) {
                   </>
                 </td>
 
-                <td className="asmshover">{row.websiteId === editing ? (<input style={{ height: '30px', width: '380px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_name} onChange={(e) => setWebsite_name(e.target.value)} />) : (<a href={row.websiteUrl} target="_blank" rel="noreferrer">{row.websiteName}</a>)}</td>
+                <td>{row.websiteId === editing ? (<input style={{ height: '30px', width: '380px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_name} onChange={(e) => setWebsite_name(e.target.value)} />) : (<a href={row.websiteUrl} target="_blank" rel="noreferrer">{row.websiteName}</a>)}</td>
                 <td className="asmshover">{row.websiteId === editing ? (<textarea style={{ height: '30px', width: '780px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_desc} onChange={(e) => setWebsite_desc(e.target.value)} />) : (row.websiteDesc)}</td>
                 <td className="asmshover">{row.websiteId === editing ? (<input style={{ height: '30px', width: '380px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_url} onChange={(e) => setWebsite_url(e.target.value)} />) : "URL is te lank"}</td>
                 <td className="asmshover">{row.websiteId === editing ? (<input style={{ height: '30px', width: '180px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_cat} onChange={(e) => setWebsite_cat(e.target.value)} />) : (row.websiteCat)}</td>

@@ -86,7 +86,6 @@ export default function HowtoManage() {
 
     <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
     
-      <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
         &nbsp; &nbsp; <a data-tooltip-id="insert" data-tooltip-content="Amend">
           <BsPatchQuestion style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>
@@ -109,7 +108,7 @@ export default function HowtoManage() {
                 {howtorootdata.map((row) => {
                   return (
                     <tr key={row.howto_id}>
-                      <td className="Table6 td ">
+                      <td className="Table6 td">
                         <>
                           <Tooltip id="edit" />
                           <Tooltip id="commit" />

@@ -19,9 +19,9 @@ export default function HomePage22(props) {
   const [showHowtoEdit, setShowHowtoEdit] = useState(false);
   const [howtoIdd, setHowtoIdd] = useState(null);
   const { websiterootdata, loading, error } = useWebsiteApi(); //gebruik van die nuwe useContext :-)
-  const { cyclopediarootdata } = useCyclopediaApi(); //gebruik van die nuwe useContext :-)
+  // const { cyclopediarootdata } = useCyclopediaApi(); //gebruik van die nuwe useContext :-)
   const { howtorootdata } = useHowtoApi(); //gebruik van die nuwe useContext :-)
-
+  const [ twentyRandomRecords, setTwentyRandomRecords] = useState([]);
   const navigate = useNavigate();
 
 
@@ -31,6 +31,17 @@ export default function HomePage22(props) {
       .then((response) => {
         const sortedtaskdata = response.data.sort((b, a) => b.taskname.localeCompare(a.taskname));
         setTaskdata(sortedtaskdata);
+      })
+      .catch((e) => console.error(e));
+  }, [props.checkForRecords]);
+
+  useEffect(() => {
+    // axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks')
+    // axios('http://localhost:8000/api/v1/cyclopedia/random20')
+      axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/random20')
+      .then((response) => {
+        const twentyRandomRecordsAPI = response.data;
+        setTwentyRandomRecords(twentyRandomRecordsAPI);
       })
       .catch((e) => console.error(e));
   }, [props.checkForRecords]);
@@ -125,11 +136,11 @@ export default function HomePage22(props) {
     const [selectedLetter, setSelectedLetter] = useState(null);
 
     // Assuming cyclopediadata is an array of objects with a property 'cyclopediaName'
-    const filteredData = selectedLetter ? cyclopediarootdata.filter((rowc) => rowc.cyclopediaName && rowc.cyclopediaName.startsWith(selectedLetter)) : cyclopediarootdata;
+    // const filteredData = selectedLetter ? cyclopediarootdata.filter((rowc) => rowc.cyclopediaName && rowc.cyclopediaName.startsWith(selectedLetter)) : cyclopediarootdata;
 
-    const firstTwentyCyclopediaRecords = filteredData.slice(0, 40);
+    // const firstTwentyCyclopediaRecords = filteredData.slice(0, 40);
 
-    const alphabet = 'A-B-C-D-E-F-G-H-I-J-K-L-M-N-O-P-Q-R-S-T-U-V-W-X-Y-Z';
+    // const alphabet = 'A-B-C-D-E-F-G-H-I-J-K-L-M-N-O-P-Q-R-S-T-U-V-W-X-Y-Z';
 
     const groupedData2 = {};
     taskdata.forEach((row) => {
@@ -149,8 +160,9 @@ export default function HomePage22(props) {
 
         <div>
           <div className='Font-Spacer-White'>Make this spacer white</div>
+          
           <div className="Font-Segoe-Large-FP">
-          {cyclopediarootdata.length}:
+          {/* {cyclopediarootdata.length}:
             {alphabet.split('').map((letter, index) => (
               <span
                 style={{ cursor: 'pointer' }}
@@ -160,7 +172,9 @@ export default function HomePage22(props) {
               >
                 &nbsp;&nbsp;{letter}
               </span>
-            ))}
+            )
+          )
+          } */}
             {/* &nbsp; &nbsp; ({cyclopediarootdata.length}) */}
           </div>
 
@@ -168,7 +182,10 @@ export default function HomePage22(props) {
 
           <table className="Table-home-centre">
             <tbody>
-              {firstTwentyCyclopediaRecords.map((rowc, index) => (
+              {/* {firstTwentyCyclopediaRecords.map((rowc, index) => ( */}
+              
+              {twentyRandomRecords.map((rowc, index) => (
+  
                 <tr key={index}>
                   <td className="fphover2">
                     {rowc && (
