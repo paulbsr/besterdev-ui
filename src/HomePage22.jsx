@@ -156,7 +156,7 @@ export default function HomePage22(props) {
       <>
         <DBSearchComponent />
 
-        <TaskSummaryHomepage />
+        {/* <TaskSummaryHomepage /> */}
 
         <div>
           <div className='Font-Spacer-White'>Make this spacer white</div>
