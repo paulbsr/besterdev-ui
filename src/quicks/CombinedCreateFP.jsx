@@ -134,7 +134,9 @@ export default function CombinedCreateFP() {
     <div className='Font-Verdana-Small-Postgres'>
       
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>      <DBSearchComponentBanner />
+      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>      
+        
+        <DBSearchComponentBanner />
 
         {/* <b onClick={() => setExpandedCyclopedia(!isExpandedCyclopedia)}>&nbsp;&nbsp;&nbsp;&nbsp;
           <GiHummingbird style={{ color: '#336791', fontSize: '25px' }} />
@@ -161,7 +163,7 @@ export default function CombinedCreateFP() {
           <div>&nbsp;</div>
           <img alt="spacer" src={spacer} />Cyclopedia:&nbsp;&nbsp;
           <input
-            style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '500px' }}
+            style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '500px' }}
             placeholder="Required"
             type="text"
             value={cyclopediaName}
@@ -171,7 +173,7 @@ export default function CombinedCreateFP() {
           <img alt="spacer" src={spacer} />URL:&nbsp;&nbsp;
 
           <input
-            style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '865px' }}
+            style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '865px' }}
             type="text"
             value={cyclopediaUrl}
             onChange={(e) => setCyclopediaUrl(e.target.value)}
@@ -180,7 +182,7 @@ export default function CombinedCreateFP() {
           <button
             className="Font-Verdana-Small-Postgres"
             type="submit"
-            style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>
+            style={{ marginLeft: '10px', height: '19.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>
             Memorialize
           </button>
 
@@ -188,7 +190,7 @@ export default function CombinedCreateFP() {
           <div>&nbsp;</div>
           <img alt="spacer" src={spacer} />Description:&nbsp;&nbsp;
           <textarea
-            style={{ fontFamily: 'Verdana', height: '50px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '2px', width: '1450px' }}
+            style={{ fontFamily: 'Verdana', height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '2px', width: '1450px' }}
             placeholder="Required"
             value={cyclopediaDesc}
             onChange={(e) => setCyclopediaDesc(e.target.value)}
@@ -203,7 +205,7 @@ export default function CombinedCreateFP() {
           <div>&nbsp;</div>
           <img alt="spacer" src={spacer} />Website:&nbsp;&nbsp;
           <input
-            style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '500px' }}
+            style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '500px' }}
             placeholder="Required"
             type="text"
             value={websiteName}
@@ -212,7 +214,7 @@ export default function CombinedCreateFP() {
           />
           <img alt="spacer" src={spacer} />URL:&nbsp;&nbsp;
           <input
-            style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '650px' }}
+            style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '650px' }}
             placeholder="Required"
             type="text"
             value={websiteUrl}
@@ -231,7 +233,7 @@ export default function CombinedCreateFP() {
             }}
             id="dropdown"
             style={{
-              height: '27.5px',
+              height: '19.5px',
               border: '1.25px solid #336791',
               borderRadius: '4px',
               padding: 0,
@@ -255,7 +257,7 @@ export default function CombinedCreateFP() {
           <button
             className="Font-Verdana-Small-Postgres"
             type="submit"
-            style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>
+            style={{ marginLeft: '10px', height: '19.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>
             Memorialize
           </button>
         </form>
@@ -272,7 +274,7 @@ export default function CombinedCreateFP() {
 
                   <img alt="spacer" src={spacer} />Module:&nbsp;&nbsp;
                   <select
-                    style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '150px' }} placeholder="Domain" id="dropdown" onChange={dropdownChange} >
+                    style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '150px' }} placeholder="Domain" id="dropdown" onChange={dropdownChange} >
                     <option disabled selected value="Domain">Module</option>
                     <option value="113092" data-value2="NetworkSecurity">NetworkSecurity</option>
                     <option value="14718" data-value2="EnterpriseSecurity">EnterpriseSecurity</option>
@@ -285,11 +287,11 @@ export default function CombinedCreateFP() {
                   <div>
 
                     <img alt="spacer" src={spacer} />Task Name:&nbsp;&nbsp;
-                    <input style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '400px' }} placeholder="Required" type="text" onChange={(event) => setTaskname(event.target.value)} required />
+                    <input style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '400px' }} placeholder="Required" type="text" onChange={(event) => setTaskname(event.target.value)} required />
                   </div>
                   <div>
                     <img alt="spacer" src={spacer} />Description:&nbsp;&nbsp;
-                    <input style={{ height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '550px' }} type="text" onChange={(event) => setTaskrequirement(event.target.value)} />
+                    <input style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '550px' }} type="text" onChange={(event) => setTaskrequirement(event.target.value)} />
                   </div>
 
                   <div>
@@ -308,11 +310,11 @@ export default function CombinedCreateFP() {
 
                   <div>
                     &nbsp; &nbsp; &nbsp; &nbsp;
-                    {/* <button className="Font-Segoe-Small" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }} onClick={() => setTaskstatus("START")}>Commit new Task</button> */}
+                    {/* <button className="Font-Segoe-Small" type="submit" style={{ marginLeft: '10px', height: '19.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }} onClick={() => setTaskstatus("START")}>Commit new Task</button> */}
                     <button
                       className="Font-Segoe-Small"
                       type="submit"
-                      style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>
+                      style={{ marginLeft: '10px', height: '19.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>
                       Memorialize
                     </button>
 

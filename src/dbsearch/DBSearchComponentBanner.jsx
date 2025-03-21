@@ -82,8 +82,9 @@ const DBSearchComponentBanner = () => {
   return (
 
   <form onSubmit={handleSearch}><div  style={{ color: '#ffffff' }}>&nbsp;&nbsp;</div>
-        &nbsp;&nbsp;&nbsp;&nbsp;<input
-        style={{ height: '19.5px', border: '0.75px solid #4D4D4D', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input
+        style={{ height: '19.5px', border: '0.75px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }}
         placeholder="Search"
         type="text"
         value={searchQuery}
@@ -92,7 +93,7 @@ const DBSearchComponentBanner = () => {
       />
       <button
         type="submit"
-        style={{ marginLeft: '10px', height: '19.5px', border: '1px solid #4D4D4D', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#4D4D4D', cursor: 'pointer' }}
+        style={{ marginLeft: '10px', height: '19.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#336791', cursor: 'pointer' }}
       >
         Search
       </button>
@@ -100,7 +101,7 @@ const DBSearchComponentBanner = () => {
       <button
         type="button"
         onClick={handleCancel}
-        style={{ marginLeft: '10px', height: '20.5px', border: '1px solid #4D4D4D', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#4D4D4D', cursor: 'pointer' }}
+        style={{ marginLeft: '10px', height: '20.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#336791', cursor: 'pointer' }}
       >
         Clear
       </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

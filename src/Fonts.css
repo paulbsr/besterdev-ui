@@ -150,10 +150,6 @@
     color: grey
 }
 
-
-
-
-
 .Font-Segoe-Small {
     font-family: "Segoe UI";
     font-size: Small;
@@ -223,10 +219,6 @@
     font-weight: n;
 }
 
-
-/* .Table-Column-200 {width: 200px;} */
-
-
 .Table6 th {
     background-color: #f7f4f3;
     padding: 4px;
@@ -241,8 +233,6 @@
     font-size: small;
     /* min-width: 50%; */
 }
-
-
 
 .Table4 th {
     background-color: #f7f4f3;
@@ -287,8 +277,6 @@
     font-size: 35px;
     border-radius: 8px;
 }
-
-
 
 .Table-home-left{
     background-color: #ffffff;
@@ -457,7 +445,6 @@
     padding-right: 5px;
 }
 
-
 .banner-light {
     background-color: #f7f4f3;
     padding: 1px;
@@ -476,12 +463,7 @@
     text-align: left;
   }
 
- 
-  
-
-
-
-.gradient-line-linkedin {
+ .gradient-line-linkedin {
     width: 100%;
     height: 3px; 
     background: linear-gradient(to right, #0A66C2, #f5f9fa);
@@ -516,16 +498,6 @@
     height: 1px; 
     background: linear-gradient(to right, #cfcbd1, #ffffff);
   }
-
-  .spacer-light {
-    font-family: "Segoe UI";
-    font-size: x-large;
-    color: #f7f4f3
-}
-
-
-
-
 
 .tooltip {
     background-color: #333;
@@ -582,12 +554,12 @@
   .marquee {
     width: 100%;
     white-space: nowrap;
-    animation: marquee 10s linear infinite;
+    animation: marquee 20s linear infinite;
   }
   
   .marquee span {
     display: inline-block;
-    padding-right: 10px; /* Adjust spacing between texts */
+    padding-right: 19px; /* Adjust spacing between texts */
   }
   
   @keyframes marquee {
@@ -618,7 +590,6 @@
     border: 1px solid #336791;
 }
 
- 
 .Table8hover td:hover {
     /* color: #336791; background-color: #f7f4f3; */
     color: #336791;
@@ -666,11 +637,9 @@
     white-space: nowrap;
 }
 
-
-
-
 .start-color {background-color: rgb(192, 192, 192, .50);}
 .wip-color {background-color: rgb(15, 158, 213, .25);}
 .done-color {background-color: rgb(0, 180, 0, .25);}
 .problem-color {background-color: rgb(190, 0, 0, .25);}
 .fill {width: 99%;}
+
