@@ -36,9 +36,9 @@ export default function HomePage22(props) {
   }, [props.checkForRecords]);
 
   useEffect(() => {
-    // axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks')
-    // axios('http://localhost:8000/api/v1/cyclopedia/random20')
-      axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/random40')
+    // axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/alphabet/random')
+    axios('http://localhost:8000/api/v1/cyclopedia/alphabet/random')
+      // axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/random40')
       .then((response) => {
         const fourtyRandomRecordsAPI = response.data;
         setFourtyRandomRecords(fourtyRandomRecordsAPI);
@@ -133,7 +133,7 @@ export default function HomePage22(props) {
   };
 
   const InnerTableCentre = () => {
-    const [selectedLetter, setSelectedLetter] = useState(null);
+    // const [selectedLetter, setSelectedLetter] = useState(null);
 
     // Assuming cyclopediadata is an array of objects with a property 'cyclopediaName'
     // const filteredData = selectedLetter ? cyclopediarootdata.filter((rowc) => rowc.cyclopediaName && rowc.cyclopediaName.startsWith(selectedLetter)) : cyclopediarootdata;
@@ -156,7 +156,7 @@ export default function HomePage22(props) {
       <>
         <DBSearchComponent />
 
-        {/* <TaskSummaryHomepage /> */}
+        <TaskSummaryHomepage />
 
         <div>
           <div className='Font-Spacer-White'>Make this spacer white</div>

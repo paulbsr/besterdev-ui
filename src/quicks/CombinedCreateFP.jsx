@@ -317,9 +317,6 @@ export default function CombinedCreateFP() {
                       style={{ marginLeft: '10px', height: '19.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>
                       Memorialize
                     </button>
-
-
-
                   </div>
                 </div>
               </div>

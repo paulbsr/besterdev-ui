@@ -3,15 +3,13 @@ import axios from 'axios';
 import '../Fonts.css';
 import 'react-tooltip/dist/react-tooltip.css'
 import { useNavigate } from 'react-router-dom'; 
-import { FaReact, FaJava, FaNodeJs, FaAws, FaPeopleArrows, FaFileContract, FaUserGraduate, FaConfluence } from 'react-icons/fa';
+import { FaReact, FaJava, FaNodeJs, FaPeopleArrows, FaFileContract, FaUserGraduate, FaConfluence } from 'react-icons/fa';
 import { BiLogoPostgresql, BiLogoHeroku, BiLogoGithub, BiLogoGoogle } from "react-icons/bi";
-import { SiSpringboot, SiFirebase, SiSwagger, SiJavascript, SiJira, SiAuth0, SiAwsamplify, SiAmazonrds } from "react-icons/si";
+import { SiSpringboot, SiFirebase, SiJavascript, SiJira, SiAwsamplify } from "react-icons/si";
 import { MdManageAccounts, MdTask } from "react-icons/md";
-import { TbBrandOauth } from "react-icons/tb";
 import { BsPatchQuestion, BsPeopleFill } from "react-icons/bs";
 import { IoHome, IoPieChartSharp } from "react-icons/io5";
 import { GiRapidshareArrow, GiGiftOfKnowledge, GiSpiderWeb } from "react-icons/gi";
-import { IoMdInfinite } from "react-icons/io";
 
 
   // const BannerLight = ({ user }) => {
@@ -66,11 +64,11 @@ import { IoMdInfinite } from "react-icons/io";
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       {/* <a data-tooltip-id="insert" data-tooltip-content="Login" onClick={handleNavigateLogin}><SlLogin style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
       <a data-tooltip-id="insert" data-tooltip-content="Home" onClick={handleNavigateHome}><IoHome style={{ color: '#D5441C', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Jira Your work (atlassian)" href="https://besterdev.atlassian.net/jira/your-work" target="_blank" rel="noreferrer"><SiJira style={{ color: '#116BE8', fontSize: '26px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Confluence (atlassian)" href="https://besterdev.atlassian.net/wiki/home" target="_blank" rel="noreferrer"><FaConfluence style={{ color: '#116BE8', fontSize: '26px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Jira" href="https://besterdev.atlassian.net/jira/your-work" target="_blank" rel="noreferrer"><SiJira style={{ color: '#336791', fontSize: '26px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Confluence" href="https://besterdev.atlassian.net/wiki/home" target="_blank" rel="noreferrer"><FaConfluence style={{ color: '#336791', fontSize: '26px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="MyCV" onClick={handleNavigateMyCV}><FaFileContract style={{ color: '#336791', fontSize: '26px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Web Resources" onClick={handleNavigateResources}><GiSpiderWeb style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="WhatExactlyIs? Cyclopedia" onClick={handleNavigateCyclopedia}><GiGiftOfKnowledge style={{ color: '#336791', fontSize: '31px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Cyclopedia" onClick={handleNavigateCyclopedia}><GiGiftOfKnowledge style={{ color: '#336791', fontSize: '31px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Howtos" onClick={handleNavigateHowtoManage}><BsPatchQuestion style={{ color: '#336791', fontSize: '29px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Hunt" onClick={handleNavigateHunt}><FaPeopleArrows style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Candidates" onClick={handleNavigateManage}><MdManageAccounts style={{ color: '#336791', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
