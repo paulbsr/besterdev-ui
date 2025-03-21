@@ -16,7 +16,8 @@ export default function CyclopediaTicker(props) {
           setFourtyRandomRecords(fourtyRandomRecordsAPI);
         })
         .catch((e) => console.error(e));
-      }, [props.checkForRecords]);
+      // }, [props.checkForRecords]);
+    }, []);
 
 
 

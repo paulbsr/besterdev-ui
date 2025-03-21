@@ -66,8 +66,6 @@ export default function CyclopediaEdit(props) {
             setCyclopediadata(sortedfilteredcyclopedia);
         }
     }, [cyclopediarootdata, props.cyclopediaId, setRefreshCyclopediarootdata]);
-
-
     if (loading) return <div>Loading Cyclopedias...</div>;
     if (error) return <div>Error: {error.message}</div>;
 
@@ -114,7 +112,7 @@ export default function CyclopediaEdit(props) {
                                                                         onClick={() => onEditCancel()}>Revert
                                                                     </button>&nbsp;&nbsp;&nbsp;
                                                                 </Tooltip>
-                                                             
+
                                                                 <div></div>
 
                                                                 <i>Cyclopedia Name:</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -147,7 +145,7 @@ export default function CyclopediaEdit(props) {
                                                                     style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '1px', width: '910px' }}
                                                                 />
                                                                 <div>&nbsp;&nbsp;</div>
-                                                                 <div>
+                                                                <div>
                                                                     {item.cyclopediaImageEntity && item.cyclopediaImageEntity.cyclopediaImage ?
                                                                         (
                                                                             <img src={`data:image/jpeg;base64,${item.cyclopediaImageEntity.cyclopediaImage}`} alt={item.cyclopediaName} style={{ maxWidth: '100%', height: 'auto' }} />
@@ -167,8 +165,8 @@ export default function CyclopediaEdit(props) {
                                                         :
                                                         (
                                                             <>
-                                                            <div>&nbsp;</div>
-                                                            <div>&nbsp;</div>
+                                                                <div>&nbsp;</div>
+                                                                <div>&nbsp;</div>
                                                                 <Tooltip title={`Cyclopedia#${item.cyclopediaId}`} placement="top-end">
                                                                     <button style={{ height: '20px', width: '25px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(item) }}>
                                                                         < GiGiftOfKnowledge style={{ color: '#4D4D4D', fontSize: '40px', cursor: 'pointer' }} /></button>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -185,11 +183,11 @@ export default function CyclopediaEdit(props) {
 
                                                                 <CyclopediaImageUpload cyclopedia_id_fk={item.cyclopediaId} cyclopedia_name={item.cyclopediaName} cyclopedia_id={item.cyclopediaId} />
                                                                 <div>
-                                                                <div>
-                                                                <GiSpiderWeb style={{ color: '#4D4D4D', fontSize: '19px' }} />&nbsp;
-                                                                    <a className="Font-Segoe-Medium" href={item.cyclopediaUrl} target="_blank" rel="noreferrer">{item.cyclopediaUrl}</a></div>
-                                                                <div>&nbsp;</div>
-                                                                <div>&nbsp;</div>
+                                                                    <div>
+                                                                        <GiSpiderWeb style={{ color: '#4D4D4D', fontSize: '19px' }} />&nbsp;
+                                                                        <a className="Font-Segoe-Medium" href={item.cyclopediaUrl} target="_blank" rel="noreferrer">{item.cyclopediaUrl}</a></div>
+                                                                    <div>&nbsp;</div>
+                                                                    <div>&nbsp;</div>
                                                                     {item.cyclopediaImageEntity && item.cyclopediaImageEntity.cyclopediaImage ?
                                                                         (
                                                                             <img
@@ -207,10 +205,10 @@ export default function CyclopediaEdit(props) {
                                                                 <div>&nbsp;</div>
                                                                 <div>
                                                                     <textarea
-                                                                    required
-                                                                    defaultValue={item.cyclopediaDesc}
-                                                                    style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '400px', border: '1.25px solid #FFFFFF', borderRadius: '4px', padding: 0, paddingLeft: '1px', width: '1300px' }}
-                                                                />
+                                                                        required
+                                                                        defaultValue={item.cyclopediaDesc}
+                                                                        style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '400px', border: '1.25px solid #FFFFFF', borderRadius: '4px', padding: 0, paddingLeft: '1px', width: '1300px' }}
+                                                                    />
                                                                 </div>
                                                             </>
                                                         )

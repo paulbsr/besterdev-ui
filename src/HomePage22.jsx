@@ -21,7 +21,7 @@ export default function HomePage22(props) {
   const { websiterootdata, loading, error } = useWebsiteApi(); //gebruik van die nuwe useContext :-)
   // const { cyclopediarootdata } = useCyclopediaApi(); //gebruik van die nuwe useContext :-)
   const { howtorootdata } = useHowtoApi(); //gebruik van die nuwe useContext :-)
-  const [ twentyRandomRecords, setTwentyRandomRecords] = useState([]);
+  const [ fourtyRandomRecords, setFourtyRandomRecords] = useState([]);
   const navigate = useNavigate();
 
 
@@ -38,21 +38,21 @@ export default function HomePage22(props) {
   useEffect(() => {
     // axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks')
     // axios('http://localhost:8000/api/v1/cyclopedia/random20')
-      axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/random20')
+      axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/random40')
       .then((response) => {
-        const twentyRandomRecordsAPI = response.data;
-        setTwentyRandomRecords(twentyRandomRecordsAPI);
+        const fourtyRandomRecordsAPI = response.data;
+        setFourtyRandomRecords(fourtyRandomRecordsAPI);
       })
       .catch((e) => console.error(e));
   }, [props.checkForRecords]);
 
 
-  const shuffleCyclopediaArray = (array) => {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-  };
+  // const shuffleCyclopediaArray = (array) => {
+  //   for (let i = array.length - 1; i > 0; i--) {
+  //     const j = Math.floor(Math.random() * (i + 1));
+  //     [array[i], array[j]] = [array[j], array[i]];
+  //   }
+  // };
 
   const handleLinkClick = (howtoId) => {
     setHowtoIdd(howtoId);
@@ -184,7 +184,7 @@ export default function HomePage22(props) {
             <tbody>
               {/* {firstTwentyCyclopediaRecords.map((rowc, index) => ( */}
               
-              {twentyRandomRecords.map((rowc, index) => (
+              {fourtyRandomRecords.map((rowc, index) => (
   
                 <tr key={index}>
                   <td className="fphover2">

@@ -188,7 +188,7 @@ export default function CombinedCreateFP() {
 
 
           <div>&nbsp;</div>
-          <img alt="spacer" src={spacer} />Description:&nbsp;&nbsp;
+          <img alt="spacer" src={spacer} />Description:&nbsp;
           <textarea
             style={{ fontFamily: 'Verdana', height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '2px', width: '1450px' }}
             placeholder="Required"
@@ -203,7 +203,7 @@ export default function CombinedCreateFP() {
       {isExpandedWebsite && (
         <form onSubmit={handleSubmitWebsite}>
           <div>&nbsp;</div>
-          <img alt="spacer" src={spacer} />Website:&nbsp;&nbsp;
+          <img alt="spacer" src={spacer} />Website:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <input
             style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '500px' }}
             placeholder="Required"
@@ -272,7 +272,7 @@ export default function CombinedCreateFP() {
               <div>
                 <div style={{ display: "flex" }}>
 
-                  <img alt="spacer" src={spacer} />Module:&nbsp;&nbsp;
+                  <img alt="spacer" src={spacer} />Module:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <select
                     style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '150px' }} placeholder="Domain" id="dropdown" onChange={dropdownChange} >
                     <option disabled selected value="Domain">Module</option>
