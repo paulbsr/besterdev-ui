@@ -47,9 +47,9 @@ const BannerWhite = () => {
       <TbLetterT style={{color: '#336791', fontSize: '40px' }}/>
       <TbLetterE style={{color: '#336791', fontSize: '40px' }}/>
       <TbLetterR style={{color: '#336791', fontSize: '40px' }}/>
-      <TbLetterS style={{color: '#D5441C', fontSize: '40px' }}/>
+      <TbLetterD style={{color: '#D5441C', fontSize: '40px' }}/>
       <TbLetterE style={{color: '#D5441C', fontSize: '40px' }}/>
-      <TbLetterC style={{color: '#D5441C', fontSize: '40px' }}/>
+      <TbLetterV style={{color: '#D5441C', fontSize: '40px' }}/>
 
       &nbsp; &nbsp; &nbsp;
       &nbsp; &nbsp; &nbsp;

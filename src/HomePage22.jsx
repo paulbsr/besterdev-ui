@@ -10,6 +10,8 @@ import { useWebsiteApi } from './websites/WebSiteAPIProvider';
 import { useCyclopediaApi } from './cyclopedia/CyclopediaAPIProvider';
 import { useHowtoApi } from './howto/HowtoAPIProvider';
 import { useNavigate } from 'react-router-dom';
+import DhParamsSocket from './websockets/WebSocketEvent';
+import WebSocketEvent from './websockets/WebSocketEvent';
 
 
 export default function HomePage22(props) {
@@ -286,7 +288,7 @@ export default function HomePage22(props) {
               <img src={Image} />
             </td>
             <td style={{ width: '1%' }}></td>
-            <td style={{ width: '25%' }}></td>
+            <td style={{ width: '25%' }}><WebSocketEvent/></td>
           </tr>
         </tbody>
       </table>
@@ -312,7 +314,7 @@ export default function HomePage22(props) {
   );
 
   return (
-    <div className='Font-Verdana-Medium-Postgres'>
+    <div>
       &nbsp; &nbsp;
       <OuterTable />
       <table style={{ width: '100%' }}>

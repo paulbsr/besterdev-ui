@@ -118,17 +118,17 @@ export default function PeopleScorecard() {
                                 <tr>
                                     <th style={{ width: '1px' }}></th>
                                     <th style={{ width: '400px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Tasks</th>
-                                    <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Bren Keenan</th>
-                                    <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Brian O'Rourke</th>
+                                    {/* <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Bren Keenan</th> */}
+                                    {/* <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Brian O'Rourke</th> */}
                                     <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Conor Lynch</th>
-                                    <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Dwayne Patel</th>
+                                    <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Claire Farrell</th>
                                     <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Felipe Mantov</th>
-                                    <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Keex Nenyiaba</th>
+                                    {/* <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Keex Nenyiaba</th> */}
                                     <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Leo Pinto</th>
                                     <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Monique Borje</th>
-                                    <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Saoirse Seeber</th>
+                                    {/* <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Saoirse Seeber</th> */}
                                     <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Shikha Seth</th>
-                                    <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Simon Dowling</th>
+                                    {/* <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Simon Dowling</th> */}
                                     <th style={{ width: '10px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Thiago Cunha</th>
                                 </tr>
                             </thead>
@@ -147,17 +147,17 @@ export default function PeopleScorecard() {
                                             </table>
                                         </div>
                                     </td>
-                                    <td><ImageAvatar_Bren /></td>
-                                    <td><ImageAvatar_Brian /></td>
+                                    {/* <td><ImageAvatar_Bren /></td> */}
+                                    {/* <td><ImageAvatar_Brian /></td> */}
                                     <td><ImageAvatar_Conor /></td>
                                     <td><ImageAvatar_Dwayne /></td>
                                     <td><ImageAvatar_Felipe /></td>
-                                    <td><ImageAvatar_Keex /></td>
+                                    {/* <td><ImageAvatar_Keex /></td> */}
                                     <td><ImageAvatar_Leo /></td>
                                     <td><ImageAvatar_Monique /></td>
-                                    <td><ImageAvatar_Saoirse /></td>
+                                    {/* <td><ImageAvatar_Saoirse /></td> */}
                                     <td><ImageAvatar_Shikha /></td>
-                                    <td><ImageAvatar_Simon /></td>
+                                    {/* <td><ImageAvatar_Simon /></td> */}
                                     <td><ImageAvatar_Thiago /></td>
                                 </tr>
 
@@ -190,17 +190,17 @@ export default function PeopleScorecard() {
                                             (
                                                 <MouseoverPopover see={row.taskName} read={row.taskDescription}></MouseoverPopover>)}
                                         </td>
-                                        <td style={{ backgroundColor: getStatusColor(row.status_bren_keenan) }}><MouseoverPopover see={<PeopleScorecardUpdate id={row.id} person={"Bren"} comment={row.comment_bren_keenan} status={row.status_bren_keenan} setCheckforRecords={setCheckForRecords} checkForRecords={checkForRecords} alertHandler={alertCtx} />} read={row.comment_bren_keenan} /></td>
-                                        <td style={{ backgroundColor: getStatusColor(row.status_brian_orourke) }}><MouseoverPopover see={<PeopleScorecardUpdate id={row.id} person={"Brian"} comment={row.comment_brian_orourke} status={row.status_brian_orourke} setCheckforRecords={setCheckForRecords} checkForRecords={checkForRecords} alertHandler={alertCtx} />} read={row.comment_brian_orourke} /></td>
+                                        {/* <td style={{ backgroundColor: getStatusColor(row.status_bren_keenan) }}><MouseoverPopover see={<PeopleScorecardUpdate id={row.id} person={"Bren"} comment={row.comment_bren_keenan} status={row.status_bren_keenan} setCheckforRecords={setCheckForRecords} checkForRecords={checkForRecords} alertHandler={alertCtx} />} read={row.comment_bren_keenan} /></td> */}
+                                        {/* <td style={{ backgroundColor: getStatusColor(row.status_brian_orourke) }}><MouseoverPopover see={<PeopleScorecardUpdate id={row.id} person={"Brian"} comment={row.comment_brian_orourke} status={row.status_brian_orourke} setCheckforRecords={setCheckForRecords} checkForRecords={checkForRecords} alertHandler={alertCtx} />} read={row.comment_brian_orourke} /></td> */}
                                         <td style={{ backgroundColor: getStatusColor(row.status_conor_lynch) }}><MouseoverPopover see={<PeopleScorecardUpdate id={row.id} person={"Conor"} comment={row.comment_conor_lynch} status={row.status_conor_lynch} setCheckforRecords={setCheckForRecords} checkForRecords={checkForRecords} alertHandler={alertCtx} />} read={row.comment_conor_lynch} /></td>
                                         <td style={{ backgroundColor: getStatusColor(row.status_dwayne_patel) }}><MouseoverPopover see={<PeopleScorecardUpdate id={row.id} person={"Dwayne"} comment={row.comment_dwayne_patel} status={row.status_dwayne_patel} setCheckforRecords={setCheckForRecords} checkForRecords={checkForRecords} alertHandler={alertCtx} />} read={row.comment_dwayne_patel} /></td>
                                         <td style={{ backgroundColor: getStatusColor(row.status_felipe_mantov) }}><MouseoverPopover see={<PeopleScorecardUpdate id={row.id} person={"Felipe"} comment={row.comment_felipe_mantov} status={row.status_felipe_mantov} setCheckforRecords={setCheckForRecords} checkForRecords={checkForRecords} alertHandler={alertCtx} />} read={row.comment_felipe_mantov} /></td>
-                                        <td style={{ backgroundColor: getStatusColor(row.status_keex_nenyiaba) }}><MouseoverPopover see={<PeopleScorecardUpdate id={row.id} person={"Keex"} comment={row.comment_keex_nenyiaba} status={row.status_keex_nenyiaba} setCheckforRecords={setCheckForRecords} checkForRecords={checkForRecords} alertHandler={alertCtx} />} read={row.comment_keex_nenyiaba} /></td>
+                                        {/* <td style={{ backgroundColor: getStatusColor(row.status_keex_nenyiaba) }}><MouseoverPopover see={<PeopleScorecardUpdate id={row.id} person={"Keex"} comment={row.comment_keex_nenyiaba} status={row.status_keex_nenyiaba} setCheckforRecords={setCheckForRecords} checkForRecords={checkForRecords} alertHandler={alertCtx} />} read={row.comment_keex_nenyiaba} /></td> */}
                                         <td style={{ backgroundColor: getStatusColor(row.status_leo_pinto) }}><MouseoverPopover see={<PeopleScorecardUpdate id={row.id} person={"Leo"} comment={row.comment_leo_pinto} status={row.status_leo_pinto} setCheckforRecords={setCheckForRecords} checkForRecords={checkForRecords} alertHandler={alertCtx} />} read={row.comment_leo_pinto} /></td>
                                         <td style={{ backgroundColor: getStatusColor(row.status_monique_borje) }}><MouseoverPopover see={<PeopleScorecardUpdate id={row.id} person={"Monique"} comment={row.comment_monique_borje} status={row.status_monique_borje} setCheckforRecords={setCheckForRecords} checkForRecords={checkForRecords} alertHandler={alertCtx} />} read={row.comment_monique_borje} /></td>
-                                        <td style={{ backgroundColor: getStatusColor(row.status_saoirse_seeber) }}><MouseoverPopover see={<PeopleScorecardUpdate id={row.id} person={"Saoirse"} comment={row.comment_saoirse_seeber} status={row.status_saoirse_seeber} setCheckforRecords={setCheckForRecords} checkForRecords={checkForRecords} alertHandler={alertCtx} />} read={row.comment_saoirse_seeber} /></td>
+                                        {/* <td style={{ backgroundColor: getStatusColor(row.status_saoirse_seeber) }}><MouseoverPopover see={<PeopleScorecardUpdate id={row.id} person={"Saoirse"} comment={row.comment_saoirse_seeber} status={row.status_saoirse_seeber} setCheckforRecords={setCheckForRecords} checkForRecords={checkForRecords} alertHandler={alertCtx} />} read={row.comment_saoirse_seeber} /></td> */}
                                         <td style={{ backgroundColor: getStatusColor(row.status_shikha_seth) }}><MouseoverPopover see={<PeopleScorecardUpdate id={row.id} person={"Shikha"} comment={row.comment_shikha_seth} status={row.status_shikha_seth} setCheckforRecords={setCheckForRecords} checkForRecords={checkForRecords} alertHandler={alertCtx} />} read={row.comment_shikha_seth} /></td>
-                                        <td style={{ backgroundColor: getStatusColor(row.status_simon_dowling) }}><MouseoverPopover see={<PeopleScorecardUpdate id={row.id} person={"Simon"} comment={row.comment_simon_dowling} status={row.status_simon_dowling} setCheckforRecords={setCheckForRecords} checkForRecords={checkForRecords} alertHandler={alertCtx} />} read={row.comment_simon_dowling} /></td>
+                                        {/* <td style={{ backgroundColor: getStatusColor(row.status_simon_dowling) }}><MouseoverPopover see={<PeopleScorecardUpdate id={row.id} person={"Simon"} comment={row.comment_simon_dowling} status={row.status_simon_dowling} setCheckforRecords={setCheckForRecords} checkForRecords={checkForRecords} alertHandler={alertCtx} />} read={row.comment_simon_dowling} /></td> */}
                                         <td style={{ backgroundColor: getStatusColor(row.status_thiago_cunha) }}><MouseoverPopover see={<PeopleScorecardUpdate id={row.id} person={"Thiago"} comment={row.comment_thiago_cunha} status={row.status_thiago_cunha} setCheckforRecords={setCheckForRecords} checkForRecords={checkForRecords} alertHandler={alertCtx} />} read={row.comment_thiago_cunha} /></td>
                                     </tr>
 

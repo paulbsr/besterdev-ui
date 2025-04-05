@@ -5,17 +5,12 @@ import GradientLine from '../gradientlines/GradientLine';
 import BannerLight from '../banners/BannerLight';
 import GradientLineThin from '../gradientlines/GradientLineThin';
 import '../Fonts.css'
-import 'react-dropdown/style.css';
-import 'react-tooltip/dist/react-tooltip.css'
-import 'react-toastify/dist/ReactToastify.css';
 import ToastComponent from '../ToastComponent';
 import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import TaskOverview from '../tasks/TaskOverview';
 import { TaskContext } from "../Contexts";
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
-
-
 
 export default function PageTaskManage() {
   const [tasks, setTasks] = useState([]);
