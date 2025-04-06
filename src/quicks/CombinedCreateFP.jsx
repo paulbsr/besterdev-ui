@@ -11,6 +11,7 @@ import { useWebsiteApi } from '../websites/WebSiteAPIProvider';
 import { useCyclopediaApi } from '../cyclopedia/CyclopediaAPIProvider';
 import { GiGiftOfKnowledge } from "react-icons/gi";
 import DBSearchComponentBanner from "../dbsearch/DBSearchComponentBanner";
+import WebSocketTrigger from "../websockets/websockettrigger";
 
 
 export default function CombinedCreateFP() {
@@ -154,6 +155,8 @@ export default function CombinedCreateFP() {
         <span onClick={() => setExpandedTask(!isExpandedTask)}>&nbsp;&nbsp;&nbsp;&nbsp;
           <GiHummingbird style={{ color: '#4D4D4D', fontSize: '25px' }} />
           <MdTask style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} /> Add a Task</span>
+
+          <WebSocketTrigger />
       </div>
 
 

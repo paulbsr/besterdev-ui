@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import SockJS from 'sockjs-client';
 import { Client } from '@stomp/stompjs';
 import '../Fonts.css';
+import { TbBrandSocketIo } from "react-icons/tb";
 
 const WebSocketEvent = () => {
   const [params, setParams] = useState("SocketServer nothing published");
@@ -30,7 +31,8 @@ const WebSocketEvent = () => {
 
   return (
     <div>
-      <td style={{ fontFamily: "Segoe UI", fontSize: "medium", color: "rgb(148, 196, 245)" }}>Last WebSocket Event: {params}</td>
+      <td style={{ fontFamily: "Segoe UI", fontSize: "small", color: "rgb(148, 196, 245)" }}>Last WebSocket Event: <b>{params}</b></td>
+      
     </div>
   );
 };

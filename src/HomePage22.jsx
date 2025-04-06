@@ -10,8 +10,8 @@ import { useWebsiteApi } from './websites/WebSiteAPIProvider';
 import { useCyclopediaApi } from './cyclopedia/CyclopediaAPIProvider';
 import { useHowtoApi } from './howto/HowtoAPIProvider';
 import { useNavigate } from 'react-router-dom';
-import DhParamsSocket from './websockets/WebSocketEvent';
 import WebSocketEvent from './websockets/WebSocketEvent';
+import WebSocketTrigger from './websockets/websockettrigger';
 
 
 export default function HomePage22(props) {
@@ -47,6 +47,18 @@ export default function HomePage22(props) {
       })
       .catch((e) => console.error(e));
   }, [props.checkForRecords]);
+
+  useEffect(() => {
+    axios
+      .get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/triggerwebsocketevent")
+      .then(() => {
+        console.log("WebSocket event triggered.");
+      })
+      .catch((error) => {
+        console.error("Failed to trigger WebSocket event:", error);
+      });
+  }, []);
+
 
 
   // const shuffleCyclopediaArray = (array) => {
