@@ -38,3 +38,47 @@
 // };
 
 // export default WebSocketEvent;
+
+
+import React, { useEffect, useState } from 'react';
+
+const WebSocketEvent = () => {
+  const [params, setParams] = useState("No SocketServer Event");
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const SockJS = require('sockjs-client');
+      const { Client } = require('@stomp/stompjs');
+
+      const socket = new SockJS('https://besterdev-api-13a0246c9cf2.herokuapp.com/ws');
+      const client = new Client({
+        webSocketFactory: () => socket,
+        debug: (str) => console.log(str),
+        onConnect: () => {
+          console.log('Connected to WebSocket');
+          client.subscribe('/topic/websocketmessage', (message) => {
+            const body = message.body;
+            setParams(body);
+          });
+        },
+      });
+
+      client.activate();
+
+      return () => {
+        client.deactivate();
+      };
+    }
+  }, []);
+
+  return (
+    <div>
+      <td style={{ fontFamily: "Segoe UI", fontSize: "small", color: "rgb(148, 196, 245)" }}>
+        Latest WebSocket Event: <b>{params}</b>
+      </td>
+    </div>
+  );
+};
+
+export default WebSocketEvent;
+
