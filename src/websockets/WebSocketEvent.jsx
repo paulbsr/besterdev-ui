@@ -31,7 +31,7 @@ const WebSocketEvent = () => {
 
   return (
     <div>
-      <td style={{ fontFamily: "Segoe UI", fontSize: "small", color: "rgb(148, 196, 245)" }}>Last WebSocket Event: <b>{params}</b></td>
+      <td style={{ fontFamily: "Segoe UI", fontSize: "small", color: "rgb(148, 196, 245)" }}>Latest WebSocket Event: <b>{params}</b></td>
       
     </div>
   );
