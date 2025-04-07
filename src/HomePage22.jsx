@@ -300,8 +300,8 @@ export default function HomePage22(props) {
               <img src={Image} />
             </td>
             <td style={{ width: '1%' }}></td>
-            <td style={{ width: '25%' }}><WebSocketEvent/></td>
-            {/* <td style={{ width: '25%' }}></td> */}
+            {/* <td style={{ width: '25%' }}><WebSocketEvent/></td> */}
+            <td style={{ width: '25%' }}></td>
           </tr>
         </tbody>
       </table>
