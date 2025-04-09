@@ -224,13 +224,14 @@
     padding: 4px;
     font-family: "Verdana";
     font-size: small;
+    font-style: italic;
 }
 
 .Table6 td {
+    font-family: "Segoe UI";
+    font-size: small;
     border: 1px solid rgb(233, 228, 228);
     padding: 4px;
-    font-family: "Verdana";
-    font-size: small;
     /* min-width: 50%; */
 }
 
@@ -368,14 +369,16 @@
 }
 
 .asmshover:hover {
-    /* font-family: "Verdana"; */
-    /* font-size: small; */
-    /* color: #D5441C; */
-    /* background-color: #f7f4f3; */
+    font-family: "Verdana";
+    font-size: small;
+    color: #D5441C;
+    background-color: #f7f4f3;
     /* background-color: #000000; */
-    /* border-radius: 3px; */
-    /* border: 1px solid #336791; */
-    /* padding: 4px; */
+    border-radius: 4px;
+    border: 1px solid #913333;
+    padding: 4px;
+    /* font-style: italic; */
+    /* font-weight: normal; */
 }
 
 .fphover:hover {

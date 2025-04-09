@@ -85,7 +85,7 @@ const WebSocketEvent = () => {
   //   ))}
   // </div>
 
-<div style={{ fontFamily: "Segoe UI", fontSize: "8pt", color: "rgb(77, 77, 77)" }}>
+<div style={{ fontFamily: "Segoe UI", fontSize: "10pt", color: "rgb(3, 25, 48)", fontStyle: "italic" }}>
 {(() => {
   const parts = params.split('|').map(p => p.trim());
   const time = parts.find(p => p.startsWith('Time:'))?.replace('Time:', '').trim();

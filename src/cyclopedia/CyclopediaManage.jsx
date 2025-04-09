@@ -92,7 +92,8 @@ function CyclopediaManage() {
             {cyclopediarootdata.map((row) => {
               return (
                 <tr key={row.cyclopediaId}>
-                  <td className="Table6">
+                  {/* <td className="Table6"> */}
+                  <td>
                     <>
                       <Tooltip id="edit" />
                       <Tooltip id="commit" />
