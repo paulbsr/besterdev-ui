@@ -72,11 +72,38 @@ const WebSocketEvent = () => {
   }, []);
 
   return (
-    <div>
-      <td style={{ fontFamily: "Segoe UI", fontSize: "small", color: "rgb(148, 196, 245)" }}>
-        Latest WebSocket Event: <b>{params}</b>
-      </td>
-    </div>
+    // <div>
+    //   <td style={{ fontFamily: "Segoe UI", fontSize: "small", color: "rgb(148, 196, 245)" }}>
+    //     Latest WebSocket Event: <b>{params}</b>
+    //   </td>
+    // </div>
+
+  //   <div style={{ fontFamily: "Segoe UI", fontSize: "10pt", color: "rgb(148, 196, 245)" }}>
+  //   <div>Latest WebSocket Event:</div>
+  //   {params.split('|').map((item, index) => (
+  //     <div key={index}>{item.trim()}</div>
+  //   ))}
+  // </div>
+
+<div style={{ fontFamily: "Segoe UI", fontSize: "8pt", color: "rgb(77, 77, 77)" }}>
+{(() => {
+  const parts = params.split('|').map(p => p.trim());
+  const time = parts.find(p => p.startsWith('Time:'))?.replace('Time:', '').trim();
+  const name = parts.find(p => p.startsWith('Name:'))?.replace('Name:', '').trim();
+  const desc = parts.find(p => p.startsWith('Desc:'))?.replace('Desc:', '').trim();
+
+  return (
+    <>
+      <div>
+        Latest WebSocket Event: <strong>{time}</strong>
+      </div>
+      <div>
+        <strong>{name}: </strong> {desc}
+      </div>
+    </>
+  );
+})()}
+</div>
   );
 };
 
