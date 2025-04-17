@@ -15,7 +15,9 @@ import { DialogActions } from "@mui/material";
 import Button from "@mui/material/Button";
 import dayjs from "dayjs";
 import ObjectSupport from "dayjs/plugin/objectSupport";
-import { Tooltip } from '@mui/material';
+// import { Tooltip } from '@mui/material';
+import { Tooltip } from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css'
 
 
 

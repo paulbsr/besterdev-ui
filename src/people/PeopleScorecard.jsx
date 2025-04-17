@@ -28,7 +28,9 @@ import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
 import { BsPeopleFill } from "react-icons/bs";
 import GradientLineRusty from "../gradientlines/GradientLineRusty";
-import { Tooltip } from '@mui/material';
+// import { Tooltip } from '@mui/material';
+import { Tooltip } from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css'
 
 
 export default function PeopleScorecard() {
