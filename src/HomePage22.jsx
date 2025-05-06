@@ -296,11 +296,22 @@ export default function HomePage22(props) {
           <tr style={{ height: '20px' }}>
             <td style={{ width: '25%' }}></td>
             <td style={{ width: '1%' }}></td>
-            <td style={{ width: '48%' }}>
-              <img src={Image} />
-            </td>
+            <td style={{ width: '48%' }}><img src={Image} /></td>
             <td style={{ width: '1%' }}></td>
-            <td style={{ width: '25%' }}><WebSocketEvent/></td>
+            <td style={{ width: '25%' }}></td>
+            {/* <td style={{ width: '25%' }}></td> */}
+          </tr>
+        </tbody>
+      </table>
+
+      <table style={{ width: '100%' }}>
+        <tbody>
+          <tr style={{ height: '20px' }}>
+            <td style={{ width: '5%' }}></td>
+            {/* <td style={{ width: '1%' }}></td> */}
+            <td style={{ width: '90%' }}><WebSocketEvent/></td>
+            {/* <td style={{ width: '1%' }}></td> */}
+            <td style={{ width: '5%' }}></td>
             {/* <td style={{ width: '25%' }}></td> */}
           </tr>
         </tbody>

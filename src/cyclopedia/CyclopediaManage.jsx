@@ -95,7 +95,7 @@ function CyclopediaManage() {
                   {/* <td className="Table6"> */}
                   <td>
                     <>
-                      <Tooltip id="edit" />
+                      <Tooltip id="edit"/>
                       <Tooltip id="commit" />
                       <Tooltip id="revert" />
                       <Tooltip id="purge" />

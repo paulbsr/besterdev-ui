@@ -95,9 +95,9 @@ const WebSocketEvent = () => {
   return (
     <>
       <div>
-        Latest WebSocket Event: <strong>{time}</strong>
-      </div>
-      <div>
+        WebSocket Event @ {time} --   
+      {/* </div>
+      <div> */}
         <strong>{name}: </strong> {desc}
       </div>
     </>
