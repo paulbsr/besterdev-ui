@@ -320,17 +320,11 @@ export default function HomePage22(props) {
       <table>
         <tbody>
           <tr>
-            <td style={{ width: '25%' }} className="Table-home-left">
-              <InnerTableLeft />
-            </td>
+            <td style={{ width: '25%' }} className="Table-home-left"><InnerTableLeft /></td>
             <td style={{ width: '1%' }}></td>
-            <td style={{ width: '48%' }} className="Table-home-centre">
-              <InnerTableCentre />
-            </td>
+            <td style={{ width: '48%' }} className="Table-home-centre"><InnerTableCentre /></td>
             <td style={{ width: '1%' }}></td>
-            <td style={{ width: '25%' }} className="Table-home-right">
-              <InnerTableRight />
-            </td>
+            <td style={{ width: '25%' }} className="Table-home-right"><InnerTableRight /></td>
           </tr>
         </tbody>
       </table>

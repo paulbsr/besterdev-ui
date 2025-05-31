@@ -35,6 +35,7 @@ import { HowtoAPIProvider } from './howto/HowtoAPIProvider';
 import { BreakingNewsAPIProvider } from './breakingnews/BreakingNewsAPIProvider';
 import PageCyclopediaEdit from './pages/PageCyclopediaEdit';
 import { Buffer } from 'buffer';
+import PageDHKeyExchange from './pages/PageDHKeyExchange';
 
 
 
@@ -124,6 +125,7 @@ const App = () => {
             <Route path='/peoplescorecard' element={<PagePeopleScorecard />} />
             <Route path='/taskmanage' element={<PageTaskManage />} />
             <Route path='/mycv' element={<PageMyCV />} />
+            <Route path='/dhkeyexchange' element={<PageDHKeyExchange />} />
           </Route>
           <Route path='/taskedit/:task_id' element={<PageTaskEdit />} />
           <Route path='/cyclopediaedit/:cyclopediaId' element={<PageCyclopediaEdit />} />
