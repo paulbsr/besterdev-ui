@@ -39,7 +39,7 @@ function HowtoStepAccordion({ howto_ids }) {
         <table className="Table4" style={{ width: '1350px' }}>
           <thead>
             <tr >
-              <th><BsPatchQuestion style={{ color: '#D5441C', fontSize: '22px', cursor: 'pointer' }} />&nbsp;
+              <th><BsPatchQuestion style={{ color: '#D5441C', fontSize: '22px' }} />&nbsp;
                 {howtodata.howto_name}
                 
                 <div className='Font-Segoe-Medium-Howto-Desc'>{howtodata.howto_desc}</div>
@@ -52,7 +52,7 @@ function HowtoStepAccordion({ howto_ids }) {
             
 
             (
-            <tbody>
+            <tbody>&nbsp;
               {
                  
                   <tr>
