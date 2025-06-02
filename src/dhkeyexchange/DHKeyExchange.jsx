@@ -4,12 +4,16 @@ import '../Fonts.css';
 import 'react-dropdown/style.css';
 import HowtoStepAccordion from '../howto/HowtoStepAccordion';
 import { useWebsiteApi } from '../websites/WebSiteAPIProvider';
+import { BsPatchQuestion } from "react-icons/bs";
+import DHImage from '../graphix/dh2.jpg'
+import DHKeyExchange2 from './DHKeyExchange2';
 
 export default function DHKeyExchange(props) {
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [websitedata1, setWebsitedata1] = useState([]);
   const { websiterootdata, loading, error } = useWebsiteApi(); //gebruik van die nuwe useContext :-)
+    const [howtodata, setHowtoData] = useState([]);
 
   useEffect(() => {
     if (websiterootdata && Array.isArray(websiterootdata)) {
@@ -71,19 +75,21 @@ export default function DHKeyExchange(props) {
           <tr>
             <td style={{ width: '25%' }}></td>
             <td style={{ width: '1%' }}></td>
-            <td style={{ width: '48%' }}></td>
+            <td style={{ width: '48%' }}><img src={DHImage} /></td>
             <td style={{ width: '1%' }}></td>
             <td style={{ width: '25%' }}></td>
           </tr>
         </thead>
+
         <tbody>
+
           <tr>
-            <td style={{ width: '25%' }} className="Table-home-left"><InnerTableLeft /></td>
+            <td style={{ width: '25%' }} className="Table-home-left"><InnerTableLeft />links</td>
             <td style={{ width: '1%' }}></td>
-            <td style={{ width: '48%' }} className="Table-home-centre"><HowtoStepAccordion howto_ids={2852} /></td>
-            {/* <td style={{ width: '48%' }} className="Table-home-centre"><xxxxxxxxxxxxxxxxxxx /></td> */}
+            <td style={{ width: '48%' }} className="Table-home-centre"><DHKeyExchange2 howto_ids={2852} /></td>
             <td style={{ width: '1%' }}></td>
-            <td style={{ width: '25%' }} className="Table-home-right"></td>
+            <td style={{ width: '25%' }} className="Table-home-right">regs</td>
+            
           </tr>
         </tbody>
       </table>

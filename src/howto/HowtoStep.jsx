@@ -73,8 +73,8 @@ export default function HowtoStep({ howto_id, step_id, step_number, step_name, s
               (
                 isExpanded && step_name !== 'DONE' ?
                   <Tooltip title={`Edit Step: ${step_id}`} placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => { handleEdit() }}><BsPencil style={{ color: '#C0C0C0', display: 'block', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
-              :
-              null
+                  :
+                  null
               )
             }
           </>
@@ -142,14 +142,11 @@ export default function HowtoStep({ howto_id, step_id, step_number, step_name, s
                   style={{ fontFamily: 'Segoe UI', fontSize: 'Large', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1112px' }} />
                 
                 <div className='Font-Spacer-White'>Make this Spacer White</div>
-                {/* <div><i>Step Graphix:</i>&nbsp; <ImageUpload stepidfk={step_id} parentstepname={step_name} parentstepid={step_id}/></div> */}
               </>
               </>
               :
               <div className="Font-Segoe-Medium"><i>{step_obj}</i>
-              {/* <div>&nbsp;</div> */}
               <div>{step_image === undefined || step_image === null ? null : <img src={'data:image/jpg;base64,'+step_image} />}</div>
-              {/* <div>&nbsp;</div> */}
               </div>
               
               }
