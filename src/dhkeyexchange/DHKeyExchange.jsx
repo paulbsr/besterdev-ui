@@ -13,7 +13,7 @@ export default function DHKeyExchange(props) {
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [websitedata1, setWebsitedata1] = useState([]);
   const { websiterootdata, loading, error } = useWebsiteApi(); //gebruik van die nuwe useContext :-)
-    const [howtodata, setHowtoData] = useState([]);
+  const [howtodata, setHowtoData] = useState([]);
 
   useEffect(() => {
     if (websiterootdata && Array.isArray(websiterootdata)) {
@@ -84,11 +84,11 @@ export default function DHKeyExchange(props) {
         <tbody>
 
           <tr>
-            <td style={{ width: '25%' }} className="Table-home-left"><InnerTableLeft />links</td>
+            <td style={{ width: '25%' }} className="Table-home-left"><InnerTableLeft /></td>
             <td style={{ width: '1%' }}></td>
             <td style={{ width: '48%' }} className="Table-home-centre"><DHKeyExchange2 howto_ids={2852} /></td>
             <td style={{ width: '1%' }}></td>
-            <td style={{ width: '25%' }} className="Table-home-right">regs</td>
+            <td style={{ width: '25%' }} className="Table-home-right"></td>
             
           </tr>
         </tbody>
