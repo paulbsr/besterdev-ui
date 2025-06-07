@@ -7,7 +7,7 @@ import '../Fonts.css'
 // import HowtoUrlCreate from './HowtoUrlCreate';
 import { BsPatchQuestion } from "react-icons/bs";
 import DHStep1 from '../graphix/DH-PGLParameters.jpg'
-import DHStep2 from '../graphix/DH-KeyPairServer.jpg'
+import DHStep2 from '../graphix/DH-ParameterSpecObject.jpg'
 import DHStep3 from '../graphix/DH-KeyPairServer.jpg'
 import DHStep4 from '../graphix/DH-KeyPairClient.jpg'
 import { TbHttpGet } from "react-icons/tb";
@@ -101,7 +101,7 @@ function DHKeyExchange2({ howto_ids }) {
 
             (
             <tbody>&nbsp;
-              <tr>
+              {/* <tr>
                 <td style={{ fontFamily: 'Segoe UI', fontSize: '18px', fontStyle: 'italic' }}>
                   <div><u>Step-1</u>: Generate the DH Parameters P, G, L</div>
                   <div>
@@ -116,13 +116,39 @@ function DHKeyExchange2({ howto_ids }) {
                   <div style={{ fontFamily: 'Segoe UI', fontSize: '9px' }}>G → Generator (base) used for exponentiation: {dhparameters.generatorBase}</div>
                   <div style={{ fontFamily: 'Segoe UI', fontSize: '9px' }}>L → Length in Bits of the PrivateKey: {dhparameters.privateKeyBitLength}</div>
                 </td>
+              </tr>&nbsp; */}
+
+              <tr>
+                <td style={{ fontFamily: 'Segoe UI', fontSize: '18px', fontStyle: 'italic' }}>
+                  <div><u>Step-1</u>: Generate the DH Parameters <b>P, G, L</b></div>
+                  <div>
+                    <Tooltip title='GET the P, G and L DHParameters' placement="top-end">
+                      <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => generateDHParameters()}>
+                        <TbHttpGet style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '40px' }} />
+                      </button>
+                    </Tooltip>
+                  </div>
+
+                  <div style={{ fontFamily: 'Segoe UI', fontSize: '14px', wordBreak: 'break-all', whiteSpace: 'pre-wrap' }}>
+                    <b>P → Large Prime number used as a modulus:</b>  {dhparameters.primeModulus}
+                  </div>
+                  <div style={{ fontFamily: 'Segoe UI', fontSize: '14px', wordBreak: 'break-all', whiteSpace: 'pre-wrap' }}>
+                    <b>G → Generator (base) used for exponentiation:</b>  {dhparameters.generatorBase}
+                  </div>
+                  <div style={{ fontFamily: 'Segoe UI', fontSize: '14px' }}>
+                    <b>L → Length in Bits of the PrivateKey:</b>
+                    <div>  {dhparameters.privateKeyBitLength}</div>
+                  </div>
+                  <img src={DHStep1} alt="Step 1" />
+                </td>
               </tr>&nbsp;
+
 
 
               {
                 <tr>
                   <td style={{ fontFamily: 'Segoe UI', fontSize: '18px', fontStyle: 'italic' }}>
-                    <div><u>Step-2</u>: Generate the DH ParameterSpec Object</div>
+                    <div><u>Step-2</u>: Generate object of type <b>DHParameterSpec</b></div>
                     <div>
                       <Tooltip title='Create object of type DHParameterSpec' placement="top-end">
                         <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => generateDHParameterSpecObject()}>
@@ -130,12 +156,12 @@ function DHKeyExchange2({ howto_ids }) {
                         </button>
                       </Tooltip>
                     </div>
+                    <div style={{ fontFamily: 'Segoe UI', fontSize: '14px', wordBreak: 'break-all', whiteSpace: 'pre-wrap' }}>
+                      <b>DHParameterSpec Object:</b> {dhparameterspecobject.dhSpecobject}</div>
                     <img src={DHStep2} alt="Step 2" />
-                    <div style={{ fontFamily: 'Segoe UI', fontSize: '9px' }}>DH ParameterSpec Object: {dhparameterspecobject.dhSpecobject}</div>
                   </td>
                 </tr>
               }&nbsp;
-
 
               {
                 <tr>
