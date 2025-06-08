@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { TbHttpGet } from "react-icons/tb"
+import { Tooltip } from '@mui/material'
+import { BsPatchQuestion } from "react-icons/bs"
 import axios from 'axios'
-import HowtoStep from '../howto/HowtoStep';
-import GradientLineRusty from "../gradientlines/GradientLineRusty";
-// import HowtoStepCreate from './HowtoStepCreate';
 import '../Fonts.css'
-// import HowtoUrlCreate from './HowtoUrlCreate';
-import { BsPatchQuestion } from "react-icons/bs";
+import GradientLineRusty from "../gradientlines/GradientLineRusty";
 import DHStep1 from '../graphix/DH-PGLParameters.jpg'
 import DHStep2 from '../graphix/DH-ParameterSpecObject.jpg'
 import DHStep3 from '../graphix/DH-KeyPairServer.jpg'
 import DHStep4 from '../graphix/DH-KeyPairClient.jpg'
-import { TbHttpGet } from "react-icons/tb";
-import { Tooltip } from '@mui/material';
+import DHStep5 from '../graphix/DH-ServerSharedSecret.jpg'
+import DHStep6 from '../graphix/DH-ClientSharedSecret.jpg'
+import DHImage from '../graphix/dh2.jpg'
 
 
 function DHKeyExchange2({ howto_ids }) {
@@ -22,6 +22,8 @@ function DHKeyExchange2({ howto_ids }) {
   const [dhparameterspecobject, setDhparameterspecobject] = useState([]);
   const [dhkeypairserver, setDhkeypairserver] = useState([]);
   const [dhkeypairclient, setDhkeypairclient] = useState([]);
+  const [dhsharedsecretserver, setDhsharedsecretserver] = useState([]);
+  const [dhsharedsecretclient, setDhsharedsecretclient] = useState([]);
 
   useEffect(() => {
     axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howto/${howto_ids}`)
@@ -33,19 +35,19 @@ function DHKeyExchange2({ howto_ids }) {
       )
   }, [checkForRecords]);
 
-    const generateDHParameters = async () => {
+  const generateDHParameters = async () => {
     try {
       const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/parameters/generate`);
       setDhparameters(response.data);
       console.log('In <DHKeyExchange2.jsx> is jou dhparameters:', dhparameters);
     } catch (error) {
-            console.error('Error in DHParameters:', error);
+      console.error('Error in DHParameters:', error);
 
     }
   };
 
 
-    const generateDHParameterSpecObject = async () => {
+  const generateDHParameterSpecObject = async () => {
     try {
       const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/dhparameterspecobject/generate`);
       setDhparameterspecobject(response.data);
@@ -57,7 +59,7 @@ function DHKeyExchange2({ howto_ids }) {
   };
 
 
-      const generateKeyPairServer = async () => {
+  const generateKeyPairServer = async () => {
     try {
       const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/keypair/generate-server`);
       setDhkeypairserver(response.data);
@@ -68,7 +70,7 @@ function DHKeyExchange2({ howto_ids }) {
     }
   };
 
-        const generateKeyPairClient = async () => {
+  const generateKeyPairClient = async () => {
     try {
       const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/keypair/generate-client`);
       setDhkeypairclient(response.data);
@@ -78,6 +80,29 @@ function DHKeyExchange2({ howto_ids }) {
 
     }
   };
+
+  const generateSharedSecretServer = async () => {
+    try {
+      const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/sharedsecret/generate-server`);
+      setDhsharedsecretserver(response.data);
+      console.log('In <DHKeyExchange2.jsx> is jou dhsharedsecretserver:', dhsharedsecretserver);
+    } catch (error) {
+      console.error('Error in DHSharedSecretServer:', error);
+
+    }
+  };
+
+  const generateSharedSecretClient = async () => {
+    try {
+      const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/sharedsecret/generate-client`);
+      setDhsharedsecretclient(response.data);
+      console.log('In <DHKeyExchange2.jsx> is jou dhsharedsecretclient:', dhsharedsecretclient);
+    } catch (error) {
+      console.error('Error in DHSharedSecretClient:', error);
+
+    }
+  };
+
 
 
 
@@ -92,37 +117,22 @@ function DHKeyExchange2({ howto_ids }) {
             <tr >
               <th><BsPatchQuestion style={{ color: '#D5441C', fontSize: '32px' }} />&nbsp;
                 Diffie-Hellman Key Exhange in Practice
+                <div></div>
+                <div><img src={DHImage} /></div>
                 <div className='Font-Segoe-Medium-Howto-Desc'></div>
               </th>
             </tr>
           </thead>
 
-          {howtodata.howto_steps && howtodata.howto_steps.map((step) => 
+          {howtodata.howto_steps && howtodata.howto_steps.map((step) =>
 
-            (
+          (
             <tbody>&nbsp;
-              {/* <tr>
-                <td style={{ fontFamily: 'Segoe UI', fontSize: '18px', fontStyle: 'italic' }}>
-                  <div><u>Step-1</u>: Generate the DH Parameters P, G, L</div>
-                  <div>
-                    <Tooltip title='GET the P, G and L DHParameters' placement="top-end">
-                      <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => generateDHParameters()}>
-                        <TbHttpGet style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '40px' }} />
-                      </button>
-                    </Tooltip>
-                  </div>
-                  <img src={DHStep1} alt="Step 1" />
-                  <div style={{ fontFamily: 'Segoe UI', fontSize: '9px' }}>P → Large Prime number used as a modulus: {dhparameters.primeModulus}</div>
-                  <div style={{ fontFamily: 'Segoe UI', fontSize: '9px' }}>G → Generator (base) used for exponentiation: {dhparameters.generatorBase}</div>
-                  <div style={{ fontFamily: 'Segoe UI', fontSize: '9px' }}>L → Length in Bits of the PrivateKey: {dhparameters.privateKeyBitLength}</div>
-                </td>
-              </tr>&nbsp; */}
-
               <tr>
                 <td style={{ fontFamily: 'Segoe UI', fontSize: '18px', fontStyle: 'italic' }}>
-                  <div><u>Step-1</u>: Generate the DH Parameters <b>P, G, L</b></div>
+                  <div><u>Step-1</u>: Generate the DH Parameters <b>P, G, L values</b></div>
                   <div>
-                    <Tooltip title='GET the P, G and L DHParameters' placement="top-end">
+                    <Tooltip title='Produce the Parameters P, G and L ' placement="top-end">
                       <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => generateDHParameters()}>
                         <TbHttpGet style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '40px' }} />
                       </button>
@@ -136,9 +146,9 @@ function DHKeyExchange2({ howto_ids }) {
                     <b>G → Generator (base) used for exponentiation:</b>  {dhparameters.generatorBase}
                   </div>
                   <div style={{ fontFamily: 'Segoe UI', fontSize: '14px' }}>
-                    <b>L → Length in Bits of the PrivateKey:</b>
-                    <div>  {dhparameters.privateKeyBitLength}</div>
+                    <b>L → Length in Bits of the PrivateKey:</b>  {dhparameters.privateKeyBitLength}
                   </div>
+                  <div>&nbsp;</div>
                   <img src={DHStep1} alt="Step 1" />
                 </td>
               </tr>&nbsp;
@@ -158,6 +168,7 @@ function DHKeyExchange2({ howto_ids }) {
                     </div>
                     <div style={{ fontFamily: 'Segoe UI', fontSize: '14px', wordBreak: 'break-all', whiteSpace: 'pre-wrap' }}>
                       <b>DHParameterSpec Object:</b> {dhparameterspecobject.dhSpecobject}</div>
+                    <div>&nbsp;</div>
                     <img src={DHStep2} alt="Step 2" />
                   </td>
                 </tr>
@@ -166,7 +177,7 @@ function DHKeyExchange2({ howto_ids }) {
               {
                 <tr>
                   <td style={{ fontFamily: 'Segoe UI', fontSize: '18px', fontStyle: 'italic' }}>
-                    <div><u>Step-3</u>: Generate the server-side DH KeyPair using the DHParameterSpec Object</div>
+                    <div><u>Step-3</u>: Generate the <b>server-side DH KeyPair</b> using the DHParameterSpec Object</div>
                     <div>
                       <Tooltip title='Create a Public/Private KeyPair for the server' placement="top-end">
                         <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => generateKeyPairServer()}>
@@ -174,18 +185,20 @@ function DHKeyExchange2({ howto_ids }) {
                         </button>
                       </Tooltip>
                     </div>
+                    <div style={{ fontFamily: 'Segoe UI', fontSize: '14px', wordBreak: 'break-all', whiteSpace: 'pre-wrap' }}><b>Server PublicKey:</b> {dhkeypairserver.serverPublicKey}</div>
+                    <div>&nbsp;</div>
+                    <div style={{ fontFamily: 'Segoe UI', fontSize: '14px', wordBreak: 'break-all', whiteSpace: 'pre-wrap' }}><b>Server PrivateKey:</b> {dhkeypairserver.serverPrivateKey}</div>
+                    <div>&nbsp;</div>
                     <img src={DHStep3} alt="Step 3" />
-                    <div style={{ fontFamily: 'Segoe UI', fontSize: '9px' }}>Server PublicKey: {dhkeypairserver.serverPublicKey}</div>
-                    <div style={{ fontFamily: 'Segoe UI', fontSize: '9px' }}>Server PrivateKey: {dhkeypairserver.serverPrivateKey}</div>
                   </td>
                 </tr>
               }&nbsp;
 
 
-                  {
+              {
                 <tr>
                   <td style={{ fontFamily: 'Segoe UI', fontSize: '18px', fontStyle: 'italic' }}>
-                    <div><u><b>Step-4</b></u>: Generate the client-side DH KeyPair using the DHParameterSpec Object</div>
+                    <div><u>Step-4</u>: Generate the <b>client-side DH KeyPair</b> using the DHParameterSpec Object</div>
                     <div>
                       <Tooltip title='Create a Public/Private KeyPair for the client' placement="top-end">
                         <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => generateKeyPairClient()}>
@@ -193,49 +206,71 @@ function DHKeyExchange2({ howto_ids }) {
                         </button>
                       </Tooltip>
                     </div>
-                    <img src={DHStep4} alt="Step 3" />
-                    <div style={{ fontFamily: 'Segoe UI', fontSize: '9px' }}>Client PublicKey: {dhkeypairclient.clientPublicKey}</div>
-                    <div style={{ fontFamily: 'Segoe UI', fontSize: '9px' }}>Client PrivateKey: {dhkeypairclient.clientPrivateKey}</div>
+                    <div style={{ fontFamily: 'Segoe UI', fontSize: '14px', wordBreak: 'break-all', whiteSpace: 'pre-wrap' }}><b>Client PublicKey:</b> {dhkeypairclient.clientPublicKey}</div>
+                    <div>&nbsp;</div>
+                    <div style={{ fontFamily: 'Segoe UI', fontSize: '14px', wordBreak: 'break-all', whiteSpace: 'pre-wrap' }}><b>Client PrivateKey:</b> {dhkeypairclient.clientPrivateKey}</div>
+                    <div>&nbsp;</div>
+                    <img src={DHStep4} alt="Step 4" />
                   </td>
                 </tr>
-                  }&nbsp;
+              }&nbsp;
 
 
-                  {
-                    <tr>
-                    <td style={{ fontFamily: 'Segoe UI', fontSize: '18px', fontStyle: 'italic' }}>Step-5: Generate the server-side SharedSecret through DH KeyAgreement
+              {
+                <tr>
+                  <td style={{ fontFamily: 'Segoe UI', fontSize: '18px', fontStyle: 'italic' }}>
+                    <div><u>Step-5</u>: Generate the <b>server-side SharedSecret</b> through KeyAgreement</div>
+                    <div>
+                      <Tooltip title='Create a server-side SharedSecret' placement="top-end">
+                        <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => generateSharedSecretServer()}>
+                          <TbHttpGet style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '40px' }} />
+                        </button>
+                      </Tooltip>
+                    </div>
+                    <div style={{ fontFamily: 'Segoe UI', fontSize: '14px', wordBreak: 'break-all', whiteSpace: 'pre-wrap' }}><b>Server's SharedSecret:</b> {dhsharedsecretserver.serverSharedSecret}</div>
+                    <div>&nbsp;</div>
+                    <img src={DHStep5} alt="Step 5" />
+                  </td>
+                </tr>
+              }&nbsp;
+
+
+              {
+                <tr>
+                  <td style={{ fontFamily: 'Segoe UI', fontSize: '18px', fontStyle: 'italic' }}>
+                    <div><u>Step-6</u>: Generate the <b>client-side SharedSecret</b> through KeyAgreement</div>
+                    <div>
+                      <Tooltip title='Create a client-side SharedSecret' placement="top-end">
+                        <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => generateSharedSecretClient()}>
+                          <TbHttpGet style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '40px' }} />
+                        </button>
+                      </Tooltip>
+                    </div>
+                    <div style={{ fontFamily: 'Segoe UI', fontSize: '14px', wordBreak: 'break-all', whiteSpace: 'pre-wrap' }}><b>Client's SharedSecret:</b> {dhsharedsecretclient.clientSharedSecret}</div>
+                    <div>&nbsp;</div>
+                    <img src={DHStep6} alt="Step 6" />
+                  </td>
+                </tr>
+              }&nbsp;
+
+
+              {
+                <tr>
+                  <td style={{ fontFamily: 'Segoe UI', fontSize: '18px', fontStyle: 'italic' }}>Step-7: Generate the SHA-256 Digest of the SharedSecret
                     {/* {<HowtoStep key={step.step_id} howto_id={step.howto_id} step_id={step.step_id} step_number={step.step_number} step_name={step.step_name} step_url={step.step_url} step_obj={step.step_obj} step_image={step.step_image?.image_data} howtodata={howtodata} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />} */}
-                    </td>
-                    </tr>
-                  }&nbsp;
+                  </td>
+                </tr>
+              }&nbsp;
 
 
-                  {
-                    <tr>
-                    <td style={{ fontFamily: 'Segoe UI', fontSize: '18px', fontStyle: 'italic' }}>Step-6: Generate the client-side SharedSecret through DH KeyAgreement
+              {
+                <tr>
+                  <td style={{ fontFamily: 'Segoe UI', fontSize: '18px', fontStyle: 'italic' }}>Step-8: Derive AES-128 Key from hashed SharedSecret
                     {/* {<HowtoStep key={step.step_id} howto_id={step.howto_id} step_id={step.step_id} step_number={step.step_number} step_name={step.step_name} step_url={step.step_url} step_obj={step.step_obj} step_image={step.step_image?.image_data} howtodata={howtodata} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />} */}
-                    </td>
-                    </tr>
-                  }&nbsp;
+                  </td>
+                </tr>
+              }&nbsp;
 
-
-                  {
-                    <tr>
-                    <td style={{ fontFamily: 'Segoe UI', fontSize: '18px', fontStyle: 'italic' }}>Step-7: Generate the SHA-256 Digest of the SharedSecret
-                    {/* {<HowtoStep key={step.step_id} howto_id={step.howto_id} step_id={step.step_id} step_number={step.step_number} step_name={step.step_name} step_url={step.step_url} step_obj={step.step_obj} step_image={step.step_image?.image_data} howtodata={howtodata} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />} */}
-                    </td>
-                    </tr>
-                  }&nbsp;
-
-
-                  {
-                    <tr>
-                    <td style={{ fontFamily: 'Segoe UI', fontSize: '18px', fontStyle: 'italic' }}>Step-8: Derive AES-128 Key from hashed SharedSecret
-                    {/* {<HowtoStep key={step.step_id} howto_id={step.howto_id} step_id={step.step_id} step_number={step.step_number} step_name={step.step_name} step_url={step.step_url} step_obj={step.step_obj} step_image={step.step_image?.image_data} howtodata={howtodata} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />} */}
-                    </td>
-                    </tr>
-                  }&nbsp;
-                  
             </tbody>
           )
           )
