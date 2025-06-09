@@ -11,6 +11,7 @@ import DHStep3 from '../graphix/DH-KeyPairServer.jpg'
 import DHStep4 from '../graphix/DH-KeyPairClient.jpg'
 import DHStep5 from '../graphix/DH-ServerSharedSecret.jpg'
 import DHStep6 from '../graphix/DH-ClientSharedSecret.jpg'
+import DHStep7 from '../graphix/DH-SHA256Digest.jpg'
 import DHImage from '../graphix/dh2.jpg'
 
 
@@ -24,6 +25,8 @@ function DHKeyExchange2({ howto_ids }) {
   const [dhkeypairclient, setDhkeypairclient] = useState([]);
   const [dhsharedsecretserver, setDhsharedsecretserver] = useState([]);
   const [dhsharedsecretclient, setDhsharedsecretclient] = useState([]);
+  const [dhsharedsecrethash, setDhsharedsecrethash] = useState([]);
+  
 
   useEffect(() => {
     axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howto/${howto_ids}`)
@@ -39,7 +42,7 @@ function DHKeyExchange2({ howto_ids }) {
     try {
       const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/parameters/generate`);
       setDhparameters(response.data);
-      console.log('In <DHKeyExchange2.jsx> is jou dhparameters:', dhparameters);
+      // console.log('In <DHKeyExchange2.jsx> is jou dhparameters:', dhparameters);
     } catch (error) {
       console.error('Error in DHParameters:', error);
 
@@ -51,7 +54,7 @@ function DHKeyExchange2({ howto_ids }) {
     try {
       const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/dhparameterspecobject/generate`);
       setDhparameterspecobject(response.data);
-      console.log('In <DHKeyExchange2.jsx> is jou dhparameterspecobject:', dhparameterspecobject);
+      // console.log('In <DHKeyExchange2.jsx> is jou dhparameterspecobject:', dhparameterspecobject);
     } catch (error) {
       console.error('Error in DHParameterSpecObject:', error);
 
@@ -63,7 +66,7 @@ function DHKeyExchange2({ howto_ids }) {
     try {
       const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/keypair/generate-server`);
       setDhkeypairserver(response.data);
-      console.log('In <DHKeyExchange2.jsx> is jou dhkeypairserver:', dhkeypairserver);
+      // console.log('In <DHKeyExchange2.jsx> is jou dhkeypairserver:', dhkeypairserver);
     } catch (error) {
       console.error('Error in DHKeyPairServer:', error);
 
@@ -74,7 +77,7 @@ function DHKeyExchange2({ howto_ids }) {
     try {
       const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/keypair/generate-client`);
       setDhkeypairclient(response.data);
-      console.log('In <DHKeyExchange2.jsx> is jou dhkeypairclient:', dhkeypairclient);
+      // console.log('In <DHKeyExchange2.jsx> is jou dhkeypairclient:', dhkeypairclient);
     } catch (error) {
       console.error('Error in DHKeyPairClient:', error);
 
@@ -85,7 +88,7 @@ function DHKeyExchange2({ howto_ids }) {
     try {
       const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/sharedsecret/generate-server`);
       setDhsharedsecretserver(response.data);
-      console.log('In <DHKeyExchange2.jsx> is jou dhsharedsecretserver:', dhsharedsecretserver);
+      // console.log('In <DHKeyExchange2.jsx> is jou dhsharedsecretserver:', dhsharedsecretserver);
     } catch (error) {
       console.error('Error in DHSharedSecretServer:', error);
 
@@ -96,9 +99,21 @@ function DHKeyExchange2({ howto_ids }) {
     try {
       const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/sharedsecret/generate-client`);
       setDhsharedsecretclient(response.data);
-      console.log('In <DHKeyExchange2.jsx> is jou dhsharedsecretclient:', dhsharedsecretclient);
+      // console.log('In <DHKeyExchange2.jsx> is jou dhsharedsecretclient:', dhsharedsecretclient);
     } catch (error) {
       console.error('Error in DHSharedSecretClient:', error);
+
+    }
+  };
+
+
+    const generateSharedSecretHash = async () => {
+    try {
+      const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/sharedsecret/generate-hash`);
+      setDhsharedsecrethash(response.data);
+      // console.log('In <DHKeyExchange2.jsx> is jou dhsharedsecretclient:', dhsharedsecretclient);
+    } catch (error) {
+      console.error('Error in DHSharedSecretHash:', error);
 
     }
   };
@@ -255,9 +270,19 @@ function DHKeyExchange2({ howto_ids }) {
 
 
               {
-                <tr>
-                  <td style={{ fontFamily: 'Segoe UI', fontSize: '18px', fontStyle: 'italic' }}>Step-7: Generate the SHA-256 Digest of the SharedSecret
-                    {/* {<HowtoStep key={step.step_id} howto_id={step.howto_id} step_id={step.step_id} step_number={step.step_number} step_name={step.step_name} step_url={step.step_url} step_obj={step.step_obj} step_image={step.step_image?.image_data} howtodata={howtodata} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />} */}
+                 <tr>
+                  <td style={{ fontFamily: 'Segoe UI', fontSize: '18px', fontStyle: 'italic' }}>
+                    <div><u>Step-7</u>: Generate the <b>SHA-256 Digest</b> of the SharedSecret</div>
+                    <div>
+                      <Tooltip title='Create a Hash of the SharedSecret' placement="top-end">
+                        <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => generateSharedSecretClient()}>
+                          <TbHttpGet style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '40px' }} />
+                        </button>
+                      </Tooltip>
+                    </div>
+                    <div style={{ fontFamily: 'Segoe UI', fontSize: '14px', wordBreak: 'break-all', whiteSpace: 'pre-wrap' }}><b>Hashed SharedSecret:</b> {dhsharedsecrethash.sha256Digest}</div>
+                    <div>&nbsp;</div>
+                    <img src={DHStep7} alt="Step &" />
                   </td>
                 </tr>
               }&nbsp;
