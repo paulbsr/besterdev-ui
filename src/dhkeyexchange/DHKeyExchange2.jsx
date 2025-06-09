@@ -275,7 +275,7 @@ function DHKeyExchange2({ howto_ids }) {
                     <div><u>Step-7</u>: Generate the <b>SHA-256 Digest</b> of the SharedSecret</div>
                     <div>
                       <Tooltip title='Create a Hash of the SharedSecret' placement="top-end">
-                        <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => generateSharedSecretClient()}>
+                        <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => generateSharedSecretHash()}>
                           <TbHttpGet style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '40px' }} />
                         </button>
                       </Tooltip>
