@@ -15,7 +15,7 @@ function WebSocketTrigger() {
 
   return (
     <td className='Font-Verdana-Small-Postgres' onClick={handleClick}>&nbsp;&nbsp;
-      <TbBrandSocketIo title="Last WebSocket Event" style={{ color: '#4D4D4D', fontSize: '23px', cursor: 'pointer' }} />WebSocket
+      <TbBrandSocketIo title="Last WebSocket Event" style={{ color: '#4D4D4D', fontSize: '23px', cursor: 'pointer' }} />  WebSocket
 
     </td>
   );

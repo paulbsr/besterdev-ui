@@ -12,6 +12,7 @@ import { useHowtoApi } from './howto/HowtoAPIProvider';
 import { useNavigate } from 'react-router-dom';
 import WebSocketEvent from './websockets/WebSocketEvent';
 import WebSocketTrigger from './websockets/websockettrigger';
+import BearerToken from './oauth2.0/BearerToken';
 
 
 export default function HomePage22(props) {
@@ -40,7 +41,6 @@ export default function HomePage22(props) {
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/alphabet/random')
     // axios('http://localhost:8000/api/v1/cyclopedia/alphabet/random')
-      // axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/random40')
       .then((response) => {
         const fourtyRandomRecordsAPI = response.data;
         setFourtyRandomRecords(fourtyRandomRecordsAPI);
@@ -168,10 +168,9 @@ export default function HomePage22(props) {
 
     return (
       <>
+        <BearerToken />
         <DBSearchComponent />
-
         <TaskSummaryHomepage />
-
         <div>
           <div className='Font-Spacer-White'>Make this spacer white</div>
           

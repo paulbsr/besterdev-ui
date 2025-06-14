@@ -1,43 +1,45 @@
+import DBSearchComponentBanner from "../dbsearch/DBSearchComponentBanner";
+import { useCyclopediaApi } from '../cyclopedia/CyclopediaAPIProvider';
+import { useWebsiteApi } from '../websites/WebSiteAPIProvider';
+import WebSocketTrigger from "../websockets/websockettrigger";
+import { GiHummingbird, GiSpiderWeb } from "react-icons/gi";
+import spacer from '../graphix/besterdev_spacer_white.png';
+import { GiGiftOfKnowledge } from "react-icons/gi";
+import 'react-tooltip/dist/react-tooltip.css';
+import DatePicker from "react-datepicker";
 import React, { useState } from "react";
+import { MdTask } from "react-icons/md";
+import { toast } from 'react-toastify';
 import axios from 'axios';
 import '../Fonts.css';
-import spacer from '../graphix/besterdev_spacer_white.png';
-import { GiHummingbird, GiSpiderWeb } from "react-icons/gi";
-import 'react-tooltip/dist/react-tooltip.css';
-import { toast } from 'react-toastify';
-import DatePicker from "react-datepicker";
-import { MdTask } from "react-icons/md";
-import { useWebsiteApi } from '../websites/WebSiteAPIProvider';
-import { useCyclopediaApi } from '../cyclopedia/CyclopediaAPIProvider';
-import { GiGiftOfKnowledge } from "react-icons/gi";
-import DBSearchComponentBanner from "../dbsearch/DBSearchComponentBanner";
-import WebSocketTrigger from "../websockets/websockettrigger";
 
 
 export default function CombinedCreateFP() {
+
   const current = new Date();
+  const { websiterootdata, setRefreshWebsiterootdata } = useWebsiteApi();
   const [isExpandedCyclopedia, setExpandedCyclopedia] = useState(false);
   const [isExpandedWebsite, setExpandedWebsite] = useState(false);
+  const [checkForRecords, setCheckForRecords] = useState(true);
+  const { setRefreshCyclopediarootdata } = useCyclopediaApi();
+  const [taskrequirement, setTaskrequirement] = useState("");
+  const [tasktargetdate, setTasktargetdate] = useState(null);
   const [isExpandedTask, setExpandedTask] = useState(false);
   const [cyclopediaName, setCyclopediaName] = useState('');
   const [cyclopediaDesc, setCyclopediaDesc] = useState('');
+  const [projecthandle, setProjecthandle] = useState("");
   const [cyclopediaUrl, setCyclopediaUrl] = useState('');
-  const [checkForRecords, setCheckForRecords] = useState(true);
   const [websiteName, setWebsiteName] = useState('');
   const [websiteDesc, setWebsiteDesc] = useState('');
   const [websiteUrl, setWebsiteUrl] = useState('');
   const [websiteCat, setWebsiteCat] = useState('');
   const [taskname, setTaskname] = useState("");
-  const [taskrequirement, setTaskrequirement] = useState("");
-  const [taskowner ] = useState("Bester");
-  const [tasktargetdate, setTasktargetdate] = useState(null);
-  const [taskcreatedate ] = useState(current);
-  const [taskstatus ] = useState("START");
-  const [projecthandle, setProjecthandle] = useState("");
+  const [taskcreatedate] = useState(current);
+  const [taskowner] = useState("Bester");
+  const [taskstatus] = useState("START");
   const [asms, setAsms] = useState("");
-  const [tasknextstep ] = useState("");
-  const { setRefreshCyclopediarootdata } = useCyclopediaApi();
-  const { websiterootdata, setRefreshWebsiterootdata } = useWebsiteApi();
+  const [tasknextstep] = useState("");
+
 
 
   const dropdownChange = (event) => {
@@ -59,7 +61,7 @@ export default function CombinedCreateFP() {
       const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/create`, newRecord);
       if (response.status === 200) {
         setCheckForRecords(!checkForRecords);
-        setRefreshCyclopediarootdata(prev => !prev); 
+        setRefreshCyclopediarootdata(prev => !prev);
         toast.success(`${cyclopediaName} memorialized.`);
         setCyclopediaName('');
         setCyclopediaDesc('');
@@ -133,10 +135,10 @@ export default function CombinedCreateFP() {
 
   return (
     <div className='Font-Verdana-Small-Postgres'>
-      
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>      
-        
+
+      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
+
         <DBSearchComponentBanner />
 
         {/* <b onClick={() => setExpandedCyclopedia(!isExpandedCyclopedia)}>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -156,10 +158,9 @@ export default function CombinedCreateFP() {
           <GiHummingbird style={{ color: '#4D4D4D', fontSize: '25px' }} />
           <MdTask style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} /> Add a Task</span>
 
-          <WebSocketTrigger />
+        <WebSocketTrigger />
+
       </div>
-
-
 
       {isExpandedCyclopedia && (
         <form onSubmit={handleSubmitCyclopedia}>
