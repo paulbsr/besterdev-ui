@@ -5,7 +5,10 @@ import WebSocketTrigger from "../websockets/websockettrigger";
 import { GiHummingbird, GiSpiderWeb } from "react-icons/gi";
 import spacer from '../graphix/besterdev_spacer_white.png';
 import { GiGiftOfKnowledge } from "react-icons/gi";
+import BearerToken from "../oauth2.0/BearerToken";
+import { SiJsonwebtokens } from 'react-icons/si';
 import 'react-tooltip/dist/react-tooltip.css';
+import { TbBrandOauth } from "react-icons/tb";
 import DatePicker from "react-datepicker";
 import React, { useState } from "react";
 import { MdTask } from "react-icons/md";
@@ -14,12 +17,15 @@ import axios from 'axios';
 import '../Fonts.css';
 
 
+
+
 export default function CombinedCreateFP() {
 
   const current = new Date();
   const { websiterootdata, setRefreshWebsiterootdata } = useWebsiteApi();
   const [isExpandedCyclopedia, setExpandedCyclopedia] = useState(false);
   const [isExpandedWebsite, setExpandedWebsite] = useState(false);
+  const [isExpandedBearerToken, setExpandedBearerToken] = useState(false);
   const [checkForRecords, setCheckForRecords] = useState(true);
   const { setRefreshCyclopediarootdata } = useCyclopediaApi();
   const [taskrequirement, setTaskrequirement] = useState("");
@@ -160,6 +166,10 @@ export default function CombinedCreateFP() {
 
         <WebSocketTrigger />
 
+        <span onClick={() => setExpandedBearerToken(!isExpandedBearerToken)}>&nbsp;&nbsp;&nbsp;&nbsp;
+          {/* <GiHummingbird style={{ color: '#4D4D4D', fontSize: '25px' }} /> */}
+          <TbBrandOauth style={{ color: '#4D4D4D', fontSize: '19px', cursor: 'pointer' }} /> OAuth2.0</span>
+
       </div>
 
       {isExpandedCyclopedia && (
@@ -267,6 +277,10 @@ export default function CombinedCreateFP() {
         </form>
       )
       }
+
+
+{isExpandedBearerToken && <BearerToken />}
+
 
       {isExpandedTask && (
         <div>

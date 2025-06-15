@@ -12,7 +12,6 @@ import { useHowtoApi } from './howto/HowtoAPIProvider';
 import { useNavigate } from 'react-router-dom';
 import WebSocketEvent from './websockets/WebSocketEvent';
 import WebSocketTrigger from './websockets/websockettrigger';
-import BearerToken from './oauth2.0/BearerToken';
 
 
 export default function HomePage22(props) {
@@ -168,7 +167,6 @@ export default function HomePage22(props) {
 
     return (
       <>
-        <BearerToken />
         <DBSearchComponent />
         <TaskSummaryHomepage />
         <div>
