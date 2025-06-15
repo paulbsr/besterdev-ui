@@ -23,33 +23,50 @@ const WebSocketEvent = () => {
 
       client.activate();
 
-      return () => {
-        client.deactivate();
-      };
+      return () => { client.deactivate(); };
     }
-  }, []);
+  },
+
+    []
+  );
+
+  // return (
+  //   <div style={{ fontFamily: "Segoe UI", fontSize: "10pt", color: "rgb(3, 25, 48)", fontStyle: "italic" }}>
+  //     {(() => {
+  //       const parts = params.split('|').map(p => p.trim());
+  //       const time = parts.find(p => p.startsWith('Time:'))?.replace('Time:', '').trim();
+  //       const name = parts.find(p => p.startsWith('Name:'))?.replace('Name:', '').trim();
+  //       const desc = parts.find(p => p.startsWith('Desc:'))?.replace('Desc:', '').trim();
+
+  //       return (
+  //         <>
+  //           Event @ {time} -- <strong>{name}: </strong> {desc}
+  //         </>
+  //       );
+  //     }
+  //     )
+  //     ()
+  //     }
+  //   </div>
+  // );
 
   return (
-    <div style={{ fontFamily: "Segoe UI", fontSize: "10pt", color: "rgb(3, 25, 48)", fontStyle: "italic" }}>
-      {(() => {
-        const parts = params.split('|').map(p => p.trim());
-        const time = parts.find(p => p.startsWith('Time:'))?.replace('Time:', '').trim();
-        const name = parts.find(p => p.startsWith('Name:'))?.replace('Name:', '').trim();
-        const desc = parts.find(p => p.startsWith('Desc:'))?.replace('Desc:', '').trim();
+  <>
+    {(() => {
+      const parts = params.split('|').map(p => p.trim());
+      const time = parts.find(p => p.startsWith('Time:'))?.replace('Time:', '').trim();
+      const name = parts.find(p => p.startsWith('Name:'))?.replace('Name:', '').trim();
+      const desc = parts.find(p => p.startsWith('Desc:'))?.replace('Desc:', '').trim();
 
-        return (
-          <>
-            <div>
-              WebSocket Event @ {time} --
-              {/* </div>
-      <div> */}
-              <strong>{name}: </strong> {desc}
-            </div>
-          </>
-        );
-      })()}
-    </div>
-  );
+      return (
+        <span style={{ fontFamily: "Segoe UI", fontSize: "10pt", color: "rgb(3, 25, 48)", fontStyle: "italic" }}>
+          Event @ {time} -- <strong>{name}:</strong> {desc}
+        </span>
+      );
+    })()}
+  </>
+);
+
 };
 
 export default WebSocketEvent;

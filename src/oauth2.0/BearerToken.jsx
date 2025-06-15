@@ -14,7 +14,6 @@ function BearerToken() {
 
       const response = await axios.get(
         'https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/auth/token',
-        // 'http://localhost:8000/api/v1/auth/token',
         {
           headers: {
             Authorization: `Basic ${credentials}`,

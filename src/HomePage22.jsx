@@ -11,7 +11,7 @@ import { useCyclopediaApi } from './cyclopedia/CyclopediaAPIProvider';
 import { useHowtoApi } from './howto/HowtoAPIProvider';
 import { useNavigate } from 'react-router-dom';
 import WebSocketEvent from './websockets/WebSocketEvent';
-import WebSocketTrigger from './websockets/websockettrigger';
+
 
 
 export default function HomePage22(props) {
@@ -37,6 +37,7 @@ export default function HomePage22(props) {
       .catch((e) => console.error(e));
   }, [props.checkForRecords]);
 
+
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/alphabet/random')
     // axios('http://localhost:8000/api/v1/cyclopedia/alphabet/random')
@@ -46,6 +47,7 @@ export default function HomePage22(props) {
       })
       .catch((e) => console.error(e));
   }, [props.checkForRecords]);
+
 
   useEffect(() => {
     axios
@@ -304,7 +306,8 @@ export default function HomePage22(props) {
         <tbody>
           <tr style={{ height: '20px' }}>
             <td style={{ width: '5%' }}></td>
-            <td style={{ width: '90%' }}><WebSocketEvent/></td>
+            {/* <td style={{ width: '90%' }}><WebSocketEvent/></td> */}
+            <td style={{ width: '90%' }}></td>
             <td style={{ width: '5%' }}></td>
           </tr>
         </tbody>

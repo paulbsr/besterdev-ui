@@ -1,12 +1,14 @@
 import DBSearchComponentBanner from "../dbsearch/DBSearchComponentBanner";
 import { useCyclopediaApi } from '../cyclopedia/CyclopediaAPIProvider';
+import WebSocketComponent from "../websockets/WebSocketComponent";
 import { useWebsiteApi } from '../websites/WebSiteAPIProvider';
 import WebSocketTrigger from "../websockets/websockettrigger";
 import { GiHummingbird, GiSpiderWeb } from "react-icons/gi";
 import spacer from '../graphix/besterdev_spacer_white.png';
+import WebSocketEvent from '../websockets/WebSocketEvent';
 import { GiGiftOfKnowledge } from "react-icons/gi";
 import BearerToken from "../oauth2.0/BearerToken";
-import { SiJsonwebtokens } from 'react-icons/si';
+import { TbBrandSocketIo } from "react-icons/tb";
 import 'react-tooltip/dist/react-tooltip.css';
 import { TbBrandOauth } from "react-icons/tb";
 import DatePicker from "react-datepicker";
@@ -18,14 +20,14 @@ import '../Fonts.css';
 
 
 
-
 export default function CombinedCreateFP() {
 
   const current = new Date();
+  const [isExpandedBearerToken, setExpandedBearerToken] = useState(false);
   const { websiterootdata, setRefreshWebsiterootdata } = useWebsiteApi();
   const [isExpandedCyclopedia, setExpandedCyclopedia] = useState(false);
+  const [isExpandedWebSocket, setExpandedWebSocket] = useState(false);
   const [isExpandedWebsite, setExpandedWebsite] = useState(false);
-  const [isExpandedBearerToken, setExpandedBearerToken] = useState(false);
   const [checkForRecords, setCheckForRecords] = useState(true);
   const { setRefreshCyclopediarootdata } = useCyclopediaApi();
   const [taskrequirement, setTaskrequirement] = useState("");
@@ -45,8 +47,6 @@ export default function CombinedCreateFP() {
   const [taskstatus] = useState("START");
   const [asms, setAsms] = useState("");
   const [tasknextstep] = useState("");
-
-
 
   const dropdownChange = (event) => {
     const selectedIndex = event.target.options.selectedIndex;
@@ -79,6 +79,7 @@ export default function CombinedCreateFP() {
       toast.error('Error submitting the form');
     }
   };
+
 
   const handleSubmitWebsite = async (event) => {
     event.preventDefault();
@@ -144,17 +145,11 @@ export default function CombinedCreateFP() {
 
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
-
         <DBSearchComponentBanner />
-
-        {/* <b onClick={() => setExpandedCyclopedia(!isExpandedCyclopedia)}>&nbsp;&nbsp;&nbsp;&nbsp;
-          <GiHummingbird style={{ color: '#336791', fontSize: '25px' }} />
-          <IoLibrary style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }} /> Add to Cyclopedia</b> */}
 
         <span onClick={() => setExpandedCyclopedia(!isExpandedCyclopedia)}>&nbsp;&nbsp;&nbsp;&nbsp;
           <GiHummingbird style={{ color: '#4D4D4D', fontSize: '25px' }} />
           <GiGiftOfKnowledge style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} /> Add to Cyclopedia</span>
-
 
         <span onClick={() => setExpandedWebsite(!isExpandedWebsite)}>&nbsp;&nbsp;&nbsp;&nbsp;
           <GiHummingbird style={{ color: '#4D4D4D', fontSize: '25px' }} />
@@ -164,12 +159,11 @@ export default function CombinedCreateFP() {
           <GiHummingbird style={{ color: '#4D4D4D', fontSize: '25px' }} />
           <MdTask style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} /> Add a Task</span>
 
-        <WebSocketTrigger />
-
         <span onClick={() => setExpandedBearerToken(!isExpandedBearerToken)}>&nbsp;&nbsp;&nbsp;&nbsp;
-          {/* <GiHummingbird style={{ color: '#4D4D4D', fontSize: '25px' }} /> */}
           <TbBrandOauth style={{ color: '#4D4D4D', fontSize: '19px', cursor: 'pointer' }} /> OAuth2.0</span>
 
+        <span onClick={() => setExpandedWebSocket(!isExpandedWebSocket)}>&nbsp;&nbsp;&nbsp;&nbsp;
+          <TbBrandSocketIo style={{ color: '#4D4D4D', fontSize: '19px', cursor: 'pointer' }} /> WebSocket</span>
       </div>
 
       {isExpandedCyclopedia && (
@@ -279,7 +273,13 @@ export default function CombinedCreateFP() {
       }
 
 
-{isExpandedBearerToken && <BearerToken />}
+      {isExpandedBearerToken && <BearerToken />}
+
+      {isExpandedWebSocket && (
+        <>
+          <WebSocketComponent />
+        </>
+      )}
 
 
       {isExpandedTask && (
@@ -328,7 +328,6 @@ export default function CombinedCreateFP() {
 
                   <div>
                     &nbsp; &nbsp; &nbsp; &nbsp;
-                    {/* <button className="Font-Segoe-Small" type="submit" style={{ marginLeft: '10px', height: '19.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }} onClick={() => setTaskstatus("START")}>Commit new Task</button> */}
                     <button
                       className="Font-Segoe-Small"
                       type="submit"
