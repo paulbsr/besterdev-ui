@@ -45,13 +45,50 @@ const WebSocketComponent = () => {
   const desc = parts.find(p => p.startsWith('Desc:'))?.replace('Desc:', '').trim() || '';
 
   return (
-    <td onClick={handleClick}>
-      <div>&nbsp;</div>
-      <img alt="spacer" src={spacer} />
-      <TbBrandSocketIo title="Fetch a Bearer Token" style={{ color: '#4D4D4D', fontSize: '22px', cursor: 'pointer' }} />&nbsp;
-      WebSocket:
-      <span style={{ fontFamily: "Verdana", fontSize: "10pt", color: "#D5441C", fontStyle: "italic" }}> (Event @ {time}) <strong>{name}:</strong> {desc}</span>
-    </td>
+    // <td onClick={handleClick}>
+    //   <div>&nbsp;</div>
+    //   <img alt="spacer" src={spacer} />
+    //   <TbBrandSocketIo title="Fetch a Bearer Token" style={{ color: '#4D4D4D', fontSize: '22px', cursor: 'pointer' }} />&nbsp;
+    //   WebSocket:
+    //   <span style={{ fontFamily: "Verdana", fontSize: "10pt", color: "#D5441C", fontStyle: "italic" }}> (Event @ {time}) <strong>{name}:</strong> {desc}</span>
+    // </td>
+<td onClick={handleClick}>
+  <div>&nbsp;</div>
+  <div
+    style={{
+      marginLeft: '23px',
+      display: 'inline-block',
+      border: '1px solid #ccc',
+      borderRadius: '8px',
+      padding: '8px 12px',
+      backgroundColor: '#f9f9f9',
+      width: '1800px',
+      // maxWidth: 'fit-content',
+      boxShadow: '2px 2px 6px rgba(0,0,0,0.1)',
+      fontFamily: 'Segoe UI, sans-serif',
+    }}
+  >
+    {/* <img alt="spacer" src={spacer} style={{ verticalAlign: 'middle' }} /> */}
+    <TbBrandSocketIo
+      title="Fetch a Bearer Token"
+      style={{ color: '#4D4D4D', fontSize: '22px', cursor: 'pointer', verticalAlign: 'middle' }}
+    />
+    WebSocket:
+    <span
+      style={{
+        fontFamily: 'Verdana',
+        fontSize: '10pt',
+        color: '#D5441C',
+        fontStyle: 'italic',
+        marginLeft: '4px',
+      }}
+    >
+      (Event @ {time}) <strong>{name}:</strong> {desc}
+    </span>
+  </div>
+</td>
+
+
   );
 };
 

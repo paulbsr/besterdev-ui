@@ -11,6 +11,7 @@ import BearerToken from "../oauth2.0/BearerToken";
 import { TbBrandSocketIo } from "react-icons/tb";
 import 'react-tooltip/dist/react-tooltip.css';
 import { TbBrandOauth } from "react-icons/tb";
+import { BsSearch } from "react-icons/bs";
 import DatePicker from "react-datepicker";
 import React, { useState } from "react";
 import { MdTask } from "react-icons/md";
@@ -28,6 +29,7 @@ export default function CombinedCreateFP() {
   const [isExpandedCyclopedia, setExpandedCyclopedia] = useState(false);
   const [isExpandedWebSocket, setExpandedWebSocket] = useState(false);
   const [isExpandedWebsite, setExpandedWebsite] = useState(false);
+  const [isExpandedSearch, setExpandedSearch] = useState(false);
   const [checkForRecords, setCheckForRecords] = useState(true);
   const { setRefreshCyclopediarootdata } = useCyclopediaApi();
   const [taskrequirement, setTaskrequirement] = useState("");
@@ -142,10 +144,16 @@ export default function CombinedCreateFP() {
 
   return (
     <div className='Font-Verdana-Small-Postgres'>
-
+<div>&nbsp;</div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
-        <DBSearchComponentBanner />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        {/* <DBSearchComponentBanner /> */}
 
         <span onClick={() => setExpandedCyclopedia(!isExpandedCyclopedia)}>&nbsp;&nbsp;&nbsp;&nbsp;
           <GiHummingbird style={{ color: '#4D4D4D', fontSize: '25px' }} />
@@ -164,6 +172,9 @@ export default function CombinedCreateFP() {
 
         <span onClick={() => setExpandedWebSocket(!isExpandedWebSocket)}>&nbsp;&nbsp;&nbsp;&nbsp;
           <TbBrandSocketIo style={{ color: '#4D4D4D', fontSize: '19px', cursor: 'pointer' }} /> WebSocket</span>
+
+        <span onClick={() => setExpandedSearch(!isExpandedSearch)}>&nbsp;&nbsp;&nbsp;&nbsp;
+          <BsSearch style={{ color: '#4D4D4D', fontSize: '19px', cursor: 'pointer' }} /> Search</span>
       </div>
 
       {isExpandedCyclopedia && (
@@ -275,11 +286,9 @@ export default function CombinedCreateFP() {
 
       {isExpandedBearerToken && <BearerToken />}
 
-      {isExpandedWebSocket && (
-        <>
-          <WebSocketComponent />
-        </>
-      )}
+      {isExpandedWebSocket && (<><WebSocketComponent /></>)}
+
+      {isExpandedSearch && <DBSearchComponentBanner />}
 
 
       {isExpandedTask && (

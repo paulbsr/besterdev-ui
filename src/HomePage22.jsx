@@ -11,6 +11,7 @@ import { useCyclopediaApi } from './cyclopedia/CyclopediaAPIProvider';
 import { useHowtoApi } from './howto/HowtoAPIProvider';
 import { useNavigate } from 'react-router-dom';
 import WebSocketEvent from './websockets/WebSocketEvent';
+import CombinedCreateFP from './quicks/CombinedCreateFP';
 
 
 
@@ -218,6 +219,10 @@ export default function HomePage22(props) {
       </>
     );
   };
+
+
+
+
 
   const InnerTableRight = () => {
     const amazonIframes = [
