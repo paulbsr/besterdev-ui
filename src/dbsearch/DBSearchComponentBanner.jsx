@@ -81,9 +81,10 @@ const DBSearchComponentBanner = () => {
 
   return (
 
-  <form onSubmit={handleSearch}><div  style={{ color: '#ffffff' }}>&nbsp;&nbsp;</div>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input
+    <form onSubmit={handleSearch}>
+      {/* <div style={{ color: '#ffffff' }}>&nbsp;</div> */}
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input
         style={{ height: '19.5px', border: '0.75px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }}
         placeholder="Search"
         type="text"
@@ -91,20 +92,20 @@ const DBSearchComponentBanner = () => {
         onChange={(event) => setSearchQuery(event.target.value)}
         required
       />
+
       <button
         type="submit"
         style={{ marginLeft: '10px', height: '19.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#336791', cursor: 'pointer' }}
-      >
-        Search
+      >Search
       </button>
 
       <button
         type="button"
         onClick={handleCancel}
         style={{ marginLeft: '10px', height: '20.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#336791', cursor: 'pointer' }}
-      >
-        Clear
-      </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      >Clear
+      </button>
+      <div>&nbsp;&nbsp;</div>
 
       {/* Display search results */}
       {searchResults.length > 0 ? (
@@ -112,7 +113,7 @@ const DBSearchComponentBanner = () => {
           {searchResults.map((result) => {
             if (result.cyclopediaName) {
               return (
-                <div className="dbsearchhover" key={result.id}>
+                <div className="dbsearchhoverbanner" key={result.id}>
                   {/* Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Cyclopedia entry</b>:&nbsp;&nbsp; */}
                   {editing === result.id ? (
                     <>
@@ -120,22 +121,22 @@ const DBSearchComponentBanner = () => {
                         required
                         defaultValue={result.cyclopediaName}
                         onChange={(e) => setCyclopedianame(e.target.value)}
-                        style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '21.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '350px', padding: 0, paddingLeft: '9px' }} 
+                        style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '21.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '350px', padding: 0, paddingLeft: '9px' }}
                       />
                       <textarea
                         required
                         defaultValue={result.cyclopediaDesc}
                         onChange={(e) => setCyclopediadesc(e.target.value)}
-                        style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '21.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} 
+                        style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '21.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }}
                       />
                     </>
                   ) : (
                     <div className="Font-Segoe-Small-Howto">
                       <a onClick={() => navigate(`/cyclopediaedit/${result.cyclopediaId}`)}>&nbsp;&nbsp;&nbsp;
-                      <GiGiftOfKnowledge style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
-                      <b>{highlightKeyword(result.cyclopediaName, searchQuery)}: </b>
-                      {highlightKeyword(result.cyclopediaDesc, searchQuery)}
-                      &nbsp;&nbsp;&nbsp;
+                        <GiGiftOfKnowledge style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
+                        <b>{highlightKeyword(result.cyclopediaName, searchQuery)}: </b>
+                        {highlightKeyword(result.cyclopediaDesc, searchQuery)}
+                        &nbsp;&nbsp;&nbsp;
                       </a>
                     </div>
                   )}
@@ -143,7 +144,7 @@ const DBSearchComponentBanner = () => {
               );
             } else if (result.website_name) {
               return (
-                <div className="dbsearchhover" key={result.id}>
+                <div className="dbsearchhoverbanner" key={result.id}>
                   {/* Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Web Resource</b>:&nbsp;&nbsp; */}
                   <div className="Font-Segoe-Small-Howto">&nbsp;&nbsp;&nbsp;
                     <TbWorldWww style={{ color: '#336791', fontSize: '23px', cursor: 'pointer' }} />&nbsp;
@@ -156,7 +157,7 @@ const DBSearchComponentBanner = () => {
               );
             } else if (result.news_title) {
               return (
-                <div className="dbsearchhover" key={result.id}>
+                <div className="dbsearchhoverbanner" key={result.id}>
                   {/* Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Breaking News Article</b>:&nbsp;&nbsp; */}
                   <div className="Font-Segoe-Small-Howto">&nbsp;&nbsp;&nbsp;
                     <SiWritedotas style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
@@ -169,7 +170,7 @@ const DBSearchComponentBanner = () => {
               );
             } else if (result.taskname) {
               return (
-                <div className="dbsearchhover" key={result.id}>
+                <div className="dbsearchhoverbanner" key={result.id}>
                   {/* Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Task Name:</b> */}
                   <div className="Font-Segoe-Small-Howto">&nbsp;&nbsp;&nbsp;
                     <MdTask style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
@@ -181,7 +182,7 @@ const DBSearchComponentBanner = () => {
               );
             } else if (result.childrecord) {
               return (
-                <div className="dbsearchhover" key={result.id}>
+                <div className="dbsearchhoverbanner" key={result.id}>
                   {/* Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Task Record:</b> */}
                   <div className="Font-Segoe-Small-Howto">&nbsp;&nbsp;&nbsp;
                     <MdTask style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />
@@ -194,7 +195,7 @@ const DBSearchComponentBanner = () => {
               );
             } else if (result.howto_name) {
               return (
-                <div className="dbsearchhover" key={result.id}>
+                <div className="dbsearchhoverbanner" key={result.id}>
                   {/* Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>HOWTO document</b>:&nbsp;&nbsp; */}
                   <div className="Font-Segoe-Small-Howto">&nbsp;&nbsp;&nbsp;
                     <BsPatchQuestion style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
@@ -206,7 +207,7 @@ const DBSearchComponentBanner = () => {
               );
             } else if (result.step_name) {
               return (
-                <div className="dbsearchhover" key={result.id}>
+                <div className="dbsearchhoverbanner" key={result.id}>
                   {/* Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Step Name</b> in a HOWTO document: */}
                   <div className="Font-Segoe-Small-Howto">&nbsp;&nbsp;&nbsp;
                     <BsPatchQuestion style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />
@@ -217,7 +218,7 @@ const DBSearchComponentBanner = () => {
               );
             } else if (result.steprecord_id) {
               return (
-                <div className="dbsearchhover" key={result.id}>
+                <div className="dbsearchhoverbanner" key={result.id}>
                   {/* Found the search phrase <i>"{searchQuery}"</i> in the following <b style={{ color: '#336791' }}>Step Record</b>:&nbsp;&nbsp; */}
                   <div className="Font-Segoe-Small-Howto">&nbsp;&nbsp;&nbsp;
                     <BsPatchQuestion style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />
@@ -231,12 +232,12 @@ const DBSearchComponentBanner = () => {
             return null; // Ignore other types of results
           })}
         </>
-              )
-              :
-              noRecordsFound ? (<div>No record exists for search phase: "{searchQuery}"</div>)
-              :
-              null
-            }
+      )
+        :
+        noRecordsFound ? (<div>No record exists for search phase: "{searchQuery}"</div>)
+          :
+          null
+      }
     </form>
   );
 };

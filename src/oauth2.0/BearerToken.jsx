@@ -1,6 +1,5 @@
-import spacer from '../graphix/besterdev_spacer_white.png';
 import { SiJsonwebtokens } from 'react-icons/si';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 
 function BearerToken() {
@@ -30,11 +29,11 @@ function BearerToken() {
 
   return (
     <td onClick={handleClick}>
-      <div>&nbsp;</div>
-      <img alt="spacer" src={spacer} />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <SiJsonwebtokens title="Fetch a Bearer Token" style={{ color: '#4D4D4D', fontSize: '18px', cursor: 'pointer' }} />&nbsp;
-      GET a Bearer Token: &nbsp;
-      <span style={{ fontFamily: "Verdana", fontSize: "10pt", color: "#D5441C", fontStyle: "italic" }}>{bearertoken?.BearerToken}</span>
+      GET a Bearer Token:&nbsp;
+      <span style={{ fontFamily: "Segoe UI", fontSize: "8pt", color: "#D5441C", fontStyle: "italic" }}>{bearertoken?.BearerToken}</span>
+      <div>&nbsp;</div>
     </td>
   );
 }

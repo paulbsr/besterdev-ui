@@ -418,6 +418,17 @@
     padding-bottom: 5px; */
 }
 
+.dbsearchhoverbanner:hover {
+    font-family: "Segoe UI";
+    font-size: medium;
+    color: #336791;
+    background-color: #FFFFFF;
+    border-radius: 3px;
+    /* border: 1px solid #336791; */
+    border: 1px solid #000000;
+    cursor: 'pointer';
+}
+
 .searchhover:hover {
     cursor: 'pointer';
     font-family: "Verdana";

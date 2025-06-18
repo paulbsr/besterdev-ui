@@ -4,7 +4,6 @@ import WebSocketComponent from "../websockets/WebSocketComponent";
 import { useWebsiteApi } from '../websites/WebSiteAPIProvider';
 import WebSocketTrigger from "../websockets/websockettrigger";
 import { GiHummingbird, GiSpiderWeb } from "react-icons/gi";
-import spacer from '../graphix/besterdev_spacer_white.png';
 import WebSocketEvent from '../websockets/WebSocketEvent';
 import { GiGiftOfKnowledge } from "react-icons/gi";
 import BearerToken from "../oauth2.0/BearerToken";
@@ -143,214 +142,254 @@ export default function CombinedCreateFP() {
   };
 
   return (
-    <div className='Font-Verdana-Small-Postgres'>
-<div>&nbsp;</div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        {/* <DBSearchComponentBanner /> */}
+    <div className='Font-Segoe-Small'>
+      <div>&nbsp;</div>
+      <table style={{ width: '100%', tableLayout: 'fixed' }}>
+        <tbody>
+          <tr style={{ height: '20px' }}>
+            <td style={{ width: '20%' }}></td>
+            <td style={{
+              marginLeft: '3px',
+              border: '1px solid #ccc',
+              borderRadius: '8px',
+              padding: '2px 2px',
+              backgroundColor: '#f7f4f3',
+              width: '50%',
+              boxShadow: '2px 2px 6px rgba(0,0,0,0.1)',
+              fontFamily: 'Verdana',
+            }}>
+              <div>&nbsp;</div>
 
-        <span onClick={() => setExpandedCyclopedia(!isExpandedCyclopedia)}>&nbsp;&nbsp;&nbsp;&nbsp;
-          <GiHummingbird style={{ color: '#4D4D4D', fontSize: '25px' }} />
-          <GiGiftOfKnowledge style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} /> Add to Cyclopedia</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
 
-        <span onClick={() => setExpandedWebsite(!isExpandedWebsite)}>&nbsp;&nbsp;&nbsp;&nbsp;
-          <GiHummingbird style={{ color: '#4D4D4D', fontSize: '25px' }} />
-          <GiSpiderWeb style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} /> Add a Website</span>
+                <span onClick={() => setExpandedCyclopedia(!isExpandedCyclopedia)}>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  Add <GiHummingbird style={{ color: '#4D4D4D', fontSize: '25px' }} />
+                  <GiGiftOfKnowledge style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} /> to Cyclopedia</span>
 
-        <span onClick={() => setExpandedTask(!isExpandedTask)}>&nbsp;&nbsp;&nbsp;&nbsp;
-          <GiHummingbird style={{ color: '#4D4D4D', fontSize: '25px' }} />
-          <MdTask style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} /> Add a Task</span>
+                <span onClick={() => setExpandedWebsite(!isExpandedWebsite)}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  Add <GiHummingbird style={{ color: '#4D4D4D', fontSize: '25px' }} />
+                  <GiSpiderWeb style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} /> a Website</span>
 
-        <span onClick={() => setExpandedBearerToken(!isExpandedBearerToken)}>&nbsp;&nbsp;&nbsp;&nbsp;
-          <TbBrandOauth style={{ color: '#4D4D4D', fontSize: '19px', cursor: 'pointer' }} /> OAuth2.0</span>
+                <span onClick={() => setExpandedTask(!isExpandedTask)}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  Add <GiHummingbird style={{ color: '#4D4D4D', fontSize: '25px' }} />
+                  <MdTask style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} /> a Task</span>
 
-        <span onClick={() => setExpandedWebSocket(!isExpandedWebSocket)}>&nbsp;&nbsp;&nbsp;&nbsp;
-          <TbBrandSocketIo style={{ color: '#4D4D4D', fontSize: '19px', cursor: 'pointer' }} /> WebSocket</span>
+                <span onClick={() => setExpandedBearerToken(!isExpandedBearerToken)}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <TbBrandOauth style={{ color: '#4D4D4D', fontSize: '19px', cursor: 'pointer' }} /> OAuth2.0</span>
 
-        <span onClick={() => setExpandedSearch(!isExpandedSearch)}>&nbsp;&nbsp;&nbsp;&nbsp;
-          <BsSearch style={{ color: '#4D4D4D', fontSize: '19px', cursor: 'pointer' }} /> Search</span>
-      </div>
+                <span onClick={() => setExpandedWebSocket(!isExpandedWebSocket)}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <TbBrandSocketIo style={{ color: '#4D4D4D', fontSize: '19px', cursor: 'pointer' }} /> WebSocket</span>
 
-      {isExpandedCyclopedia && (
-        <form onSubmit={handleSubmitCyclopedia}>
-          <div>&nbsp;</div>
-          <img alt="spacer" src={spacer} />Cyclopedia:&nbsp;&nbsp;
-          <input
-            style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '500px' }}
-            placeholder="Required"
-            type="text"
-            value={cyclopediaName}
-            onChange={(e) => setCyclopediaName(e.target.value)}
-            required
-          />
-          <img alt="spacer" src={spacer} />URL:&nbsp;&nbsp;
+                <span onClick={() => setExpandedSearch(!isExpandedSearch)}>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <BsSearch style={{ color: '#4D4D4D', fontSize: '19px', cursor: 'pointer' }} /> Search</span>
+              </div>
 
-          <input
-            style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '865px' }}
-            type="text"
-            value={cyclopediaUrl}
-            onChange={(e) => setCyclopediaUrl(e.target.value)}
-          />
+              <div>&nbsp;</div>
 
-          <button
-            className="Font-Verdana-Small-Postgres"
-            type="submit"
-            style={{ marginLeft: '10px', height: '19.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>
-            Memorialize
-          </button>
+              {isExpandedCyclopedia && (
+                <form onSubmit={handleSubmitCyclopedia}>
+                  <div>&nbsp;</div>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  Cyclopedia:&nbsp;&nbsp;
+                  <input
+                    style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '875px' }}
+                    placeholder="Required"
+                    type="text"
+                    value={cyclopediaName}
+                    onChange={(e) => setCyclopediaName(e.target.value)}
+                    required
+                  />
 
+                  <div>&nbsp;</div>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  URL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-          <div>&nbsp;</div>
-          <img alt="spacer" src={spacer} />Description:&nbsp;
-          <textarea
-            style={{ fontFamily: 'Verdana', height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '2px', width: '1450px' }}
-            placeholder="Required"
-            value={cyclopediaDesc}
-            onChange={(e) => setCyclopediaDesc(e.target.value)}
-            required
-          />
-        </form>
-      )
-      }
-
-      {isExpandedWebsite && (
-        <form onSubmit={handleSubmitWebsite}>
-          <div>&nbsp;</div>
-          <img alt="spacer" src={spacer} />Website:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <input
-            style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '500px' }}
-            placeholder="Required"
-            type="text"
-            value={websiteName}
-            onChange={(e) => setWebsiteName(e.target.value)}
-            required
-          />
-          <img alt="spacer" src={spacer} />URL:&nbsp;&nbsp;
-          <input
-            style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '650px' }}
-            placeholder="Required"
-            type="text"
-            value={websiteUrl}
-            onChange={(e) => setWebsiteUrl(e.target.value)}
-            required
-          />
-          <img alt="spacer" src={spacer} />Category:&nbsp;&nbsp;
-
-          <select
-            className='Font-Verdana-QuickAdd'
-            onChange={(event) => {
-              const selectedIndex = event.target.selectedIndex;
-              const selectedOption = event.target.options[selectedIndex];
-              const category = selectedOption.getAttribute("data-category");
-              setWebsiteCat(category);
-            }}
-            id="dropdown"
-            style={{
-              height: '19.5px',
-              border: '1.25px solid #336791',
-              borderRadius: '4px',
-              padding: 0,
-              paddingLeft: '5px',
-              width: '225px'
-            }}
-          >&nbsp;
-            <option disabled selected value=""></option>
-            {websiterootdata &&
-              Array.from(new Set(websiterootdata.map(option => option.websiteCat)))
-                .sort()
-                .filter(category => !category.startsWith("HOWTO")) // Exclude "HOWTO"
-                .map(category => (
-                  <option key={category} value={category} data-category={category}>
-                    {category}
-                  </option>
-                ))}
-          </select>
+                  <input
+                    style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '875px' }}
+                    type="text"
+                    value={cyclopediaUrl}
+                    onChange={(e) => setCyclopediaUrl(e.target.value)}
+                  />
 
 
-          <button
-            className="Font-Verdana-Small-Postgres"
-            type="submit"
-            style={{ marginLeft: '10px', height: '19.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>
-            Memorialize
-          </button>
-        </form>
-      )
-      }
+                  <div>&nbsp;</div>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  Description:&nbsp;
+                  <textarea
+                    style={{ fontFamily: 'Verdana', height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '2px', width: '880px' }}
+                    placeholder="Required"
+                    value={cyclopediaDesc}
+                    onChange={(e) => setCyclopediaDesc(e.target.value)}
+                    required
+                  />
 
+                  <div>&nbsp;</div>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-      {isExpandedBearerToken && <BearerToken />}
+                  <button
+                    className="Font-Verdana-Small-Postgres"
+                    type="submit"
+                    style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>
+                    Memorialize
+                  </button>
+                  <div>&nbsp;</div>
+                </form>
 
-      {isExpandedWebSocket && (<><WebSocketComponent /></>)}
+              )
+              }
 
-      {isExpandedSearch && <DBSearchComponentBanner />}
+              {isExpandedWebsite && (
+                <form onSubmit={handleSubmitWebsite}>
+                  <div>&nbsp;</div>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  Website:&nbsp;&nbsp;&nbsp;
+                  <input
+                    style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '500px' }}
+                    placeholder="Required"
+                    type="text"
+                    value={websiteName}
+                    onChange={(e) => setWebsiteName(e.target.value)}
+                    required
+                  />
 
+                  <div>&nbsp;</div>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  URL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input
+                    style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '500px' }}
+                    placeholder="Required"
+                    type="text"
+                    value={websiteUrl}
+                    onChange={(e) => setWebsiteUrl(e.target.value)}
+                    required
+                  />
 
-      {isExpandedTask && (
-        <div>
-          <div>&nbsp;</div>
-          <div>
-            <form onSubmit={handleSubmitTask}>
-              <div>
-                <div style={{ display: "flex" }}>
+                  <div>&nbsp;</div>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  Category:&nbsp;&nbsp;
 
-                  <img alt="spacer" src={spacer} />Module:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <select
-                    style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '150px' }} placeholder="Domain" id="dropdown" onChange={dropdownChange} >
-                    <option disabled selected value="Domain">Module</option>
-                    <option value="113092" data-value2="NetworkSecurity">NetworkSecurity</option>
-                    <option value="14718" data-value2="EnterpriseSecurity">EnterpriseSecurity</option>
-                    <option value="181268" data-value2="ComputerCloudSecurity">ComputerCloudSecurity</option>
-                    <option value="171593" data-value2="AppliedCryptography">AppliedCryptography</option>
-                    <option value="168272" data-value2="Dissertation">Dissertation</option>
-                    <option value="188118" data-value2="UserStory">UserStory</option>
+                    className='Font-Verdana-QuickAdd'
+                    onChange={(event) => {
+                      const selectedIndex = event.target.selectedIndex;
+                      const selectedOption = event.target.options[selectedIndex];
+                      const category = selectedOption.getAttribute("data-category");
+                      setWebsiteCat(category);
+                    }}
+                    id="dropdown"
+                    required
+                    style={{
+                      height: '19.5px',
+                      border: '1.25px solid #336791',
+                      borderRadius: '4px',
+                      padding: 0,
+                      paddingLeft: '5px',
+                      width: '225px',
+                    }}
+                  >
+                    <option value="" disabled selected hidden>Required</option>
+                    {websiterootdata &&
+                      Array.from(new Set(websiterootdata.map(option => option.websiteCat)))
+                        .sort()
+                        .filter(category => !category.startsWith("HOWTO"))
+                        .map(category => (
+                          <option key={category} value={category} data-category={category}>
+                            {category}
+                          </option>
+                        ))}
                   </select>
 
-                  <div>
+                  <div>&nbsp;</div>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <button
+                    className="Font-Verdana-Small-Postgres"
+                    type="submit"
+                    style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>
+                    Memorialize
+                  </button>
+                  <div>&nbsp;</div>
+                </form>
+              )
+              }
 
-                    <img alt="spacer" src={spacer} />Task Name:&nbsp;&nbsp;
-                    <input style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '400px' }} placeholder="Required" type="text" onChange={(event) => setTaskname(event.target.value)} required />
-                  </div>
-                  <div>
-                    <img alt="spacer" src={spacer} />Description:&nbsp;&nbsp;
-                    <input style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '550px' }} type="text" onChange={(event) => setTaskrequirement(event.target.value)} />
-                  </div>
 
-                  <div>
-                    <img alt="spacer" src={spacer} />Target:&nbsp;&nbsp;
-                  </div>
-                  <div>
-                    <DatePicker
-                      selected={tasktargetdate}
-                      onChange={(date) => setTasktargetdate(date)}
-                      dateFormat="yyyy.MM.dd"
-                      minDate={new Date()}
-                      placeholderText="Target Date"
-                      style={{ height: '27.7px' }}
-                    />
-                  </div>
+              {isExpandedBearerToken && <BearerToken />}
 
+              {isExpandedWebSocket && (<><WebSocketComponent /></>)}
+
+              {isExpandedSearch && <DBSearchComponentBanner />}
+
+
+              {isExpandedTask && (
+                <div>
+                  <div>&nbsp;</div>
                   <div>
-                    &nbsp; &nbsp; &nbsp; &nbsp;
-                    <button
-                      className="Font-Segoe-Small"
-                      type="submit"
-                      style={{ marginLeft: '10px', height: '19.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>
-                      Memorialize
-                    </button>
+                    <form onSubmit={handleSubmitTask}>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      Module:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <select
+                        style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '150px' }} placeholder="Domain" id="dropdown" onChange={dropdownChange} >
+                        <option disabled selected value="Domain">Module</option>
+                        <option value="113092" data-value2="NetworkSecurity">NetworkSecurity</option>
+                        <option value="14718" data-value2="EnterpriseSecurity">EnterpriseSecurity</option>
+                        <option value="181268" data-value2="ComputerCloudSecurity">ComputerCloudSecurity</option>
+                        <option value="171593" data-value2="AppliedCryptography">AppliedCryptography</option>
+                        <option value="168272" data-value2="Dissertation">Dissertation</option>
+                        <option value="188118" data-value2="UserStory">UserStory</option>
+                      </select>
+
+                      <div>
+                        <div>&nbsp;</div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Task Name:&nbsp;&nbsp;
+                        <input style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '550px' }} placeholder="Required" type="text" onChange={(event) => setTaskname(event.target.value)} required />
+                      </div>
+
+                      <div>
+                        <div>&nbsp;</div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Description:&nbsp;&nbsp;
+                        <input style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '550px' }} type="text" onChange={(event) => setTaskrequirement(event.target.value)} />
+                      </div>
+
+                      <div>
+                        <div>&nbsp;</div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <DatePicker
+                          selected={tasktargetdate}
+                          onChange={(date) => setTasktargetdate(date)}
+                          dateFormat="yyyy.MM.dd"
+                          minDate={new Date()}
+                          placeholderText="Target Date"
+                          style={{ height: '27.7px' }}
+                        />
+                      </div>
+
+                      <div>
+                        <div>&nbsp;</div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button
+                          className="Font-Segoe-Small"
+                          type="submit"
+                          style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>
+                          Memorialize
+                        </button>
+                        <div>&nbsp;</div>
+                      </div>
+                    </form>
                   </div>
                 </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      )
-      }
+              )
+              }
+            </td>
+            <td style={{ width: '20%' }}></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 }
