@@ -194,7 +194,7 @@ export default function CombinedCreateFP() {
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   Cyclopedia:&nbsp;&nbsp;
                   <input
-                    style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '875px' }}
+                    style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '300px' }}
                     placeholder="Required"
                     type="text"
                     value={cyclopediaName}
@@ -202,12 +202,12 @@ export default function CombinedCreateFP() {
                     required
                   />
 
-                  <div>&nbsp;</div>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  URL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  {/* <div>&nbsp;</div> */}
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  URL:&nbsp;&nbsp;
 
                   <input
-                    style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '875px' }}
+                    style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '500px' }}
                     type="text"
                     value={cyclopediaUrl}
                     onChange={(e) => setCyclopediaUrl(e.target.value)}
@@ -243,10 +243,10 @@ export default function CombinedCreateFP() {
               {isExpandedWebsite && (
                 <form onSubmit={handleSubmitWebsite}>
                   <div>&nbsp;</div>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  Website:&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  Website:&nbsp;&nbsp;
                   <input
-                    style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '500px' }}
+                    style={{ height: '22.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '330px' }}
                     placeholder="Required"
                     type="text"
                     value={websiteName}
@@ -254,11 +254,11 @@ export default function CombinedCreateFP() {
                     required
                   />
 
-                  <div>&nbsp;</div>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  URL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  {/* <div>&nbsp;</div> */}
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  URL:&nbsp;&nbsp;
                   <input
-                    style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '500px' }}
+                    style={{ height: '22.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '500px' }}
                     placeholder="Required"
                     type="text"
                     value={websiteUrl}
@@ -267,7 +267,7 @@ export default function CombinedCreateFP() {
                   />
 
                   <div>&nbsp;</div>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   Category:&nbsp;&nbsp;
 
                   <select
@@ -281,7 +281,7 @@ export default function CombinedCreateFP() {
                     id="dropdown"
                     required
                     style={{
-                      height: '19.5px',
+                      height: '22.5px',
                       border: '1.25px solid #336791',
                       borderRadius: '4px',
                       padding: 0,
@@ -301,8 +301,8 @@ export default function CombinedCreateFP() {
                         ))}
                   </select>
 
-                  <div>&nbsp;</div>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  {/* <div>&nbsp;</div> */}
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <button
                     className="Font-Verdana-Small-Postgres"
                     type="submit"
@@ -328,9 +328,9 @@ export default function CombinedCreateFP() {
                   <div>
                     <form onSubmit={handleSubmitTask}>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      Module:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      Module:&nbsp;&nbsp;
                       <select
-                        style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '150px' }} placeholder="Domain" id="dropdown" onChange={dropdownChange} >
+                        style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '250px' }} placeholder="Domain" id="dropdown" onChange={dropdownChange} >
                         <option disabled selected value="Domain">Module</option>
                         <option value="113092" data-value2="NetworkSecurity">NetworkSecurity</option>
                         <option value="14718" data-value2="EnterpriseSecurity">EnterpriseSecurity</option>
@@ -340,24 +340,20 @@ export default function CombinedCreateFP() {
                         <option value="188118" data-value2="UserStory">UserStory</option>
                       </select>
 
-                      <div>
-                        <div>&nbsp;</div>
+
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         Task Name:&nbsp;&nbsp;
-                        <input style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '550px' }} placeholder="Required" type="text" onChange={(event) => setTaskname(event.target.value)} required />
-                      </div>
+                        <input style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '530px' }} placeholder="Required" type="text" onChange={(event) => setTaskname(event.target.value)} required />
+
 
                       <div>
                         <div>&nbsp;</div>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         Description:&nbsp;&nbsp;
-                        <input style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '550px' }} type="text" onChange={(event) => setTaskrequirement(event.target.value)} />
-                      </div>
+                        <input style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '500px' }} type="text" onChange={(event) => setTaskrequirement(event.target.value)} />
 
-                      <div>
-                        <div>&nbsp;</div>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        Target:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Target:&nbsp;&nbsp;
 
                         <DatePicker
                           selected={tasktargetdate}
@@ -367,11 +363,8 @@ export default function CombinedCreateFP() {
                           placeholderText="Target Date"
                           style={{ height: '27.7px' }}
                         />
-                      </div>
 
-                      <div>
-                        <div>&nbsp;</div>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
                         <button
                           className="Font-Segoe-Small"
                           type="submit"
