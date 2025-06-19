@@ -324,7 +324,6 @@ export default function CombinedCreateFP() {
 
               {isExpandedTask && (
                 <div>
-                  <div>&nbsp;</div>
                   <div>
                     <form onSubmit={handleSubmitTask}>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
