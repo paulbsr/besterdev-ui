@@ -1,23 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import 'react-tooltip/dist/react-tooltip.css';
-import './Fonts.css';
-import axios from 'axios';
-import ReactDOM from 'react-dom';
+
 import { BrowserRouter as Router, Route, Routes, Navigate, Outlet } from 'react-router-dom';
-import './index.css';
+import { BreakingNewsAPIProvider } from './breakingnews/BreakingNewsAPIProvider';
+import { CyclopediaAPIProvider } from './cyclopedia/CyclopediaAPIProvider';
+import { WebSiteAPIProvider } from './websites/WebSiteAPIProvider';
+import PagePeopleScorecard from './pages/PagePeopleScorecard';
+import { HowtoAPIProvider } from './howto/HowtoAPIProvider';
+import PageCyclopediaEdit from './pages/PageCyclopediaEdit';
+import PageDHKeyExchange from './pages/PageDHKeyExchange';
+import PageHowtoEdit from './pages/PageHowtoEdit';
+import PageTaskEdit from './pages/PageTaskEdit';
+import PageCyclopedia from './pages/PageCyclopedia';
+import PageTaskManage from './pages/PageTaskManage';
 import PageSearch from './pages/PageSearch';
 import PageManage from './pages/PageManage';
 import PageLogin from './pages/PageLogin';
 import PageLogout from './pages/PageLogout';
 import PageHowtoManage from './pages/PageHowtoManage';
-import PagePeopleScorecard from './pages/PagePeopleScorecard';
 import PageResources from './pages/PageResources';
 import firebase from 'firebase/compat/app';
 import PageHome from './pages/PageHome';
-import PageHowtoEdit from './pages/PageHowtoEdit';
-import PageTaskEdit from './pages/PageTaskEdit';
-import PageCyclopedia from './pages/PageCyclopedia';
-import PageTaskManage from './pages/PageTaskManage';
 import PageSwagger from './pages/PageSwagger';
 import 'firebase/firestore';
 import 'firebase/auth';
@@ -29,14 +30,13 @@ import { UserProvider } from './UserContext';
 import { useUserContext } from './UserContext';
 import ReactGA from 'react-ga';
 import PageMyCV from './pages/PageMyCV';
-import { WebSiteAPIProvider } from './websites/WebSiteAPIProvider';
-import { CyclopediaAPIProvider } from './cyclopedia/CyclopediaAPIProvider';
-import { HowtoAPIProvider } from './howto/HowtoAPIProvider';
-import { BreakingNewsAPIProvider } from './breakingnews/BreakingNewsAPIProvider';
-import PageCyclopediaEdit from './pages/PageCyclopediaEdit';
+import './index.css';
 import { Buffer } from 'buffer';
-import PageDHKeyExchange from './pages/PageDHKeyExchange';
-
+import React, { useState, useEffect } from 'react';
+import 'react-tooltip/dist/react-tooltip.css';
+import './Fonts.css';
+import axios from 'axios';
+import ReactDOM from 'react-dom';
 
 
 
@@ -74,29 +74,29 @@ const App = () => {
   const username = 'besterdev-ui';
   const password = 'TZXWF498UR5PGQLH6E3CMBDNSYJAKV72';
   const basicAuth = Buffer.from(`${username}:${password}`).toString('base64');
- 
+
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/searchphrase')
-  //   axios('http://localhost:8000/api/v1/searchphrase', 
-  //   {
-  //     headers: {'Authorization': `Basic ${basicAuth}`, 'Content-Type': 'application/json'
-  //     // auth: {username: 'besterdev-ui', password: 'TZXWF498UR5PGQLH6E3CMBDNSYJAKV72'},
-  //     // headers: {'Content-Type': 'application/json', 'Authorization': 'Basic ' + btoa('${basicAuth}', 'mode': 'cors') // Manually set Basic Auth header
-        
-  //   },
-  //   withCredentials: true, // This allows credentials to be sent (cookies, etc.)
-  //   }
-  // )
+      //   axios('http://localhost:8000/api/v1/searchphrase', 
+      //   {
+      //     headers: {'Authorization': `Basic ${basicAuth}`, 'Content-Type': 'application/json'
+      //     // auth: {username: 'besterdev-ui', password: 'TZXWF498UR5PGQLH6E3CMBDNSYJAKV72'},
+      //     // headers: {'Content-Type': 'application/json', 'Authorization': 'Basic ' + btoa('${basicAuth}', 'mode': 'cors') // Manually set Basic Auth header
 
-  // axios.get('http://localhost:8000/api/v1/searchphrase', {
-  //   headers: {
-  //     'Authorization': `Basic ${basicAuth}`,
-  //     'Content-Type': 'application/json',
-  //   },
-  //   withCredentials: true, // For sending cookies or session information
-  // })
-  
+      //   },
+      //   withCredentials: true, // This allows credentials to be sent (cookies, etc.)
+      //   }
+      // )
+
+      // axios.get('http://localhost:8000/api/v1/searchphrase', {
+      //   headers: {
+      //     'Authorization': `Basic ${basicAuth}`,
+      //     'Content-Type': 'application/json',
+      //   },
+      //   withCredentials: true, // For sending cookies or session information
+      // })
+
       .then((response) => {
         const searchPhraseValue = response.data[0].searchphrase;
         setSearchPhrase(searchPhraseValue);
@@ -104,7 +104,7 @@ const App = () => {
       }).catch((e) => console.error(e));
   }, [checkForRecords]);
 
-  console.log('In <index.js> is jou basicAuth:',basicAuth)
+  console.log('In <index.js> is jou basicAuth:', basicAuth)
   console.log('In <index.js> is jou searchPhrase:', searchPhrase);
 
 
@@ -158,7 +158,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-
-
 export default App;
-
