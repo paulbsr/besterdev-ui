@@ -39,9 +39,8 @@ function CyclopediaManage() {
 
   const onEditDelete = (row) => {
     axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/delete/${row.cyclopediaId}`)
-    // axios.delete(`http://localhost:8000/api/v1/cyclopedia/delete/${row.cyclopediaId}`)
-      .then((response) => 
-      {
+      // axios.delete(`http://localhost:8000/api/v1/cyclopedia/delete/${row.cyclopediaId}`)
+      .then((response) => {
         window.alert('Are you sure you want to delete');
         toast.success(`${cyclopediaName} purged.`)
         setCheckForRecords(!checkForRecords);
@@ -84,7 +83,6 @@ function CyclopediaManage() {
               <th style={{ width: '30px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'></th>
               <th style={{ width: '400px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Name</th>
               <th style={{ width: '1500px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Description</th>
-              {/* <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Reference</th> */}
             </tr>
           </thead>
 
@@ -92,24 +90,19 @@ function CyclopediaManage() {
             {cyclopediarootdata.map((row) => {
               return (
                 <tr key={row.cyclopediaId}>
-                  {/* <td className="Table6"> */}
                   <td>
                     <>
-                      <Tooltip id="edit"/>
-                      <Tooltip id="commit" />
-                      <Tooltip id="revert" />
-                      <Tooltip id="purge" />
                       {row.cyclopediaId === editing ?
                         (
                           <>
-                            <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#336791', outline: 'none' }} type='button' onClick={() => onEditSave()}><a data-tooltip-id="commit" data-tooltip-content="Commit"><FaCheck style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>&nbsp;
-                            <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'silver', outline: 'none' }} type='button' onClick={() => onEditCancel()}><a data-tooltip-id="revert" data-tooltip-content="Revert"><PiArrowCounterClockwiseBold style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>&nbsp;
-                            <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#D5441C', outline: 'none' }} type='button' onClick={() => onEditDelete(row)}><a data-tooltip-id="purge" data-tooltip-content="Purge"><FaRegTrashAlt style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>
+                            <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#336791', outline: 'none' }} type='button' onClick={() => onEditSave()}><a data-tooltip-id="commit" data-tooltip-content="Commit"><FaCheck style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>&nbsp;</Tooltip>
+                            <Tooltip title='Revert' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'silver', outline: 'none' }} type='button' onClick={() => onEditCancel()}><a data-tooltip-id="revert" data-tooltip-content="Revert"><PiArrowCounterClockwiseBold style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>&nbsp;</Tooltip>
+                            <Tooltip title='Purge' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#D5441C', outline: 'none' }} type='button' onClick={() => onEditDelete(row)}><a data-tooltip-id="purge" data-tooltip-content="Purge"><FaRegTrashAlt style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button></Tooltip>
                           </>
                         )
                         :
                         (
-                          <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#336791', outline: 'none' }} type='button' onClick={() => handleEdit(row)}><a data-tooltip-id="edit" data-tooltip-content="Edit"><FaPen style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>
+                          <Tooltip title='Edit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#336791', outline: 'none' }} type='button' onClick={() => handleEdit(row)}><a data-tooltip-id="edit" data-tooltip-content="Edit"><FaPen style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button></Tooltip>
                         )
                       }
                     </>
@@ -117,7 +110,7 @@ function CyclopediaManage() {
 
                   <td className="asmshover">{row.cyclopediaId === editing ? (<input style={{ height: '22.5px', width: '270px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={cyclopediaName} onChange={(e) => setCyclopediaName(e.target.value)} />) : (row.cyclopediaName)}</td>
                   <td className="asmshover">{row.cyclopediaId === editing ? (<textarea style={{ height: '22.5px', width: '1240px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={cyclopediaDesc} onChange={(e) => setCyclopediaDesc(e.target.value)} />) : (row.cyclopediaDesc)}</td>
-                  </tr>
+                </tr>
               )
             })
             }

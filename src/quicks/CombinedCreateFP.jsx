@@ -194,7 +194,7 @@ export default function CombinedCreateFP() {
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   Cyclopedia:&nbsp;&nbsp;
                   <input
-                    style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '300px' }}
+                    style={{ height: '22.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '300px' }}
                     placeholder="Required"
                     type="text"
                     value={cyclopediaName}
@@ -207,7 +207,7 @@ export default function CombinedCreateFP() {
                   URL:&nbsp;&nbsp;
 
                   <input
-                    style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '500px' }}
+                    style={{ height: '22.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '500px' }}
                     type="text"
                     value={cyclopediaUrl}
                     onChange={(e) => setCyclopediaUrl(e.target.value)}
@@ -218,7 +218,7 @@ export default function CombinedCreateFP() {
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   Description:&nbsp;
                   <textarea
-                    style={{ fontFamily: 'Verdana', height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '2px', width: '880px' }}
+                    style={{ fontFamily: 'Verdana', height: '22.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '2px', width: '880px' }}
                     placeholder="Required"
                     value={cyclopediaDesc}
                     onChange={(e) => setCyclopediaDesc(e.target.value)}
@@ -244,9 +244,9 @@ export default function CombinedCreateFP() {
                 <form onSubmit={handleSubmitWebsite}>
                   <div>&nbsp;</div>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  Website:&nbsp;&nbsp;
+                  Website:&nbsp;&nbsp;&nbsp;
                   <input
-                    style={{ height: '22.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '330px' }}
+                    style={{ height: '22.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '343px' }}
                     placeholder="Required"
                     type="text"
                     value={websiteName}
@@ -281,12 +281,12 @@ export default function CombinedCreateFP() {
                     id="dropdown"
                     required
                     style={{
-                      height: '22.5px',
+                      height: '27.5px',
                       border: '1.25px solid #336791',
                       borderRadius: '4px',
                       padding: 0,
                       paddingLeft: '5px',
-                      width: '225px',
+                      width: '295px',
                     }}
                   >
                     <option value="" disabled selected hidden>Required</option>
@@ -306,7 +306,7 @@ export default function CombinedCreateFP() {
                   <button
                     className="Font-Verdana-Small-Postgres"
                     type="submit"
-                    style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>
+                    style={{ marginLeft: '10px', height: '24.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>
                     Memorialize
                   </button>
                   <div>&nbsp;</div>
@@ -329,7 +329,7 @@ export default function CombinedCreateFP() {
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       Module:&nbsp;&nbsp;
                       <select
-                        style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '250px' }} placeholder="Domain" id="dropdown" onChange={dropdownChange} >
+                        style={{ height: '22.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '250px' }} placeholder="Domain" id="dropdown" onChange={dropdownChange} >
                         <option disabled selected value="Domain">Module</option>
                         <option value="113092" data-value2="NetworkSecurity">NetworkSecurity</option>
                         <option value="14718" data-value2="EnterpriseSecurity">EnterpriseSecurity</option>
@@ -342,14 +342,14 @@ export default function CombinedCreateFP() {
 
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         Task Name:&nbsp;&nbsp;
-                        <input style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '530px' }} placeholder="Required" type="text" onChange={(event) => setTaskname(event.target.value)} required />
+                        <input style={{ height: '22.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '530px' }} placeholder="Required" type="text" onChange={(event) => setTaskname(event.target.value)} required />
 
 
                       <div>
                         <div>&nbsp;</div>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         Description:&nbsp;&nbsp;
-                        <input style={{ height: '19.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '500px' }} type="text" onChange={(event) => setTaskrequirement(event.target.value)} />
+                        <input style={{ height: '22.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '500px' }} type="text" onChange={(event) => setTaskrequirement(event.target.value)} />
 
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         Target:&nbsp;&nbsp;

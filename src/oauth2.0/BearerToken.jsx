@@ -45,7 +45,20 @@ function BearerToken() {
 
   return (
     <td onClick={handleClick}>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */}
+            <div
+        style={{
+          marginLeft: '20px',
+          display: 'inline-block',
+          border: '1px solid #ccc',
+          borderRadius: '8px',
+          padding: '2px 2px',
+          backgroundColor: '#f9f9f9',
+          width: '990px',
+          boxShadow: '2px 2px 6px rgba(0,0,0,0.1)',
+          fontFamily: 'Segoe UI',
+        }}
+      >
       <SiJsonwebtokens title="Fetch a Bearer Token" style={{ color: '#4D4D4D', fontSize: '18px', cursor: 'pointer' }} />&nbsp;
       GET a Bearer Token:&nbsp;
       <span style={{ fontFamily: "Segoe UI", fontSize: "8pt", color: "#D5441C", fontStyle: "italic" }}>{bearertoken?.BearerToken} &nbsp;
@@ -58,6 +71,7 @@ function BearerToken() {
           style={{ color: '#4D4D4D', cursor: 'pointer' }}
         />
       </span>
+      </div>
       <div>&nbsp;</div>
     </td>
   );
