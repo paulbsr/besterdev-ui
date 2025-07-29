@@ -19,9 +19,9 @@ import PageSwagger from './pages/PageSwagger';
 import 'react-tooltip/dist/react-tooltip.css';
 import { initializeApp } from "firebase/app";
 import { UserProvider } from './UserContext';
-import PageManage from './pages/PageManage';
+// import PageManage from './pages/PageManage';
 import PageLogout from './pages/PageLogout';
-import PageSearch from './pages/PageSearch';
+// import PageSearch from './pages/PageSearch';
 import firebase from 'firebase/compat/app';
 import PageLogin from './pages/PageLogin';
 import PageHome from './pages/PageHome';
@@ -62,9 +62,6 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const app = initializeApp(firebaseConfig);
-// const username = 'besterdev-ui';
-// const password = 'TZXWF498UR5PGQLH6E3CMBDNSYJAKV72';
-// const basicAuth = Buffer.from(`${username}:${password}`).toString('base64');
 
 const App = () => {
   const [searchPhrase, setSearchPhrase] = useState();
@@ -77,25 +74,6 @@ const App = () => {
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/searchphrase')
-      //   axios('http://localhost:8000/api/v1/searchphrase', 
-      //   {
-      //     headers: {'Authorization': `Basic ${basicAuth}`, 'Content-Type': 'application/json'
-      //     // auth: {username: 'besterdev-ui', password: 'TZXWF498UR5PGQLH6E3CMBDNSYJAKV72'},
-      //     // headers: {'Content-Type': 'application/json', 'Authorization': 'Basic ' + btoa('${basicAuth}', 'mode': 'cors') // Manually set Basic Auth header
-
-      //   },
-      //   withCredentials: true, // This allows credentials to be sent (cookies, etc.)
-      //   }
-      // )
-
-      // axios.get('http://localhost:8000/api/v1/searchphrase', {
-      //   headers: {
-      //     'Authorization': `Basic ${basicAuth}`,
-      //     'Content-Type': 'application/json',
-      //   },
-      //   withCredentials: true, // For sending cookies or session information
-      // })
-
       .then((response) => {
         const searchPhraseValue = response.data[0].searchphrase;
         setSearchPhrase(searchPhraseValue);
@@ -113,12 +91,12 @@ const App = () => {
       <Router>
         <Routes>
           <Route element={<PrivateRoutes />}>
-            <Route path='/search' element={<PageSearch />} />
-            <Route path='/screen' element={<PageSearch />} />
-            <Route path='/candidatemanage' element={<PageManage />} />
+            {/* <Route path='/search' element={<PageSearch />} />   HIERDIE IS DIE VOCKEN PROBLEMM - @MUI/x-date-pickers  !!!
+            <Route path='/screen' element={<PageSearch />} />   HIERDIE IS DIE VOCKEN PROBLEMM - @MUI/x-date-pickers  !!!
+            <Route path='/hunt' element={<PageSearch />} />   HIERDIE IS DIE VOCKEN PROBLEMM - @MUI/x-date-pickers  !!!
+            <Route path='/candidatemanage' element={<PageManage />} />   HIERDIE IS DIE VOCKEN PROBLEMM - @MUI/x-date-pickers  !!! */}
             <Route path='/logout' element={<PageLogout />} />
             <Route path='/howtomanage' element={<PageHowtoManage />} />
-            <Route path='/hunt' element={<PageSearch />} />
             <Route path='/cyclopediamanage' element={<PageCyclopedia />} />
             <Route path='/webresourcemanage' element={<PageResources />} />
             <Route path='/peoplescorecard' element={<PagePeopleScorecard />} />
