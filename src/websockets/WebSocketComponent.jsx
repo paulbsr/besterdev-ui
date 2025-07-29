@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { TbBrandSocketIo } from "react-icons/tb";
-import spacer from '../graphix/besterdev_spacer_white.png';
 
 const WebSocketComponent = () => {
   const [params, setParams] = useState("No SocketServer Event");

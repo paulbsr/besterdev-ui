@@ -19,25 +19,22 @@ export default function WebSiteCreate(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    var newRecord =
+    {
+      'websiteName': website_name,
+      'websiteDesc': website_desc,
+      'websiteUrl': website_url,
+      'websiteCat': website_cat,
+    }
 
     {
-      var newRecord =
-      {
-        'websiteName': website_name,
-        'websiteDesc': website_desc,
-        'websiteUrl': website_url,
-        'websiteCat': website_cat,
+      const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/create`, newRecord);
+      if (response.status === 200) {
+        props.setCheckForRecords(!props.checkForRecords);
+        toast.success(`${website_name} has been memorialized.`)
       }
-
-      {
-        const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/create`, newRecord);
-        if (response.status === 200) {
-          props.setCheckForRecords(!props.checkForRecords);
-          toast.success(`${website_name} has been memorialized.`)
-        }
-        else {
-          toast.error('Nee')
-        }
+      else {
+        toast.error('Nee')
       }
     }
   }

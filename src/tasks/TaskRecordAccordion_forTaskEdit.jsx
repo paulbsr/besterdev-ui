@@ -1,17 +1,14 @@
-import React, { useContext, useState } from "react";
-import TaskRecordCreate from "./TaskRecordCreate";
-import TaskRecordStatusByColourLong_forTaskEdit from "./TaskRecordStatusByColourLong_forTaskEdit";
+import { useState } from "react";
 import { getStatusByColourTaskText } from "../getStatusByColourTaskText";
-import axios from "axios";
+import { toast } from 'react-toastify';
+import { BiSolidMessageRoundedAdd } from "react-icons/bi";
 import { Tooltip } from "@mui/material";
 import { BsArrowCounterclockwise, BsPencil } from "react-icons/bs"; //revert
 import { GiCheckMark } from "react-icons/gi"; //Commit
-import { MdPlusOne } from "react-icons/md"; //+1
+import axios from "axios";
+import TaskRecordCreate from "./TaskRecordCreate";
+import TaskRecordStatusByColourLong_forTaskEdit from "./TaskRecordStatusByColourLong_forTaskEdit";
 import "../Fonts.css";
-import { toast } from 'react-toastify';
-import { BiSolidMessageRoundedAdd } from "react-icons/bi";
-
-
 
 function TaskRecordAccordion_forTaskEdit({
     project_handle,
@@ -64,7 +61,7 @@ function TaskRecordAccordion_forTaskEdit({
         // const response = await axios.put(`http://localhost:8000/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
         if (response.status === 202) {
             setCheckForRecords(!checkForRecords); 
-            { toast.success(`Task Record updated.`) }
+            toast.success(`Task Record updated.`);
         }
         else {
             toast.error('Task Record not updated.');

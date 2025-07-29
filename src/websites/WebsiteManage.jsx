@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import '../Fonts.css';
 import 'react-dropdown/style.css';
 import axios from 'axios'
 import { FaPen, FaCheck, FaRegTrashAlt } from 'react-icons/fa';
-import { TbWorldWww } from "react-icons/tb";
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
 import { toast } from 'react-toastify';
 import GradientLineRusty from '../gradientlines/GradientLineRusty';
@@ -45,25 +44,20 @@ export default function WebsiteManage(props) {
 
 
   const onEditSave = async () => {
+    const websitePUT =
     {
-
-      const websitePUT =
-      {
-        'websiteName': website_name,
-        'websiteDesc': website_desc,
-        'websiteUrl': website_url,
-        'websiteCat': website_cat,
-      }
-
-
-      await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/update/${editing}`, websitePUT)
-        .then((response) => {
-          setCheckForRecords(!checkForRecords);
-          toast.success(`Website updated.`)
-        }
-        )
-      onEditCancel();
+      'websiteName': website_name,
+      'websiteDesc': website_desc,
+      'websiteUrl': website_url,
+      'websiteCat': website_cat,
     }
+    await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/update/${editing}`, websitePUT)
+      .then((response) => {
+        setCheckForRecords(!checkForRecords);
+        toast.success(`Website updated.`)
+      }
+      )
+    onEditCancel();
   }
 
   const onEditDelete = (row) => {

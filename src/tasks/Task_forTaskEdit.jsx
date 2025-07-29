@@ -3,7 +3,7 @@ import axios from "axios";
 import "../Fonts.css";
 import "./Task.css";
 import { getStatusByColourTaskText } from "../getStatusByColourTaskText";
-import { BsArrowCounterclockwise, BsPencil } from "react-icons/bs"; //Revert & Pencil grey
+import { BsArrowCounterclockwise } from "react-icons/bs"; //Revert & Pencil grey
 import { GiCheckMark } from "react-icons/gi"; //Commit grey
 import { Tooltip } from "@mui/material";
 import DatePicker from "react-datepicker";

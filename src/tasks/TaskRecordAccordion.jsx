@@ -1,16 +1,14 @@
-import React, { useContext, useState } from "react";
-import TaskRecordCreate from "./TaskRecordCreate";
-import TaskRecordStatusByColourLong from "./TaskRecordStatusByColourLong";
+import { useState } from "react";
 import { getStatusByColourTaskText } from "../getStatusByColourTaskText";
-import axios from "axios";
 import { Tooltip } from "@mui/material";
 import { BsArrowCounterclockwise, BsPencil } from "react-icons/bs"; //revert
 import { GiCheckMark } from "react-icons/gi"; //Commit
-import { MdPlusOne } from "react-icons/md"; //+1
-import "../Fonts.css";
 import { toast } from 'react-toastify';
 import { BiSolidMessageRoundedAdd } from "react-icons/bi";
-
+import axios from "axios";
+import TaskRecordCreate from "./TaskRecordCreate";
+import TaskRecordStatusByColourLong from "./TaskRecordStatusByColourLong";
+import "../Fonts.css";
 
 
 function TaskRecordAccordion({
@@ -23,40 +21,39 @@ function TaskRecordAccordion({
     taskstatus,
 }
 
-)
-{
+) {
 
     const [isExpanded, setExpanded] = useState(false);
     const [editing, setEditing] = useState(false);
     const [taskrecord, setTaskrecord] = useState(null);
     const date = new Date();
-    
+
     const toggleAccordion = () => {
         setExpanded(!isExpanded);
     };
-    
+
     const orderedTasks = parenttask.filter((task, key) => {
         return task.id === parentid;
     });
-    
+
     const taskRecords = orderedTasks[0].tasks.sort(
         (a, b) =>
             new Date(b.date[0], b.date[1], b.date[2]) -
             new Date(a.date[0], a.date[1], a.date[2]) || b.childid - a.childid
     );
-    
 
-    
+
+
     const handleEdit = (id, childrecord) => {
         setEditing(id);
         setTaskrecord(childrecord);
     };
-    
+
     const onEditCancel = () => {
         setEditing(false);
         setTaskrecord(null);
     };
-    
+
     const onEditSave = async (childid) => {
         const updatedTaskRecord =
         {
@@ -66,8 +63,8 @@ function TaskRecordAccordion({
         const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
         // const response = await axios.put(`http://localhost:8000/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
         if (response.status === 202) {
-            setCheckForRecords(!checkForRecords); 
-            { toast.success(`Task Record updated.`) }
+            setCheckForRecords(!checkForRecords);
+            toast.success(`Task Record updated.`);
         }
         else {
             toast.error('Task Record not updated.');
