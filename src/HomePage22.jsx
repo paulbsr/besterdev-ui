@@ -24,7 +24,7 @@ export default function HomePage22(props) {
   const { websiterootdata, loading, error } = useWebsiteApi(); //gebruik van die nuwe useContext :-)
   // const { cyclopediarootdata } = useCyclopediaApi(); //gebruik van die nuwe useContext :-)
   const { howtorootdata } = useHowtoApi(); //gebruik van die nuwe useContext :-)
-  const [ fourtyRandomRecords, setFourtyRandomRecords] = useState([]);
+  const [fourtyRandomRecords, setFourtyRandomRecords] = useState([]);
   const navigate = useNavigate();
 
 
@@ -41,7 +41,7 @@ export default function HomePage22(props) {
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/alphabet/random')
-    // axios('http://localhost:8000/api/v1/cyclopedia/alphabet/random')
+      // axios('http://localhost:8000/api/v1/cyclopedia/alphabet/random')
       .then((response) => {
         const fourtyRandomRecordsAPI = response.data;
         setFourtyRandomRecords(fourtyRandomRecordsAPI);
@@ -174,9 +174,9 @@ export default function HomePage22(props) {
         <TaskSummaryHomepage />
         <div>
           <div className='Font-Spacer-White'>Make this spacer white</div>
-          
+
           <div className="Font-Segoe-Large-FP">
-          {/* {cyclopediarootdata.length}:
+            {/* {cyclopediarootdata.length}:
             {alphabet.split('').map((letter, index) => (
               <span
                 style={{ cursor: 'pointer' }}
@@ -197,9 +197,9 @@ export default function HomePage22(props) {
           <table className="Table-home-centre">
             <tbody>
               {/* {firstTwentyCyclopediaRecords.map((rowc, index) => ( */}
-              
+
               {fourtyRandomRecords.map((rowc, index) => (
-  
+
                 <tr key={index}>
                   <td className="fphover2">
                     {rowc && (
@@ -300,7 +300,15 @@ export default function HomePage22(props) {
           <tr style={{ height: '20px' }}>
             <td style={{ width: '25%' }}></td>
             <td style={{ width: '1%' }}></td>
-            <td style={{ width: '48%' }}><img src={Image} /></td>
+            <td style={{ width: '48%' }}>
+              <img
+                src={Image}
+                style={{
+                  boxShadow: '10px 10px 10px rgba(0,0,0,0.2)',
+                  borderRadius: '8px' // optional, for smoother edges
+                }}
+              />
+            </td>
             <td style={{ width: '1%' }}></td>
             <td style={{ width: '25%' }}></td>
           </tr>

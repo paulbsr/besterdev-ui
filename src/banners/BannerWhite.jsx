@@ -35,7 +35,7 @@ const BannerWhite = () => {
       <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;
 
-      <a data-tooltip-id="insert" data-tooltip-content="Home" onClick={handleNavigateHome}><GiEvilBat style={{color: '#000000', fontSize: '50px', cursor: 'pointer'}}/></a>
+      <a data-tooltip-id="insert" data-tooltip-content="Home" onClick={handleNavigateHome}><GiEvilBat style={{color: '#D5441C', fontSize: '50px', cursor: 'pointer'}}/></a>
       <TbLetterB style={{color: '#336791', fontSize: '40px' }}/>
       <TbLetterE style={{color: '#336791', fontSize: '40px' }}/>
       <TbLetterS style={{color: '#336791', fontSize: '40px' }}/>
