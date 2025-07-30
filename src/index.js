@@ -30,7 +30,6 @@ import PageMyCV from './pages/PageMyCV';
 import 'firebase/compat/firestore';
 import ReactDOM from 'react-dom';
 import { Buffer } from 'buffer';
-import ReactGA from 'react-ga';
 import 'firebase/compat/auth';
 import 'firebase/firestore';
 import axios from 'axios';
@@ -38,9 +37,6 @@ import 'firebase/auth';
 import './index.css';
 import './Fonts.css';
 
-
-const TRACKING_ID = "G-FCGGY1NE36";
-ReactGA.initialize(TRACKING_ID);
 
 const PrivateRoutes = () => {
   const { loggedInUserEmail } = useUserContext();
