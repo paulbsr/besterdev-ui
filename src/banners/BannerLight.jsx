@@ -3,12 +3,12 @@ import axios from 'axios';
 import '../Fonts.css';
 import 'react-tooltip/dist/react-tooltip.css'
 import { useNavigate } from 'react-router-dom'; 
-import { FaReact, FaJava, FaNodeJs, FaPeopleArrows, FaFileContract, FaUserGraduate, FaConfluence } from 'react-icons/fa';
+import { FaReact, FaJava, FaNodeJs, FaPeopleArrows, FaFileContract, FaConfluence } from 'react-icons/fa';
 import { BiLogoPostgresql, BiLogoHeroku, BiLogoGithub, BiLogoGoogle } from "react-icons/bi";
 import { SiSpringboot, SiFirebase, SiJavascript, SiJira, SiAwsamplify } from "react-icons/si";
 import { MdManageAccounts, MdTask } from "react-icons/md";
 import { BsPatchQuestion, BsPeopleFill } from "react-icons/bs";
-import { IoHome, IoPieChartSharp } from "react-icons/io5";
+import { IoHome } from "react-icons/io5";
 import { GiRapidshareArrow, GiGiftOfKnowledge, GiSpiderWeb } from "react-icons/gi";
 import { GiHouseKeys } from "react-icons/gi";
 
@@ -49,13 +49,8 @@ import { GiHouseKeys } from "react-icons/gi";
         [checkForRecords]);
         console.log('In <BannerLight/> is jou searchPhrase:', searchPhrase);
  
-    
-
-
   return (
-
     <div className="banner-light-left">
-
       &nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Home" onClick={handleNavigateHome}><GiRapidshareArrow  style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} />&nbsp;<span style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#336791' }}>Breaking News is about: </span><i style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#D5441C' }}>{searchPhrase}</i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -78,7 +73,7 @@ import { GiHouseKeys } from "react-icons/gi";
       <a data-tooltip-id="insert" data-tooltip-content="MyCV" onClick={handleNavigateMyCV}><FaFileContract style={{ color: '#336791', fontSize: '26px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Jira" href="https://besterdev.atlassian.net/jira/your-work" target="_blank" rel="noreferrer"><SiJira style={{ color: '#336791', fontSize: '26px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Confluence" href="https://besterdev.atlassian.net/wiki/home" target="_blank" rel="noreferrer"><FaConfluence style={{ color: '#336791', fontSize: '26px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Hunt" onClick={handleNavigateHunt}><FaPeopleArrows style={{ color: '#C0C0C0', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a data-tooltip-id="insert" data-tooltip-content="Hunt" onClick={handleNavigateHunt}><FaPeopleArrows style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;&nbsp;
       <a data-tooltip-id="insert" data-tooltip-content="Candidates" onClick={handleNavigateManage}><MdManageAccounts style={{ color: '#336791', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;

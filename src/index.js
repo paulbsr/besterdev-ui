@@ -21,7 +21,7 @@ import { initializeApp } from "firebase/app";
 import { UserProvider } from './UserContext';
 import PageManage from './pages/PageManage';
 import PageLogout from './pages/PageLogout';
-// import PageSearch from './pages/PageSearch';
+import PageSearch from './pages/PageSearch';
 import firebase from 'firebase/compat/app';
 import PageLogin from './pages/PageLogin';
 import PageHome from './pages/PageHome';
@@ -87,9 +87,9 @@ const App = () => {
       <Router>
         <Routes>
           <Route element={<PrivateRoutes />}>
-            {/* <Route path='/search' element={<PageSearch />} />   HIERDIE IS DIE VOCKEN PROBLEMM - @MUI/x-date-pickers  !!!
+            <Route path='/search' element={<PageSearch />} />   HIERDIE IS DIE VOCKEN PROBLEMM - @MUI/x-date-pickers  !!!
             <Route path='/screen' element={<PageSearch />} />   HIERDIE IS DIE VOCKEN PROBLEMM - @MUI/x-date-pickers  !!!
-            <Route path='/hunt' element={<PageSearch />} />   HIERDIE IS DIE VOCKEN PROBLEMM - @MUI/x-date-pickers  !!! */}
+            <Route path='/hunt' element={<PageSearch />} />   HIERDIE IS DIE VOCKEN PROBLEMM - @MUI/x-date-pickers  !!!
             <Route path='/candidatemanage' element={<PageManage />} />   HIERDIE IS DIE VOCKEN PROBLEMM - @MUI/x-date-pickers  !!!
             <Route path='/logout' element={<PageLogout />} />
             <Route path='/howtomanage' element={<PageHowtoManage />} />

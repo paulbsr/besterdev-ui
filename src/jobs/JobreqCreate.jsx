@@ -2,8 +2,6 @@ import React, { useState, useContext, useEffect } from "react";
 import AlertContext from "../Generic/Alerts/AlertContext";
 import axios from 'axios';
 import '../Fonts.css';
-// import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
-// import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
 import spacer from '../graphix/besterdev_spacer_white.png'
@@ -177,26 +175,7 @@ export default function JobreqCreate(props) {
                 <img alt="1" src={spacer} />Comment:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '190px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)} />
                 <div>&nbsp;</div>
                 <img alt="1" src={spacer} /><img alt="1" src={spacer} />Recruitment Start:&nbsp;
-                {/* <LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
-                  <DatePicker
-                    id="createdate"
-                    format="YYYY.M.D"
-                    selected={createdate}
-                    onChange={handleCreateDateChange}
-                    dateFormat="YYYY.M.D"
-                    sx={{ height: '27.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.3px', width: '195px' } }} />
-                </LocalizationProvider> */}
-
                 <img alt="1" src={spacer} />Recruitment End:&nbsp;
-                {/* <LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs.utc}>
-                  <DatePicker
-                    id="targetdate"
-                    format="YYYY.M.D"
-                    selected={targetdate}
-                    onChange={handleTargetDateChange}
-                    dateFormat="YYYY.M.D"
-                    sx={{ height: '27.5px', '& .MuiInputBase-root': { height: '100%', fontSize: '13.3px', width: '205px' } }} />
-                </LocalizationProvider> */}
                 <img alt="1" src={spacer} />
                 <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Add Job Requisition</button>
               </div>
