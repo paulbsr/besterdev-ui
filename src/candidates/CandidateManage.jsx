@@ -157,8 +157,8 @@ export default function CandidateManage() {
                   <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Primary Skill</th>
                   <th style={{ width: '300px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Comment</th>
                   <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Employer</th>
-                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Role</th>
-                  <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>ReqNum</th>
+                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty">Role</th>
+                  <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty">Req</th>
                 </tr>
               </thead>
 

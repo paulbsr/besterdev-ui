@@ -101,9 +101,9 @@ export default function PeopleScorecard() {
             <div>&nbsp;</div>
 
             <Tooltip id="insert" />
-            <div className='Font-Verdana-Medium-Postgres' onClick={toggleAccordion}>
+            <div onClick={toggleAccordion}>.
                 &nbsp; &nbsp; <BsPeopleFill style={{ color: '#336791', fontSize: '38px', cursor: 'pointer' }} />
-                &nbsp;<b>The People Scorecard</b>
+                &nbsp;<b style={{ fontFamily: "Verdana", fontSize: "medium", fontWeight: "bold", color: "#336791" }}>The People Scorecard</b>
             </div>
             <div>&nbsp;</div>
 

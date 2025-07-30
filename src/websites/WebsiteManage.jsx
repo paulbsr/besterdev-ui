@@ -84,13 +84,13 @@ export default function WebsiteManage(props) {
       <WebsiteCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
 
       <table className="Table6">
-        <thead>
+        <thead style={{ background: 'linear-gradient(to right, #f0f4f8, #d9e2ec)', boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.1)' }}>
           <tr>
-            <th style={{ width: '20px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'></th>
-            <th style={{ width: '400px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Tool / Website / Book</th>
-            <th style={{ width: '800px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Value / Description / Action</th>
-            <th style={{ width: '400px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>URL</th>
-            <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Category</th>
+            <th style={{ width: '20px', borderRadius: '4px' }} align='center'></th>
+            <th style={{ width: '400px', borderRadius: '4px' }} align='center'>Tool / Website / Book</th>
+            <th style={{ width: '800px', borderRadius: '4px' }} align='center'>Value / Description / Action</th>
+            <th style={{ width: '400px', borderRadius: '4px' }} align='center'>URL</th>
+            <th style={{ width: '200px', borderRadius: '4px' }} align='center'>Category</th>
           </tr>
         </thead>
 

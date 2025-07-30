@@ -157,14 +157,9 @@
 }
 
 .Font-Segoe-Medium {
-    /* border: 1px solid rgb(233, 228, 228); */
-    /* background-color: #f7f4f3; */
     font-family: "Segoe UI";
     font-size: medium;
-    /* font-style: italic; */
     color: #336791;
-    /* padding: 14px; */
-    /* font-weight: lighter; */
 }
 
 .Font-Segoe-Medium-Howto {
@@ -224,7 +219,8 @@
     padding: 4px;
     font-family: "Verdana";
     font-size: small;
-    font-style: italic;
+    /* font-style: italic; */
+    border: 1px solid rgb(233, 228, 228);
 }
 
 .Table6 td {
@@ -232,7 +228,6 @@
     font-size: small;
     border: 1px solid rgb(233, 228, 228);
     padding: 4px;
-    /* min-width: 50%; */
 }
 
 .Table4 th {
@@ -372,14 +367,10 @@
 .asmshover:hover {
     font-family: "Verdana";
     font-size: small;
-    color: #D5441C;
-    /* background-color: #f7f4f3; */
-    /* background-color: #000000; */
+    /* color: #D5441C; */
     border-radius: 4px;
-    border: 1px solid #913333;
+    /* border: 1px solid #913333; */
     padding: 4px;
-    /* font-style: italic; */
-    /* font-weight: normal; */
 }
 
 .fphover:hover {
@@ -403,19 +394,13 @@
 }
 
 .dbsearchhover:hover {
-    /* font-family: "Verdana"; */
     font-family: "Segoe UI";
-    /* font-size: small; */
     font-size: medium;
     color: #336791;
     background-color: #f7f4f3;
     border-radius: 3px;
     border: 1px solid #336791;
     cursor: 'pointer';
-    /* padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px; */
 }
 
 .dbsearchhoverbanner:hover {
@@ -424,7 +409,6 @@
     color: #336791;
     background-color: #FFFFFF;
     border-radius: 3px;
-    /* border: 1px solid #336791; */
     border: 1px solid #000000;
     cursor: 'pointer';
 }
@@ -606,10 +590,8 @@
 }
 
 .Table8hover td:hover {
-    /* color: #336791; background-color: #f7f4f3; */
     color: #336791;
     background-color: #fdf8f6;
-    /* border: 1px solid rgb(182, 172, 172); */
     border: 1px solid #336791;
     border-radius: 3px;
 }
