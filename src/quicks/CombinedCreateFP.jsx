@@ -2,9 +2,7 @@ import DBSearchComponentBanner from "../dbsearch/DBSearchComponentBanner";
 import { useCyclopediaApi } from '../cyclopedia/CyclopediaAPIProvider';
 import WebSocketComponent from "../websockets/WebSocketComponent";
 import { useWebsiteApi } from '../websites/WebSiteAPIProvider';
-import WebSocketTrigger from "../websockets/websockettrigger";
 import { GiHummingbird, GiSpiderWeb } from "react-icons/gi";
-import WebSocketEvent from '../websockets/WebSocketEvent';
 import { GiGiftOfKnowledge } from "react-icons/gi";
 import BearerToken from "../oauth2.0/BearerToken";
 import { TbBrandSocketIo } from "react-icons/tb";
@@ -12,28 +10,26 @@ import 'react-tooltip/dist/react-tooltip.css';
 import { TbBrandOauth } from "react-icons/tb";
 import { BsSearch } from "react-icons/bs";
 import DatePicker from "react-datepicker";
-import React, { useState } from "react";
 import { MdTask } from "react-icons/md";
 import { toast } from 'react-toastify';
+import { useState } from "react";
 import axios from 'axios';
 import '../Fonts.css';
-
-
 
 export default function CombinedCreateFP() {
 
   const current = new Date();
   const [isExpandedBearerToken, setExpandedBearerToken] = useState(false);
-  const { websiterootdata, setRefreshWebsiterootdata } = useWebsiteApi();
+  const {websiterootdata, setRefreshWebsiterootdata} = useWebsiteApi();
   const [isExpandedCyclopedia, setExpandedCyclopedia] = useState(false);
   const [isExpandedWebSocket, setExpandedWebSocket] = useState(false);
   const [isExpandedWebsite, setExpandedWebsite] = useState(false);
   const [isExpandedSearch, setExpandedSearch] = useState(false);
   const [checkForRecords, setCheckForRecords] = useState(true);
-  const { setRefreshCyclopediarootdata } = useCyclopediaApi();
   const [taskrequirement, setTaskrequirement] = useState("");
   const [tasktargetdate, setTasktargetdate] = useState(null);
   const [isExpandedTask, setExpandedTask] = useState(false);
+  const {setRefreshCyclopediarootdata} = useCyclopediaApi();
   const [cyclopediaName, setCyclopediaName] = useState('');
   const [cyclopediaDesc, setCyclopediaDesc] = useState('');
   const [projecthandle, setProjecthandle] = useState("");
@@ -127,9 +123,8 @@ export default function CombinedCreateFP() {
       try {
         const response = await axios.post
           (`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/create`, newtask);
-        if (response.status === 200) {
+        if (response.status === 200) 
           { toast.success(`Task added.`) }
-        }
         else { toast.error('Task not added'); }
       }
       catch (err) {

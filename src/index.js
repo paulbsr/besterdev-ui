@@ -19,7 +19,7 @@ import PageSwagger from './pages/PageSwagger';
 import 'react-tooltip/dist/react-tooltip.css';
 import { initializeApp } from "firebase/app";
 import { UserProvider } from './UserContext';
-// import PageManage from './pages/PageManage';
+import PageManage from './pages/PageManage';
 import PageLogout from './pages/PageLogout';
 // import PageSearch from './pages/PageSearch';
 import firebase from 'firebase/compat/app';
@@ -89,8 +89,8 @@ const App = () => {
           <Route element={<PrivateRoutes />}>
             {/* <Route path='/search' element={<PageSearch />} />   HIERDIE IS DIE VOCKEN PROBLEMM - @MUI/x-date-pickers  !!!
             <Route path='/screen' element={<PageSearch />} />   HIERDIE IS DIE VOCKEN PROBLEMM - @MUI/x-date-pickers  !!!
-            <Route path='/hunt' element={<PageSearch />} />   HIERDIE IS DIE VOCKEN PROBLEMM - @MUI/x-date-pickers  !!!
-            <Route path='/candidatemanage' element={<PageManage />} />   HIERDIE IS DIE VOCKEN PROBLEMM - @MUI/x-date-pickers  !!! */}
+            <Route path='/hunt' element={<PageSearch />} />   HIERDIE IS DIE VOCKEN PROBLEMM - @MUI/x-date-pickers  !!! */}
+            <Route path='/candidatemanage' element={<PageManage />} />   HIERDIE IS DIE VOCKEN PROBLEMM - @MUI/x-date-pickers  !!!
             <Route path='/logout' element={<PageLogout />} />
             <Route path='/howtomanage' element={<PageHowtoManage />} />
             <Route path='/cyclopediamanage' element={<PageCyclopedia />} />
