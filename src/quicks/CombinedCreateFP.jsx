@@ -151,12 +151,12 @@ export default function CombinedCreateFP() {
             <td style={{ width: '20%' }}></td>
             <td style={{
               marginLeft: '3px',
-              border: '1px solid #ccc',
+              border: '1px solid #e0dedeff',
               borderRadius: '8px',
               padding: '2px 2px',
               backgroundColor: '#f7f4f3',
               width: '50%',
-              boxShadow: '2px 2px 6px rgba(0,0,0,0.1)',
+              boxShadow: '10px 10px 10px rgba(0,0,0,0.2)',
               fontFamily: 'Verdana',
             }}>
               <div>&nbsp;</div>

@@ -2,31 +2,26 @@ import React from 'react';
 import { TbLetterA } from "react-icons/tb";
 import { TbLetterT } from "react-icons/tb";
 import { TbLetterR } from "react-icons/tb";
-import { TbNumber1 } from "react-icons/tb";
 import { TbLetterI } from "react-icons/tb";
 import { TbLetterB } from "react-icons/tb";
 import { TbLetterU } from "react-icons/tb";
 import { TbLetterO } from "react-icons/tb";
 import { TbLetterE } from "react-icons/tb";
-import { TbNumber3 } from "react-icons/tb";
 import { TbLetterD } from "react-icons/tb";
 import { TbLetterC } from "react-icons/tb";
 import { TbLetterS } from "react-icons/tb";
 import { TbLetterV } from "react-icons/tb";
 import { TbLetterK } from "react-icons/tb";
-import { TbNumberN } from "react-icons/tb";
 import { TbLetterW } from "react-icons/tb";
 import { TbLetterL } from "react-icons/tb";
 import { TbLetterG } from "react-icons/tb";
 import { TbLetterN } from "react-icons/tb";
-import { TbNumberR } from "react-icons/tb";
 import { TbLetterP } from "react-icons/tb";
 import { TbLetterY } from "react-icons/tb";
-import { SiMaildotru } from "react-icons/si";
-import { SiCyberdefenders } from "react-icons/si";
-import { SiKalilinux } from "react-icons/si";
-import { LiaTeamspeak } from "react-icons/lia";
 import { FaTeamspeak } from "react-icons/fa";
+import { FaSeedling } from "react-icons/fa6";
+import { GiMagickTrick } from "react-icons/gi";
+import { GiEvilBat } from "react-icons/gi";
 import { useNavigate } from 'react-router-dom'; 
 
 
@@ -40,7 +35,7 @@ const BannerWhite = () => {
       <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;
 
-      <a data-tooltip-id="insert" data-tooltip-content="Home" onClick={handleNavigateHome}><FaTeamspeak style={{color: '#D5441C', fontSize: '40px', cursor: 'pointer'}}/></a>
+      <a data-tooltip-id="insert" data-tooltip-content="Home" onClick={handleNavigateHome}><GiEvilBat style={{color: '#000000', fontSize: '50px', cursor: 'pointer'}}/></a>
       <TbLetterB style={{color: '#336791', fontSize: '40px' }}/>
       <TbLetterE style={{color: '#336791', fontSize: '40px' }}/>
       <TbLetterS style={{color: '#336791', fontSize: '40px' }}/>
