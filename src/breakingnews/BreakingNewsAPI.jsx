@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export default function BreakingNewsAPI() {
     const [newsapiSearchPhrase, setNewsapiSearchPhrase] = useState();
-    const [newsapiData, setNewsapiData] = useState();
 
     useEffect(() => {
         axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/searchphrase')
@@ -28,7 +27,6 @@ export default function BreakingNewsAPI() {
                 axios.get(`https://newsapi.org/v2/everything?q=${newsapiSearchPhrase}&from=${dayTwo}&to=${dayOne}&language=en&apiKey=b9451c67f79e404bb72c2a9460262fed`)
                     .then((response) => {
                         const newsapiDataIB = response.data.articles;
-                        setNewsapiData(newsapiDataIB);
 
                         const postData = newsapiDataIB.map(news => ({
                             news_source: news.source.name,

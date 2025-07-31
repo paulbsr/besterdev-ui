@@ -19,8 +19,6 @@ export default function CyclopediaCreate() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    {
       var newRecord =
       {
         'cyclopediaName': cyclopedia_name,
@@ -38,7 +36,6 @@ export default function CyclopediaCreate() {
           toast.error('Nee')
         }
       }
-    }
   }
 
   return (

@@ -40,19 +40,19 @@ TabPanel.propTypes = {
 
 const LinkTabs = styled(Tabs)({'& .MuiTabs-indicator': {display: 'none',},});
 
-const LinkTab = styled((props) => <Tab disableRipple {...props} />)(({ theme }) => ({
-    minWidth: 0,
-    fontSize: 12,
-    fontWeight: 1,
-    paddingLeft: 22,
-    paddingRight: 22,
-    '&:hover': {color: '#D5441C',},
-    '&.Mui-selected': {color: '#1994AD',},
-    '&.Mui-selected:hover': {color: '#D5441C',},})
-    );
+// const LinkTab = styled((props) => <Tab disableRipple {...props} />)(({ theme }) => ({
+//     minWidth: 0,
+//     fontSize: 12,
+//     fontWeight: 1,
+//     paddingLeft: 22,
+//     paddingRight: 22,
+//     '&:hover': {color: '#D5441C',},
+//     '&.Mui-selected': {color: '#1994AD',},
+//     '&.Mui-selected:hover': {color: '#D5441C',},})
+//     );
 
 export default function Quicklinks(props) {
-  const { loggedInUserEmail } = useUserContext();
+// const { loggedInUserEmail } = useUserContext();
   const [checkForRecords, setCheckForRecords] = useState(true);
 
   return (

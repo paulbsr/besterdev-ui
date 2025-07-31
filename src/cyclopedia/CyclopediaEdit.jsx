@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Tooltip } from '@mui/material';
 import '../Fonts.css';
+import { useState, useEffect } from 'react';
+import { Tooltip } from '@mui/material';
 import { useCyclopediaApi } from './CyclopediaAPIProvider';
-import { BsPencil } from "react-icons/bs"; // Pencil grey
-import { GiCheckMark, GiSpiderWeb } from "react-icons/gi"; // Commit grey
-import { IoLibrary, IoInformationCircleOutline } from "react-icons/io5";
+import { GiSpiderWeb } from "react-icons/gi"; // Commit grey
 import { toast } from 'react-toastify';
-import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
 import { CyclopediaImageUpload } from './CyclopediaImageUpload';
 import { GiGiftOfKnowledge } from "react-icons/gi";
 

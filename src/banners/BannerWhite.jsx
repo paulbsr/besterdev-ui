@@ -1,4 +1,3 @@
-import React from 'react';
 import { TbLetterA } from "react-icons/tb";
 import { TbLetterT } from "react-icons/tb";
 import { TbLetterR } from "react-icons/tb";
@@ -18,9 +17,6 @@ import { TbLetterG } from "react-icons/tb";
 import { TbLetterN } from "react-icons/tb";
 import { TbLetterP } from "react-icons/tb";
 import { TbLetterY } from "react-icons/tb";
-import { FaTeamspeak } from "react-icons/fa";
-import { FaSeedling } from "react-icons/fa6";
-import { GiMagickTrick } from "react-icons/gi";
 import { GiEvilBat } from "react-icons/gi";
 import { useNavigate } from 'react-router-dom'; 
 
@@ -86,8 +82,7 @@ const BannerWhite = () => {
       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-      {/* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */}
-      
+            
       < TbLetterC style={{color: 'C0C0C0', fontSize: '14px' }}/>
       < TbLetterU style={{color: 'C0C0C0', fontSize: '10px' }}/>
       < TbLetterR style={{color: 'C0C0C0', fontSize: '10px' }}/>
