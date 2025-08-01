@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../Fonts.css";
 import "./Task.css";
@@ -30,9 +30,9 @@ export default function Task({
     checkForRecords,
     setCheckForRecords
 }) {
-    
+
     const [isExpanded, setExpanded] = useState(false);
-    const toggleAccordion = () => {setExpanded(!isExpanded);};
+    const toggleAccordion = () => { setExpanded(!isExpanded); };
     const [editing, setEditing] = useState(false);
     const [requirement, setRequirement] = useState(null);
     const [owner, setOwner] = useState(null);
@@ -40,20 +40,20 @@ export default function Task({
     const [name, setName] = useState(null);
     const [error, setError] = useState(null);
     const [duration, setDuration] = useState(null);
-    
+
     //send request for the task taskDuration if the task has been completed
-    useEffect(() => {
-        if (taskstatus === "DONE") {
-            axios(
-                `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/duration/${id}`
-            )
-                .then((response) => {
-                    setDuration(response.data);
-                    setError(null);
-                })
-                .catch(setError)
-        }
-    }, []);
+useEffect(() => {
+    if (taskstatus === "DONE") {
+        axios(
+            `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/duration/${id}`
+        )
+            .then((response) => {
+                setDuration(response.data);
+                setError(null);
+            })
+            .catch(setError);
+    }
+}, [id, taskstatus]);
     // if the duration was less than 1 whole day,
     // set the duration to display as 1 day
     if (duration === 0) {
@@ -78,22 +78,10 @@ export default function Task({
     console.log('In <Task> is jou tasktargetdate:', tasktargetdate)
     const deadlineDaysRemaining = getDeadlineInDays(tasktargetdate);
     const deadlineColor = calculateDeadlineTextColor(deadlineDaysRemaining);
-    const handleChange = (e, newVal) => setOwner(newVal);
-    
+
     const onEditSave = async () => {
-        let updatedDetails = [];
         let noDetails = [];
-        // Check field changes
-        // if (newTargetDate !== tasktargetdate) updatedDetails.push("Due Date");
-        // if (owner !== taskowner) updatedDetails.push("Owner");
-        // if (requirement !== taskrequirement) updatedDetails.push("Requirement");
-        // if (name !== taskname) updatedDetails.push("Task Name");
-        //Check fields are not null
-        // if (!newTargetDate) noDetails.push("Due Date");
-        // if (!owner?.trim()) noDetails.push("Owner");
-        // if (!requirement?.trim()) noDetails.push("Requirement");
-        // if (!name?.trim()) noDetails.push("Task Name");
-        
+
         const updatedTask = {
             tasktargetdate: newTargetDate,
             taskrequirement: requirement,
@@ -107,38 +95,37 @@ export default function Task({
             // alertCtx.warning(`Please fill in ${noDetails.join(", ")}`);
             return;
         }
-        
+
         const response = await axios
             .put(
-                `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskdetails/${id}`,updatedTask)
-                // `http://localhost:8000/api/v1/tasks/update/taskdetails/${id}`,updatedTask)
-                if (response.status === 202) 
-                    {
-                        setCheckForRecords(!checkForRecords);
-                        { toast.success(`Task Updated.`) }
-                    }
-                    else {toast.error('Task not Updated.');}
+                `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskdetails/${id}`, updatedTask)
+        // `http://localhost:8000/api/v1/tasks/update/taskdetails/${id}`,updatedTask)
+        if (response.status === 202) {
+            setCheckForRecords(!checkForRecords);
+            toast.success(`Task Updated.`)
+        }
+        else { toast.error('Task not Updated.'); }
         onEditCancel();
     };
-    const ownerOptions = [
-        { name: "Brian O Rourke" },
-        { name: "Bren Keenan" },
-        { name: "Conor Lynch" },
-        { name: "Dwayne Patel" },
-        { name: "Felipe Mantov" },
-        { name: "Keex Nenyiaba" },
-        // { name: "Kieran Hayter" },
-        { name: "Leo Pinto" },
-        { name: "Monique Borje" },
-        // { name: "Patrick Haugh" },
-        { name: "Paul Bester" },
-        // { name: "Ray Egan" },
-        // { name: "Rosie Curran" },
-        { name: "Saoirse Seeber" },
-        { name: "Shika Seth" },
-        { name: "Simon Dowling" },
-        { name: "Thiago Cunha" },
-    ];
+    // const ownerOptions = [
+    //     { name: "Brian O Rourke" },
+    //     { name: "Bren Keenan" },
+    //     { name: "Conor Lynch" },
+    //     { name: "Dwayne Patel" },
+    //     { name: "Felipe Mantov" },
+    //     { name: "Keex Nenyiaba" },
+    //     { name: "Kieran Hayter" },
+    //     { name: "Leo Pinto" },
+    //     { name: "Monique Borje" },
+    //     { name: "Patrick Haugh" },
+    //     { name: "Paul Bester" },
+    //     { name: "Ray Egan" },
+    //     { name: "Rosie Curran" },
+    //     { name: "Saoirse Seeber" },
+    //     { name: "Shika Seth" },
+    //     { name: "Simon Dowling" },
+    //     { name: "Thiago Cunha" },
+    // ];
     // return number of days until/after deadline
     function getDeadlineInDays(deadline) {
         // add object support to dayjs
@@ -217,27 +204,27 @@ export default function Task({
                                     </div>
                                 </Tooltip>
                             </>
-                        ) 
-                        : 
-                        isExpanded && taskstatus !== "DONE" ? 
-                        (
+                        )
+                            :
+                            isExpanded && taskstatus !== "DONE" ?
+                                (
                                     <>
                                         <Tooltip title={`Edit Task: ${id}`} placement="top-end">
                                             <div style={{ cursor: "pointer" }} onClick={() => { handleEdit(); }}>
                                                 &nbsp;&nbsp;<BsPencil style={{ color: "#C0C0C0", fontSize: "15px" }} />
                                             </div>
                                         </Tooltip>
-                                    
+
                                         <Tooltip title={`Launch TaskEditor on #${id}`} placement="top-end">
-                                        <div style={{ cursor: "pointer" }} onClick={() => { window.open(`/taskedit/${id}`, '_blank'); }}>
+                                            <div style={{ cursor: "pointer" }} onClick={() => { window.open(`/taskedit/${id}`, '_blank'); }}>
                                                 &nbsp;&nbsp;<PiRocketLaunchLight style={{ color: "#C0C0C0", fontSize: "20px" }} />&nbsp;&nbsp;
                                             </div>
                                         </Tooltip>
 
                                     </>
-                        ) 
-                        : 
-                        null}
+                                )
+                                :
+                                null}
                     </>
                 </div>
                 {editing === true ? (
@@ -290,27 +277,27 @@ export default function Task({
                     </div>
                     <div style={{ color: getStatusByColourTaskText(taskstatus) }}>
                         <u>OWNER</u>:{" "}
-                        {editing === true ? 
-                        (
-                            <textarea
-                            freeSolo
-                            required
-                            defaultValue={taskowner}
-                            onChange={(e) => setOwner(e.target.value)}
-                            size="small"
-                            style={{
-                                width: 170,
-                                height: "18px",
-                                marginBottom: "15px",
-                                marginTop: "5px",
-                                display: "flex",
-                            }}
-                        />
-                        ) 
-                        : 
-                        (
-                        taskowner
-                        )
+                        {editing === true ?
+                            (
+                                <textarea
+                                    freeSolo
+                                    required
+                                    defaultValue={taskowner}
+                                    onChange={(e) => setOwner(e.target.value)}
+                                    size="small"
+                                    style={{
+                                        width: 170,
+                                        height: "18px",
+                                        marginBottom: "15px",
+                                        marginTop: "5px",
+                                        display: "flex",
+                                    }}
+                                />
+                            )
+                            :
+                            (
+                                taskowner
+                            )
                         }
                     </div>
                     <div style={{ color: getStatusByColourTaskText(taskstatus) }}>

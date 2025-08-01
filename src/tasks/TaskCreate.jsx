@@ -1,5 +1,4 @@
-import React, { useState, useContext } from "react";
-import { styled } from "@mui/material/styles";
+import React, { useState } from "react";
 import axios from "axios";
 import "../Fonts.css";
 import DatePicker from "react-datepicker";
@@ -7,38 +6,19 @@ import "react-datepicker/dist/react-datepicker.css";
 import { GiHummingbird } from "react-icons/gi";
 import { toast } from 'react-toastify';
 
-
-const useStyles = styled((theme) => ({
-    paper: {
-        marginTop: theme.spacing(8),
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-    },
-    avatar: {
-        margin: theme.spacing(1),
-        backgroundColor: theme.palette.secondary.main,
-    },
-    form: { width: "100%", marginTop: theme.spacing(3) },
-    submit: { margin: theme.spacing(3, 0, 2) },
-}));
-
-
 export default function TaskCreate(props) {
     const current = new Date();
     const [taskname, setTaskname] = useState("");
     const [taskrequirement, setTaskrequirement] = useState("");
-    const [taskowner, setTaskowner] = useState("Bester");
+    const [taskowner] = useState("Bester");
     const [tasktargetdate, setTasktargetdate] = useState(null);
-    const [taskcreatedate, setTaskcreatedate] = useState(current);
+    const [taskcreatedate] = useState(current);
     const [taskstatus, setTaskstatus] = useState("START");
     const [projecthandle, setProjecthandle] = useState("");
     const [asms, setAsms] = useState("");
-    const [tasknextstep, setTasknextstep] = useState("");
-    const toggleAccordion = () => { setExpanded(!isExpanded); };
+    const [tasknextstep] = useState("");
     const [isExpanded, setExpanded] = useState(false);
-    // const [checkForRecords, setCheckForRecords] = useState();
-
+    const toggleAccordion = () => { setExpanded(!isExpanded); };
 
     const handleSubmit = async (event) => {
         if (
@@ -63,17 +43,12 @@ export default function TaskCreate(props) {
                 if (response.status === 200) 
                 {
                     props.setCheckForRecords(!props.checkForRecords);
-                       { toast.success(`Task added.`) }
+                    toast.success(`Task added.`)
                 }
                 else {toast.error('Task not added');}
             }
-            catch (err) {
-                console.log(err);
-            }
-        } else {
-            event.preventDefault();
-
-        }
+            catch (err) { console.log(err); }
+        } else {event.preventDefault(); }
     };
 
     const dropdownChange = (event) => {
@@ -88,8 +63,9 @@ export default function TaskCreate(props) {
     return (
         <div>
             <div onClick={toggleAccordion}>
-                &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} />
-                &nbsp;<b><a className='Font-Verdana-Small-Postgres'>Add a Task to The Task Manager</a></b>
+                &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+                <GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} />&nbsp;
+                <b><span className='Font-Verdana-Small-Postgres'>Add a Task to The Task Manager</span></b>
             </div>
             {isExpanded && (
                 <div>

@@ -1,12 +1,10 @@
 // import * as React from 'react';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { styled } from "@mui/material/styles";
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import '../Fonts.css'
-import {styled} from "@mui/material/styles";
-import { useUserContext } from '../UserContext';
 import GradientLineThin from '../gradientlines/GradientLineThin';
 import QuickAddWebResource from './QuickAddWebResource';
 
@@ -40,19 +38,7 @@ TabPanel.propTypes = {
 
 const LinkTabs = styled(Tabs)({'& .MuiTabs-indicator': {display: 'none',},});
 
-// const LinkTab = styled((props) => <Tab disableRipple {...props} />)(({ theme }) => ({
-//     minWidth: 0,
-//     fontSize: 12,
-//     fontWeight: 1,
-//     paddingLeft: 22,
-//     paddingRight: 22,
-//     '&:hover': {color: '#D5441C',},
-//     '&.Mui-selected': {color: '#1994AD',},
-//     '&.Mui-selected:hover': {color: '#D5441C',},})
-//     );
-
 export default function Quicklinks(props) {
-// const { loggedInUserEmail } = useUserContext();
   const [checkForRecords, setCheckForRecords] = useState(true);
 
   return (

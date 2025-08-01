@@ -8,13 +8,13 @@ import { Tooltip } from '@mui/material';
 export default function PeopleScorecardCreate(props) {
     const current = new Date();
     const datum = `${current.getFullYear()}.${current.getMonth() + 1}.${current.getDate()}`;
-    const [date, setdate] = useState(datum);
-    const [year, setYear] = useState(`${current.getFullYear()}`);
+    const [date] = useState(datum);
+    const [year] = useState(`${current.getFullYear()}`);
     const [taskName, setTaskName] = useState('');
     const [taskDescription, setTaskDescription] = useState('');
+    const [isExpanded, setExpanded] = useState(false);
     const alertCtx = useContext(AlertContext);
     const toggleAccordion = () => { setExpanded(!isExpanded); };
-    const [isExpanded, setExpanded] = useState(false);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -80,8 +80,14 @@ export default function PeopleScorecardCreate(props) {
     return (
         <div>
             <div onClick={toggleAccordion}>
-                &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Tooltip title='Insert Record' placement="top-end"><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></Tooltip>
-                &nbsp;<b><a className='Font-Verdana-Small-Postgres'>Add Task to People Scorecard</a></b>
+                &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <Tooltip title='Add a Task' placement="top-end">
+                <GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} />Add Task to People Scorecard
+                </Tooltip>
+                &nbsp;
+                {/* <b>
+                <a className='Font-Verdana-Small-Postgres'>Add Task to People Scorecard</a>
+                </b> */}
             </div>
 
             {isExpanded && (
