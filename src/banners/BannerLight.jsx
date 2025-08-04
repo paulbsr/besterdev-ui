@@ -1,117 +1,80 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import '../Fonts.css';
-import 'react-tooltip/dist/react-tooltip.css'
-import { useNavigate } from 'react-router-dom'; 
+import 'react-tooltip/dist/react-tooltip.css';
 import { FaReact, FaJava, FaNodeJs, FaPeopleArrows, FaFileContract, FaConfluence } from 'react-icons/fa';
-import { BiLogoPostgresql, BiLogoHeroku, BiLogoGithub, BiLogoGoogle } from "react-icons/bi";
-import { SiSpringboot, SiFirebase, SiJavascript, SiJira, SiAwsamplify } from "react-icons/si";
-import { MdManageAccounts, MdTask } from "react-icons/md";
-import { BsPatchQuestion, BsPeopleFill } from "react-icons/bs";
-import { IoHome } from "react-icons/io5";
-import { GiRapidshareArrow, GiGiftOfKnowledge, GiSpiderWeb } from "react-icons/gi";
-import { GiHouseKeys } from "react-icons/gi";
+import { GiRapidshareArrow, GiGiftOfKnowledge, GiSpiderWeb, GiHouseKeys } from 'react-icons/gi';
+import { SiSpringboot, SiFirebase, SiJavascript, SiJira, SiAwsamplify } from 'react-icons/si';
+import { BiLogoPostgresql, BiLogoHeroku, BiLogoGithub, BiLogoGoogle } from 'react-icons/bi';
+import { BsPatchQuestion, BsPeopleFill } from 'react-icons/bs';
+import { MdManageAccounts, MdTask } from 'react-icons/md';
+import { IoHome } from 'react-icons/io5';
 
+const iconStyle = (color, size) => ({ color, fontSize: size, cursor: 'pointer' });
 
-  // const BannerLight = ({ user }) => {
-    const BannerLight = () => {
-    const navigate = useNavigate();
-    const handleNavigateLogin = () => {navigate('/login');}
-    const handleNavigateHome = () => {navigate('/home');}
-    const handleNavigateResources = () => {navigate('/webresourcemanage');}
-    const handleNavigateCyclopedia= () => {navigate('/cyclopediamanage');}
-    const handleNavigateHowtoManage = () => {navigate('/howtomanage');}
-    const handleNavigateManage = () => {navigate('/candidatemanage');}
-    const handleNavigateHunt = () => {navigate('/hunt');}
-    const handleNavigateLogout = () => {navigate('/logout');}
-    const handleNavigateSwagger = () => {navigate('/swagger');}
-    const handleNavigateMyCV = () => {navigate('/mycv');}
-    const handleNavigatePeopleScorecard = () => {navigate('/peoplescorecard');}
-    const handleNavigateTaskManage = () => {navigate('/taskmanage');}
-    const handleNavigateDHKeyExchange = () => {navigate('/dhkeyexchange');}
-    const [searchPhrase, setSearchPhrase] = useState();
-    const [checkForRecords, setCheckForRecords] = useState(true);
+const internalLinks = [
+  { tooltip: 'Home', icon: <IoHome style={iconStyle('#000000', 28)} />, path: '/home' },
+  { tooltip: 'Cyclopedia', icon: <GiGiftOfKnowledge style={iconStyle('#336791', 31)} />, path: '/cyclopediamanage' },
+  { tooltip: 'Web Resources', icon: <GiSpiderWeb style={iconStyle('#336791', 30)} />, path: '/webresourcemanage' },
+  { tooltip: 'HOWTOs', icon: <BsPatchQuestion style={iconStyle('#336791', 29)} />, path: '/howtomanage' },
+  { tooltip: 'People Scorecard', icon: <BsPeopleFill style={iconStyle('#336791', 32)} />, path: '/peoplescorecard' },
+  { tooltip: 'Tasks', icon: <MdTask style={iconStyle('#336791', 30)} />, path: '/taskmanage' },
+  { tooltip: 'Diffie-Hellman Key Exchange', icon: <GiHouseKeys style={iconStyle('#336791', 32)} />, path: '/dhkeyexchange' },
+  { tooltip: 'MyCV', icon: <FaFileContract style={iconStyle('#336791', 26)} />, path: '/mycv' },
+  { tooltip: 'Candidate Hunt', icon: <FaPeopleArrows style={iconStyle('#336791', 30)} />, path: '/hunt' },
+  { tooltip: 'Candidates', icon: <MdManageAccounts style={iconStyle('#336791', 35)} />, path: '/candidatemanage' },
+];
 
+const externalLinks = [
+  { tooltip: 'Jira', icon: <SiJira style={iconStyle('#336791', 26)} />, href: 'https://besterdev.atlassian.net/jira/your-work' },
+  { tooltip: 'Confluence', icon: <FaConfluence style={iconStyle('#336791', 26)} />, href: 'https://besterdev.atlassian.net/wiki/home' },
+  { tooltip: 'ReactJS v18.2.0', icon: <FaReact style={iconStyle('#61dafb', 35)} />, href: 'https://www.reactjs.com' },
+  { tooltip: 'JavaScript', icon: <SiJavascript style={iconStyle('#F0DB4F', 32)} />, href: 'https://www.nodejs.org/en' },
+  { tooltip: 'NodeJS v20.9.0', icon: <FaNodeJs style={iconStyle('#336791', 35)} />, href: 'https://www.nodejs.org/en' },
+  { tooltip: 'Java 17.0.9', icon: <FaJava style={iconStyle('#D5441C', 40)} />, href: 'https://www.java.com/en' },
+  { tooltip: 'Spring Boot v3.4.0', icon: <SiSpringboot style={iconStyle('#336791', 33)} />, href: 'https://spring.io/projects/spring-boot' },
+  { tooltip: 'PostgreSQL on Heroku', icon: <BiLogoPostgresql style={iconStyle('#336791', 33)} />, href: 'https://spring.io/projects/spring-boot' },
+  { tooltip: 'GitHub', icon: <BiLogoGithub style={iconStyle('#000000', 33)} />, href: 'https://github.com' },
+  { tooltip: 'AWS Amplify', icon: <SiAwsamplify style={iconStyle('#ff8500', 33)} />, href: 'https://eu-west-1.console.aws.amazon.com/amplify/home' },
+  { tooltip: 'Heroku API Backend', icon: <BiLogoHeroku style={iconStyle('#6762a6', 33)} />, href: 'https://dashboard.heroku.com/apps' },
+  { tooltip: 'Google Account', icon: <BiLogoGoogle style={iconStyle('#4688F1', 33)} />, href: 'https://myaccount.google.com/' },
+  { tooltip: 'Firebase Auth', icon: <SiFirebase style={iconStyle('#FFCB2B', 33)} />, href: 'https://console.firebase.google.com/project/besterdev-432e9/overview' },
+];
 
-    useEffect(() => 
-    {
-      axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/searchphrase')
-      // axios('http://localhost:8000/api/v1/searchphrase')
-        .then((response) => 
-        {
-          const searchPhraseValue = response.data[0].searchphrase;
-          setSearchPhrase(searchPhraseValue);
-          console.log('In <BannerLight/> is jou searchPhraseValue:', searchPhraseValue);
-          }
-        ).catch((e)=> console.error(e));
-  
-    }, 
-        [checkForRecords]);
-        console.log('In <BannerLight/> is jou searchPhrase:', searchPhrase);
- 
+const BannerLight = () => {
+  const navigate = useNavigate();
+  const [searchPhrase, setSearchPhrase] = useState('');
+
+  useEffect(() => {
+    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/searchphrase')
+      .then((response) => {
+        const phrase = response.data?.[0]?.searchphrase;
+        if (phrase) setSearchPhrase(phrase);
+      })
+      .catch((e) => console.error('In <BannerLight/> is jou searchPhrase:', searchPhrase));
+  }, []);
+
   return (
-    <div className="banner-light-left">
-      &nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Home" onClick={handleNavigateHome}><GiRapidshareArrow  style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} />&nbsp;<span style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#336791' }}>Breaking News is about: </span><i style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#D5441C' }}>{searchPhrase}</i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;
-      {/* <a data-tooltip-id="insert" data-tooltip-content="Login" onClick={handleNavigateLogin}><SlLogin style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
-      <a data-tooltip-id="insert" data-tooltip-content="Home" onClick={handleNavigateHome}><IoHome style={{ color: '#000000', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Cyclopedia" onClick={handleNavigateCyclopedia}><GiGiftOfKnowledge style={{ color: '#336791', fontSize: '31px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Web Resources" onClick={handleNavigateResources}><GiSpiderWeb style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="HOWTOs" onClick={handleNavigateHowtoManage}><BsPatchQuestion style={{ color: '#336791', fontSize: '29px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="People Scorecard" onClick={handleNavigatePeopleScorecard}><BsPeopleFill style={{ color: '#336791', fontSize: '32px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Tasks" onClick={handleNavigateTaskManage}><MdTask style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Diffie-Hellman Key Exchange" onClick={handleNavigateDHKeyExchange}><GiHouseKeys style={{ color: '#336791', fontSize: '32px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="MyCV" onClick={handleNavigateMyCV}><FaFileContract style={{ color: '#336791', fontSize: '26px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Jira" href="https://besterdev.atlassian.net/jira/your-work" target="_blank" rel="noreferrer"><SiJira style={{ color: '#336791', fontSize: '26px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Confluence" href="https://besterdev.atlassian.net/wiki/home" target="_blank" rel="noreferrer"><FaConfluence style={{ color: '#336791', fontSize: '26px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Candidate Hunt" onClick={handleNavigateHunt}><FaPeopleArrows style={{ color: '#336791', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Candidates" onClick={handleNavigateManage}><MdManageAccounts style={{ color: '#336791', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="ReactJS v18.2.0" href="https://www.reactjs.com" target="_blank" rel="noreferrer"><FaReact style={{ color: '#61dafb', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="JavaScript" href="https://www.nodejs.org/en" target="_blank" rel="noreferrer"><SiJavascript style={{ color: '#F0DB4F', fontSize: '32px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="NodeJS v20.9.0" href="https://www.nodejs.org/en" target="_blank" rel="noreferrer"><FaNodeJs style={{ color: '#336791', fontSize: '35px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Java 17.0.9" href="https://www.java.com/en" target="_blank" rel="noreferrer"><FaJava style={{ color: '#D5441C', fontSize: '40px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Spring Boot v3.4.0" href="https://spring.io/projects/spring-boot" target="_blank" rel="noreferrer"><SiSpringboot style={{ color: '#336791', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="PostgreSQL DB hosted on Heroku" href="https://spring.io/projects/spring-boot" target="_blank" rel="noreferrer"><BiLogoPostgresql style={{ color: '#336791', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Github for Repos" href="https://github.com" target="_blank" rel="noreferrer"><BiLogoGithub style={{ color: '#000000', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="AWS Amplify-hosted front-end UI" href="https://eu-west-1.console.aws.amazon.com/amplify/home?installation_id=39421369&setup_action=install&region=eu-west-1#/dv43gyvsmgsn1/settings/domains/" target="_blank" rel="noreferrer"><SiAwsamplify style={{ color: '#ff8500', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Heroku-hosted back-end API" href="https://dashboard.heroku.com/apps" target="_blank" rel="noreferrer"><BiLogoHeroku style={{ color: '#6762a6', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="paul.besar@gmail.com" href="https://myaccount.google.com/" target="_blank" rel="noreferrer"><BiLogoGoogle style={{ color: '#4688F1', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
-      <a data-tooltip-id="insert" data-tooltip-content="Google Firebase for front-end IAM Authentication" href="https://console.firebase.google.com/project/besterdev-432e9/overview" target="_blank" rel="noreferrer"><SiFirebase style={{ color: '#FFCB2B', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;
-      {/* <a data-tooltip-id="insert" data-tooltip-content="Google Analytics" href="https://analytics.google.com/analytics/web/?pli=1#/p400562922/reports/intelligenthome" target="_blank" rel="noreferrer"><SiGoogleanalytics style={{ color: 'orange', fontSize: '24px', cursor: 'pointer' }} /></a>&nbsp;&nbsp; */}
-      {/* <a data-tooltip-id="insert" data-tooltip-content="Docker Containers - paulbsr" href="https://www.docker.com" target="_blank" rel="noreferrer"><SiDocker style={{ color: '#1D63ED', fontSize: '33px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
-      {/* <a data-tooltip-id="insert" data-tooltip-content="DigitalOcean" href="https://www.digitalocean.com" target="_blank" rel="noreferrer"><FaDigitalOcean style={{ color: '#0069FF', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
-      {/* <a data-tooltip-id="insert" data-tooltip-content="Microsoft Hyper-V for Virtualization" href="https://www.docker.com" target="_blank" rel="noreferrer"><GrVirtualMachine style={{ color: '#336791', fontSize: '27px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
-      {/* <a data-tooltip-id="insert" data-tooltip-content="ProtonVPN (paulbsr)" href="https://protonvpn.com/" target="_blank" rel="noreferrer"><MdOutlineVpnLock style={{ color: 'brown', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
-      {/* <a data-tooltip-id="insert" data-tooltip-content="ProtonMail (kuberkont)" href="https://mail.proton.me/u/0/inbox" target="_blank" rel="noreferrer"><MdOutlineMailLock style={{ color: 'brown', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
-      {/* <a data-tooltip-id="insert" data-tooltip-content="Swagger" onClick={handleNavigateSwagger}><SiSwagger style={{ color: '#85EA2D', fontSize: '30px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
-      {/* <a data-tooltip-id="insert" data-tooltip-content="OAuth2.0 protected APIs" onClick={handleNavigateSwagger}><TbBrandOauth style={{ color: '#000000', fontSize: '31px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
-      {/* <a data-tooltip-id="insert" data-tooltip-content="TryHackMe" href="https://www.tryhackme.com" target="_blank"><SiTryhackme style={{ color: '#000000', fontSize: '31px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
-      {/* <a data-tooltip-id="insert" data-tooltip-content="Infisical for Vault" href="https://eu.infisical.com/org/2742398f-dfc5-4b9a-a024-7c8c30db2c42/overview" target="_blank"><SiAmazonrds style={{ color: '#000000', fontSize: '40px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
-      {/* <a data-tooltip-id="insert" data-tooltip-content="Auth0 as Identity Provider" href="https://auth0.com/" target="_blank" rel="noreferrer"><SiAuth0 style={{ color: '#000000', fontSize: '25px', cursor: 'pointer' }} /></a>&nbsp;&nbsp;&nbsp; */}
-      {/* <a data-tooltip-id="insert" data-tooltip-content="Logout" onClick={handleNavigateLogout}><SlLogout style={{ color: '#336791', fontSize: '28px', cursor: 'pointer' }} /></a>&nbsp;&nbsp; */}
+    <div className="banner-light-left" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '15px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <GiRapidshareArrow style={iconStyle('#336791', 28)} />
+        <span style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#336791' }}>Breaking News is about:</span>
+        <i style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#D5441C' }}>{searchPhrase}</i>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
 
+      {internalLinks.map(({ tooltip, icon, path }, idx) => (
+        <a key={idx} data-tooltip-id="insert" data-tooltip-content={tooltip} onClick={() => navigate(path)} role="button" tabIndex={0}>{icon}</a>
+      ))}
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+      {externalLinks.map(({ tooltip, icon, href }, idx) => (
+        <a key={idx} data-tooltip-id="insert" data-tooltip-content={tooltip} href={href} target="_blank" rel="noreferrer">{icon}</a>
+      ))}
     </div>
   );
 };
+
 export default BannerLight;
