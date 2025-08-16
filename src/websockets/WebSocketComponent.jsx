@@ -179,6 +179,7 @@ const WebSocketComponent = () => {
           (Event @ {time}) <strong>{name}:</strong> {desc}
         </span>
       </div>
+      <div>&nbsp;</div>
     </div>
   );
 };

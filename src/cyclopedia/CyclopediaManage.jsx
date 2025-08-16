@@ -68,7 +68,7 @@ function CyclopediaManage() {
 
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-        &nbsp; &nbsp; <GiGiftOfKnowledge style={{ color: '#336791', fontSize: '38px', cursor: 'pointer' }} />
+        &nbsp; &nbsp; <GiGiftOfKnowledge style={{ color: '#336791', fontSize: '38px' }} />
         &nbsp;<b style={{ fontFamily: "Verdana", fontSize: "medium", fontWeight: "bold", color: "#336791" }}>Manage the {cyclopediarootdata.length} Cyclopedia Entries</b>
       </div>
 

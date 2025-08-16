@@ -104,7 +104,7 @@ export default function JobreqCreate(props) {
     <div className='Font-Verdana-Small-Postgres'>&nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-        <a data-tooltip-id="insert" data-tooltip-content="Add"><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} />
+        <a data-tooltip-id="insert" data-tooltip-content="Add Job"><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} />
         <b style={{ cursor: 'pointer' }}>Add a Job Requisition/JR</b></a>
       </div>
 

@@ -7,6 +7,7 @@ import { GiHummingbird } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';
 import { toast } from 'react-toastify';
+import { baseInputStyle } from "../baseInputStyle";
 
 export default function CyclopediaCreate() {
   const toggleAccordion = () => { setExpanded(!isExpanded); };
@@ -43,8 +44,8 @@ export default function CyclopediaCreate() {
     <div className='Font-Verdana-Small-Postgres'>&nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-          <img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} />
-        <b style={{ cursor: 'pointer' }}>Add a <i>"Cyclopedia"</i> entry:</b>
+          <a data-tooltip-id="insert" data-tooltip-content="Add Cyclopedia"><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} />
+        <b style={{ cursor: 'pointer' }}>Add a <i>"Cyclopedia"</i> entry:</b></a>
         <div>&nbsp;</div>
       </div>
 
@@ -57,21 +58,21 @@ export default function CyclopediaCreate() {
                 <div>
                   <img alt="1" src={spacer} />
                   <img alt="1" src={spacer} />
-                  <img alt="1" src={spacer} />WhatExactlyIs:&nbsp;&nbsp;<input style={{ height: '25.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1150px' }} placeholder="Required" type="text" value={cyclopedia_name} onChange={(event) => setCyclopedia_name(event.target.value)} required /></div>
+                  <img alt="1" src={spacer} />WhatExactlyIs:&nbsp;&nbsp;<input style={{ ...baseInputStyle, width: "1150px" }} placeholder="Required" type="text" value={cyclopedia_name} onChange={(event) => setCyclopedia_name(event.target.value)} required /></div>
                 
                 <div>&nbsp;</div>
                 
                 <div>
                   <img alt="1" src={spacer} />
                   <img alt="1" src={spacer} />
-                  <img alt="1" src={spacer} />Description:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea rows={2} style={{ fontFamily:'Verdana',border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1150px' }} placeholder="Required" type="text" value={cyclopedia_desc} onChange={(event) => setCyclopedia_desc(event.target.value)} required /></div>
+                  <img alt="1" src={spacer} />Description:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea rows={2} style={{ ...baseInputStyle, width: "1150px" }} placeholder="Required" type="text" value={cyclopedia_desc} onChange={(event) => setCyclopedia_desc(event.target.value)} required /></div>
 
                 <div>&nbsp;</div>
 
                 <div>
                   <img alt="1" src={spacer} />
                   <img alt="1" src={spacer} />
-                  <img alt="1" src={spacer} />URL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1150px' }} type="text" value={cyclopedia_url} onChange={(event) => setCyclopedia_url(event.target.value)} /></div>
+                  <img alt="1" src={spacer} />URL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ ...baseInputStyle, width: "1150px" }} type="text" value={cyclopedia_url} onChange={(event) => setCyclopedia_url(event.target.value)} /></div>
                 
                 <div>&nbsp;</div>
                 
