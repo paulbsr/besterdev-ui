@@ -146,7 +146,7 @@ const WebSocketComponent = () => {
     <div onClick={handleClick} style={{ cursor: "pointer" }}>
       <div
         style={{
-          marginLeft: "20px",
+          marginLeft: "23px",
           display: "inline-block",
           border: "1px solid #ccc",
           borderRadius: "8px",

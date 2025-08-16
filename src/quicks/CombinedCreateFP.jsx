@@ -20,7 +20,7 @@ export default function CombinedCreateFP() {
 
   const current = new Date();
   const [isExpandedBearerToken, setExpandedBearerToken] = useState(false);
-  const {websiterootdata, setRefreshWebsiterootdata} = useWebsiteApi();
+  const { websiterootdata, setRefreshWebsiterootdata } = useWebsiteApi();
   const [isExpandedCyclopedia, setExpandedCyclopedia] = useState(false);
   const [isExpandedWebSocket, setExpandedWebSocket] = useState(false);
   const [isExpandedWebsite, setExpandedWebsite] = useState(false);
@@ -29,7 +29,7 @@ export default function CombinedCreateFP() {
   const [taskrequirement, setTaskrequirement] = useState("");
   const [tasktargetdate, setTasktargetdate] = useState(null);
   const [isExpandedTask, setExpandedTask] = useState(false);
-  const {setRefreshCyclopediarootdata} = useCyclopediaApi();
+  const { setRefreshCyclopediarootdata } = useCyclopediaApi();
   const [cyclopediaName, setCyclopediaName] = useState('');
   const [cyclopediaDesc, setCyclopediaDesc] = useState('');
   const [projecthandle, setProjecthandle] = useState("");
@@ -123,8 +123,7 @@ export default function CombinedCreateFP() {
       try {
         const response = await axios.post
           (`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/create`, newtask);
-        if (response.status === 200) 
-          { toast.success(`Task added.`) }
+        if (response.status === 200) { toast.success(`Task added.`) }
         else { toast.error('Task not added'); }
       }
       catch (err) {
@@ -160,15 +159,15 @@ export default function CombinedCreateFP() {
 
                 <span onClick={() => setExpandedCyclopedia(!isExpandedCyclopedia)}>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  Add <GiHummingbird style={{ color: '#4D4D4D', fontSize: '25px' }} />
+                  Add <GiHummingbird style={{ color: '#4D4D4D', fontSize: '20px' }} />
                   <GiGiftOfKnowledge style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} /> to Cyclopedia</span>
 
                 <span onClick={() => setExpandedWebsite(!isExpandedWebsite)}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  Add <GiHummingbird style={{ color: '#4D4D4D', fontSize: '25px' }} />
+                  Add <GiHummingbird style={{ color: '#4D4D4D', fontSize: '20px' }} />
                   <GiSpiderWeb style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} /> a Website</span>
 
                 <span onClick={() => setExpandedTask(!isExpandedTask)}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  Add <GiHummingbird style={{ color: '#4D4D4D', fontSize: '25px' }} />
+                  Add <GiHummingbird style={{ color: '#4D4D4D', fontSize: '20px' }} />
                   <MdTask style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} /> a Task</span>
 
                 <span onClick={() => setExpandedBearerToken(!isExpandedBearerToken)}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -189,7 +188,7 @@ export default function CombinedCreateFP() {
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   Cyclopedia:&nbsp;&nbsp;
                   <input
-                    style={{ height: '22.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '300px' }}
+                    style={{ height: '22.5px', border: '1.25px solid #ccc', borderRadius: '4px', paddingLeft: '4px', width: '300px' }}
                     placeholder="Required"
                     type="text"
                     value={cyclopediaName}
@@ -202,7 +201,7 @@ export default function CombinedCreateFP() {
                   URL:&nbsp;&nbsp;
 
                   <input
-                    style={{ height: '22.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '500px' }}
+                    style={{ height: '22.5px', border: '1.25px solid #ccc', borderRadius: '4px', paddingLeft: '4px', width: '500px' }}
                     type="text"
                     value={cyclopediaUrl}
                     onChange={(e) => setCyclopediaUrl(e.target.value)}
@@ -213,7 +212,7 @@ export default function CombinedCreateFP() {
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   Description:&nbsp;
                   <textarea
-                    style={{ fontFamily: 'Verdana', height: '22.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '2px', width: '880px' }}
+                    style={{ fontFamily: 'Verdana', height: '22.5px', border: '1.25px solid #ccc', borderRadius: '4px', paddingLeft: '2px', width: '880px' }}
                     placeholder="Required"
                     value={cyclopediaDesc}
                     onChange={(e) => setCyclopediaDesc(e.target.value)}
@@ -226,7 +225,7 @@ export default function CombinedCreateFP() {
                   <button
                     className="Font-Verdana-Small-Postgres"
                     type="submit"
-                    style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>
+                    style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #ccc', borderRadius: '5px', backgroundColor: '#ccc', color: '#FFFFFF', cursor: 'pointer' }}>
                     Memorialize
                   </button>
                   <div>&nbsp;</div>
@@ -241,7 +240,7 @@ export default function CombinedCreateFP() {
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   Website:&nbsp;&nbsp;&nbsp;
                   <input
-                    style={{ height: '22.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '343px' }}
+                    style={{ height: '22.5px', border: '1.25px solid #ccc', borderRadius: '4px', paddingLeft: '4px', width: '343px' }}
                     placeholder="Required"
                     type="text"
                     value={websiteName}
@@ -253,7 +252,7 @@ export default function CombinedCreateFP() {
                   &nbsp;&nbsp;&nbsp;&nbsp;
                   URL:&nbsp;&nbsp;
                   <input
-                    style={{ height: '22.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '500px' }}
+                    style={{ height: '22.5px', border: '1.25px solid #ccc', borderRadius: '4px', paddingLeft: '4px', width: '500px' }}
                     placeholder="Required"
                     type="text"
                     value={websiteUrl}
@@ -277,7 +276,7 @@ export default function CombinedCreateFP() {
                     required
                     style={{
                       height: '27.5px',
-                      border: '1.25px solid #336791',
+                      border: '1.25px solid #ccc',
                       borderRadius: '4px',
                       padding: 0,
                       paddingLeft: '5px',
@@ -301,7 +300,7 @@ export default function CombinedCreateFP() {
                   <button
                     className="Font-Verdana-Small-Postgres"
                     type="submit"
-                    style={{ marginLeft: '10px', height: '24.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>
+                    style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #ccc', borderRadius: '5px', backgroundColor: '#ccc', color: '#FFFFFF', cursor: 'pointer' }}>
                     Memorialize
                   </button>
                   <div>&nbsp;</div>
@@ -324,7 +323,7 @@ export default function CombinedCreateFP() {
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       Module:&nbsp;&nbsp;
                       <select
-                        style={{ height: '22.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '250px' }} placeholder="Domain" id="dropdown" onChange={dropdownChange} >
+                        style={{ height: '22.5px', border: '1.25px solid #ccc', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '250px' }} placeholder="Domain" id="dropdown" onChange={dropdownChange} >
                         <option disabled selected value="Domain">Module</option>
                         <option value="113092" data-value2="NetworkSecurity">NetworkSecurity</option>
                         <option value="14718" data-value2="EnterpriseSecurity">EnterpriseSecurity</option>
@@ -335,16 +334,16 @@ export default function CombinedCreateFP() {
                       </select>
 
 
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        Task Name:&nbsp;&nbsp;
-                        <input style={{ height: '22.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '530px' }} placeholder="Required" type="text" onChange={(event) => setTaskname(event.target.value)} required />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      Task Name:&nbsp;&nbsp;
+                      <input style={{ height: '22.5px', border: '1.25px solid #ccc', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '530px' }} placeholder="Required" type="text" onChange={(event) => setTaskname(event.target.value)} required />
 
 
                       <div>
                         <div>&nbsp;</div>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         Description:&nbsp;&nbsp;
-                        <input style={{ height: '22.5px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '500px' }} type="text" onChange={(event) => setTaskrequirement(event.target.value)} />
+                        <input style={{ height: '22.5px', border: '1.25px solid #ccc', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '500px' }} type="text" onChange={(event) => setTaskrequirement(event.target.value)} />
 
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         Target:&nbsp;&nbsp;
@@ -355,14 +354,14 @@ export default function CombinedCreateFP() {
                           dateFormat="yyyy.MM.dd"
                           minDate={new Date()}
                           placeholderText="Target Date"
-                          style={{ height: '27.7px' }}
+                          style={{ height: '22.5px', border: '1.25px solid #ccc', borderRadius: '7px' }}
                         />
 
                         &nbsp;&nbsp;&nbsp;
                         <button
                           className="Font-Segoe-Small"
                           type="submit"
-                          style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}>
+                          style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #ccc', borderRadius: '5px', backgroundColor: '#ccc', color: '#FFFFFF', cursor: 'pointer' }}>
                           Memorialize
                         </button>
                         <div>&nbsp;</div>

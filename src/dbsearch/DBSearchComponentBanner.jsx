@@ -86,7 +86,7 @@ const DBSearchComponentBanner = () => {
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       
       <input
-        style={{ height: '22.5px', border: '0.75px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }}
+        style={{ height: '22.5px', border: '0.75px solid #ccc', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }}
         placeholder="Search"
         type="text"
         value={searchQuery}
@@ -96,14 +96,14 @@ const DBSearchComponentBanner = () => {
 
       <button
         type="submit"
-        style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#336791', cursor: 'pointer' }}
+        style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #ccc', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#336791', cursor: 'pointer' }}
       >Search
       </button>
 
       <button
         type="button"
         onClick={handleCancel}
-        style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#336791', cursor: 'pointer' }}
+        style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #ccc', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#336791', cursor: 'pointer' }}
       >Clear
       </button>
       

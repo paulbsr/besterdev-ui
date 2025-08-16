@@ -45,7 +45,6 @@ function BearerToken() {
 
   return (
     <td onClick={handleClick}>
-      {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */}
             <div
         style={{
           marginLeft: '20px',
