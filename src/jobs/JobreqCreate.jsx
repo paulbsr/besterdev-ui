@@ -10,6 +10,7 @@ import { GiHummingbird } from "react-icons/gi";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 import { toast } from 'react-toastify';
+import { baseInputStyle } from "../baseInputStyle";
 dayjs.extend(utc);
 
 
@@ -96,7 +97,6 @@ export default function JobreqCreate(props) {
   }, [checkForRecords]);
 
 
-
   const handleWAprofileChange = (event) => { setWAprofile(event.target.value); };
 
   return (
@@ -104,8 +104,8 @@ export default function JobreqCreate(props) {
     <div className='Font-Verdana-Small-Postgres'>&nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-        <a data-tooltip-id="insert" data-tooltip-content="Add"><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
-        <b>Add a Job Requisition/JR</b>
+        <a data-tooltip-id="insert" data-tooltip-content="Add"><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} />
+        <b style={{ cursor: 'pointer' }}>Add a Job Requisition/JR</b></a>
       </div>
 
       {isExpanded && (
@@ -152,11 +152,11 @@ export default function JobreqCreate(props) {
                         </option>
                       ))}
                     </select>
-                    <img alt="1" src={spacer} />Location:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} type="text" value={location} onChange={(event) => setLocation(event.target.value)} />
-                    <img alt="1" src={spacer} />JR Number:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} placeholder="Required" type="text" value={jrnumber} onChange={(event) => setJrnumber(event.target.value)} required />
-                    <img alt="1" src={spacer} />JR Title:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '250px' }} placeholder="Required" type="text" value={jrtitle} onChange={(event) => setJrtitle(event.target.value)} required />
+                    <img alt="1" src={spacer} />Location:&nbsp;<input style={{ ...baseInputStyle, width: "250px" }} type="text" value={location} onChange={(event) => setLocation(event.target.value)} />
+                    <img alt="1" src={spacer} />JR Number:&nbsp;<input style={{ ...baseInputStyle, width: "250px" }} placeholder="Required" type="text" value={jrnumber} onChange={(event) => setJrnumber(event.target.value)} required />
+                    <img alt="1" src={spacer} />JR Title:&nbsp;<input style={{ ...baseInputStyle, width: "250px" }} placeholder="Required" type="text" value={jrtitle} onChange={(event) => setJrtitle(event.target.value)} required />
                     <img alt="1" src={spacer} />WFH:&nbsp;
-                    <select style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '230px' }} id="dropdown" value={wa} onChange={(event) => setWa(event.target.value)}>
+                    <select style={{ ...baseInputStyle, width: "230px" }} id="dropdown" value={wa} onChange={(event) => setWa(event.target.value)}>
                       <option disabled selected value="">Work Appropriate Model</option>
                       <option value="FR">Fully Remote</option>
                       <option value="H1">Hybrid 1-day Onsite</option>
@@ -168,11 +168,11 @@ export default function JobreqCreate(props) {
                   </div>
                 </div>
                 <div>&nbsp;</div>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Recruiter's Name:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '190px' }} type="text" value={recruitername} onChange={(event) => setRecruitername(event.target.value)} />
-                <img alt="1" src={spacer} />Recruiter eMail:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '205px' }} type="text" value={recruiteremail} onChange={(event) => setRecruiteremail(event.target.value)} />
-                <img alt="1" src={spacer} />Recruiter Mobile:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '215px' }} type="text" value={recruiternumber} onChange={(event) => setRecruiternumber(event.target.value)} />
-                <img alt="1" src={spacer} />Status:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '255px' }} type="text" value={status} onChange={(event) => setStatus(event.target.value)} />
-                <img alt="1" src={spacer} />Comment:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '190px' }} type="text" value={comment} onChange={(event) => setComment(event.target.value)} />
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Recruiter's Name:&nbsp;<input style={{ ...baseInputStyle, width: "190px" }} type="text" value={recruitername} onChange={(event) => setRecruitername(event.target.value)} />
+                <img alt="1" src={spacer} />Recruiter eMail:&nbsp;<input style={{ ...baseInputStyle, width: "205px" }} type="text" value={recruiteremail} onChange={(event) => setRecruiteremail(event.target.value)} />
+                <img alt="1" src={spacer} />Recruiter Mobile:&nbsp;<input style={{ ...baseInputStyle, width: "215px" }} type="text" value={recruiternumber} onChange={(event) => setRecruiternumber(event.target.value)} />
+                <img alt="1" src={spacer} />Status:&nbsp;<input style={{ ...baseInputStyle, width: "255px" }} type="text" value={status} onChange={(event) => setStatus(event.target.value)} />
+                <img alt="1" src={spacer} />Comment:&nbsp;<input style={{ ...baseInputStyle, width: "190px" }} type="text" value={comment} onChange={(event) => setComment(event.target.value)} />
                 <div>&nbsp;</div>
                 <img alt="1" src={spacer} /><img alt="1" src={spacer} />Recruitment Start:&nbsp;
                 <img alt="1" src={spacer} />Recruitment End:&nbsp;

@@ -1,9 +1,12 @@
-import React from 'react';
-import '../Fonts.css'
-
 const GradientLineThin = () => {
   return (
-    <div className="gradient-line-thin"></div>
+    <div
+      style={{
+        width: "100%",
+        height: "1px",
+        background: "linear-gradient(to right, #cfcbd1, #ffffff)",
+      }}
+    />
   );
 };
 

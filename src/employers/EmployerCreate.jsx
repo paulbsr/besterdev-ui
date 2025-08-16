@@ -5,9 +5,10 @@ import spacer from '../graphix/besterdev_spacer_white.png'
 import spacer2 from '../graphix/besterdev_spacer_white_half.png'
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
-import { GiHummingbird, GiNestBirds } from "react-icons/gi";
+import { GiHummingbird } from "react-icons/gi";
 import { toast } from 'react-toastify';
 import AlertContext from "../Generic/Alerts/AlertContext";
+import { baseInputStyle } from "../baseInputStyle";
 
 export default function EmployerCreate(props) {
 
@@ -61,14 +62,13 @@ export default function EmployerCreate(props) {
     }
   }
 
-
   return (
 
     <div className='Font-Verdana-Small-Postgres'>&nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-        <a data-tooltip-id="insert" data-tooltip-content="Add"><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
-        <b>Add an Employer/Customer</b>
+        <a data-tooltip-id="insert" data-tooltip-content="Add"><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} />
+        <b style={{ cursor: 'pointer' }}>Add an Employer/Customer</b></a>
       </div>
 
       {isExpanded && (
@@ -79,17 +79,17 @@ export default function EmployerCreate(props) {
               <div><img alt="1" src={spacer2} /></div>
               <div className='Font-Verdana-Small-Postgres'>
               <div>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Company Name:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '230px' }} placeholder="Required" type="text" value={empname} onChange={(event) => setEmpname(event.target.value)} required />
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Comment:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1130px' }} type="text" value={empcomment} onChange={(event) => setEmpcomment(event.target.value)} />
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Company Name:&nbsp;<input style={{ ...baseInputStyle, width: "230px" }} placeholder="Required" type="text" value={empname} onChange={(event) => setEmpname(event.target.value)} required />
+                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Comment:&nbsp;<input style={{ ...baseInputStyle, width: "1130px" }} type="text" value={empcomment} onChange={(event) => setEmpcomment(event.target.value)} />
               </div>
 
                 <div>&nbsp;</div>
                 
               <div>
-                 <img alt="1" src={spacer} /><img alt="1" src={spacer} />Contact's First Name:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} placeholder="Required" type="text" value={empcontactfn} onChange={(event) => setEmpcontactfn(event.target.value)} required />
-                 <img alt="1" src={spacer} /><img alt="1" src={spacer} />Contact's Last Name:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '160px' }} placeholder="Required" type="text" value={empcontactln} onChange={(event) => setEmpcontactln(event.target.value)} required />
-                 <img alt="1" src={spacer} /><img alt="1" src={spacer} />Contact's eMail Address:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} placeholder="Required" type="text" value={empcontactemail} onChange={(event) => setEmpcontactemail(event.target.value)} required />
-                 <img alt="1" src={spacer} /><img alt="1" src={spacer} />Contact's Mobile Number:&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} placeholder="Required" type="text" value={empcontactnum} onChange={(event) => setEmpcontactnum(event.target.value)} required />
+                 <img alt="1" src={spacer} /><img alt="1" src={spacer} />Contact's First Name:&nbsp;<input style={{ ...baseInputStyle, width: "200px" }} placeholder="Required" type="text" value={empcontactfn} onChange={(event) => setEmpcontactfn(event.target.value)} required />
+                 <img alt="1" src={spacer} /><img alt="1" src={spacer} />Contact's Last Name:&nbsp;<input style={{ ...baseInputStyle, width: "160px" }} placeholder="Required" type="text" value={empcontactln} onChange={(event) => setEmpcontactln(event.target.value)} required />
+                 <img alt="1" src={spacer} /><img alt="1" src={spacer} />Contact's eMail Address:&nbsp;<input style={{ ...baseInputStyle, width: "200px" }} placeholder="Required" type="text" value={empcontactemail} onChange={(event) => setEmpcontactemail(event.target.value)} required />
+                 <img alt="1" src={spacer} /><img alt="1" src={spacer} />Contact's Mobile Number:&nbsp;<input style={{ ...baseInputStyle, width: "200px" }} placeholder="Required" type="text" value={empcontactnum} onChange={(event) => setEmpcontactnum(event.target.value)} required />
               </div>
 
                 <div>&nbsp;</div>

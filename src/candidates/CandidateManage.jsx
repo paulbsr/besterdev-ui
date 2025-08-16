@@ -134,8 +134,8 @@ export default function CandidateManage() {
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
         &nbsp; &nbsp;<a data-tooltip-id="insert" data-tooltip-content="Amend">
-          <MdManageAccounts style={{ color: '#336791', fontSize: '45px', cursor: 'pointer' }} /></a>
-        &nbsp;<b style={{ fontFamily: "Verdana", fontSize: "medium", fontWeight: "bold", color: "#336791" }}>Manage Candidates / Commodoties ({tabledata.length})</b>
+          <MdManageAccounts style={{ color: '#336791', fontSize: '45px', cursor: 'pointer' }} />
+        &nbsp;<b style={{ fontFamily: "Verdana", fontSize: "medium", fontWeight: "bold", color: "#336791", cursor: 'pointer' }}>Manage Candidates / Commodoties ({tabledata.length})</b></a>
       </div>
 
       {isExpanded && (

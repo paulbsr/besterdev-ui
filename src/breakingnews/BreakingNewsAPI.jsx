@@ -48,7 +48,7 @@ export default function BreakingNewsAPI() {
                             .catch((error) => console.error('In <BreakingyNewsAPI /> is jou POST na Heroku met searchPhrase gefok omdat:', error));
                     })
                     .catch((error) => console.error('Error fetching data:', error));
-                    
+
             };
 
             fetchDataAPI();
