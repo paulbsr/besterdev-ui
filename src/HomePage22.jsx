@@ -7,13 +7,9 @@ import Image from './graphix/12.png' //Lady Liberty
 import DBSearchComponent from './dbsearch/DBSearchComponent';
 import TaskSummaryHomepage from './tasks/TaskSummaryHomepage';
 import { useWebsiteApi } from './websites/WebSiteAPIProvider';
-import { useCyclopediaApi } from './cyclopedia/CyclopediaAPIProvider';
 import { useHowtoApi } from './howto/HowtoAPIProvider';
 import { useNavigate } from 'react-router-dom';
-import WebSocketEvent from './websockets/WebSocketEvent';
-import CombinedCreateFP from './quicks/CombinedCreateFP';
-
-
+import FlipCard from './flipcard/FlipCard2';
 
 export default function HomePage22(props) {
   const [isExpanded, setExpanded] = useState(false);
@@ -172,6 +168,7 @@ export default function HomePage22(props) {
       <>
         <DBSearchComponent />
         <TaskSummaryHomepage />
+
         <div>
           <div className='Font-Spacer-White'>Make this spacer white</div>
 
@@ -320,7 +317,7 @@ export default function HomePage22(props) {
           <tr style={{ height: '20px' }}>
             <td style={{ width: '5%' }}></td>
             {/* <td style={{ width: '90%' }}><WebSocketEvent/></td> */}
-            <td style={{ width: '90%' }}></td>
+            <td style={{ width: '90%' }}><FlipCard/></td>
             <td style={{ width: '5%' }}></td>
           </tr>
         </tbody>

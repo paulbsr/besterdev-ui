@@ -1,17 +1,17 @@
 import { useState, useEffect, useContext } from 'react'
-import axios from 'axios'
-import '../Fonts.css'
-import 'react-dropdown/style.css';
+import GradientLineRusty from '../gradientlines/GradientLineRusty';
 import { FaPen, FaCheck, FaRegTrashAlt } from 'react-icons/fa';
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
+import { baseInputStyle } from '../baseInputStyle';
+import { FaPeopleGroup } from "react-icons/fa6";
+import EmployerCreate from './EmployerCreate';
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
-import GradientLine from '../gradientlines/GradientLine';
-import EmployerCreate from './EmployerCreate';
-import { MdManageAccounts } from "react-icons/md";
-import { FaPeopleGroup } from "react-icons/fa6";
 import { toast } from 'react-toastify';
-import GradientLineRusty from '../gradientlines/GradientLineRusty';
+import 'react-dropdown/style.css';
+import axios from 'axios'
+import '../Fonts.css'
+
 
 
 export default function EmployerManage1(props) {
@@ -31,7 +31,7 @@ export default function EmployerManage1(props) {
 
   useEffect(() => {
     axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers')
-      .then((response) => { const sortedemployerrecords = response.data.sort((b, a) => b.empname.localeCompare(a.empname)); setEmployerrecords(sortedemployerrecords);}) //sort empname alphabetically
+      .then((response) => { const sortedemployerrecords = response.data.sort((b, a) => b.empname.localeCompare(a.empname)); setEmployerrecords(sortedemployerrecords); }) //sort empname alphabetically
       .catch((e) => console.error(e));
   }, [checkForRecords]);
 
@@ -67,10 +67,10 @@ export default function EmployerManage1(props) {
         "empcontactemail": empcontactemail,
         "empcomment": empcomment
       }
-      
+
       await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers/update/${editing}`, employerPUT)
-      .then((response) => {setCheckForRecords(!checkForRecords); toast.success(`${empname} has been updated.`)}) 
-      .catch((error) => {alert("Done");})
+        .then((response) => { setCheckForRecords(!checkForRecords); toast.success(`${empname} has been updated.`) })
+        .catch((error) => { alert("Done"); })
       setCheckForRecords(!checkForRecords)
       onEditCancel();
 
@@ -78,101 +78,91 @@ export default function EmployerManage1(props) {
   }
 
 
-  const onEditDelete = (row) => 
-  {
+  const onEditDelete = (row) => {
     axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers/delete/${row.id}`)
-      .then((response) => 
-      { 
+      .then((response) => {
         window.alert('Are you sure you want to delete');
-        setCheckForRecords(!checkForRecords); 
-        toast.success(`${empname} has been purged.`) 
+        setCheckForRecords(!checkForRecords);
+        toast.success(`${empname} has been purged.`)
       }
       )
   };
 
 
   return (
-  
-  
-      <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
+
+
+    <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
         &nbsp; &nbsp;<a data-tooltip-id="insert" data-tooltip-content="EmployerManage"><FaPeopleGroup style={{ color: '#336791', fontSize: '45px', cursor: 'pointer' }} />
-        &nbsp;<b style={{ fontFamily: "Verdana", fontSize: "medium", fontWeight: "bold", color: "#336791", cursor: 'pointer' }}>Manage Employers / Customers ({employerrecords.length})</b></a>
+          &nbsp;<b style={{ fontFamily: "Verdana", fontSize: "medium", fontWeight: "bold", color: "#336791", cursor: 'pointer' }}>Manage Employers / Customers ({employerrecords.length})</b></a>
       </div>
 
       {isExpanded && (
         <div>
           <div>
+            <div>
+              <EmployerCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
+              <Tooltip id="edit" />
+              <Tooltip id="commit" />
+              <Tooltip id="revert" />
+              <Tooltip id="purge" />
+              &nbsp;
+              <table className="Table6">
+                <thead>
+                  <tr>
+                    <th style={{ width: '20px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'></th>
+                    <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Company Name</th>
+                    <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Contact First Name</th>
+                    <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Contact Last Name</th>
+                    <th style={{ width: '350px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Contact eMail</th>
+                    <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Contact Number</th>
+                    <th style={{ width: '650px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Comment</th>
+                  </tr>
+                </thead>
+                <tbody>
 
-  <div>
-    
-    <EmployerCreate  checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords}/>
-    <Tooltip id="edit" />
-    <Tooltip id="commit" />
-    <Tooltip id="revert" />
-    <Tooltip id="purge" />
-
-    &nbsp;
-    
-
-    <table className="Table6">
-      <thead>
-        <tr>
-          <th style={{ width: '20px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'></th>
-          <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Company Name</th>
-          <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Contact First Name</th>
-          <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Contact Last Name</th>
-          <th style={{ width: '350px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Contact eMail</th>
-          <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Contact Number</th>
-          <th style={{ width: '650px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Comment</th>
-        </tr>
-      </thead>
-
-      <tbody>
-
-        {employerrecords.map((row) => {
-          return (
-            <tr key={row.id}>
-              <td className="Table6 td">
-                <>
-                  {row.id === editing ?
-                    (
-                      <>
-                        <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#336791', outline: 'none' }} type='button' onClick={() => onEditSave()}><a data-tooltip-id="commit" data-tooltip-content="Commit"><FaCheck style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>&nbsp;
-                        <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'silver', outline: 'none' }} type='button' onClick={() => onEditCancel()}><a data-tooltip-id="revert" data-tooltip-content="Revert"><PiArrowCounterClockwiseBold style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>&nbsp;
-                        <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#D5441C', outline: 'none' }} type='button' onClick={() => onEditDelete(row)}><a data-tooltip-id="purge" data-tooltip-content="Purge"><FaRegTrashAlt style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>&nbsp;
-                      </>
+                  {employerrecords.map((row) => {
+                    return (
+                      <tr key={row.id}>
+                        <td className="Table6 td">
+                          <>
+                            {row.id === editing ?
+                              (
+                                <>
+                                  <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#336791', outline: 'none' }} type='button' onClick={() => onEditSave()}><a data-tooltip-id="commit" data-tooltip-content="Commit"><FaCheck style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>&nbsp;
+                                  <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'silver', outline: 'none' }} type='button' onClick={() => onEditCancel()}><a data-tooltip-id="revert" data-tooltip-content="Revert"><PiArrowCounterClockwiseBold style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>&nbsp;
+                                  <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#D5441C', outline: 'none' }} type='button' onClick={() => onEditDelete(row)}><a data-tooltip-id="purge" data-tooltip-content="Purge"><FaRegTrashAlt style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>&nbsp;
+                                </>
+                              )
+                              :
+                              (
+                                <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#336791', outline: 'none' }} type='button' onClick={() => handleEmpEdit(row)}><a data-tooltip-id="edit" data-tooltip-content="Edit"><FaPen style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>
+                              )
+                            }
+                          </>
+                        </td>
+                        <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ ...baseInputStyle, width: "180px" }} value={empname} onChange={(e) => setEmpname(e.target.value)} className='cr_edit_inputfield' />) : (row.empname)}</td>
+                        <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ ...baseInputStyle, width: "180px" }} value={empcontactfn} onChange={(e) => setEmpcontactfn(e.target.value)} className='cr_edit_inputfield' />) : (row.empcontactfn)}</td>
+                        <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ ...baseInputStyle, width: "180px" }} value={empcontactln} onChange={(e) => setEmpcontactln(e.target.value)} className='cr_edit_inputfield' />) : (row.empcontactln)}</td>
+                        <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ ...baseInputStyle, width: "330px" }} value={empcontactemail} onChange={(e) => setEmpcontactemail(e.target.value)} className='cr_edit_inputfield_disc' />) : (<a href={'mailto: ${row.email}'} target="_blank" rel="noreferrer">{row.empcontactemail}</a>)}</td>
+                        <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ ...baseInputStyle, width: "180px" }} value={empcontactnum} onChange={(e) => setEmpcontactnum(e.target.value)} className='cr_edit_inputfield' />) : (row.empcontactnum)}</td>
+                        <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ ...baseInputStyle, width: "630px" }} value={empcomment} onChange={(e) => setEmpcomment(e.target.value)} className='cr_edit_inputfield' />) : (row.empcomment)}</td>
+                      </tr>
                     )
-                    :
-                    (
-                      <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#336791', outline: 'none' }} type='button' onClick={() => handleEmpEdit(row)}><a data-tooltip-id="edit" data-tooltip-content="Edit"><FaPen style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>
-                    )
+                  })
                   }
-                </>
-              </td>
-
-              <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '180px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={empname} onChange={(e) => setEmpname(e.target.value)} className='cr_edit_inputfield' />) : (row.empname)}</td>
-              <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '180px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={empcontactfn} onChange={(e) => setEmpcontactfn(e.target.value)} className='cr_edit_inputfield' />) : (row.empcontactfn)}</td>
-              <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '180px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={empcontactln} onChange={(e) => setEmpcontactln(e.target.value)} className='cr_edit_inputfield' />) : (row.empcontactln)}</td>
-              <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '330px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={empcontactemail} onChange={(e) => setEmpcontactemail(e.target.value)} className='cr_edit_inputfield_disc' />) : (<a href={'mailto: ${row.email}'} target="_blank" rel="noreferrer">{row.empcontactemail}</a>)}</td>
-              <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '180px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={empcontactnum} onChange={(e) => setEmpcontactnum(e.target.value)} className='cr_edit_inputfield' />) : (row.empcontactnum)}</td>
-              <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ height: '22.5px', width: '630px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={empcomment} onChange={(e) => setEmpcomment(e.target.value)} className='cr_edit_inputfield' />) : (row.empcomment)}</td>
-
-            </tr>
-          )
-        })
-        }
-      </tbody>
-    </table>
-    <div>&nbsp;</div>
-    <GradientLineRusty/>
-    <div>&nbsp;</div>
-  </div>
-</div>
-</div>
-)
-}
-</div>
-)
+                </tbody>
+              </table>
+              <div>&nbsp;</div>
+              <GradientLineRusty />
+              <div>&nbsp;</div>
+            </div>
+          </div>
+        </div>
+      )
+      }
+    </div>
+  )
 }

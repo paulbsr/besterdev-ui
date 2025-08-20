@@ -9,6 +9,7 @@ import axios from "axios";
 import '../Fonts.css'
 import CyclopediaCreate from './CyclopediaCreate';
 import GradientLineRusty from '../gradientlines/GradientLineRusty';
+import { baseInputStyle } from '../baseInputStyle';
 
 
 function CyclopediaManage() {
@@ -105,8 +106,8 @@ function CyclopediaManage() {
                   </>
                 </td>
 
-                <td className="asmshover">{row.cyclopediaId === editing ? (<input style={{ height: '22.5px', width: '270px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={cyclopediaName} onChange={(e) => setCyclopediaName(e.target.value)} />) : (row.cyclopediaName)}</td>
-                <td className="asmshover">{row.cyclopediaId === editing ? (<textarea style={{ height: '22.5px', width: '1240px', border: '1.25px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={cyclopediaDesc} onChange={(e) => setCyclopediaDesc(e.target.value)} />) : (row.cyclopediaDesc)}</td>
+                <td className="asmshover">{row.cyclopediaId === editing ? (<input style={{ ... baseInputStyle, width: '350px' }} value={cyclopediaName} onChange={(e) => setCyclopediaName(e.target.value)} />) : (row.cyclopediaName)}</td>
+                <td className="asmshover">{row.cyclopediaId === editing ? (<textarea style={{ ... baseInputStyle, width: '1240px' }} value={cyclopediaDesc} onChange={(e) => setCyclopediaDesc(e.target.value)} />) : (row.cyclopediaDesc)}</td>
               </tr>
             )
           })
