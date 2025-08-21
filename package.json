@@ -15,6 +15,7 @@
     "buffer": "^6.0.3",
     "dayjs": "^1.11.9",
     "firebase": "^10.1.0",
+    "openai": "^5.13.1",
     "react": "^18.2.0",
     "react-analytics": "^1.0.2",
     "react-bootstrap-validation": "^0.1.11",
@@ -66,5 +67,10 @@
     "source-map-explorer": "^2.5.3",
     "tsx": "^4.20.3",
     "typescript": "^4.9.5"
-  }
+  },
+  "description": "BesterDev is my private hobby project.\r https://www.bester.ie",
+  "main": "App.test.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
