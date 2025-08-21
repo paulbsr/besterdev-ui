@@ -12,7 +12,6 @@ function FlipCard({ width = 900, minHeight = 75 }) {
   const backRef = useRef(null);
   const frontRef = useRef(null);
 
-  // Sanitize AI-generated challenge text
   const formatText = (text) => {
     if (!text) return "";
     return text
@@ -59,7 +58,6 @@ function FlipCard({ width = 900, minHeight = 75 }) {
     fetchTermAndChallenge();
   }, []);
 
-  // Adjust card height dynamically whenever content changes or flips
   useEffect(() => {
     const frontHeight = frontRef.current?.scrollHeight || minHeight;
     const backHeight = backRef.current?.scrollHeight || minHeight;
@@ -153,6 +151,34 @@ function FlipCard({ width = 900, minHeight = 75 }) {
     }
   };
 
+  const handleIDontKnow = async (e) => {
+    e.stopPropagation();
+    setLoading(true);
+    setResponse("");
+
+    try {
+      const res = await fetch(
+        "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            question: `Provide a concise technical answer about "${term}" in no more than three sentences.`,
+          }),
+        }
+      );
+
+      const data = await res.json();
+      const rawResponse = data.answer || data.response || "No answer available";
+      setResponse(formatText(rawResponse));
+    } catch (err) {
+      console.error("Error fetching technical answer:", err);
+      setResponse("Failed to fetch answer");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleClear = async (e) => {
     e.stopPropagation();
     setAnswer("");
@@ -190,6 +216,20 @@ function FlipCard({ width = 900, minHeight = 75 }) {
                 width: "90%",
               }}
             />
+            <button
+              type="button"
+              onClick={handleIDontKnow}
+              style={{
+                marginTop: "8px",
+                padding: "6px 12px",
+                borderRadius: "6px",
+                border: "1px solid #ccc",
+                background: "#fef3c7",
+                cursor: "pointer",
+              }}
+            >
+              I do not know
+            </button>
           </form>
 
           {response && (
