@@ -168,7 +168,9 @@ export default function HomePage22(props) {
 
     return (
       <>
+
         <DBSearchComponent />
+                <FlipCard/>
         <TaskSummaryHomepage />
 
         <div>
@@ -298,9 +300,9 @@ export default function HomePage22(props) {
         <tbody>
           <tr style={{ height: '20px' }}>
             <td style={{ width: '25%' }}></td>
-            <td style={{ width: '1%' }}>.....</td>
+            <td style={{ width: '1%' }}></td>
             <td style={{ width: '48%' }}><img src={Image} style={{boxShadow: '10px 10px 10px rgba(0,0,0,0.2)', borderRadius: '8px'}}/></td>
-            <td style={{ width: '1%' }}>....</td>
+            <td style={{ width: '1%' }}></td>
             <td style={{ width: '25%' }}></td>
           </tr>
         </tbody>
@@ -311,7 +313,8 @@ export default function HomePage22(props) {
           <tr style={{ height: '20px' }}>
             <td style={{ width: '5%' }}></td>
             {/* <td style={{ width: '90%' }}><WebSocketEvent/></td> */}
-            <td style={{ width: '90%' }}><FlipCard/></td>
+            {/* <td style={{ width: '90%' }}><FlipCard/></td> */}
+            <td style={{ width: '90%' }}></td>
             <td style={{ width: '5%' }}></td>
           </tr>
         </tbody>

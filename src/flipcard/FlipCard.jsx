@@ -59,8 +59,8 @@ function FlipCard({ width = 900, minHeight = 75 }) {
   }, []);
 
   useEffect(() => {
-    const frontHeight = frontRef.current?.scrollHeight || minHeight;
-    const backHeight = backRef.current?.scrollHeight || minHeight;
+    const frontHeight = frontRef.current?.getBoundingClientRect().height || minHeight;
+    const backHeight = backRef.current?.getBoundingClientRect().height || minHeight;
     setCardHeight(Math.max(frontHeight, backHeight, minHeight));
   }, [term, challenge, response, flipped]);
 
@@ -104,7 +104,6 @@ function FlipCard({ width = 900, minHeight = 75 }) {
     background: "#ffffff",
     color: "#111827",
     fontWeight: 500,
-    height: "100%",
   };
 
   const backStyle = {
@@ -117,7 +116,6 @@ function FlipCard({ width = 900, minHeight = 75 }) {
     lineHeight: 1.4,
     padding: "10px",
     gap: "10px",
-    height: "100%",
   };
 
   const handleSubmit = async (e) => {
@@ -135,7 +133,7 @@ function FlipCard({ width = 900, minHeight = 75 }) {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            question: `Evaluate the accuracy of the answer to the question about "${term}": ${answer}. Provide the correct answer in no more than 3 sentences.`,
+            question: `Evaluate the accuracy of the answer to the question about "${term}": ${answer}. Provide the correct answer in no more than 3 sentences. Start your response with either "correct" or "incorrect". Add that value o the JSON so that it can be consumed by the front end. `,
           }),
         }
       );
@@ -197,6 +195,9 @@ function FlipCard({ width = 900, minHeight = 75 }) {
           <div style={{ color: "#000000", fontStyle: "italic", marginBottom: "0.1px" }}>
             {challenge}
           </div>
+          {
+
+          }
 
           <form
             onSubmit={handleSubmit}
@@ -216,20 +217,56 @@ function FlipCard({ width = 900, minHeight = 75 }) {
                 width: "90%",
               }}
             />
-            <button
-              type="button"
-              onClick={handleIDontKnow}
-              style={{
-                marginTop: "8px",
-                padding: "6px 12px",
-                borderRadius: "6px",
-                border: "1px solid #ccc",
-                background: "#fef3c7",
-                cursor: "pointer",
-              }}
-            >
-              I do not know
-            </button>
+
+            {/* Buttons side by side */}
+            <div style={{ display: "flex", gap: "10px", marginTop: "8px", alignItems: "center" }}>
+              <button
+                type="submit"
+                disabled={loading || !answer.trim()}
+                style={{
+                  padding: "6px 12px",
+                  borderRadius: "6px",
+                  border: "1px solid #ccc",
+                  background: "#d1fae5",
+                  cursor: "pointer",
+                }}
+              >
+                Submit
+              </button>
+
+              <button
+                type="button"
+                onClick={handleIDontKnow}
+                disabled={loading}
+                style={{
+                  padding: "6px 12px",
+                  borderRadius: "6px",
+                  border: "1px solid #ccc",
+                  background: "#fef3c7",
+                  cursor: "pointer",
+                }}
+              >
+                I do not know
+              </button>
+              {/* Spinner */}
+              {loading && (
+                <div
+                  style={{
+                    border: "3px solid #f3f3f3",
+                    borderTop: "3px solid #3498db",
+                    borderRadius: "50%",
+                    width: "18px",
+                    height: "18px",
+                    animation: "spin 1s linear infinite",
+                  }}
+                ></div>
+              )}
+            </div>
+
+            <style>
+              {`@keyframes spin {0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); }}`}
+            </style>
+
           </form>
 
           {response && (
@@ -257,7 +294,6 @@ function FlipCard({ width = 900, minHeight = 75 }) {
                 >
                   New Challenge
                 </button>
-                <div>&nbsp;</div>
               </div>
             </div>
           )}
