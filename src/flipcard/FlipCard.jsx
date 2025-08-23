@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-function FlipCard({ width = 900, minHeight = 75 }) {
+function FlipCard({ width = 1000, minHeight = 75 }) {
   const [flipped, setFlipped] = useState(false);
   const [term, setTerm] = useState("Loading...");
   const [challenge, setChallenge] = useState("Loading challenge...");
@@ -39,7 +39,7 @@ function FlipCard({ width = 900, minHeight = 75 }) {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            question: `Generate a one-sentence question about the topic: ${newTerm}`,
+            question: `Firstly, create a one-sentence summary or defition about the topic ${newTerm} and then generate a one-sentence question about the topic ${newTerm}. Do not include the word 'Summary' or "Definition" or "Question" in your response.`,
           }),
         }
       );
@@ -63,6 +63,37 @@ function FlipCard({ width = 900, minHeight = 75 }) {
     const backHeight = backRef.current?.getBoundingClientRect().height || minHeight;
     setCardHeight(Math.max(frontHeight, backHeight, minHeight));
   }, [term, challenge, response, flipped]);
+
+const renderResponse = (text) => {
+  if (!text) return null;
+
+  // Check if starts with Correct or Incorrect
+  if (/^correct/i.test(text)) {
+    return (
+      <>
+        <span style={{ color: "green", fontWeight: "bold" }}>
+          {text.match(/^correct/i)[0]}
+        </span>
+        {text.replace(/^correct/i, "")}
+      </>
+    );
+  }
+
+  if (/^incorrect/i.test(text)) {
+    return (
+      <>
+        <span style={{ color: "red", fontWeight: "bold" }}>
+          {text.match(/^incorrect/i)[0]}
+        </span>
+        {text.replace(/^incorrect/i, "")}
+      </>
+    );
+  }
+
+  // default: no special formatting
+  return text;
+};
+
 
   const containerStyle = {
     perspective: "1000px",
@@ -102,17 +133,18 @@ function FlipCard({ width = 900, minHeight = 75 }) {
   const frontStyle = {
     ...faceBase,
     background: "#ffffff",
-    color: "#111827",
-    fontWeight: 500,
+    color: "#336791",
+    fontFamily: "Segoe UI",
+    fontSize: 14,
   };
 
   const backStyle = {
     ...faceBase,
     background: "#ffffff",
-    color: "#111827",
+    color: "#336791",
     transform: "rotateY(180deg)",
     fontFamily: "Segoe UI",
-    fontSize: 16,
+    fontSize: 14,
     lineHeight: 1.4,
     padding: "10px",
     gap: "10px",
@@ -192,7 +224,7 @@ function FlipCard({ width = 900, minHeight = 75 }) {
           {term}
         </div>
         <div style={backStyle} ref={backRef}>
-          <div style={{ color: "#000000", fontStyle: "italic", marginBottom: "0.1px" }}>
+          <div style={{ color: "#336791", fontStyle: "italic", marginBottom: "0.1px" }}>
             {challenge}
           </div>
           {
@@ -210,11 +242,14 @@ function FlipCard({ width = 900, minHeight = 75 }) {
               value={answer}
               onChange={(e) => setAnswer(e.target.value)}
               style={{
+                fontFamily: "Segoe UI",
+                fontSize: 14,
+                borderColor: "#336791",
                 marginTop: "8px",
                 padding: "5px",
                 borderRadius: "6px",
                 border: "1px solid #ccc",
-                width: "90%",
+                width: "95%",
               }}
             />
 
@@ -224,10 +259,12 @@ function FlipCard({ width = 900, minHeight = 75 }) {
                 type="submit"
                 disabled={loading || !answer.trim()}
                 style={{
+                  fontFamily: "Segoe UI",
+                  fontSize: 14,
                   padding: "6px 12px",
                   borderRadius: "6px",
                   border: "1px solid #ccc",
-                  background: "#d1fae5",
+                  background: "#f3f4f6",
                   cursor: "pointer",
                 }}
               >
@@ -239,10 +276,12 @@ function FlipCard({ width = 900, minHeight = 75 }) {
                 onClick={handleIDontKnow}
                 disabled={loading}
                 style={{
+                  fontFamily: "Segoe UI",
+                  fontSize: "14px",
                   padding: "6px 12px",
                   borderRadius: "6px",
                   border: "1px solid #ccc",
-                  background: "#fef3c7",
+                  background: "#f3f4f6",
                   cursor: "pointer",
                 }}
               >
@@ -253,7 +292,7 @@ function FlipCard({ width = 900, minHeight = 75 }) {
                 <div
                   style={{
                     border: "3px solid #f3f3f3",
-                    borderTop: "3px solid #3498db",
+                    borderTop: "3px solid #D5441C",
                     borderRadius: "50%",
                     width: "18px",
                     height: "18px",
@@ -274,16 +313,19 @@ function FlipCard({ width = 900, minHeight = 75 }) {
               style={{
                 marginTop: "10px",
                 fontSize: "14px",
+                fontFamily: "Segoe UI",
                 color: "#111827",
                 textAlign: "left",
                 width: "90%",
               }}
             >
-              <strong>Feedback:</strong> {response}
+              {renderResponse(response)}
               <div>
                 <button
                   onClick={handleClear}
                   style={{
+                    fontFamily: "Segoe UI",
+                    fontSize: "14px",
                     marginTop: "10px",
                     padding: "6px 12px",
                     borderRadius: "6px",
@@ -297,6 +339,7 @@ function FlipCard({ width = 900, minHeight = 75 }) {
               </div>
             </div>
           )}
+
         </div>
       </div>
     </div>

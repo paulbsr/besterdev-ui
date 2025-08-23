@@ -277,7 +277,7 @@
 
 .Table-home-left{
     background-color: #ffffff;
-    font-family: "Verdana";
+    font-family: "Segoe UI";
     font-size: large;
     font-weight: normal;
     text-align: right;
@@ -304,7 +304,6 @@
 
 .Table-home-left-heading{
     background-color: #ffffff;
-    /* font-family: "Verdana"; */
     font-family: "Segoe UI";
     font-size: large;
     font-weight: normal;
@@ -315,7 +314,6 @@
 
 .Table-home-right-heading{
     background-color: #ffffff;
-    /* font-family: "Verdana"; */
     font-family: "Segoe UI";
     font-size: large;
     font-weight: normal;
@@ -336,7 +334,7 @@
 
 .Table-home-right{
     background-color: #ffffff;
-    font-family: "Verdana";
+    font-family: "Segoe UI";
     font-size: large;
     font-weight: normal;
     text-align: left;
@@ -346,7 +344,7 @@
 .Table-home-right-cats{
     background-color: #ffffff;
     padding: 4px;
-    font-family: "Verdana";
+    font-family: "Segoe UI";
     font-size: small ;
     text-align: justify;
     font-weight: normal;
@@ -355,7 +353,7 @@
 
 
 .Table-howtoedit{
-    font-family: "Calibri";
+    font-family: "Segoe UI";
     font-size: larger;
     color: #D5441C;
     background-color: #f7f4f3;
@@ -502,12 +500,12 @@
   }
 
   .ticker {
-    color: #C0C0C0;
+    color: #ee0b0b;
     padding-left: 25px;
     padding-right: 25px;
     padding-top: 1px;
     padding-bottom: 1px;
-    font-family: "Verdana";
+    font-family: "Segoe UI";
     font-size: small;
     font-weight: normal;
     text-align: right;
