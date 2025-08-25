@@ -64,35 +64,35 @@ function FlipCard({ width = 1000, minHeight = 75 }) {
     setCardHeight(Math.max(frontHeight, backHeight, minHeight));
   }, [term, challenge, response, flipped]);
 
-const renderResponse = (text) => {
-  if (!text) return null;
+  const renderResponse = (text) => {
+    if (!text) return null;
 
-  // Check if starts with Correct or Incorrect
-  if (/^correct/i.test(text)) {
-    return (
-      <>
-        <span style={{ color: "green", fontWeight: "bold" }}>
-          {text.match(/^correct/i)[0]}
-        </span>
-        {text.replace(/^correct/i, "")}
-      </>
-    );
-  }
+    // Check if starts with Correct or Incorrect
+    if (/^correct/i.test(text)) {
+      return (
+        <>
+          <span style={{ color: "green", fontWeight: "bold" }}>
+            {text.match(/^correct/i)[0]}
+          </span>
+          {text.replace(/^correct/i, "")}
+        </>
+      );
+    }
 
-  if (/^incorrect/i.test(text)) {
-    return (
-      <>
-        <span style={{ color: "red", fontWeight: "bold" }}>
-          {text.match(/^incorrect/i)[0]}
-        </span>
-        {text.replace(/^incorrect/i, "")}
-      </>
-    );
-  }
+    if (/^incorrect/i.test(text)) {
+      return (
+        <>
+          <span style={{ color: "red", fontWeight: "bold" }}>
+            {text.match(/^incorrect/i)[0]}
+          </span>
+          {text.replace(/^incorrect/i, "")}
+        </>
+      );
+    }
 
-  // default: no special formatting
-  return text;
-};
+    // default: no special formatting
+    return text;
+  };
 
 
   const containerStyle = {
@@ -135,7 +135,7 @@ const renderResponse = (text) => {
     background: "#ffffff",
     color: "#336791",
     fontFamily: "Segoe UI",
-    fontSize: 14,
+    fontSize: 16,
   };
 
   const backStyle = {
@@ -144,7 +144,7 @@ const renderResponse = (text) => {
     color: "#336791",
     transform: "rotateY(180deg)",
     fontFamily: "Segoe UI",
-    fontSize: 14,
+    fontSize: 16,
     lineHeight: 1.4,
     padding: "10px",
     gap: "10px",
@@ -243,7 +243,7 @@ const renderResponse = (text) => {
               onChange={(e) => setAnswer(e.target.value)}
               style={{
                 fontFamily: "Segoe UI",
-                fontSize: 14,
+                fontSize: 16,
                 borderColor: "#336791",
                 marginTop: "8px",
                 padding: "5px",
@@ -266,10 +266,29 @@ const renderResponse = (text) => {
                   border: "1px solid #ccc",
                   background: "#f3f4f6",
                   cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px",
                 }}
               >
-                Submit
+                {loading ? (
+                  <div
+                    style={{
+                      border: "3px solid #f3f3f3",
+                      borderTop: "3px solid #D5441C",
+                      borderRadius: "50%",
+                      width: "14px",
+                      height: "14px",
+                      animation: "spin 1s linear infinite",
+                    }}
+                  ></div>
+                )
+                :
+                null}
+                Try
               </button>
+
+
 
               <button
                 type="button"
@@ -283,29 +302,47 @@ const renderResponse = (text) => {
                   border: "1px solid #ccc",
                   background: "#f3f4f6",
                   cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px",
                 }}
               >
-                I do not know
+                {loading ? (
+                  <div
+                    style={{
+                      border: "3px solid #f3f3f3",
+                      borderTop: "3px solid #D5441C",
+                      borderRadius: "50%",
+                      width: "14px",
+                      height: "14px",
+                      animation: "spin 1s linear infinite",
+                    }}
+                  ></div>
+                )
+                :
+                null}
+                Tell
               </button>
-              {/* Spinner */}
-              {loading && (
-                <div
-                  style={{
-                    border: "3px solid #f3f3f3",
-                    borderTop: "3px solid #D5441C",
-                    borderRadius: "50%",
-                    width: "18px",
-                    height: "18px",
-                    animation: "spin 1s linear infinite",
-                  }}
-                ></div>
-              )}
+
+              <button
+                onClick={handleClear}
+                style={{
+                  fontFamily: "Segoe UI",
+                  fontSize: "14px",
+                  padding: "6px 12px",
+                  borderRadius: "6px",
+                  border: "1px solid #ccc",
+                  background: "#f3f4f6",
+                  cursor: "pointer",
+                }}
+              >
+                New
+              </button>
             </div>
 
             <style>
               {`@keyframes spin {0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); }}`}
             </style>
-
           </form>
 
           {response && (
@@ -321,25 +358,9 @@ const renderResponse = (text) => {
             >
               {renderResponse(response)}
               <div>
-                <button
-                  onClick={handleClear}
-                  style={{
-                    fontFamily: "Segoe UI",
-                    fontSize: "14px",
-                    marginTop: "10px",
-                    padding: "6px 12px",
-                    borderRadius: "6px",
-                    border: "1px solid #ccc",
-                    background: "#f3f4f6",
-                    cursor: "pointer",
-                  }}
-                >
-                  New Challenge
-                </button>
               </div>
             </div>
           )}
-
         </div>
       </div>
     </div>
