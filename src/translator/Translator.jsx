@@ -9,7 +9,6 @@ export default function Translator() {
     setLoading(true);
     setTranslation("");
 
-    // Pick correct translation question
     const question =
       direction === "ZA->NL"
         ? `Translate from Afrikaans to Dutch but return the word or phrase only. Remove the word 'Optional' in your response and drop any square brackets: ${text}`
@@ -26,12 +25,24 @@ export default function Translator() {
       );
 
       const data = await res.json();
-      setTranslation(data.answer || "No translation returned");
+
+      // Clean the response
+      let cleaned = (data.answer || "")
+        .replace(/optional/i, "")
+        .replace(/[\[\]]/g, "")
+        .trim();
+
+      setTranslation(cleaned || "No translation returned");
     } catch (err) {
       setTranslation("Error: " + err.message);
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleClear = () => {
+    setText("");
+    setTranslation("");
   };
 
   return (
@@ -40,7 +51,7 @@ export default function Translator() {
       <div style={{ display: "flex", alignItems: "center" }}>
         <input
           style={{
-            height: "25.5px",
+            height: "40.5px",
             border: "0.75px solid #336791",
             borderRadius: "4px",
             padding: 0,
@@ -53,12 +64,12 @@ export default function Translator() {
           type="text"
           value={text}
           onChange={(e) => setText(e.target.value)}
-        />
+        />&nbsp;
         <div>
           <button
             style={{
-              marginLeft: "10px",
-              height: "25.5px",
+              marginLeft: "1px",
+              height: "40.5px",
               border: "1px solid #336791",
               borderRadius: "8px",
               backgroundColor: "#336791",
@@ -68,12 +79,12 @@ export default function Translator() {
             onClick={() => handleTranslate("ZA->NL")}
             disabled={loading}
           >
-            to NL
+            ->NL
           </button>
           <button
             style={{
-              marginLeft: "10px",
-              height: "25.5px",
+              marginLeft: "1px",
+              height: "40.5px",
               border: "1px solid #336791",
               borderRadius: "8px",
               backgroundColor: "#336791",
@@ -83,7 +94,22 @@ export default function Translator() {
             onClick={() => handleTranslate("NL->ZA")}
             disabled={loading}
           >
-            to ZA
+            ->ZA
+          </button>
+          <button
+            style={{
+              marginLeft: "1px",
+              height: "40.5px",
+              border: "1px solid #888",
+              borderRadius: "8px",
+              backgroundColor: "#aaa",
+              color: "#FFFFFF",
+              cursor: "pointer",
+            }}
+            onClick={handleClear}
+            disabled={loading}
+          >
+            C
           </button>
         </div>
       </div>
@@ -94,7 +120,7 @@ export default function Translator() {
           style={{
             fontFamily: "Segoe UI",
             fontStyle: "italic",
-            fontSize: "14px",
+            fontSize: "16px",
             marginTop: "8px",
           }}
         >
@@ -108,14 +134,15 @@ export default function Translator() {
             marginTop: "8px",
             fontFamily: "Segoe UI",
             fontStyle: "italic",
-            fontSize: "14px",
+            fontSize: "20px",
+            color: "#336791",
           }}
         >
           {translation}
         </div>
       )}
 
-      <div>...</div>
+      <div>&nbsp;&nbsp;</div>
     </div>
   );
 }
