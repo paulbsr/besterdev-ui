@@ -11,8 +11,8 @@ export default function Translator() {
 
     const question =
       direction === "ZA->NL"
-        ? `Translate from Afrikaans to Dutch but return the word or phrase only. Remove the word 'Optional' in your response and drop any square brackets: ${text}`
-        : `Translate from Dutch to Afrikaans but return the word or phrase only. Remove the word 'Optional' in your response and drop any square brackets: ${text}`;
+        ? `Translate from Afrikaans to Dutch but return the word or phrase only. if a single word then produce a short sentence with that single word: ${text}`
+        : `Translate from Dutch to Afrikaans but return the word or phrase only. if a single word then produce a short sentence with that single word: ${text}`;
 
     try {
       const res = await fetch(
@@ -60,7 +60,7 @@ export default function Translator() {
             fontFamily: "Segoe UI",
             fontSize: "18px",
           }}
-          placeholder="Enter text"
+          placeholder="Translate Afrikaans <-> Dutch"
           type="text"
           value={text}
           onChange={(e) => setText(e.target.value)}
@@ -81,6 +81,8 @@ export default function Translator() {
           >
             ->NL
           </button>
+
+
           <button
             style={{
               marginLeft: "1px",
@@ -96,6 +98,8 @@ export default function Translator() {
           >
             ->ZA
           </button>
+
+          
           <button
             style={{
               marginLeft: "1px",
