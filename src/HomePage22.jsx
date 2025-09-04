@@ -10,6 +10,7 @@ import { useWebsiteApi } from './websites/WebSiteAPIProvider';
 import { useHowtoApi } from './howto/HowtoAPIProvider';
 import { useNavigate } from 'react-router-dom';
 import FlipCard from './flipcard/FlipCard';
+import Translator from './translator/Translator';
 
 
 
@@ -168,7 +169,7 @@ export default function HomePage22(props) {
 
     return (
       <>
-
+<Translator />
         <DBSearchComponent />
                 <FlipCard/>
         <TaskSummaryHomepage />
