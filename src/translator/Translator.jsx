@@ -51,7 +51,7 @@ export default function Translator() {
       <div style={{ display: "flex", alignItems: "center" }}>
         <input
           style={{
-            height: "30.5px",
+            height: "25.5px",
             border: "0.75px solid #336791",
             borderRadius: "4px",
             padding: 0,
@@ -69,11 +69,11 @@ export default function Translator() {
           <button
             style={{
               marginLeft: "1px",
-              height: "30.5px",
-              border: "1px solid #336791",
+              height: "25.5px",
+              border: "1px solid #ff8500",
               borderRadius: "4px",
               backgroundColor: "#FFFFFF",
-              color: "#336791",
+              color: "#ff8500",
               cursor: "pointer",
             }}
             onClick={() => handleTranslate("ZA->NL")}
@@ -86,11 +86,11 @@ export default function Translator() {
           <button
             style={{
               marginLeft: "1px",
-              height: "30.5px",
-              border: "1px solid #336791",
+              height: "25.5px",
+              border: "1px solid #007A33",
               borderRadius: "4px",
               backgroundColor: "#FFFFFF",
-              color: "#336791",
+              color: "#007A33",
               cursor: "pointer",
             }}
             onClick={() => handleTranslate("NL->ZA")}
@@ -103,7 +103,7 @@ export default function Translator() {
           <button
             style={{
               marginLeft: "1px",
-              height: "30.5px",
+              height: "25.5px",
               border: "1px solid #336791",
               borderRadius: "4px",
               backgroundColor: "#FFFFFF",

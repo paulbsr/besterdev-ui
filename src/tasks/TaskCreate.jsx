@@ -78,13 +78,26 @@ export default function TaskCreate(props) {
 
 
                                     <select
-                                        style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '150px' }} placeholder="Domain" id="dropdown" onChange={dropdownChange} >
+                                        style={{ 
+                                            height: '27.5px', 
+                                            border: '1.25px solid #c4c4c4', 
+                                            borderRadius: '4px', 
+                                            padding: 0, 
+                                            paddingLeft: '10px', 
+                                            width: '250px',
+                                            fontFamily: 'Segoe UI',
+                                            fontSize: '16px'
+                                            }} placeholder="Domain" id="dropdown" onChange={dropdownChange} >
                                         <option disabled selected value="Domain">Module</option>
                                         <option value="113092" data-value2="NetworkSecurity">NetworkSecurity</option>
                                         <option value="14718" data-value2="EnterpriseSecurity">EnterpriseSecurity</option>
                                         <option value="181268" data-value2="ComputerCloudSecurity">ComputerCloudSecurity</option>
                                         <option value="171593" data-value2="AppliedCryptography">AppliedCryptography</option>
                                         <option value="168272" data-value2="Dissertation">Dissertation</option>
+                                        <option value="188660" data-value2="StaatsexamenNT2_Lezen">StaatsexamenNT2_Lezen</option>
+                                        <option value="190860" data-value2="StaatsexamenNT2_Luisteren">StaatsexamenNT2_Luisteren</option>
+                                        <option value="191076" data-value2="StaatsexamenNT2_Schrijven">StaatsexamenNT2_Schrijven</option>
+                                        <option value="221193" data-value2="StaatsexamenNT2_Spreken">StaatsexamenNT2_Spreken</option>
                                         <option value="188118" data-value2="UserStory">UserStory</option>
                                     </select>
 

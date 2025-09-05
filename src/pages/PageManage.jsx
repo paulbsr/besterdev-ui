@@ -11,6 +11,7 @@ import ToastComponent from '../ToastComponent';
 import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
+import DutchLanguageTicker from '../openai/DutchLanguageTicket';
 
 export default function PageManage() {
   return (
@@ -22,6 +23,8 @@ export default function PageManage() {
       <BreakingNews />
       <GradientLineThin />
       <CyclopediaTicker />
+      <GradientLineThin />
+      <DutchLanguageTicker />
       <GradientLineThin />
       <CombinedCreateFP />
       <CandidateManage />

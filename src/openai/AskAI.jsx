@@ -51,7 +51,7 @@ export default function AskAI() {
             <form onSubmit={handleAsk} style={{ display: "flex", alignItems: "center" }}>
                 <input
                     style={{
-                        height: "30.5px",
+                        height: "25.5px",
                         border: "0.75px solid #336791",
                         borderRadius: "4px",
                         padding: 0,
@@ -70,7 +70,7 @@ export default function AskAI() {
                     type="submit"
                     style={{
                         marginLeft: "1px",
-                        height: "30.5px",
+                        height: "25.5px",
                         width: "50px",
                         border: "1px solid #336791",
                         borderRadius: "4px",
@@ -88,7 +88,7 @@ export default function AskAI() {
                     disabled={loading}
                     style={{ 
                         marginLeft: '10px', 
-                        height: '30.5px', 
+                        height: '25.5px', 
                         width: "50px",
                         border: '1px solid #336791', 
                         borderRadius: '4px', 
