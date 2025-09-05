@@ -11,6 +11,7 @@ import { useHowtoApi } from './howto/HowtoAPIProvider';
 import { useNavigate } from 'react-router-dom';
 import FlipCard from './flipcard/FlipCard';
 import Translator from './translator/Translator';
+import AskAI from './openai/AskAI';
 
 
 
@@ -169,9 +170,10 @@ export default function HomePage22(props) {
 
     return (
       <>
-<Translator />
+        <Translator />
+        <AskAI/>
         <DBSearchComponent />
-                <FlipCard/>
+        <FlipCard />
         <TaskSummaryHomepage />
 
         <div>

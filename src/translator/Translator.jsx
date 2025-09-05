@@ -51,14 +51,14 @@ export default function Translator() {
       <div style={{ display: "flex", alignItems: "center" }}>
         <input
           style={{
-            height: "40.5px",
+            height: "30.5px",
             border: "0.75px solid #336791",
             borderRadius: "4px",
             padding: 0,
             paddingLeft: "10px",
             width: "900px",
             fontFamily: "Segoe UI",
-            fontSize: "18px",
+            fontSize: "16px",
           }}
           placeholder="Translate Afrikaans <-> Dutch"
           type="text"
@@ -69,51 +69,51 @@ export default function Translator() {
           <button
             style={{
               marginLeft: "1px",
-              height: "40.5px",
+              height: "30.5px",
               border: "1px solid #336791",
-              borderRadius: "8px",
-              backgroundColor: "#336791",
-              color: "#FFFFFF",
+              borderRadius: "4px",
+              backgroundColor: "#FFFFFF",
+              color: "#336791",
               cursor: "pointer",
             }}
             onClick={() => handleTranslate("ZA->NL")}
             disabled={loading}
           >
-            ->NL
+            NL
           </button>
 
 
           <button
             style={{
               marginLeft: "1px",
-              height: "40.5px",
+              height: "30.5px",
               border: "1px solid #336791",
-              borderRadius: "8px",
-              backgroundColor: "#336791",
-              color: "#FFFFFF",
+              borderRadius: "4px",
+              backgroundColor: "#FFFFFF",
+              color: "#336791",
               cursor: "pointer",
             }}
             onClick={() => handleTranslate("NL->ZA")}
             disabled={loading}
           >
-            ->ZA
+            ZA
           </button>
 
           
           <button
             style={{
               marginLeft: "1px",
-              height: "40.5px",
-              border: "1px solid #888",
-              borderRadius: "8px",
-              backgroundColor: "#aaa",
-              color: "#FFFFFF",
+              height: "30.5px",
+              border: "1px solid #336791",
+              borderRadius: "4px",
+              backgroundColor: "#FFFFFF",
+              color: "#336791",
               cursor: "pointer",
             }}
             onClick={handleClear}
             disabled={loading}
           >
-            C
+            Clear
           </button>
         </div>
       </div>
@@ -138,8 +138,8 @@ export default function Translator() {
             marginTop: "8px",
             fontFamily: "Segoe UI",
             fontStyle: "italic",
-            fontSize: "20px",
-            color: "#336791",
+            fontSize: "16px",
+            color: "#D5441C",
           }}
         >
           {translation}

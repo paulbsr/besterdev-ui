@@ -90,7 +90,7 @@ const DBSearchComponent = () => {
         />
         <button
           type="submit"
-          style={{ marginLeft: '10px', height: '40.5px', border: '1px solid #336791', borderRadius: '8px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}
+          style={{ marginLeft: '7px', height: '40.5px', border: '1px solid #336791', borderRadius: '8px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}
         >
           Search
         </button>
