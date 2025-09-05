@@ -8,6 +8,7 @@ import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import PeopleScorecard from '../people/PeopleScorecard'
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
+import DutchLanguageTicker from '../openai/DutchLanguageTicket';
 
 export default function PagePeopleScorecard(cyclopediadata) {
 
@@ -21,6 +22,8 @@ export default function PagePeopleScorecard(cyclopediadata) {
       <GradientLineThin />
       <CyclopediaTicker />
       <GradientLineThin />
+      <DutchLanguageTicker />
+      <GradientLine />
       <CombinedCreateFP />
       <PeopleScorecard />
       <ToastComponent />

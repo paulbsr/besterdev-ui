@@ -8,6 +8,7 @@ import ToastComponent from '../ToastComponent';
 import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
+import DutchLanguageTicker from '../openai/DutchLanguageTicket';
 
 // export default function PageCyclopedia() {
 export default function PageHowtoEdit() {
@@ -24,6 +25,8 @@ export default function PageHowtoEdit() {
         <BreakingNews />
         <GradientLineThin />
         <CyclopediaTicker />
+        <GradientLineThin />
+        <DutchLanguageTicker />
         <GradientLineThin />
         <CombinedCreateFP />
         <HowtoEdit howto_id={howto_id}/>

@@ -8,6 +8,7 @@ import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import TaskEdit from '../tasks/TaskEdit';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
+import DutchLanguageTicker from '../openai/DutchLanguageTicket';
 
 export default function PageTaskEdit() {
 
@@ -23,6 +24,8 @@ export default function PageTaskEdit() {
         <BreakingNews />
         <GradientLineThin />
         <CyclopediaTicker />
+        <GradientLineThin />
+        <DutchLanguageTicker />
         <GradientLineThin />
         <CombinedCreateFP />
         <TaskEdit task_id={task_id}/>

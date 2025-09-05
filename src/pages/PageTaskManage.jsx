@@ -11,6 +11,7 @@ import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import TaskOverview from '../tasks/TaskOverview';
 import { TaskContext } from "../Contexts";
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
+import DutchLanguageTicker from '../openai/DutchLanguageTicket';
 
 export default function PageTaskManage() {
   const [tasks, setTasks] = useState([]);
@@ -39,6 +40,8 @@ export default function PageTaskManage() {
       <BreakingNews />
       <GradientLineThin />
       <CyclopediaTicker />
+      <GradientLineThin />
+      <DutchLanguageTicker />
       <GradientLineThin />
       <CombinedCreateFP />
       <TaskContext.Provider value={tasks}>

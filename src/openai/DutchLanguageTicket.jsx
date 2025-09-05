@@ -28,7 +28,7 @@ export default function DutchLanguageTicker() {
         let cleaned = (data.answer || "")
           .replace(/optional/i, "")
           .replace(/[\[\]]/g, "")
-          .replace(/Sure! Here are eight random Dutch sentences along with their translations in Afrikaans/g, "")
+          .replace(/Sure!.*translations:?/i, "")
           .trim();
 
         // Split into sentences (assuming they come separated by newlines or periods)

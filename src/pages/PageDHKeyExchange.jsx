@@ -7,6 +7,7 @@ import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
 import DHKeyExchange from '../dhkeyexchange/DHKeyExchange';
+import DutchLanguageTicker from '../openai/DutchLanguageTicket';
 
 
 
@@ -20,6 +21,8 @@ export default function PageDHKeyExchange() {
         <BreakingNews />
         <GradientLineThin />
         <CyclopediaTicker />
+        <GradientLineThin />
+        <DutchLanguageTicker />
         <GradientLineThin />
         <CombinedCreateFP />
         <DHKeyExchange />
