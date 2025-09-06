@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import DutchAfrikaansSentence from "./DutchAfrikaansSentence";
 
 export default function Translator() {
   const [text, setText] = useState("");
@@ -70,10 +71,10 @@ export default function Translator() {
             style={{
               marginLeft: "1px",
               height: "25.5px",
-              border: "1px solid #ff8500",
+              border: "1px solid #FF4F00",
               borderRadius: "4px",
               backgroundColor: "#FFFFFF",
-              color: "#ff8500",
+              color: "#FF4F00",
               cursor: "pointer",
             }}
             onClick={() => handleTranslate("ZA->NL")}
@@ -87,10 +88,10 @@ export default function Translator() {
             style={{
               marginLeft: "1px",
               height: "25.5px",
-              border: "1px solid #007A33",
+              border: "1px solid #007749",
               borderRadius: "4px",
               backgroundColor: "#FFFFFF",
-              color: "#007A33",
+              color: "#007749",
               cursor: "pointer",
             }}
             onClick={() => handleTranslate("NL->ZA")}
@@ -104,10 +105,10 @@ export default function Translator() {
             style={{
               marginLeft: "1px",
               height: "25.5px",
-              border: "1px solid #336791",
+              border: "1px solid #D3D3D3",
               borderRadius: "4px",
               backgroundColor: "#FFFFFF",
-              color: "#336791",
+              color: "#D3D3D3",
               cursor: "pointer",
             }}
             onClick={handleClear}
@@ -117,7 +118,7 @@ export default function Translator() {
           </button>
         </div>
       </div>
-
+        <DutchAfrikaansSentence />
       {/* Translation result BELOW the input/buttons */}
       {loading && (
         <p
@@ -139,7 +140,7 @@ export default function Translator() {
             fontFamily: "Segoe UI",
             fontStyle: "italic",
             fontSize: "16px",
-            color: "#D5441C",
+            color: "#FF4F00",
           }}
         >
           {translation}

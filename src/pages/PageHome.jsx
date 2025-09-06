@@ -10,6 +10,7 @@ import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import BreakingNewsAPI from '../breakingnews/BreakingNewsAPI';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
 import DutchLanguageTicker from '../openai/DutchLanguageTicket';
+import DutchAfrikaansSentence from '../openai/DutchAfrikaansSentence';
 // import CombinedCreateFP from '../quicks/components/CombinedCreateFP';
 
 export default function PageHome() {

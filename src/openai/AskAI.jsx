@@ -90,10 +90,10 @@ export default function AskAI() {
                         marginLeft: '10px', 
                         height: '25.5px', 
                         width: "50px",
-                        border: '1px solid #336791', 
+                        border: '1px solid #D3D3D3', 
                         borderRadius: '4px', 
                         backgroundColor: '#FFFFFF', 
-                        color: '#336791', 
+                        color: '#D3D3D3', 
                         cursor: 'pointer'
                     }}
                 >Clear
