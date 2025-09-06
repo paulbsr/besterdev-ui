@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import FlipCard from './flipcard/FlipCard';
 import Translator from './openai/Translator';
 import AskAI from './openai/AskAI';
+import DutchLanguageTicker from './openai/DutchLanguageTicker';
 
 
 export default function HomePage22(props) {
@@ -309,7 +310,7 @@ export default function HomePage22(props) {
           </tr>
         </tbody>
       </table>
-
+<DutchLanguageTicker />
       <table style={{ width: '100%' }}>
         <tbody>
           <tr style={{ height: '20px' }}>

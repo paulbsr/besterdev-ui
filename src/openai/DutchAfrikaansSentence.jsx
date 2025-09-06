@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { IoMdSwap } from "react-icons/io";
 
 export default function DutchAfrikaansSentence() {
   const [dutch, setDutch] = useState("");
   const [afrikaans, setAfrikaans] = useState("");
+  const [subject, setSubject] = useState("Historical Amsterdam facts");
+  const [tempSubject, setTempSubject] = useState(subject); // store input separately
+  const [showInput, setShowInput] = useState(false);
 
   useEffect(() => {
     const fetchSentence = async () => {
@@ -13,15 +17,13 @@ export default function DutchAfrikaansSentence() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              question:
-                "Generate one gramatically complex Dutch sentence (max 15 words), followed by its Afrikaans translation. Do not add introductions, just output the Dutch sentence on one line and the Afrikaans translation on the next."
+              question: `Generate one grammatically complex Dutch sentence (max 15 words) about ${subject}, followed by its Afrikaans translation. Do not add introductions, just output the Dutch sentence on one line and the Afrikaans translation on the next.`
             }),
           }
         );
 
         const data = await res.json();
 
-        // Clean and split into Dutch (top) and Afrikaans (bottom)
         let cleaned = (data.answer || "")
           .replace(/optional/i, "")
           .replace(/[\[\]]/g, "")
@@ -36,15 +38,17 @@ export default function DutchAfrikaansSentence() {
       }
     };
 
-    // Fetch immediately on mount
     fetchSentence();
 
-    // Then repeat every 10 seconds
     const intervalId = setInterval(fetchSentence, 20000);
-
-    // Cleanup on unmount
     return () => clearInterval(intervalId);
-  }, []);
+  }, [subject]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubject(tempSubject); // update only when form is submitted
+    setShowInput(false);     // hide input after submit
+  };
 
   return (
     <>
@@ -53,9 +57,9 @@ export default function DutchAfrikaansSentence() {
           fontFamily: "Segoe UI",
           fontSize: "18px",
           fontStyle: "italic",
-          color: "#FF4F00",
+          color: "#FF4F00", // Nassau Oranje
           margin: 0,
-          textAlign: "center", // center align
+          textAlign: "left",
         }}
       >
         {dutch}
@@ -65,13 +69,42 @@ export default function DutchAfrikaansSentence() {
           fontFamily: "Segoe UI",
           fontSize: "18px",
           fontStyle: "italic",
-          color: "#007749",
+          color: "#007749", // Springbok Groen
           margin: 0,
-          textAlign: "center", // center align
+          textAlign: "left",
         }}
       >
         {afrikaans}
       </p>
+      <>
+        {/* Icon to toggle input */}
+        <IoMdSwap
+          size={18}
+          style={{ cursor: "pointer", marginRight: "8px", color: "#c4c4c4" }}
+          title="Change subject"
+          onClick={() => setShowInput(!showInput)}
+        />
+
+        {showInput && (
+          <form onSubmit={handleSubmit} style={{ display: "inline" }}>
+            <input
+              type="text"
+              value={tempSubject}
+              onChange={(e) => setTempSubject(e.target.value)}
+              style={{
+                fontFamily: "Segoe UI",
+                fontSize: "12px",
+                width: "400px",
+                padding: "4px",
+                borderRadius: "4px",
+                border: "1px solid #c4c4c4",
+                backgroundColor: "#FFFFFF",
+                color: "#c4c4c4",
+              }}
+            />
+          </form>
+        )}
+      </>
     </>
   );
 }

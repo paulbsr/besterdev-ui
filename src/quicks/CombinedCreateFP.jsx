@@ -225,7 +225,7 @@ export default function CombinedCreateFP() {
                   <button
                     className="Font-Verdana-Small-Postgres"
                     type="submit"
-                    style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #ccc', borderRadius: '5px', backgroundColor: '#ccc', color: '#FFFFFF', cursor: 'pointer' }}>
+                    style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #000000', borderRadius: '5px', backgroundColor: '#ffffff', color: '#000000', cursor: 'pointer' }}>
                     Memorialize
                   </button>
                   <div>&nbsp;</div>

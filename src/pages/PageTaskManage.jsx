@@ -11,7 +11,7 @@ import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import TaskOverview from '../tasks/TaskOverview';
 import { TaskContext } from "../Contexts";
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
-import DutchLanguageTicker from '../openai/DutchLanguageTicket';
+import DutchLanguageTicker from '../openai/DutchLanguageTicker';
 
 export default function PageTaskManage() {
   const [tasks, setTasks] = useState([]);

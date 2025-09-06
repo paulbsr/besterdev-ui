@@ -8,7 +8,7 @@ import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import PeopleScorecard from '../people/PeopleScorecard'
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
-import DutchLanguageTicker from '../openai/DutchLanguageTicket';
+import DutchLanguageTicker from '../openai/DutchLanguageTicker';
 
 export default function PagePeopleScorecard(cyclopediadata) {
 

@@ -17,7 +17,7 @@ export default function DutchLanguageTicker() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               question:
-                "Generate 8 completely random Dutch sentences. Then translate each to Afrikaans. Just provide them as natural Dutch."
+                "Generate 8 completely random Dutch sentences about the history of amsterdam. Then translate each to Afrikaans. Just provide them as natural Dutch."
             }),
           }
         );
@@ -56,7 +56,7 @@ export default function DutchLanguageTicker() {
                 <span
                   style={{
                     fontFamily: "Segoe UI",
-                    fontSize: "medium",
+                    fontSize: "18px",
                     fontStyle: "italic",
                     color: "#FF4F00",
                     cursor: "default",
@@ -69,7 +69,7 @@ export default function DutchLanguageTicker() {
           </Stack>
         </marquee>
       ) : (
-        <div style={{ paddingTop: 8 }}></div>
+        <div></div>
       )}
     </>
   );

@@ -123,7 +123,7 @@ export default function AskAI() {
                         fontFamily: "Segoe UI",
                         fontStyle: "italic",
                         fontSize: "16px",
-                        color: "#D5441C",
+                        color: "#000000",
                     }}
                 >
                     {response}
