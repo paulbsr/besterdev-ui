@@ -310,7 +310,7 @@ export default function HomePage22(props) {
           </tr>
         </tbody>
       </table>
-<DutchLanguageTicker />
+{/* <DutchLanguageTicker /> */}
       <table style={{ width: '100%' }}>
         <tbody>
           <tr style={{ height: '20px' }}>

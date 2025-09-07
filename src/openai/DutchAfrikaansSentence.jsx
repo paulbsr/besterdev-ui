@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { IoMdSwap } from "react-icons/io";
+import DutchLanguageTicker from "./DutchLanguageTicker";
 
 export default function DutchAfrikaansSentence() {
   const [dutch, setDutch] = useState("");
@@ -51,7 +52,9 @@ export default function DutchAfrikaansSentence() {
   };
 
   return (
+    
     <>
+    <DutchLanguageTicker />
       <p
         style={{
           fontFamily: "Segoe UI",
@@ -76,6 +79,7 @@ export default function DutchAfrikaansSentence() {
       >
         {afrikaans}
       </p>
+      
       <>
         {/* Icon to toggle input */}
         <IoMdSwap
