@@ -129,7 +129,7 @@ export default function AskAI() {
                     {response}
                 </div>
             )}
-            <div>&nbsp;&nbsp;</div>
+            {/* <div>&nbsp;&nbsp;</div> */}
         </div>
     );
 }
