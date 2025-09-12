@@ -21,7 +21,6 @@ export default function PageNewHowtoDocs() {
         <GradientLineThin />
         <TaskAccordion />
         <ToastComponent/>
-
       </div>
     )
   };

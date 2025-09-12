@@ -1,3 +1,26 @@
+.homepage {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.homepage-top,
+.homepage-main {
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+  gap: 1rem;
+}
+
+.hero-image {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.2);
+}
+
+
+
+
+
 .Font-Spacer-White {
     font-family: "Verdana";
     font-size: x-small;

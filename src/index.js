@@ -36,6 +36,7 @@ import axios from 'axios';
 import 'firebase/auth';
 import './index.css';
 import './Fonts.css';
+import PageDutchLanguage from './pages/PageDutchLanguage';
 
 
 const PrivateRoutes = () => {
@@ -99,6 +100,7 @@ const App = () => {
             <Route path='/taskmanage' element={<PageTaskManage />} />
             <Route path='/mycv' element={<PageMyCV />} />
             <Route path='/dhkeyexchange' element={<PageDHKeyExchange />} />
+            <Route path='/dutchlanguage' element={<PageDutchLanguage />} />
           </Route>
           <Route path='/taskedit/:task_id' element={<PageTaskEdit />} />
           <Route path='/cyclopediaedit/:cyclopediaId' element={<PageCyclopediaEdit />} />

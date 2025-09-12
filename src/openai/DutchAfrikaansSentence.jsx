@@ -5,7 +5,7 @@ import DutchLanguageTicker from "./DutchLanguageTicker";
 export default function DutchAfrikaansSentence() {
   const [dutch, setDutch] = useState("");
   const [afrikaans, setAfrikaans] = useState("");
-  const [subject, setSubject] = useState("Historical Amsterdam facts");
+  const [subject, setSubject] = useState("Interesting facts about Holland");
   const [tempSubject, setTempSubject] = useState(subject); // store input separately
   const [showInput, setShowInput] = useState(false);
 
@@ -54,7 +54,7 @@ export default function DutchAfrikaansSentence() {
   return (
     
     <>
-    <DutchLanguageTicker />
+    {/* <DutchLanguageTicker /> */}
       <p
         style={{
           fontFamily: "Segoe UI",

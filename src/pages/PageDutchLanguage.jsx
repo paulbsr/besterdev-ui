@@ -2,19 +2,15 @@ import BannerWhite from '../banners/BannerWhite';
 import GradientLine from '../gradientlines/GradientLine';
 import BannerLight from '../banners/BannerLight';
 import GradientLineThin from '../gradientlines/GradientLineThin';
-import Footer from '../Footer';
-import HomePage22 from '../HomePage22';
 import ToastComponent from '../ToastComponent';
 import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
-import BreakingNewsAPI from '../breakingnews/BreakingNewsAPI';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
 import DutchLanguageTicker from '../openai/DutchLanguageTicker';
 
-export default function PageHome() {
+export default function PageDutchLanguage() {
     return (
       <div>
-        <BreakingNewsAPI />
         <BannerWhite />
         <GradientLine />
         <BannerLight />
@@ -26,8 +22,7 @@ export default function PageHome() {
         <DutchLanguageTicker />
         <GradientLineThin />
         <CombinedCreateFP />
-        <HomePage22 />
-        <Footer/>
+        {/* <DHKeyExchange /> */}
         <ToastComponent />
       </div>
     )

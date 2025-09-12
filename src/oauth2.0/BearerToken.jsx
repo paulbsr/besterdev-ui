@@ -53,7 +53,7 @@ function BearerToken() {
           borderRadius: '8px',
           padding: '2px 2px',
           backgroundColor: '#f9f9f9',
-          width: '990px',
+          width: '910px',
           boxShadow: '2px 2px 6px rgba(0,0,0,0.1)',
           fontFamily: 'Segoe UI',
         }}

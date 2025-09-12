@@ -147,18 +147,18 @@ export default function CandidateManage() {
             <table className="Table6">
               <thead>
                 <tr>
-                  <th style={{ width: '20px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'></th>
-                  <th style={{ width: '70px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Firstname</th>
-                  <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Lastname</th>
-                  <th style={{ width: '250px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>eMail</th>
-                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Mobile</th>
-                  <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Date Found</th>
-                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Job Title</th>
-                  <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Primary Skill</th>
-                  <th style={{ width: '300px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Comment</th>
-                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Employer</th>
-                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty">Role</th>
-                  <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty">Req</th>
+                  <th style={{ width: '20px', borderRadius: '4px' }} className="Font-Verdana-Small-Postgres" align='center'></th>
+                  <th style={{ width: '70px', borderRadius: '4px' }} className="Font-Verdana-Small-Postgres" align='center'>Firstname</th>
+                  <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small-Postgres" align='center'>Lastname</th>
+                  <th style={{ width: '250px', borderRadius: '4px' }} className="Font-Verdana-Small-Postgres" align='center'>eMail</th>
+                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small-Postgres" align='center'>Mobile</th>
+                  <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small-Postgres" align='center'>Date Found</th>
+                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small-Postgres" align='center'>Job Title</th>
+                  <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Postgres" align='center'>Primary Skill</th>
+                  <th style={{ width: '300px', borderRadius: '4px' }} className="Font-Verdana-Small-Postgres" align='center'>Comment</th>
+                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small-Postgres" align='center'>Employer</th>
+                  <th style={{ width: '150px', borderRadius: '4px' }} className="Font-Verdana-Small-Postgres">Role</th>
+                  <th style={{ width: '100px', borderRadius: '4px' }} className="Font-Verdana-Small-Postgres">Req</th>
                 </tr>
               </thead>
 

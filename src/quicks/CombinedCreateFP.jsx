@@ -20,8 +20,8 @@ export default function CombinedCreateFP() {
 
   const current = new Date();
   const [isExpandedBearerToken, setExpandedBearerToken] = useState(false);
-  const { websiterootdata, setRefreshWebsiterootdata } = useWebsiteApi();
   const [isExpandedCyclopedia, setExpandedCyclopedia] = useState(false);
+  const {websiterootdata, setRefreshWebsiterootdata} = useWebsiteApi();
   const [isExpandedWebSocket, setExpandedWebSocket] = useState(false);
   const [isExpandedWebsite, setExpandedWebsite] = useState(false);
   const [isExpandedSearch, setExpandedSearch] = useState(false);
@@ -29,7 +29,7 @@ export default function CombinedCreateFP() {
   const [taskrequirement, setTaskrequirement] = useState("");
   const [tasktargetdate, setTasktargetdate] = useState(null);
   const [isExpandedTask, setExpandedTask] = useState(false);
-  const { setRefreshCyclopediarootdata } = useCyclopediaApi();
+  const {setRefreshCyclopediarootdata} = useCyclopediaApi();
   const [cyclopediaName, setCyclopediaName] = useState('');
   const [cyclopediaDesc, setCyclopediaDesc] = useState('');
   const [projecthandle, setProjecthandle] = useState("");
@@ -139,10 +139,11 @@ export default function CombinedCreateFP() {
 
     <div className='Font-Segoe-Small'>
       <div>&nbsp;</div>
-      <table style={{ width: '100%', tableLayout: 'fixed' }}>
+      {/* <table style={{ width: '100%', tableLayout: 'fixed' }}> */}
+      <table>
         <tbody>
           <tr style={{ height: '20px' }}>
-            <td style={{ width: '20%' }}></td>
+            <td style={{ width: '21%' }}></td>
             <td style={{
               marginLeft: '3px',
               border: '1px solid #e0dedeff',
@@ -201,7 +202,7 @@ export default function CombinedCreateFP() {
                   URL:&nbsp;&nbsp;
 
                   <input
-                    style={{ height: '22.5px', border: '1.25px solid #ccc', borderRadius: '4px', paddingLeft: '4px', width: '500px' }}
+                    style={{ height: '22.5px', border: '1.25px solid #ccc', borderRadius: '4px', paddingLeft: '4px', width: '459px' }}
                     type="text"
                     value={cyclopediaUrl}
                     onChange={(e) => setCyclopediaUrl(e.target.value)}
@@ -212,7 +213,7 @@ export default function CombinedCreateFP() {
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   Description:&nbsp;
                   <textarea
-                    style={{ fontFamily: 'Verdana', height: '22.5px', border: '1.25px solid #ccc', borderRadius: '4px', paddingLeft: '2px', width: '880px' }}
+                    style={{ fontFamily: 'Verdana', height: '22.5px', border: '1.25px solid #ccc', borderRadius: '4px', paddingLeft: '2px', width: '840px' }}
                     placeholder="Required"
                     value={cyclopediaDesc}
                     onChange={(e) => setCyclopediaDesc(e.target.value)}
@@ -372,7 +373,7 @@ export default function CombinedCreateFP() {
               )
               }
             </td>
-            <td style={{ width: '20%' }}></td>
+            <td style={{ width: '21%' }}></td>
           </tr>
         </tbody>
       </table>

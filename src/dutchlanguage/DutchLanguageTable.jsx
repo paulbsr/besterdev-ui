@@ -39,7 +39,7 @@ export default function DutchLanguageList() {
 
   const lineStyle = {
     fontFamily: "Segoe UI, sans-serif",
-    fontSize: "12px",
+    fontSize: "14px",
     margin: "4px 0",
     cursor: "pointer",
   };

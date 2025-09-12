@@ -172,8 +172,6 @@ export default function HomePage22(props) {
 
     return (
       <>
-        {/* <CombinedCreateFP /> */}
-        {/* <DutchLanguageTable /> */}
         <Translator />
         <DBSearchComponent />
         <FlipCard />
@@ -305,7 +303,7 @@ export default function HomePage22(props) {
             {/* <td style={{ width: '25%' }}></td> */}
             <td style={{ width: '25%', border: '1px solid #ddd', borderRadius: '8px' }}><DutchLanguageTable /></td>
             <td style={{ width: '1%' }}></td>
-            <td style={{ width: '48%' }}><img src={Image} style={{boxShadow: '10px 10px 10px rgba(0,0,0,0.2)', borderRadius: '8px'}}/>.<AskAI /></td>
+            <td style={{ width: '48%' }}><img src={Image} style={{boxShadow: '10px 10px 10px rgba(0,0,0,0.2)', borderRadius: '8px'}}/>.<AskAI/></td>
             <td style={{ width: '1%' }}></td>
             <td style={{ width: '25%', border: '1px solid #ddd', borderRadius: '8px' }}></td>
           </tr>
