@@ -14,6 +14,7 @@ import Translator from './openai/Translator';
 import AskAI from './openai/AskAI';
 import DutchLanguageTicker from './openai/DutchLanguageTicker';
 import DutchLanguageTable from './dutchlanguage/DutchLanguageTable';
+import CombinedCreateFP from './quicks/CombinedCreateFP';
 
 
 export default function HomePage22(props) {
@@ -171,9 +172,9 @@ export default function HomePage22(props) {
 
     return (
       <>
-        <DutchLanguageTable />
+        {/* <CombinedCreateFP /> */}
+        {/* <DutchLanguageTable /> */}
         <Translator />
-        {/* <AskAI/> */}
         <DBSearchComponent />
         <FlipCard />
         <TaskSummaryHomepage />
@@ -202,10 +203,7 @@ export default function HomePage22(props) {
 
           <table className="Table-home-centre">
             <tbody>
-              {/* {firstTwentyCyclopediaRecords.map((rowc, index) => ( */}
-
               {fourtyRandomRecords.map((rowc, index) => (
-
                 <tr key={index}>
                   <td className="fphover2">
                     {rowc && (
@@ -304,21 +302,20 @@ export default function HomePage22(props) {
       <table style={{ width: '100%' }}>
         <tbody>
           <tr style={{ height: '20px' }}>
-            <td style={{ width: '25%' }}></td>
+            {/* <td style={{ width: '25%' }}></td> */}
+            <td style={{ width: '25%', border: '1px solid #ddd', borderRadius: '8px' }}><DutchLanguageTable /></td>
             <td style={{ width: '1%' }}></td>
             <td style={{ width: '48%' }}><img src={Image} style={{boxShadow: '10px 10px 10px rgba(0,0,0,0.2)', borderRadius: '8px'}}/>.<AskAI /></td>
             <td style={{ width: '1%' }}></td>
-            <td style={{ width: '25%' }}></td>
+            <td style={{ width: '25%', border: '1px solid #ddd', borderRadius: '8px' }}></td>
           </tr>
         </tbody>
       </table>
-{/* <DutchLanguageTicker /> */}
+
       <table style={{ width: '100%' }}>
         <tbody>
           <tr style={{ height: '20px' }}>
             <td style={{ width: '5%' }}></td>
-            {/* <td style={{ width: '90%' }}><WebSocketEvent/></td> */}
-            {/* <td style={{ width: '90%' }}><FlipCard/></td> */}
             <td style={{ width: '90%' }}></td>
             <td style={{ width: '5%' }}></td>
           </tr>
