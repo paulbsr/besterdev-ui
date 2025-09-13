@@ -8,7 +8,7 @@ import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import TaskEdit from '../tasks/TaskEdit';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
-import DutchLanguageTicker from '../openai/DutchLanguageTicker';
+import DutchLanguageTicker from '../dutchlanguage/DutchLanguageTicker';
 
 export default function PageTaskEdit() {
 

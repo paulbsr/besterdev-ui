@@ -39,9 +39,10 @@ export default function DutchLanguageList() {
 
   const lineStyle = {
     fontFamily: "Segoe UI, sans-serif",
-    fontSize: "14px",
+    fontSize: "16px",
     margin: "4px 0",
     cursor: "pointer",
+    textAlign: "right",
   };
 
   const afrikaansStyle = {
@@ -58,13 +59,13 @@ export default function DutchLanguageList() {
 
   const inputStyle = {
     fontFamily: "Segoe UI",
-    fontSize: "12px",
+    fontSize: "14px",
     width: "250px",
     padding: "4px",
     borderRadius: "4px",
-    border: "1px solid #ddd",
+    border: "1px solid #777777",
     backgroundColor: "#FFFFFF",
-    color: "#ddd",
+    color: "#000000",
 
   }
 
@@ -83,7 +84,7 @@ export default function DutchLanguageList() {
 
       {/* Add row form */}
       {showAddRow ? (
-        <div style={{ marginTop: "8px", textAlign: "left" }}>
+        <div style={{ marginTop: "8px", textAlign: "right" }}>
           <input  style={{ ...inputStyle, width: "50px"}}
             value={newRow.afrikaans}
             onChange={(e) => setNewRow({ ...newRow, afrikaans: e.target.value })}
@@ -104,22 +105,22 @@ export default function DutchLanguageList() {
           />
           <FaCheck
             size={14}
-            color="#ddd"
+            color="#777777"
             style={{ cursor: "pointer", marginLeft: "4px" , marginRight: "4px" }}
             onClick={addRow}
           />
           <FaTimes
             size={14}
-            color="#ddd"
+            color="#777777"
             style={{ cursor: "pointer" }}
             onClick={() => setShowAddRow(false)}
           />
         </div>
       ) : (
-        <div style={{ textAlign: "left", marginTop: "4px" }}>
+        <div style={{ textAlign: "right", marginTop: "4px" }}>
           <FaPlus
-            size={12}
-            color="#ddd"
+            size={14}
+            color="#777777"
             style={{ cursor: "pointer" }}
             onClick={() => setShowAddRow(true)}
           />

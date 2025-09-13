@@ -8,7 +8,7 @@ import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import CyclopediaEdit from '../cyclopedia/CyclopediaEdit';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
-import DutchLanguageTicker from '../openai/DutchLanguageTicker';
+import DutchLanguageTicker from '../dutchlanguage/DutchLanguageTicker';
 
 
 export default function PageCyclopediaEdit() {

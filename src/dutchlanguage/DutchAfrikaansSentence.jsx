@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { IoMdSwap } from "react-icons/io";
-import DutchLanguageTicker from "./DutchLanguageTicker";
 
 export default function DutchAfrikaansSentence() {
   const [dutch, setDutch] = useState("");
@@ -84,7 +83,7 @@ export default function DutchAfrikaansSentence() {
         {/* Icon to toggle input */}
         <IoMdSwap
           size={18}
-          style={{ cursor: "pointer", marginRight: "8px", color: "#c4c4c4" }}
+          style={{ cursor: "pointer", marginRight: "8px", color: "#777777" }}
           title="Change subject"
           onClick={() => setShowInput(!showInput)}
         />
@@ -98,12 +97,12 @@ export default function DutchAfrikaansSentence() {
               style={{
                 fontFamily: "Segoe UI",
                 fontSize: "12px",
-                width: "400px",
+                width: "300px",
                 padding: "4px",
                 borderRadius: "4px",
-                border: "1px solid #c4c4c4",
+                border: "1px solid #777777",
                 backgroundColor: "#FFFFFF",
-                color: "#c4c4c4",
+                color: "#777777",
               }}
             />
           </form>

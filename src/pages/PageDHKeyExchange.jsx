@@ -7,7 +7,7 @@ import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
 import DHKeyExchange from '../dhkeyexchange/DHKeyExchange';
-import DutchLanguageTicker from '../openai/DutchLanguageTicker';
+import DutchLanguageTicker from '../dutchlanguage/DutchLanguageTicker';
 
 
 

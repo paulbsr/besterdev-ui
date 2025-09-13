@@ -5,7 +5,6 @@ import GradientLineThin from '../gradientlines/GradientLineThin';
 import Quicklinks3 from '../Quicklinks3';
 import ToastComponent from '../ToastComponent';
 import BreakingNews from '../breakingnews/BreakingNews';
-import CombinedCreateFP from '../CombinedCreateFP';
 
 
 export default function PageNewHowtoDocs() {

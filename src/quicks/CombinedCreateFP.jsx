@@ -253,7 +253,7 @@ export default function CombinedCreateFP() {
                   &nbsp;&nbsp;&nbsp;&nbsp;
                   URL:&nbsp;&nbsp;
                   <input
-                    style={{ height: '22.5px', border: '1.25px solid #ccc', borderRadius: '4px', paddingLeft: '4px', width: '500px' }}
+                    style={{ height: '22.5px', border: '1.25px solid #ccc', borderRadius: '4px', paddingLeft: '4px', width: '450px' }}
                     placeholder="Required"
                     type="text"
                     value={websiteUrl}

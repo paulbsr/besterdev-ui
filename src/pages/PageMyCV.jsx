@@ -6,7 +6,7 @@ import MyCV from '../MyCV/MyCV';
 import MyCV_BannerLight from '../MyCV/MyCV_BannerLight';
 import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
-import DutchLanguageTicker from '../openai/DutchLanguageTicker';
+import DutchLanguageTicker from '../dutchlanguage/DutchLanguageTicker';
 
 export default function PageMyCV() {
     return (

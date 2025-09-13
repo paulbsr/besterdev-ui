@@ -9,7 +9,7 @@ import { SiSpringboot, SiFirebase, SiJavascript, SiJira, SiAwsamplify } from 're
 import { BiLogoPostgresql, BiLogoHeroku, BiLogoGithub, BiLogoGoogle } from 'react-icons/bi';
 import { BsPatchQuestion, BsPeopleFill } from 'react-icons/bs';
 import { MdManageAccounts, MdTask } from 'react-icons/md';
-import { PiFlowerTulip } from "react-icons/pi";
+import { GiDutchBike } from "react-icons/gi";
 import { IoHome } from 'react-icons/io5';
 
 const iconStyle = (color, size) => ({ color, fontSize: size, cursor: 'pointer' });
@@ -25,7 +25,7 @@ const internalLinks = [
   { tooltip: 'MyCV', icon: <FaFileContract style={iconStyle('#336791', 26)} />, path: '/mycv' },
   { tooltip: 'Candidate Hunt', icon: <FaPeopleArrows style={iconStyle('#336791', 30)} />, path: '/hunt' },
   { tooltip: 'Candidates', icon: <MdManageAccounts style={iconStyle('#336791', 35)} />, path: '/candidatemanage' },
-  { tooltip: 'Dutch Language', icon: <PiFlowerTulip style={iconStyle('#336791', 28)} />, path: '/dutchlanguage' },
+  { tooltip: 'Dutch Language', icon: <GiDutchBike style={iconStyle('#336791', 35)} />, path: '/dutchlanguage' },
 ];
 
 const externalLinks = [

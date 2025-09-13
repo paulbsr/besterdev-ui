@@ -16,8 +16,6 @@ import '../Fonts.css';
 import Footer from '../Footer';
 import ToastComponent from '../ToastComponent';
 import axios from 'axios';
-import LinearDeterminate from '../LinearProgressBar';
-import { LinearProgress } from '@mui/material';
 
 const PageLogin = (props) => {
   const [email, setEmail] = useState('');

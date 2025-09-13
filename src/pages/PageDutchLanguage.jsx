@@ -3,10 +3,9 @@ import GradientLine from '../gradientlines/GradientLine';
 import BannerLight from '../banners/BannerLight';
 import GradientLineThin from '../gradientlines/GradientLineThin';
 import ToastComponent from '../ToastComponent';
-import BreakingNews from '../breakingnews/BreakingNews';
-import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
-import DutchLanguageTicker from '../openai/DutchLanguageTicker';
+import DutchLanguageTicker from '../dutchlanguage/DutchLanguageTicker';
+import DutchLanguagePage from '../dutchlanguage/DutchLanguagePage';
 
 export default function PageDutchLanguage() {
     return (
@@ -14,15 +13,10 @@ export default function PageDutchLanguage() {
         <BannerWhite />
         <GradientLine />
         <BannerLight />
-        <GradientLineThin />
-        <BreakingNews />
-        <GradientLineThin />
-        <CyclopediaTicker />
-        <GradientLineThin />
         <DutchLanguageTicker />
         <GradientLineThin />
         <CombinedCreateFP />
-        {/* <DHKeyExchange /> */}
+        <DutchLanguagePage />
         <ToastComponent />
       </div>
     )

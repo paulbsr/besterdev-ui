@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DutchAfrikaansSentence from "./DutchAfrikaansSentence";
 
-export default function Translator() {
+export default function DutchLanguageTranslator() {
   const [text, setText] = useState("");
   const [translation, setTranslation] = useState("");
   const [loading, setLoading] = useState(false);
@@ -48,16 +48,18 @@ export default function Translator() {
 
   return (
     <div>
-      {/* Input and buttons on the same line */}
+      {/* Input and buttons on the same line */}      
+      <div style={{ height: "20px" }}></div>
+
       <div style={{ display: "flex", alignItems: "center" }}>
         <input
           style={{
             height: "25.5px",
-            border: "0.75px solid #336791",
+            border: "0.75px solid #FF4F00",
             borderRadius: "4px",
             padding: 0,
             paddingLeft: "10px",
-            width: "900px",
+            width: "760px",
             fontFamily: "Segoe UI",
             fontSize: "16px",
           }}
@@ -105,10 +107,11 @@ export default function Translator() {
             style={{
               marginLeft: "1px",
               height: "25.5px",
-              border: "1px solid #D3D3D3",
+              border: "1px solid #777777",
               borderRadius: "4px",
               backgroundColor: "#FFFFFF",
-              color: "#D3D3D3",
+              // color: "#D3D3D3",
+              color: "#777777",
               cursor: "pointer",
             }}
             onClick={handleClear}
