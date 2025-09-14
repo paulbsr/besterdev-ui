@@ -56,12 +56,29 @@ export default function DutchLanguageChallengeTranslate({ subject = "daily life"
   };
 
   return (
-    <div className="p-4 border rounded-lg max-w-xl mx-auto">
-      <h2 className="text-xl font-bold mb-4">Dutch Translation Challenge</h2>
+    <div
+      style={{
+        border: "1px solid #ddd",
+        borderRadius: "8px",
+        padding: "16px",
+        maxWidth: "1100px",
+      }}
+    >
+    <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px" }}>Dutch Translation Challenge</h2>
 
       <button
         onClick={fetchSentence}
-        className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
+        style={{
+          marginBottom: "16px",
+          border: "1px solid #007749",
+          borderRadius: "4px",
+          backgroundColor: "#007749",
+          color: "#FFFFFF",
+          padding: "6px 12px",
+          cursor: "pointer",
+          fontFamily: "Segoe UI",
+          fontSize: "14px",
+        }}
       >
         New Challenge
       </button>
@@ -71,34 +88,51 @@ export default function DutchLanguageChallengeTranslate({ subject = "daily life"
           <p className="text-gray-700 mb-2">
             Translate this Afrikaans sentence into Dutch:
           </p>
-          <blockquote className="italic p-2 bg-gray-100 rounded">
+          <blockquote
+            style={{
+              fontStyle: "italic",
+              padding: "8px",
+              backgroundColor: "#f5f5f5",
+              borderRadius: "4px",
+              fontFamily: "Segoe UI",
+              fontSize: "16px",
+            }}
+          >
             {prompt}
           </blockquote>
         </div>
       )}
 
       {prompt && (
-        <div>
+        <div style={{ marginTop: "12px" }}>
           <input
             type="text"
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
             placeholder="Type your Dutch translation"
-            // className="border p-2 w-full mb-2 rounded"
             style={{
-            height: "25.5px",
-            border: "0.75px solid #FF4F00",
-            borderRadius: "4px",
-            padding: 0,
-            paddingLeft: "10px",
-            width: "760px",
-            fontFamily: "Segoe UI",
-            fontSize: "16px",
-          }}
+              height: "35.5px",
+              border: "0.75px solid #FF4F00",
+              borderRadius: "4px",
+              paddingLeft: "10px",
+              width: "600px",
+              fontFamily: "Segoe UI",
+              fontSize: "16px",
+            }}
           />
           <button
             onClick={checkAnswer}
-            className="bg-green-500 text-white px-4 py-2 rounded"
+            style={{
+              marginLeft: "8px",
+              border: "1px solid #007749",
+              borderRadius: "4px",
+              backgroundColor: "#007749",
+              color: "#FFFFFF",
+              padding: "6px 12px",
+              cursor: "pointer",
+              fontFamily: "Segoe UI",
+              fontSize: "14px",
+            }}
           >
             Check Answer
           </button>
@@ -106,7 +140,16 @@ export default function DutchLanguageChallengeTranslate({ subject = "daily life"
       )}
 
       {feedback && (
-        <div className="mt-4 text-lg font-medium">{feedback}</div>
+        <div
+          style={{
+            marginTop: "16px",
+            fontFamily: "Segoe UI",
+            fontSize: "16px",
+            fontWeight: "500",
+          }}
+        >
+          {feedback}
+        </div>
       )}
     </div>
   );

@@ -1,13 +1,13 @@
 .dutch-layout {
   display: grid;
-  grid-template-columns: 24% 1% 50% 1% 24%;
+  grid-template-columns: 22% 1% 54% 1% 22%;
   gap: 0; /* optional, since spacers are explicit */
   width: 100%;
   min-height: 100vh; /* makes it full height like a page */
 }
 
 .left {
-  border: 1px solid #ddd;
+  border: 1px solid #FFFFFF;
   border-radius: 8px;
   padding: 8px;
 }
@@ -17,14 +17,14 @@
 }
 
 .main {
-  border: 1px solid #ccc;
+  border: 1px solid #FFFFFF;
   border-radius: 8px;
   padding: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .right {
-  border: 1px solid #ddd;
+  border: 1px solid #FFFFFF;
   border-radius: 8px;
   padding: 8px;
 }

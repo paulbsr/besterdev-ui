@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { IoMdSwap } from "react-icons/io";
 
-export default function DutchAfrikaansSentence() {
+export default function DutchLanguageCompareContrast() {
   const [dutch, setDutch] = useState("");
   const [afrikaans, setAfrikaans] = useState("");
   const [subject, setSubject] = useState("Interesting facts about Holland");
-  const [tempSubject, setTempSubject] = useState(subject); // store input separately
+  const [tempSubject, setTempSubject] = useState(subject);
   const [showInput, setShowInput] = useState(false);
+  const [countdown, setCountdown] = useState(20); // countdown state
 
   useEffect(() => {
     const fetchSentence = async () => {
@@ -17,7 +18,7 @@ export default function DutchAfrikaansSentence() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              question: `Generate one grammatically complex Dutch sentence (max 15 words) about ${subject}, followed by its Afrikaans translation. Do not add introductions, just output the Dutch sentence on one line and the Afrikaans translation on the next.`
+              question: `Generate one grammatically complex Dutch sentence (max 15 words) about ${subject}, followed by its Afrikaans translation. Do not add introductions, just output the Dutch sentence on one line and the Afrikaans translation on the next.`,
             }),
           }
         );
@@ -38,28 +39,65 @@ export default function DutchAfrikaansSentence() {
       }
     };
 
-    fetchSentence();
+    fetchSentence(); // initial fetch
 
-    const intervalId = setInterval(fetchSentence, 20000);
+    // every 20 sec fetch new sentence & reset countdown
+    const intervalId = setInterval(() => {
+      fetchSentence();
+      setCountdown(15);
+    }, 15000);
+
     return () => clearInterval(intervalId);
   }, [subject]);
 
+  // countdown effect
+  useEffect(() => {
+    const timerId = setInterval(() => {
+      setCountdown((prev) => (prev > 0 ? prev - 1 : 0));
+    }, 1000);
+
+    return () => clearInterval(timerId);
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubject(tempSubject); // update only when form is submitted
-    setShowInput(false);     // hide input after submit
+    setSubject(tempSubject);
+    setShowInput(false);
   };
 
   return (
-    
-    <>
-    {/* <DutchLanguageTicker /> */}
+    <div
+      style={{
+        border: "1px solid #ddd",
+        borderRadius: "8px",
+        padding: "16px",
+        fontFamily: "Segoe UI",
+        fontSize: "16px",
+        maxWidth: "1100px",
+        position: "relative",
+      }}
+    >
+      {/* countdown in corner */}
+      <div
+        style={{
+          position: "absolute",
+          top: "4px",
+          right: "8px",
+          fontSize: "11px",
+          fontFamily: "Segoe UI",
+          color: "#777777",
+        }}
+      >
+        Refresh in {countdown}s
+      </div>
+
+      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px" }}>Compare & Contrast Languages</h2>
+
       <p
         style={{
-          fontFamily: "Segoe UI",
           fontSize: "18px",
           fontStyle: "italic",
-          color: "#FF4F00", // Nassau Oranje
+          color: "#FF4F00",
           margin: 0,
           textAlign: "left",
         }}
@@ -68,19 +106,17 @@ export default function DutchAfrikaansSentence() {
       </p>
       <p
         style={{
-          fontFamily: "Segoe UI",
           fontSize: "18px",
           fontStyle: "italic",
-          color: "#007749", // Springbok Groen
+          color: "#007749",
           margin: 0,
           textAlign: "left",
         }}
       >
         {afrikaans}
       </p>
-      
-      <>
-        {/* Icon to toggle input */}
+
+      <div style={{ marginTop: "12px" }}>
         <IoMdSwap
           size={18}
           style={{ cursor: "pointer", marginRight: "8px", color: "#777777" }}
@@ -95,8 +131,7 @@ export default function DutchAfrikaansSentence() {
               value={tempSubject}
               onChange={(e) => setTempSubject(e.target.value)}
               style={{
-                fontFamily: "Segoe UI",
-                fontSize: "12px",
+                fontSize: "14px",
                 width: "300px",
                 padding: "4px",
                 borderRadius: "4px",
@@ -107,7 +142,7 @@ export default function DutchAfrikaansSentence() {
             />
           </form>
         )}
-      </>
-    </>
+      </div>
+    </div>
   );
 }

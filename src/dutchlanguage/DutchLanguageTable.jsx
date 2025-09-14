@@ -74,9 +74,9 @@ export default function DutchLanguageList() {
       <div>
         {records.map((rec, index) => (
           <div key={index} style={lineStyle} title={rec.sample}>
-            <span style={afrikaansStyle}>{rec.afrikaans}</span> 
+            <span style={afrikaansStyle}>{rec.afrikaans}</span>
             {/* <span>--&gt;</span>  */}
-            <span><HiOutlineArrowNarrowRight/></span> 
+            <span><HiOutlineArrowNarrowRight /></span>
             <span style={dutchStyle}>{rec.dutch}</span>
           </div>
         ))}
@@ -85,28 +85,28 @@ export default function DutchLanguageList() {
       {/* Add row form */}
       {showAddRow ? (
         <div style={{ marginTop: "8px", textAlign: "right" }}>
-          <input  style={{ ...inputStyle, width: "50px"}}
+          <input style={{ ...inputStyle, width: "50px" }}
             value={newRow.afrikaans}
             onChange={(e) => setNewRow({ ...newRow, afrikaans: e.target.value })}
             placeholder="Afrikaans"
-            // style={{ ...afrikaansStyle, fontSize: "12px", marginRight: "4px" }}
+          // style={{ ...afrikaansStyle, fontSize: "12px", marginRight: "4px" }}
           />
           <input
             value={newRow.dutch}
             onChange={(e) => setNewRow({ ...newRow, dutch: e.target.value })}
             placeholder="Dutch"
-            style={{ ...inputStyle, width: "50px"}}
+            style={{ ...inputStyle, width: "50px" }}
           />
           <input
             value={newRow.sample}
             onChange={(e) => setNewRow({ ...newRow, sample: e.target.value })}
             placeholder="Sample"
-           style={inputStyle}
+            style={inputStyle}
           />
           <FaCheck
             size={14}
             color="#777777"
-            style={{ cursor: "pointer", marginLeft: "4px" , marginRight: "4px" }}
+            style={{ cursor: "pointer", marginLeft: "4px", marginRight: "4px" }}
             onClick={addRow}
           />
           <FaTimes

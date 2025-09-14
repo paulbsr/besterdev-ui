@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const API_URL =
   "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
 
-export default function DutchLanguageChallengeCompletion({ subject = "workplace communication" }) {
+export default function DutchLanguageChallengeCompletion({
+  subject = "workplace communication",
+}) {
   const [challenge, setChallenge] = useState("");
   const [suggestedCompletion, setSuggestedCompletion] = useState("");
   const [userInput, setUserInput] = useState("");
@@ -17,9 +19,9 @@ export default function DutchLanguageChallengeCompletion({ subject = "workplace 
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           question: `Generate one Dutch text (1 sentence) about ${subjectInput}, 
-          but leave one sentence unfinished with a blank line of underscores (______________). 
+          but leave one sentence unfinished with a blank line of underscores (____________________________). 
           After the text, on a new line, write "SUGGESTION:" followed by a natural Dutch completion 
-          for the blank. Do not add introductions or explanations.`
+          for the blank. Do not add introductions or explanations.`,
         }),
       });
 
@@ -56,66 +58,116 @@ export default function DutchLanguageChallengeCompletion({ subject = "workplace 
     }
   };
 
+  // ✅ Load initial challenge automatically
+  useEffect(() => {
+    fetchChallenge();
+  }, []);
+
   return (
-    <div className="p-4 border rounded-lg max-w-xl mx-auto">
-      <h2 className="text-xl font-bold mb-4">Dutch Sentence Completion</h2>
+    <div
+      style={{
+        border: "1px solid #ddd",
+        borderRadius: "8px",
+        padding: "16px", // ✅ Adds space between border and text (all sides)
+        fontFamily: "Segoe UI", // ✅ Global font
+        fontSize: "16px", // ✅ Global font size
+        maxWidth: "1100px"
+      }}
+    >
+      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px" }}>Dutch Sentence Completion</h2>
 
       {/* Topic input */}
-      <div className="mb-4">
-        <label className="block mb-1 font-semibold">Choose a topic:</label>
+      <div style={{ marginBottom: "16px" }}>
+        <label style={{ display: "block", marginBottom: "4px", fontWeight: "600" }}>Choose a topic:</label>
         <input
           type="text"
           value={subjectInput}
           onChange={(e) => setSubjectInput(e.target.value)}
           placeholder="Enter a topic..."
-          className="border px-2 py-1 rounded w-full"
+          className="border rounded w-full"
+          style={{
+            width: "300px",
+            // padding: "6px 8px",
+            fontFamily: "Segoe UI",
+            fontSize: "16px",
+          }}
         />
-      </div>
 
-      <button
+              <button
         onClick={fetchChallenge}
-        className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
+        // className="bg-blue-500 text-white rounded mb-4"
+        style={{
+          marginLeft: "5px",
+          // padding: "8px 16px",
+          fontFamily: "Segoe UI",
+          fontSize: "16px",
+        }}
       >
         New Challenge
       </button>
+      </div>
+
+
 
       {challenge && (
-        <div className="mb-4">
-          <p className="text-gray-700 mb-2">Complete this Dutch text:</p>
-          <blockquote className="whitespace-pre-line italic p-2 bg-gray-100 rounded">
-            {challenge}
-          </blockquote>
+        <div style={{ marginBottom: "16px" }}>
+        <label style={{ display: "block", marginBottom: "4px", fontWeight: "600" }}>
+          Complete this Dutch text:
+        </label>
+<blockquote
+      className="whitespace-pre-line bg-gray-100 rounded"
+      style={{
+        padding: "8px",
+        fontFamily: "Segoe UI",
+        fontSize: "18px",
+        fontStyle: "italic",
+        // fontWeight: "bold",
+                    color: "#FF4F00",
+      }}
+    >
+      {challenge}
+    </blockquote>
+
         </div>
       )}
 
       {challenge && (
         <div>
-          <textarea
-            rows="2"
+          <input
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
             placeholder="Type your completion here..."
             style={{
-              height: "25.5px",
-              border: "0.75px solid #FF4F00",
+              height: "35.5px",
+              border: "1px solid #FF4F00",
               borderRadius: "4px",
-              padding: 0,
+              backgroundColor: "#FFFFFF",
               paddingLeft: "10px",
-              width: "760px",
+              width: "850px",
               fontFamily: "Segoe UI",
               fontSize: "16px",
             }}
           />
           <button
             onClick={checkAnswer}
-            className="bg-green-500 text-white px-4 py-2 rounded"
+          style={{
+            marginLeft: "5px",
+            height: "36.5px",
+            border: "1px solid #FF4F00",
+            borderRadius: "4px",
+            backgroundColor: "#FFFFFF",
+            color: "#FF4F00",
+            cursor: "pointer",
+            fontFamily: "Segoe UI",
+            fontSize: "16px",
+          }}
           >
             Submit
           </button>
         </div>
       )}
 
-      {feedback && <div className="mt-4 text-lg">{feedback}</div>}
+      {feedback && <div style={{ marginTop: "16px" }}>{feedback}</div>}
     </div>
   );
 }

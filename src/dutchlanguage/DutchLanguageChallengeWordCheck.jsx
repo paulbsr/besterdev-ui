@@ -19,7 +19,7 @@ export default function DutchLanguageChallengeWordCheck() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           question: `Check if the following Dutch word is spelled correctly: "${word}". 
-          Answer only with "Correct" or "Incorrect: [correct spelling]".`
+          Answer only with "Correct" or "Incorrect: [correct spelling]".`,
         }),
       });
 
@@ -54,20 +54,28 @@ export default function DutchLanguageChallengeWordCheck() {
   };
 
   return (
-    <div className="p-4 border rounded-lg max-w-md mx-auto">
-      <h2 className="text-xl font-bold mb-4">Dutch Word Spelling Check</h2>
+    <div
+      style={{
+        border: "1px solid #ddd",
+        borderRadius: "8px",
+        padding: "16px",    // ✅ space inside border
+        fontFamily: "Segoe UI",
+        fontSize: "16px",
+        maxWidth: "1100px",
+      }}
+    >
+      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px" }}>Dutch Word Spelling Check</h2>
 
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           value={word}
           onChange={(e) => setWord(e.target.value)}
-          placeholder="Type a Dutch word"
+          placeholder="Dutch Language Word Checker"
           style={{
-            height: "25.5px",
+            height: "35.5px",
             border: "0.75px solid #FF4F00",
             borderRadius: "4px",
-            padding: 0,
             paddingLeft: "10px",
             width: "300px",
             fontFamily: "Segoe UI",
@@ -78,7 +86,7 @@ export default function DutchLanguageChallengeWordCheck() {
           type="submit"
           style={{
             marginLeft: "5px",
-            height: "25.5px",
+            height: "35.5px",
             border: "1px solid #FF4F00",
             borderRadius: "4px",
             backgroundColor: "#FFFFFF",
@@ -95,11 +103,11 @@ export default function DutchLanguageChallengeWordCheck() {
           onClick={handleClear}
           style={{
             marginLeft: "5px",
-            height: "25.5px",
-            border: "1px solid #FF4F00",
+            height: "35.5px",
+            border: "1px solid #777777",
             borderRadius: "4px",
             backgroundColor: "#FFFFFF",
-            color: "#FF4F00",
+            color: "#777777",
             cursor: "pointer",
             fontFamily: "Segoe UI",
             fontSize: "16px",
@@ -110,7 +118,7 @@ export default function DutchLanguageChallengeWordCheck() {
       </form>
 
       {feedback && (
-        <div className="mt-4 text-lg font-medium">{feedback}</div>
+        <div style={{ marginTop: "16px", fontWeight: "500" }}>{feedback}</div>
       )}
     </div>
   );

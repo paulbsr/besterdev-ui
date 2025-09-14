@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DutchAfrikaansSentence from "./DutchAfrikaansSentence";
+// import DutchAfrikaansSentence from "./DutchAfrikaansSentence";
 
 export default function DutchLanguageTranslator() {
   const [text, setText] = useState("");
@@ -47,14 +47,21 @@ export default function DutchLanguageTranslator() {
   };
 
   return (
-    <div>
-      {/* Input and buttons on the same line */}      
-      <div style={{ height: "20px" }}></div>
+    <div
+      style={{
+        border: "1px solid #ddd",
+        borderRadius: "8px",
+        padding: "16px",
+        maxWidth: "1100px",
+      }}
+    >
+      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px" }}>Translate Between Languages</h2>
 
+      {/* Input and buttons on the same line */}
       <div style={{ display: "flex", alignItems: "center" }}>
         <input
           style={{
-            height: "25.5px",
+            height: "35.5px",
             border: "0.75px solid #FF4F00",
             borderRadius: "4px",
             padding: 0,
@@ -63,21 +70,26 @@ export default function DutchLanguageTranslator() {
             fontFamily: "Segoe UI",
             fontSize: "16px",
           }}
-          placeholder="Translate Afrikaans <-> Dutch"
+          placeholder="Afrikaans <-> Dutch"
           type="text"
           value={text}
           onChange={(e) => setText(e.target.value)}
-        />&nbsp;
+        />
+        &nbsp;
         <div>
           <button
             style={{
-              marginLeft: "1px",
-              height: "25.5px",
+              marginLeft: "5px",
+              height: "35.5px",
+              width: "55px",
               border: "1px solid #FF4F00",
               borderRadius: "4px",
               backgroundColor: "#FFFFFF",
               color: "#FF4F00",
               cursor: "pointer",
+              fontFamily: "Segoe UI",
+              fontSize: "16px",
+
             }}
             onClick={() => handleTranslate("ZA->NL")}
             disabled={loading}
@@ -85,16 +97,19 @@ export default function DutchLanguageTranslator() {
             NL
           </button>
 
-
           <button
             style={{
-              marginLeft: "1px",
-              height: "25.5px",
+              marginLeft: "5px",
+              height: "35.5px",
+              width: "55px",
               border: "1px solid #007749",
               borderRadius: "4px",
               backgroundColor: "#FFFFFF",
               color: "#007749",
               cursor: "pointer",
+              fontFamily: "Segoe UI",
+              fontSize: "16px",
+
             }}
             onClick={() => handleTranslate("NL->ZA")}
             disabled={loading}
@@ -102,17 +117,19 @@ export default function DutchLanguageTranslator() {
             ZA
           </button>
 
-          
           <button
             style={{
-              marginLeft: "1px",
-              height: "25.5px",
+              marginLeft: "5px",
+              height: "35.5px",
+              width: "55px",
               border: "1px solid #777777",
               borderRadius: "4px",
               backgroundColor: "#FFFFFF",
-              // color: "#D3D3D3",
               color: "#777777",
               cursor: "pointer",
+              fontFamily: "Segoe UI",
+              fontSize: "16px",
+
             }}
             onClick={handleClear}
             disabled={loading}
@@ -121,7 +138,7 @@ export default function DutchLanguageTranslator() {
           </button>
         </div>
       </div>
-        <DutchAfrikaansSentence />
+
       {/* Translation result BELOW the input/buttons */}
       {loading && (
         <p
@@ -149,8 +166,6 @@ export default function DutchLanguageTranslator() {
           {translation}
         </div>
       )}
-
-      <div>&nbsp;&nbsp;</div>
     </div>
   );
 }
