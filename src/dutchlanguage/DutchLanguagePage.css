@@ -27,4 +27,23 @@
   border: 1px solid #FFFFFF;
   border-radius: 8px;
   padding: 8px;
+  font-family: "Segoe UI";
+  font-size: "16px";
+}
+
+.right .line {
+  margin: 0;        /* removes default spacing between <p> tags */
+  line-height: 1.2; /* optional: controls spacing between lines */
+}
+
+.right .underline {
+  text-decoration: underline;
+}
+
+.right .bold {
+  font-weight: bold;
+}
+
+.right .spaced {
+  margin-top: 12px; /* adds space above this line */
 }

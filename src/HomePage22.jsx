@@ -11,9 +11,6 @@ import { useHowtoApi } from './howto/HowtoAPIProvider';
 import { useNavigate } from 'react-router-dom';
 import FlipCard from './flipcard/FlipCard';
 import AskAI from './openai/AskAI';
-import DutchLanguageTicker from './dutchlanguage/DutchLanguageTicker';
-import CombinedCreateFP from './quicks/CombinedCreateFP';
-
 
 export default function HomePage22(props) {
   const [isExpanded, setExpanded] = useState(false);

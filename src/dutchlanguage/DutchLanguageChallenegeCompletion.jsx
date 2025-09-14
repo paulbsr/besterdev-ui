@@ -11,9 +11,11 @@ export default function DutchLanguageChallengeCompletion({
   const [userInput, setUserInput] = useState("");
   const [feedback, setFeedback] = useState("");
   const [subjectInput, setSubjectInput] = useState(subject);
+  const [loading, setLoading] = useState(false); // ✅ track loading state
 
   const fetchChallenge = async () => {
     try {
+      setLoading(true); // ✅ start loading
       const res = await fetch(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -28,7 +30,6 @@ export default function DutchLanguageChallengeCompletion({
       const data = await res.json();
       const output = data.answer || "";
 
-      // Split out the suggestion part
       const parts = output.split("SUGGESTION:");
       const challengeText = parts[0]?.trim() || "";
       const completion = parts[1]?.trim() || "";
@@ -40,45 +41,68 @@ export default function DutchLanguageChallengeCompletion({
     } catch (err) {
       console.error(err);
       setFeedback("❌ Error fetching challenge");
+    } finally {
+      setLoading(false); // ✅ stop loading
     }
   };
 
-  const checkAnswer = () => {
+  const checkAnswer = async () => {
     if (!userInput.trim()) {
       setFeedback("⚠️ Please enter your completion.");
       return;
     }
 
-    if (suggestedCompletion) {
-      setFeedback(
-        `Suggested completion was: "${suggestedCompletion}". Your answer: "${userInput}".`
-      );
-    } else {
-      setFeedback(`Your answer: "${userInput}"`);
+    try {
+      setLoading(true); // ✅ show "Validating..."
+      setFeedback("Validating..."); // ✅ immediately update text
+
+      const res = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          question:
+            `Evaluate this Dutch sentence completion for correctness and naturalness:\n\n` +
+            `Challenge: "${challenge}"\n` +
+            `Suggested completion: "${suggestedCompletion}"\n` +
+            `User completion: "${userInput}"\n\n` +
+            `Respond with feedback in Dutch, indicating whether it is grammatically correct, natural sounding, and good Dutch.`,
+        }),
+      });
+
+      const data = await res.json();
+      const evaluation = data.answer || "⚠️ No evaluation received.";
+
+      setFeedback(evaluation);
+    } catch (err) {
+      console.error(err);
+      setFeedback("❌ Error checking your answer.");
+    } finally {
+      setLoading(false); // ✅ done validating
     }
   };
-
-  // ✅ Load initial challenge automatically
-  useEffect(() => {
-    fetchChallenge();
-  }, []);
 
   return (
     <div
       style={{
         border: "1px solid #ddd",
         borderRadius: "8px",
-        padding: "16px", // ✅ Adds space between border and text (all sides)
-        fontFamily: "Segoe UI", // ✅ Global font
-        fontSize: "16px", // ✅ Global font size
-        maxWidth: "1100px"
+        padding: "16px",
+        fontFamily: "Segoe UI",
+        fontSize: "16px",
+        maxWidth: "1100px",
       }}
     >
-      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px" }}>Dutch Sentence Completion</h2>
+      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px" }}>
+        Dutch Sentence Completion
+      </h2>
 
       {/* Topic input */}
       <div style={{ marginBottom: "16px" }}>
-        <label style={{ display: "block", marginBottom: "4px", fontWeight: "600" }}>Choose a topic:</label>
+        <label
+          style={{ display: "block", marginBottom: "4px", fontWeight: "600" }}
+        >
+          Choose a topic:
+        </label>
         <input
           type="text"
           value={subjectInput}
@@ -87,52 +111,52 @@ export default function DutchLanguageChallengeCompletion({
           className="border rounded w-full"
           style={{
             width: "300px",
-            // padding: "6px 8px",
             fontFamily: "Segoe UI",
             fontSize: "16px",
           }}
         />
 
-              <button
-        onClick={fetchChallenge}
-        // className="bg-blue-500 text-white rounded mb-4"
-        style={{
-          marginLeft: "5px",
-          // padding: "8px 16px",
-          fontFamily: "Segoe UI",
-          fontSize: "16px",
-        }}
-      >
-        New Challenge
-      </button>
+        <button
+          onClick={fetchChallenge}
+          style={{
+            marginLeft: "5px",
+            fontFamily: "Segoe UI",
+            fontSize: "16px",
+          }}
+        >
+          New Challenge
+        </button>
       </div>
-
-
 
       {challenge && (
         <div style={{ marginBottom: "16px" }}>
-        <label style={{ display: "block", marginBottom: "4px", fontWeight: "600" }}>
-          Complete this Dutch text:
-        </label>
-<blockquote
-      className="whitespace-pre-line bg-gray-100 rounded"
-      style={{
-        padding: "8px",
-        fontFamily: "Segoe UI",
-        fontSize: "18px",
-        fontStyle: "italic",
-        // fontWeight: "bold",
-                    color: "#FF4F00",
-      }}
-    >
-      {challenge}
-    </blockquote>
-
+          <label
+            style={{ display: "block", marginBottom: "4px", fontWeight: "600" }}
+          >
+            Complete this Dutch text:
+          </label>
+          <blockquote
+            className="whitespace-pre-line bg-gray-100 rounded"
+            style={{
+              padding: "8px",
+              fontFamily: "Segoe UI",
+              fontSize: "18px",
+              fontStyle: "italic",
+              color: "#FF4F00",
+            }}
+          >
+            {challenge}
+          </blockquote>
         </div>
       )}
 
       {challenge && (
-        <div>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            checkAnswer();
+          }}
+        >
           <input
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
@@ -149,25 +173,30 @@ export default function DutchLanguageChallengeCompletion({
             }}
           />
           <button
-            onClick={checkAnswer}
-          style={{
-            marginLeft: "5px",
-            height: "36.5px",
-            border: "1px solid #FF4F00",
-            borderRadius: "4px",
-            backgroundColor: "#FFFFFF",
-            color: "#FF4F00",
-            cursor: "pointer",
-            fontFamily: "Segoe UI",
-            fontSize: "16px",
-          }}
+            type="submit"
+            disabled={loading} // ✅ disable while validating
+            style={{
+              marginLeft: "5px",
+              height: "36.5px",
+              border: "1px solid #FF4F00",
+              borderRadius: "4px",
+              backgroundColor: loading ? "#ddd" : "#FFFFFF",
+              color: "#FF4F00",
+              cursor: loading ? "not-allowed" : "pointer",
+              fontFamily: "Segoe UI",
+              fontSize: "16px",
+            }}
           >
-            Submit
+            {loading ? "Validating..." : "Submit"}
           </button>
-        </div>
+        </form>
       )}
 
-      {feedback && <div style={{ marginTop: "16px" }}>{feedback}</div>}
+      {feedback && (
+        <div style={{ marginTop: "16px", fontStyle: loading ? "italic" : "" }}>
+          {feedback}
+        </div>
+      )}
     </div>
   );
 }
