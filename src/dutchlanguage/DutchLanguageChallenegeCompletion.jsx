@@ -92,40 +92,46 @@ export default function DutchLanguageChallengeCompletion({
         maxWidth: "1100px",
       }}
     >
-      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px" }}>
-        Dutch Sentence Completion
-      </h2>
+      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px" }}>Dutch Sentence Completion</h2>
 
       {/* Topic input */}
       <div style={{ marginBottom: "16px" }}>
-        <label
-          style={{ display: "block", marginBottom: "4px", fontWeight: "600" }}
-        >
-          Choose a topic:
-        </label>
-        <input
-          type="text"
-          value={subjectInput}
-          onChange={(e) => setSubjectInput(e.target.value)}
-          placeholder="Enter a topic..."
-          className="border rounded w-full"
-          style={{
-            width: "300px",
-            fontFamily: "Segoe UI",
-            fontSize: "16px",
-          }}
-        />
+        <div style={{ marginBottom: "16px", display: "flex", alignItems: "center", gap: "8px" }}>
+  <label style={{ fontWeight: "600", whiteSpace: "nowrap" }}>Specify a topic:</label>
+  <input
+    type="text"
+    value={subjectInput}
+    onChange={(e) => setSubjectInput(e.target.value)}
+    placeholder="Specify a topic..."
+    style={{
+      fontSize: "16px",
+      width: "300px",
+      height: "31.5px",
+      border: "1px solid #777777",
+      borderRadius: "4px",
+      backgroundColor: "#FFFFFF",
+      color: "#777777",
+      fontFamily: "Segoe UI",
+      fontSize: "16px",
+    }}
+  />
+  <button
+    onClick={fetchChallenge}
+    style={{
+      height: "33.5px",
+      border: "1px solid #777777",
+      borderRadius: "4px",
+      backgroundColor: loading ? "#ddd" : "#FFFFFF",
+      color: "#000000",
+      cursor: loading ? "not-allowed" : "pointer",
+      fontFamily: "Segoe UI",
+      fontSize: "16px",
+    }}
+  >
+    New Challenge
+  </button>
+</div>
 
-        <button
-          onClick={fetchChallenge}
-          style={{
-            marginLeft: "5px",
-            fontFamily: "Segoe UI",
-            fontSize: "16px",
-          }}
-        >
-          New Challenge
-        </button>
       </div>
 
       {challenge && (
@@ -163,7 +169,7 @@ export default function DutchLanguageChallengeCompletion({
             placeholder="Type your completion here..."
             style={{
               height: "35.5px",
-              border: "1px solid #FF4F00",
+              border: "1px solid #777777",
               borderRadius: "4px",
               backgroundColor: "#FFFFFF",
               paddingLeft: "10px",
@@ -178,10 +184,10 @@ export default function DutchLanguageChallengeCompletion({
             style={{
               marginLeft: "5px",
               height: "36.5px",
-              border: "1px solid #FF4F00",
+              border: "1px solid #777777",
               borderRadius: "4px",
               backgroundColor: loading ? "#ddd" : "#FFFFFF",
-              color: "#FF4F00",
+              color: "#777777",
               cursor: loading ? "not-allowed" : "pointer",
               fontFamily: "Segoe UI",
               fontSize: "16px",

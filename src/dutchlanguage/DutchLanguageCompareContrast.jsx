@@ -88,7 +88,7 @@ export default function DutchLanguageCompareContrast() {
           color: "#777777",
         }}
       >
-        Refresh in {countdown}s
+        Swap in {countdown}s
       </div>
 
       <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px" }}>Compare & Contrast Languages</h2>

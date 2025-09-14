@@ -62,7 +62,7 @@ export default function DutchLanguageTranslator() {
         <input
           style={{
             height: "35.5px",
-            border: "0.75px solid #FF4F00",
+            border: "0.75px solid #777777",
             borderRadius: "4px",
             padding: 0,
             paddingLeft: "10px",

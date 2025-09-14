@@ -104,22 +104,22 @@ export default function DutchLanguageList() {
             style={inputStyle}
           />
           <FaCheck
-            size={14}
-            color="#777777"
-            style={{ cursor: "pointer", marginLeft: "4px", marginRight: "4px" }}
-            onClick={addRow}
-          />
-          <FaTimes
-            size={14}
-            color="#777777"
-            style={{ cursor: "pointer" }}
-            onClick={() => setShowAddRow(false)}
-          />
+  size={18}
+  color="#777777"
+  style={{ cursor: "pointer", marginRight: "12px", marginTop: "12px"  }} // 👈 big space
+  onClick={addRow}
+/>
+<FaTimes
+  size={18}
+  color="#777777"
+  style={{ cursor: "pointer" }}
+  onClick={() => setShowAddRow(false)}
+/>
         </div>
       ) : (
         <div style={{ textAlign: "right", marginTop: "4px" }}>
           <FaPlus
-            size={14}
+            size={18}
             color="#777777"
             style={{ cursor: "pointer" }}
             onClick={() => setShowAddRow(true)}

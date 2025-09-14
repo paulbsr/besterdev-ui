@@ -74,7 +74,7 @@ export default function DutchLanguageChallengeWordCheck() {
           placeholder="Dutch Language Word Checker"
           style={{
             height: "35.5px",
-            border: "0.75px solid #FF4F00",
+            border: "0.75px solid #777777",
             borderRadius: "4px",
             paddingLeft: "10px",
             width: "300px",
@@ -87,10 +87,10 @@ export default function DutchLanguageChallengeWordCheck() {
           style={{
             marginLeft: "5px",
             height: "35.5px",
-            border: "1px solid #FF4F00",
+            border: "1px solid #777777",
             borderRadius: "4px",
             backgroundColor: "#FFFFFF",
-            color: "#FF4F00",
+            color: "#777777",
             cursor: "pointer",
             fontFamily: "Segoe UI",
             fontSize: "16px",
