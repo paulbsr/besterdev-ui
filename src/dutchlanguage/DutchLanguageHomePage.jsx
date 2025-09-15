@@ -18,11 +18,18 @@ export default function DutchLanguageHomePage() {
 
       <div className="dutch-layout">
 
-        {/* LINKER COLUMN */}
+        {/* LINKER COLUMN#1 */}
         <div className="left">
           <DutchLanguageList />
+          {/* <DutchLanguageWoordenschat /> */}
+        </div>
+        <div className="spacer"></div>
+
+        {/* LINKER COLUMN#2 */}
+        <div className="left">
+          {/* <DutchLanguageList /> */}
           <DutchLanguageWoordenschat />
-          </div>
+        </div>
         <div className="spacer"></div>
 
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FaPlus, FaCheck, FaTimes } from "react-icons/fa";
-// import { HiOutlineChatBubbleLeftEllipsis } from "react-icons/hi2";
+import { SlActionRedo } from "react-icons/sl";
 
 
 const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
@@ -86,7 +86,7 @@ export default function DutchLanguageWoordenschat() {
                             {rec.dutchWord}
                         </span>
                         <span>
-                            {/* <HiOutlineChatBubbleLeftEllipsis /> */}
+                            <SlActionRedo />
                         </span>
                         <span style={defaultStyle} title={rec.use}>
                             {rec.description}

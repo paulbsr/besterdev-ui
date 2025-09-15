@@ -17,7 +17,7 @@ export default function DutchLanguageTicker() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               question:
-                "Generate 8 completely random Dutch sentences about the history of amsterdam. Then translate each to Afrikaans. Just provide them as natural Dutch."
+                "Act like a Dutch language high school teacher and generate 8 sentences from peer reviewed Dutch language academic papers about any topic. Just provide them as natural Dutch."
             }),
           }
         );

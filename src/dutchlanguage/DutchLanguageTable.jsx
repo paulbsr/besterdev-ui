@@ -71,13 +71,16 @@ export default function DutchLanguageList() {
 
   return (
     <div style={{ fontFamily: "Segoe UI, sans-serif", fontSize: "14px" }}>
+      <h2 style={{ fontSize: "20px", fontWeight: "bold", marginBottom: "12px", textAlign: "right" }}>
+        Index
+      </h2>
       <div>
         {records.map((rec, index) => (
           <div key={index} style={lineStyle} title={rec.sample}>
-            <span style={afrikaansStyle}>{rec.afrikaans}</span>
+            <span style={afrikaansStyle}>{rec.afrikaans}  </span>
             {/* <span>--&gt;</span>  */}
             <span><HiOutlineArrowNarrowRight /></span>
-            <span style={dutchStyle}>{rec.dutch}</span>
+            <span style={dutchStyle}>  {rec.dutch}</span>
           </div>
         ))}
       </div>
