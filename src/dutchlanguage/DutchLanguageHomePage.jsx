@@ -21,7 +21,7 @@ export default function DutchLanguageHomePage() {
         {/* LINKER COLUMN */}
         <div className="left">
           <DutchLanguageList />
-          {/* <DutchLanguageWoordenschat /> */}
+          <DutchLanguageWoordenschat />
           </div>
         <div className="spacer"></div>
 
@@ -44,8 +44,6 @@ export default function DutchLanguageHomePage() {
           <div><DutchLanguageTranslator /></div>
           <div>&nbsp;&nbsp;</div>
           <div><DutchLanguageChallengeTranslate /></div>
-                    <div>&nbsp;&nbsp;</div>
-                    <div><DutchLanguageWoordenschat /></div>
         </div>
 
 
