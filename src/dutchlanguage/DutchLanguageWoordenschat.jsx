@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FaPlus, FaCheck, FaTimes } from "react-icons/fa";
-import { HiOutlineChatBubbleLeftEllipsis } from "react-icons/hi2";
+// import { HiOutlineChatBubbleLeftEllipsis } from "react-icons/hi2";
 
 
 const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
@@ -19,11 +19,9 @@ export default function DutchLanguageWoordenschat() {
     const fetchData = async () => {
         try {
             const res = await axios.get(`${API_BASE}/dutchlanguagewoordenschat`);
-            console.log("API response:", res.data); // 👈 see what comes back
             const data = Array.isArray(res.data) ? res.data : res.data.data || [];
             const sorted = data.sort((a, b) => a.dutchWord.localeCompare(b.dutchWord));
             setRecords(sorted);
-            console.log("In jou dutchlanguagewoordenschat is RECORDS:", records)
         } catch (err) {
             console.error("Error fetching data:", err);
         }
@@ -88,7 +86,7 @@ export default function DutchLanguageWoordenschat() {
                             {rec.dutchWord}
                         </span>
                         <span>
-                            <HiOutlineChatBubbleLeftEllipsis />
+                            {/* <HiOutlineChatBubbleLeftEllipsis /> */}
                         </span>
                         <span style={defaultStyle} title={rec.use}>
                             {rec.description}
@@ -120,7 +118,7 @@ export default function DutchLanguageWoordenschat() {
                         placeholder="Voorbeeld"
                         style={{ ...inputStyle, width: "160px" }}
                     />
-                    {/* <div>ccc</div> */}
+
                     <FaCheck
                         size={18}
                         color="#777777"
