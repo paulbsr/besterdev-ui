@@ -8,6 +8,7 @@ import DutchLanguageChallengeWordCheck from "./DutchLanguageChallengeWordCheck";
 import DutchLanguageCompareContrast from "./DutchLanguageCompareContrast";
 import DutchLanguageTicker from "./DutchLanguageTicker";
 import AskAI from '../openai/AskAI';
+import DutchLanguageWoordenschat from "./DutchLanguageWoordenschat";
 
 export default function DutchLanguageHomePage() {
   return (
@@ -18,8 +19,9 @@ export default function DutchLanguageHomePage() {
       <div className="dutch-layout">
 
         {/* LINKER COLUMN */}
-        <div className="left"><DutchLanguageList /></div>
+        <div className="left"><DutchLanguageList /><DutchLanguageWoordenschat /></div>
         <div className="spacer"></div>
+
 
 
         {/* CENTRE COLUMN */}
@@ -39,6 +41,8 @@ export default function DutchLanguageHomePage() {
           <div><DutchLanguageTranslator /></div>
           <div>&nbsp;&nbsp;</div>
           <div><DutchLanguageChallengeTranslate /></div>
+                    <div>&nbsp;&nbsp;</div>
+                    <div><DutchLanguageWoordenschat /></div>
         </div>
 
 
