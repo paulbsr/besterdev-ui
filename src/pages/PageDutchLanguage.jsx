@@ -4,7 +4,6 @@ import BannerLight from '../banners/BannerLight';
 import GradientLineThin from '../gradientlines/GradientLineThin';
 import ToastComponent from '../ToastComponent';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
-import DutchLanguageTicker from '../dutchlanguage/DutchLanguageTicker';
 import DutchLanguageHomePage from '../dutchlanguage/DutchLanguageHomePage';
 
 export default function PageDutchLanguage() {
@@ -13,7 +12,6 @@ export default function PageDutchLanguage() {
         <BannerWhite />
         <GradientLine />
         <BannerLight />
-        {/* <DutchLanguageTicker /> */}
         <GradientLineThin />
         <CombinedCreateFP />
         <DutchLanguageHomePage />

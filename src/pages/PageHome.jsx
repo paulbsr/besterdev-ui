@@ -9,7 +9,6 @@ import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import BreakingNewsAPI from '../breakingnews/BreakingNewsAPI';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
-import DutchLanguageTicker from '../dutchlanguage/DutchLanguageTicker';
 
 export default function PageHome() {
     return (
@@ -22,8 +21,6 @@ export default function PageHome() {
         <BreakingNews />
         <GradientLineThin />
         <CyclopediaTicker />
-        <GradientLineThin />
-        <DutchLanguageTicker />
         <GradientLineThin />
         <CombinedCreateFP />
         <HomePage22 />
