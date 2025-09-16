@@ -5,6 +5,7 @@ import GradientLineThin from '../gradientlines/GradientLineThin';
 import ToastComponent from '../ToastComponent';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
 import DutchLanguageHomePage from '../dutchlanguage/DutchLanguageHomePage';
+import Footer from '../Footer';
 
 export default function PageDutchLanguage() {
     return (
@@ -15,6 +16,7 @@ export default function PageDutchLanguage() {
         <GradientLineThin />
         <CombinedCreateFP />
         <DutchLanguageHomePage />
+        <Footer />
         <ToastComponent />
       </div>
     )

@@ -1,6 +1,6 @@
-.dutch-layout {
+.homepage-layout {
   display: grid;
-  grid-template-columns: 10% 1% 10% 1% 54% 1% 22%;
+  grid-template-columns: 22% 1% 54% 1% 22%;
   gap: 0; /* optional, since spacers are explicit */
   width: 100%;
   min-height: 100vh; /* makes it full height like a page */

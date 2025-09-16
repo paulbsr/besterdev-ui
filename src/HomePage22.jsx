@@ -295,11 +295,11 @@ export default function HomePage22(props) {
         <tbody>
           <tr style={{ height: '20px' }}>
             {/* <td style={{ width: '25%' }}></td> */}
-            <td style={{ width: '25%', border: '1px solid #ddd', borderRadius: '8px' }}></td>
+            <td style={{ width: '25%'}}></td>
             <td style={{ width: '1%' }}></td>
             <td style={{ width: '48%' }}><img src={Image} style={{boxShadow: '10px 10px 10px rgba(0,0,0,0.2)', borderRadius: '8px'}}/>.<AskAI/></td>
             <td style={{ width: '1%' }}></td>
-            <td style={{ width: '25%', border: '1px solid #ddd', borderRadius: '8px' }}></td>
+            <td style={{ width: '25%' }}></td>
           </tr>
         </tbody>
       </table>

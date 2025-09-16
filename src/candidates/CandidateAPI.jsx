@@ -139,7 +139,6 @@ export default function CandidateAPI() {
               <form onSubmit={(e) => onKeepCandidate(e)}>
                 <div key={key}>
                   <div className='Font-Verdana-Medium'>
-                    <Tooltip id="Screen" />
                     <div onClick={toggleAccordion}></div>
                   </div>
 
@@ -231,7 +230,6 @@ export default function CandidateAPI() {
         <div>
           <GradientLineLinkedIn />
           <div className='Font-Verdana-Medium-LinkedIn'>&nbsp; &nbsp;
-            <Tooltip id="insert" />
             <div onClick={toggleAccordion}>
               &nbsp; &nbsp;<a data-tooltip-id="insert" data-tooltip-content="LinkedIn.com">
                 <FaLinkedin style={{ color: '#0A66C2', fontSize: '35px', cursor: 'pointer' }} /></a>

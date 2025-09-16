@@ -17,7 +17,7 @@ export default function DutchLanguageTicker() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               question:
-                "Act like a Dutch language high school teacher and generate 8 sentences from peer reviewed Dutch language academic papers about any topic. Just provide them as natural Dutch."
+                "Act like a Dutch language high school teacher and generate 8 complex Dutch language sntences any topic. Just provide them as natural Dutch. No introductions."
             }),
           }
         );

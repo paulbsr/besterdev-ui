@@ -9,6 +9,8 @@ import DutchLanguageCompareContrast from "./DutchLanguageCompareContrast";
 import DutchLanguageTicker from "./DutchLanguageTicker";
 import AskAI from '../openai/AskAI';
 import DutchLanguageWoordenschat from "./DutchLanguageWoordenschat";
+import 'react-tooltip/dist/react-tooltip.css';
+import { Tooltip } from 'react-tooltip';
 
 export default function DutchLanguageHomePage() {
   return (
@@ -16,20 +18,14 @@ export default function DutchLanguageHomePage() {
       {/* Spacer at the very top */}
       <div style={{ height: "20px" }}></div>
 
-      <div className="dutch-layout">
+      <div className="homepage-layout">
 
         {/* LINKER COLUMN#1 */}
         <div className="left">
           <DutchLanguageList />
-          {/* <DutchLanguageWoordenschat /> */}
-        </div>
-        <div className="spacer"></div>
-
-        {/* LINKER COLUMN#2 */}
-        <div className="left">
-          {/* <DutchLanguageList /> */}
           <DutchLanguageWoordenschat />
         </div>
+
         <div className="spacer"></div>
 
 

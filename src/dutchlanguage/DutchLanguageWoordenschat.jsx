@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FaPlus, FaCheck, FaTimes } from "react-icons/fa";
 import { SlActionRedo } from "react-icons/sl";
+import 'react-tooltip/dist/react-tooltip.css';
+import { Tooltip } from 'react-tooltip';
 
 
 const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
@@ -75,22 +77,15 @@ export default function DutchLanguageWoordenschat() {
 
     return (
         <div style={{ fontFamily: "Segoe UI, sans-serif", fontSize: "14px" }}>
-            <h2 style={{ fontSize: "20px", fontWeight: "bold", marginBottom: "12px", textAlign: "right" }}>
-                Woordenschat
-            </h2>
+            <Tooltip id="tooltip" place="top-end" />
+            <h2 style={{ fontSize: "20px", fontWeight: "bold", marginBottom: "12px", textAlign: "right" }}>Woordenschat</h2>
 
             <div>
                 {records.map((rec, index) => (
-                    <div key={index} style={lineStyle}>
-                        <span style={dutchStyle} title={rec.use}>
-                            {rec.dutchWord}
-                        </span>
-                        <span>
-                            <SlActionRedo />
-                        </span>
-                        <span style={defaultStyle} title={rec.use}>
-                            {rec.description}
-                        </span>
+                    <div key={index} style={lineStyle} data-tooltip-id="insert" data-tooltip-content={rec.use}>
+                        <span style={dutchStyle}> {rec.dutchWord}</span>
+                        <span>     <SlActionRedo />     </span>
+                        <span style={defaultStyle}>{rec.description}</span>
                     </div>
                 ))}
             </div>
