@@ -4,7 +4,7 @@ import { IoMdSwap } from "react-icons/io";
 export default function DutchLanguageCompareContrast() {
   const [dutch, setDutch] = useState("");
   const [afrikaans, setAfrikaans] = useState("");
-  const [subject, setSubject] = useState("Interesting facts about Holland");
+  const [subject, setSubject] = useState("Dutch politics");
   const [tempSubject, setTempSubject] = useState(subject);
   const [showInput, setShowInput] = useState(false);
   const [countdown, setCountdown] = useState(20); // countdown state

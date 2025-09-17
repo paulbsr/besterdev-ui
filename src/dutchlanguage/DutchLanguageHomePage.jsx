@@ -1,4 +1,4 @@
-import "./DutchLanguagePage.css";
+import "./DutchLanguageHomePage.css";
 import Image from "./Amsterdam1.jpg"; // ✅ import your image
 import DutchLanguageList from "./DutchLanguageTable";
 import DutchLanguageTranslator from "./DutchLanguageTranslator";
@@ -36,13 +36,13 @@ export default function DutchLanguageHomePage() {
           <div>&nbsp;&nbsp;</div>
           <div><DutchLanguageTicker /></div>
           <div>&nbsp;&nbsp;</div>
-          <div><AskAI/></div>
+          <div><AskAI /></div>
           <div>&nbsp;&nbsp;</div>
           <div><DutchLanguageChallenegeCompletion /></div>
           <div>&nbsp;&nbsp;</div>
           <div><DutchLanguageCompareContrast /></div>
-          <div>&nbsp;&nbsp;</div>
-          <div><DutchLanguageChallengeWordCheck /></div>
+          {/* <div>&nbsp;&nbsp;</div>
+          <div><DutchLanguageChallengeWordCheck /></div> */}
           <div>&nbsp;&nbsp;</div>
           <div><DutchLanguageTranslator /></div>
           <div>&nbsp;&nbsp;</div>
@@ -53,7 +53,7 @@ export default function DutchLanguageHomePage() {
         {/* REGTER COLUMN */}
         <div className="spacer"></div>
         <div className="right">
-
+          <DutchLanguageChallengeWordCheck />
           <p className="line underline">Pronouns (Voornaamwoorden):</p>
           <p className="line"><i>ik, jij, hij, zij, wij, jullie, zij</i></p>
 

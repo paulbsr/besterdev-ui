@@ -89,12 +89,12 @@ export default function DutchLanguageWoordenschat() {
     return (
         <div style={{ fontFamily: "Segoe UI, sans-serif", fontSize: "14px" }}>
             {/* <Tooltip id="tooltip" place="left" /> */}
-            <h2 style={{ fontSize: "20px", fontWeight: "bold", marginBottom: "12px", textAlign: "right" }}>Woordenschat</h2>
+            <h2 style={{ fontSize: "22px", fontWeight: "bold", marginBottom: "12px", textAlign: "right" }}>Woordenschat</h2>
 
             <div>
                 {records.map((rec) => (
                     // <div key={rec.id} style={lineStyle} data-tooltip-id="insert" data-tooltip-content={rec.use}>
-                                            <div key={rec.id} style={lineStyle}>
+                    <div key={rec.id} style={lineStyle}>
                         {editId === rec.id ? (
                             <>
                                 Woord: <input
@@ -170,10 +170,10 @@ export default function DutchLanguageWoordenschat() {
                         placeholder="Voorbeeld"
                         style={{ ...inputStyle, width: "200px" }}
                     />
-<div></div>
+                    <div></div>
                     <CiCircleCheck
                         size={22}
-                        color="gtreen"
+                        color="green"
                         style={{ cursor: "pointer", marginRight: "12px", marginTop: "12px" }}
                         onClick={addRow}
                     />

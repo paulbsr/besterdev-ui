@@ -61,10 +61,10 @@ export default function DutchLanguageChallengeWordCheck() {
         padding: "16px",    // ✅ space inside border
         fontFamily: "Segoe UI",
         fontSize: "16px",
-        maxWidth: "1100px",
+        // maxWidth: "1100px",
       }}
     >
-      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px" }}>Dutch Word Spelling Check</h2>
+      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>Dutch Word Spelling Checker:</h2>
 
       <form onSubmit={handleSubmit}>
         <input
@@ -80,12 +80,13 @@ export default function DutchLanguageChallengeWordCheck() {
             width: "300px",
             fontFamily: "Segoe UI",
             fontSize: "16px",
+            marginBottom: "8px"
           }}
         />
         <button
           type="submit"
           style={{
-            marginLeft: "5px",
+            // marginLeft: "5px",
             height: "35.5px",
             border: "1px solid #777777",
             borderRadius: "4px",
@@ -95,14 +96,14 @@ export default function DutchLanguageChallengeWordCheck() {
             fontFamily: "Segoe UI",
             fontSize: "16px",
           }}
-        >
-          Check
+        >Check
         </button>
+
         <button
           type="button"
           onClick={handleClear}
           style={{
-            marginLeft: "5px",
+            marginLeft: "8px",
             height: "35.5px",
             border: "1px solid #777777",
             borderRadius: "4px",

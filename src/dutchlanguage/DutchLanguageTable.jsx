@@ -102,7 +102,7 @@ export default function DutchLanguageList() {
   return (
     <div style={{ fontFamily: "Segoe UI, sans-serif", fontSize: "14px" }}>
       {/* <Tooltip id="insert" place="top" /> */}
-      <h2 style={{ fontSize: "20px", fontWeight: "bold", marginBottom: "12px", textAlign: "right" }}>
+      <h2 style={{ fontSize: "22px", fontWeight: "bold", marginBottom: "12px", textAlign: "right" }}>
         Index
       </h2>
       <div>
@@ -178,14 +178,14 @@ export default function DutchLanguageList() {
             placeholder="Sample"
             style={{ ...inputStyle, width: "160px" }}
           />
-          <FaCheck
-            size={18}
-            color="#777777"
+          <CiCircleCheck
+            size={22}
+            color="green"
             style={{ cursor: "pointer", marginRight: "12px", marginTop: "12px" }}
             onClick={addRow}
           />
-          <FaTimes
-            size={18}
+          <CiUndo
+            size={22}
             color="#777777"
             style={{ cursor: "pointer" }}
             onClick={() => setShowAddRow(false)}
