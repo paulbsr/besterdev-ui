@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FaPlus, FaCheck, FaTimes, FaEdit } from "react-icons/fa";
 import { SlActionRedo } from "react-icons/sl";
+import { CiUndo } from "react-icons/ci";
+import { CiCircleCheck } from "react-icons/ci";
 // import 'react-tooltip/dist/react-tooltip.css';
-// import { Tooltip } from 'react-tooltip';
+// import { Tooltip } from 'react-tooltip'; <-- PASOPOLO! react-tooltip het AWS Builds opgefok
 
 const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
 
@@ -95,29 +97,32 @@ export default function DutchLanguageWoordenschat() {
                                             <div key={rec.id} style={lineStyle}>
                         {editId === rec.id ? (
                             <>
-                                <input
-                                    style={{ ...inputStyle, width: "80px" }}
+                                Woord: <input
+                                    style={{ ...inputStyle, width: "200px" }}
                                     value={editRow.dutchWord}
                                     onChange={(e) => setEditRow({ ...editRow, dutchWord: e.target.value })}
                                 />
-                                <input
-                                    style={{ ...inputStyle, width: "120px" }}
+                                <div></div>
+                                Beschrijving: <input
+                                    style={{ ...inputStyle, width: "200px" }}
                                     value={editRow.description}
                                     onChange={(e) => setEditRow({ ...editRow, description: e.target.value })}
                                 />
-                                <input
-                                    style={{ ...inputStyle, width: "160px" }}
+                                <div></div>
+                                Voorbeeld: <input
+                                    style={{ ...inputStyle, width: "200px" }}
                                     value={editRow.use}
                                     onChange={(e) => setEditRow({ ...editRow, use: e.target.value })}
                                 />
-                                <FaCheck
-                                    size={18}
-                                    color="#007749"
-                                    style={{ cursor: "pointer", marginRight: "8px" }}
+                                <div></div>
+                                <CiCircleCheck
+                                    size={22}
+                                    color="green"
+                                    style={{ cursor: "pointer", marginRight: "6px" }}
                                     onClick={() => saveEdit(rec.id)}
                                 />
-                                <FaTimes
-                                    size={18}
+                                <CiUndo
+                                    size={22}
                                     color="#777777"
                                     style={{ cursor: "pointer" }}
                                     onClick={cancelEdit}
@@ -144,34 +149,36 @@ export default function DutchLanguageWoordenschat() {
             {showAddRow ? (
                 <div style={{ marginTop: "8px", textAlign: "right" }}>
                     <input
-                        style={{ ...inputStyle, width: "80px" }}
+                        style={{ ...inputStyle, width: "200px" }}
                         value={newRow.dutchWord}
                         onChange={(e) =>
                             setNewRow({ ...newRow, dutchWord: e.target.value })
                         }
                         placeholder="Woord"
                     />
+                    <div></div>
                     <input
                         value={newRow.description}
                         onChange={(e) => setNewRow({ ...newRow, description: e.target.value })}
                         placeholder="Beschrijving"
-                        style={{ ...inputStyle, width: "120px" }}
+                        style={{ ...inputStyle, width: "200px" }}
                     />
+                    <div></div>
                     <input
                         value={newRow.use}
                         onChange={(e) => setNewRow({ ...newRow, use: e.target.value })}
                         placeholder="Voorbeeld"
-                        style={{ ...inputStyle, width: "160px" }}
+                        style={{ ...inputStyle, width: "200px" }}
                     />
-
-                    <FaCheck
-                        size={18}
-                        color="#777777"
+<div></div>
+                    <CiCircleCheck
+                        size={22}
+                        color="gtreen"
                         style={{ cursor: "pointer", marginRight: "12px", marginTop: "12px" }}
                         onClick={addRow}
                     />
-                    <FaTimes
-                        size={18}
+                    <CiUndo
+                        size={22}
                         color="#777777"
                         style={{ cursor: "pointer" }}
                         onClick={() => setShowAddRow(false)}

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FaPlus, FaCheck, FaTimes, FaEdit } from "react-icons/fa";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
+import { CiUndo } from "react-icons/ci";
+import { CiCircleCheck } from "react-icons/ci";
 // import 'react-tooltip/dist/react-tooltip.css';
 // import { Tooltip } from 'react-tooltip';
 // import { MdOutlineEdit } from "react-icons/md";
@@ -124,18 +126,19 @@ export default function DutchLanguageList() {
                   value={editRow.sample}
                   onChange={(e) => setEditRow({ ...editRow, sample: e.target.value })}
                 />
-                <FaCheck
-                  size={18}
-                  color="#007749"
-                  style={{ cursor: "pointer", marginRight: "8px" }}
-                  onClick={() => saveEdit(rec.id)}
-                />
-                <FaTimes
-                  size={18}
-                  color="#777777"
-                  style={{ cursor: "pointer" }}
-                  onClick={cancelEdit}
-                />
+<CiCircleCheck
+                                    size={22}
+                                    color="green"
+                                    style={{ cursor: "pointer", marginRight: "6px" }}
+                                    onClick={() => saveEdit(rec.id)}
+                                />
+                                <CiUndo
+                                    size={22}
+                                    color="#777777"
+                                    style={{ cursor: "pointer" }}
+                                    onClick={cancelEdit}
+                                />
+              
               </>
             ) : (
               <>
