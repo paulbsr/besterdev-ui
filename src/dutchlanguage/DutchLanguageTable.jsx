@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FaPlus, FaCheck, FaTimes, FaEdit } from "react-icons/fa";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
-import 'react-tooltip/dist/react-tooltip.css';
-import { Tooltip } from 'react-tooltip';
-import { MdOutlineEdit } from "react-icons/md";
+// import 'react-tooltip/dist/react-tooltip.css';
+// import { Tooltip } from 'react-tooltip';
+// import { MdOutlineEdit } from "react-icons/md";
 
 // Always use Heroku API
 const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
@@ -99,13 +99,14 @@ export default function DutchLanguageList() {
 
   return (
     <div style={{ fontFamily: "Segoe UI, sans-serif", fontSize: "14px" }}>
-      <Tooltip id="insert" place="top" />
+      {/* <Tooltip id="insert" place="top" /> */}
       <h2 style={{ fontSize: "20px", fontWeight: "bold", marginBottom: "12px", textAlign: "right" }}>
         Index
       </h2>
       <div>
         {records.map((rec) => (
-          <div key={rec.id} style={lineStyle} data-tooltip-id="insert" data-tooltip-content={rec.sample}>
+          // <div key={rec.id} style={lineStyle} data-tooltip-id="insert" data-tooltip-content={rec.sample}>
+                      <div key={rec.id} style={lineStyle}>
             {editId === rec.id ? (
               <>
                 <input
