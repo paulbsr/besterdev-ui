@@ -96,26 +96,18 @@ const fetchWord = async () => {
         marginTop: "16px",
         border: "1px solid #ddd",
         borderRadius: "8px",
-        padding: "16px",    // ✅ space inside border
+        padding: "16px",
         fontFamily: "Segoe UI",
         fontSize: "16px",
         marginBottom: "10px",
-        // maxWidth: "1100px",
       }}>
 
         <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>Nederlandse Zinnen Trainer</h2>
-      {/* <p style={{ fontStyle: "italic", color: "#000000" }}>
-        Maak een correcte zin met dit woord
-      </p> */}
-
-      {/* Main word display */}
-      {/* <h2 style={{ fontFamily: "Segoe UI", color: "#6b8b11ff" }}>{word}</h2> */}
 
           <input
               type="text"
               value={`Maak een correcte zin met: ${word}`}
               onChange={(e) => setWord(e.target.value)}
-              // placeholder="Nederlandse Woord Spelling Checker"
               style={{
                   height: "35.5px",
                   border: "0.75px solid #777777",
@@ -124,13 +116,12 @@ const fetchWord = async () => {
                   width: "350px",
                   fontFamily: "Segoe UI",
                   fontSize: "16px",
-                  marginBottom: "8px",
+                  marginBottom: "10px",
                   color: "#777777",
               }}></input>
 
 
-      {/* Buttons */}
-      <div style={{ marginTop: "20px", display: "flex", gap: "10px", justifyContent: "center" }}>
+      <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>
         <button
           onClick={() => setOpen(true)}
           style={{

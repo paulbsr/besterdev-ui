@@ -16,7 +16,7 @@ export default function PageDutchLanguage() {
         <GradientLineThin />
         <CombinedCreateFP />
         <DutchLanguageHomePage />
-        <Footer />
+        {/* <Footer /> */}
         <ToastComponent />
       </div>
     )

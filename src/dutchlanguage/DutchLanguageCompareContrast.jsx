@@ -91,7 +91,7 @@ export default function DutchLanguageCompareContrast() {
         Swap in {countdown}s
       </div>
 
-      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px" }}>Vergelijk en Contrast Talen</h2>
+      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>Vergelijk en Contrast Talen</h2>
 
       <p
         style={{

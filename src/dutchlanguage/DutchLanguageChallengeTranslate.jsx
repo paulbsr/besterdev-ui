@@ -64,21 +64,20 @@ export default function DutchLanguageChallengeTranslate({ subject = "daily life"
         maxWidth: "1100px",
       }}
     >
-    <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px" }}>Dutch Translation Challenge</h2>
+    <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>Dutch Translation Challenge</h2>
 
       <button
         onClick={fetchSentence}
-        style={{
-          marginBottom: "16px",
-          border: "1px solid #007749",
-          borderRadius: "4px",
-          backgroundColor: "#007749",
-          color: "#FFFFFF",
-          padding: "6px 12px",
-          cursor: "pointer",
-          fontFamily: "Segoe UI",
-          fontSize: "14px",
-        }}
+          style={{
+            height: "35.5px",
+            border: "1px solid #777777",
+            borderRadius: "4px",
+            backgroundColor: "#FFFFFF",
+            color: "#000000",
+            cursor: "pointer",
+            fontFamily: "Segoe UI",
+            fontSize: "16px",
+          }}
       >
         New Challenge
       </button>

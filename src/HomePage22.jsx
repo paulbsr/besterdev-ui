@@ -168,7 +168,7 @@ export default function HomePage22(props) {
     return (
       <>
         <DBSearchComponent />
-        <FlipCard />
+
         <TaskSummaryHomepage />
 
         <div>
@@ -211,6 +211,7 @@ export default function HomePage22(props) {
               ))}
             </tbody>
           </table>
+                  <FlipCard />
         </div>
       </>
     );

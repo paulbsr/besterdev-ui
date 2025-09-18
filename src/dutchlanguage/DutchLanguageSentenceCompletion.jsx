@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 const API_URL =
   "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
 
-export default function DutchLanguageChallengeCompletion({
+export default function DutchLanguageSentenceCompletion({
   subject = "workplace communication",
 }) {
   const [challenge, setChallenge] = useState("");
@@ -92,45 +92,45 @@ export default function DutchLanguageChallengeCompletion({
         maxWidth: "1100px",
       }}
     >
-      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px" }}>Nederlands Zin Voltooiing</h2>
+      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>Nederlands Zin Voltooiing</h2>
 
-      {/* Topic input */}
-      <div style={{ marginBottom: "16px" }}>
-        <div style={{ marginBottom: "16px", display: "flex", alignItems: "center", gap: "8px" }}>
-  <label style={{ fontWeight: "600", whiteSpace: "nowrap" }}>Specificeer een onderwerp:</label>
-  <input
-    type="text"
-    value={subjectInput}
-    onChange={(e) => setSubjectInput(e.target.value)}
-    placeholder="Specify a topic..."
-    style={{
-      fontSize: "16px",
-      width: "300px",
-      height: "31.5px",
-      border: "1px solid #777777",
-      borderRadius: "4px",
-      backgroundColor: "#FFFFFF",
-      color: "#777777",
-      fontFamily: "Segoe UI",
-      fontSize: "16px",
-    }}
-  />
-  <button
-    onClick={fetchChallenge}
-    style={{
-      height: "33.5px",
-      border: "1px solid #777777",
-      borderRadius: "4px",
-      backgroundColor: loading ? "#ddd" : "#FFFFFF",
-      color: "#000000",
-      cursor: loading ? "not-allowed" : "pointer",
-      fontFamily: "Segoe UI",
-      fontSize: "16px",
-    }}
-  >
-    Nieuwe Uitdaging
-  </button>
-</div>
+      <div>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <label style={{ fontWeight: "600", whiteSpace: "nowrap" }}>Specificeer een onderwerp:</label>
+          <input
+            type="text"
+            value={subjectInput}
+            onChange={(e) => setSubjectInput(e.target.value)}
+            placeholder="Specify a topic..."
+            style={{
+              fontSize: "16px",
+              width: "300px",
+              height: "35.5px",
+              border: "1px solid #777777",
+              borderRadius: "4px",
+              backgroundColor: "#FFFFFF",
+              color: "#777777",
+              fontFamily: "Segoe UI",
+              fontSize: "16px",
+              paddingLeft: "10px",
+            }}
+          />
+          <button
+            onClick={fetchChallenge}
+            style={{
+              height: "35.5px",
+              border: "1px solid #777777",
+              borderRadius: "4px",
+              backgroundColor: loading ? "#ddd" : "#FFFFFF",
+              color: "#000000",
+              cursor: loading ? "not-allowed" : "pointer",
+              fontFamily: "Segoe UI",
+              fontSize: "16px",
+            }}
+          >
+            Nieuwe Uitdaging
+          </button>
+        </div>
 
       </div>
 

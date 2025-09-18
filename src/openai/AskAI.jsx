@@ -51,8 +51,8 @@ export default function AskAI() {
             <form onSubmit={handleAsk} style={{ display: "flex", alignItems: "center" }}>
                 <input
                     style={{
-                        height: "25.5px",
-                        border: "0.75px solid #336791",
+                        height: "35.5px",
+                        border: "0.75px solid #777777",
                         borderRadius: "4px",
                         padding: 0,
                         paddingLeft: "10px",
@@ -69,13 +69,13 @@ export default function AskAI() {
                 <button
                     type="submit"
                     style={{
-                        marginLeft: "1px",
-                        height: "25.5px",
+                        marginLeft: "5px",
+                        height: "35.5px",
                         width: "50px",
-                        border: "1px solid #336791",
+                        border: "1px solid #777777",
                         borderRadius: "4px",
                         backgroundColor: "#FFFFFF",
-                        color: "#336791",
+                        color: "#000000",
                         cursor: "pointer",
                     }}
                     disabled={loading}
@@ -87,8 +87,8 @@ export default function AskAI() {
                     onClick={handleClear}
                     disabled={loading}
                     style={{ 
-                        marginLeft: '10px', 
-                        height: '25.5px', 
+                        marginLeft: '5px', 
+                        height: '35.5px', 
                         width: "50px",
                         border: '1px solid #777777', 
                         borderRadius: '4px', 

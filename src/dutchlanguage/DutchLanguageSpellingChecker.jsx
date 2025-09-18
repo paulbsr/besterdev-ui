@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const API_URL =
   "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
 
-export default function DutchLanguageChallengeWordCheck() {
+export default function DutchLanguageSpellingChecker() {
   const [word, setWord] = useState("");
   const [feedback, setFeedback] = useState("");
 
@@ -58,10 +58,9 @@ export default function DutchLanguageChallengeWordCheck() {
       style={{
         border: "1px solid #ddd",
         borderRadius: "8px",
-        padding: "16px",    // ✅ space inside border
+        padding: "16px",
         fontFamily: "Segoe UI",
         fontSize: "16px",
-        // maxWidth: "1100px",
       }}
     >
       <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>Nederlandse Spelling Checker</h2>
@@ -80,10 +79,10 @@ export default function DutchLanguageChallengeWordCheck() {
             width: "350px",
             fontFamily: "Segoe UI",
             fontSize: "16px",
-            marginBottom: "8px"
+            marginBottom: "10px"
           }}
         />
-        <div style={{ marginTop: "2px", display: "flex", gap: "2px", justifyContent: "center" }}>
+        <div style={{ display: "flex", gap: "2px", justifyContent: "center" }}>
         <button
           type="submit"
           style={{
