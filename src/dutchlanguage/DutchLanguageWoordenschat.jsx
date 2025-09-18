@@ -98,19 +98,19 @@ export default function DutchLanguageWoordenschat() {
                         {editId === rec.id ? (
                             <>
                                 Woord: <input
-                                    style={{ ...inputStyle, width: "200px" }}
+                                    style={{ ...inputStyle, width: "260px", marginBottom: "5px" }}
                                     value={editRow.dutchWord}
                                     onChange={(e) => setEditRow({ ...editRow, dutchWord: e.target.value })}
                                 />
                                 <div></div>
                                 Beschrijving: <input
-                                    style={{ ...inputStyle, width: "200px" }}
+                                    style={{ ...inputStyle, width: "260px", marginBottom: "5px" }}
                                     value={editRow.description}
                                     onChange={(e) => setEditRow({ ...editRow, description: e.target.value })}
                                 />
                                 <div></div>
                                 Voorbeeld: <input
-                                    style={{ ...inputStyle, width: "200px" }}
+                                    style={{ ...inputStyle, width: "260px", marginBottom: "5px" }}
                                     value={editRow.use}
                                     onChange={(e) => setEditRow({ ...editRow, use: e.target.value })}
                                 />
@@ -120,12 +120,14 @@ export default function DutchLanguageWoordenschat() {
                                     color="green"
                                     style={{ cursor: "pointer", marginRight: "6px" }}
                                     onClick={() => saveEdit(rec.id)}
+                                    title="Commit"
                                 />
                                 <CiUndo
                                     size={22}
-                                    color="#777777"
+                                    color="#000000"
                                     style={{ cursor: "pointer" }}
                                     onClick={cancelEdit}
+                                    title="Revert"
                                 />
                             </>
                         ) : (
@@ -149,7 +151,7 @@ export default function DutchLanguageWoordenschat() {
             {showAddRow ? (
                 <div style={{ marginTop: "8px", textAlign: "right" }}>
                     <input
-                        style={{ ...inputStyle, width: "200px" }}
+                        style={{ ...inputStyle, width: "260px", marginBottom: "5px" }}
                         value={newRow.dutchWord}
                         onChange={(e) =>
                             setNewRow({ ...newRow, dutchWord: e.target.value })
@@ -161,14 +163,14 @@ export default function DutchLanguageWoordenschat() {
                         value={newRow.description}
                         onChange={(e) => setNewRow({ ...newRow, description: e.target.value })}
                         placeholder="Beschrijving"
-                        style={{ ...inputStyle, width: "200px" }}
+                        style={{ ...inputStyle, width: "260px", marginBottom: "5px" }}
                     />
                     <div></div>
                     <input
                         value={newRow.use}
                         onChange={(e) => setNewRow({ ...newRow, use: e.target.value })}
                         placeholder="Voorbeeld"
-                        style={{ ...inputStyle, width: "200px" }}
+                        style={{ ...inputStyle, width: "260px" }}
                     />
                     <div></div>
                     <CiCircleCheck
@@ -176,12 +178,14 @@ export default function DutchLanguageWoordenschat() {
                         color="green"
                         style={{ cursor: "pointer", marginRight: "12px", marginTop: "12px" }}
                         onClick={addRow}
+                        title="Commit"
                     />
                     <CiUndo
                         size={22}
-                        color="#777777"
+                        color="#000000"
                         style={{ cursor: "pointer" }}
                         onClick={() => setShowAddRow(false)}
+                        title="Revert"
                     />
                 </div>
             ) : (

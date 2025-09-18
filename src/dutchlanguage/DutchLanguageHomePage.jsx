@@ -1,5 +1,5 @@
 import "./DutchLanguageHomePage.css";
-import Image from "./Amsterdam1.jpg"; // ✅ import your image
+import Image from "./Amsterdam1.jpg";
 import DutchLanguageList from "./DutchLanguageTable";
 import DutchLanguageTranslator from "./DutchLanguageTranslator";
 import DutchLanguageChallengeTranslate from "./DutchLanguageChallengeTranslate";
@@ -9,8 +9,10 @@ import DutchLanguageCompareContrast from "./DutchLanguageCompareContrast";
 import DutchLanguageTicker from "./DutchLanguageTicker";
 import AskAI from '../openai/AskAI';
 import DutchLanguageWoordenschat from "./DutchLanguageWoordenschat";
-import 'react-tooltip/dist/react-tooltip.css';
-import { Tooltip } from 'react-tooltip';
+import DutchLanguageSentenceTrainerModal from "./DutchLanguageSentenceTrainerModal";
+// import 'react-tooltip/dist/react-tooltip.css';
+// import { Tooltip } from 'react-tooltip';
+// import DutchLanguageSentenceTrainer from "./DutchLanguageSentenceTrainer";
 
 export default function DutchLanguageHomePage() {
   return (
@@ -54,6 +56,9 @@ export default function DutchLanguageHomePage() {
         <div className="spacer"></div>
         <div className="right">
           <DutchLanguageChallengeWordCheck />
+          {/* <DutchLanguageSentenceTrainer /> */}
+            <DutchLanguageSentenceTrainerModal />
+
           <p className="line underline">Pronouns (Voornaamwoorden):</p>
           <p className="line"><i>ik, jij, hij, zij, wij, jullie, zij</i></p>
 

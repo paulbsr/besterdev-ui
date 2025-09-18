@@ -64,34 +64,34 @@ export default function DutchLanguageChallengeWordCheck() {
         // maxWidth: "1100px",
       }}
     >
-      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>Dutch Word Spelling Checker:</h2>
+      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>Nederlandse Spelling Checker</h2>
 
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           value={word}
           onChange={(e) => setWord(e.target.value)}
-          placeholder="Dutch Language Word Checker"
+          placeholder="Nederlandse Woord Spelling Checker"
           style={{
             height: "35.5px",
             border: "0.75px solid #777777",
             borderRadius: "4px",
             paddingLeft: "10px",
-            width: "300px",
+            width: "350px",
             fontFamily: "Segoe UI",
             fontSize: "16px",
             marginBottom: "8px"
           }}
         />
+        <div style={{ marginTop: "2px", display: "flex", gap: "2px", justifyContent: "center" }}>
         <button
           type="submit"
           style={{
-            // marginLeft: "5px",
             height: "35.5px",
             border: "1px solid #777777",
             borderRadius: "4px",
             backgroundColor: "#FFFFFF",
-            color: "#777777",
+            color: "#000000",
             cursor: "pointer",
             fontFamily: "Segoe UI",
             fontSize: "16px",
@@ -108,14 +108,14 @@ export default function DutchLanguageChallengeWordCheck() {
             border: "1px solid #777777",
             borderRadius: "4px",
             backgroundColor: "#FFFFFF",
-            color: "#777777",
+            color: "#000000",
             cursor: "pointer",
             fontFamily: "Segoe UI",
             fontSize: "16px",
           }}
         >
           Clear
-        </button>
+        </button></div>
       </form>
 
       {feedback && (

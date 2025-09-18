@@ -92,12 +92,12 @@ export default function DutchLanguageChallengeCompletion({
         maxWidth: "1100px",
       }}
     >
-      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px" }}>Dutch Sentence Completion</h2>
+      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px" }}>Nederlands Zin Voltooiing</h2>
 
       {/* Topic input */}
       <div style={{ marginBottom: "16px" }}>
         <div style={{ marginBottom: "16px", display: "flex", alignItems: "center", gap: "8px" }}>
-  <label style={{ fontWeight: "600", whiteSpace: "nowrap" }}>Specify a topic:</label>
+  <label style={{ fontWeight: "600", whiteSpace: "nowrap" }}>Specificeer een onderwerp:</label>
   <input
     type="text"
     value={subjectInput}
@@ -128,7 +128,7 @@ export default function DutchLanguageChallengeCompletion({
       fontSize: "16px",
     }}
   >
-    New Challenge
+    Nieuwe Uitdaging
   </button>
 </div>
 

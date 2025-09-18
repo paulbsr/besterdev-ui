@@ -108,7 +108,7 @@ export default function DutchLanguageList() {
       <div>
         {records.map((rec) => (
           // <div key={rec.id} style={lineStyle} data-tooltip-id="insert" data-tooltip-content={rec.sample}>
-                      <div key={rec.id} style={lineStyle}>
+          <div key={rec.id} style={lineStyle}>
             {editId === rec.id ? (
               <>
                 <input
@@ -126,19 +126,21 @@ export default function DutchLanguageList() {
                   value={editRow.sample}
                   onChange={(e) => setEditRow({ ...editRow, sample: e.target.value })}
                 />
-<CiCircleCheck
-                                    size={22}
-                                    color="green"
-                                    style={{ cursor: "pointer", marginRight: "6px" }}
-                                    onClick={() => saveEdit(rec.id)}
-                                />
-                                <CiUndo
-                                    size={22}
-                                    color="#777777"
-                                    style={{ cursor: "pointer" }}
-                                    onClick={cancelEdit}
-                                />
-              
+                <CiCircleCheck
+                  size={22}
+                  color="green"
+                  style={{ cursor: "pointer", marginRight: "5px", marginTop: "5px" }}
+                  onClick={() => saveEdit(rec.id)}
+                  title="Commit"
+                />
+                <CiUndo
+                  size={22}
+                  color="#000000"
+                  style={{ cursor: "pointer" }}
+                  onClick={cancelEdit}
+                  title="Undo"
+                />
+
               </>
             ) : (
               <>
@@ -176,19 +178,22 @@ export default function DutchLanguageList() {
             value={newRow.sample}
             onChange={(e) => setNewRow({ ...newRow, sample: e.target.value })}
             placeholder="Sample"
-            style={{ ...inputStyle, width: "160px" }}
+            style={{ ...inputStyle, width: "160px"}}
+            
           />
           <CiCircleCheck
             size={22}
             color="green"
-            style={{ cursor: "pointer", marginRight: "12px", marginTop: "12px" }}
+            style={{ cursor: "pointer", marginRight: "5px", marginTop: "5px" }}
             onClick={addRow}
+            title="Commit"
           />
           <CiUndo
             size={22}
-            color="#777777"
+            color="#000000"
             style={{ cursor: "pointer" }}
             onClick={() => setShowAddRow(false)}
+            title="Revert"
           />
         </div>
       ) : (

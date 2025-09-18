@@ -55,7 +55,7 @@ export default function DutchLanguageTranslator() {
         maxWidth: "1100px",
       }}
     >
-      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px" }}>Translate Between Languages</h2>
+      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px" }}>Vertaal Tussen Talen</h2>
 
       {/* Input and buttons on the same line */}
       <div style={{ display: "flex", alignItems: "center" }}>
