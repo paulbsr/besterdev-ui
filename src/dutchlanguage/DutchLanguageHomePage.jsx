@@ -19,7 +19,7 @@ import { PiExamFill } from "react-icons/pi";
 // import { GrWebcam } from "react-icons/gr";
 import { RiSpeakFill } from "react-icons/ri";
 import DutchLanguageSentenceWords from "./DutchLanguageSentenceWords";
-// import DutchLanguageWordExplain from "./DutchLanguageWordExplain";
+import DutchLanguageWordExplain from "./DutchLanguageWordExplain";
 
 export default function DutchLanguageHomePage() {
   return (
@@ -46,7 +46,7 @@ export default function DutchLanguageHomePage() {
           <div>&nbsp;&nbsp;</div>
           <div><DutchLanguageTicker /></div>
           <div>&nbsp;&nbsp;</div>
-          {/* <DutchLanguageWordExplain /> */}
+          <DutchLanguageWordExplain />
           <div><AskAI /></div>
           <div style={{ marginTop: "5px", marginLeft: "20px" }}>
             <a href="https://www.nporadio1.nl/live" target="_blank" rel="noopener noreferrer" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "25px" }}><FaRadio /></a>
