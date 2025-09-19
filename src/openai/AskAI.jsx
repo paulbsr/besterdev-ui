@@ -56,7 +56,7 @@ export default function AskAI() {
                         borderRadius: "4px",
                         padding: 0,
                         paddingLeft: "10px",
-                        width: "900px",
+                        width: "465px",
                         fontFamily: "Segoe UI",
                         fontSize: "16px",
                     }}
@@ -65,18 +65,18 @@ export default function AskAI() {
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                 />
-                &nbsp;
                 <button
                     type="submit"
                     style={{
-                        marginLeft: "5px",
-                        height: "35.5px",
-                        width: "50px",
+                        height: "37.5px",
                         border: "1px solid #777777",
                         borderRadius: "4px",
                         backgroundColor: "#FFFFFF",
                         color: "#000000",
                         cursor: "pointer",
+                        fontFamily: "Segoe UI",
+                        fontSize: "16px",
+                        marginLeft: "5px",
                     }}
                     disabled={loading}
                 >AskAI
@@ -86,15 +86,16 @@ export default function AskAI() {
                     type="button"
                     onClick={handleClear}
                     disabled={loading}
-                    style={{ 
-                        marginLeft: '5px', 
-                        height: '35.5px', 
-                        width: "50px",
-                        border: '1px solid #777777', 
-                        borderRadius: '4px', 
-                        backgroundColor: '#FFFFFF', 
-                        color: '#777777', 
-                        cursor: 'pointer'
+                    style={{
+                        height: "37.5px",
+                        border: "1px solid #777777",
+                        borderRadius: "4px",
+                        backgroundColor: "#FFFFFF",
+                        color: "#000000",
+                        cursor: "pointer",
+                        fontFamily: "Segoe UI",
+                        fontSize: "16px",
+                        marginLeft: "5px",
                     }}
                 >Clear
                 </button>

@@ -17,6 +17,9 @@ import { FaRadio } from "react-icons/fa6";
 import { RiWebcamFill } from "react-icons/ri";
 import { PiExamFill } from "react-icons/pi";
 // import { GrWebcam } from "react-icons/gr";
+import { RiSpeakFill } from "react-icons/ri";
+import DutchLanguageSentenceWords from "./DutchLanguageSentenceWords";
+import DutchLanguageWordExplain from "./DutchLanguageWordExplain";
 
 export default function DutchLanguageHomePage() {
   return (
@@ -43,16 +46,19 @@ export default function DutchLanguageHomePage() {
           <div>&nbsp;&nbsp;</div>
           <div><DutchLanguageTicker /></div>
           <div>&nbsp;&nbsp;</div>
+          <DutchLanguageWordExplain />
           <div><AskAI /></div>
           <div style={{ marginTop: "5px", marginLeft: "20px" }}>
             <a href="https://www.nporadio1.nl/live" target="_blank" rel="noopener noreferrer" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "25px" }}><FaRadio /></a>
             <a href="https://www.skylinewebcams.com/en/webcam/netherlands/north-holland/amsterdam/amsterdam-dam-square.html" target="_blank" rel="noopener noreferrer" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "25px", marginLeft: "20px" }}><RiWebcamFill/></a>
             <a href="https://oefenexamensnt2.nl/facet-openbaar-portaal/welkom" target="_blank" rel="noopener noreferrer" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><PiExamFill/></a>
-            <a href="https://www.staatsexamensnt2.nl/" target="_blank" rel="noopener noreferrer" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><PiExamFill/></a>
+            <a href="https://www.staatsexamensnt2.nl/" target="_blank" rel="noopener noreferrer" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><RiSpeakFill/></a>
           </div>
-          <div><DutchLanguageSentenceCompletion /></div>
-          <div>&nbsp;&nbsp;</div>
           <div><DutchLanguageCompareContrast /></div>
+          <div>&nbsp;&nbsp;</div>
+          <div><DutchLanguageSentenceWords /></div>
+          <div>&nbsp;&nbsp;</div>
+          <div><DutchLanguageSentenceCompletion /></div>
           <div>&nbsp;&nbsp;</div>
           <div><DutchLanguageTranslator /></div>
           <div>&nbsp;&nbsp;</div>

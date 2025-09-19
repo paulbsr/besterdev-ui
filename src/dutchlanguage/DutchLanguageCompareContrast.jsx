@@ -89,37 +89,26 @@ export default function DutchLanguageCompareContrast() {
         }}
       >
         Swap in {countdown}s
+
+
+
+
       </div>
 
-      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>Vergelijk en Contrast Talen</h2>
+      <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+        <h2
+          style={{
+            fontWeight: "bold",
+            fontSize: "22px",
+            margin: "1px 0 16px 0",
+          }}
+        >
+          Vergelijk en Contrast Talen
+        </h2>
 
-      <p
-        style={{
-          fontSize: "18px",
-          fontStyle: "italic",
-          color: "#FF4F00",
-          margin: 0,
-          textAlign: "left",
-        }}
-      >
-        {dutch}
-      </p>
-      <p
-        style={{
-          fontSize: "18px",
-          fontStyle: "italic",
-          color: "#007749",
-          margin: 0,
-          textAlign: "left",
-        }}
-      >
-        {afrikaans}
-      </p>
-
-      <div style={{ marginTop: "12px" }}>
         <IoMdSwap
           size={18}
-          style={{ cursor: "pointer", marginRight: "8px", color: "#777777" }}
+          style={{ cursor: "pointer", color: "#777777" }}
           title="Change subject"
           onClick={() => setShowInput(!showInput)}
         />
@@ -143,6 +132,29 @@ export default function DutchLanguageCompareContrast() {
           </form>
         )}
       </div>
+
+      <p
+        style={{
+          fontSize: "18px",
+          fontStyle: "italic",
+          color: "#FF4F00",
+          margin: 0,
+          textAlign: "left",
+        }}
+      >
+        {dutch}
+      </p>
+      <p
+        style={{
+          fontSize: "18px",
+          fontStyle: "italic",
+          color: "#007749",
+          margin: 0,
+          textAlign: "left",
+        }}
+      >
+        {afrikaans}
+      </p>
     </div>
   );
 }
