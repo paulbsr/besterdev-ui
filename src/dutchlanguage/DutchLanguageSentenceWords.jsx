@@ -147,6 +147,7 @@ export default function DutchLanguageSentenceWords({
           onChange={(e) => setSubjectInput(e.target.value)}
           placeholder="Bijv. gezondheid, werk, familie..."
           style={{
+            color: "#777777",
             fontSize: "16px",
             width: "300px",
             height: "35.5px",

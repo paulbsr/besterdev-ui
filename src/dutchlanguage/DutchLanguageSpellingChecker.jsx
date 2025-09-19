@@ -79,7 +79,8 @@ export default function DutchLanguageSpellingChecker() {
             width: "350px",
             fontFamily: "Segoe UI",
             fontSize: "16px",
-            marginBottom: "10px"
+            marginBottom: "10px",
+            color: "#777777"
           }}
         />
         <div style={{ display: "flex", gap: "2px", justifyContent: "center" }}>

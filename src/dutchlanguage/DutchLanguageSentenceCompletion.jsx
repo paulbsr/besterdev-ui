@@ -92,7 +92,7 @@ export default function DutchLanguageSentenceCompletion({
         maxWidth: "1100px",
       }}
     >
-      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>Nederlands Zin Voltooiing</h2>
+      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>Nederlands Zin Voltooiing (B2 Schrijven Toets)</h2>
 
       <div>
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
