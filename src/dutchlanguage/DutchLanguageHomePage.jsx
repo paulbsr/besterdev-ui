@@ -10,13 +10,11 @@ import DutchLanguageTicker from "./DutchLanguageTicker";
 import AskAI from '../openai/AskAI';
 import DutchLanguageWoordenschat from "./DutchLanguageWoordenschat";
 import DutchLanguageSentenceTrainerModal from "./DutchLanguageSentenceTrainerModal";
-// import 'react-tooltip/dist/react-tooltip.css';
-// import { Tooltip } from 'react-tooltip';
-// import DutchLanguageSentenceTrainer from "./DutchLanguageSentenceTrainer";
+import 'react-tooltip/dist/react-tooltip.css';
+import { Tooltip } from 'react-tooltip';
 import { FaRadio } from "react-icons/fa6";
 import { RiWebcamFill } from "react-icons/ri";
 import { PiExamFill } from "react-icons/pi";
-// import { GrWebcam } from "react-icons/gr";
 import { RiSpeakFill } from "react-icons/ri";
 import DutchLanguageSentenceWords from "./DutchLanguageSentenceWords";
 import DutchLanguageWordExplain from "./DutchLanguageWordExplain";
@@ -41,7 +39,7 @@ export default function DutchLanguageHomePage() {
 
         {/* CENTRE COLUMN */}
         <div className="main">
-                {/* <Tooltip id="insert" place="top" /> */}
+          <Tooltip id="insert" place="top" />
           <img src={Image} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} />
           <div>&nbsp;&nbsp;</div>
           <div><DutchLanguageTicker /></div>
@@ -49,10 +47,10 @@ export default function DutchLanguageHomePage() {
           <DutchLanguageWordExplain />
           <div><AskAI /></div>
           <div style={{ marginTop: "5px", marginLeft: "20px" }}>
-            <a href="https://www.nporadio1.nl/live" target="_blank" rel="noopener noreferrer" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "25px" }}><FaRadio /></a>
-            <a href="https://www.skylinewebcams.com/en/webcam/netherlands/north-holland/amsterdam/amsterdam-dam-square.html" target="_blank" rel="noopener noreferrer" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "25px", marginLeft: "20px" }}><RiWebcamFill/></a>
-            <a href="https://oefenexamensnt2.nl/facet-openbaar-portaal/welkom" target="_blank" rel="noopener noreferrer" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><PiExamFill/></a>
-            <a href="https://www.staatsexamensnt2.nl/" target="_blank" rel="noopener noreferrer" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><RiSpeakFill/></a>
+            <a href="https://www.nporadio1.nl/live" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO Radio 1" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "25px" }}><FaRadio /></a>
+            <a href="https://www.skylinewebcams.com/en/webcam/netherlands/north-holland/amsterdam/amsterdam-dam-square.html" data-tooltip-id="insert" data-tooltip-content="Dam Square Live Webcam" target="_blank" rel="noopener noreferrer" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "25px", marginLeft: "20px" }}><RiWebcamFill/></a>
+            <a href="https://oefenexamensnt2.nl/facet-openbaar-portaal/welkom" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Staatsexamens NT2 Oefen" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><PiExamFill/></a>
+            <a href="https://www.staatsexamensnt2.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Staatsexamens NT2" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><RiSpeakFill/></a>
           </div>
           <div><DutchLanguageCompareContrast /></div>
           <div>&nbsp;&nbsp;</div>
