@@ -4,14 +4,14 @@ import { FaPlus, FaCheck, FaTimes, FaEdit } from "react-icons/fa";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { CiUndo } from "react-icons/ci";
 import { CiCircleCheck } from "react-icons/ci";
-// import 'react-tooltip/dist/react-tooltip.css';
-// import { Tooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css';
+import { Tooltip } from 'react-tooltip';
 // import { MdOutlineEdit } from "react-icons/md";
 
 // Always use Heroku API
 const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
 
-export default function DutchLanguageList() {
+export default function DutchLanguageIndex() {
   const [records, setRecords] = useState([]);
   const [newRow, setNewRow] = useState({ afrikaans: "", dutch: "", sample: "" });
   const [showAddRow, setShowAddRow] = useState(false);
@@ -96,19 +96,19 @@ export default function DutchLanguageList() {
     backgroundColor: "#FFFFFF",
     color: "#000000",
     marginRight: "6px",
-    cursor: "pointer"
+    // cursor: "pointer"
   };
 
   return (
     <div style={{ fontFamily: "Segoe UI, sans-serif", fontSize: "14px" }}>
-      {/* <Tooltip id="insert" place="top" /> */}
+      <Tooltip id="insert" place="top" />
       <h2 style={{ fontSize: "22px", fontWeight: "bold", marginBottom: "12px", textAlign: "right" }}>
         Index
       </h2>
       <div>
         {records.map((rec) => (
           // <div key={rec.id} style={lineStyle} data-tooltip-id="insert" data-tooltip-content={rec.sample}>
-          <div key={rec.id} style={lineStyle}>
+          <div key={rec.id} style={lineStyle} data-tooltip-id="insert" data-tooltip-content={rec.sample}>
             {editId === rec.id ? (
               <>
                 <input

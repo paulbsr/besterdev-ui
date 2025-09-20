@@ -1,6 +1,6 @@
 import "./DutchLanguageHomePage.css";
 import Image from "./Amsterdam1.jpg";
-import DutchLanguageList from "./DutchLanguageTable";
+import DutchLanguageIndex from "./DutchLanguageIndex";
 import DutchLanguageTranslator from "./DutchLanguageTranslator";
 import DutchLanguageChallengeTranslate from "./DutchLanguageChallengeTranslate";
 import DutchLanguageSentenceCompletion from "./DutchLanguageSentenceCompletion";
@@ -29,7 +29,7 @@ export default function DutchLanguageHomePage() {
 
         {/* LINKER COLUMN#1 */}
         <div className="left">
-          <DutchLanguageList />
+          <DutchLanguageIndex />
           <DutchLanguageWoordenschat />
         </div>
 
