@@ -46,7 +46,7 @@ export default function DutchLanguageHomePage() {
           <div>&nbsp;&nbsp;</div>
           <DutchLanguageWordExplain />
           <div><AskAI /></div>
-          <div style={{ marginTop: "5px", marginLeft: "20px" }}>
+          <div style={{ marginTop: "10px", marginLeft: "5px" }}>
             <a href="https://www.nporadio1.nl/live" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO Radio 1" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "25px" }}><FaRadio /></a>
             <a href="https://www.skylinewebcams.com/en/webcam/netherlands/north-holland/amsterdam/amsterdam-dam-square.html" data-tooltip-id="insert" data-tooltip-content="Dam Square Live Webcam" target="_blank" rel="noopener noreferrer" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "25px", marginLeft: "20px" }}><RiWebcamFill/></a>
             <a href="https://oefenexamensnt2.nl/facet-openbaar-portaal/welkom" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Staatsexamens NT2 Oefen" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><PiExamFill/></a>

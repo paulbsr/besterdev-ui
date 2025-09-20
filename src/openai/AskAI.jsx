@@ -59,6 +59,7 @@ export default function AskAI() {
                         width: "465px",
                         fontFamily: "Segoe UI",
                         fontSize: "16px",
+                        marginLeft: "10px"
                     }}
                     placeholder="Ask OpenAI anything..."
                     type="text"

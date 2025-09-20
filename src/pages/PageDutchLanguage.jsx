@@ -1,4 +1,4 @@
-import BannerWhiteNoImage from '../banners/BannerWhiteNoImage';
+import BannerWhiteDutchLanguage from '../banners/BannerWhiteDutchLanguage';
 import GradientLine from '../gradientlines/GradientLine';
 import BannerLight from '../banners/BannerLight';
 import GradientLineThin from '../gradientlines/GradientLineThin';
@@ -10,7 +10,7 @@ import Footer from '../Footer';
 export default function PageDutchLanguage() {
     return (
       <div>
-        <BannerWhiteNoImage />
+        <BannerWhiteDutchLanguage />
         <GradientLine />
         <BannerLight />
         <GradientLineThin />

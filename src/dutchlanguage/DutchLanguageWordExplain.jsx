@@ -67,7 +67,7 @@ export default function DutchLanguageWordExplain() {
             fontFamily: "Segoe UI",
             fontSize: "16px",
             marginBottom: "16px",
-            marginLeft: "0px", // 🔑 ensures no space to the left
+            marginLeft: "10px", // 🔑 ensures no space to the left
           }}
         />
 

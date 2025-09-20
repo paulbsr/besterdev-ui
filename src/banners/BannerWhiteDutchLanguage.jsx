@@ -19,9 +19,10 @@ import { TbLetterP } from "react-icons/tb";
 import { TbLetterY } from "react-icons/tb";
 import { GiEvilBat } from "react-icons/gi";
 import { useNavigate } from 'react-router-dom'; 
+import { RiKakaoTalkLine } from "react-icons/ri";
 
 
-const BannerWhiteNoImage = () => {
+const BannerWhiteDutchLanguage = () => {
   const navigate = useNavigate();
   const handleNavigateHome = () => {navigate('/home');}
   
@@ -31,22 +32,21 @@ const BannerWhiteNoImage = () => {
       <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;
 
-      <a data-tooltip-id="insert" data-tooltip-content="Home" onClick={handleNavigateHome}><GiEvilBat style={{color: '#D5441C', fontSize: '50px', cursor: 'pointer'}}/></a>
-      {/* <TbLetterB style={{color: '#336791', fontSize: '40px' }}/>
-      <TbLetterE style={{color: '#336791', fontSize: '40px' }}/>
-      <TbLetterS style={{color: '#336791', fontSize: '40px' }}/>
-      <TbLetterT style={{color: '#336791', fontSize: '40px' }}/>
-      <TbLetterE style={{color: '#336791', fontSize: '40px' }}/>
-      <TbLetterR style={{color: '#336791', fontSize: '40px' }}/> */}
-      <TbLetterD style={{color: '#D5441C', fontSize: '40px' }}/>
-      <TbLetterE style={{color: '#D5441C', fontSize: '40px' }}/>
-      <TbLetterV style={{color: '#D5441C', fontSize: '40px' }}/>
+      
+      <TbLetterN style={{color: '#FF4F00', fontSize: '40px' }}/>
+      <TbLetterE style={{color: '#FF4F00', fontSize: '40px' }}/>
+      <TbLetterD style={{color: '#FF4F00', fontSize: '40px' }}/>
+      <TbLetterE style={{color: '#FF4F00', fontSize: '40px' }}/>
+      <TbLetterR style={{color: '#FF4F00', fontSize: '40px' }}/>
+      <TbLetterL style={{color: '#FF4F00', fontSize: '40px' }}/>
+      <TbLetterA style={{color: '#FF4F00', fontSize: '40px' }}/>
+      <TbLetterN style={{color: '#FF4F00', fontSize: '40px' }}/>
+      <TbLetterD style={{color: '#FF4F00', fontSize: '40px' }}/>
+      <TbLetterS style={{color: '#FF4F00', fontSize: '40px' }}/>
 
-      &nbsp; &nbsp; &nbsp;
-      &nbsp; &nbsp; &nbsp;
+<a data-tooltip-id="insert" data-tooltip-content="Home" onClick={handleNavigateHome}><RiKakaoTalkLine style={{color: '#336791', fontSize: '50px', cursor: 'pointer'}}/></a>
 
-
-      < TbLetterC style={{color: '#D5441C', fontSize: '9px' }}/>
+      < TbLetterC style={{marginLeft: "150px", color: '#D5441C', fontSize: '9px' }}/>
       < TbLetterO style={{color: '#336791', fontSize: '10px' }}/>
       < TbLetterN style={{color: '#336791', fontSize: '11px' }}/>
       < TbLetterT style={{color: '#336791', fontSize: '12px' }}/>
@@ -118,4 +118,4 @@ const BannerWhiteNoImage = () => {
   );
 };
 
-export default BannerWhiteNoImage;
+export default BannerWhiteDutchLanguage;
