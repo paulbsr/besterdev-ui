@@ -56,7 +56,7 @@ export default function AskAI() {
                         borderRadius: "4px",
                         padding: 0,
                         paddingLeft: "10px",
-                        width: "465px",
+                        width: "600px",
                         fontFamily: "Segoe UI",
                         fontSize: "16px",
                         // marginLeft: "10px"
