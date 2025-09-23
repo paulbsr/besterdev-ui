@@ -113,6 +113,26 @@ function DutchLanguageSentenceTrainerModal() {
       </h2>
 
       {/* NEW: Input for topic */}
+
+
+      {/* Display word instruction */}
+      <input
+        type="text"
+        value={`Maak een correcte zin met het woord: ${word}`}
+        readOnly
+        style={{
+          height: "35.5px",
+          border: "0.75px solid #777777",
+          borderRadius: "4px",
+          paddingLeft: "10px",
+          width: "400px",
+          fontFamily: "Segoe UI",
+          fontSize: "16px",
+          marginBottom: "10px",
+          color: "#777777",
+        }}
+      />
+
       <input
         type="text"
         value={topic}
@@ -123,65 +143,50 @@ function DutchLanguageSentenceTrainerModal() {
           border: "0.75px solid #777777",
           borderRadius: "4px",
           paddingLeft: "10px",
-          width: "70px",
+          width: "170px",
           fontFamily: "Segoe UI",
           fontSize: "16px",
           marginBottom: "10px",
           color: "#777777",
-        }}
-      />
-
-      {/* Display word instruction */}
-      <input
-        type="text"
-        value={`Maak een zin met: ${word}`}
-        readOnly
-        style={{
-          height: "35.5px",
-          border: "0.75px solid #777777",
-          borderRadius: "4px",
-          paddingLeft: "10px",
-          width: "250px",
-          fontFamily: "Segoe UI",
-          fontSize: "16px",
-          marginBottom: "10px",
           marginLeft: "8px",
-          color: "#777777",
         }}
       />
 
-      <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>
-        <button
-          onClick={() => setOpen(true)}
-          style={{
-            height: "35.5px",
-            border: "1px solid #777777",
-            borderRadius: "4px",
-            backgroundColor: "#FFFFFF",
-            color: "#000000",
-            cursor: "pointer",
-            fontFamily: "Segoe UI",
-            fontSize: "16px",
-          }}
-        >
-          Oefen
-        </button>
-        <button
-          onClick={handleNewWord}
-          style={{
-            height: "35.5px",
-            border: "1px solid #777777",
-            borderRadius: "4px",
-            backgroundColor: "#FFFFFF",
-            color: "#000000",
-            cursor: "pointer",
-            fontFamily: "Segoe UI",
-            fontSize: "16px",
-          }}
-        >
-          Nieuw woord
-        </button>
-      </div>
+      {/* <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}> */}
+      <button
+        onClick={() => setOpen(true)}
+        style={{
+          height: "38.5px",
+          border: "1px solid #777777",
+          borderRadius: "4px",
+          backgroundColor: "#FFFFFF",
+          color: "#000000",
+          cursor: "pointer",
+          fontFamily: "Segoe UI",
+          fontSize: "16px",
+          marginLeft: "8px",
+        }}
+      >
+        Oefen
+      </button>
+
+      <button
+        onClick={handleNewWord}
+        style={{
+          height: "38.5px",
+          border: "1px solid #777777",
+          borderRadius: "4px",
+          backgroundColor: "#FFFFFF",
+          color: "#000000",
+          cursor: "pointer",
+          fontFamily: "Segoe UI",
+          fontSize: "16px",
+          marginLeft: "8px",
+        }}
+      >
+        Nieuw woord
+      </button>
+      {/* </div> */}
 
       {/* Modal */}
       {open && (
@@ -238,10 +243,13 @@ function DutchLanguageSentenceTrainerModal() {
                     border: "1px solid #ccc",
                     cursor: "pointer",
                     background: "#f3f4f6",
+                    marginLeft: "8px",
                   }}
                 >
                   {loading ? "Bezig..." : "Controleer"}
                 </button>
+
+
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
@@ -252,6 +260,7 @@ function DutchLanguageSentenceTrainerModal() {
                     border: "1px solid #ccc",
                     cursor: "pointer",
                     background: "#f3f4f6",
+                    marginLeft: "8px",
                   }}
                 >
                   Sluiten

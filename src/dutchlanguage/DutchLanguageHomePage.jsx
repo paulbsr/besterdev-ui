@@ -43,15 +43,18 @@ export default function DutchLanguageHomePage() {
           <img src={Image} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} />
           <div>&nbsp;&nbsp;</div>
           <div><DutchLanguageTicker /></div>
-          <div>&nbsp;&nbsp;</div>
-          <DutchLanguageWordExplain />
-          <div><AskAI /></div>
+
           <div style={{ marginTop: "10px", marginLeft: "5px" }}>
             <a href="https://www.nporadio1.nl/live" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO Radio 1" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "25px" }}><FaRadio /></a>
-            <a href="https://www.skylinewebcams.com/en/webcam/netherlands/north-holland/amsterdam/amsterdam-dam-square.html" data-tooltip-id="insert" data-tooltip-content="Dam Square Live Webcam" target="_blank" rel="noopener noreferrer" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "25px", marginLeft: "20px" }}><RiWebcamFill/></a>
-            <a href="https://oefenexamensnt2.nl/facet-openbaar-portaal/welkom" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Staatsexamens NT2 Oefen" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><PiExamFill/></a>
-            <a href="https://www.staatsexamensnt2.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Staatsexamens NT2" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><RiSpeakFill/></a>
+            <a href="https://www.skylinewebcams.com/en/webcam/netherlands/north-holland/amsterdam/amsterdam-dam-square.html" data-tooltip-id="insert" data-tooltip-content="Dam Square Live Webcam" target="_blank" rel="noopener noreferrer" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "25px", marginLeft: "20px" }}><RiWebcamFill /></a>
+            <a href="https://oefenexamensnt2.nl/facet-openbaar-portaal/welkom" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Staatsexamens NT2 Oefen" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><PiExamFill /></a>
+            <a href="https://www.staatsexamensnt2.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Staatsexamens NT2" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><RiSpeakFill /></a>
           </div>
+                    <div>&nbsp;</div>
+          <div><AskAI /></div>
+
+          <DutchLanguageSentenceTrainerModal />
+
           <div><DutchLanguageCompareContrast /></div>
           <div>&nbsp;&nbsp;</div>
           <div><DutchLanguageSentenceWords /></div>
@@ -68,8 +71,7 @@ export default function DutchLanguageHomePage() {
         <div className="spacer"></div>
         <div className="right">
           <DutchLanguageSpellingChecker />
-          {/* <DutchLanguageSentenceTrainer /> */}
-            <DutchLanguageSentenceTrainerModal />
+          <DutchLanguageWordExplain />
 
           <p className="line underline">Pronouns (Voornaamwoorden):</p>
           <p className="line"><i>ik, jij, hij, zij, wij, jullie, zij</i></p>

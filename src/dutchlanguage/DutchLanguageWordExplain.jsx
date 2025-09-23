@@ -51,7 +51,27 @@ export default function DutchLanguageWordExplain() {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        marginTop: "16px",
+        border: "1px solid #ddd",
+        borderRadius: "8px",
+        padding: "16px",
+        fontFamily: "Segoe UI",
+        fontSize: "16px",
+        marginBottom: "10px",
+      }}
+    >
+      <h2
+        style={{
+          fontWeight: "bold",
+          fontSize: "22px",
+          marginBottom: "16px",
+          marginTop: "1px",
+        }}
+      >
+        Nederlandse Woord Uitleg
+      </h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -63,14 +83,14 @@ export default function DutchLanguageWordExplain() {
             border: "0.75px solid #777777",
             borderRadius: "4px",
             paddingLeft: "10px",
-            width: "420px",
+            width: "350px",
             fontFamily: "Segoe UI",
             fontSize: "16px",
             marginBottom: "16px",
-            marginLeft: "10px", // 🔑 ensures no space to the left
+            marginLeft: "2px", // 🔑 ensures no space to the left
           }}
         />
-
+<div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>
         <button
           type="submit"
           style={{
@@ -82,7 +102,7 @@ export default function DutchLanguageWordExplain() {
             cursor: "pointer",
             fontFamily: "Segoe UI",
             fontSize: "16px",
-            marginLeft: "5px",
+            // marginLeft: "5px",
           }}
         >
           Verduidelijk
@@ -100,11 +120,11 @@ export default function DutchLanguageWordExplain() {
             cursor: "pointer",
             fontFamily: "Segoe UI",
             fontSize: "16px",
-            marginLeft: "5px",
           }}
         >
           Clear
         </button>
+        </div>
       </form>
 
       {/* Show Loading state */}
