@@ -6,45 +6,43 @@ function DutchLanguageSentenceTrainerModal() {
   const [feedback, setFeedback] = useState("");
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
+  const [topic, setTopic] = useState("politiek"); // NEW: default topic
 
-const formatText = (text) => {
-  if (!text) return "";
-  return text
-    .replace(/^Optional\[/, "")  // remove leading "Optional["
-    .replace(/\]$/, "")          // remove trailing "]"
-    .replace(/\[|\]/g, "")       // remove any other stray brackets
-    .trim();
-};
+  const formatText = (text) => {
+    if (!text) return "";
+    return text
+      .replace(/^Optional\[/, "")
+      .replace(/\]$/, "")
+      .replace(/\[|\]/g, "")
+      .trim();
+  };
 
+  // Fetch a random Dutch word for a given topic
+  const fetchWord = async (customTopic = topic) => {
+    try {
+      setWord("Laden...");
 
-  // Fetch a random Dutch word
-const fetchWord = async () => {
-  try {
-    setWord("Laden...");
+      const res = await fetch(
+        "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            question: `Geef mij één willekeurig Nederlands woord over onderwerp ${customTopic}, zonder uitleg of zinnen. Alleen het woord.`,
+          }),
+        }
+      );
 
-    const res = await fetch(
-      "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          question: "Geef mij één willekeurig Nederlands woord, zonder uitleg of zinnen. Alleen het woord.",
-        }),
-      }
-    );
+      const data = await res.json();
+      const newWord =
+        formatText(data.answer || data.response || "") || "onbekend woord";
 
-    const data = await res.json();
-
-    // Depending on API response structure (answer or response)
-    const newWord =
-      formatText(data.answer || data.response || "") || "onbekend woord";
-
-    setWord(newWord);
-  } catch (err) {
-    console.error("Error fetching word:", err);
-    setWord("Fout bij laden");
-  }
-};
+      setWord(newWord);
+    } catch (err) {
+      console.error("Error fetching word:", err);
+      setWord("Fout bij laden");
+    }
+  };
 
   useEffect(() => {
     fetchWord();
@@ -88,11 +86,12 @@ const fetchWord = async () => {
     setSentence("");
     setFeedback("");
     setOpen(false);
-    await fetchWord();
+    await fetchWord(); // uses topic state
   };
 
   return (
-    <div style={{
+    <div
+      style={{
         marginTop: "16px",
         border: "1px solid #ddd",
         borderRadius: "8px",
@@ -100,26 +99,54 @@ const fetchWord = async () => {
         fontFamily: "Segoe UI",
         fontSize: "16px",
         marginBottom: "10px",
-      }}>
+      }}
+    >
+      <h2
+        style={{
+          fontWeight: "bold",
+          fontSize: "22px",
+          marginBottom: "16px",
+          marginTop: "1px",
+        }}
+      >
+        Nederlandse Zinnen Trainer
+      </h2>
 
-        <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>Nederlandse Zinnen Trainer</h2>
+      {/* NEW: Input for topic */}
+      <input
+        type="text"
+        value={topic}
+        onChange={(e) => setTopic(e.target.value)}
+        placeholder="Voer een onderwerp in (bv. politiek, sport, muziek)"
+        style={{
+          height: "35.5px",
+          border: "0.75px solid #777777",
+          borderRadius: "4px",
+          paddingLeft: "10px",
+          width: "350px",
+          fontFamily: "Segoe UI",
+          fontSize: "16px",
+          marginBottom: "10px",
+        }}
+      />
 
-          <input
-              type="text"
-              value={`Maak een correcte zin met: ${word}`}
-              onChange={(e) => setWord(e.target.value)}
-              style={{
-                  height: "35.5px",
-                  border: "0.75px solid #777777",
-                  borderRadius: "4px",
-                  paddingLeft: "10px",
-                  width: "350px",
-                  fontFamily: "Segoe UI",
-                  fontSize: "16px",
-                  marginBottom: "10px",
-                  color: "#777777",
-              }}></input>
-
+      {/* Display word instruction */}
+      <input
+        type="text"
+        value={`Maak een correcte zin met: ${word}`}
+        readOnly
+        style={{
+          height: "35.5px",
+          border: "0.75px solid #777777",
+          borderRadius: "4px",
+          paddingLeft: "10px",
+          width: "350px",
+          fontFamily: "Segoe UI",
+          fontSize: "16px",
+          marginBottom: "10px",
+          color: "#777777",
+        }}
+      />
 
       <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>
         <button
@@ -254,3 +281,4 @@ const fetchWord = async () => {
 }
 
 export default DutchLanguageSentenceTrainerModal;
+
