@@ -4,8 +4,8 @@ import { FaPlus, FaCheck, FaTimes, FaEdit } from "react-icons/fa";
 import { SlActionRedo } from "react-icons/sl";
 import { CiUndo } from "react-icons/ci";
 import { CiCircleCheck } from "react-icons/ci";
-// import 'react-tooltip/dist/react-tooltip.css';
-// import { Tooltip } from 'react-tooltip'; <-- PASOPOLO! react-tooltip het AWS Builds opgefok
+import 'react-tooltip/dist/react-tooltip.css';
+import { Tooltip } from 'react-tooltip';  // PASOPOLO! react-tooltip het AWS Builds opgefok
 
 const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
 
@@ -88,13 +88,13 @@ export default function DutchLanguageWoordenschat() {
 
     return (
         <div style={{ fontFamily: "Segoe UI, sans-serif", fontSize: "14px" }}>
-            {/* <Tooltip id="tooltip" place="left" /> */}
+            <Tooltip id="tooltip" place="left" />
             <h2 style={{ fontSize: "22px", fontWeight: "bold", marginBottom: "12px", textAlign: "right" }}>Woordenschat</h2>
 
             <div>
                 {records.map((rec) => (
-                    // <div key={rec.id} style={lineStyle} data-tooltip-id="insert" data-tooltip-content={rec.use}>
-                    <div key={rec.id} style={lineStyle}>
+                    <div key={rec.id} style={lineStyle} data-tooltip-id="insert" data-tooltip-content={rec.use}>
+                    {/* <div key={rec.id} style={lineStyle}> */}
                         {editId === rec.id ? (
                             <>
                                 Woord: <input
