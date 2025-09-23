@@ -123,27 +123,29 @@ function DutchLanguageSentenceTrainerModal() {
           border: "0.75px solid #777777",
           borderRadius: "4px",
           paddingLeft: "10px",
-          width: "350px",
+          width: "70px",
           fontFamily: "Segoe UI",
           fontSize: "16px",
           marginBottom: "10px",
+          color: "#777777",
         }}
       />
 
       {/* Display word instruction */}
       <input
         type="text"
-        value={`Maak een correcte zin met: ${word}`}
+        value={`Maak een zin met: ${word}`}
         readOnly
         style={{
           height: "35.5px",
           border: "0.75px solid #777777",
           borderRadius: "4px",
           paddingLeft: "10px",
-          width: "350px",
+          width: "250px",
           fontFamily: "Segoe UI",
           fontSize: "16px",
           marginBottom: "10px",
+          marginLeft: "8px",
           color: "#777777",
         }}
       />
