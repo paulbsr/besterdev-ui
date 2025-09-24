@@ -20,6 +20,7 @@ import DutchLanguageSentenceWords from "./DutchLanguageSentenceWords";
 import DutchLanguageWordExplain from "./DutchLanguageWordExplain";
 import { FaNewspaper } from "react-icons/fa6";
 import { BsNewspaper } from "react-icons/bs";
+import { TiWeatherPartlySunny } from "react-icons/ti";
 
 export default function DutchLanguageHomePage() {
   return (
@@ -41,7 +42,7 @@ export default function DutchLanguageHomePage() {
 
         {/* CENTRE COLUMN */}
         <div className="main">
-          <Tooltip id="insert" place="top" />
+          <Tooltip id="insert" place="bottom" />
           <img src={Image} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} />
           <div>&nbsp;&nbsp;</div>
           <div><DutchLanguageTicker /></div>
@@ -53,6 +54,7 @@ export default function DutchLanguageHomePage() {
             <a href="https://www.staatsexamensnt2.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Staatsexamens NT2" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><RiSpeakFill /></a>
             <a href="https://www.rtl.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="RTL" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><FaNewspaper /></a>
             <a href="https://nos.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NOS" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><BsNewspaper /></a>
+            <a href="https://www.knmi.nl/nederland-nu/weer/verwachtingen" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="KNMI" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "30px", marginLeft: "20px" }}><TiWeatherPartlySunny /></a>
           </div>
                     <div>&nbsp;</div>
           <div><AskAI /></div>
