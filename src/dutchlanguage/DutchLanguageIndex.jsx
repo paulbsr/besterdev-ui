@@ -2,23 +2,24 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FaPlus, FaEdit } from "react-icons/fa";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
-import { CiUndo } from "react-icons/ci";
-import { CiCircleCheck } from "react-icons/ci";
-import { Tooltip } from 'react-tooltip';
-import 'react-tooltip/dist/react-tooltip.css';
-// import { MdOutlineEdit } from "react-icons/md";
+import { CgSwap } from "react-icons/cg";
+import { IoMdSwap } from "react-icons/io";
+import { IoSwapHorizontal } from "react-icons/io5";
+import { CiUndo, CiCircleCheck } from "react-icons/ci";
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
 
-// Always use Heroku API
 const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
 
 export default function DutchLanguageIndex() {
   const [records, setRecords] = useState([]);
   const [newRow, setNewRow] = useState({ afrikaans: "", dutch: "", sample: "" });
   const [showAddRow, setShowAddRow] = useState(false);
-
-  // editing state
   const [editId, setEditId] = useState(null);
   const [editRow, setEditRow] = useState({ afrikaans: "", dutch: "", sample: "" });
+
+  // NEW: track swapped rows
+  const [swappedRows, setSwappedRows] = useState(new Set());
 
   useEffect(() => {
     fetchData();
@@ -67,6 +68,19 @@ export default function DutchLanguageIndex() {
     }
   };
 
+  // NEW: swap toggle
+  const toggleSwap = (id) => {
+    setSwappedRows((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(id)) {
+        newSet.delete(id);
+      } else {
+        newSet.add(id);
+      }
+      return newSet;
+    });
+  };
+
   const lineStyle = {
     fontFamily: "Segoe UI, sans-serif",
     fontSize: "16px",
@@ -74,17 +88,8 @@ export default function DutchLanguageIndex() {
     textAlign: "right",
   };
 
-  const afrikaansStyle = {
-    color: "#007749",
-    marginRight: "4px",
-    cursor: "pointer"
-  };
-
-  const dutchStyle = {
-    color: "#FF4F00",
-    marginLeft: "4px",
-    cursor: "pointer"
-  };
+  const afrikaansStyle = { color: "#007749", marginRight: "4px", marginLeft: "4px" };
+  const dutchStyle = { color: "#FF4F00", marginLeft: "4px", marginRight: "4px" };
 
   const inputStyle = {
     fontFamily: "Segoe UI",
@@ -96,67 +101,108 @@ export default function DutchLanguageIndex() {
     backgroundColor: "#FFFFFF",
     color: "#000000",
     marginRight: "6px",
-    // cursor: "pointer"
   };
 
   return (
     <div style={{ fontFamily: "Segoe UI, sans-serif", fontSize: "14px" }}>
-      <Tooltip id="index" place="top" />
-      <h2 style={{ fontSize: "22px", fontWeight: "bold", marginBottom: "12px", textAlign: "right" }}>
+      <Tooltip 
+      id="index" 
+      place="right-end"
+      style={{ backgroundColor: "#222", color: "#fff", borderRadius: "4px" }}
+      opacity={1.0}
+      variant="light" />
+      <h2
+        style={{
+          fontSize: "22px",
+          fontWeight: "bold",
+          marginBottom: "12px",
+          textAlign: "right",
+        }}
+      >
         Index
       </h2>
       <div>
-        {records.map((rec) => (
-          // <div key={rec.id} style={lineStyle} data-tooltip-id="insert" data-tooltip-content={rec.sample}>
-          <div key={rec.id} style={lineStyle} data-tooltip-id="index" data-tooltip-content={rec.sample}>
-            {editId === rec.id ? (
-              <>
-                <input
-                  style={{ ...inputStyle, width: "80px" }}
-                  value={editRow.afrikaans}
-                  onChange={(e) => setEditRow({ ...editRow, afrikaans: e.target.value })}
-                />
-                <input
-                  style={{ ...inputStyle, width: "100px" }}
-                  value={editRow.dutch}
-                  onChange={(e) => setEditRow({ ...editRow, dutch: e.target.value })}
-                />
-                <input
-                  style={{ ...inputStyle, width: "160px" }}
-                  value={editRow.sample}
-                  onChange={(e) => setEditRow({ ...editRow, sample: e.target.value })}
-                />
-                <CiCircleCheck
-                  size={22}
-                  color="green"
-                  style={{ cursor: "pointer", marginRight: "5px", marginTop: "5px" }}
-                  onClick={() => saveEdit(rec.id)}
-                  title="Commit"
-                />
-                <CiUndo
-                  size={22}
-                  color="#000000"
-                  style={{ cursor: "pointer" }}
-                  onClick={cancelEdit}
-                  title="Undo"
-                />
-
-              </>
-            ) : (
-              <>
-                <span style={afrikaansStyle}>{rec.afrikaans}</span>
-                <HiOutlineArrowNarrowRight />
-                <span style={dutchStyle}>{rec.dutch}</span>
-                <FaEdit
-                  size={12}
-                  color="#ddd"
-                  style={{ cursor: "pointer", marginLeft: "8px" }}
-                  onClick={() => startEdit(rec)}
-                />
-              </>
-            )}
-          </div>
-        ))}
+        {records.map((rec) => {
+          const isSwapped = swappedRows.has(rec.id);
+          return (
+            <div
+              key={rec.id}
+              style={lineStyle}
+              data-tooltip-id="index"
+              data-tooltip-content={rec.sample}
+            >
+              {editId === rec.id ? (
+                <>
+                  <input
+                    style={{ ...inputStyle, width: "80px" }}
+                    value={editRow.afrikaans}
+                    onChange={(e) =>
+                      setEditRow({ ...editRow, afrikaans: e.target.value })
+                    }
+                  />
+                  <input
+                    style={{ ...inputStyle, width: "100px" }}
+                    value={editRow.dutch}
+                    onChange={(e) =>
+                      setEditRow({ ...editRow, dutch: e.target.value })
+                    }
+                  />
+                  <input
+                    style={{ ...inputStyle, width: "160px" }}
+                    value={editRow.sample}
+                    onChange={(e) =>
+                      setEditRow({ ...editRow, sample: e.target.value })
+                    }
+                  />
+                  <CiCircleCheck
+                    size={22}
+                    color="green"
+                    style={{ cursor: "pointer", marginRight: "5px", marginTop: "5px" }}
+                    onClick={() => saveEdit(rec.id)}
+                    title="Commit"
+                  />
+                  <CiUndo
+                    size={22}
+                    color="#000000"
+                    style={{ cursor: "pointer" }}
+                    onClick={cancelEdit}
+                    title="Undo"
+                  />
+                </>
+              ) : (
+                <>
+                  {isSwapped ? (
+                    <>
+                      <span style={dutchStyle}>{rec.dutch}</span>
+                      <IoMdSwap
+                        size={15}
+                        style={{ cursor: "pointer" }}
+                        onClick={() => toggleSwap(rec.id)}
+                      />
+                      <span style={afrikaansStyle}>{rec.afrikaans}</span>
+                    </>
+                  ) : (
+                    <>
+                      <span style={afrikaansStyle}>{rec.afrikaans}</span>
+                      <IoMdSwap
+                      size={15}
+                        style={{ cursor: "pointer" }}
+                        onClick={() => toggleSwap(rec.id)}
+                      />
+                      <span style={dutchStyle}>{rec.dutch}</span>
+                    </>
+                  )}
+                  <FaEdit
+                    size={12}
+                    color="#ddd"
+                    style={{ cursor: "pointer", marginLeft: "8px" }}
+                    onClick={() => startEdit(rec)}
+                  />
+                </>
+              )}
+            </div>
+          );
+        })}
       </div>
 
       {/* Add row form */}
@@ -178,8 +224,7 @@ export default function DutchLanguageIndex() {
             value={newRow.sample}
             onChange={(e) => setNewRow({ ...newRow, sample: e.target.value })}
             placeholder="Sample"
-            style={{ ...inputStyle, width: "160px"}}
-            
+            style={{ ...inputStyle, width: "160px" }}
           />
           <CiCircleCheck
             size={22}

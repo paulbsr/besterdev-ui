@@ -147,7 +147,7 @@ function DutchLanguageSentenceTrainerModal() {
           fontFamily: "Segoe UI",
           fontSize: "16px",
           marginBottom: "10px",
-          color: "#777777",
+          color: "#000000",
           marginLeft: "8px",
         }}
       />

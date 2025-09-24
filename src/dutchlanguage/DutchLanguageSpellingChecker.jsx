@@ -33,7 +33,7 @@ export default function DutchLanguageSpellingChecker() {
         setFeedback(`✅ "${word}" is spelled correctly!`);
       } else if (output.toLowerCase().startsWith("incorrect")) {
         const suggestion = output.replace(/incorrect[:]?/i, "").trim();
-        setFeedback(`❌ Incorrect. Suggested spelling: "${suggestion}"`);
+        setFeedback(`❌ Incorrect. Correcte spelling: "${suggestion}"`);
       } else {
         setFeedback(`⚠️ Unexpected response: ${output}`);
       }
@@ -80,7 +80,7 @@ export default function DutchLanguageSpellingChecker() {
             fontFamily: "Segoe UI",
             fontSize: "16px",
             marginBottom: "10px",
-            color: "#777777"
+            color: "#000000"
           }}
         />
         <div style={{ display: "flex", gap: "2px", justifyContent: "center" }}>
