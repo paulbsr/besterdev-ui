@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FaPlus, FaEdit } from "react-icons/fa";
-import { HiOutlineArrowNarrowRight } from "react-icons/hi";
-import { CgSwap } from "react-icons/cg";
 import { IoMdSwap } from "react-icons/io";
-import { IoSwapHorizontal } from "react-icons/io5";
 import { CiUndo, CiCircleCheck } from "react-icons/ci";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
+import { PiCheckCircleFill } from "react-icons/pi";
+import { IoArrowUndoCircle } from "react-icons/io5";
+import { LiaSortAlphaDownSolid } from "react-icons/lia";
+import { LiaSortAlphaDownAltSolid } from "react-icons/lia";
 
 const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
 
@@ -88,8 +89,8 @@ export default function DutchLanguageIndex() {
     textAlign: "right",
   };
 
-  const afrikaansStyle = { color: "#007749", marginRight: "4px", marginLeft: "4px" };
-  const dutchStyle = { color: "#FF4F00", marginLeft: "4px", marginRight: "4px" };
+  const afrikaansStyle = { color: "#007749", marginRight: "4px", marginLeft: "4px", cursor: "pointer" };
+  const dutchStyle = { color: "#FF4F00", marginLeft: "4px", marginRight: "4px", cursor: "pointer" };
 
   const inputStyle = {
     fontFamily: "Segoe UI",
@@ -121,6 +122,34 @@ export default function DutchLanguageIndex() {
       >
         Index
       </h2>
+
+{/* Sorting controls */}
+<div style={{ textAlign: "right", marginBottom: "10px" }}>
+  <LiaSortAlphaDownSolid
+    size={22}
+    color="#007749"
+    style={{ cursor: "pointer", marginRight: "16px" }}
+    title="Sort by Afrikaans"
+    onClick={() =>
+      setRecords([...records].sort((a, b) =>
+        a.afrikaans.localeCompare(b.afrikaans)
+      ))
+    }
+  />
+  <LiaSortAlphaDownAltSolid
+    size={22}
+    color="#FF4F00"
+    style={{ cursor: "pointer", marginRight: "20px" }}
+    title="Sort by Dutch"
+    onClick={() =>
+      setRecords([...records].sort((a, b) =>
+        a.dutch.localeCompare(b.dutch)
+      ))
+    }
+  />
+</div>
+
+
       <div>
         {records.map((rec) => {
           const isSwapped = swappedRows.has(rec.id);
@@ -132,43 +161,49 @@ export default function DutchLanguageIndex() {
               data-tooltip-content={rec.sample}
             >
               {editId === rec.id ? (
-                <>
-                  <input
-                    style={{ ...inputStyle, width: "80px" }}
-                    value={editRow.afrikaans}
-                    onChange={(e) =>
-                      setEditRow({ ...editRow, afrikaans: e.target.value })
-                    }
-                  />
-                  <input
-                    style={{ ...inputStyle, width: "100px" }}
-                    value={editRow.dutch}
-                    onChange={(e) =>
-                      setEditRow({ ...editRow, dutch: e.target.value })
-                    }
-                  />
-                  <input
-                    style={{ ...inputStyle, width: "160px" }}
-                    value={editRow.sample}
-                    onChange={(e) =>
-                      setEditRow({ ...editRow, sample: e.target.value })
-                    }
-                  />
-                  <CiCircleCheck
-                    size={22}
-                    color="green"
-                    style={{ cursor: "pointer", marginRight: "5px", marginTop: "5px" }}
-                    onClick={() => saveEdit(rec.id)}
-                    title="Commit"
-                  />
-                  <CiUndo
-                    size={22}
-                    color="#000000"
-                    style={{ cursor: "pointer" }}
-                    onClick={cancelEdit}
-                    title="Undo"
-                  />
-                </>
+<>
+  <div style={{ display: "flex", flexDirection: "column", gap: "6px", alignItems: "flex-end" }}>
+    <input
+      style={{ ...inputStyle, width: "200px" }}
+      value={editRow.afrikaans}
+      onChange={(e) =>
+        setEditRow({ ...editRow, afrikaans: e.target.value })
+      }
+    />
+    <input
+      style={{ ...inputStyle, width: "200px" }}
+      value={editRow.dutch}
+      onChange={(e) =>
+        setEditRow({ ...editRow, dutch: e.target.value })
+      }
+    />
+    <input
+      style={{ ...inputStyle, width: "300px" }}
+      value={editRow.sample}
+      onChange={(e) =>
+        setEditRow({ ...editRow, sample: e.target.value })
+      }
+    />
+  </div>
+
+  <div style={{ marginTop: "8px" }}>
+    <PiCheckCircleFill
+      size={28}
+      color="#007749"
+      style={{ cursor: "pointer", marginRight: "5px" }}
+      onClick={() => saveEdit(rec.id)}
+      title="Commit"
+    />
+    <IoArrowUndoCircle
+      size={28}
+      color="grey"
+      style={{ cursor: "pointer", marginRight: "8px" }}
+      onClick={cancelEdit}
+      title="Revert"
+    />
+  </div>
+</>
+
               ) : (
                 <>
                   {isSwapped ? (
@@ -233,7 +268,7 @@ export default function DutchLanguageIndex() {
             onClick={addRow}
             title="Commit"
           />
-          <CiUndo
+          <IoArrowUndoCircle
             size={22}
             color="#000000"
             style={{ cursor: "pointer" }}
