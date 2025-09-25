@@ -11,7 +11,7 @@ import {
   LiaSortAlphaDownSolid,
   LiaSortAlphaDownAltSolid,
 } from "react-icons/lia";
-import { Height } from "@mui/icons-material";
+
 
 const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
 
@@ -184,7 +184,8 @@ export default function DutchLanguageIndex() {
         <LiaSortAlphaDownSolid
           size={25}
           color="#007749"
-          style={{ cursor: "pointer", marginRight: "6px" }}
+          // style={{ cursor: "pointer", marginRight: "6px", marginTop: "10px" }}
+          style={{ cursor: "pointer", marginBottom: "0px" }}
           title="Sort by Afrikaans"
           onClick={() => {
             setRecords(
@@ -208,14 +209,16 @@ export default function DutchLanguageIndex() {
             ...inputFilterStyle,
             borderColor: "#007749",
             color: "#007749",
+            marginRight: "10px",
           }}
         />
 
         {/* Dutch sort + filter */}
-        <LiaSortAlphaDownAltSolid
+        <LiaSortAlphaDownSolid
           size={25}
           color="#FF4F00"
-          style={{ cursor: "pointer", marginLeft: "20px", marginRight: "2px" }}
+          // style={{ cursor: "pointer", marginLeft: "20px", marginRight: "2px" }}
+                    style={{ cursor: "pointer" }}
           title="Sort by Dutch"
           onClick={() => {
             setRecords(
