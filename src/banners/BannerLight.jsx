@@ -10,7 +10,7 @@ import { BiLogoPostgresql, BiLogoHeroku, BiLogoGithub, BiLogoGoogle } from 'reac
 import { BsPatchQuestion, BsPeopleFill } from 'react-icons/bs';
 import { MdManageAccounts, MdTask } from 'react-icons/md';
 import { GiWindmill } from "react-icons/gi";
-import { SiOpenai } from "react-icons/si";
+import { SiOpenai, SiVault } from "react-icons/si";
 import { IoHome } from 'react-icons/io5';
 
 const iconStyle = (color, size) => ({ color, fontSize: size, cursor: 'pointer' });
@@ -44,6 +44,7 @@ const externalLinks = [
   { tooltip: 'Heroku API Backend', icon: <BiLogoHeroku style={iconStyle('#6762a6', 33)} />, href: 'https://dashboard.heroku.com/apps' },
   { tooltip: 'Google Account', icon: <BiLogoGoogle style={iconStyle('#4688F1', 33)} />, href: 'https://myaccount.google.com/' },
   { tooltip: 'Firebase Auth', icon: <SiFirebase style={iconStyle('#FFCB2B', 33)} />, href: 'https://console.firebase.google.com/project/besterdev-432e9/overview' },
+  { tooltip: 'HashiCorp Vault', icon: <SiVault style={iconStyle('#000000', 30)} />, href: 'https://portal.cloud.hashicorp.com/orgs/4603e2a7-5b9d-4f7c-ac72-4fca0378803d/projects/fa3017fe-349f-4651-972e-1a2242b0b9d9' },
   
 ];
 

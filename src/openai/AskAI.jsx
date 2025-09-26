@@ -46,41 +46,41 @@ export default function AskAI() {
     };
 
     return (
-        <div>
+        <div style={{ display: "flex", alignItems: "center" }}>
             {/* Input + AskAI button inside a form */}
-            <form onSubmit={handleAsk} style={{ display: "flex", alignItems: "center" }}>
+            <form onSubmit={handleAsk} >
                 <input
                     style={{
-                        height: "35.5px",
-                        border: "0.75px solid #777777",
-                        borderRadius: "4px",
+                        height: '40.5px',
+                        border: '0.75px solid #336791',
+                        borderRadius: '4px',
                         padding: 0,
-                        paddingLeft: "10px",
-                        width: "600px",
-                        fontFamily: "Segoe UI",
-                        fontSize: "16px",
-                        // marginLeft: "10px"
+                        paddingLeft: '10px',
+                        width: '850px',
+                        fontFamily: 'Segoe UI',
+                        fontSize: '18px'
                     }}
                     placeholder="Ask OpenAI anything..."
                     type="text"
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                 />
+
                 <button
                     type="submit"
                     style={{
-                        height: "37.5px",
-                        border: "1px solid #777777",
-                        borderRadius: "4px",
-                        backgroundColor: "#FFFFFF",
-                        color: "#000000",
-                        cursor: "pointer",
-                        fontFamily: "Segoe UI",
-                        fontSize: "16px",
-                        marginLeft: "5px",
+                        marginLeft: '7px',
+                        height: '40.5px',
+                        border: '1px solid #336791',
+                        borderRadius: '4px',
+                        backgroundColor: '#336791',
+                        color: '#FFFFFF',
+                        cursor: 'pointer',
+                        marginBottom: '15px',
+                        paddingRight: '10px',
                     }}
                     disabled={loading}
-                >AskAI
+                > Ask  AI
                 </button>
 
                 <button
@@ -88,15 +88,13 @@ export default function AskAI() {
                     onClick={handleClear}
                     disabled={loading}
                     style={{
-                        height: "37.5px",
-                        border: "1px solid #777777",
-                        borderRadius: "4px",
-                        backgroundColor: "#FFFFFF",
-                        color: "#000000",
-                        cursor: "pointer",
-                        fontFamily: "Segoe UI",
-                        fontSize: "16px",
-                        marginLeft: "5px",
+                        marginLeft: '10px',
+                        height: '40.5px',
+                        border: '1px solid #336791',
+                        borderRadius: '4px',
+                        backgroundColor: '#336791',
+                        color: '#FFFFFF',
+                        cursor: 'pointer'
                     }}
                 >Clear
                 </button>
@@ -131,7 +129,6 @@ export default function AskAI() {
                     {response}
                 </div>
             )}
-            {/* <div>&nbsp;&nbsp;</div> */}
         </div>
     );
 }

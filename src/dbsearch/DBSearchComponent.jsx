@@ -79,25 +79,52 @@ const DBSearchComponent = () => {
 
   return (
     <form onSubmit={handleSearch}>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div style={{ display: 'flex', alignItems: 'left' }}>
         <input
-          style={{ height: '40.5px', border: '0.75px solid #336791', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '900px', fontFamily: 'Segoe UI', fontSize:'18px'}}
+          style={{ 
+            height: '40.5px', 
+            border: '0.75px solid #336791', 
+            borderRadius: '4px', 
+            padding: 0,
+            paddingLeft: '10px', 
+            width: '850px', 
+            fontFamily: 'Segoe UI', 
+            fontSize:'18px'
+          }}
           placeholder="Search besterDev"
           type="text"
           value={searchQuery}
           onChange={(event) => setSearchQuery(event.target.value)}
           required
         />
+
         <button
           type="submit"
-          style={{ marginLeft: '7px', height: '40.5px', border: '1px solid #336791', borderRadius: '8px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}
+          style={{ 
+            marginLeft: '7px', 
+            height: '40.5px', 
+            border: '1px solid #336791', 
+            borderRadius: '4px', 
+            backgroundColor: '#336791', 
+            color: '#FFFFFF', 
+            cursor: 'pointer'
+          }}
         >
           Search
         </button>
+
         <button
           type="button"
           onClick={handleCancel}
-          style={{ marginLeft: '10px', height: '40.5px', border: '1px solid #336791', borderRadius: '8px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer' }}
+          style={{ 
+            marginLeft: '10px', 
+            height: '40.5px', 
+            border: '1px solid #336791', 
+            borderRadius: '4px', 
+            backgroundColor: '#336791', 
+            color: '#FFFFFF', 
+            cursor: 'pointer'
+          }}
         >
           Clear
         </button>

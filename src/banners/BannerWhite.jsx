@@ -18,8 +18,7 @@ import { TbLetterN } from "react-icons/tb";
 import { TbLetterP } from "react-icons/tb";
 import { TbLetterY } from "react-icons/tb";
 import { useNavigate } from 'react-router-dom'; 
-import { GiGalley } from "react-icons/gi";
-import { GiThink } from "react-icons/gi";
+import { GiSeedling } from "react-icons/gi";
 
 const BannerWhite = () => {
   const navigate = useNavigate();
@@ -31,7 +30,7 @@ const BannerWhite = () => {
       <div>&nbsp;</div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;
 
-      <a data-tooltip-id="insert" data-tooltip-content="Home" onClick={handleNavigateHome}><GiThink style={{color: '#C0C0C0', fontSize: '50px', cursor: 'pointer'}}/></a>
+      <a data-tooltip-id="insert" data-tooltip-content="Home" onClick={handleNavigateHome}><GiSeedling style={{color: '#C0C0C0', fontSize: '55px', cursor: 'pointer'}}/></a>
       <TbLetterB style={{color: '#336791', fontSize: '40px' }}/>
       <TbLetterE style={{color: '#336791', fontSize: '40px' }}/>
       <TbLetterS style={{color: '#336791', fontSize: '40px' }}/>
