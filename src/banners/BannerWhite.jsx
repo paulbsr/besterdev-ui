@@ -17,9 +17,9 @@ import { TbLetterG } from "react-icons/tb";
 import { TbLetterN } from "react-icons/tb";
 import { TbLetterP } from "react-icons/tb";
 import { TbLetterY } from "react-icons/tb";
-import { GiEvilBat } from "react-icons/gi";
 import { useNavigate } from 'react-router-dom'; 
-
+import { GiGalley } from "react-icons/gi";
+import { GiThink } from "react-icons/gi";
 
 const BannerWhite = () => {
   const navigate = useNavigate();
@@ -28,10 +28,10 @@ const BannerWhite = () => {
 
   return (
     <div className="banner-white">
-      <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+      <div>&nbsp;</div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;
 
-      <a data-tooltip-id="insert" data-tooltip-content="Home" onClick={handleNavigateHome}><GiEvilBat style={{color: '#D5441C', fontSize: '50px', cursor: 'pointer'}}/></a>
+      <a data-tooltip-id="insert" data-tooltip-content="Home" onClick={handleNavigateHome}><GiThink style={{color: '#C0C0C0', fontSize: '50px', cursor: 'pointer'}}/></a>
       <TbLetterB style={{color: '#336791', fontSize: '40px' }}/>
       <TbLetterE style={{color: '#336791', fontSize: '40px' }}/>
       <TbLetterS style={{color: '#336791', fontSize: '40px' }}/>
@@ -40,11 +40,7 @@ const BannerWhite = () => {
       <TbLetterR style={{color: '#336791', fontSize: '40px' }}/>
       <TbLetterD style={{color: '#D5441C', fontSize: '40px' }}/>
       <TbLetterE style={{color: '#D5441C', fontSize: '40px' }}/>
-      <TbLetterV style={{color: '#D5441C', fontSize: '40px' }}/>
-
-      &nbsp; &nbsp; &nbsp;
-      &nbsp; &nbsp; &nbsp;
-
+      <TbLetterV style={{color: '#D5441C', fontSize: '40px', marginRight: "400px" }}/>
 
       < TbLetterC style={{color: '#D5441C', fontSize: '9px' }}/>
       < TbLetterO style={{color: '#336791', fontSize: '10px' }}/>
@@ -77,12 +73,9 @@ const BannerWhite = () => {
       < TbLetterR style={{color: '#336791', fontSize: '12px' }}/>
       < TbLetterO style={{color: '#336791', fontSize: '11px' }}/>
       < TbLetterP style={{color: '#336791', fontSize: '10px' }}/>
-      < TbLetterY style={{color: '#336791', fontSize: '9px' }}/>
+      < TbLetterY style={{color: '#336791', fontSize: '9px', marginRight: "300px" }}/>
            
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            
+           
       < TbLetterC style={{color: 'C0C0C0', fontSize: '14px' }}/>
       < TbLetterU style={{color: 'C0C0C0', fontSize: '10px' }}/>
       < TbLetterR style={{color: 'C0C0C0', fontSize: '10px' }}/>

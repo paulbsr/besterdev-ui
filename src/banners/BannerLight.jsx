@@ -9,8 +9,9 @@ import { SiSpringboot, SiFirebase, SiJavascript, SiJira, SiAwsamplify } from 're
 import { BiLogoPostgresql, BiLogoHeroku, BiLogoGithub, BiLogoGoogle } from 'react-icons/bi';
 import { BsPatchQuestion, BsPeopleFill } from 'react-icons/bs';
 import { MdManageAccounts, MdTask } from 'react-icons/md';
-import { IoHome } from 'react-icons/io5';
 import { GiWindmill } from "react-icons/gi";
+import { SiOpenai } from "react-icons/si";
+import { IoHome } from 'react-icons/io5';
 
 const iconStyle = (color, size) => ({ color, fontSize: size, cursor: 'pointer' });
 
@@ -29,6 +30,7 @@ const internalLinks = [
 ];
 
 const externalLinks = [
+  { tooltip: 'OpenAI API', icon: <SiOpenai style={iconStyle('#10A37F', 31)} />, href: 'https://platform.openai.com/api-keys' },
   { tooltip: 'Jira', icon: <SiJira style={iconStyle('#336791', 26)} />, href: 'https://besterdev.atlassian.net/jira/your-work' },
   { tooltip: 'Confluence', icon: <FaConfluence style={iconStyle('#336791', 26)} />, href: 'https://besterdev.atlassian.net/wiki/home' },
   { tooltip: 'ReactJS v18.2.0', icon: <FaReact style={iconStyle('#61dafb', 35)} />, href: 'https://www.reactjs.com' },
@@ -42,6 +44,7 @@ const externalLinks = [
   { tooltip: 'Heroku API Backend', icon: <BiLogoHeroku style={iconStyle('#6762a6', 33)} />, href: 'https://dashboard.heroku.com/apps' },
   { tooltip: 'Google Account', icon: <BiLogoGoogle style={iconStyle('#4688F1', 33)} />, href: 'https://myaccount.google.com/' },
   { tooltip: 'Firebase Auth', icon: <SiFirebase style={iconStyle('#FFCB2B', 33)} />, href: 'https://console.firebase.google.com/project/besterdev-432e9/overview' },
+  
 ];
 
 const BannerLight = () => {
@@ -63,8 +66,7 @@ const BannerLight = () => {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <GiRapidshareArrow style={iconStyle('#336791', 28)} />
         <span style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#336791' }}>Breaking News is about:</span>
-        <i style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#D5441C' }}>{searchPhrase}</i>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <i style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#D5441C', marginRight: "100px" }}>{searchPhrase}</i>
       </div>
 
       {internalLinks.map(({ tooltip, icon, path }, idx) => (
