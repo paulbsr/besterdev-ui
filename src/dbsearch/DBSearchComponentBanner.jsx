@@ -96,15 +96,15 @@ const DBSearchComponentBanner = () => {
 
       <button
         type="submit"
-        style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #ccc', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#336791', cursor: 'pointer' }}
-      >Search
+        style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #000000', borderRadius: '5px', backgroundColor: '#ffffff', color: '#000000', cursor: 'pointer' }}>
+      Search
       </button>
 
       <button
         type="button"
         onClick={handleCancel}
-        style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #ccc', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#336791', cursor: 'pointer' }}
-      >Clear
+        style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #000000', borderRadius: '5px', backgroundColor: '#ffffff', color: '#000000', cursor: 'pointer' }}>
+      Clear
       </button>
       
       <div>&nbsp;&nbsp;</div>

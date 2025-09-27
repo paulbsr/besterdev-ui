@@ -21,7 +21,7 @@ export default function CombinedCreateFP() {
   const current = new Date();
   const [isExpandedBearerToken, setExpandedBearerToken] = useState(false);
   const [isExpandedCyclopedia, setExpandedCyclopedia] = useState(false);
-  const {websiterootdata, setRefreshWebsiterootdata} = useWebsiteApi();
+  const { websiterootdata, setRefreshWebsiterootdata } = useWebsiteApi();
   const [isExpandedWebSocket, setExpandedWebSocket] = useState(false);
   const [isExpandedWebsite, setExpandedWebsite] = useState(false);
   const [isExpandedSearch, setExpandedSearch] = useState(false);
@@ -29,7 +29,7 @@ export default function CombinedCreateFP() {
   const [taskrequirement, setTaskrequirement] = useState("");
   const [tasktargetdate, setTasktargetdate] = useState(null);
   const [isExpandedTask, setExpandedTask] = useState(false);
-  const {setRefreshCyclopediarootdata} = useCyclopediaApi();
+  const { setRefreshCyclopediarootdata } = useCyclopediaApi();
   const [cyclopediaName, setCyclopediaName] = useState('');
   const [cyclopediaDesc, setCyclopediaDesc] = useState('');
   const [projecthandle, setProjecthandle] = useState("");
@@ -139,7 +139,6 @@ export default function CombinedCreateFP() {
 
     <div className='Font-Segoe-Small'>
       <div>&nbsp;</div>
-      {/* <table style={{ width: '100%', tableLayout: 'fixed' }}> */}
       <table>
         <tbody>
           <tr style={{ height: '20px' }}>
@@ -152,24 +151,31 @@ export default function CombinedCreateFP() {
               backgroundColor: '#f7f4f3',
               width: '50%',
               boxShadow: '10px 10px 10px rgba(0,0,0,0.2)',
-              fontFamily: 'Verdana',
+              fontFamily: 'Segoe UI',
+              fontSize: '16px'
             }}>
               <div>&nbsp;</div>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
 
                 <span onClick={() => setExpandedCyclopedia(!isExpandedCyclopedia)}>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  Add <GiHummingbird style={{ color: '#4D4D4D', fontSize: '20px' }} />
-                  <GiGiftOfKnowledge style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} /> to Cyclopedia</span>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  Add<GiHummingbird style={{ color: '#4D4D4D', fontSize: '20px', marginLeft: '4px', marginRight: '4px' }} />
+                  to<GiGiftOfKnowledge style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer', marginLeft: '4px', marginRight: '4px' }} />
+                  Cyclopedia
+                </span>
 
                 <span onClick={() => setExpandedWebsite(!isExpandedWebsite)}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  Add <GiHummingbird style={{ color: '#4D4D4D', fontSize: '20px' }} />
-                  <GiSpiderWeb style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} /> a Website</span>
+                  Add<GiHummingbird style={{ color: '#4D4D4D', fontSize: '20px', marginLeft: '2px', marginRight: '2px' }} />
+                  a<GiSpiderWeb style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer', marginLeft: '4px', marginRight: '4px' }} />
+                  Website
+                </span>
 
                 <span onClick={() => setExpandedTask(!isExpandedTask)}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  Add <GiHummingbird style={{ color: '#4D4D4D', fontSize: '20px' }} />
-                  <MdTask style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} /> a Task</span>
+                  Add <GiHummingbird style={{ color: '#4D4D4D', fontSize: '20px', marginLeft: '2px' }} />
+                  a<MdTask style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} />
+                  Task
+                </span>
 
                 <span onClick={() => setExpandedBearerToken(!isExpandedBearerToken)}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <TbBrandOauth style={{ color: '#4D4D4D', fontSize: '19px', cursor: 'pointer' }} /> OAuth2.0</span>
@@ -185,51 +191,74 @@ export default function CombinedCreateFP() {
 
               {isExpandedCyclopedia && (
                 <form onSubmit={handleSubmitCyclopedia}>
-                  <div>&nbsp;</div>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  Cyclopedia:&nbsp;&nbsp;
                   <input
-                    style={{ height: '22.5px', border: '1.25px solid #ccc', borderRadius: '4px', paddingLeft: '4px', width: '300px' }}
-                    placeholder="Required"
+                    style={{
+                      fontFamily: 'Segoe UI',
+                      height: '28.5px',
+                      border: '1.25px solid #336791',
+                      borderRadius: '4px',
+                      paddingLeft: '4px',
+                      width: '300px',
+                      marginLeft: '50px',
+                    }}
+                    placeholder="Cyclopedia Name (required)"
                     type="text"
                     value={cyclopediaName}
                     onChange={(e) => setCyclopediaName(e.target.value)}
                     required
                   />
 
-                  {/* <div>&nbsp;</div> */}
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  URL:&nbsp;&nbsp;
-
                   <input
-                    style={{ height: '22.5px', border: '1.25px solid #ccc', borderRadius: '4px', paddingLeft: '4px', width: '459px' }}
+                    style={{
+                      fontFamily: 'Segoe UI',
+                      height: '28.5px',
+                      border: '1.25px solid #336791',
+                      borderRadius: '4px',
+                      paddingLeft: '4px',
+                      width: '459px',
+                      marginLeft: '20px'
+                    }}
+                    placeholder="URL (optional)"
                     type="text"
                     value={cyclopediaUrl}
                     onChange={(e) => setCyclopediaUrl(e.target.value)}
                   />
 
+                  <button
+                    className="Font-Verdana-Small-Postgres"
+                    type="submit"
+                    style={{
+                      marginLeft: '10px',
+                      height: '28.5px',
+                      border: '1px solid #336791',
+                      borderRadius: '4px',
+                      backgroundColor: '#ffffff',
+                      color: '#336791',
+                      cursor: 'pointer',
+                      marginLeft: '20px'
+                    }}>
+                    Memorialize
+                  </button>
 
                   <div>&nbsp;</div>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  Description:&nbsp;
+
                   <textarea
-                    style={{ fontFamily: 'Verdana', height: '22.5px', border: '1.25px solid #ccc', borderRadius: '4px', paddingLeft: '2px', width: '840px' }}
-                    placeholder="Required"
+                    style={{
+                      fontFamily: 'Segoe UI',
+                      height: '28.5px',
+                      border: '1.25px solid #336791',
+                      borderRadius: '4px',
+                      paddingLeft: '4px',
+                      width: '900px',
+                      marginLeft: '50px',
+                      marginBottom: '20px'
+                    }}
+                    placeholder="Description (required)"
+                    type="text"
                     value={cyclopediaDesc}
                     onChange={(e) => setCyclopediaDesc(e.target.value)}
                     required
                   />
-
-                  <div>&nbsp;</div>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                  <button
-                    className="Font-Verdana-Small-Postgres"
-                    type="submit"
-                    style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #000000', borderRadius: '5px', backgroundColor: '#ffffff', color: '#000000', cursor: 'pointer' }}>
-                    Memorialize
-                  </button>
-                  <div>&nbsp;</div>
                 </form>
 
               )
@@ -237,11 +266,10 @@ export default function CombinedCreateFP() {
 
               {isExpandedWebsite && (
                 <form onSubmit={handleSubmitWebsite}>
-                  <div>&nbsp;</div>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   Website:&nbsp;&nbsp;&nbsp;
                   <input
-                    style={{ height: '22.5px', border: '1.25px solid #ccc', borderRadius: '4px', paddingLeft: '4px', width: '343px' }}
+                    style={{ height: '28.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '343px' }}
                     placeholder="Required"
                     type="text"
                     value={websiteName}
@@ -249,11 +277,10 @@ export default function CombinedCreateFP() {
                     required
                   />
 
-                  {/* <div>&nbsp;</div> */}
                   &nbsp;&nbsp;&nbsp;&nbsp;
                   URL:&nbsp;&nbsp;
                   <input
-                    style={{ height: '22.5px', border: '1.25px solid #ccc', borderRadius: '4px', paddingLeft: '4px', width: '450px' }}
+                    style={{ height: '28.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '450px' }}
                     placeholder="Required"
                     type="text"
                     value={websiteUrl}
@@ -276,8 +303,8 @@ export default function CombinedCreateFP() {
                     id="dropdown"
                     required
                     style={{
-                      height: '27.5px',
-                      border: '1.25px solid #ccc',
+                      height: '28.5px',
+                      border: '1.25px solid #336791',
                       borderRadius: '4px',
                       padding: 0,
                       paddingLeft: '5px',
@@ -296,12 +323,20 @@ export default function CombinedCreateFP() {
                         ))}
                   </select>
 
-                  {/* <div>&nbsp;</div> */}
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
                   <button
                     className="Font-Verdana-Small-Postgres"
                     type="submit"
-                    style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #ccc', borderRadius: '5px', backgroundColor: '#ccc', color: '#FFFFFF', cursor: 'pointer' }}>
+                    style={{ 
+                      marginLeft: '10px', 
+                      height: '28.5px', 
+                      border: '1px solid #336791', 
+                      borderRadius: '5px', 
+                      backgroundColor: '#ffffff', 
+                      color: '#336791', 
+                      cursor: 'pointer'
+                    }}>
                     Memorialize
                   </button>
                   <div>&nbsp;</div>
@@ -362,7 +397,7 @@ export default function CombinedCreateFP() {
                         <button
                           className="Font-Segoe-Small"
                           type="submit"
-                          style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #ccc', borderRadius: '5px', backgroundColor: '#ccc', color: '#FFFFFF', cursor: 'pointer' }}>
+                          style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #000000', borderRadius: '5px', backgroundColor: '#ffffff', color: '#000000', cursor: 'pointer' }}>
                           Memorialize
                         </button>
                         <div>&nbsp;</div>
