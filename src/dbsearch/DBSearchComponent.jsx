@@ -101,7 +101,7 @@ const DBSearchComponent = () => {
         <button
           type="submit"
           style={{ 
-            marginLeft: '7px', 
+            marginLeft: '10px', 
             height: '40.5px', 
             border: '1px solid #336791', 
             borderRadius: '4px', 

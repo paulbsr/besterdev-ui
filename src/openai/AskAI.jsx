@@ -46,7 +46,7 @@ export default function AskAI() {
     };
 
     return (
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div style={{ display: "flex", alignItems: "left" }}>
             {/* Input + AskAI button inside a form */}
             <form onSubmit={handleAsk} >
                 <input
@@ -58,7 +58,8 @@ export default function AskAI() {
                         paddingLeft: '10px',
                         width: '850px',
                         fontFamily: 'Segoe UI',
-                        fontSize: '18px'
+                        fontSize: '18px',
+                        marginBottom: '10px'
                     }}
                     placeholder="Ask OpenAI anything..."
                     type="text"
@@ -69,14 +70,13 @@ export default function AskAI() {
                 <button
                     type="submit"
                     style={{
-                        marginLeft: '7px',
+                        marginLeft: '10px',
                         height: '40.5px',
                         border: '1px solid #336791',
                         borderRadius: '4px',
                         backgroundColor: '#336791',
                         color: '#FFFFFF',
                         cursor: 'pointer',
-                        marginBottom: '15px',
                         paddingRight: '10px',
                     }}
                     disabled={loading}
@@ -98,8 +98,6 @@ export default function AskAI() {
                     }}
                 >Clear
                 </button>
-
-
             </form>
 
             {/* Response BELOW input/buttons */}
