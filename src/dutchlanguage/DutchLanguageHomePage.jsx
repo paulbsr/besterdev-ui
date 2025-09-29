@@ -84,7 +84,7 @@ export default function DutchLanguageHomePage() {
           <DutchLanguageSpellingChecker />
           <DutchLanguageWordExplain />          
           <div>&nbsp;&nbsp;</div>
-          <DutchLanguageExamSchrijvenInput/>
+          {/* <DutchLanguageExamSchrijvenInput/> */}
           <div>&nbsp;&nbsp;</div>
                     <div>&nbsp;&nbsp;</div>
                               <div>&nbsp;&nbsp;</div>

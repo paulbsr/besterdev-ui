@@ -124,10 +124,9 @@ export default function DutchLanguageExamSchrijvenInput(props) {
     }}>
       <Tooltip id="insert" />
       <div onClick={toggleAccordion} style={{ cursor: "pointer" }}>
-        <a data-tooltip-id="insert" data-tooltip-content="Add Exam Question">
-          <GiHummingbird style={{ color: "#336791", fontSize: "25px" }} />
-          {/* <b style={{ marginLeft: 8, fontFamily: "Segoe UI", fontSize: "18px" }}>Add NT2 Schrijven Exam Question</b> */}
-          <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>Add NT2 Schrijven Exam Question)</h2>
+        <a>
+          {/* <GiHummingbird style={{ color: "#336791", fontSize: "25px" }} /> */}
+          <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>Add NT2 Schrijven Exam Question</h2>
         </a>
       </div>
 
@@ -136,84 +135,60 @@ export default function DutchLanguageExamSchrijvenInput(props) {
           <form onSubmit={handleSubmit}>
 
             {/* <div className="Font-Segoe-Large-Howto" style={{ marginTop: 8, display: "flex", gap: 8, flexWrap: "wrap" }}> */}
-            <div>
-              Exam Year:&nbsp;
+            <div style={{ marginTop: 8, display: "flex", gap: 8, flexWrap: "wrap" }}>
               <input
-                style={{ ...baseInputStyle, width: "100px", height: "28.5px" }}
-                type="number"
+                style={{ ...baseInputStyle, width: "100px", height: "28.5px", padding: "2px 8px" }}
+                type="text"
                 value={examYear}
-                onChange={(e) => setExamYear(Number(e.target.value))}
+                placeholder="Exam Year"
+                onChange={(e) => setExamYear(e.target.value)}
                 required
               />
-            </div>
 
 
-
-
-            {/* Question Number:&nbsp;
               <input
-                style={{ ...baseInputStyle, width: "600px", height: "28.5px" }}
-                type="number"
+                style={{ ...baseInputStyle, width: "100px", height: "28.5px", padding: "2px 8px" }}
                 value={questionNumber}
+                placeholder="Q Number"
                 onChange={(e) => setQuestionNumber(Number(e.target.value))}
                 required
-              /> */}
+              />
 
-
-
-            {/* Question Name:&nbsp;
               <input
-                style={{ ...baseInputStyle, width: "600px", height: "28.5px" }}
+                style={{ ...baseInputStyle, width: "595px", height: "28.5px", padding: "2px 8px" }}
                 type="text"
                 value={questionName}
+                placeholder="Question Name"
                 onChange={(e) => setQuestionName(e.target.value)}
                 required
-              /> */}
+              />
 
-
-            <div>
               <div>
-                Question Number:&nbsp;
-                <select
-                  style={{ ...baseInputStyle, width: "100px", height: "28.5px", marginTop: "20px" }}
-                  value={questionNumber}
-                  onChange={(e) => setQuestionNumber(Number(e.target.value))}
+                <input
+                  style={{
+                    ...baseInputStyle,
+                    width: "850px",
+                    height: "28.5px",
+                    padding: "2px 8px",     // 👈 adds space inside
+                    // whiteSpace: "pre-wrap",
+                    // resize: "vertical",
+                    marginTop: "10px"
+                  }}
+                  placeholder="Question Instruction"
+                  value={questionInstruction}
+                  onChange={(e) => setQuestionInstruction(e.target.value)}
                   required
-                >
-                  {Array.from({ length: 10 }, (_, i) => i + 1).map((num) => (
-                    <option key={num} value={num}>
-                      {num}
-                    </option>
-                  ))}
-                </select>
+                />
               </div>
 
-<div>
-              Question Instruction:&nbsp;
-              <textarea
-                style={{
-                  ...baseInputStyle,
-                  width: "600px",
-                  height: "60px",
-                  padding: "6px 8px",     // 👈 adds space inside
-                  whiteSpace: "pre-wrap",
-                  resize: "vertical",
-                  marginTop: "20px"
-                }}
-                value={questionInstruction}
-                onChange={(e) => setQuestionInstruction(e.target.value)}
-                required
-              />
+              <div>
+                <textarea
+                  style={{ ...baseInputStyle, width: "850px", height: "100px", padding: "2px 8px", whiteSpace: "pre-wrap", resize: "vertical", marginTop: "10px" }}
+                  value={questionVerbiage}
+                  onChange={(e) => setQuestionVerbiage(e.target.value)}
+                  placeholder="Question Verbiage"
+                />
               </div>
-
-<div>
-              Verbiage:&nbsp;
-              <textarea
-                style={{ ...baseInputStyle, width: "600px", height: "60px", padding: "6px 8px", whiteSpace: "pre-wrap", resize: "vertical", marginTop: "20px" }}
-                value={questionVerbiage}
-                onChange={(e) => setQuestionVerbiage(e.target.value)}
-              />
-</div>
               {/* Student Response:&nbsp;
               <textarea
                 style={{ ...baseInputStyle, width: "600px", height: "60px" }}
@@ -270,7 +245,7 @@ export default function DutchLanguageExamSchrijvenInput(props) {
               </div>
             </div> */}
 
-            <div style={{ height: 8 }} />
+            {/* <div style={{ height: 8 }} /> */}
 
             {/* <div>
               <h4>Punten</h4>
@@ -325,15 +300,27 @@ export default function DutchLanguageExamSchrijvenInput(props) {
             <button
               className="Font-Segoe-Large-Howto"
               type="submit"
+              // style={{
+              //   marginLeft: "10px",
+              //   height: "34px",
+              //   border: "1px solid #D5441C",
+              //   borderRadius: "5px",
+              //   backgroundColor: "#D5441C",
+              //   color: "#FFFFFF",
+              //   cursor: "pointer",
+              //   padding: "0 12px",
+              // }}
               style={{
-                marginLeft: "10px",
-                height: "34px",
-                border: "1px solid #D5441C",
-                borderRadius: "5px",
-                backgroundColor: "#D5441C",
-                color: "#FFFFFF",
+                height: "35.5px",
+                border: "1px solid #777777",
+                borderRadius: "4px",
+                backgroundColor: "#FFFFFF",
+                color: "#000000",
                 cursor: "pointer",
-                padding: "0 12px",
+                fontFamily: "Segoe UI",
+                fontSize: "16px",
+                padding: "2px 8px",
+                // marginTop: "10px"
               }}
             >
               Save Exam Question
