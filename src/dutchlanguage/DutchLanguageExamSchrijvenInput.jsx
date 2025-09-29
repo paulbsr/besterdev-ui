@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../Fonts.css";
-import spacer from "../graphix/besterdev_spacer_white.png";
-import spacer2 from "../graphix/besterdev_spacer_white_half.png";
 import { GiHummingbird } from "react-icons/gi";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
@@ -128,7 +126,8 @@ export default function DutchLanguageExamSchrijvenInput(props) {
       <div onClick={toggleAccordion} style={{ cursor: "pointer" }}>
         <a data-tooltip-id="insert" data-tooltip-content="Add Exam Question">
           <GiHummingbird style={{ color: "#336791", fontSize: "25px" }} />
-          <b style={{ marginLeft: 8 }}>Add NT2 Schrijven Exam Question</b>
+          {/* <b style={{ marginLeft: 8, fontFamily: "Segoe UI", fontSize: "18px" }}>Add NT2 Schrijven Exam Question</b> */}
+          <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>Add NT2 Schrijven Exam Question)</h2>
         </a>
       </div>
 
@@ -136,20 +135,22 @@ export default function DutchLanguageExamSchrijvenInput(props) {
         <div style={{ marginTop: 8 }}>
           <form onSubmit={handleSubmit}>
 
-            <div className="Font-Segoe-Large-Howto" style={{ marginTop: 8, display: "flex", gap: 8, flexWrap: "wrap" }}>
-
+            {/* <div className="Font-Segoe-Large-Howto" style={{ marginTop: 8, display: "flex", gap: 8, flexWrap: "wrap" }}> */}
+            <div>
               Exam Year:&nbsp;
               <input
-                style={{ ...baseInputStyle, width: "600px", height: "28.5px" }}
+                style={{ ...baseInputStyle, width: "100px", height: "28.5px" }}
                 type="number"
                 value={examYear}
                 onChange={(e) => setExamYear(Number(e.target.value))}
                 required
               />
+            </div>
 
 
 
-              {/* Question Number:&nbsp;
+
+            {/* Question Number:&nbsp;
               <input
                 style={{ ...baseInputStyle, width: "600px", height: "28.5px" }}
                 type="number"
@@ -160,7 +161,7 @@ export default function DutchLanguageExamSchrijvenInput(props) {
 
 
 
-              {/* Question Name:&nbsp;
+            {/* Question Name:&nbsp;
               <input
                 style={{ ...baseInputStyle, width: "600px", height: "28.5px" }}
                 type="text"
@@ -169,20 +170,25 @@ export default function DutchLanguageExamSchrijvenInput(props) {
                 required
               /> */}
 
-              Question Number:&nbsp;
-              <select
-                style={{ ...baseInputStyle, width: "600px", height: "28.5px" }}
-                value={questionNumber}
-                onChange={(e) => setQuestionNumber(Number(e.target.value))}
-                required
-              >
-                {Array.from({ length: 10 }, (_, i) => i + 1).map((num) => (
-                  <option key={num} value={num}>
-                    {num}
-                  </option>
-                ))}
-              </select>
 
+            <div>
+              <div>
+                Question Number:&nbsp;
+                <select
+                  style={{ ...baseInputStyle, width: "100px", height: "28.5px", marginTop: "20px" }}
+                  value={questionNumber}
+                  onChange={(e) => setQuestionNumber(Number(e.target.value))}
+                  required
+                >
+                  {Array.from({ length: 10 }, (_, i) => i + 1).map((num) => (
+                    <option key={num} value={num}>
+                      {num}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+<div>
               Question Instruction:&nbsp;
               <textarea
                 style={{
@@ -191,20 +197,23 @@ export default function DutchLanguageExamSchrijvenInput(props) {
                   height: "60px",
                   padding: "6px 8px",     // 👈 adds space inside
                   whiteSpace: "pre-wrap",
-                  resize: "vertical"
+                  resize: "vertical",
+                  marginTop: "20px"
                 }}
                 value={questionInstruction}
                 onChange={(e) => setQuestionInstruction(e.target.value)}
                 required
               />
+              </div>
 
+<div>
               Verbiage:&nbsp;
               <textarea
-                style={{ ...baseInputStyle, width: "600px", height: "60px", padding: "6px 8px", whiteSpace: "pre-wrap", resize: "vertical" }}
+                style={{ ...baseInputStyle, width: "600px", height: "60px", padding: "6px 8px", whiteSpace: "pre-wrap", resize: "vertical", marginTop: "20px" }}
                 value={questionVerbiage}
                 onChange={(e) => setQuestionVerbiage(e.target.value)}
               />
-
+</div>
               {/* Student Response:&nbsp;
               <textarea
                 style={{ ...baseInputStyle, width: "600px", height: "60px" }}
