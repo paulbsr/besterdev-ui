@@ -22,6 +22,7 @@ import { FaNewspaper } from "react-icons/fa6";
 import { BsNewspaper } from "react-icons/bs";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { TiWeatherDownpour } from "react-icons/ti";
+import DutchLanguageExamSchrijvenInput from "./DutchLanguageExamSchrijvenInput";
 
 export default function DutchLanguageHomePage() {
   return (
@@ -72,6 +73,8 @@ export default function DutchLanguageHomePage() {
           <div><DutchLanguageTranslator /></div>
           <div>&nbsp;&nbsp;</div>
           <div><DutchLanguageChallengeTranslate /></div>
+          <div>&nbsp;&nbsp;</div>
+          <div><DutchLanguageExamSchrijvenInput/></div>
         </div>
 
 
@@ -79,8 +82,12 @@ export default function DutchLanguageHomePage() {
         <div className="spacer"></div>
         <div className="right">
           <DutchLanguageSpellingChecker />
-          <DutchLanguageWordExplain />
-
+          <DutchLanguageWordExplain />          
+          <div>&nbsp;&nbsp;</div>
+          <DutchLanguageExamSchrijvenInput/>
+          <div>&nbsp;&nbsp;</div>
+                    <div>&nbsp;&nbsp;</div>
+                              <div>&nbsp;&nbsp;</div>
           <p className="line underline">Pronouns (Voornaamwoorden):</p>
           <p className="line"><i>ik, jij, hij, zij, wij, jullie, zij</i></p>
 
