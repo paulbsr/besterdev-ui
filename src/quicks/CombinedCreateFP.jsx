@@ -266,31 +266,55 @@ export default function CombinedCreateFP() {
 
               {isExpandedWebsite && (
                 <form onSubmit={handleSubmitWebsite}>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  Website:&nbsp;&nbsp;&nbsp;
                   <input
-                    style={{ height: '28.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '343px' }}
-                    placeholder="Required"
+                    style={{
+                      fontFamily: 'Segoe UI',
+                      height: '28.5px',
+                      border: '1.25px solid #336791',
+                      borderRadius: '4px',
+                      paddingLeft: '4px',
+                      width: '300px',
+                      marginLeft: '50px',
+                    }}
+                    placeholder="Website (required)"
                     type="text"
                     value={websiteName}
                     onChange={(e) => setWebsiteName(e.target.value)}
                     required
                   />
 
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  URL:&nbsp;&nbsp;
                   <input
-                    style={{ height: '28.5px', border: '1.25px solid #336791', borderRadius: '4px', paddingLeft: '4px', width: '450px' }}
-                    placeholder="Required"
+                    style={{
+                      fontFamily: 'Segoe UI',
+                      height: '28.5px',
+                      border: '1.25px solid #336791',
+                      borderRadius: '4px',
+                      paddingLeft: '4px',
+                      width: '459px',
+                      marginLeft: '20px'
+                    }}
+                    placeholder="URL (optional)"
                     type="text"
                     value={websiteUrl}
                     onChange={(e) => setWebsiteUrl(e.target.value)}
                     required
                   />
 
-                  <div>&nbsp;</div>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  Category:&nbsp;&nbsp;
+                  <button
+                    className="Font-Verdana-Small-Postgres"
+                    type="submit"
+                    style={{
+                      marginLeft: '10px',
+                      height: '28.5px',
+                      border: '1px solid #336791',
+                      borderRadius: '4px',
+                      backgroundColor: '#ffffff',
+                      color: '#336791',
+                      cursor: 'pointer',
+                      marginLeft: '20px'
+                    }}>
+                    Memorialize
+                  </button>
 
                   <select
                     className='Font-Verdana-QuickAdd'
@@ -308,7 +332,10 @@ export default function CombinedCreateFP() {
                       borderRadius: '4px',
                       padding: 0,
                       paddingLeft: '5px',
-                      width: '295px',
+                      width: '310px',
+                      marginLeft: '50px',
+                      marginTop: '20px',
+                      marginBottom: '20px'
                     }}
                   >
                     <option value="" disabled selected hidden>Required</option>
@@ -323,23 +350,7 @@ export default function CombinedCreateFP() {
                         ))}
                   </select>
 
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                  <button
-                    className="Font-Verdana-Small-Postgres"
-                    type="submit"
-                    style={{ 
-                      marginLeft: '10px', 
-                      height: '28.5px', 
-                      border: '1px solid #336791', 
-                      borderRadius: '5px', 
-                      backgroundColor: '#ffffff', 
-                      color: '#336791', 
-                      cursor: 'pointer'
-                    }}>
-                    Memorialize
-                  </button>
-                  <div>&nbsp;</div>
                 </form>
               )
               }
@@ -356,10 +367,21 @@ export default function CombinedCreateFP() {
                 <div>
                   <div>
                     <form onSubmit={handleSubmitTask}>
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      Module:&nbsp;&nbsp;
+
                       <select
-                        style={{ height: '22.5px', border: '1.25px solid #ccc', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '250px' }} placeholder="Domain" id="dropdown" onChange={dropdownChange} >
+                        style={{
+                          height: '28.5px',
+                          border: '1.25px solid #336791',
+                          borderRadius: '4px',
+                          padding: 0,
+                          paddingLeft: '5px',
+                          width: '310px',
+                          marginLeft: '50px',
+                          marginBottom: '20px'
+                        }} placeholder="Domain"
+                        id="dropdown"
+                        onChange={dropdownChange}>
+
                         <option disabled selected value="Domain">Module</option>
                         <option value="113092" data-value2="NetworkSecurity">NetworkSecurity</option>
                         <option value="14718" data-value2="EnterpriseSecurity">EnterpriseSecurity</option>
@@ -369,20 +391,56 @@ export default function CombinedCreateFP() {
                         <option value="188118" data-value2="UserStory">UserStory</option>
                       </select>
 
+                      <input
+                        style={{
+                          fontFamily: 'Segoe UI',
+                          height: '28.5px',
+                          border: '1.25px solid #336791',
+                          borderRadius: '4px',
+                          paddingLeft: '4px',
+                          width: '459px',
+                          marginLeft: '20px',
+                        }}
+                        placeholder="Task Name"
+                        type="text"
+                        value={taskname}
+                        onChange={(event) => setTaskname(event.target.value)}
+                        required
+                      />
 
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      Task Name:&nbsp;&nbsp;
-                      <input style={{ height: '22.5px', border: '1.25px solid #ccc', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '530px' }} placeholder="Required" type="text" onChange={(event) => setTaskname(event.target.value)} required />
-
+                      <button
+                        className="Font-Verdana-Small-Postgres"
+                        type="submit"
+                        style={{
+                          marginLeft: '10px',
+                          height: '28.5px',
+                          border: '1px solid #336791',
+                          borderRadius: '4px',
+                          backgroundColor: '#ffffff',
+                          color: '#336791',
+                          cursor: 'pointer',
+                          marginLeft: '20px'
+                        }}>
+                        Memorialize
+                      </button>
 
                       <div>
-                        <div>&nbsp;</div>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        Description:&nbsp;&nbsp;
-                        <input style={{ height: '22.5px', border: '1.25px solid #ccc', borderRadius: '4px', padding: 0, paddingLeft: '4px', width: '500px' }} type="text" onChange={(event) => setTaskrequirement(event.target.value)} />
+                        <input style={{
+                          fontFamily: 'Segoe UI',
+                          height: '28.5px',
+                          border: '1.25px solid #336791',
+                          borderRadius: '4px',
+                          paddingLeft: '4px',
+                          width: '459px',
+                          marginLeft: '50px',
+                          marginBottom: '20px'
+                        }}
+                          placeholder="Task Description"
+                          type="text"
+                          onChange={(event) => setTaskrequirement(event.target.value)}
+                        />
 
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        Target:&nbsp;&nbsp;
 
                         <DatePicker
                           selected={tasktargetdate}
@@ -390,18 +448,9 @@ export default function CombinedCreateFP() {
                           dateFormat="yyyy.MM.dd"
                           minDate={new Date()}
                           placeholderText="Target Date"
-                          style={{ height: '22.5px', border: '1.25px solid #ccc', borderRadius: '7px' }}
                         />
-
-                        &nbsp;&nbsp;&nbsp;
-                        <button
-                          className="Font-Segoe-Small"
-                          type="submit"
-                          style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #000000', borderRadius: '5px', backgroundColor: '#ffffff', color: '#000000', cursor: 'pointer' }}>
-                          Memorialize
-                        </button>
-                        <div>&nbsp;</div>
                       </div>
+
                     </form>
                   </div>
                 </div>
