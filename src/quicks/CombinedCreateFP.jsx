@@ -218,7 +218,7 @@ export default function CombinedCreateFP() {
                       width: '459px',
                       marginLeft: '20px'
                     }}
-                    placeholder="URL (optional)"
+                    placeholder="Cyclopedia URL (optional)"
                     type="text"
                     value={cyclopediaUrl}
                     onChange={(e) => setCyclopediaUrl(e.target.value)}
@@ -253,14 +253,13 @@ export default function CombinedCreateFP() {
                       marginLeft: '50px',
                       marginBottom: '20px'
                     }}
-                    placeholder="Description (required)"
+                    placeholder="Cyclopedia Description (required)"
                     type="text"
                     value={cyclopediaDesc}
                     onChange={(e) => setCyclopediaDesc(e.target.value)}
                     required
                   />
                 </form>
-
               )
               }
 
@@ -293,7 +292,7 @@ export default function CombinedCreateFP() {
                       width: '459px',
                       marginLeft: '20px'
                     }}
-                    placeholder="URL (optional)"
+                    placeholder="Website URL (optional)"
                     type="text"
                     value={websiteUrl}
                     onChange={(e) => setWebsiteUrl(e.target.value)}
@@ -338,7 +337,7 @@ export default function CombinedCreateFP() {
                       marginBottom: '20px'
                     }}
                   >
-                    <option value="" disabled selected hidden>Required</option>
+                    <option value="" disabled selected hidden>Catagory</option>
                     {websiterootdata &&
                       Array.from(new Set(websiterootdata.map(option => option.websiteCat)))
                         .sort()

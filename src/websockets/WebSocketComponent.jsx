@@ -57,17 +57,22 @@ const WebSocketComponent = () => {
     <div onClick={handleClick} style={{ cursor: "pointer" }}>
       <div
         style={{
-          marginLeft: "23px",
+          marginLeft: "50px",
+          height: '28.5px',
           display: "inline-block",
-          border: "1px solid #ccc",
-          borderRadius: "8px",
+          border: "1px solid #336791",
+          borderRadius: "4px",
           padding: "2px 2px",
-          backgroundColor: "#f9f9f9",
-          width: "910px",
-          boxShadow: "2px 2px 6px rgba(0,0,0,0.1)",
+          backgroundColor: "#FFFFFF",
+          width: "930px",
+          // boxShadow: "2px 2px 6px rgba(0,0,0,0.1)",
           fontFamily: "Segoe UI",
+          color: '#336791',
         }}
       >
+
+
+  
         <TbBrandSocketIo
           title="Fetch a Bearer Token"
           style={{

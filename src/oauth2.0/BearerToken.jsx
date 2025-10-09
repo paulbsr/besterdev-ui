@@ -45,31 +45,35 @@ function BearerToken() {
 
   return (
     <td onClick={handleClick}>
-            <div
+      <div
         style={{
-          marginLeft: '20px',
+          marginLeft: '50px',
+          height: '28.5px',
           display: 'inline-block',
-          border: '1px solid #ccc',
-          borderRadius: '8px',
+          border: '1px solid #336791',
+          borderRadius: '4px',
           padding: '2px 2px',
-          backgroundColor: '#f9f9f9',
-          width: '910px',
-          boxShadow: '2px 2px 6px rgba(0,0,0,0.1)',
+          backgroundColor: '#FFFFFF',
+          width: '930px',
+          // boxShadow: '2px 2px 6px rgba(0,0,0,0.1)',
           fontFamily: 'Segoe UI',
+          cursor: 'pointer',
+          color: '#336791',
         }}
       >
-      <SiJsonwebtokens title="Fetch a Bearer Token" style={{ color: '#4D4D4D', fontSize: '18px', cursor: 'pointer' }} />&nbsp;
-      GET a Bearer Token:&nbsp;
-      <span style={{ fontFamily: "Segoe UI", fontSize: "8pt", color: "#D5441C", fontStyle: "italic" }}>{bearertoken?.BearerToken} &nbsp;
-        <VscCopy
-          onClick={(e) => {
-            e.stopPropagation(); // Prevents triggering the td onClick
-            copyToClipboard(bearertoken);
-          }}
-          size={18}
-          style={{ color: '#4D4D4D', cursor: 'pointer' }}
-        />
-      </span>
+
+        <SiJsonwebtokens title="Fetch a Bearer Token" style={{ color: '#4D4D4D', fontSize: '18px', cursor: 'pointer' }} />&nbsp;
+        GET BearerToken:&nbsp;
+        <span style={{ fontFamily: "Segoe UI", fontSize: "8pt", color: "#D5441C", fontStyle: "italic" }}>{bearertoken?.BearerToken} &nbsp;
+          <VscCopy
+            onClick={(e) => {
+              e.stopPropagation(); // Prevents triggering the td onClick
+              copyToClipboard(bearertoken);
+            }}
+            size={18}
+            style={{ color: '#4D4D4D', cursor: 'pointer' }}
+          />
+        </span>
       </div>
       <div>&nbsp;</div>
     </td>

@@ -83,11 +83,19 @@ const DBSearchComponentBanner = () => {
 
     <form onSubmit={handleSearch}>
       {/* <div style={{ color: '#ffffff' }}>&nbsp;</div> */}
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      
+
       <input
-        style={{ height: '22.5px', border: '0.75px solid #ccc', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }}
-        placeholder="Search"
+        // style={{ height: '22.5px', border: '0.75px solid #ccc', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }}
+        style={{
+          fontFamily: 'Segoe UI',
+          height: '28.5px',
+          border: '1.25px solid #336791',
+          borderRadius: '4px',
+          paddingLeft: '4px',
+          width: '300px',
+          marginLeft: '50px',
+        }}
+        placeholder="Search BesterDev"
         type="text"
         value={searchQuery}
         onChange={(event) => setSearchQuery(event.target.value)}
@@ -96,17 +104,37 @@ const DBSearchComponentBanner = () => {
 
       <button
         type="submit"
-        style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #000000', borderRadius: '5px', backgroundColor: '#ffffff', color: '#000000', cursor: 'pointer' }}>
-      Search
+        // style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #000000', borderRadius: '5px', backgroundColor: '#ffffff', color: '#000000', cursor: 'pointer' }}>
+        style={{
+          marginLeft: '10px',
+          height: '28.5px',
+          border: '1px solid #336791',
+          borderRadius: '4px',
+          backgroundColor: '#ffffff',
+          color: '#336791',
+          cursor: 'pointer',
+          marginLeft: '20px'
+        }}>
+        Search
       </button>
 
       <button
         type="button"
         onClick={handleCancel}
-        style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #000000', borderRadius: '5px', backgroundColor: '#ffffff', color: '#000000', cursor: 'pointer' }}>
-      Clear
+        // style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #000000', borderRadius: '5px', backgroundColor: '#ffffff', color: '#000000', cursor: 'pointer' }}>
+        style={{
+          marginLeft: '10px',
+          height: '28.5px',
+          border: '1px solid #336791',
+          borderRadius: '4px',
+          backgroundColor: '#ffffff',
+          color: '#336791',
+          cursor: 'pointer',
+          marginLeft: '20px'
+        }}>
+        Clear
       </button>
-      
+
       <div>&nbsp;&nbsp;</div>
 
       {/* Display search results */}
