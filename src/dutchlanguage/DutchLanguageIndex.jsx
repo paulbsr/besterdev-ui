@@ -7,10 +7,7 @@ import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 import { PiCheckCircleFill } from "react-icons/pi";
 import { IoArrowUndoCircle } from "react-icons/io5";
-import {
-  LiaSortAlphaDownSolid,
-  LiaSortAlphaDownAltSolid,
-} from "react-icons/lia";
+import { LiaSortAlphaDownSolid, LiaSortAlphaDownAltSolid,} from "react-icons/lia";
 
 
 const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";

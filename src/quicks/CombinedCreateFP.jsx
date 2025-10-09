@@ -316,7 +316,7 @@ export default function CombinedCreateFP() {
                   </button>
 
                   <select
-                    className='Font-Verdana-QuickAdd'
+                    className='Font-Segoe-QuickAdd'
                     onChange={(event) => {
                       const selectedIndex = event.target.selectedIndex;
                       const selectedOption = event.target.options[selectedIndex];
@@ -326,18 +326,19 @@ export default function CombinedCreateFP() {
                     id="dropdown"
                     required
                     style={{
-                      height: '28.5px',
+                      height: '32.5px',
                       border: '1.25px solid #336791',
                       borderRadius: '4px',
                       padding: 0,
-                      paddingLeft: '5px',
+                      paddingLeft: '4px',
                       width: '310px',
                       marginLeft: '50px',
                       marginTop: '20px',
-                      marginBottom: '20px'
+                      marginBottom: '20px',
+                      font: 'Segoe UI',
                     }}
                   >
-                    <option value="" disabled selected hidden>Catagory</option>
+                    <option value="" disabled selected hidden>Category</option>
                     {websiterootdata &&
                       Array.from(new Set(websiterootdata.map(option => option.websiteCat)))
                         .sort()
@@ -368,20 +369,23 @@ export default function CombinedCreateFP() {
                     <form onSubmit={handleSubmitTask}>
 
                       <select
+                                          className='Font-Segoe-QuickAdd'
                         style={{
-                          height: '28.5px',
+                          height: '32.5px',
                           border: '1.25px solid #336791',
                           borderRadius: '4px',
                           padding: 0,
-                          paddingLeft: '5px',
+                          paddingLeft: '4px',
                           width: '310px',
                           marginLeft: '50px',
-                          marginBottom: '20px'
-                        }} placeholder="Domain"
+                          marginBottom: '20px',
+                          font: 'Segoe UI',
+                        }} 
+                        placeholder="Domain"
                         id="dropdown"
                         onChange={dropdownChange}>
 
-                        <option disabled selected value="Domain">Module</option>
+                        <option value="Domain" disabled selected>Task Module</option>
                         <option value="113092" data-value2="NetworkSecurity">NetworkSecurity</option>
                         <option value="14718" data-value2="EnterpriseSecurity">EnterpriseSecurity</option>
                         <option value="181268" data-value2="ComputerCloudSecurity">ComputerCloudSecurity</option>

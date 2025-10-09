@@ -173,6 +173,12 @@
     color: grey
 }
 
+.Font-Segoe-QuickAdd {
+    font-family: "Segoe UI";
+    font-size: small;
+    color: grey
+}
+
 .Font-Segoe-Small {
     font-family: "Segoe UI";
     font-size: Small;

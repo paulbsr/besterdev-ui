@@ -3,9 +3,10 @@ import axios from "axios";
 import { FaPlus, FaCheck, FaTimes, FaEdit } from "react-icons/fa";
 import { SlActionRedo } from "react-icons/sl";
 import { CiUndo } from "react-icons/ci";
-import { CiCircleCheck } from "react-icons/ci";
 import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';  // PASOPOLO! react-tooltip het AWS Builds opgefok
+import { PiCheckCircleFill } from "react-icons/pi";
+import { IoArrowUndoCircle } from "react-icons/io5";
 
 const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
 
@@ -94,7 +95,6 @@ export default function DutchLanguageWoordenschat() {
             <div>
                 {records.map((rec) => (
                     <div key={rec.id} style={lineStyle} data-tooltip-id="insert" data-tooltip-content={rec.use}>
-                    {/* <div key={rec.id} style={lineStyle}> */}
                         {editId === rec.id ? (
                             <>
                                 Woord: <input
@@ -115,17 +115,17 @@ export default function DutchLanguageWoordenschat() {
                                     onChange={(e) => setEditRow({ ...editRow, use: e.target.value })}
                                 />
                                 <div></div>
-                                <CiCircleCheck
-                                    size={22}
-                                    color="green"
-                                    style={{ cursor: "pointer", marginRight: "6px" }}
+                                <PiCheckCircleFill
+                                    size={28}
+                                    color="#007749"
+                                    style={{ cursor: "pointer", marginRight: "5px", marginTop: "5px" }}
                                     onClick={() => saveEdit(rec.id)}
                                     title="Commit"
                                 />
-                                <CiUndo
-                                    size={22}
-                                    color="#000000"
-                                    style={{ cursor: "pointer" }}
+                                <IoArrowUndoCircle
+                                    size={28}
+                                    color="grey"
+                                    style={{ cursor: "pointer", marginRight: "8px" }}
                                     onClick={cancelEdit}
                                     title="Revert"
                                 />
@@ -173,17 +173,17 @@ export default function DutchLanguageWoordenschat() {
                         style={{ ...inputStyle, width: "260px" }}
                     />
                     <div></div>
-                    <CiCircleCheck
-                        size={22}
-                        color="green"
-                        style={{ cursor: "pointer", marginRight: "12px", marginTop: "12px" }}
+                    <PiCheckCircleFill
+                        size={28}
+                        color="#007749"
+                        style={{ cursor: "pointer", marginRight: "5px", marginTop: "5px" }}
                         onClick={addRow}
                         title="Commit"
                     />
-                    <CiUndo
-                        size={22}
-                        color="#000000"
-                        style={{ cursor: "pointer" }}
+                    <IoArrowUndoCircle
+                        size={28}
+                        color="grey"
+                        style={{ cursor: "pointer", marginRight: "8px" }}
                         onClick={() => setShowAddRow(false)}
                         title="Revert"
                     />

@@ -118,7 +118,7 @@ export default function DutchLanguageSentenceCompletion({
           <button
             onClick={fetchChallenge}
             style={{
-              height: "35.5px",
+              height: "39.5px",
               border: "1px solid #777777",
               borderRadius: "4px",
               backgroundColor: loading ? "#ddd" : "#FFFFFF",
@@ -183,7 +183,7 @@ export default function DutchLanguageSentenceCompletion({
             disabled={loading} // ✅ disable while validating
             style={{
               marginLeft: "5px",
-              height: "36.5px",
+              height: "39.5px",
               border: "1px solid #777777",
               borderRadius: "4px",
               backgroundColor: loading ? "#ddd" : "#FFFFFF",
@@ -191,6 +191,7 @@ export default function DutchLanguageSentenceCompletion({
               cursor: loading ? "not-allowed" : "pointer",
               fontFamily: "Segoe UI",
               fontSize: "16px",
+              color: "#000000"
             }}
           >
             {loading ? "Validating..." : "Submit"}

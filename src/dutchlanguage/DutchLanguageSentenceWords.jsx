@@ -159,7 +159,7 @@ export default function DutchLanguageSentenceWords({
         <button
           onClick={fetchChallenge}
           style={{
-            height: "35.5px",
+            height: "39.5px",
             border: "1px solid #777",
             borderRadius: "4px",
             backgroundColor: loading ? "#ddd" : "#fff",

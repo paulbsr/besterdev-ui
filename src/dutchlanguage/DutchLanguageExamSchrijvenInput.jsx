@@ -114,7 +114,7 @@ export default function DutchLanguageExamSchrijvenInput(props) {
 
   return (
     <div className="Font-Segoe-Large-Howto" style={{
-      marginTop: "16px",
+      marginTop: "1px",
       border: "1px solid #ddd",
       borderRadius: "8px",
       padding: "16px",
