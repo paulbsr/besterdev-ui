@@ -104,7 +104,7 @@ const fetchChallenge = async () => {
 
       <div>
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-          <label style={{ fontWeight: "600", whiteSpace: "nowrap" }}>Specificeer een onderwerp:</label>
+          {/* <label style={{ fontWeight: "600", whiteSpace: "nowrap" }}>Specificeer een onderwerp:</label>
           <input
             type="text"
             value={subjectInput}
@@ -122,7 +122,7 @@ const fetchChallenge = async () => {
               fontSize: "16px",
               paddingLeft: "10px",
             }}
-          />
+          /> */}
           <button
             onClick={fetchChallenge}
             style={{
@@ -134,6 +134,7 @@ const fetchChallenge = async () => {
               cursor: loading ? "not-allowed" : "pointer",
               fontFamily: "Segoe UI",
               fontSize: "16px",
+              marginBottom: "15px"
             }}
           >
             Nieuwe Uitdaging
@@ -144,24 +145,27 @@ const fetchChallenge = async () => {
 
 {challenge && (
   <div style={{ marginBottom: "16px" }}>
-    <label
+    {/* <label
       style={{ display: "block", marginBottom: "8px", fontWeight: "600" }}
     >
       Complete this Dutch text:
-    </label>
+    </label> */}
 
     <div
       style={{
         backgroundColor: "#f9f9f9",
-        borderLeft: "5px solid #FF4F00",
+        borderLeft: "12px solid #FF4F00",
         padding: "12px 16px",
         borderRadius: "6px",
         fontFamily: "Segoe UI",
+        boxShadow: "0 2px 6px rgba(0, 0, 0, 0.7)",
       }}
     >
+
+
       <div style={{ fontSize: "14px", color: "#777", marginBottom: "6px" }}>
         <strong>Exam Year:</strong> {challenge.examYear || "N/A"} |{" "}
-        <strong>Question #:</strong> {challenge.questionNumber || "N/A"}
+        <strong>Question Number:</strong> {challenge.questionNumber || "N/A"}
       </div>
 
       <div style={{ fontSize: "16px", fontWeight: "600", marginBottom: "6px" }}>
