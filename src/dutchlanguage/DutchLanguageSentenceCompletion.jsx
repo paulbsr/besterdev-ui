@@ -13,38 +13,46 @@ export default function DutchLanguageSentenceCompletion({
   const [subjectInput, setSubjectInput] = useState(subject);
   const [loading, setLoading] = useState(false); // ✅ track loading state
 
-  const fetchChallenge = async () => {
-    try {
-      setLoading(true); // ✅ start loading
-      const res = await fetch(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          question: `Generate one Dutch text (1 sentence) about ${subjectInput}, 
-          but leave one sentence unfinished with a blank line of underscores (____________________________). 
-          After the text, on a new line, write "SUGGESTION:" followed by a natural Dutch completion 
-          for the blank. Do not add introductions or explanations.`,
-        }),
-      });
+const fetchChallenge = async () => {
+  try {
+    setLoading(true);
 
-      const data = await res.json();
-      const output = data.answer || "";
+    const res = await fetch(
+      "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/schrijven/questions"
+    );
 
-      const parts = output.split("SUGGESTION:");
-      const challengeText = parts[0]?.trim() || "";
-      const completion = parts[1]?.trim() || "";
+    if (!res.ok) throw new Error("Failed to fetch questions");
 
-      setChallenge(challengeText);
-      setSuggestedCompletion(completion);
-      setUserInput("");
-      setFeedback("");
-    } catch (err) {
-      console.error(err);
-      setFeedback("❌ Error fetching challenge");
-    } finally {
-      setLoading(false); // ✅ stop loading
+    const data = await res.json();
+
+    let randomQuestion = null;
+
+    if (Array.isArray(data) && data.length > 0) {
+      randomQuestion = data[Math.floor(Math.random() * data.length)];
+    } else if (data?.questions && Array.isArray(data.questions)) {
+      randomQuestion =
+        data.questions[Math.floor(Math.random() * data.questions.length)];
     }
-  };
+
+    if (randomQuestion) {
+      setChallenge(randomQuestion);
+    } else {
+      setChallenge(null);
+      setFeedback("⚠️ No questions available.");
+    }
+
+    setSuggestedCompletion("");
+    setUserInput("");
+    setFeedback("");
+  } catch (err) {
+    console.error(err);
+    setFeedback("❌ Error fetching challenge");
+  } finally {
+    setLoading(false);
+  }
+};
+
+
 
   const checkAnswer = async () => {
     if (!userInput.trim()) {
@@ -134,27 +142,51 @@ export default function DutchLanguageSentenceCompletion({
 
       </div>
 
-      {challenge && (
-        <div style={{ marginBottom: "16px" }}>
-          <label
-            style={{ display: "block", marginBottom: "4px", fontWeight: "600" }}
-          >
-            Complete this Dutch text:
-          </label>
-          <blockquote
-            className="whitespace-pre-line bg-gray-100 rounded"
-            style={{
-              padding: "8px",
-              fontFamily: "Segoe UI",
-              fontSize: "18px",
-              fontStyle: "italic",
-              color: "#FF4F00",
-            }}
-          >
-            {challenge}
-          </blockquote>
-        </div>
-      )}
+{challenge && (
+  <div style={{ marginBottom: "16px" }}>
+    <label
+      style={{ display: "block", marginBottom: "8px", fontWeight: "600" }}
+    >
+      Complete this Dutch text:
+    </label>
+
+    <div
+      style={{
+        backgroundColor: "#f9f9f9",
+        borderLeft: "5px solid #FF4F00",
+        padding: "12px 16px",
+        borderRadius: "6px",
+        fontFamily: "Segoe UI",
+      }}
+    >
+      <div style={{ fontSize: "14px", color: "#777", marginBottom: "6px" }}>
+        <strong>Exam Year:</strong> {challenge.examYear || "N/A"} |{" "}
+        <strong>Question #:</strong> {challenge.questionNumber || "N/A"}
+      </div>
+
+      <div style={{ fontSize: "16px", fontWeight: "600", marginBottom: "6px" }}>
+        {challenge.questionName || "Untitled Question"}
+      </div>
+
+      <div style={{ fontSize: "15px", color: "#333", marginBottom: "8px" }}>
+        <em>{challenge.questionInstruction || "No instructions provided."}</em>
+      </div>
+
+      <blockquote
+        style={{
+          fontSize: "18px",
+          fontStyle: "italic",
+          color: "#FF4F00",
+          margin: "8px 0 0 0",
+          whiteSpace: "pre-line",
+        }}
+      >
+        {challenge.questionVerbiage || "⚠️ No question text available."}
+      </blockquote>
+    </div>
+  </div>
+)}
+
 
       {challenge && (
         <form

@@ -61,7 +61,7 @@ export default function DutchLanguageTranslator() {
       <div style={{ display: "flex", alignItems: "center" }}>
         <input
           style={{
-            height: "35.5px",
+            height: "33.5px",
             border: "0.75px solid #777777",
             borderRadius: "4px",
             padding: 0,
@@ -75,7 +75,6 @@ export default function DutchLanguageTranslator() {
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        &nbsp;
         <div>
           <button
             style={{
