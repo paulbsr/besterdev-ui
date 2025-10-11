@@ -159,32 +159,50 @@ export default function CombinedCreateFP() {
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
 
                 <span onClick={() => setExpandedCyclopedia(!isExpandedCyclopedia)}>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  Add<GiHummingbird style={{ color: '#4D4D4D', fontSize: '20px', marginLeft: '4px', marginRight: '4px' }} />
-                  to<GiGiftOfKnowledge style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer', marginLeft: '4px', marginRight: '4px' }} />
-                  Cyclopedia
+                  <GiGiftOfKnowledge
+                    style={{
+                      color: '#4D4D4D',
+                      fontSize: '17px',
+                      cursor: 'pointer',
+                      marginLeft: '50px',
+                      marginRight: '4px'
+                    }} />
+                  Add to Cyclopedia
                 </span>
 
-                <span onClick={() => setExpandedWebsite(!isExpandedWebsite)}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  Add<GiHummingbird style={{ color: '#4D4D4D', fontSize: '20px', marginLeft: '2px', marginRight: '2px' }} />
-                  a<GiSpiderWeb style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer', marginLeft: '4px', marginRight: '4px' }} />
-                  Website
+                <span onClick={() => setExpandedWebsite(!isExpandedWebsite)}>
+                  <GiSpiderWeb
+                    style={{
+                      color: '#4D4D4D',
+                      fontSize: '17px',
+                      cursor: 'pointer',
+                      marginLeft: '50px',
+                      marginRight: '4px'
+                    }} />
+                  Add a Website
                 </span>
 
-                <span onClick={() => setExpandedTask(!isExpandedTask)}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  Add <GiHummingbird style={{ color: '#4D4D4D', fontSize: '20px', marginLeft: '2px' }} />
-                  a<MdTask style={{ color: '#4D4D4D', fontSize: '17px', cursor: 'pointer' }} />
-                  Task
+                <span onClick={() => setExpandedTask(!isExpandedTask)}>
+                  <MdTask
+                    style={{
+                      color: '#4D4D4D',
+                      fontSize: '17px',
+                      cursor: 'pointer',
+                      marginLeft: '50px',
+                      marginRight: '4px'
+                    }} />
+                  Add a Task
                 </span>
 
-                <span onClick={() => setExpandedBearerToken(!isExpandedBearerToken)}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <TbBrandOauth style={{ color: '#4D4D4D', fontSize: '19px', cursor: 'pointer' }} /> OAuth2.0</span>
 
-                <span onClick={() => setExpandedWebSocket(!isExpandedWebSocket)}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <TbBrandSocketIo style={{ color: '#4D4D4D', fontSize: '19px', cursor: 'pointer' }} /> WebSocket</span>
+                <span onClick={() => setExpandedBearerToken(!isExpandedBearerToken)}>
+                  <TbBrandOauth style={{ color: '#4D4D4D', fontSize: '19px', cursor: 'pointer', marginLeft: '50px', marginRight: '4px' }} />OAuth2.0</span>
 
-                <span onClick={() => setExpandedSearch(!isExpandedSearch)}>&nbsp;&nbsp;&nbsp;&nbsp;
-                  <BsSearch style={{ color: '#4D4D4D', fontSize: '19px', cursor: 'pointer' }} /> Search</span>
+                <span onClick={() => setExpandedWebSocket(!isExpandedWebSocket)}>
+                  <TbBrandSocketIo style={{ color: '#4D4D4D', fontSize: '19px', cursor: 'pointer', marginLeft: '50px', marginRight: '4px' }} />WebSocket</span>
+
+                <span onClick={() => setExpandedSearch(!isExpandedSearch)}>
+                  <BsSearch style={{ color: '#4D4D4D', fontSize: '19px', cursor: 'pointer', marginLeft: '50px', marginRight: '4px' }} />Search</span>
               </div>
 
               <div>&nbsp;</div>
@@ -369,7 +387,7 @@ export default function CombinedCreateFP() {
                     <form onSubmit={handleSubmitTask}>
 
                       <select
-                                          className='Font-Segoe-QuickAdd'
+                        className='Font-Segoe-QuickAdd'
                         style={{
                           height: '32.5px',
                           border: '1.25px solid #336791',
@@ -380,7 +398,7 @@ export default function CombinedCreateFP() {
                           marginLeft: '50px',
                           marginBottom: '20px',
                           font: 'Segoe UI',
-                        }} 
+                        }}
                         placeholder="Domain"
                         id="dropdown"
                         onChange={dropdownChange}>

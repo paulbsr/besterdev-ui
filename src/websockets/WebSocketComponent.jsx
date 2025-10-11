@@ -58,35 +58,26 @@ const WebSocketComponent = () => {
       <div
         style={{
           marginLeft: "50px",
-          height: '28.5px',
+          minHeight: "28.5px",
           display: "inline-block",
           border: "1px solid #336791",
           borderRadius: "4px",
-          padding: "2px 2px",
+          padding: "4px 8px",
           backgroundColor: "#FFFFFF",
-          width: "930px",
-          // boxShadow: "2px 2px 6px rgba(0,0,0,0.1)",
+          width: "900px",
           fontFamily: "Segoe UI",
-          color: '#336791',
+          color: "#336791",
+          whiteSpace: "normal",        // allows text to wrap to a new line
+          overflowWrap: "break-word",  // breaks long words if necessary
+          boxSizing: "border-box",     // includes padding in width calc
         }}
       >
 
-
-  
-        <TbBrandSocketIo
-          title="Fetch a Bearer Token"
-          style={{
-            color: "#4D4D4D",
-            fontSize: "22px",
-            cursor: "pointer",
-            verticalAlign: "middle",
-          }}
-        />
         WebSocket:
         <span
           style={{
-            fontFamily: "Verdana",
-            fontSize: "10pt",
+            fontFamily: "Segoe UI",
+            fontSize: "12pt",
             color: "#D5441C",
             fontStyle: "italic",
             marginLeft: "4px",

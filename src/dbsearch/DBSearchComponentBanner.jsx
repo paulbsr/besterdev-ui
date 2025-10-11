@@ -2,14 +2,10 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../Fonts.css';
 import { BsPatchQuestion } from "react-icons/bs";
-import { IoLibrarySharp, IoFootstepsSharp } from "react-icons/io5";
+import { IoFootstepsSharp } from "react-icons/io5";
 import { TbWorldWww } from "react-icons/tb";
 import { SiWritedotas } from "react-icons/si";
 import { GiFiles } from "react-icons/gi";
-import { BsPencil } from 'react-icons/bs'; //Edit
-import { GiCheckMark } from "react-icons/gi"; //Commit
-import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard
-import { Tooltip } from '@mui/material';
 import { toast } from 'react-toastify';
 import { MdTask } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
@@ -92,7 +88,7 @@ const DBSearchComponentBanner = () => {
           border: '1.25px solid #336791',
           borderRadius: '4px',
           paddingLeft: '4px',
-          width: '300px',
+          width: '500px',
           marginLeft: '50px',
         }}
         placeholder="Search BesterDev"
@@ -107,13 +103,12 @@ const DBSearchComponentBanner = () => {
         // style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #000000', borderRadius: '5px', backgroundColor: '#ffffff', color: '#000000', cursor: 'pointer' }}>
         style={{
           marginLeft: '10px',
-          height: '28.5px',
+          height: '33.5px',
           border: '1px solid #336791',
           borderRadius: '4px',
           backgroundColor: '#ffffff',
           color: '#336791',
           cursor: 'pointer',
-          marginLeft: '20px'
         }}>
         Search
       </button>
@@ -124,13 +119,12 @@ const DBSearchComponentBanner = () => {
         // style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #000000', borderRadius: '5px', backgroundColor: '#ffffff', color: '#000000', cursor: 'pointer' }}>
         style={{
           marginLeft: '10px',
-          height: '28.5px',
+          height: '33.5px',
           border: '1px solid #336791',
           borderRadius: '4px',
           backgroundColor: '#ffffff',
           color: '#336791',
           cursor: 'pointer',
-          marginLeft: '20px'
         }}>
         Clear
       </button>
