@@ -1,245 +1,327 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-const API_URL =
-  "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
+const API_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
+const QUESTIONS_URL =
+  "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/schrijven/questions";
 
 export default function DutchLanguageSentenceCompletion({
   subject = "workplace communication",
 }) {
-  const [challenge, setChallenge] = useState("");
-  const [suggestedCompletion, setSuggestedCompletion] = useState("");
+  const [challenge, setChallenge] = useState(null);
   const [userInput, setUserInput] = useState("");
   const [feedback, setFeedback] = useState("");
-  const [subjectInput, setSubjectInput] = useState(subject);
-  const [loading, setLoading] = useState(false); // ✅ track loading state
+  const [criteriaScores, setCriteriaScores] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-const fetchChallenge = async () => {
-  try {
+  // --------------------------
+  // Fetch a new challenge
+  // --------------------------
+  const fetchChallenge = async () => {
     setLoading(true);
-
-    const res = await fetch(
-      "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/schrijven/questions"
-    );
-
-    if (!res.ok) throw new Error("Failed to fetch questions");
-
-    const data = await res.json();
-
-    let randomQuestion = null;
-
-    if (Array.isArray(data) && data.length > 0) {
-      randomQuestion = data[Math.floor(Math.random() * data.length)];
-    } else if (data?.questions && Array.isArray(data.questions)) {
-      randomQuestion =
-        data.questions[Math.floor(Math.random() * data.questions.length)];
-    }
-
-    if (randomQuestion) {
-      setChallenge(randomQuestion);
-    } else {
-      setChallenge(null);
-      setFeedback("⚠️ No questions available.");
-    }
-
-    setSuggestedCompletion("");
-    setUserInput("");
     setFeedback("");
-  } catch (err) {
-    console.error(err);
-    setFeedback("❌ Error fetching challenge");
-  } finally {
-    setLoading(false);
-  }
-};
-
-
-
-  const checkAnswer = async () => {
-    if (!userInput.trim()) {
-      setFeedback("⚠️ Please enter your completion.");
-      return;
-    }
+    setCriteriaScores(null);
+    setUserInput("");
 
     try {
-      setLoading(true); // ✅ show "Validating..."
-      setFeedback("Validating..."); // ✅ immediately update text
+      const res = await fetch(QUESTIONS_URL);
+      if (!res.ok) throw new Error("Failed to fetch questions");
+
+      const data = await res.json();
+      const list = Array.isArray(data)
+        ? data
+        : Array.isArray(data?.questions)
+        ? data.questions
+        : [];
+
+      if (list.length === 0) throw new Error("No questions available");
+
+      const randomQuestion = list[Math.floor(Math.random() * list.length)];
+      setChallenge(randomQuestion);
+    } catch (err) {
+      console.error("❌ Error fetching challenge:", err);
+      setFeedback("❌ Error fetching challenge.");
+      setChallenge(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // --------------------------
+  // Robust JSON parser
+  // --------------------------
+  const safeJsonParse = (text) => {
+    if (!text) return null;
+
+    // Clean up wrapping artifacts
+    const cleaned = text
+      .replace(/^Optional\[/, "")
+      .replace(/\]$/, "")
+      .replace(/```json|```/g, "")
+      .trim();
+
+    try {
+      // Try direct parse first
+      return JSON.parse(cleaned);
+    } catch {
+      // Fallback: extract JSON block using regex
+      const match = cleaned.match(/\{[\s\S]*\}/);
+      if (match) {
+        try {
+          return JSON.parse(match[0]);
+        } catch {
+          return null;
+        }
+      }
+      return null;
+    }
+  };
+
+  // --------------------------
+  // Evaluate user's response
+  // --------------------------
+  const checkAnswer = async (e) => {
+    e.preventDefault();
+    if (!userInput.trim()) return setFeedback("⚠️ Please enter your response.");
+
+    if (!challenge) return setFeedback("⚠️ Please load a challenge first.");
+
+    setLoading(true);
+    setFeedback("Evaluating...");
+    setCriteriaScores(null);
+
+    try {
+      const payload = {
+        question: `
+You are a Dutch NT2/B2 writing examiner. 
+Here is the exam question: "${challenge.questionVerbiage}"
+The student's response: "${userInput}"
+
+Evaluate the response against these four criteria and return a JSON object with your evaluations per criterion:
+
+1. ${challenge.beoordelingBegrijpelijkheid}
+2. ${challenge.beoordelingGrammatica}
+3. ${challenge.beoordelingBegrijpelijkheidAlgemeen}
+4. ${challenge.beoordelingGrammaticaAlgemeen}
+`,
+      };
 
       const res = await fetch(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          question:
-            `Evaluate this Dutch sentence completion for correctness and naturalness:\n\n` +
-            `Challenge: "${challenge}"\n` +
-            `Suggested completion: "${suggestedCompletion}"\n` +
-            `User completion: "${userInput}"\n\n` +
-            `Respond with feedback in Dutch, indicating whether it is grammatically correct, natural sounding, and good Dutch.`,
-        }),
+        body: JSON.stringify(payload),
       });
 
-      const data = await res.json();
-      const evaluation = data.answer || "⚠️ No evaluation received.";
+      if (!res.ok) throw new Error("Error from AI API");
 
-      setFeedback(evaluation);
+      const data = await res.json();
+      const aiResponse = data.answer || "";
+      console.log("🧠 Raw AI response:", aiResponse);
+
+      const parsed = safeJsonParse(aiResponse);
+
+      if (parsed && typeof parsed === "object") {
+        setCriteriaScores(parsed);
+        setFeedback("✅ Evaluation complete.");
+      } else {
+        console.warn("⚠️ Could not parse AI response:", aiResponse);
+        setFeedback("⚠️ AI response could not be parsed.");
+        setCriteriaScores({ "Raw AI Response": aiResponse });
+      }
     } catch (err) {
-      console.error(err);
-      setFeedback("❌ Error checking your answer.");
+      console.error("❌ Error evaluating:", err);
+      setFeedback("❌ Error evaluating your response.");
     } finally {
-      setLoading(false); // ✅ done validating
+      setLoading(false);
     }
   };
 
+  // --------------------------
+  // Small helper component
+  // --------------------------
+  const LabelRow = ({ label, value }) => (
+    <div>
+      <strong>{label}:</strong> {value || "N/A"}
+    </div>
+  );
+
+  // --------------------------
+  // UI
+  // --------------------------
   return (
-    <div
-      style={{
-        border: "1px solid #ddd",
-        borderRadius: "8px",
-        padding: "16px",
-        fontFamily: "Segoe UI",
-        fontSize: "16px",
-        maxWidth: "1100px",
-      }}
-    >
-      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>Nederlands Zin Voltooiing (NT2 B2/Schrijven Toets)</h2>
+    <div className="exam-container" style={styles.container}>
+      <h2 style={styles.title}>
+        Nederlands Staatsexamen NT2/B2: Schrijven Toets (Zin Voltooiing)
+      </h2>
+      <p>
+        Totaal aantal opdrachten: 10 • Maximumscore: 53 punten • Cesuur: 31
+        punten (60%)
+      </p>
 
-      <div>
-        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-          {/* <label style={{ fontWeight: "600", whiteSpace: "nowrap" }}>Specificeer een onderwerp:</label>
-          <input
-            type="text"
-            value={subjectInput}
-            onChange={(e) => setSubjectInput(e.target.value)}
-            placeholder="Specify a topic..."
-            style={{
-              fontSize: "16px",
-              width: "300px",
-              height: "35.5px",
-              border: "1px solid #777777",
-              borderRadius: "4px",
-              backgroundColor: "#FFFFFF",
-              color: "#777777",
-              fontFamily: "Segoe UI",
-              fontSize: "16px",
-              paddingLeft: "10px",
-            }}
-          /> */}
-          <button
-            onClick={fetchChallenge}
-            style={{
-              height: "39.5px",
-              border: "1px solid #777777",
-              borderRadius: "4px",
-              backgroundColor: loading ? "#ddd" : "#FFFFFF",
-              color: "#000000",
-              cursor: loading ? "not-allowed" : "pointer",
-              fontFamily: "Segoe UI",
-              fontSize: "16px",
-              marginBottom: "15px"
-            }}
-          >
-            Nieuwe Uitdaging
-          </button>
-        </div>
-
-      </div>
-
-{challenge && (
-  <div style={{ marginBottom: "16px" }}>
-    {/* <label
-      style={{ display: "block", marginBottom: "8px", fontWeight: "600" }}
-    >
-      Complete this Dutch text:
-    </label> */}
-
-    <div
-      style={{
-        backgroundColor: "#f9f9f9",
-        borderLeft: "12px solid #FF4F00",
-        padding: "12px 16px",
-        borderRadius: "6px",
-        fontFamily: "Segoe UI",
-        boxShadow: "0 2px 6px rgba(0, 0, 0, 0.7)",
-      }}
-    >
-
-
-      <div style={{ fontSize: "14px", color: "#777", marginBottom: "6px" }}>
-        <strong>Exam Year:</strong> {challenge.examYear || "N/A"} |{" "}
-        <strong>Question Number:</strong> {challenge.questionNumber || "N/A"}
-      </div>
-
-      <div style={{ fontSize: "16px", fontWeight: "600", marginBottom: "6px" }}>
-        {challenge.questionName || "Untitled Question"}
-      </div>
-
-      <div style={{ fontSize: "15px", color: "#333", marginBottom: "8px" }}>
-        <em>{challenge.questionInstruction || "No instructions provided."}</em>
-      </div>
-
-      <blockquote
+      <button
+        onClick={fetchChallenge}
+        disabled={loading}
         style={{
-          fontSize: "18px",
-          fontStyle: "italic",
-          color: "#FF4F00",
-          margin: "8px 0 0 0",
-          whiteSpace: "pre-line",
+          ...styles.button,
+          backgroundColor: loading ? "#ddd" : "#fff", borderColor: "#FF4F00",
+          cursor: loading ? "not-allowed" : "pointer",
         }}
       >
-        {challenge.questionVerbiage || "⚠️ No question text available."}
-      </blockquote>
-    </div>
-  </div>
-)}
-
+        {loading ? "Even geduld..." : "Nieuwe Uitdaging"}
+      </button>
 
       {challenge && (
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            checkAnswer();
-          }}
-        >
+        <div style={styles.challengeBox}>
+          <LabelRow label="Exam Year" value={challenge.examYear} />
+          <LabelRow label="Question Number" value={challenge.questionNumber} />
+          <div style={styles.questionName}>
+            {challenge.questionName || "Untitled Question"}
+          </div>
+          <em>{challenge.questionInstruction}</em>
+
+          <blockquote style={styles.questionQuote}>
+            {challenge.questionVerbiage}
+          </blockquote>
+
+          <div style={styles.criterium}>
+            <div>
+              🧩 <strong>Begrijpelijkheid:</strong>{" "}
+              {challenge.beoordelingBegrijpelijkheid}
+            </div>
+            <div>
+              ✍️ <strong>Grammatica:</strong>{" "}
+              {challenge.beoordelingGrammatica}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {challenge && (
+        <form onSubmit={checkAnswer} style={styles.form}>
           <input
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
-            placeholder="Type your completion here..."
-            style={{
-              height: "35.5px",
-              border: "1px solid #777777",
-              borderRadius: "4px",
-              backgroundColor: "#FFFFFF",
-              paddingLeft: "10px",
-              width: "850px",
-              fontFamily: "Segoe UI",
-              fontSize: "16px",
-            }}
+            placeholder="Typ je antwoord hier..."
+style={{ ...styles.input, marginRight: "5px" }}
+
           />
-          <button
-            type="submit"
-            disabled={loading} // ✅ disable while validating
-            style={{
-              marginLeft: "5px",
-              height: "39.5px",
-              border: "1px solid #777777",
-              borderRadius: "4px",
-              backgroundColor: loading ? "#ddd" : "#FFFFFF",
-              color: "#777777",
-              cursor: loading ? "not-allowed" : "pointer",
-              fontFamily: "Segoe UI",
-              fontSize: "16px",
-              color: "#000000"
-            }}
-          >
-            {loading ? "Validating..." : "Submit"}
+          <button type="submit" disabled={loading} style={{ ...styles.button, marginleft: "5px", backgroundColor: "#ffffff", borderColor: "#FF4F00" }}>
+            {loading ? "Bezig met evaluatie..." : "Indienen"}
           </button>
         </form>
       )}
 
       {feedback && (
-        <div style={{ marginTop: "16px", fontStyle: loading ? "italic" : "" }}>
-          {feedback}
+        <div style={{ marginTop: "16px" }}>
+          <em>{feedback}</em>
         </div>
       )}
+
+{criteriaScores?.criteria && (
+  <div style={styles.tableContainer}>
+    <h4>Beoordeling per criterium</h4>
+    <table style={styles.table}>
+      <thead>
+        <tr>
+          <th style={styles.th}>Criterium</th>
+          <th style={styles.th}>Score</th>
+          <th style={styles.th}>Feedback</th>
+        </tr>
+      </thead>
+      <tbody>
+        {Object.entries(criteriaScores.criteria).map(([key, val]) => (
+          <tr key={key}>
+            <td style={styles.td}>{key}</td>
+            <td style={styles.td}>{val.evaluation || "—"}</td>
+            <td style={styles.td}>{val.comment || "—"}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+)}
+
+
+
+
     </div>
   );
 }
+
+// --------------------------
+// Styles
+// --------------------------
+const styles = {
+  container: {
+    border: "1px solid #ddd",
+    borderRadius: "8px",
+    padding: "16px",
+    fontFamily: "Segoe UI",
+    fontSize: "16px",
+    maxWidth: "1100px",
+  },
+  title: {
+    fontWeight: "bold",
+    fontSize: "22px",
+    marginBottom: "8px",
+  },
+  button: {
+    height: "40.5px",
+    border: "1px solid #777",
+    borderRadius: "4px",
+    padding: "8px 8px",
+    fontSize: "16px",
+  },
+  challengeBox: {
+    backgroundColor: "#f9f9f9",
+    borderLeft: "12px solid #FF4F00",
+    padding: "12px 16px",
+    borderRadius: "6px",
+    marginTop: "16px",
+    boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
+  },
+  questionName: {
+    fontSize: "16px",
+    fontWeight: "600",
+    margin: "6px 0",
+  },
+  questionQuote: {
+    fontSize: "18px",
+    color: "#FF4F00",
+    fontStyle: "italic",
+    marginTop: "6px",
+    whiteSpace: "pre-line",
+  },
+  criterium: {
+    marginTop: "8px",
+    fontSize: "15px",
+  },
+  form: {
+    marginTop: "16px",
+  },
+  input: {
+    height: "35.5px",
+    border: "1px solid #777",
+    borderRadius: "4px",
+    paddingLeft: "10px",
+    width: "850px",
+    fontSize: "16px",
+  },
+  tableContainer: {
+    marginTop: "16px",
+    borderTop: "1px solid #ccc",
+    paddingTop: "10px",
+  },
+  table: {
+    borderCollapse: "collapse",
+    width: "100%",
+  },
+  th: {
+    borderBottom: "1px solid #ddd",
+    padding: "6px",
+    textAlign: "left",
+  },
+  td: {
+    padding: "6px",
+    borderBottom: "1px solid #f1f1f1",
+  },
+};

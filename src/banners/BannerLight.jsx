@@ -12,6 +12,7 @@ import { MdManageAccounts, MdTask } from 'react-icons/md';
 import { GiWindmill } from "react-icons/gi";
 import { SiOpenai, SiVault } from "react-icons/si";
 import { IoHome } from 'react-icons/io5';
+import { FaAws } from "react-icons/fa6";
 
 const iconStyle = (color, size) => ({ color, fontSize: size, cursor: 'pointer' });
 
@@ -40,7 +41,7 @@ const externalLinks = [
   { tooltip: 'Spring Boot v3.4.0', icon: <SiSpringboot style={iconStyle('#336791', 33)} />, href: 'https://spring.io/projects/spring-boot' },
   { tooltip: 'PostgreSQL on Heroku', icon: <BiLogoPostgresql style={iconStyle('#336791', 33)} />, href: 'https://spring.io/projects/spring-boot' },
   { tooltip: 'GitHub', icon: <BiLogoGithub style={iconStyle('#000000', 33)} />, href: 'https://github.com' },
-  { tooltip: 'AWS Amplify', icon: <SiAwsamplify style={iconStyle('#ff8500', 33)} />, href: 'https://eu-west-1.console.aws.amazon.com/amplify/home' },
+  { tooltip: 'AWS', icon: <FaAws style={iconStyle('#ff8500', 33)} />, href: 'https://eu-west-1.console.aws.amazon.com/amplify/home' },
   { tooltip: 'Heroku API Backend', icon: <BiLogoHeroku style={iconStyle('#6762a6', 33)} />, href: 'https://dashboard.heroku.com/apps' },
   { tooltip: 'Google Account', icon: <BiLogoGoogle style={iconStyle('#4688F1', 33)} />, href: 'https://myaccount.google.com/' },
   { tooltip: 'Firebase Auth', icon: <SiFirebase style={iconStyle('#FFCB2B', 33)} />, href: 'https://console.firebase.google.com/project/besterdev-432e9/overview' },

@@ -168,7 +168,7 @@ export default function HomePage22(props) {
     return (
       <>
       <AskAI/>
-        <DBSearchComponent />
+        {/* <DBSearchComponent /> */}
 
         <TaskSummaryHomepage />
 
