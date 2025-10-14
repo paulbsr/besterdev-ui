@@ -101,7 +101,7 @@ export default function DutchLanguage_Nt2exam_LuisterenInput(props) {
                             marginTop: "1px",
                         }}
                     >
-                        Add NT2 Luisteren Exam Question
+                        Insert NT2 Luisteren-II Exam Question
                     </h2>
                 </a>
             </div>
@@ -122,7 +122,7 @@ export default function DutchLanguage_Nt2exam_LuisterenInput(props) {
                                 <option value="2024">2024</option>
                             </select>
 
-
+                            Track:
                             <input
                                 style={{ ...baseInputStyle, width: "100px", height: "28.5px", padding: "2px 8px" }}
                                 type="number"
@@ -131,22 +131,13 @@ export default function DutchLanguage_Nt2exam_LuisterenInput(props) {
                                 onChange={(e) => setTrackNumber(e.target.value)}
                                 required
                             />
-
+                            Opgave:
                             <input
                                 style={{ ...baseInputStyle, width: "100px", height: "28.5px", padding: "2px 8px" }}
                                 type="number"
                                 value={opgave}
                                 placeholder="Opgave #"
                                 onChange={(e) => setOpgave(e.target.value)}
-                                required
-                            />
-
-                            <input
-                                style={{ ...baseInputStyle, width: "100px", height: "28.5px", padding: "2px 8px" }}
-                                type="number"
-                                value={number}
-                                placeholder="Question #"
-                                onChange={(e) => setNumber(e.target.value)}
                                 required
                             />
 
@@ -160,23 +151,23 @@ export default function DutchLanguage_Nt2exam_LuisterenInput(props) {
 
 
                             <div>
-                                <textarea
+                                <input
                                     style={{
                                         ...baseInputStyle,
                                         width: "850px",
-                                        height: "70px",
+                                        height: "28.5px",
                                         padding: "2px 8px",
                                         resize: "vertical",
-                                        marginTop: "10px",
+                                        marginTop: "5px",
                                     }}
                                     value={question}
                                     onChange={(e) => setQuestion(e.target.value)}
                                     placeholder="Question"
-                                    // required
+                                // required
                                 />
                             </div>
 
-                            <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginTop: "10px" }}>
+                            <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginTop: "5px" }}>
                                 <input
                                     style={{ ...baseInputStyle, width: "600px", height: "28.5px", padding: "2px 8px" }}
                                     value={optionA}
@@ -198,71 +189,52 @@ export default function DutchLanguage_Nt2exam_LuisterenInput(props) {
                                     onChange={(e) => setOptionC(e.target.value)}
                                     required
                                 />
-                                {/* <input
-    style={{ ...baseInputStyle, width: "400px", height: "28.5px", padding: "2px 8px" }}
-    value={answerTry}
-    placeholder="Student Answer (e.g., optionA)......."
-    onChange={(e) => setAnswerTry(e.target.value)}
-    required
-  /> */}
-                                <input
-                                    style={{ ...baseInputStyle, width: "200px", height: "28.5px", padding: "2px 8px" }}
-                                    value={answerCorrect}
-                                    placeholder="Correct Answer"
-                                    onChange={(e) => setAnswerCorrect(e.target.value)}
-                                    required
-                                />
-                            <input
-                                style={{ ...baseInputStyle, width: "200px", height: "28.5px", padding: "2px 8px" }}
-                                value={trackType}
-                                placeholder="Track Type (e.g., audio/mpeg)"
-                                onChange={(e) => setTrackType(e.target.value)}
-                                required
-                            />
+
+                                <div style={{ display: "flex", flexDirection: "row", gap: "8px", alignItems: "center" }}>
+                                    <select
+                                        style={{ ...baseInputStyle, width: "80px", height: "35.5px", padding: "2px 8px" }}
+                                        value={
+                                            answerCorrect.startsWith("A")
+                                                ? "A"
+                                                : answerCorrect.startsWith("B")
+                                                    ? "B"
+                                                    : answerCorrect.startsWith("C")
+                                                        ? "C"
+                                                        : ""
+                                        }
+                                        onChange={(e) => {
+                                            const selected = e.target.value;
+                                            let value = "";
+                                            if (selected === "A") value = `A - ${optionA}`;
+                                            else if (selected === "B") value = `B - ${optionB}`;
+                                            else if (selected === "C") value = `C - ${optionC}`;
+                                            setAnswerCorrect(value);
+                                        }}
+                                        required
+                                    >
+                                        <option value="">Correct</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                    </select>
+
+                                    <input
+                                        style={{
+                                            ...baseInputStyle,
+                                            width: "511px",
+                                            height: "28.5px",
+                                            padding: "2px 8px",
+                                            backgroundColor: "#f7f7f7",
+                                            color: "#333",
+                                        }}
+                                        value={answerCorrect}
+                                        readOnly
+                                        placeholder="Correct Answer auto-filled"
+                                    />
+                                </div>
                             </div>
-
-                            {/* <input
-                                style={{ ...baseInputStyle, width: "400px", height: "28.5px", padding: "2px 8px" }}
-                                value={optionA}
-                                placeholder="Option A"
-                                onChange={(e) => setOptionA(e.target.value)}
-                                required
-                            />
-                            <input
-                                style={{ ...baseInputStyle, width: "400px", height: "28.5px", padding: "2px 8px" }}
-                                value={optionB}
-                                placeholder="Option B"
-                                onChange={(e) => setOptionB(e.target.value)}
-                                required
-                            />
-                            <input
-                                style={{ ...baseInputStyle, width: "400px", height: "28.5px", padding: "2px 8px" }}
-                                value={optionC}
-                                placeholder="Option C"
-                                onChange={(e) => setOptionC(e.target.value)}
-                                required
-                            />
-
-                            <input
-                                style={{ ...baseInputStyle, width: "400px", height: "28.5px", padding: "2px 8px" }}
-                                value={answerTry}
-                                placeholder="Student Answer (e.g., optionA)"
-                                onChange={(e) => setAnswerTry(e.target.value)}
-                                required
-                            />
-                            <input
-                                style={{ ...baseInputStyle, width: "400px", height: "28.5px", padding: "2px 8px" }}
-                                value={answerCorrect}
-                                placeholder="Correct Answer (e.g., optionB)"
-                                onChange={(e) => setAnswerCorrect(e.target.value)}
-                                required
-                            /> */}
-
-
                         </div>
-
                         <div style={{ height: 12 }} />
-
                         <button
                             className="Font-Segoe-Large-Howto"
                             type="submit"
