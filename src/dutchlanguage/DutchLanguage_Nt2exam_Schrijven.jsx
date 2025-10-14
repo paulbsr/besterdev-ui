@@ -4,7 +4,7 @@ const API_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
 const QUESTIONS_URL =
   "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/schrijven/questions";
 
-export default function DutchLanguageSentenceCompletion({
+export default function DutchLanguage_Nt2exam_Schrijven({
   subject = "workplace communication",
 }) {
   const [challenge, setChallenge] = useState(null);
@@ -149,8 +149,9 @@ Evaluate the response against these four criteria and return a JSON object with 
   // --------------------------
   return (
     <div className="exam-container" style={styles.container}>
-      <h2 style={styles.title}>
-        Nederlands Staatsexamen NT2/B2: Schrijven Toets (Zin Voltooiing)
+      {/* <h2 style={styles.title}> */}
+        <h2 style={{ fontWeight: "bold", fontSize: "22px", margin: "1px 0 16px 0" }}>
+        Nederlands Staatsexamen NT2 :: B2/Schrijven Toets
       </h2>
       <p>
         Totaal aantal opdrachten: 10 • Maximumscore: 53 punten • Cesuur: 31
@@ -171,8 +172,9 @@ Evaluate the response against these four criteria and return a JSON object with 
 
       {challenge && (
         <div style={styles.challengeBox}>
-          <LabelRow label="Exam Year" value={challenge.examYear} />
-          <LabelRow label="Question Number" value={challenge.questionNumber} />
+          Exam Year: {challenge.examYear} | Question Number: {challenge.questionNumber}
+          {/* <LabelRow label="Exam Year" value={challenge.examYear} />
+          <LabelRow label="Question Number" value={challenge.questionNumber} /> */}
           <div style={styles.questionName}>
             {challenge.questionName || "Untitled Question"}
           </div>
@@ -204,7 +206,7 @@ Evaluate the response against these four criteria and return a JSON object with 
 style={{ ...styles.input, marginRight: "5px" }}
 
           />
-          <button type="submit" disabled={loading} style={{ ...styles.button, marginleft: "5px", backgroundColor: "#ffffff", borderColor: "#FF4F00" }}>
+          <button type="submit" disabled={loading} style={{ ...styles.button, marginleft: "5px", backgroundColor: "#ffffff", borderColor: "#FF4F00", cursor: "pointer" }}>
             {loading ? "Bezig met evaluatie..." : "Indienen"}
           </button>
         </form>

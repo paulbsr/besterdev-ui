@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { baseInputStyle } from "../baseInputStyle";
 
-export default function DutchLanguageExamSchrijvenInput(props) {
+export default function DutchLanguage_Nt2exam_SchrijvenInput(props) {
   const [isExpanded, setExpanded] = useState(false);
   const [examYear, setExamYear] = useState("");
   const [questionNumber, setQuestionNumber] = useState("");
