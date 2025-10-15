@@ -3,7 +3,7 @@ import Image from "./Amsterdam1.jpg";
 import DutchLanguageIndex from "./DutchLanguageIndex";
 import DutchLanguageTranslator from "./DutchLanguageTranslator";
 import DutchLanguageChallengeTranslate from "./DutchLanguageChallengeTranslate";
-import DutchLanguage_Nt2exam_Schrijven from "./DutchLanguage_Nt2exam_Schrijven";
+
 import DutchLanguageSpellingChecker from "./DutchLanguageSpellingChecker";
 import DutchLanguageCompareContrast from "./DutchLanguageCompareContrast";
 import DutchLanguageTicker from "./DutchLanguageTicker";
@@ -22,9 +22,11 @@ import { FaNewspaper } from "react-icons/fa6";
 import { BsNewspaper } from "react-icons/bs";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { TiWeatherDownpour } from "react-icons/ti";
+import DutchLanguage_Nt2exam_SchrijvenToets from "./DutchLanguage_Nt2exam_SchrijvenToets";
 import DutchLanguage_Nt2exam_SchrijvenInput from "./DutchLanguage_Nt2exam_SchrijvenInput";
 import imageNT2ExamTimetableJanuary from "./NT2ExamTimetableJanuary.jpg"
 import DutchLanguage_Nt2exam_LuisterenInput from "./DutchLanguage_Nt2exam_LuisterenInput";
+import DutchLanguage_Nt2exam_LuisterenToets from "./DutchLanguage_Nt2exam_LuisterenToets";
 
 
 export default function DutchLanguageHomePage() {
@@ -47,11 +49,11 @@ export default function DutchLanguageHomePage() {
 
         {/* CENTRE COLUMN */}
         <div className="main">
-          <Tooltip id="insert" place="top" style={{ opacity: 1, backgroundColor: "#333", color: "#fff" }}/>
+          <Tooltip id="insert" place="top" style={{ opacity: 1, backgroundColor: "#333", color: "#fff" }} />
           <img src={Image} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} />
           <div>&nbsp;&nbsp;</div>
           <div><DutchLanguageTicker /></div>
-                    <div><DutchLanguageCompareContrast /></div>
+          <div><DutchLanguageCompareContrast /></div>
 
           <div style={{ marginTop: "10px", marginLeft: "5px" }}>
             <a href="https://www.nporadio1.nl/live" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO Radio 1" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "25px" }}><FaRadio /></a>
@@ -63,24 +65,20 @@ export default function DutchLanguageHomePage() {
             <a href="https://www.knmi.nl/nederland-nu/weer/verwachtingen" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NL KNMI" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "30px", marginLeft: "20px" }}><TiWeatherPartlySunny /></a>
             <a href="https://www.metoffice.gov.uk/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="UK Met" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "30px", marginLeft: "20px" }}><TiWeatherDownpour /></a>
           </div>
-                    <div>&nbsp;</div>
+          <div>&nbsp;</div>
           <div><AskAI /></div>
-
-          <DutchLanguage_Nt2exam_Schrijven />
-
+          <DutchLanguage_Nt2exam_SchrijvenToets />
+          <DutchLanguage_Nt2exam_LuisterenToets />
           <DutchLanguageSentenceTrainerModal />
-
           <div><DutchLanguageCompareContrast /></div>
           <div>&nbsp;&nbsp;</div>
           <div><DutchLanguageSentenceWords /></div>
           <div>&nbsp;&nbsp;</div>
-
           <div><DutchLanguageTranslator /></div>
           <div>&nbsp;&nbsp;</div>
           <div><DutchLanguageChallengeTranslate /></div>
-          <div>&nbsp;&nbsp;{imageNT2ExamTimetableJanuary}</div>
-          <div><DutchLanguage_Nt2exam_SchrijvenInput/></div>
-          <div><DutchLanguage_Nt2exam_LuisterenInput/></div>
+          <div><DutchLanguage_Nt2exam_SchrijvenInput /></div>
+          <div><DutchLanguage_Nt2exam_LuisterenInput /></div>
           <img src={imageNT2ExamTimetableJanuary} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} />
         </div>
 
@@ -89,12 +87,12 @@ export default function DutchLanguageHomePage() {
         <div className="spacer"></div>
         <div className="right">
           <DutchLanguageSpellingChecker />
-          <DutchLanguageWordExplain />          
+          <DutchLanguageWordExplain />
           <div>&nbsp;&nbsp;</div>
           {/* <DutchLanguageExamSchrijvenInput/> */}
           <div>&nbsp;&nbsp;</div>
-                    <div>&nbsp;&nbsp;</div>
-                              <div>&nbsp;&nbsp;</div>
+          <div>&nbsp;&nbsp;</div>
+          <div>&nbsp;&nbsp;</div>
           <p className="line underline">Pronouns (Voornaamwoorden):</p>
           <p className="line"><i>ik, jij, hij, zij, wij, jullie, zij</i></p>
 
@@ -129,12 +127,7 @@ export default function DutchLanguageHomePage() {
           <p className="line">hebben = to have (het)</p>
           <p className="line">werken = to work</p>
           <p className="line">gaan = to go</p>
-
-
         </div>
-
-
-
       </div>
     </div>
   );

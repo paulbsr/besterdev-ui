@@ -120,7 +120,7 @@ export default function DutchLanguage_Nt2exam_SchrijvenInput(props) {
       <Tooltip id="insert" />
       <div onClick={toggleAccordion} style={{ cursor: "pointer" }}>
         <a>
-          <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>Add NT2 Schrijven Exam Question</h2>
+          <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>Insert NT2 Schrijven-II Exam Question</h2>
         </a>
       </div>
 

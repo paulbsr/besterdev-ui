@@ -4,7 +4,7 @@ const API_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
 const QUESTIONS_URL =
   "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/schrijven/questions";
 
-export default function DutchLanguage_Nt2exam_Schrijven({
+export default function DutchLanguage_Nt2exam_SchrijvenToets({
   subject = "workplace communication",
 }) {
   const [challenge, setChallenge] = useState(null);
@@ -12,6 +12,7 @@ export default function DutchLanguage_Nt2exam_Schrijven({
   const [feedback, setFeedback] = useState("");
   const [criteriaScores, setCriteriaScores] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
 
   // --------------------------
   // Fetch a new challenge
@@ -37,6 +38,7 @@ export default function DutchLanguage_Nt2exam_Schrijven({
 
       const randomQuestion = list[Math.floor(Math.random() * list.length)];
       setChallenge(randomQuestion);
+      setCollapsed(false); // Expand when new challenge loads
     } catch (err) {
       console.error("❌ Error fetching challenge:", err);
       setFeedback("❌ Error fetching challenge.");
@@ -52,7 +54,6 @@ export default function DutchLanguage_Nt2exam_Schrijven({
   const safeJsonParse = (text) => {
     if (!text) return null;
 
-    // Clean up wrapping artifacts
     const cleaned = text
       .replace(/^Optional\[/, "")
       .replace(/\]$/, "")
@@ -60,10 +61,8 @@ export default function DutchLanguage_Nt2exam_Schrijven({
       .trim();
 
     try {
-      // Try direct parse first
       return JSON.parse(cleaned);
     } catch {
-      // Fallback: extract JSON block using regex
       const match = cleaned.match(/\{[\s\S]*\}/);
       if (match) {
         try {
@@ -82,7 +81,6 @@ export default function DutchLanguage_Nt2exam_Schrijven({
   const checkAnswer = async (e) => {
     e.preventDefault();
     if (!userInput.trim()) return setFeedback("⚠️ Please enter your response.");
-
     if (!challenge) return setFeedback("⚠️ Please load a challenge first.");
 
     setLoading(true);
@@ -115,8 +113,6 @@ Evaluate the response against these four criteria and return a JSON object with 
 
       const data = await res.json();
       const aiResponse = data.answer || "";
-      console.log("🧠 Raw AI response:", aiResponse);
-
       const parsed = safeJsonParse(aiResponse);
 
       if (parsed && typeof parsed === "object") {
@@ -136,6 +132,13 @@ Evaluate the response against these four criteria and return a JSON object with 
   };
 
   // --------------------------
+  // Collapse toggle
+  // --------------------------
+  const toggleCollapse = () => {
+    setCollapsed(!collapsed);
+  };
+
+  // --------------------------
   // Small helper component
   // --------------------------
   const LabelRow = ({ label, value }) => (
@@ -149,13 +152,20 @@ Evaluate the response against these four criteria and return a JSON object with 
   // --------------------------
   return (
     <div className="exam-container" style={styles.container}>
-      {/* <h2 style={styles.title}> */}
+      <div style={styles.headerRow}>
         <h2 style={{ fontWeight: "bold", fontSize: "22px", margin: "1px 0 16px 0" }}>
-        Nederlands Staatsexamen NT2 :: B2/Schrijven Toets
-      </h2>
+          Nederlands Staatsexamen NT2 :: Schrijven-II Toets
+        </h2>
+
+        {challenge && (
+          <button onClick={toggleCollapse} style={styles.collapseButton}>
+            {collapsed ? "⬇️ Toon" : "⬆️ Verberg"}
+          </button>
+        )}
+      </div>
+
       <p>
-        Totaal aantal opdrachten: 10 • Maximumscore: 53 punten • Cesuur: 31
-        punten (60%)
+        Totaal aantal opdrachten: 10 • Maximumscore: 53 punten • Cesuur: 31 punten (60%)
       </p>
 
       <button
@@ -163,88 +173,93 @@ Evaluate the response against these four criteria and return a JSON object with 
         disabled={loading}
         style={{
           ...styles.button,
-          backgroundColor: loading ? "#ddd" : "#fff", borderColor: "#FF4F00",
+          backgroundColor: loading ? "#ddd" : "#fff",
+          borderColor: "#FF4F00",
           cursor: loading ? "not-allowed" : "pointer",
+          marginBottom: "8px",
         }}
       >
         {loading ? "Even geduld..." : "Nieuwe Uitdaging"}
       </button>
 
-      {challenge && (
-        <div style={styles.challengeBox}>
-          Exam Year: {challenge.examYear} | Question Number: {challenge.questionNumber}
-          {/* <LabelRow label="Exam Year" value={challenge.examYear} />
-          <LabelRow label="Question Number" value={challenge.questionNumber} /> */}
-          <div style={styles.questionName}>
-            {challenge.questionName || "Untitled Question"}
-          </div>
-          <em>{challenge.questionInstruction}</em>
-
-          <blockquote style={styles.questionQuote}>
-            {challenge.questionVerbiage}
-          </blockquote>
-
-          <div style={styles.criterium}>
-            <div>
-              🧩 <strong>Begrijpelijkheid:</strong>{" "}
-              {challenge.beoordelingBegrijpelijkheid}
+      {!collapsed && challenge && (
+        <>
+          <div style={styles.challengeBox}>
+            Exam Year: {challenge.examYear} | Question Number: {challenge.questionNumber}
+            <div style={styles.questionName}>
+              {challenge.questionName || "Untitled Question"}
             </div>
-            <div>
-              ✍️ <strong>Grammatica:</strong>{" "}
-              {challenge.beoordelingGrammatica}
+            <em>{challenge.questionInstruction}</em>
+
+            <blockquote style={styles.questionQuote}>
+              {challenge.questionVerbiage}
+            </blockquote>
+
+            <div style={styles.criterium}>
+              <div>
+                🧩 <strong>Begrijpelijkheid:</strong>{" "}
+                {challenge.beoordelingBegrijpelijkheid}
+              </div>
+              <div>
+                ✍️ <strong>Grammatica:</strong>{" "}
+                {challenge.beoordelingGrammatica}
+              </div>
             </div>
           </div>
-        </div>
+
+          <form onSubmit={checkAnswer} style={styles.form}>
+            <input
+              value={userInput}
+              onChange={(e) => setUserInput(e.target.value)}
+              placeholder="Typ je antwoord hier..."
+              style={{ ...styles.input, marginRight: "5px" }}
+            />
+            <button
+              type="submit"
+              disabled={loading}
+              style={{
+                ...styles.button,
+                marginLeft: "5px",
+                backgroundColor: "#ffffff",
+                borderColor: "#FF4F00",
+                cursor: "pointer",
+              }}
+            >
+              {loading ? "Bezig met evaluatie..." : "Indienen"}
+            </button>
+          </form>
+
+          {feedback && (
+            <div style={{ marginTop: "16px" }}>
+              <em>{feedback}</em>
+            </div>
+          )}
+
+          {criteriaScores?.criteria && (
+            <div style={styles.tableContainer}>
+              <h4>Beoordeling per criterium</h4>
+              <table style={styles.table}>
+                <thead>
+                  <tr>
+                    <th style={styles.th}>Criterium</th>
+                    <th style={styles.th}>Score</th>
+                    <th style={styles.th}>Feedback</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {Object.entries(criteriaScores.criteria).map(([key, val]) => (
+                    <tr key={key}>
+                      <td style={styles.td}>{key}</td>
+                      <td style={styles.td}>{val.evaluation || "—"}</td>
+                      <td style={styles.td}>{val.comment || "—"}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </>
       )}
-
-      {challenge && (
-        <form onSubmit={checkAnswer} style={styles.form}>
-          <input
-            value={userInput}
-            onChange={(e) => setUserInput(e.target.value)}
-            placeholder="Typ je antwoord hier..."
-style={{ ...styles.input, marginRight: "5px" }}
-
-          />
-          <button type="submit" disabled={loading} style={{ ...styles.button, marginleft: "5px", backgroundColor: "#ffffff", borderColor: "#FF4F00", cursor: "pointer" }}>
-            {loading ? "Bezig met evaluatie..." : "Indienen"}
-          </button>
-        </form>
-      )}
-
-      {feedback && (
-        <div style={{ marginTop: "16px" }}>
-          <em>{feedback}</em>
-        </div>
-      )}
-
-{criteriaScores?.criteria && (
-  <div style={styles.tableContainer}>
-    <h4>Beoordeling per criterium</h4>
-    <table style={styles.table}>
-      <thead>
-        <tr>
-          <th style={styles.th}>Criterium</th>
-          <th style={styles.th}>Score</th>
-          <th style={styles.th}>Feedback</th>
-        </tr>
-      </thead>
-      <tbody>
-        {Object.entries(criteriaScores.criteria).map(([key, val]) => (
-          <tr key={key}>
-            <td style={styles.td}>{key}</td>
-            <td style={styles.td}>{val.evaluation || "—"}</td>
-            <td style={styles.td}>{val.comment || "—"}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-)}
-
-
-
-
     </div>
   );
 }
@@ -261,10 +276,19 @@ const styles = {
     fontSize: "16px",
     maxWidth: "1100px",
   },
-  title: {
-    fontWeight: "bold",
-    fontSize: "22px",
-    marginBottom: "8px",
+  headerRow: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: "5px",
+  },
+  collapseButton: {
+    border: "1px solid #FF4F00",
+    backgroundColor: "#fff",
+    borderRadius: "4px",
+    padding: "4px 8px",
+    cursor: "pointer",
+    fontSize: "14px",
   },
   button: {
     height: "40.5px",
