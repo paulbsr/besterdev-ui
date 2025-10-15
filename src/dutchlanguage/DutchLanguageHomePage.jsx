@@ -70,8 +70,8 @@ export default function DutchLanguageHomePage() {
           <DutchLanguage_Nt2exam_SchrijvenToets />
           <DutchLanguage_Nt2exam_LuisterenToets />
           <DutchLanguageSentenceTrainerModal />
-          <div><DutchLanguageCompareContrast /></div>
-          <div>&nbsp;&nbsp;</div>
+          {/* <div><DutchLanguageCompareContrast /></div>
+          <div>&nbsp;&nbsp;</div> */}
           <div><DutchLanguageSentenceWords /></div>
           <div>&nbsp;&nbsp;</div>
           <div><DutchLanguageTranslator /></div>

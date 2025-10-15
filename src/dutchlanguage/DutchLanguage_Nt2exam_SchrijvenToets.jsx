@@ -179,7 +179,7 @@ Evaluate the response against these four criteria and return a JSON object with 
           marginBottom: "8px",
         }}
       >
-        {loading ? "Even geduld..." : "Nieuwe Uitdaging"}
+        {loading ? "Even geduld..." : "Nieuwe Schrijvingsvraag"}
       </button>
 
       {!collapsed && challenge && (
