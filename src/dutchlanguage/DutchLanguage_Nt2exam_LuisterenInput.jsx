@@ -141,6 +141,15 @@ export default function DutchLanguage_Nt2exam_LuisterenInput(props) {
                                 required
                             />
 
+                            Topic:
+                            <input
+                                style={{ ...baseInputStyle, width: "320px", height: "28.5px", padding: "2px 8px" }}
+                                value={trackType}
+                                placeholder="Topic"
+                                onChange={(e) => setTrackType(e.target.value)}
+                                required
+                            />
+
                             <input
                                 style={{ ...baseInputStyle, width: "850px", height: "28.5px", padding: "2px 8px" }}
                                 value={trackURL}
@@ -231,6 +240,10 @@ export default function DutchLanguage_Nt2exam_LuisterenInput(props) {
                                         readOnly
                                         placeholder="Correct Answer auto-filled"
                                     />
+
+
+
+
                                 </div>
                             </div>
                         </div>

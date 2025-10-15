@@ -165,7 +165,7 @@ Evaluate the response against these four criteria and return a JSON object with 
       </div>
 
       <p>
-        Totaal aantal opdrachten: 10 • Maximumscore: 53 punten • Cesuur: 31 punten (60%)
+        Totaal aantal opdrachten: 10 • Maximumscore: 53 punten • Cesuur: 31 punten (60%.) Tijdsduur: 100 minuten
       </p>
 
       <button
@@ -283,12 +283,12 @@ const styles = {
     marginBottom: "5px",
   },
   collapseButton: {
-    border: "1px solid #FF4F00",
+    border: "1px solid #ccc",
     backgroundColor: "#fff",
     borderRadius: "4px",
     padding: "4px 8px",
     cursor: "pointer",
-    fontSize: "14px",
+    fontSize: "10px",
   },
   button: {
     height: "40.5px",

@@ -3,7 +3,6 @@ import Image from "./Amsterdam1.jpg";
 import DutchLanguageIndex from "./DutchLanguageIndex";
 import DutchLanguageTranslator from "./DutchLanguageTranslator";
 import DutchLanguageChallengeTranslate from "./DutchLanguageChallengeTranslate";
-
 import DutchLanguageSpellingChecker from "./DutchLanguageSpellingChecker";
 import DutchLanguageCompareContrast from "./DutchLanguageCompareContrast";
 import DutchLanguageTicker from "./DutchLanguageTicker";
@@ -63,22 +62,20 @@ export default function DutchLanguageHomePage() {
             <a href="https://www.rtl.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="RTL" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><FaNewspaper /></a>
             <a href="https://nos.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NOS" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><BsNewspaper /></a>
             <a href="https://www.knmi.nl/nederland-nu/weer/verwachtingen" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NL KNMI" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "30px", marginLeft: "20px" }}><TiWeatherPartlySunny /></a>
-            <a href="https://www.metoffice.gov.uk/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="UK Met" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "30px", marginLeft: "20px" }}><TiWeatherDownpour /></a>
           </div>
+
           <div>&nbsp;</div>
+
           <div><AskAI /></div>
+
           <DutchLanguage_Nt2exam_SchrijvenToets />
           <DutchLanguage_Nt2exam_LuisterenToets />
           <DutchLanguageSentenceTrainerModal />
-          {/* <div><DutchLanguageCompareContrast /></div>
-          <div>&nbsp;&nbsp;</div> */}
-          <div><DutchLanguageSentenceWords /></div>
-          <div>&nbsp;&nbsp;</div>
-          <div><DutchLanguageTranslator /></div>
-          <div>&nbsp;&nbsp;</div>
-          <div><DutchLanguageChallengeTranslate /></div>
-          <div><DutchLanguage_Nt2exam_SchrijvenInput /></div>
-          <div><DutchLanguage_Nt2exam_LuisterenInput /></div>
+          <DutchLanguageSentenceWords />
+          <DutchLanguageTranslator />
+          <DutchLanguageChallengeTranslate />
+          <DutchLanguage_Nt2exam_SchrijvenInput />
+          <DutchLanguage_Nt2exam_LuisterenInput />
           <img src={imageNT2ExamTimetableJanuary} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} />
         </div>
 

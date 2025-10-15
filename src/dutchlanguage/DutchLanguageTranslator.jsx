@@ -53,6 +53,7 @@ export default function DutchLanguageTranslator() {
         borderRadius: "8px",
         padding: "16px",
         maxWidth: "1100px",
+        marginBottom: "16px"
       }}
     >
       <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>Vertaal Tussen Talen</h2>

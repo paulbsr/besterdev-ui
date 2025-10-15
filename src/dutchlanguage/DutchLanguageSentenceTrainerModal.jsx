@@ -98,7 +98,7 @@ function DutchLanguageSentenceTrainerModal() {
         padding: "16px",
         fontFamily: "Segoe UI",
         fontSize: "16px",
-        marginBottom: "10px",
+        marginBottom: "16px",
       }}
     >
       <h2

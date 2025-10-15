@@ -124,6 +124,7 @@ export default function DutchLanguageSentenceWords({
         fontFamily: "Segoe UI",
         fontSize: "16px",
         maxWidth: "1100px",
+        marginBottom: "16px"
       }}
     >
       <h2

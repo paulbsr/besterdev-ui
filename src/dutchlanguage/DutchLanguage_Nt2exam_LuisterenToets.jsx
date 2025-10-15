@@ -85,6 +85,10 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
         )}
       </div>
 
+      <p>
+        Totaal aantal meerkeuzevragen: 37 • Maximumscore: 37 punten • Cesuur: 24 punten (65%) • Totale tijdsduur: ± 90 minuten
+      </p>
+
       {/* Show button even when collapsed */}
       <button
         onClick={fetchQuestion}
@@ -190,12 +194,12 @@ const styles = {
     fontSize: "16px",
   },
   collapseButton: {
-    border: "1px solid #FF4F00",
+    border: "1px solid #ccc",
     backgroundColor: "#fff",
     borderRadius: "4px",
     padding: "5px 10px",
     cursor: "pointer",
-    fontSize: "14px",
+    fontSize: "10px",
   },
   questionBox: {
     backgroundColor: "#f9f9f9",
