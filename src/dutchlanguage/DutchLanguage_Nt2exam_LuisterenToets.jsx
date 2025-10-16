@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const API_URL =
-  "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/luisteren";
+  "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/luisteren/wip";
 
 export default function DutchLanguage_Nt2exam_LuisterenToets() {
   const [question, setQuestion] = useState(null);
@@ -60,18 +60,38 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
   //   }
   // };
 
-  const checkAnswer = (e) => {
+//   const checkAnswer = (e) => {
+//   e.preventDefault();
+//   if (!userAnswer.trim()) return setFeedback("⚠️ Kies je antwoord.");
+
+//   const correctRaw = question?.answerCorrect?.trim().toLowerCase();
+//   const attempt = userAnswer.trim().toLowerCase();
+
+//   // Match either exact (A, B, C) or full-text (A - ...)
+//   const isCorrect =
+//     correctRaw === attempt ||
+//     correctRaw.startsWith(attempt + " -") ||
+//     correctRaw.startsWith(attempt + "—") || // in case of dash variations
+//     correctRaw.startsWith(attempt + ":");
+
+//   if (isCorrect) {
+//     setFeedback("✅ Correct! Goed gedaan!");
+//   } else {
+//     setFeedback(`❌ Onjuist. Het juiste antwoord is: ${question.answerCorrect}`);
+//   }
+// };
+
+const checkAnswer = async (e) => {
   e.preventDefault();
   if (!userAnswer.trim()) return setFeedback("⚠️ Kies je antwoord.");
 
   const correctRaw = question?.answerCorrect?.trim().toLowerCase();
   const attempt = userAnswer.trim().toLowerCase();
 
-  // Match either exact (A, B, C) or full-text (A - ...)
   const isCorrect =
     correctRaw === attempt ||
     correctRaw.startsWith(attempt + " -") ||
-    correctRaw.startsWith(attempt + "—") || // in case of dash variations
+    correctRaw.startsWith(attempt + "—") ||
     correctRaw.startsWith(attempt + ":");
 
   if (isCorrect) {
@@ -79,7 +99,35 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
   } else {
     setFeedback(`❌ Onjuist. Het juiste antwoord is: ${question.answerCorrect}`);
   }
+
+  // ✅ Persist answerTry to backend
+  try {
+    const fullAnswer =
+      userAnswer === "A"
+        ? `A - ${question.optionA}`
+        : userAnswer === "B"
+        ? `B - ${question.optionB}`
+        : userAnswer === "C"
+        ? `C - ${question.optionC}`
+        : userAnswer;
+
+    await fetch(`${API_URL}/${question.id}/answerTry`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(fullAnswer),
+    });
+
+    console.log("✅ Answer persisted:", fullAnswer);
+  } catch (err) {
+    console.error("❌ Error saving answer:", err);
+  }
 };
+
+
+
+
+
+
 
   // --------------------------
   // Toggle collapse
@@ -106,9 +154,21 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
         )}
       </div>
 
-      <p>
-        Totaal aantal meerkeuzevragen: 37 • Maximumscore: 37 punten • Cesuur: 24 punten (65%) • Totale tijdsduur: ± 90 minuten
-      </p>
+<div
+  style={{
+    fontFamily: 'Segoe UI, sans-serif',
+    fontSize: '12px',
+    lineHeight: 1,
+    margin: 0,
+    padding: 0,
+  }}
+>
+  <p style={{ margin: 0 }}>2024 - Vragen: 37 • Maximumscore: 37 • Cesuur: 24 (65%) • Tijdsduur: ± 90 minuten</p>
+  <p style={{ margin: 0 }}>2023 - Vragen: 40 • Maximumscore: 40 • Cesuur: 24 (60%) • Tijdsduur: ± 90 minuten</p>
+  <p style={{ margin: 0 }}>2022 - Vragen: 39 • Maximumscore: 39 • Cesuur: 24 (62%) • Tijdsduur: ± 90 minuten</p>
+</div>
+
+
 
       {/* Show button even when collapsed */}
       <button
@@ -120,6 +180,7 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
           borderColor: "#FF4F00",
           cursor: loading ? "not-allowed" : "pointer",
           marginBottom: "10px",
+                    marginTop: "10px",
         }}
       >
         {loading ? "Even geduld..." : "Nieuwe Luistervraag"}

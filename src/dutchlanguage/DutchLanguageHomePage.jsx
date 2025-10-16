@@ -1,31 +1,31 @@
 import "./DutchLanguageHomePage.css";
-import Image from "./Amsterdam1.jpg";
 import DutchLanguageIndex from "./DutchLanguageIndex";
 import DutchLanguageTranslator from "./DutchLanguageTranslator";
 import DutchLanguageChallengeTranslate from "./DutchLanguageChallengeTranslate";
 import DutchLanguageSpellingChecker from "./DutchLanguageSpellingChecker";
 import DutchLanguageCompareContrast from "./DutchLanguageCompareContrast";
 import DutchLanguageTicker from "./DutchLanguageTicker";
-import AskAI from '../openai/AskAI';
+import DutchLanguageSentenceWords from "./DutchLanguageSentenceWords";
+import DutchLanguageWordExplain from "./DutchLanguageWordExplain";
+import DutchLanguage_Nt2exam_SchrijvenToets from "./DutchLanguage_Nt2exam_SchrijvenToets";
+import DutchLanguage_Nt2exam_SchrijvenInput from "./DutchLanguage_Nt2exam_SchrijvenInput";
 import DutchLanguageWoordenschat from "./DutchLanguageWoordenschat";
 import DutchLanguageSentenceTrainerModal from "./DutchLanguageSentenceTrainerModal";
+import DutchLanguage_Nt2exam_LuisterenInput from "./DutchLanguage_Nt2exam_LuisterenInput";
+import DutchLanguage_Nt2exam_LuisterenToets from "./DutchLanguage_Nt2exam_LuisterenToets";
+import AskAI from '../openai/AskAI';
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 import { FaRadio } from "react-icons/fa6";
 import { RiWebcamFill } from "react-icons/ri";
 import { PiExamFill } from "react-icons/pi";
 import { RiSpeakFill } from "react-icons/ri";
-import DutchLanguageSentenceWords from "./DutchLanguageSentenceWords";
-import DutchLanguageWordExplain from "./DutchLanguageWordExplain";
 import { FaNewspaper } from "react-icons/fa6";
 import { BsNewspaper } from "react-icons/bs";
 import { TiWeatherPartlySunny } from "react-icons/ti";
-import DutchLanguage_Nt2exam_SchrijvenToets from "./DutchLanguage_Nt2exam_SchrijvenToets";
-import DutchLanguage_Nt2exam_SchrijvenInput from "./DutchLanguage_Nt2exam_SchrijvenInput";
 import imageNT2ExamTimetableJanuary from "./NT2ExamTimetableJanuary.jpg"
 import imageNT2ExamTimes from "./NT2ExamTimes.jpg"
-import DutchLanguage_Nt2exam_LuisterenInput from "./DutchLanguage_Nt2exam_LuisterenInput";
-import DutchLanguage_Nt2exam_LuisterenToets from "./DutchLanguage_Nt2exam_LuisterenToets";
+import Image from "./Amsterdam1.jpg";
 
 
 export default function DutchLanguageHomePage() {

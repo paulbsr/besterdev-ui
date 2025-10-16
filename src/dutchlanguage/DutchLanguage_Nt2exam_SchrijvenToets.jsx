@@ -164,9 +164,20 @@ Evaluate the response against these four criteria and return a JSON object with 
         )}
       </div>
 
-      <p>
-        Totaal aantal opdrachten: 10 • Maximumscore: 53 punten • Cesuur: 31 punten (60%.) Tijdsduur: 100 minuten
-      </p>
+
+      <div
+  style={{
+    fontFamily: 'Segoe UI, sans-serif',
+    fontSize: '12px',
+    lineHeight: 1,
+    margin: 0,
+    padding: 0,
+  }}
+>
+  <p style={{ margin: 0 }}>20xx - Opdrachten: 10 • Maximumscore: 53 • Cesuur: 31 (60%) • Tijdsduur: ± 100 minuten</p>
+  <p style={{ margin: 0 }}>20xx - Opdrachten: xx • Maximumscore: xx • Cesuur: xx (xx%) • Tijdsduur: ± 100 minuten</p>
+  <p style={{ margin: 0 }}>20xx - Opdrachten: xx • Maximumscore: xx • Cesuur: xx (xx%) • Tijdsduur: ± 100 minuten</p>
+</div>
 
       <button
         onClick={fetchChallenge}
@@ -177,6 +188,7 @@ Evaluate the response against these four criteria and return a JSON object with 
           borderColor: "#FF4F00",
           cursor: loading ? "not-allowed" : "pointer",
           marginBottom: "8px",
+          marginTop: "8px",
         }}
       >
         {loading ? "Even geduld..." : "Nieuwe Schrijvingsvraag"}
