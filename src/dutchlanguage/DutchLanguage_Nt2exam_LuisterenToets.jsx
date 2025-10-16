@@ -48,7 +48,7 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
   // --------------------------
   const checkAnswer = (e) => {
     e.preventDefault();
-    if (!userAnswer.trim()) return setFeedback("⚠️ Voer je antwoord in.");
+    if (!userAnswer.trim()) return setFeedback("⚠️ Kies je antwoord.");
 
     const correct = question?.answerCorrect?.trim().toLowerCase();
     const attempt = userAnswer.trim().toLowerCase();
@@ -130,13 +130,17 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
           </ul>
 
           <form onSubmit={checkAnswer} style={{ marginTop: "12px" }}>
-            <input
-              type="text"
-              placeholder="Typ je antwoord (bijv. A of B of C)..."
+            <select
               value={userAnswer}
               onChange={(e) => setUserAnswer(e.target.value)}
-              style={styles.input}
-            />
+              style={styles.select}
+            >
+              <option value="">-- Kies je antwoord --</option>
+              <option value="A">A - {question.optionA}</option>
+              <option value="B">B - {question.optionB}</option>
+              <option value="C">C - {question.optionC}</option>
+            </select>
+
             <button
               type="submit"
               disabled={loading}
@@ -173,7 +177,7 @@ const styles = {
     fontFamily: "Segoe UI",
     fontSize: "16px",
     maxWidth: "1100px",
-    marginTop: "16px"
+    marginTop: "16px",
   },
   headerRow: {
     display: "flex",
@@ -221,12 +225,13 @@ const styles = {
     marginTop: "10px",
     lineHeight: "1.8",
   },
-  input: {
-    height: "35.5px",
+  select: {
+    height: "40.5px",
     border: "1px solid #777",
     borderRadius: "4px",
     paddingLeft: "10px",
-    width: "250px",
+    width: "750px",
     fontSize: "16px",
+    backgroundColor: "#fff",
   },
 };
