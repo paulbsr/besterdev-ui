@@ -27,8 +27,8 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
       const list = Array.isArray(data)
         ? data
         : Array.isArray(data?.questions)
-        ? data.questions
-        : [];
+          ? data.questions
+          : [];
 
       if (list.length === 0) throw new Error("No questions found.");
 
@@ -113,13 +113,28 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
             <strong>Opgave:</strong> {question.opgave}
           </div>
 
-          {/* AUDIO PLAYER */}
+
+
+
+          {/* MEDIA PLAYER (audio or video) */}
           <div style={{ marginTop: "12px" }}>
-            <audio controls style={{ width: "100%" }}>
-              <source src={question.trackURL} type="audio/ogg" />
-              Je browser ondersteunt het afspelen van audio niet.
-            </audio>
+            {question.trackURL?.endsWith(".webm") ? (
+              <video
+                controls
+                style={{ width: "100%", borderRadius: "6px" }}
+                preload="metadata"
+              >
+                <source src={question.trackURL} type="video/webm" />
+                Je browser ondersteunt het afspelen van video niet.
+              </video>
+            ) : (
+              <audio controls style={{ width: "100%" }}>
+                <source src={question.trackURL} type="audio/ogg" />
+                Je browser ondersteunt het afspelen van audio niet.
+              </audio>
+            )}
           </div>
+
 
           <blockquote style={styles.questionText}>{question.question}</blockquote>
 
