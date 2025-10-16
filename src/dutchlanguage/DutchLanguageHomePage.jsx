@@ -20,10 +20,10 @@ import DutchLanguageWordExplain from "./DutchLanguageWordExplain";
 import { FaNewspaper } from "react-icons/fa6";
 import { BsNewspaper } from "react-icons/bs";
 import { TiWeatherPartlySunny } from "react-icons/ti";
-import { TiWeatherDownpour } from "react-icons/ti";
 import DutchLanguage_Nt2exam_SchrijvenToets from "./DutchLanguage_Nt2exam_SchrijvenToets";
 import DutchLanguage_Nt2exam_SchrijvenInput from "./DutchLanguage_Nt2exam_SchrijvenInput";
 import imageNT2ExamTimetableJanuary from "./NT2ExamTimetableJanuary.jpg"
+import imageNT2ExamTimes from "./NT2ExamTimes.jpg"
 import DutchLanguage_Nt2exam_LuisterenInput from "./DutchLanguage_Nt2exam_LuisterenInput";
 import DutchLanguage_Nt2exam_LuisterenToets from "./DutchLanguage_Nt2exam_LuisterenToets";
 
@@ -77,6 +77,7 @@ export default function DutchLanguageHomePage() {
           <DutchLanguage_Nt2exam_SchrijvenInput />
           <DutchLanguage_Nt2exam_LuisterenInput />
           <img src={imageNT2ExamTimetableJanuary} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} />
+          <img src={imageNT2ExamTimes} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} />
         </div>
 
 
