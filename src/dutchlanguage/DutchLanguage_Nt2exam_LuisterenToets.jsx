@@ -46,19 +46,40 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
   // --------------------------
   // Check user answer
   // --------------------------
+  // const checkAnswer = (e) => {
+  //   e.preventDefault();
+  //   if (!userAnswer.trim()) return setFeedback("⚠️ Kies je antwoord.");
+
+  //   const correct = question?.answerCorrect?.trim().toLowerCase();
+  //   const attempt = userAnswer.trim().toLowerCase();
+
+  //   if (attempt === correct) {
+  //     setFeedback("✅ Correct! Goed gedaan!");
+  //   } else {
+  //     setFeedback(`❌ Onjuist. Het juiste antwoord is: ${question.answerCorrect}`);
+  //   }
+  // };
+
   const checkAnswer = (e) => {
-    e.preventDefault();
-    if (!userAnswer.trim()) return setFeedback("⚠️ Kies je antwoord.");
+  e.preventDefault();
+  if (!userAnswer.trim()) return setFeedback("⚠️ Kies je antwoord.");
 
-    const correct = question?.answerCorrect?.trim().toLowerCase();
-    const attempt = userAnswer.trim().toLowerCase();
+  const correctRaw = question?.answerCorrect?.trim().toLowerCase();
+  const attempt = userAnswer.trim().toLowerCase();
 
-    if (attempt === correct) {
-      setFeedback("✅ Correct! Goed gedaan!");
-    } else {
-      setFeedback(`❌ Onjuist. Het juiste antwoord is: ${question.answerCorrect}`);
-    }
-  };
+  // Match either exact (A, B, C) or full-text (A - ...)
+  const isCorrect =
+    correctRaw === attempt ||
+    correctRaw.startsWith(attempt + " -") ||
+    correctRaw.startsWith(attempt + "—") || // in case of dash variations
+    correctRaw.startsWith(attempt + ":");
+
+  if (isCorrect) {
+    setFeedback("✅ Correct! Goed gedaan!");
+  } else {
+    setFeedback(`❌ Onjuist. Het juiste antwoord is: ${question.answerCorrect}`);
+  }
+};
 
   // --------------------------
   // Toggle collapse
