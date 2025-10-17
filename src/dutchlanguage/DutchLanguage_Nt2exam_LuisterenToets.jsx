@@ -19,7 +19,7 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
   // Start 2-minute countdown
   const startCountdown = () => {
     clearInterval(timerRef.current);
-    setTimeLeft(120); // 2 minutes = 120 seconds
+    setTimeLeft(135); // 2 minutes = 120 seconds
 
     timerRef.current = setInterval(() => {
       setTimeLeft((prev) => {
@@ -54,8 +54,8 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
       const list = Array.isArray(data)
         ? data
         : Array.isArray(data?.questions)
-        ? data.questions
-        : [];
+          ? data.questions
+          : [];
 
       if (list.length === 0) throw new Error("No questions found.");
 
@@ -98,10 +98,10 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
         userAnswer === "A"
           ? `A - ${question.optionA}`
           : userAnswer === "B"
-          ? `B - ${question.optionB}`
-          : userAnswer === "C"
-          ? `C - ${question.optionC}`
-          : userAnswer;
+            ? `B - ${question.optionB}`
+            : userAnswer === "C"
+              ? `C - ${question.optionC}`
+              : userAnswer;
 
       await fetch(`${API_URL}/${question.id}/answerTry`, {
         method: "PUT",
@@ -188,7 +188,16 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
           <div>
             <strong>Jaar:</strong> {question.year} •{" "}
             <strong>Track:</strong> {question.trackNumber} •{" "}
-            <strong>Opgave:</strong> {question.opgave}
+            <strong>Opgave:</strong> {question.opgave} •{" "}
+            <strong>Onderwerp:</strong>{" "}
+
+            <a
+              href={question.trackTypeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {question.trackType}
+            </a>
           </div>
 
           <div style={{ marginTop: "12px" }}>
