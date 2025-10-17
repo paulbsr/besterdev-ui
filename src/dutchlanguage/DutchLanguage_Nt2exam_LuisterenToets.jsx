@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 
 const API_URL =
   "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/luisteren/wip";
+const PROGRESS_URL =
+  "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/luisteren/progress";
 
 export default function DutchLanguage_Nt2exam_LuisterenToets() {
   const [question, setQuestion] = useState(null);
@@ -9,6 +11,7 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
   const [feedback, setFeedback] = useState("");
   const [loading, setLoading] = useState(false);
   const [collapsed, setCollapsed] = useState(true);
+  const [progress, setProgress] = useState(null);
 
   // --------------------------
   // Countdown timer
@@ -16,7 +19,6 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
   const [timeLeft, setTimeLeft] = useState(0);
   const timerRef = useRef(null);
 
-  // Start 2-minute countdown
   const startCountdown = () => {
     clearInterval(timerRef.current);
     setTimeLeft(135); // 2 minutes = 120 seconds
@@ -33,7 +35,25 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
   };
 
   useEffect(() => {
-    return () => clearInterval(timerRef.current); // Cleanup on unmount
+    return () => clearInterval(timerRef.current);
+  }, []);
+
+  // --------------------------
+  // Fetch progress percentage
+  // --------------------------
+  const fetchProgress = async () => {
+    try {
+      const res = await fetch(PROGRESS_URL);
+      if (!res.ok) throw new Error("Failed to fetch progress");
+      const value = await res.json();
+      setProgress(parseFloat(value).toFixed(1)); // e.g. 2.6
+    } catch (err) {
+      console.error("❌ Error fetching progress:", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchProgress();
   }, []);
 
   // --------------------------
@@ -54,15 +74,18 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
       const list = Array.isArray(data)
         ? data
         : Array.isArray(data?.questions)
-          ? data.questions
-          : [];
+        ? data.questions
+        : [];
 
       if (list.length === 0) throw new Error("No questions found.");
 
       const randomItem = list[Math.floor(Math.random() * list.length)];
       setQuestion(randomItem);
       setCollapsed(false);
-      startCountdown(); // ⏳ start timer here
+      startCountdown();
+
+      // Refresh progress each time a new question is fetched
+      fetchProgress();
     } catch (err) {
       console.error("❌ Error fetching question:", err);
       setFeedback("❌ Error fetching question.");
@@ -98,10 +121,10 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
         userAnswer === "A"
           ? `A - ${question.optionA}`
           : userAnswer === "B"
-            ? `B - ${question.optionB}`
-            : userAnswer === "C"
-              ? `C - ${question.optionC}`
-              : userAnswer;
+          ? `B - ${question.optionB}`
+          : userAnswer === "C"
+          ? `C - ${question.optionC}`
+          : userAnswer;
 
       await fetch(`${API_URL}/${question.id}/answerTry`, {
         method: "PUT",
@@ -110,6 +133,7 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
       });
 
       console.log("✅ Answer persisted:", fullAnswer);
+      fetchProgress(); // Refresh progress after saving answer
     } catch (err) {
       console.error("❌ Error saving answer:", err);
     }
@@ -117,9 +141,6 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
 
   const toggleCollapse = () => setCollapsed(!collapsed);
 
-  // --------------------------
-  // Helper: Format time (mm:ss)
-  // --------------------------
   const formatTime = (seconds) => {
     const m = Math.floor(seconds / 60)
       .toString()
@@ -128,9 +149,6 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
     return `${m}:${s}`;
   };
 
-  // --------------------------
-  // UI
-  // --------------------------
   return (
     <div style={styles.container}>
       <div style={styles.headerRow}>
@@ -190,14 +208,15 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
             <strong>Track:</strong> {question.trackNumber} •{" "}
             <strong>Opgave:</strong> {question.opgave} •{" "}
             <strong>Onderwerp:</strong>{" "}
-
+            
             <a
               href={question.trackTypeUrl}
               target="_blank"
               rel="noopener noreferrer"
             >
               {question.trackType}
-            </a>
+            </a> •{" "}
+            <strong>Compleet:</strong> {progress}%
           </div>
 
           <div style={{ marginTop: "12px" }}>
@@ -228,7 +247,6 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
             <li>C - {question.optionC}</li>
           </ul>
 
-          {/* ⏳ Countdown Timer Display */}
           <div
             style={{
               fontFamily: "Segoe UI, sans-serif",
@@ -281,9 +299,6 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
   );
 }
 
-// --------------------------
-// Styles
-// --------------------------
 const styles = {
   container: {
     border: "1px solid #ddd",
