@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const API_URL =
   "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/luisteren/wip";
-    // "http://localhost:8000/api/v1/nt2exam/luisteren/wip";
 
 export default function DutchLanguage_Nt2exam_LuisterenToets() {
   const [question, setQuestion] = useState(null);
@@ -12,6 +11,32 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
   const [collapsed, setCollapsed] = useState(true);
 
   // --------------------------
+  // Countdown timer
+  // --------------------------
+  const [timeLeft, setTimeLeft] = useState(0);
+  const timerRef = useRef(null);
+
+  // Start 2-minute countdown
+  const startCountdown = () => {
+    clearInterval(timerRef.current);
+    setTimeLeft(120); // 2 minutes = 120 seconds
+
+    timerRef.current = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
+          clearInterval(timerRef.current);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+  };
+
+  useEffect(() => {
+    return () => clearInterval(timerRef.current); // Cleanup on unmount
+  }, []);
+
+  // --------------------------
   // Fetch random listening question
   // --------------------------
   const fetchQuestion = async () => {
@@ -19,6 +44,7 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
     setFeedback("");
     setUserAnswer("");
     setQuestion(null);
+    setTimeLeft(0);
 
     try {
       const res = await fetch(API_URL);
@@ -28,14 +54,15 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
       const list = Array.isArray(data)
         ? data
         : Array.isArray(data?.questions)
-          ? data.questions
-          : [];
+        ? data.questions
+        : [];
 
       if (list.length === 0) throw new Error("No questions found.");
 
       const randomItem = list[Math.floor(Math.random() * list.length)];
       setQuestion(randomItem);
-      setCollapsed(false); // Expand when new question loads
+      setCollapsed(false);
+      startCountdown(); // ⏳ start timer here
     } catch (err) {
       console.error("❌ Error fetching question:", err);
       setFeedback("❌ Error fetching question.");
@@ -47,94 +74,58 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
   // --------------------------
   // Check user answer
   // --------------------------
-  // const checkAnswer = (e) => {
-  //   e.preventDefault();
-  //   if (!userAnswer.trim()) return setFeedback("⚠️ Kies je antwoord.");
+  const checkAnswer = async (e) => {
+    e.preventDefault();
+    if (!userAnswer.trim()) return setFeedback("⚠️ Kies je antwoord.");
 
-  //   const correct = question?.answerCorrect?.trim().toLowerCase();
-  //   const attempt = userAnswer.trim().toLowerCase();
+    const correctRaw = question?.answerCorrect?.trim().toLowerCase();
+    const attempt = userAnswer.trim().toLowerCase();
 
-  //   if (attempt === correct) {
-  //     setFeedback("✅ Correct! Goed gedaan!");
-  //   } else {
-  //     setFeedback(`❌ Onjuist. Het juiste antwoord is: ${question.answerCorrect}`);
-  //   }
-  // };
+    const isCorrect =
+      correctRaw === attempt ||
+      correctRaw.startsWith(attempt + " -") ||
+      correctRaw.startsWith(attempt + "—") ||
+      correctRaw.startsWith(attempt + ":");
 
-//   const checkAnswer = (e) => {
-//   e.preventDefault();
-//   if (!userAnswer.trim()) return setFeedback("⚠️ Kies je antwoord.");
+    if (isCorrect) {
+      setFeedback("✅ Correct! Goed gedaan!");
+    } else {
+      setFeedback(`❌ Onjuist. Het juiste antwoord is: ${question.answerCorrect}`);
+    }
 
-//   const correctRaw = question?.answerCorrect?.trim().toLowerCase();
-//   const attempt = userAnswer.trim().toLowerCase();
+    try {
+      const fullAnswer =
+        userAnswer === "A"
+          ? `A - ${question.optionA}`
+          : userAnswer === "B"
+          ? `B - ${question.optionB}`
+          : userAnswer === "C"
+          ? `C - ${question.optionC}`
+          : userAnswer;
 
-//   // Match either exact (A, B, C) or full-text (A - ...)
-//   const isCorrect =
-//     correctRaw === attempt ||
-//     correctRaw.startsWith(attempt + " -") ||
-//     correctRaw.startsWith(attempt + "—") || // in case of dash variations
-//     correctRaw.startsWith(attempt + ":");
+      await fetch(`${API_URL}/${question.id}/answerTry`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(fullAnswer),
+      });
 
-//   if (isCorrect) {
-//     setFeedback("✅ Correct! Goed gedaan!");
-//   } else {
-//     setFeedback(`❌ Onjuist. Het juiste antwoord is: ${question.answerCorrect}`);
-//   }
-// };
+      console.log("✅ Answer persisted:", fullAnswer);
+    } catch (err) {
+      console.error("❌ Error saving answer:", err);
+    }
+  };
 
-const checkAnswer = async (e) => {
-  e.preventDefault();
-  if (!userAnswer.trim()) return setFeedback("⚠️ Kies je antwoord.");
-
-  const correctRaw = question?.answerCorrect?.trim().toLowerCase();
-  const attempt = userAnswer.trim().toLowerCase();
-
-  const isCorrect =
-    correctRaw === attempt ||
-    correctRaw.startsWith(attempt + " -") ||
-    correctRaw.startsWith(attempt + "—") ||
-    correctRaw.startsWith(attempt + ":");
-
-  if (isCorrect) {
-    setFeedback("✅ Correct! Goed gedaan!");
-  } else {
-    setFeedback(`❌ Onjuist. Het juiste antwoord is: ${question.answerCorrect}`);
-  }
-
-  // ✅ Persist answerTry to backend
-  try {
-    const fullAnswer =
-      userAnswer === "A"
-        ? `A - ${question.optionA}`
-        : userAnswer === "B"
-        ? `B - ${question.optionB}`
-        : userAnswer === "C"
-        ? `C - ${question.optionC}`
-        : userAnswer;
-
-    await fetch(`${API_URL}/${question.id}/answerTry`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(fullAnswer),
-    });
-
-    console.log("✅ Answer persisted:", fullAnswer);
-  } catch (err) {
-    console.error("❌ Error saving answer:", err);
-  }
-};
-
-
-
-
-
-
+  const toggleCollapse = () => setCollapsed(!collapsed);
 
   // --------------------------
-  // Toggle collapse
+  // Helper: Format time (mm:ss)
   // --------------------------
-  const toggleCollapse = () => {
-    setCollapsed(!collapsed);
+  const formatTime = (seconds) => {
+    const m = Math.floor(seconds / 60)
+      .toString()
+      .padStart(2, "0");
+    const s = (seconds % 60).toString().padStart(2, "0");
+    return `${m}:${s}`;
   };
 
   // --------------------------
@@ -147,7 +138,6 @@ const checkAnswer = async (e) => {
           Nederlands Staatsexamen NT2 :: Luisteren-II Toets
         </h2>
 
-        {/* Collapse toggle only if a question is loaded */}
         {question && (
           <button onClick={toggleCollapse} style={styles.collapseButton}>
             {collapsed ? "⬇️ Toon" : "⬆️ Verberg"}
@@ -155,23 +145,29 @@ const checkAnswer = async (e) => {
         )}
       </div>
 
-<div
-  style={{
-    fontFamily: 'Segoe UI, sans-serif',
-    fontSize: '12px',
-    lineHeight: 1,
-    margin: 0,
-    padding: 0,
-  }}
->
-  <p style={{ margin: 0 }}>2024 - Vragen: 37 • Maximumscore: 37 • Cesuur: 24 (65%) • Tijdsduur: ± 90 minuten</p>
-  <p style={{ margin: 0 }}>2023 - Vragen: 40 • Maximumscore: 40 • Cesuur: 24 (60%) • Tijdsduur: ± 90 minuten</p>
-  <p style={{ margin: 0 }}>2022 - Vragen: 39 • Maximumscore: 39 • Cesuur: 24 (62%) • Tijdsduur: ± 90 minuten</p>
-</div>
+      <div
+        style={{
+          fontFamily: "Segoe UI, sans-serif",
+          fontSize: "12px",
+          lineHeight: 1,
+          margin: 0,
+          padding: 0,
+        }}
+      >
+        <p style={{ margin: 0 }}>
+          2024 - Vragen: 37 • Maximumscore: 37 • Cesuur: 24 (65%) • Tijdsduur: ±
+          90 minuten
+        </p>
+        <p style={{ margin: 0 }}>
+          2023 - Vragen: 40 • Maximumscore: 40 • Cesuur: 24 (60%) • Tijdsduur: ±
+          90 minuten
+        </p>
+        <p style={{ margin: 0 }}>
+          2022 - Vragen: 39 • Maximumscore: 39 • Cesuur: 24 (62%) • Tijdsduur: ±
+          90 minuten
+        </p>
+      </div>
 
-
-
-      {/* Show button even when collapsed */}
       <button
         onClick={fetchQuestion}
         disabled={loading}
@@ -181,13 +177,12 @@ const checkAnswer = async (e) => {
           borderColor: "#FF4F00",
           cursor: loading ? "not-allowed" : "pointer",
           marginBottom: "10px",
-                    marginTop: "10px",
+          marginTop: "10px",
         }}
       >
         {loading ? "Even geduld..." : "Nieuwe Luistervraag"}
       </button>
 
-      {/* Collapsible section */}
       {!collapsed && question && (
         <div style={styles.questionBox}>
           <div>
@@ -196,10 +191,6 @@ const checkAnswer = async (e) => {
             <strong>Opgave:</strong> {question.opgave}
           </div>
 
-
-
-
-          {/* MEDIA PLAYER (audio or video) */}
           <div style={{ marginTop: "12px" }}>
             {question.trackURL?.endsWith(".webm") ? (
               <video
@@ -218,8 +209,9 @@ const checkAnswer = async (e) => {
             )}
           </div>
 
-
-          <blockquote style={styles.questionText}>{question.question}</blockquote>
+          <blockquote style={styles.questionText}>
+            {question.question}
+          </blockquote>
 
           <ul style={styles.optionList}>
             <li>A - {question.optionA}</li>
@@ -227,7 +219,23 @@ const checkAnswer = async (e) => {
             <li>C - {question.optionC}</li>
           </ul>
 
-          <form onSubmit={checkAnswer} style={{ marginTop: "12px" }}>
+          {/* ⏳ Countdown Timer Display */}
+          <div
+            style={{
+              fontFamily: "Segoe UI, sans-serif",
+              fontSize: "12px",
+              marginBottom: "4px",
+              color: timeLeft <= 10 ? "#FF4F00" : "#333",
+            }}
+          >
+            {timeLeft > 0 ? (
+              <>⏱️ Tijd over: {formatTime(timeLeft)}</>
+            ) : (
+              "⏰ Tijd is om!"
+            )}
+          </div>
+
+          <form onSubmit={checkAnswer} style={{ marginTop: "4px" }}>
             <select
               value={userAnswer}
               onChange={(e) => setUserAnswer(e.target.value)}
