@@ -197,7 +197,14 @@ Evaluate the response against these four criteria and return a JSON object with 
       {!collapsed && challenge && (
         <>
           <div style={styles.challengeBox}>
-            Exam Year: {challenge.examYear} | Question Number: {challenge.questionNumber}
+
+        {/* <div style={styles.questionBox}> */}
+          <div style={styles.questionBox}>
+            <strong>Jaar:</strong> {challenge.examYear} •{" "}
+            <strong>Vraag Nommer:</strong> {challenge.questionNumber} •{" "}
+            {/* <strong>Opgave:</strong> {question.opgave} */}
+          </div>
+
             <div style={styles.questionName}>
               {challenge.questionName || "Untitled Question"}
             </div>
