@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
 const API_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
-const QUESTIONS_URL =
-  "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/schrijven/questions";
+const QUESTIONS_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/schrijven/questions";
 
 export default function DutchLanguage_Nt2exam_SchrijvenToets({
   subject = "workplace communication",

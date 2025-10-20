@@ -160,7 +160,7 @@ export default function DutchLanguageTranslator() {
             fontFamily: "Segoe UI",
             fontStyle: "italic",
             fontSize: "16px",
-            color: "#FF4F00",
+            color: "#000000",
           }}
         >
           {translation}
