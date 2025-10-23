@@ -102,9 +102,9 @@ export default function DutchLanguageHomePage() {
 
           <p className="line underline spaced">Adjectives (Bijvoeglijke Naamwoorden):</p>
           <p className="line"><i>Describe nouns. Gets trailing "-e"</i></p>
-          <p className="line">een <b>grote</b> man</p>
-          <p className="line">de <b>rode</b> auto</p>
-          <p className="line">het <b>groene</b> boek</p>
+          <p className="line">de <b>rode</b> auto (always with plural - die)</p>
+          <p className="line">een <b>grote</b> man (singular - 'n')</p>
+          <p className="line">het <b>groene</b> boek (singular = die)</p>
 
           <p className="line underline spaced">Adverbs (Bijwoorden):</p>
           <p className="line"><i>Tells us how, when, where, or how often something happens</i></p>
@@ -114,12 +114,6 @@ export default function DutchLanguageHomePage() {
           <p className="line"><i>Words for people, places, things, ideas.</i></p>
           <p className="line">zijn = is (to be)</p>
           <p className="line">hebben = het (to have)</p>
-
-          <p className="line underline spaced">Articles (Lidwoorden):</p>
-          <p className="line"><i>Words like “the” and “a/an” that go with nouns.</i></p>
-          <p className="line">een = 'n / a / an (singular)</p>
-          <p className="line">de = die / the (always with plural)</p>
-          <p className="line">het = die / the (singular)</p>
 
           <p className="line underline spaced">Pronouns (Voornaamwoorden):</p>
           <p className="line"><i>Words that replace nouns (I, you, he, she, it, we, they)</i></p>
