@@ -28,6 +28,7 @@ import { FaTv } from "react-icons/fa";
 import imageNT2ExamTimetableJanuary from "./NT2ExamTimetableJanuary.jpg"
 import imageNT2ExamTimes from "./NT2ExamTimes.jpg"
 import Image from "./Amsterdam1.jpg";
+import DutchLanguage_Nt2exam_SprekenToets from "./DutchLanguage_Nt2exam_SprekenToets";
 
 
 export default function DutchLanguageHomePage() {
@@ -40,6 +41,7 @@ export default function DutchLanguageHomePage() {
 
         {/* LINKER COLUMN#1 */}
         <div className="left">
+          <DutchLanguage_Nt2exam_SprekenToets />
           <DutchLanguageIndex />
           <DutchLanguageWoordenschat />
         </div>

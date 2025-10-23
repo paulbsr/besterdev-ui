@@ -250,9 +250,10 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
           <div
             style={{
               fontFamily: "Segoe UI, sans-serif",
-              fontSize: "12px",
+              fontSize: "16px",
               marginBottom: "4px",
-              color: timeLeft <= 10 ? "#FF4F00" : "#333",
+              fontWeight: "bold",
+              color: timeLeft <= 10 ? "red" : "red",
             }}
           >
             {timeLeft > 0 ? (
@@ -282,6 +283,7 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
                 backgroundColor: "#fff",
                 borderColor: "#FF4F00",
                 marginLeft: "5px",
+                cursor: "pointer"
               }}
             >
               Controleer Antwoord

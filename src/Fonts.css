@@ -191,6 +191,12 @@
     color: #336791;
 }
 
+.Font-Segoe-Large {
+    font-family: "Segoe UI";
+    font-size: larger;
+    color: #336791;
+}
+
 .Font-Segoe-Medium-Howto {
     font-family: "Segoe UI";
     font-size: medium;

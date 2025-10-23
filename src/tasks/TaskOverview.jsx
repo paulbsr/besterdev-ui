@@ -145,7 +145,7 @@ export default function TaskOverview() {
             <div>&nbsp;</div>
 
             <Tooltip id="insert" />
-            <div className='Font-Verdana-Medium-Postgres' onClick={toggleAccordion}>
+            <div className='Font-Segoe-Large' onClick={toggleAccordion}>
                 &nbsp; &nbsp; <MdTask style={{ color: '#336791', fontSize: '38px', cursor: 'pointer' }} />
                 &nbsp;<b>The Task Manager ({allTask.length})</b>
             </div>

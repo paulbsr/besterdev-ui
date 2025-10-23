@@ -84,17 +84,6 @@ export default function Task_forTaskEdit({
     const onEditSave = async () => {
         let updatedDetails = [];
         let noDetails = [];
-        // Check field changes
-        // if (newTargetDate !== tasktargetdate) updatedDetails.push("Due Date");
-        // if (owner !== taskowner) updatedDetails.push("Owner");
-        // if (requirement !== taskrequirement) updatedDetails.push("Requirement");
-        // if (name !== taskname) updatedDetails.push("Task Name");
-        //Check fields are not null
-        // if (!newTargetDate) noDetails.push("Due Date");
-        // if (!owner?.trim()) noDetails.push("Owner");
-        // if (!requirement?.trim()) noDetails.push("Requirement");
-        // if (!name?.trim()) noDetails.push("Task Name");
-        
         const updatedTask = 
         {
             tasktargetdate: newTargetDate,
@@ -124,27 +113,6 @@ export default function Task_forTaskEdit({
         onEditCancel();
     };
 
-    // // return number of days until/after deadline
-    // function getDeadlineInDays(deadline) {
-    //     // add object support to dayjs
-    //     dayjs.extend(ObjectSupport);
-    //     // current time
-    //     const now = dayjs();
-    //     // create js Date object using
-    //     const t = new Date(deadline[0], deadline[1], deadline[2]);
-    //     // convert date object into a dayjs object
-    //     let targetdate = dayjs(t);
-    //     // Subtract extra month which is there for some reason TODO: fix it
-    //     targetdate = targetdate.subtract(1, 'month');
-    //     //return negative if the deadline has already passed.
-    //     if (now.unix() - targetdate.unix() > 0) {
-    //         return -1 * now.diff(targetdate, "day");
-    //     } else {
-    //         return targetdate.diff(now, "day");
-    //     }
-    // }
-
-    // return number of days until/after deadline
 function getDeadlineInDays(deadline) {
     // add object support to dayjs
     dayjs.extend(ObjectSupport);
@@ -189,14 +157,6 @@ function getDeadlineInDays(deadline) {
 
                 </div>
                 <div style={{ display: "flex", float: "right" }}>
-                    {/* {taskstatus !== "DONE" && ( // only render this div if the task is not already done.
-                        <div className="deadline" style={{ color: deadlineColor }}>
-                            {deadlineDaysRemaining < 0
-                                ? -deadlineDaysRemaining + " days overdue" // minus symbol to invert value from negative
-                                : deadlineDaysRemaining + " days remaining"}
-                        </div>
-                    )
-                    } */}
                     {taskstatus === "DONE" && duration !== null && duration >= 0 ? ( // render time taken to complete if task is DONE
                         <div className="task-finished">
                             {"Days to completion: " + duration}
@@ -214,6 +174,7 @@ function getDeadlineInDays(deadline) {
                                         &nbsp;<GiCheckMark style={{ color: "#336791", fontSize: "15px", cursor: "pointer" }} />
                                     </div>
                                 </Tooltip>
+
                                 <Tooltip title="Revert" placement="top-end">
                                     <div onClick={() => onEditCancel()}>
                                         &nbsp;<BsArrowCounterclockwise style={{ color: "#336791", fontSize: "17px", cursor: "pointer" }} />
@@ -224,17 +185,11 @@ function getDeadlineInDays(deadline) {
                         : isExpanded && taskstatus !== "DONE" ? 
                         (
                                     <Tooltip title={`Edit Task: ${id}`} placement="top-end">
-                                        {/* <div style={{ cursor: "pointer" }} onClick={() => { handleEdit(); }}> */}
-                                            {/* &nbsp;&nbsp; */}
-                                            {/* <BsPencil style={{ color: "#336791", fontSize: "15px", cursor: 'pointer', }} /> */}
                                             <button
-                                                // style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} 
-                                                style={{ marginLeft: '5px', height: '20.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#336791', cursor: 'pointer', fontSize: '12px' }}
+                                                style={{ marginLeft: '5px', height: '24.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer', fontSize: '14px' }}
                                                 type='button'
                                                 onClick={() => { handleEdit() }}>Edit
-                                                {/* <BsPencil style={{ color: '#336791', display: 'block', margin: 'auto', fontSize: '15px' }} /> */}
                                             </button>
-                                        {/* </div> */}
                                     </Tooltip>
                         ) 
                         : 
@@ -256,11 +211,12 @@ function getDeadlineInDays(deadline) {
                                 size="small"
                                 style={{
                                     width: 1000,
-                                    height: "18px",
+                                    height: "20px",
                                     marginBottom: "15px",
                                     marginTop: "5px",
                                     display: "flex",
-                                    border: "1px dotted grey"
+                                    border: "1px dotted grey",
+                                    borderRadius: "6px"
                                 }}
                             />
                         </>
@@ -280,6 +236,7 @@ function getDeadlineInDays(deadline) {
             {isExpanded && (
                 <div>
                     <div style={{ color: getStatusByColourTaskText(taskstatus) }}>
+                        <div>&nbsp;</div>
                         <u>REQUIREMENT</u>:{" "}
                         {editing === true ? (
                             <textarea
@@ -290,11 +247,12 @@ function getDeadlineInDays(deadline) {
                                 size="small"
                                 style={{
                                     width: 1000,
-                                    height: "50px",
+                                    height: "250px",
                                     marginBottom: "15px",
                                     marginTop: "5px",
                                     display: "flex",
-                                    border: "1px dotted grey"
+                                    border: "1px dotted grey",
+                                    borderRadius: "6px"
 
                                 }}
                             />
@@ -306,6 +264,7 @@ function getDeadlineInDays(deadline) {
                     
                     
                     <div style={{ color: getStatusByColourTaskText(taskstatus) }}>
+                        <div>&nbsp;</div>
                         <u>URL</u>:{" "}
                         {editing === true ? 
                         (
@@ -321,7 +280,8 @@ function getDeadlineInDays(deadline) {
                                 marginBottom: "15px",
                                 marginTop: "5px",
                                 display: "flex",
-                                border: "1px dotted grey"
+                                border: "1px dotted grey",
+                                borderRadius: "6px"
                             }}
                         />
                         ) 
@@ -332,33 +292,8 @@ function getDeadlineInDays(deadline) {
                         }
                     </div>
 
-
-                    {/* <div style={{ color: getStatusByColourTaskText(taskstatus) }}>
-                        <u>DUE</u>:{" "}
-                        {editing === true ? (
-                            <div style={{ paddingBottom: "10px", marginTop: "5px" }}>
-                                <DatePicker
-                                    selected={newTargetDate}
-                                    onChange={(date) => setNewTargetDate(date)}
-                                    dateFormat="yyyy-MM-dd"
-                                />
-                            </div>
-                        ) 
-                        : 
-                        (
-                            tasktargetdate[0] +
-                            "." +
-                            (tasktargetdate[1] < 10
-                                ? "0" + tasktargetdate[1]
-                                : tasktargetdate[1]) +
-                            "." +
-                            (tasktargetdate[2] < 10
-                                ? "0" + tasktargetdate[2]
-                                : tasktargetdate[2])
-                        )
-                        }
-                    </div> */}
-                    <TaskRecordAccordion_forTaskEdit
+                        <div>&nbsp;</div>
+                     <TaskRecordAccordion_forTaskEdit
                         project_handle={project_handle}
                         taskstatus={taskstatus}
                         parentid={id}

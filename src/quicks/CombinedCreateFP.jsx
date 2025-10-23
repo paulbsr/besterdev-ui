@@ -404,12 +404,14 @@ export default function CombinedCreateFP() {
                         onChange={dropdownChange}>
 
                         <option value="Domain" disabled selected>Task Module</option>
-                        <option value="113092" data-value2="NetworkSecurity">NetworkSecurity</option>
+                        <option value="188118" data-value2="UserStory">BesterDev User Story</option>
+                        <option value="171593" data-value2="Dutch Language">Dutch Language Staatsexamen NT2</option>
+                        {/* <option value="113092" data-value2="NetworkSecurity">NetworkSecurity</option>
                         <option value="14718" data-value2="EnterpriseSecurity">EnterpriseSecurity</option>
-                        <option value="181268" data-value2="ComputerCloudSecurity">ComputerCloudSecurity</option>
-                        <option value="171593" data-value2="AppliedCryptography">AppliedCryptography</option>
+                        <option value="181268" data-value2="ComputerCloudSecurity">ComputerCloudSecurity</option> */}
+
                         <option value="168272" data-value2="Dissertation">Dissertation</option>
-                        <option value="188118" data-value2="UserStory">UserStory</option>
+
                       </select>
 
                       <input

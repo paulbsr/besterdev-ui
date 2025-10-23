@@ -42,18 +42,18 @@ export default function Task({
     const [duration, setDuration] = useState(null);
 
     //send request for the task taskDuration if the task has been completed
-useEffect(() => {
-    if (taskstatus === "DONE") {
-        axios(
-            `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/duration/${id}`
-        )
-            .then((response) => {
-                setDuration(response.data);
-                setError(null);
-            })
-            .catch(setError);
-    }
-}, [id, taskstatus]);
+    useEffect(() => {
+        if (taskstatus === "DONE") {
+            axios(
+                `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/duration/${id}`
+            )
+                .then((response) => {
+                    setDuration(response.data);
+                    setError(null);
+                })
+                .catch(setError);
+        }
+    }, [id, taskstatus]);
     // if the duration was less than 1 whole day,
     // set the duration to display as 1 day
     if (duration === 0) {
@@ -179,9 +179,9 @@ useEffect(() => {
                 <div style={{ display: "flex", float: "right" }}>
                     {taskstatus !== "DONE" && ( // only render this div if the task is not already done.
                         <div className="deadline" style={{ color: deadlineColor }}>
-                            {deadlineDaysRemaining < 0
+                            {/* {deadlineDaysRemaining < 0
                                 ? -deadlineDaysRemaining + " days overdue" // minus symbol to invert value from negative
-                                : deadlineDaysRemaining + " days remaining"}
+                                : deadlineDaysRemaining + " days remaining"} */}
                         </div>
                     )
                     }
@@ -195,12 +195,12 @@ useEffect(() => {
                             <>
                                 <Tooltip title="Commit" placement="top-end">
                                     <div onClick={() => onEditSave()}>
-                                        &nbsp;<GiCheckMark style={{ color: "C0C0C0", fontSize: "15px", cursor: "pointer" }} />
+                                        <GiCheckMark style={{ color: "#212121", fontSize: "15px", cursor: "pointer", marginRight: "10px" }} />
                                     </div>
                                 </Tooltip>
                                 <Tooltip title="Revert" placement="top-end">
                                     <div onClick={() => onEditCancel()}>
-                                        &nbsp;<BsArrowCounterclockwise style={{ color: "C0C0C0", fontSize: "17px", cursor: "pointer" }} />
+                                        <BsArrowCounterclockwise style={{ color: "#212121", fontSize: "17px", cursor: "pointer", marginRight: "10px" }} />
                                     </div>
                                 </Tooltip>
                             </>
@@ -211,13 +211,13 @@ useEffect(() => {
                                     <>
                                         <Tooltip title={`Edit Task: ${id}`} placement="top-end">
                                             <div style={{ cursor: "pointer" }} onClick={() => { handleEdit(); }}>
-                                                &nbsp;&nbsp;<BsPencil style={{ color: "#C0C0C0", fontSize: "15px" }} />
+                                                &nbsp;&nbsp;<BsPencil style={{ color: "#212121", fontSize: "15px", marginRight: "10px" }} />
                                             </div>
                                         </Tooltip>
 
                                         <Tooltip title={`Launch TaskEditor on #${id}`} placement="top-end">
                                             <div style={{ cursor: "pointer" }} onClick={() => { window.open(`/taskedit/${id}`, '_blank'); }}>
-                                                &nbsp;&nbsp;<PiRocketLaunchLight style={{ color: "#C0C0C0", fontSize: "20px" }} />&nbsp;&nbsp;
+                                                &nbsp;&nbsp;<PiRocketLaunchLight style={{ color: "#212121", fontSize: "20px", marginRight: "10px" }} />&nbsp;&nbsp;
                                             </div>
                                         </Tooltip>
 
