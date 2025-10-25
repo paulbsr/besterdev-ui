@@ -1,64 +1,25 @@
 import React, { useState } from "react";
 
 const API_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
-const QUESTIONS_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/schrijven/questions";
+const QUESTIONS_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/schrijven/questions/onerandom";
 
-export default function DutchLanguage_Nt2exam_SchrijvenToets({
-  subject = "workplace communication",
-}) {
+export default function DutchLanguage_Nt2exam_SchrijvenToets() {
   const [challenge, setChallenge] = useState(null);
   const [userInput, setUserInput] = useState("");
   const [feedback, setFeedback] = useState("");
   const [criteriaScores, setCriteriaScores] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [collapsed, setCollapsed] = useState(true);
 
-  // --------------------------
-  // Fetch a new challenge
-  // --------------------------
-  const fetchChallenge = async () => {
-    setLoading(true);
-    setFeedback("");
-    setCriteriaScores(null);
-    setUserInput("");
-
-    try {
-      const res = await fetch(QUESTIONS_URL);
-      if (!res.ok) throw new Error("Failed to fetch questions");
-
-      const data = await res.json();
-      const list = Array.isArray(data)
-        ? data
-        : Array.isArray(data?.questions)
-        ? data.questions
-        : [];
-
-      if (list.length === 0) throw new Error("No questions available");
-
-      const randomQuestion = list[Math.floor(Math.random() * list.length)];
-      setChallenge(randomQuestion);
-      setCollapsed(false); // Expand when new challenge loads
-    } catch (err) {
-      console.error("❌ Error fetching challenge:", err);
-      setFeedback("❌ Error fetching challenge.");
-      setChallenge(null);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // --------------------------
-  // Robust JSON parser
-  // --------------------------
+  // -------------------------------
+  // Safe JSON parser for Optional[...] wrapping
+  // -------------------------------
   const safeJsonParse = (text) => {
     if (!text) return null;
-
     const cleaned = text
       .replace(/^Optional\[/, "")
       .replace(/\]$/, "")
       .replace(/```json|```/g, "")
       .trim();
-
     try {
       return JSON.parse(cleaned);
     } catch {
@@ -74,13 +35,41 @@ export default function DutchLanguage_Nt2exam_SchrijvenToets({
     }
   };
 
-  // --------------------------
-  // Evaluate user's response
-  // --------------------------
+  // -------------------------------
+  // Fetch a random writing challenge
+  // -------------------------------
+  const fetchChallenge = async () => {
+    setLoading(true);
+    setFeedback("");
+    setCriteriaScores(null);
+    setUserInput("");
+    setChallenge(null);
+
+    try {
+      const res = await fetch(QUESTIONS_URL);
+      const data = await res.json();
+
+      // ✅ Endpoint returns a single object, not an array
+      if (data && typeof data === "object") {
+        setChallenge(data);
+      } else {
+        setFeedback("⚠️ No valid challenge returned from server.");
+      }
+    } catch (e) {
+      console.error("❌ Fetch challenge error:", e);
+      setFeedback("❌ Error fetching challenge.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // -------------------------------
+  // Submit answer for AI evaluation
+  // -------------------------------
   const checkAnswer = async (e) => {
     e.preventDefault();
-    if (!userInput.trim()) return setFeedback("⚠️ Please enter your response.");
-    if (!challenge) return setFeedback("⚠️ Please load a challenge first.");
+    if (!userInput.trim()) return setFeedback("⚠️ Please enter a response.");
+    if (!challenge) return setFeedback("⚠️ Load a challenge first.");
 
     setLoading(true);
     setFeedback("Evaluating...");
@@ -89,17 +78,28 @@ export default function DutchLanguage_Nt2exam_SchrijvenToets({
     try {
       const payload = {
         question: `
-You are a Dutch NT2/B2 writing examiner. 
-Here is the exam question: "${challenge.questionVerbiage}"
-The student's response: "${userInput}"
+You are a Dutch NT2/B2 writing examiner and language teacher.
 
-Evaluate the response against these four criteria and return a JSON object with your evaluations per criterion:
+Evaluate this student's written response to the following exam question:
+"${challenge.questionVerbiage}"
 
-1. ${challenge.beoordelingBegrijpelijkheid}
-2. ${challenge.beoordelingGrammatica}
-3. ${challenge.beoordelingBegrijpelijkheidAlgemeen}
-4. ${challenge.beoordelingGrammaticaAlgemeen}
-`,
+Student's response:
+"${userInput}"
+
+Return valid JSON only (no explanations outside JSON). 
+Include an additional "suggested_correction" field that shows a corrected, natural, and grammatically accurate version of the student's text in Dutch.
+
+Format your answer strictly like this:
+{
+  "criteria": {
+    "Begrijpelijkheid": {"evaluation": 1-5, "comment": "feedback"},
+    "Grammatica": {"evaluation": 1-5, "comment": "feedback"},
+    "BegrijpelijkheidAlgemeen": {"evaluation": 1-5, "comment": "feedback"},
+    "GrammaticaAlgemeen": {"evaluation": 1-5, "comment": "feedback"}
+  },
+  "suggested_correction": "..."
+}
+        `,
       };
 
       const res = await fetch(API_URL, {
@@ -108,264 +108,203 @@ Evaluate the response against these four criteria and return a JSON object with 
         body: JSON.stringify(payload),
       });
 
-      if (!res.ok) throw new Error("Error from AI API");
-
       const data = await res.json();
       const aiResponse = data.answer || "";
-      const parsed = safeJsonParse(aiResponse);
 
-      if (parsed && typeof parsed === "object") {
+      const parsed = safeJsonParse(aiResponse);
+      console.log("PARSED:", parsed);
+
+      if (parsed && parsed.criteria) {
         setCriteriaScores(parsed);
         setFeedback("✅ Evaluation complete.");
       } else {
-        console.warn("⚠️ Could not parse AI response:", aiResponse);
-        setFeedback("⚠️ AI response could not be parsed.");
-        setCriteriaScores({ "Raw AI Response": aiResponse });
+        setFeedback("⚠️ Evaluation complete — but structured data missing.");
+        setCriteriaScores({ rawResponse: aiResponse });
       }
     } catch (err) {
-      console.error("❌ Error evaluating:", err);
+      console.error("❌ Evaluation error:", err);
       setFeedback("❌ Error evaluating your response.");
     } finally {
       setLoading(false);
     }
   };
 
-  // --------------------------
-  // Collapse toggle
-  // --------------------------
-  const toggleCollapse = () => {
-    setCollapsed(!collapsed);
+  // -------------------------------
+  // Styles
+  // -------------------------------
+  const styles = {
+    container: {
+      border: "1px solid #ddd",
+      borderRadius: "8px",
+      padding: "16px",
+      fontFamily: "Segoe UI",
+      fontSize: "16px",
+      maxWidth: "1100px",
+    },
+    button: {
+      height: "40.5px",
+      border: "1px solid #FF4F00",
+      borderRadius: "4px",
+      padding: "8px 8px",
+      fontSize: "16px",
+      cursor: "pointer",
+      backgroundColor: "#fff",
+    },
+    challengeBox: {
+      backgroundColor: "#f9f9f9",
+      borderLeft: "12px solid #FF4F00",
+      padding: "12px 16px",
+      borderRadius: "6px",
+      marginTop: "16px",
+      boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
+    },
   };
 
-  // --------------------------
-  // Small helper component
-  // --------------------------
-  const LabelRow = ({ label, value }) => (
-    <div>
-      <strong>{label}:</strong> {value || "N/A"}
-    </div>
-  );
-
-  // --------------------------
-  // UI
-  // --------------------------
+  // -------------------------------
+  // UI Rendering
+  // -------------------------------
   return (
-    <div className="exam-container" style={styles.container}>
-      <div style={styles.headerRow}>
-        <h2 style={{ fontWeight: "bold", fontSize: "22px", margin: "1px 0 16px 0" }}>
-          Nederlands Staatsexamen NT2 :: Schrijven-II Toets
-        </h2>
+    <div style={styles.container}>
+      <h2>Nederlands Staatsexamen NT2 :: Schrijven-II Toets</h2>
+      <p>Opdrachten: 10 • Maximumscore: 53 • Cesuur: 31 (60%) • Tijdsduur: ± 100 minuten</p>
 
-        {challenge && (
-          <button onClick={toggleCollapse} style={styles.collapseButton}>
-            {collapsed ? "⬇️ Toon" : "⬆️ Verberg"}
-          </button>
-        )}
-      </div>
-
-
-      <div
-  style={{
-    fontFamily: 'Segoe UI, sans-serif',
-    fontSize: '12px',
-    lineHeight: 1,
-    margin: 0,
-    padding: 0,
-  }}
->
-  <p style={{ margin: 0 }}>20xx - Opdrachten: 10 • Maximumscore: 53 • Cesuur: 31 (60%) • Tijdsduur: ± 100 minuten</p>
-  <p style={{ margin: 0 }}>20xx - Opdrachten: xx • Maximumscore: xx • Cesuur: xx (xx%) • Tijdsduur: ± 100 minuten</p>
-  <p style={{ margin: 0 }}>20xx - Opdrachten: xx • Maximumscore: xx • Cesuur: xx (xx%) • Tijdsduur: ± 100 minuten</p>
-</div>
-
-      <button
-        onClick={fetchChallenge}
-        disabled={loading}
-        style={{
-          ...styles.button,
-          backgroundColor: loading ? "#ddd" : "#fff",
-          borderColor: "#FF4F00",
-          cursor: loading ? "not-allowed" : "pointer",
-          marginBottom: "8px",
-          marginTop: "8px",
-        }}
-      >
+      <button onClick={fetchChallenge} disabled={loading} style={styles.button}>
         {loading ? "Even geduld..." : "Nieuwe Schrijvingsvraag"}
       </button>
 
-      {!collapsed && challenge && (
-        <>
-          <div style={styles.challengeBox}>
-
-        {/* <div style={styles.questionBox}> */}
-          <div style={styles.questionBox}>
+      {/* ✅ Only render question when available */}
+      {challenge && (
+        <div style={styles.challengeBox}>
+          <div>
             <strong>Jaar:</strong> {challenge.examYear} •{" "}
-            <strong>Vraag Nommer:</strong> {challenge.questionNumber} •{" "}
-            {/* <strong>Opgave:</strong> {question.opgave} */}
+            <strong>Vraagnummer:</strong> {challenge.questionNumber} •{" "}
+            <strong>Onderwerp:</strong> {challenge.questionName} •{" "}
+            <strong>Instructie:</strong> {challenge.questionInstruction}
           </div>
 
-            <div style={styles.questionName}>
-              {challenge.questionName || "Untitled Question"}
-            </div>
-            <em>{challenge.questionInstruction}</em>
+          <blockquote
+            style={{
+              fontSize: "18px",
+              color: "#FF4F00",
+              fontStyle: "italic",
+              marginTop: "6px",
+              whiteSpace: "pre-line",
+            }}
+          >
+            {challenge.questionVerbiage}
+          </blockquote>
 
-            <blockquote style={styles.questionQuote}>
-              {challenge.questionVerbiage}
-            </blockquote>
-
-            <div style={styles.criterium}>
-              <div>
-                🧩 <strong>Begrijpelijkheid:</strong>{" "}
-                {challenge.beoordelingBegrijpelijkheid}
-              </div>
-              <div>
-                ✍️ <strong>Grammatica:</strong>{" "}
-                {challenge.beoordelingGrammatica}
-              </div>
-            </div>
+          <div style={{ marginTop: "10px", fontSize: "15px" }}>
+            🧩 <strong>Begrijpelijkheid:</strong>{" "}
+            {challenge.beoordelingBegrijpelijkheid}
+            <br />
+            ✍️ <strong>Grammatica:</strong> {challenge.beoordelingGrammatica}
           </div>
+        </div>
+      )}
 
-          <form onSubmit={checkAnswer} style={styles.form}>
-            <input
-              value={userInput}
-              onChange={(e) => setUserInput(e.target.value)}
-              placeholder="Typ je antwoord hier..."
-              style={{ ...styles.input, marginRight: "5px" }}
-            />
-            <button
-              type="submit"
-              disabled={loading}
-              style={{
-                ...styles.button,
-                marginLeft: "5px",
-                backgroundColor: "#ffffff",
-                borderColor: "#FF4F00",
-                cursor: "pointer",
-              }}
-            >
-              {loading ? "Bezig met evaluatie..." : "Indienen"}
-            </button>
-          </form>
+      {/* Answer form */}
+      <form onSubmit={checkAnswer} style={{ marginTop: "10px" }}>
+        <textarea
+          value={userInput}
+          onChange={(e) => setUserInput(e.target.value)}
+          placeholder="Typ je antwoord hier..."
+          rows={5}
+          style={{
+            width: "98%",
+            padding: "8px",
+            resize: "vertical",
+            borderRadius: "6px",
+            border: "1px solid #ccc",
+          }}
+        />
+        <button
+          type="submit"
+          disabled={loading}
+          style={{
+            fontFamily: "Segoe UI",
+            fontSize: "14px",
+            marginTop: "8px",
+            padding: "8px 14px",
+            cursor: loading ? "not-allowed" : "pointer",
+            background: "#FF4F00",
+            color: "white",
+            border: "none",
+            borderRadius: "6px",
+          }}
+        >
+          {loading ? "Bezig met evaluatie..." : "Indienen"}
+        </button>
+      </form>
 
-          {feedback && (
-            <div style={{ marginTop: "16px" }}>
-              <em>{feedback}</em>
-            </div>
-          )}
+      {feedback && (
+        <div style={{ marginTop: "16px", fontStyle: "italic" }}>{feedback}</div>
+      )}
 
-          {criteriaScores?.criteria && (
-            <div style={styles.tableContainer}>
-              <h4>Beoordeling per criterium</h4>
-              <table style={styles.table}>
-                <thead>
-                  <tr>
-                    <th style={styles.th}>Criterium</th>
-                    <th style={styles.th}>Score</th>
-                    <th style={styles.th}>Feedback</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {Object.entries(criteriaScores.criteria).map(([key, val]) => (
-                    <tr key={key}>
-                      <td style={styles.td}>{key}</td>
-                      <td style={styles.td}>{val.evaluation || "—"}</td>
-                      <td style={styles.td}>{val.comment || "—"}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
-        </>
+      {/* Evaluation Table */}
+      {criteriaScores?.criteria && (
+        <div style={{ marginTop: "16px" }}>
+          <h4>Beoordeling per criterium</h4>
+          <table
+            border="1"
+            cellPadding="6"
+            style={{
+              borderCollapse: "collapse",
+              width: "100%",
+              border: "1px solid #ddd",
+            }}
+          >
+            <thead style={{ background: "#efefef" }}>
+              <tr>
+                <th>Criterium</th>
+                <th>Score</th>
+                <th>Feedback</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(criteriaScores.criteria).map(([key, val]) => (
+                <tr key={key}>
+                  <td>{key}</td>
+                  <td>{val.evaluation ?? "—"}</td>
+                  <td>{val.comment ?? "—"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      {/* Suggested Correction */}
+      {criteriaScores?.suggested_correction && (
+        <div
+          style={{
+            marginTop: "20px",
+            background: "#f0f8ff",
+            padding: "12px",
+            borderRadius: "8px",
+          }}
+        >
+          <h4>💡 Suggested Correction</h4>
+          <p style={{ whiteSpace: "pre-wrap" }}>
+            {criteriaScores.suggested_correction}
+          </p>
+        </div>
+      )}
+
+      {/* Raw AI output fallback */}
+      {criteriaScores?.rawResponse && (
+        <pre
+          style={{
+            marginTop: "16px",
+            whiteSpace: "pre-wrap",
+            background: "#f7f7f7",
+            padding: "10px",
+            borderRadius: "6px",
+          }}
+        >
+          {criteriaScores.rawResponse}
+        </pre>
       )}
     </div>
   );
 }
-
-// --------------------------
-// Styles
-// --------------------------
-const styles = {
-  container: {
-    border: "1px solid #ddd",
-    borderRadius: "8px",
-    padding: "16px",
-    fontFamily: "Segoe UI",
-    fontSize: "16px",
-    maxWidth: "1100px",
-  },
-  headerRow: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: "5px",
-  },
-  collapseButton: {
-    border: "1px solid #ccc",
-    backgroundColor: "#fff",
-    borderRadius: "4px",
-    padding: "4px 8px",
-    cursor: "pointer",
-    fontSize: "10px",
-  },
-  button: {
-    height: "40.5px",
-    border: "1px solid #777",
-    borderRadius: "4px",
-    padding: "8px 8px",
-    fontSize: "16px",
-  },
-  challengeBox: {
-    backgroundColor: "#f9f9f9",
-    borderLeft: "12px solid #FF4F00",
-    padding: "12px 16px",
-    borderRadius: "6px",
-    marginTop: "16px",
-    boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
-  },
-  questionName: {
-    fontSize: "16px",
-    fontWeight: "600",
-    margin: "6px 0",
-  },
-  questionQuote: {
-    fontSize: "18px",
-    color: "#FF4F00",
-    fontStyle: "italic",
-    marginTop: "6px",
-    whiteSpace: "pre-line",
-  },
-  criterium: {
-    marginTop: "8px",
-    fontSize: "15px",
-  },
-  form: {
-    marginTop: "16px",
-  },
-  input: {
-    height: "35.5px",
-    border: "1px solid #777",
-    borderRadius: "4px",
-    paddingLeft: "10px",
-    width: "850px",
-    fontSize: "16px",
-  },
-  tableContainer: {
-    marginTop: "16px",
-    borderTop: "1px solid #ccc",
-    paddingTop: "10px",
-  },
-  table: {
-    borderCollapse: "collapse",
-    width: "100%",
-  },
-  th: {
-    borderBottom: "1px solid #ddd",
-    padding: "6px",
-    textAlign: "left",
-  },
-  td: {
-    padding: "6px",
-    borderBottom: "1px solid #f1f1f1",
-  },
-};
