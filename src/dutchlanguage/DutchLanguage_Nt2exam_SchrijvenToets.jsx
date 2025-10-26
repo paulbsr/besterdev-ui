@@ -9,9 +9,10 @@ export default function DutchLanguage_Nt2exam_SchrijvenToets() {
   const [feedback, setFeedback] = useState("");
   const [criteriaScores, setCriteriaScores] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [expanded, setExpanded] = useState(false); // 👈 controls expand/collapse
 
   // -------------------------------
-  // Safe JSON parser for Optional[...] wrapping
+  // Safe JSON parser
   // -------------------------------
   const safeJsonParse = (text) => {
     if (!text) return null;
@@ -49,9 +50,9 @@ export default function DutchLanguage_Nt2exam_SchrijvenToets() {
       const res = await fetch(QUESTIONS_URL);
       const data = await res.json();
 
-      // ✅ Endpoint returns a single object, not an array
       if (data && typeof data === "object") {
         setChallenge(data);
+        setExpanded(true); // 👈 auto-expand when question loads
       } else {
         setFeedback("⚠️ No valid challenge returned from server.");
       }
@@ -110,9 +111,7 @@ Format your answer strictly like this:
 
       const data = await res.json();
       const aiResponse = data.answer || "";
-
       const parsed = safeJsonParse(aiResponse);
-      console.log("PARSED:", parsed);
 
       if (parsed && parsed.criteria) {
         setCriteriaScores(parsed);
@@ -148,8 +147,26 @@ Format your answer strictly like this:
       padding: "8px 8px",
       fontSize: "16px",
       cursor: "pointer",
-      backgroundColor: "#fff",
+      backgroundColor: "#FFFFFF",
+      color: "#000000",
     },
+    toggleButton: {
+      background: "none",
+      border: "none",
+      color: "#FF4F00",
+      fontSize: "15px",
+      cursor: "pointer",
+      marginLeft: "10px",
+    },
+      collapseButton: {
+    border: "1px solid #ccc",
+    backgroundColor: "#fff",
+    borderRadius: "4px",
+    padding: "5px 10px",
+    cursor: "pointer",
+    fontSize: "10px",
+    marginLeft: "600px"
+  },
     challengeBox: {
       backgroundColor: "#f9f9f9",
       borderLeft: "12px solid #FF4F00",
@@ -172,138 +189,153 @@ Format your answer strictly like this:
         {loading ? "Even geduld..." : "Nieuwe Schrijvingsvraag"}
       </button>
 
-      {/* ✅ Only render question when available */}
       {challenge && (
-        <div style={styles.challengeBox}>
-          <div>
-            <strong>Jaar:</strong> {challenge.examYear} •{" "}
-            <strong>Vraagnummer:</strong> {challenge.questionNumber} •{" "}
-            <strong>Onderwerp:</strong> {challenge.questionName} •{" "}
-            <strong>Instructie:</strong> {challenge.questionInstruction}
-          </div>
-
-          <blockquote
-            style={{
-              fontSize: "18px",
-              color: "#FF4F00",
-              fontStyle: "italic",
-              marginTop: "6px",
-              whiteSpace: "pre-line",
-            }}
-          >
-            {challenge.questionVerbiage}
-          </blockquote>
-
-          <div style={{ marginTop: "10px", fontSize: "15px" }}>
-            🧩 <strong>Begrijpelijkheid:</strong>{" "}
-            {challenge.beoordelingBegrijpelijkheid}
-            <br />
-            ✍️ <strong>Grammatica:</strong> {challenge.beoordelingGrammatica}
-          </div>
-        </div>
-      )}
-
-      {/* Answer form */}
-      <form onSubmit={checkAnswer} style={{ marginTop: "10px" }}>
-        <textarea
-          value={userInput}
-          onChange={(e) => setUserInput(e.target.value)}
-          placeholder="Typ je antwoord hier..."
-          rows={5}
-          style={{
-            width: "98%",
-            padding: "8px",
-            resize: "vertical",
-            borderRadius: "6px",
-            border: "1px solid #ccc",
-          }}
-        />
         <button
-          type="submit"
-          disabled={loading}
-          style={{
-            fontFamily: "Segoe UI",
-            fontSize: "14px",
-            marginTop: "8px",
-            padding: "8px 14px",
-            cursor: loading ? "not-allowed" : "pointer",
-            background: "#FF4F00",
-            color: "white",
-            border: "none",
-            borderRadius: "6px",
-          }}
+          onClick={() => setExpanded(!expanded)}
+          style={styles.collapseButton}
         >
-          {loading ? "Bezig met evaluatie..." : "Indienen"}
+          {expanded ? "⬆️ Verberg" : "⬇️ Toon"}
         </button>
-      </form>
 
-      {feedback && (
-        <div style={{ marginTop: "16px", fontStyle: "italic" }}>{feedback}</div>
+        
       )}
 
-      {/* Evaluation Table */}
-      {criteriaScores?.criteria && (
-        <div style={{ marginTop: "16px" }}>
-          <h4>Beoordeling per criterium</h4>
-          <table
-            border="1"
-            cellPadding="6"
-            style={{
-              borderCollapse: "collapse",
-              width: "100%",
-              border: "1px solid #ddd",
-            }}
-          >
-            <thead style={{ background: "#efefef" }}>
-              <tr>
-                <th>Criterium</th>
-                <th>Score</th>
-                <th>Feedback</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Object.entries(criteriaScores.criteria).map(([key, val]) => (
-                <tr key={key}>
-                  <td>{key}</td>
-                  <td>{val.evaluation ?? "—"}</td>
-                  <td>{val.comment ?? "—"}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+      {expanded && (
+        <>
+          {/* Challenge Display */}
+          {challenge && (
+            <div style={styles.challengeBox}>
+              <div>
+                <strong>Jaar:</strong> {challenge.examYear} •{" "}
+                <strong>Vraagnummer:</strong> {challenge.questionNumber} •{" "}
+                <strong>Onderwerp:</strong> {challenge.questionName} •{" "}
+                <strong>Instructie:</strong> {challenge.questionInstruction}
+              </div>
 
-      {/* Suggested Correction */}
-      {criteriaScores?.suggested_correction && (
-        <div
-          style={{
-            marginTop: "20px",
-            background: "#f0f8ff",
-            padding: "12px",
-            borderRadius: "8px",
-          }}
-        >
-          <h4>💡 Suggested Correction</h4>
-          <p style={{ whiteSpace: "pre-wrap" }}>
-            {criteriaScores.suggested_correction}
-          </p>
-        </div>
-      )}
+              <blockquote
+                style={{
+                  fontSize: "18px",
+                  color: "#FF4F00",
+                  fontStyle: "italic",
+                  marginTop: "6px",
+                  whiteSpace: "pre-line",
+                }}
+              >
+                {challenge.questionVerbiage}
+              </blockquote>
 
-      {/* Raw AI output fallback */}
-      {criteriaScores?.rawResponse && (
-        <pre
-          style={{
-            marginTop: "16px",
-            whiteSpace: "pre-wrap",
-            background: "#f7f7f7",
-            padding: "10px",
-            borderRadius: "6px",
-          }}
-        >
-          {criteriaScores.rawResponse}
-        </pre>
+              <div style={{ marginTop: "10px", fontSize: "15px" }}>
+                🧩 <strong>Begrijpelijkheid:</strong>{" "}
+                {challenge.beoordelingBegrijpelijkheid}
+                <br />
+                ✍️ <strong>Grammatica:</strong> {challenge.beoordelingGrammatica}
+              </div>
+            </div>
+          )}
+
+          {/* Answer form */}
+          <form onSubmit={checkAnswer} style={{ marginTop: "10px" }}>
+            <textarea
+              value={userInput}
+              onChange={(e) => setUserInput(e.target.value)}
+              placeholder="Typ je antwoord hier..."
+              rows={5}
+              style={{
+                width: "98%",
+                padding: "8px",
+                resize: "vertical",
+                borderRadius: "6px",
+                border: "1px solid #ccc",
+              }}
+            />
+            <button
+              type="submit"
+              disabled={loading}
+              style={{
+                fontFamily: "Segoe UI",
+                fontSize: "14px",
+                marginTop: "8px",
+                padding: "8px 14px",
+                cursor: loading ? "not-allowed" : "pointer",
+                background: "#FF4F00",
+                color: "white",
+                border: "none",
+                borderRadius: "6px",
+              }}
+            >
+              {loading ? "Bezig met evaluatie..." : "Indienen"}
+            </button>
+          </form>
+
+          {feedback && (
+            <div style={{ marginTop: "16px", fontStyle: "italic" }}>
+              {feedback}
+            </div>
+          )}
+
+          {/* Evaluation Results */}
+          {criteriaScores?.criteria && (
+            <div style={{ marginTop: "16px" }}>
+              <h4>Beoordeling per criterium</h4>
+              <table
+                border="1"
+                cellPadding="6"
+                style={{
+                  borderCollapse: "collapse",
+                  width: "100%",
+                  border: "1px solid #ddd",
+                }}
+              >
+                <thead style={{ background: "#efefef" }}>
+                  <tr>
+                    <th>Criterium</th>
+                    <th>Score</th>
+                    <th>Feedback</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {Object.entries(criteriaScores.criteria).map(([key, val]) => (
+                    <tr key={key}>
+                      <td>{key}</td>
+                      <td>{val.evaluation ?? "—"}</td>
+                      <td>{val.comment ?? "—"}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+
+          {criteriaScores?.suggested_correction && (
+            <div
+              style={{
+                marginTop: "20px",
+                background: "#f0f8ff",
+                padding: "12px",
+                borderRadius: "8px",
+              }}
+            >
+              <h4>💡 Suggested Correction</h4>
+              <p style={{ whiteSpace: "pre-wrap" }}>
+                {criteriaScores.suggested_correction}
+              </p>
+            </div>
+          )}
+
+          {criteriaScores?.rawResponse && (
+            <pre
+              style={{
+                marginTop: "16px",
+                whiteSpace: "pre-wrap",
+                background: "#f7f7f7",
+                padding: "10px",
+                borderRadius: "6px",
+              }}
+            >
+              {criteriaScores.rawResponse}
+            </pre>
+          )}
+        </>
       )}
     </div>
   );

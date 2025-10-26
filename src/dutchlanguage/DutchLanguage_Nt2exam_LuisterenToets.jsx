@@ -152,9 +152,7 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
   return (
     <div style={styles.container}>
       <div style={styles.headerRow}>
-        <h2 style={styles.title}>
-          Nederlands Staatsexamen NT2 :: Luisteren-II Toets
-        </h2>
+        <h2 style={styles.title}>Nederlands Staatsexamen NT2 :: Luisteren-II Toets</h2>
 
         {question && (
           <button onClick={toggleCollapse} style={styles.collapseButton}>
@@ -163,27 +161,8 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
         )}
       </div>
 
-      <div
-        style={{
-          fontFamily: "Segoe UI, sans-serif",
-          fontSize: "12px",
-          lineHeight: 1,
-          margin: 0,
-          padding: 0,
-        }}
-      >
-        <p style={{ margin: 0 }}>
-          2024 - Vragen: 37 • Maximumscore: 37 • Cesuur: 24 (65%) • Tijdsduur: ±
-          90 minuten
-        </p>
-        <p style={{ margin: 0 }}>
-          2023 - Vragen: 40 • Maximumscore: 40 • Cesuur: 24 (60%) • Tijdsduur: ±
-          90 minuten
-        </p>
-        <p style={{ margin: 0 }}>
-          2022 - Vragen: 39 • Maximumscore: 39 • Cesuur: 24 (62%) • Tijdsduur: ±
-          90 minuten
-        </p>
+      <div style={{ fontFamily: "Segoe UI, sans-serif", fontSize: "12px", lineHeight: 1, margin: 0, padding: 0 }}>
+        <p style={{ margin: 0 }}>2024 - Vragen: 37-40 • Maximumscore: 37-40 • Cesuur: 24 (65%) • Tijdsduur: ±90 minuten</p>
       </div>
 
       <button
