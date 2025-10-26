@@ -74,8 +74,8 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
       const list = Array.isArray(data)
         ? data
         : Array.isArray(data?.questions)
-        ? data.questions
-        : [];
+          ? data.questions
+          : [];
 
       if (list.length === 0) throw new Error("No questions found.");
 
@@ -121,10 +121,10 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
         userAnswer === "A"
           ? `A - ${question.optionA}`
           : userAnswer === "B"
-          ? `B - ${question.optionB}`
-          : userAnswer === "C"
-          ? `C - ${question.optionC}`
-          : userAnswer;
+            ? `B - ${question.optionB}`
+            : userAnswer === "C"
+              ? `C - ${question.optionC}`
+              : userAnswer;
 
       await fetch(`${API_URL}/${question.id}/answerTry`, {
         method: "PUT",
@@ -162,7 +162,7 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
       </div>
 
       <div style={{ fontFamily: "Segoe UI, sans-serif", fontSize: "12px", lineHeight: 1, margin: 0, padding: 0 }}>
-        <p style={{ margin: 0 }}>2024 - Vragen: 37-40 • Maximumscore: 37-40 • Cesuur: 24 (65%) • Tijdsduur: ±90 minuten</p>
+        <p style={{ margin: 0 }}>Vragen: 37-40 • Maximumscore: 37-40 • Cesuur: 24 (65%) • Tijdsduur: ±90 minuten</p>
       </div>
 
       <button
@@ -187,7 +187,7 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
             <strong>Track:</strong> {question.trackNumber} •{" "}
             <strong>Opgave:</strong> {question.opgave} •{" "}
             <strong>Onderwerp:</strong>{" "}
-            
+
             <a
               href={question.trackTypeUrl}
               target="_blank"

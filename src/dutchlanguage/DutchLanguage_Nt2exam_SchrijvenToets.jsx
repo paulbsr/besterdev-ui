@@ -140,6 +140,17 @@ Format your answer strictly like this:
       fontSize: "16px",
       maxWidth: "1100px",
     },
+    headerRow: {
+      // display: "flex",
+      // alignItems: "center",
+      justifyContent: "space-between",
+      // marginBottom: "6px",
+    },
+    title: {
+      fontWeight: "bold",
+      fontSize: "22px",
+      margin: 0,
+    },
     button: {
       height: "40.5px",
       border: "1px solid #FF4F00",
@@ -158,15 +169,15 @@ Format your answer strictly like this:
       cursor: "pointer",
       marginLeft: "10px",
     },
-      collapseButton: {
-    border: "1px solid #ccc",
-    backgroundColor: "#fff",
-    borderRadius: "4px",
-    padding: "5px 10px",
-    cursor: "pointer",
-    fontSize: "10px",
-    marginLeft: "600px"
-  },
+    collapseButton: {
+      border: "1px solid #ccc",
+      backgroundColor: "#fff",
+      borderRadius: "4px",
+      padding: "5px 10px",
+      cursor: "pointer",
+      fontSize: "10px",
+      marginLeft: "600px"
+    },
     challengeBox: {
       backgroundColor: "#f9f9f9",
       borderLeft: "12px solid #FF4F00",
@@ -181,25 +192,55 @@ Format your answer strictly like this:
   // UI Rendering
   // -------------------------------
   return (
+    // <div style={styles.container}>
+    //   <h2>Nederlands Staatsexamen NT2 :: Schrijven-II Toets</h2>
+    //   <p>Opdrachten: 10 • Maximumscore: 53 • Cesuur: 31 (60%) • Tijdsduur: ± 100 minuten</p>
+
+    //   <button onClick={fetchChallenge} disabled={loading} style={styles.button}>
+    //     {loading ? "Even geduld..." : "Nieuwe Schrijvingsvraag"}
+    //   </button>
+
+    //   {challenge && (
+    //     <button
+    //       onClick={() => setExpanded(!expanded)}
+    //       style={styles.collapseButton}
+    //     >
+    //       {expanded ? "⬆️ Verberg" : "⬇️ Toon   SLEGTE EEN"}
+    //     </button>
+    //   )}
+
     <div style={styles.container}>
-      <h2>Nederlands Staatsexamen NT2 :: Schrijven-II Toets</h2>
-      <p>Opdrachten: 10 • Maximumscore: 53 • Cesuur: 31 (60%) • Tijdsduur: ± 100 minuten</p>
+      <div style={styles.headerRow}>
+        <h2 style={styles.title}>Nederlands Staatsexamen NT2 :: Schrijven-II Toets</h2>
 
-      <button onClick={fetchChallenge} disabled={loading} style={styles.button}>
-        {loading ? "Even geduld..." : "Nieuwe Schrijvingsvraag"}
+        {challenge && (
+          <button
+            onClick={() => setExpanded(!expanded)}
+            style={styles.collapseButton}
+          >
+            {expanded ? "⬆️ Verberg" : "⬇️ Toon"}
+          </button>
+        )}
+      </div>
+
+      <div style={{ fontFamily: "Segoe UI, sans-serif", fontSize: "12px", lineHeight: 1, margin: 0, padding: 0 }}>
+        <p style={{ margin: 0 }}>Opdrachten: 10 • Maximumscore: 53 • Cesuur: 31 (60%) • Tijdsduur: ± 100 minuten</p>
+      </div>
+
+      <button
+        onClick={fetchChallenge}
+        disabled={loading}
+        style={{
+          ...styles.button,
+          backgroundColor: loading ? "#ddd" : "#fff",
+          borderColor: "#FF4F00",
+          cursor: loading ? "not-allowed" : "pointer",
+          marginBottom: "10px",
+          marginTop: "10px",
+        }}
+      >
+        {loading ? "Even geduld..." : "Nieuwe Schrijvenvraag"}
       </button>
-
-      {challenge && (
-        <button
-          onClick={() => setExpanded(!expanded)}
-          style={styles.collapseButton}
-        >
-          {expanded ? "⬆️ Verberg" : "⬇️ Toon"}
-        </button>
-
-        
-      )}
-
       {expanded && (
         <>
           {/* Challenge Display */}
