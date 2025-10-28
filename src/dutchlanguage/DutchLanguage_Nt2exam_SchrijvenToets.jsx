@@ -133,7 +133,7 @@ Format your answer strictly like this:
   // -------------------------------
   const styles = {
     container: {
-      border: "1px solid #ddd",
+      border: "1px solid #FF4F00",
       borderRadius: "8px",
       padding: "16px",
       fontFamily: "Segoe UI",
@@ -180,7 +180,7 @@ Format your answer strictly like this:
     },
     challengeBox: {
       backgroundColor: "#f9f9f9",
-      borderLeft: "12px solid #FF4F00",
+      borderLeft: "12px solid #c0c0c0",
       padding: "12px 16px",
       borderRadius: "6px",
       marginTop: "16px",
