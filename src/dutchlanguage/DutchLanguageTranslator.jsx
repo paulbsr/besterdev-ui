@@ -57,6 +57,7 @@ export default function DutchLanguageTranslator() {
       }}
     >
       <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>Vertaal Tussen Talen</h2>
+      <p>Start Using Google LLC Cloud Translation API </p>
 
       {/* Input and buttons on the same line */}
       <div style={{ display: "flex", alignItems: "center" }}>

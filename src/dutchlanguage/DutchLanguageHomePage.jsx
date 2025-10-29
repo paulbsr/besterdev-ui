@@ -28,7 +28,7 @@ import { FaTv } from "react-icons/fa";
 import imageNT2ExamTimetableJanuary from "./NT2ExamTimetableJanuary.jpg"
 import imageNT2ExamTimes from "./NT2ExamTimes.jpg"
 import Image from "./Amsterdam1.jpg"
-import { PiTelevisionBold } from "react-icons/pi";
+import { SiGoogletranslate } from "react-icons/si";
 import { TbDeviceTvOld } from "react-icons/tb";
 
 
@@ -69,6 +69,7 @@ export default function DutchLanguageHomePage() {
             <a href="https://www.staatsexamensnt2.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Staatsexamens NT2" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><RiSpeakFill /></a>
             <a href="https://www.knmi.nl/nederland-nu/weer/verwachtingen" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NL KNMI" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "30px", marginLeft: "20px" }}><TiWeatherPartlySunny /></a>
             <a href="https://www.taalthuis.com/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Taal Thuis" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "28px", marginLeft: "20px" }}><PiHouseSimpleBold /></a>
+            <a href="https://translate.google.com/?sl=nl&tl=af&op=translate" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Google Translate" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><SiGoogletranslate /></a>
             
             
           </div>
