@@ -10,6 +10,7 @@ export default function DutchLanguage_Nt2exam_SchrijvenToets() {
   const [criteriaScores, setCriteriaScores] = useState(null);
   const [loading, setLoading] = useState(false);
   const [expanded, setExpanded] = useState(false); // 👈 controls expand/collapse
+  const instructiefilmschrijven = "https://www.staatsexamensnt2.nl/documenten/videos/2025/8/4/instructiefilm-schrijven"
 
   // -------------------------------
   // Safe JSON parser
@@ -115,7 +116,12 @@ Format your answer strictly like this:
 
       if (parsed && parsed.criteria) {
         setCriteriaScores(parsed);
-        setFeedback("✅ Evaluation complete.");
+        setFeedback("");
+        console.log("In <SchrijvenToet/> is jou criteriaScores: " + JSON.stringify(parsed, null, 2));
+        if (challenge?.id) {
+    await saveFeedbackToDB(parsed, challenge.id);
+  }
+
       } else {
         setFeedback("⚠️ Evaluation complete — but structured data missing.");
         setCriteriaScores({ rawResponse: aiResponse });
@@ -127,6 +133,53 @@ Format your answer strictly like this:
       setLoading(false);
     }
   };
+
+// -------------------------------
+// Persist AI feedback to DB
+// -------------------------------
+const saveFeedbackToDB = async (parsed, id) => {
+  if (!parsed || !id) return;
+
+  // Map AI feedback into entity structure
+  const updatedEntity = {
+    ...challenge, // existing fields from the loaded question
+    studentResponse: userInput,
+
+    feedbackBegrijpelijkheid: parsed.criteria.Begrijpelijkheid.comment,
+    feedbackBegrijpelijkheidScore: parsed.criteria.Begrijpelijkheid.evaluation,
+
+    feedbackGrammatica: parsed.criteria.Grammatica.comment,
+    feedbackGrammaticaScore: parsed.criteria.Grammatica.evaluation,
+
+    feedbackBegrijpelijkheidAlgemeen: parsed.criteria.BegrijpelijkheidAlgemeen.comment,
+    feedbackBegrijpelijkheidAlgemeenScore: parsed.criteria.BegrijpelijkheidAlgemeen.evaluation,
+
+    feedbackGrammaticaAlgemeen: parsed.criteria.GrammaticaAlgemeen.comment,
+    feedbackGrammaticaAlgemeenScore: parsed.criteria.GrammaticaAlgemeen.evaluation,
+
+    suggestedCorrection: parsed.suggested_correction,
+  };
+
+  try {
+    const res = await fetch(
+      `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/schrijven/put/${id}`,
+      // `http://localhost:8000/api/v1/nt2exam/schrijven/put/${id}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedEntity),
+      }
+    );
+
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const saved = await res.json();
+    console.log("✅ Successfully persisted feedback:", saved);
+  } catch (err) {
+    console.error("❌ Error saving feedback:", err);
+  }
+};
+
+
 
   // -------------------------------
   // Styles
@@ -192,22 +245,7 @@ Format your answer strictly like this:
   // UI Rendering
   // -------------------------------
   return (
-    // <div style={styles.container}>
-    //   <h2>Nederlands Staatsexamen NT2 :: Schrijven-II Toets</h2>
-    //   <p>Opdrachten: 10 • Maximumscore: 53 • Cesuur: 31 (60%) • Tijdsduur: ± 100 minuten</p>
 
-    //   <button onClick={fetchChallenge} disabled={loading} style={styles.button}>
-    //     {loading ? "Even geduld..." : "Nieuwe Schrijvingsvraag"}
-    //   </button>
-
-    //   {challenge && (
-    //     <button
-    //       onClick={() => setExpanded(!expanded)}
-    //       style={styles.collapseButton}
-    //     >
-    //       {expanded ? "⬆️ Verberg" : "⬇️ Toon   SLEGTE EEN"}
-    //     </button>
-    //   )}
 
     <div style={styles.container}>
       <div style={styles.headerRow}>
@@ -224,7 +262,9 @@ Format your answer strictly like this:
       </div>
 
       <div style={{ fontFamily: "Segoe UI, sans-serif", fontSize: "12px", lineHeight: 1, margin: 0, padding: 0 }}>
-        <p style={{ margin: 0 }}>Opdrachten: 10 • Maximumscore: 53 • Cesuur: 31 (60%) • Tijdsduur: ± 100 minuten</p>
+        <p style={{ margin: 0 }}>Opdrachten: 10 • Maximumscore: 53 • Cesuur: 31 (60%) • Tijdsduur: ± 100 minuten  • <a href={instructiefilmschrijven} target="_blank" rel="noopener noreferrer">
+      Instructiefilm
+    </a></p>
       </div>
 
       <button
