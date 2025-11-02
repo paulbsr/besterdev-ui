@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaRegPenToSquare } from "react-icons/fa6";
 
 const API_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
 const QUESTIONS_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/schrijven/questions/onerandom";
@@ -249,7 +250,7 @@ const saveFeedbackToDB = async (parsed, id) => {
 
     <div style={styles.container}>
       <div style={styles.headerRow}>
-        <h2 style={styles.title}>Nederlands Staatsexamen NT2 :: Schrijven-II Toets</h2>
+        <h2 style={styles.title}><FaRegPenToSquare style={{ color: '#FF4F00', fontSize: '25px', cursor: 'pointer', marginRight: '10px' }}/> Nederlands Staatsexamen NT2 :: Schrijven-II Toets</h2>
 
         {challenge && (
           <button

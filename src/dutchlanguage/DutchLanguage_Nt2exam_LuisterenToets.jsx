@@ -352,6 +352,10 @@
 
 
 import React, { useState, useEffect, useRef } from "react";
+import { GrAssistListening } from "react-icons/gr";
+import { FaEarListen } from "react-icons/fa6";
+import { MdOutlineHearing } from "react-icons/md";
+import { FaEarDeaf } from "react-icons/fa6";
 
 const API_URL =
   "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/luisteren/wip";
@@ -505,9 +509,7 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
   return (
     <div style={styles.container}>
       <div style={styles.headerRow}>
-        <h2 style={styles.title}>
-          Nederlands Staatsexamen NT2 :: Luisteren-II Toets
-        </h2>
+        <h2 style={styles.title}><FaEarDeaf style={{ color: '#FF4F00', fontSize: '25px', cursor: 'pointer', marginRight: '10px' }}/>Nederlands Staatsexamen NT2 :: Luisteren-II Toets</h2>
 
         {question && (
           <button onClick={toggleCollapse} style={styles.collapseButton}>
