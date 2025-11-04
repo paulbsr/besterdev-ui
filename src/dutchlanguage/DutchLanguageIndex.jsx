@@ -172,8 +172,71 @@ export default function DutchLanguageIndex() {
           textAlign: "right",
         }}
       >
-        Index
+        Grammatica
       </h2>
+
+      {showAddRow ? (
+        // <div style={{ marginTop: "8px", textAlign: "right" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "6px",
+            alignItems: "flex-end",
+          }}
+        >
+          <input
+            style={{ ...inputStyle, width: "300px", borderColor: "#007749" }}
+            value={newRow.afrikaans}
+            onChange={(e) =>
+              setNewRow({ ...newRow, afrikaans: e.target.value })
+            }
+            placeholder="Afrikaans"
+          />
+          <input
+            value={newRow.dutch}
+            onChange={(e) => setNewRow({ ...newRow, dutch: e.target.value })}
+            placeholder="Dutch"
+            style={{ ...inputStyle, width: "300px", borderColor: "#FF4F00" }}
+          />
+          <input
+            value={newRow.sample}
+            onChange={(e) => setNewRow({ ...newRow, sample: e.target.value })}
+            placeholder="Sample"
+            style={{ ...inputStyle, width: "300px", color: "#000000" }}
+          />
+
+
+          <div>
+            <PiCheckCircleFill
+              size={28}
+              color="#007749"
+              style={{ cursor: "pointer", marginRight: "5px" }}
+              onClick={addRow}
+              title="Commit"
+            />
+            <IoArrowUndoCircle
+              size={28}
+              color="grey"
+              style={{ cursor: "pointer", marginRight: "8px" }}
+              onClick={() => setShowAddRow(false)}
+              title="Revert"
+            />
+          </div>
+
+
+        </div>
+      ) : (
+        <div style={{ textAlign: "right", marginTop: "4px" }}>
+          <FaPlus
+            size={18}
+            color="#777777"
+            style={{ cursor: "pointer" }}
+            onClick={() => setShowAddRow(true)}
+          />
+        </div>
+      )}
+
 
       {/* Sorting + Filtering controls */}
       <div style={{ textAlign: "right", marginBottom: "10px" }}>
@@ -250,6 +313,7 @@ export default function DutchLanguageIndex() {
           // Force Dutch on the left if in Dutch mode
           const dutchFirst = dutchMode || isSwapped;
 
+          
           return (
             <div
               key={rec.id}
@@ -344,7 +408,7 @@ export default function DutchLanguageIndex() {
       </div>
 
       {/* Add row form */}
-      {showAddRow ? (
+      {/* {showAddRow ? (
         // <div style={{ marginTop: "8px", textAlign: "right" }}>
         <div
           style={{
@@ -404,7 +468,7 @@ export default function DutchLanguageIndex() {
             onClick={() => setShowAddRow(true)}
           />
         </div>
-      )}
+      )} */}
     </div>
   );
 }

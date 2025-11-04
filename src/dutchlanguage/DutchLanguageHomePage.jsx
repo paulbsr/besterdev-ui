@@ -31,6 +31,7 @@ import Image from "./Amsterdam1.jpg"
 import { SiGoogletranslate } from "react-icons/si";
 import { TbDeviceTvOld } from "react-icons/tb";
 import { FaCarCrash } from "react-icons/fa";
+import DutchLanguage_Diary from "./DutchLanguage_Diary";
 
 
 export default function DutchLanguageHomePage() {
@@ -58,6 +59,7 @@ export default function DutchLanguageHomePage() {
           <div>&nbsp;&nbsp;</div>
           <div><DutchLanguageTicker /></div>
           <div><DutchLanguageCompareContrast /></div>
+          <div><DutchLanguage_Diary /></div>
 
           <div style={{ marginTop: "10px", marginLeft: "5px" }}>
             <a href="https://www.nporadio1.nl/live" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO Radio 1" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "25px" }}><FaRadio /></a>
