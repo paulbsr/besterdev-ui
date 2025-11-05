@@ -18,7 +18,7 @@ import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 import { FaRadio } from "react-icons/fa6";
 import { RiWebcamFill } from "react-icons/ri";
-import { PiExamFill } from "react-icons/pi";
+import { PiExamFill, PiNumberCircleOneBold } from "react-icons/pi";
 import { RiSpeakFill } from "react-icons/ri";
 import { FaNewspaper } from "react-icons/fa6";
 import { BsNewspaper } from "react-icons/bs";
@@ -73,6 +73,7 @@ export default function DutchLanguageHomePage() {
             <a href="https://www.taalthuis.com/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Taal Thuis" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "28px", marginLeft: "20px" }}><PiHouseSimpleBold /></a>
             <a href="https://translate.google.com/?sl=nl&tl=af&op=translate" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Google Translate" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><SiGoogletranslate /></a>
             <a href="https://www.anwb.nl/verkeer?center=52.08720994322829%2C5.449947200775682&zoom=6.173985622710852" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Verkeer" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><FaCarCrash /></a>
+            <a href="https://npo.nl/start/serie/eenvandaag/afleveringen" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO EenVandaag" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><PiNumberCircleOneBold /></a>
             
             
           </div>
