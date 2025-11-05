@@ -31,7 +31,7 @@ import Image from "./Amsterdam1.jpg"
 import { SiGoogletranslate } from "react-icons/si";
 import { TbDeviceTvOld } from "react-icons/tb";
 import { FaCarCrash } from "react-icons/fa";
-import DutchLanguage_Diary from "./DutchLanguage_Diary";
+import DutchLanguage_Dagboek from "./DutchLanguage_Dagboek";
 
 
 export default function DutchLanguageHomePage() {
@@ -59,7 +59,6 @@ export default function DutchLanguageHomePage() {
           <div>&nbsp;&nbsp;</div>
           <div><DutchLanguageTicker /></div>
           <div><DutchLanguageCompareContrast /></div>
-          <div><DutchLanguage_Diary /></div>
 
           <div style={{ marginTop: "10px", marginLeft: "5px" }}>
             <a href="https://www.nporadio1.nl/live" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO Radio 1" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "25px" }}><FaRadio /></a>
@@ -74,14 +73,11 @@ export default function DutchLanguageHomePage() {
             <a href="https://translate.google.com/?sl=nl&tl=af&op=translate" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Google Translate" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><SiGoogletranslate /></a>
             <a href="https://www.anwb.nl/verkeer?center=52.08720994322829%2C5.449947200775682&zoom=6.173985622710852" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Verkeer" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><FaCarCrash /></a>
             <a href="https://npo.nl/start/serie/eenvandaag/afleveringen" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO EenVandaag" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><PiNumberCircleOneBold /></a>
-            
-            
+                      
           </div>
 
-          <div>&nbsp;</div>
-
-          <div><AskAI /></div>
-
+          <AskAI />
+          <DutchLanguage_Dagboek />
           <DutchLanguage_Nt2exam_SchrijvenToets />
           <DutchLanguage_Nt2exam_LuisterenToets />
           <DutchLanguageSentenceTrainerModal />

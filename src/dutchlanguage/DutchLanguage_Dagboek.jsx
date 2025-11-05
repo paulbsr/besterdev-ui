@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { FaBookOpen } from "react-icons/fa6";
 import { IoBookOutline } from "react-icons/io5";
+import { PiBookOpenTextBold } from "react-icons/pi";
 
-function DutchLanguage_Diary() {
+function DutchLanguage_Dagboek() {
     const [entry, setEntry] = useState("");
     const [feedback, setFeedback] = useState("");
     const [aiSentence, setAiSentence] = useState("");
@@ -29,15 +30,30 @@ function DutchLanguage_Diary() {
         }
     };
 
+    // const formatDate = (dateString) => {
+    //     if (!dateString) return "Onbekend datum";
+    //     const d = new Date(dateString);
+    //     if (isNaN(d)) return "Onbekend datum";
+    //     const yyyy = d.getFullYear();
+    //     const mm = String(d.getMonth() + 1).padStart(2, "0");
+    //     const dd = String(d.getDate()).padStart(2, "0");
+    //     return `${yyyy}.${mm}.${dd}`;
+    // };
+
     const formatDate = (dateString) => {
-        if (!dateString) return "Onbekend datum";
-        const d = new Date(dateString);
-        if (isNaN(d)) return "Onbekend datum";
-        const yyyy = d.getFullYear();
-        const mm = String(d.getMonth() + 1).padStart(2, "0");
-        const dd = String(d.getDate()).padStart(2, "0");
-        return `${yyyy}.${mm}.${dd}`;
-    };
+    if (!dateString) return "Onbekend datum";
+    const d = new Date(dateString);
+    if (isNaN(d)) return "Onbekend datum";
+
+    const yyyy = d.getFullYear();
+    const mm = String(d.getMonth() + 1).padStart(2, "0");
+    const dd = String(d.getDate()).padStart(2, "0");
+    const hh = String(d.getHours()).padStart(2, "0");
+    const min = String(d.getMinutes()).padStart(2, "0");
+
+    return `${yyyy}.${mm}.${dd} @ ${hh}:${min}`;
+};
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -103,23 +119,23 @@ Please respond ONLY in raw JSON with keys "feedback" and "suggestedSentence".`,
         <div
             style={{
                 maxWidth: "1100px",
-                margin: "40px auto",
+                margin: "16px auto",
                 padding: "20px",
                 borderRadius: "10px",
                 border: "1px solid #FF4F00",
-                fontFamily: "Tahoma",
-                fontSize: "9pt",
+                fontFamily: "Segoe UI",
+                fontSize: "11pt",
             }}
         >
             <h2
                 style={{
-                    fontWeight: "bold",
+                    // fontWeight: "bold",
                     fontSize: "22px",
-                    marginBottom: "16px",
+                    marginBottom: "6px",
                     marginTop: "1px",
                 }}
-            ><IoBookOutline style={{ color: '#FF4F00', fontSize: '30px', cursor: 'pointer', marginRight: '10px' }}/>
-                Nederlands Dagboek
+            ><PiBookOpenTextBold style={{ color: '#FF4F00', fontSize: '32px', cursor: 'pointer', marginRight: '10px' }}/>
+                Mijn Dagboek in het Nederlands
             </h2>
 
             {/* Form */}
@@ -130,7 +146,7 @@ Please respond ONLY in raw JSON with keys "feedback" and "suggestedSentence".`,
                     placeholder="Typ hier jouw dagboektekst..."
                     // rows="2"
                     style={{
-                        height: "35.5px",
+                        height: "30.5px",
                         width: "90%",
                         padding: "4px",
                         fontFamily: "Segoe UI",
@@ -149,7 +165,7 @@ Please respond ONLY in raw JSON with keys "feedback" and "suggestedSentence".`,
                         border: "1px solid #FF4F00",
                         borderRadius: "4px",
                         backgroundColor: "#FFFFFF",
-                        color: "#FF4F00",
+                        color: "#000000",
                         cursor: "pointer",
                         fontFamily: "Segoe UI",
                         fontSize: "16px",
@@ -165,8 +181,9 @@ Please respond ONLY in raw JSON with keys "feedback" and "suggestedSentence".`,
                 <button
                     onClick={() => setShowEntries(!showEntries)}
                     style={{
+                        fontFamily: "Segoe UI",
                         padding: "6px 10px",
-                        fontSize: "8pt",
+                        fontSize: "11pt",
                         borderRadius: "4px",
                         border: "1px solid #ccc",
                         background: "#f8f8f8",
@@ -195,9 +212,9 @@ Please respond ONLY in raw JSON with keys "feedback" and "suggestedSentence".`,
                                         style={{
                                             cursor: "pointer",
                                             color:
-                                                expandedEntryId === item.id ? "#007bff" : "black",
+                                                expandedEntryId === item.id ? "#000000" : "black",
                                             fontWeight:
-                                                expandedEntryId === item.id ? "bold" : "normal",
+                                                expandedEntryId === item.id ? "normal" : "normal",
                                             marginBottom: "4px",
                                         }}
                                     >
@@ -209,12 +226,12 @@ Please respond ONLY in raw JSON with keys "feedback" and "suggestedSentence".`,
                                         <div
                                             style={{
                                                 marginLeft: "15px",
-                                                marginBottom: "12px",
+                                                marginBottom: "6px",
                                                 paddingBottom: "6px",
                                                 borderBottom: "1px solid #eee",
                                             }}
                                         >
-                                            <div style={{ color: "black" }}>{item.myEntry}</div>
+                                            <div style={{ color: "#000000" }}>{item.myEntry}</div>
                                             {item.aiEntry && (
                                                 <div style={{ color: "#FF4F00" }}>
                                                     {item.aiEntry}
@@ -242,4 +259,4 @@ Please respond ONLY in raw JSON with keys "feedback" and "suggestedSentence".`,
     );
 }
 
-export default DutchLanguage_Diary;
+export default DutchLanguage_Dagboek;

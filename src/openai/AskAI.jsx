@@ -54,7 +54,7 @@ export default function AskAI() {
       display: "flex",
       flexWrap: "wrap",
       gap: "10px",
-      marginBottom: "20px",
+      // marginBottom: "20px",
     },
     input: {
       flex: "1 1 300px",
