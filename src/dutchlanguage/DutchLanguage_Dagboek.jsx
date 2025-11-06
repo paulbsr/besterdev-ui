@@ -41,18 +41,18 @@ function DutchLanguage_Dagboek() {
     // };
 
     const formatDate = (dateString) => {
-    if (!dateString) return "Onbekend datum";
-    const d = new Date(dateString);
-    if (isNaN(d)) return "Onbekend datum";
+        if (!dateString) return "Onbekend datum";
+        const d = new Date(dateString);
+        if (isNaN(d)) return "Onbekend datum";
 
-    const yyyy = d.getFullYear();
-    const mm = String(d.getMonth() + 1).padStart(2, "0");
-    const dd = String(d.getDate()).padStart(2, "0");
-    const hh = String(d.getHours()).padStart(2, "0");
-    const min = String(d.getMinutes()).padStart(2, "0");
+        const yyyy = d.getFullYear();
+        const mm = String(d.getMonth() + 1).padStart(2, "0");
+        const dd = String(d.getDate()).padStart(2, "0");
+        const hh = String(d.getHours()).padStart(2, "0");
+        const min = String(d.getMinutes()).padStart(2, "0");
 
-    return `${yyyy}.${mm}.${dd} @ ${hh}:${min}`;
-};
+        return `${yyyy}.${mm}.${dd} @ ${hh}:${min}`;
+    };
 
 
     const handleSubmit = async (e) => {
@@ -115,39 +115,113 @@ Please respond ONLY in raw JSON with keys "feedback" and "suggestedSentence".`,
         }
     };
 
+
+    const styles = {
+        container: {
+            border: "1px solid #FF4F00",
+            borderRadius: "8px",
+            padding: "16px",
+            fontFamily: "Segoe UI",
+            fontSize: "16px",
+            maxWidth: "1100px",
+            marginTop: "16px",
+            marginBottom: "16px"
+        },
+        headerRow: {
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginBottom: "6px",
+        },
+        title: {
+            fontWeight: "bold",
+            fontSize: "22px",
+            margin: 0,
+        },
+        button: {
+            height: "40.5px",
+            border: "1px solid #777",
+            borderRadius: "4px",
+            padding: "8px 8px",
+            fontSize: "16px",
+        },
+        collapseButton: {
+            border: "1px solid #ccc",
+            backgroundColor: "#fff",
+            borderRadius: "4px",
+            padding: "5px 10px",
+            cursor: "pointer",
+            fontSize: "10px",
+        },
+        questionBox: {
+            backgroundColor: "#f9f9f9",
+            borderLeft: "12px solid #c0c0c0",
+            padding: "12px 16px",
+            borderRadius: "6px",
+            marginTop: "10px",
+            boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
+        },
+        questionText: {
+            fontSize: "18px",
+            color: "#FF4F00",
+            fontStyle: "italic",
+            marginTop: "10px",
+        },
+        optionList: {
+            listStyleType: "none",
+            padding: "0",
+            marginTop: "10px",
+            lineHeight: "1.8",
+        },
+        select: {
+            height: "40.5px",
+            border: "1px solid #777",
+            borderRadius: "4px",
+            paddingLeft: "10px",
+            width: "750px",
+            fontSize: "16px",
+            backgroundColor: "#fff",
+        },
+    };
+
     return (
-        <div
-            style={{
-                maxWidth: "1100px",
-                margin: "16px auto",
-                padding: "20px",
-                borderRadius: "10px",
-                border: "1px solid #FF4F00",
-                fontFamily: "Segoe UI",
-                fontSize: "11pt",
-            }}
-        >
-            <h2
-                style={{
-                    // fontWeight: "bold",
-                    fontSize: "22px",
-                    marginBottom: "6px",
-                    marginTop: "1px",
-                }}
-            ><PiBookOpenTextBold style={{ color: '#FF4F00', fontSize: '32px', cursor: 'pointer', marginRight: '10px' }}/>
-                Mijn Dagboek in het Nederlands
-            </h2>
+        // <div
+        //     style={{
+        //         maxWidth: "1100px",
+        //         margin: "16px auto",
+        //         padding: "20px",
+        //         borderRadius: "10px",
+        //         border: "1px solid #FF4F00",
+        //         fontFamily: "Segoe UI",
+        //         fontSize: "11pt",
+        //     }}
+        // >
+        //     <h2
+        //         style={{
+        //             // fontWeight: "bold",
+        //             fontSize: "22px",
+        //             marginBottom: "6px",
+        //             marginTop: "1px",
+        //         }}
+        //     ><PiBookOpenTextBold style={{ color: '#FF4F00', fontSize: '32px', cursor: 'pointer', marginRight: '10px' }}/>
+        //         Mijn Dagboek in het Nederlands
+        //     </h2>
+
+        <div style={styles.container}>
+            {/* <div style={styles.headerRow}> */}
+            <h2 style={styles.title}><PiBookOpenTextBold style={{ color: '#FF4F00', fontSize: '35px', cursor: 'pointer', marginRight: '10px' }} />Mijn Dagboek in het Nederlands</h2>
 
             {/* Form */}
             <form onSubmit={handleSubmit}>
-                <input
+                <textarea
                     value={entry}
                     onChange={(e) => setEntry(e.target.value)}
                     placeholder="Typ hier jouw dagboektekst..."
                     // rows="2"
                     style={{
-                        height: "30.5px",
-                        width: "90%",
+                        marginTop: "10px",
+                        height: "40.5px",
+                        width: "100%",
                         padding: "4px",
                         fontFamily: "Segoe UI",
                         fontSize: "12pt",
@@ -155,25 +229,27 @@ Please respond ONLY in raw JSON with keys "feedback" and "suggestedSentence".`,
                         border: "0.75px solid #777777",
                     }}
                 />
-                <button
-                    type="submit"
-                    disabled={loading}
-                    style={{
-                        marginLeft: "5px",
-                        height: "35.5px",
-                        width: "75px",
-                        border: "1px solid #FF4F00",
-                        borderRadius: "4px",
-                        backgroundColor: "#FFFFFF",
-                        color: "#000000",
-                        cursor: "pointer",
-                        fontFamily: "Segoe UI",
-                        fontSize: "16px",
+                <div>
+                    <button
+                        type="submit"
+                        disabled={loading}
+                        style={{
+                            // marginLeft: "5px",
+                            height: "35.5px",
+                            width: "75px",
+                            border: "1px solid #FF4F00",
+                            borderRadius: "4px",
+                            backgroundColor: "#FFFFFF",
+                            color: "#000000",
+                            cursor: "pointer",
+                            fontFamily: "Segoe UI",
+                            fontSize: "16px",
 
-                    }}
-                >
-                    {loading ? "Bezig..." : "Verstuur"}
-                </button>
+                        }}
+                    >
+                        {loading ? "Bezig..." : "Verstuur"}
+                    </button>
+                </div>
             </form>
 
             {/* Toggle diary list */}
@@ -255,6 +331,7 @@ Please respond ONLY in raw JSON with keys "feedback" and "suggestedSentence".`,
                     </div>
                 )}
             </div>
+
         </div>
     );
 }
