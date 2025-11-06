@@ -6,6 +6,7 @@ import 'react-dropdown/style.css';
 import axios from 'axios'
 import Image from './Darknet12.png'
 import TUS from './TUS.png'
+import TUS2 from './TUS2.png'
 import LYIT from './LYIT.png'
 import DCU from './DCU.png'
 import Testimonial_TB from './Testimonial_TB.png'
@@ -264,17 +265,23 @@ export default function MyCV(props) {
       <div className="CV-Font-Calibri-Large-Italic-PG">
         <table>
           <tbody>
+            <img src={TUS2} width="240" height="300" />
+            <div style={{fontFamily: "Segoe UI", fontSize: "12pt"}}>MSc. SW Design (Cybersecurity), TUS, 2025</div>
+
+            <div className='Font-Spacer-White'>Make this spacer white</div>
+
             <img src={LYIT} width="240" height="300" />
-            <div>MSc. Software Engineering</div>
-            <div>AthloneIT (TUS), 2022</div>
+            <div style={{fontFamily: "Segoe UI", fontSize: "12pt"}}>MSc. SW Design (Cloud Native), TUS, 2022</div>
+
             <div className='Font-Spacer-White'>Make this spacer white</div>
+
             <img src={TUS} width="240" height="300" />
-            <div>MSc. Cloud Computing</div>
-            <div>LetterkennyIT (LYIT), 2019</div>
+            <div style={{fontFamily: "Segoe UI", fontSize: "12pt"}}>MSc. Cloud Computing, LYIT, 2019</div>
+
             <div className='Font-Spacer-White'>Make this spacer white</div>
+
             <img src={DCU} width="240" height="300" />
-            <div>BSc. Information Technology & Computer Science</div>
-            <div>Dublin City University (DCU), 2013</div>
+            <div style={{fontFamily: "Segoe UI", fontSize: "12pt"}}>BSc. Computer Science, DCU, 2013</div>
           </tbody>
         </table>
       </div>

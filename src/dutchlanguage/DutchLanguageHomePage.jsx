@@ -32,7 +32,8 @@ import { SiGoogletranslate } from "react-icons/si";
 import { TbDeviceTvOld } from "react-icons/tb";
 import { FaCarCrash } from "react-icons/fa";
 import DutchLanguage_Dagboek from "./DutchLanguage_Dagboek";
-
+import { PiExamBold } from "react-icons/pi";
+import { PiTelevisionBold } from "react-icons/pi";
 
 export default function DutchLanguageHomePage() {
   return (
@@ -60,19 +61,19 @@ export default function DutchLanguageHomePage() {
           <div><DutchLanguageTicker /></div>
           <div><DutchLanguageCompareContrast /></div>
 
-          <div style={{ marginTop: "10px", marginLeft: "5px" }}>
-            <a href="https://www.nporadio1.nl/live" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO Radio 1" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "25px" }}><FaRadio /></a>
-            <a href="https://www.bvn.tv/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="BVN TV" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "28px", marginLeft: "20px" }}><FaTv /></a>
-            <a href="https://www.rtl.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="RTL News" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><FaNewspaper /></a>
-            <a href="https://nos.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NOS News" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><BsNewspaper /></a>
-            <a href="https://www.skylinewebcams.com/en/webcam/netherlands/north-holland/amsterdam/amsterdam-dam-square.html" data-tooltip-id="insert" data-tooltip-content="Dam Square Live Webcam" target="_blank" rel="noopener noreferrer" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "25px", marginLeft: "20px" }}><RiWebcamFill /></a>
-            <a href="https://oefenexamensnt2.nl/facet-openbaar-portaal/welkom" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Staatsexamens NT2 Oefen" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><PiExamFill /></a>
-            <a href="https://www.staatsexamensnt2.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Staatsexamens NT2" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><RiSpeakFill /></a>
-            <a href="https://www.knmi.nl/nederland-nu/weer/verwachtingen" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NL KNMI" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "30px", marginLeft: "20px" }}><TiWeatherPartlySunny /></a>
-            <a href="https://www.taalthuis.com/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Taal Thuis" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "28px", marginLeft: "20px" }}><PiHouseSimpleBold /></a>
-            <a href="https://translate.google.com/?sl=nl&tl=af&op=translate" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Google Translate" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><SiGoogletranslate /></a>
-            <a href="https://www.anwb.nl/verkeer?center=52.08720994322829%2C5.449947200775682&zoom=6.173985622710852" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Verkeer" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><FaCarCrash /></a>
-            <a href="https://npo.nl/start/serie/eenvandaag/afleveringen" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO EenVandaag" style={{ cursor: "pointer", color: "#c0c0c0", fontSize: "24px", marginLeft: "20px" }}><PiNumberCircleOneBold /></a>
+          <div style={{ marginTop: "10px", marginLeft: "45px" }}>
+            <a href="https://www.nporadio1.nl/live" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO Radio 1" style={{ cursor: "pointer", color: "#336791", fontSize: "25px" }}><FaRadio /></a>
+            <a href="https://www.bvn.tv/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="BVN TV" style={{ cursor: "pointer", color: "#336791", fontSize: "30px", marginLeft: "20px" }}><PiTelevisionBold /></a>
+            <a href="https://www.rtl.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="RTL News" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><FaNewspaper /></a>
+            <a href="https://nos.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NOS News" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><BsNewspaper /></a>
+            <a href="https://www.skylinewebcams.com/en/webcam/netherlands/north-holland/amsterdam/amsterdam-dam-square.html" data-tooltip-id="insert" data-tooltip-content="Dam Square Live Webcam" target="_blank" rel="noopener noreferrer" style={{ cursor: "pointer", color: "#336791", fontSize: "25px", marginLeft: "20px" }}><RiWebcamFill /></a>
+            <a href="https://www.staatsexamensnt2.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Staatsexamens NT2" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><PiExamBold /></a>
+            <a href="https://oefenexamensnt2.nl/facet-openbaar-portaal/welkom" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Staatsexamens NT2 Oefen" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><PiExamFill /></a>
+            <a href="https://www.knmi.nl/nederland-nu/weer/verwachtingen" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NL KNMI" style={{ cursor: "pointer", color: "#336791", fontSize: "30px", marginLeft: "20px" }}><TiWeatherPartlySunny /></a>
+            <a href="https://www.taalthuis.com/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Taal Thuis" style={{ cursor: "pointer", color: "#336791", fontSize: "28px", marginLeft: "20px" }}><PiHouseSimpleBold /></a>
+            <a href="https://translate.google.com/?sl=nl&tl=af&op=translate" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Google Translate" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><SiGoogletranslate /></a>
+            <a href="https://www.anwb.nl/verkeer?center=52.08720994322829%2C5.449947200775682&zoom=6.173985622710852" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Verkeer" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><FaCarCrash /></a>
+            <a href="https://npo.nl/start/serie/eenvandaag/afleveringen" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO EenVandaag" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><PiNumberCircleOneBold /></a>
                       
           </div>
 
@@ -97,31 +98,17 @@ export default function DutchLanguageHomePage() {
           <DutchLanguageSpellingChecker />
           <DutchLanguageWordExplain />
           <div>&nbsp;&nbsp;</div>
-          {/* <DutchLanguageExamSchrijvenInput/> */}
-          <div>&nbsp;&nbsp;</div>
-          <div>&nbsp;&nbsp;</div>
-          <div>&nbsp;&nbsp;</div>
-          <p className="line underline">Pronouns (Voornaamwoorden):</p>
-          <p className="line"><i>ik, jij, hij, zij, wij, jullie, zij</i></p>
 
           <p className="line underline spaced">Adjectives (Bijvoeglijke Naamwoorden):</p>
           <p className="line"><i>Describe nouns. Gets trailing "-e"</i></p>
-          <p className="line">de <b>rode</b> auto (always with plural - die)</p>
-          <p className="line">een <b>grote</b> man (singular - 'n')</p>
-          <p className="line">het <b>groene</b> boek (singular = die)</p>
-
-          <p className="line underline spaced">Adverbs (Bijwoorden):</p>
-          <p className="line"><i>Tells us how, when, where, or how often something happens</i></p>
-          <p className="line">snel, vaak, hier, nu</p>
+          <p className="line"><b>de</b> rode auto (plural definite = die/the)</p>
+          <p className="line"><b>het</b> groene boek (singular definite = die/the)</p>
+          <p className="line"><b>een</b> grote man (singular indefinite = 'n/a/an)</p>
 
           <p className="line underline spaced">Nouns (Zelfstandige naamwoorden):</p>
           <p className="line"><i>Words for people, places, things, ideas.</i></p>
           <p className="line">zijn = is (to be)</p>
           <p className="line">hebben = het (to have)</p>
-
-          <p className="line underline spaced">Pronouns (Voornaamwoorden):</p>
-          <p className="line"><i>Words that replace nouns (I, you, he, she, it, we, they)</i></p>
-          <p className="line">ik, jij, hij, zij, wij, jullie</p>
 
           <p className="line underline spaced">Verbs (Werkwoorden):</p>
           <p className="line"><i>Two super-important verbs</i></p>

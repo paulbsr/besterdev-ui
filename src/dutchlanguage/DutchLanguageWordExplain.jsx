@@ -59,7 +59,6 @@ export default function DutchLanguageWordExplain() {
         padding: "16px",
         fontFamily: "Segoe UI",
         fontSize: "16px",
-        marginBottom: "10px",
       }}
     >
       <h2
