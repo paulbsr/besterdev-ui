@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaRegPenToSquare } from "react-icons/fa6";
 
 const API_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
@@ -12,6 +12,8 @@ export default function DutchLanguage_Nt2exam_SchrijvenToets() {
   const [loading, setLoading] = useState(false);
   const [expanded, setExpanded] = useState(false); // 👈 controls expand/collapse
   const instructiefilmschrijven = "https://www.staatsexamensnt2.nl/documenten/videos/2025/8/4/instructiefilm-schrijven"
+  const [wordCount, setWordCount] = useState(0);
+  const [secondsElapsed, setSecondsElapsed] = useState(0);
 
   // -------------------------------
   // Safe JSON parser
@@ -120,8 +122,8 @@ Format your answer strictly like this:
         setFeedback("");
         console.log("In <SchrijvenToet/> is jou criteriaScores: " + JSON.stringify(parsed, null, 2));
         if (challenge?.id) {
-    await saveFeedbackToDB(parsed, challenge.id);
-  }
+          await saveFeedbackToDB(parsed, challenge.id);
+        }
 
       } else {
         setFeedback("⚠️ Evaluation complete — but structured data missing.");
@@ -135,52 +137,61 @@ Format your answer strictly like this:
     }
   };
 
-// -------------------------------
-// Persist AI feedback to DB
-// -------------------------------
-const saveFeedbackToDB = async (parsed, id) => {
-  if (!parsed || !id) return;
+  // -------------------------------
+  // Persist AI feedback to DB
+  // -------------------------------
+  const saveFeedbackToDB = async (parsed, id) => {
+    if (!parsed || !id) return;
 
-  // Map AI feedback into entity structure
-  const updatedEntity = {
-    ...challenge, // existing fields from the loaded question
-    studentResponse: userInput,
+    // Map AI feedback into entity structure
+    const updatedEntity = {
+      ...challenge, // existing fields from the loaded question
+      studentResponse: userInput,
 
-    feedbackBegrijpelijkheid: parsed.criteria.Begrijpelijkheid.comment,
-    feedbackBegrijpelijkheidScore: parsed.criteria.Begrijpelijkheid.evaluation,
+      feedbackBegrijpelijkheid: parsed.criteria.Begrijpelijkheid.comment,
+      feedbackBegrijpelijkheidScore: parsed.criteria.Begrijpelijkheid.evaluation,
 
-    feedbackGrammatica: parsed.criteria.Grammatica.comment,
-    feedbackGrammaticaScore: parsed.criteria.Grammatica.evaluation,
+      feedbackGrammatica: parsed.criteria.Grammatica.comment,
+      feedbackGrammaticaScore: parsed.criteria.Grammatica.evaluation,
 
-    feedbackBegrijpelijkheidAlgemeen: parsed.criteria.BegrijpelijkheidAlgemeen.comment,
-    feedbackBegrijpelijkheidAlgemeenScore: parsed.criteria.BegrijpelijkheidAlgemeen.evaluation,
+      feedbackBegrijpelijkheidAlgemeen: parsed.criteria.BegrijpelijkheidAlgemeen.comment,
+      feedbackBegrijpelijkheidAlgemeenScore: parsed.criteria.BegrijpelijkheidAlgemeen.evaluation,
 
-    feedbackGrammaticaAlgemeen: parsed.criteria.GrammaticaAlgemeen.comment,
-    feedbackGrammaticaAlgemeenScore: parsed.criteria.GrammaticaAlgemeen.evaluation,
+      feedbackGrammaticaAlgemeen: parsed.criteria.GrammaticaAlgemeen.comment,
+      feedbackGrammaticaAlgemeenScore: parsed.criteria.GrammaticaAlgemeen.evaluation,
 
-    suggestedCorrection: parsed.suggested_correction,
+      suggestedCorrection: parsed.suggested_correction,
+    };
+
+    try {
+      const res = await fetch(
+        `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/schrijven/put/${id}`,
+        // `http://localhost:8000/api/v1/nt2exam/schrijven/put/${id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updatedEntity),
+        }
+      );
+
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const saved = await res.json();
+      console.log("✅ Successfully persisted feedback:", saved);
+    } catch (err) {
+      console.error("❌ Error saving feedback:", err);
+    }
   };
 
-  try {
-    const res = await fetch(
-      `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/schrijven/put/${id}`,
-      // `http://localhost:8000/api/v1/nt2exam/schrijven/put/${id}`,
-      {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedEntity),
-      }
-    );
-
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const saved = await res.json();
-    console.log("✅ Successfully persisted feedback:", saved);
-  } catch (err) {
-    console.error("❌ Error saving feedback:", err);
-  }
-};
-
-
+  useEffect(() => {
+    let timer;
+    if (challenge) {
+      setSecondsElapsed(0); // reset when a new question is loaded
+      timer = setInterval(() => {
+        setSecondsElapsed((prev) => prev + 1);
+      }, 1000);
+    }
+    return () => clearInterval(timer); // cleanup when question changes or component unmounts
+  }, [challenge]);
 
   // -------------------------------
   // Styles
@@ -242,6 +253,13 @@ const saveFeedbackToDB = async (parsed, id) => {
     },
   };
 
+  const formatTime = (totalSeconds) => {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+  };
+
+
   // -------------------------------
   // UI Rendering
   // -------------------------------
@@ -250,7 +268,7 @@ const saveFeedbackToDB = async (parsed, id) => {
 
     <div style={styles.container}>
       <div style={styles.headerRow}>
-        <h2 style={styles.title}><FaRegPenToSquare style={{ color: '#FF4F00', fontSize: '25px', cursor: 'pointer', marginRight: '10px' }}/> Nederlands Staatsexamen NT2 :: Schrijven-II Toets</h2>
+        <h2 style={styles.title}><FaRegPenToSquare style={{ color: '#FF4F00', fontSize: '25px', cursor: 'pointer', marginRight: '10px' }} /> Nederlands Staatsexamen NT2 :: Schrijven-II Toets</h2>
 
         {challenge && (
           <button
@@ -264,8 +282,8 @@ const saveFeedbackToDB = async (parsed, id) => {
 
       <div style={{ fontFamily: "Segoe UI, sans-serif", fontSize: "12px", lineHeight: 1, margin: 0, padding: 0 }}>
         <p style={{ margin: 0 }}>Opdrachten: 10 • Maximumscore: 53 • Cesuur: 31 (60%) • Tijdsduur: ± 100 minuten  • <a href={instructiefilmschrijven} target="_blank" rel="noopener noreferrer">
-      Instructiefilm
-    </a></p>
+          Instructiefilm
+        </a></p>
       </div>
 
       <button
@@ -319,7 +337,13 @@ const saveFeedbackToDB = async (parsed, id) => {
           <form onSubmit={checkAnswer} style={{ marginTop: "10px" }}>
             <textarea
               value={userInput}
-              onChange={(e) => setUserInput(e.target.value)}
+              // onChange={(e) => setUserInput(e.target.value)}
+              onChange={(e) => {
+                const text = e.target.value;
+                setUserInput(text);
+                const words = text.trim() === "" ? 0 : text.trim().split(/\s+/).length;
+                setWordCount(words);
+              }}
               placeholder="Typ je antwoord hier..."
               rows={5}
               style={{
@@ -330,6 +354,19 @@ const saveFeedbackToDB = async (parsed, id) => {
                 border: "1px solid #ccc",
               }}
             />
+
+            {/* <div style={{ fontSize: "13px", color: "#555", marginTop: "4px" }}>
+              Woorden: {wordCount}
+            </div> */}
+
+            <div style={{ fontSize: "13px", color: "#555", marginTop: "4px", display: "flex", justifyContent: "space-between", width: "98%" }}>
+              <span>Woorden: {wordCount}</span>
+              <span>Tijd: {formatTime(secondsElapsed)}</span>
+            </div>
+
+
+
+
             <button
               type="submit"
               disabled={loading}

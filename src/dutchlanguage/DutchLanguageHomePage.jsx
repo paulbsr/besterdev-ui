@@ -99,23 +99,33 @@ export default function DutchLanguageHomePage() {
           <DutchLanguageWordExplain />
           <div>&nbsp;&nbsp;</div>
 
-          <p className="line underline spaced">Adjectives (Bijvoeglijke Naamwoorden):</p>
+          <p className="line underline spaced">Bijvoeglijke Naamwoorden:</p>
           <p className="line"><i>Describe nouns. Gets trailing "-e"</i></p>
           <p className="line"><b>de</b> rode auto (plural definite = die/the)</p>
           <p className="line"><b>het</b> groene boek (singular definite = die/the)</p>
           <p className="line"><b>een</b> grote man (singular indefinite = 'n/a/an)</p>
 
-          <p className="line underline spaced">Nouns (Zelfstandige naamwoorden):</p>
+          <p className="line underline spaced">Zelfstandige naamwoorden:</p>
           <p className="line"><i>Words for people, places, things, ideas.</i></p>
           <p className="line">zijn = is (to be)</p>
           <p className="line">hebben = het (to have)</p>
+          <p className="line">Ik ben moe → I am tired</p>
+          <p className="line">Jij hebt een auto → You have a car.</p>
+          <p className="line">Ik ben gegaan → I have gone / I went.</p>
+          <p className="line">Ik heb gegeten → I have eaten / I ate.</p>
 
-          <p className="line underline spaced">Verbs (Werkwoorden):</p>
-          <p className="line"><i>Two super-important verbs</i></p>
-          <p className="line">zijn = to be (is)</p>
-          <p className="line">hebben = to have (het)</p>
-          <p className="line">werken = to work</p>
-          <p className="line">gaan = to go</p>
+          <p className="line underline spaced">Spelling:</p>
+          <p className="line">Rule#1: </p>
+          <p className="line">Rule#2: </p>
+          <p className="line">Rule#3: </p>
+          <p className="line">Rule#5: </p>
+        
+          <p className="line underline spaced">Spelling Rule#4:</p>
+          <p className="line"><i>'f' & 's' becomes 'v' & 'z'</i></p>
+          <p className="line">brief → brieven</p>
+          <p className="line">lief → lieve</p>
+          <p className="line">roos → rozen</p>
+          <p className="line">huis → huizen</p>
         </div>
       </div>
     </div>
