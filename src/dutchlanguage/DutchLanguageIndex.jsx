@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FaPlus, FaEdit } from "react-icons/fa";
 import { IoMdSwap } from "react-icons/io";
-import { CiCircleCheck } from "react-icons/ci";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 import { PiCheckCircleFill } from "react-icons/pi";
 import { IoArrowUndoCircle } from "react-icons/io5";
-import { LiaSortAlphaDownSolid, LiaSortAlphaDownAltSolid,} from "react-icons/lia";
+import { LiaSortAlphaDownSolid } from "react-icons/lia";
 
 
 const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
@@ -332,14 +331,15 @@ export default function DutchLanguageIndex() {
                     }}
                   >
                     <input
-                      style={{ ...inputStyle, width: "200px" }}
+                    //hierishy
+                      style={{ ...inputStyle, width: "200px", borderColor: "#007749", borderWidth: "1px" }}
                       value={editRow.afrikaans}
                       onChange={(e) =>
                         setEditRow({ ...editRow, afrikaans: e.target.value })
                       }
                     />
                     <input
-                      style={{ ...inputStyle, width: "200px" }}
+                      style={{ ...inputStyle, width: "200px", borderColor: "#FF4F00", borderWidth: "1px" }}
                       value={editRow.dutch}
                       onChange={(e) =>
                         setEditRow({ ...editRow, dutch: e.target.value })

@@ -1,3 +1,4 @@
+import { BorderTop } from "@mui/icons-material";
 import React, { useState } from "react";
 
 export default function AskAI() {
@@ -54,7 +55,7 @@ export default function AskAI() {
       display: "flex",
       flexWrap: "wrap",
       gap: "10px",
-      // marginBottom: "20px",
+      marginBottom: "20px",
     },
     input: {
       flex: "1 1 300px",
@@ -85,6 +86,7 @@ export default function AskAI() {
       lineHeight: "1.5",
       wordBreak: "break-word",
       transition: "all 0.3s ease",
+      margin: "10px"
     },
     loadingText: {
       fontStyle: "italic",

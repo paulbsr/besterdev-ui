@@ -14,7 +14,6 @@ import DutchLanguageSentenceTrainerModal from "./DutchLanguageSentenceTrainerMod
 import DutchLanguage_Nt2exam_LuisterenInput from "./DutchLanguage_Nt2exam_LuisterenInput";
 import DutchLanguage_Nt2exam_LuisterenToets from "./DutchLanguage_Nt2exam_LuisterenToets";
 import AskAI from '../openai/AskAI';
-import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 import { FaRadio } from "react-icons/fa6";
 import { RiWebcamFill } from "react-icons/ri";
@@ -24,16 +23,16 @@ import { FaNewspaper } from "react-icons/fa6";
 import { BsNewspaper } from "react-icons/bs";
 import { PiHouseSimpleBold } from "react-icons/pi";
 import { TiWeatherPartlySunny } from "react-icons/ti";
-import { FaTv } from "react-icons/fa";
 import imageNT2ExamTimetableJanuary from "./NT2ExamTimetableJanuary.jpg"
 import imageNT2ExamTimes from "./NT2ExamTimes.jpg"
 import Image from "./Amsterdam1.jpg"
 import { SiGoogletranslate } from "react-icons/si";
-import { TbDeviceTvOld } from "react-icons/tb";
 import { FaCarCrash } from "react-icons/fa";
 import DutchLanguage_Dagboek from "./DutchLanguage_Dagboek";
 import { PiExamBold } from "react-icons/pi";
 import { PiTelevisionBold } from "react-icons/pi";
+import DutchLanguage_WordContext from "./DutchLanguage_WordContext";
+import { FaFacebook } from "react-icons/fa6";
 
 export default function DutchLanguageHomePage() {
   return (
@@ -74,6 +73,7 @@ export default function DutchLanguageHomePage() {
             <a href="https://translate.google.com/?sl=nl&tl=af&op=translate" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Google Translate" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><SiGoogletranslate /></a>
             <a href="https://www.anwb.nl/verkeer?center=52.08720994322829%2C5.449947200775682&zoom=6.173985622710852" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Verkeer" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><FaCarCrash /></a>
             <a href="https://npo.nl/start/serie/eenvandaag/afleveringen" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO EenVandaag" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><PiNumberCircleOneBold /></a>
+            <a href="https://www.facebook.com/StaatsexamensNt2" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="StaatsexamensNt2" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><FaFacebook /></a>
                       
           </div>
 
@@ -95,6 +95,7 @@ export default function DutchLanguageHomePage() {
         {/* REGTER COLUMN */}
         <div className="spacer"></div>
         <div className="right">
+          <DutchLanguage_WordContext/>
           <DutchLanguageSpellingChecker />
           <DutchLanguageWordExplain />
           <div>&nbsp;&nbsp;</div>
