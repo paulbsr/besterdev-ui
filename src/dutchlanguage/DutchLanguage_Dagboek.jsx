@@ -328,7 +328,7 @@ Please respond ONLY in raw JSON with keys "feedback" and "suggestedSentence".`,
                                             justifyContent: "space-between",
                                         }}
                                     >
-                                        <div
+                                        {/* <div
                                             onClick={() =>
                                                 setExpandedEntryId(
                                                     expandedEntryId === item.id ? null : item.id
@@ -340,8 +340,35 @@ Please respond ONLY in raw JSON with keys "feedback" and "suggestedSentence".`,
                                                 marginBottom: "4px",
                                             }}
                                         >
-                                            {formatDate(item.createdate)}
-                                        </div>
+                                            {formatDate(item.createdate)}  -  {item.myEntry}
+                                        </div> */}
+
+                                        <div
+    onClick={() =>
+        setExpandedEntryId(
+            expandedEntryId === item.id ? null : item.id
+        )
+    }
+    style={{
+        cursor: "pointer",
+        color: "black",
+        marginBottom: "4px",
+        fontFamily: "Segoe UI",
+        fontSize: "10pt",
+    }}
+>
+    {formatDate(item.createdate)}{" "}
+    <span
+        style={{
+            fontStyle: "italic",
+            fontSize: "8pt",
+            fontFamily: "Segoe UI",
+            color: "black",
+        }}
+    >
+        - {item.myEntry}
+    </span>
+</div>
                                         <FaTimes
                                             title="Delete"
                                             style={styles.deleteIcon}

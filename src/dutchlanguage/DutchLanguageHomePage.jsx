@@ -127,6 +127,46 @@ export default function DutchLanguageHomePage() {
           <p className="line">lief → lieve</p>
           <p className="line">roos → rozen</p>
           <p className="line">huis → huizen</p>
+
+
+          <p className="line underline spaced">Voorbeelden:</p>
+          <p className="line">IS:</p>
+          <p className="line">EK IS -- Ik ben een Afrikaner</p>
+          <p className="line">JY IS -- Jij bent een Afrikaner</p>
+          <p className="line">ONS IS -- Wij zijn Afrikanen</p>
+          <p className="line">JULLE IS -- Jullie zijn Afrikanen</p>
+          <p className="line">HULLE IS -- Zij zijn Afrikanen</p>
+          <p className="line">HY IS -- Hij is Afrikaan</p>
+
+          <p className="line">..</p>
+
+          <p className="line">KAN:</p>
+          <p className="line">EK KAN -- Ik kan komen</p>
+          <p className="line">JY KAN -- Jij kunt komen</p>
+          <p className="line">ONS KAN -- Wij kunnen komen</p>
+          <p className="line">JULLE KAN -- Jullie kunnen komen</p>
+          <p className="line">HULLE KAN -- Zij kunnen komen</p>
+          <p className="line">HY KAN -- Hij kan komen</p>
+
+          <p className="line">..</p>
+
+          <p className="line">WIL:</p>
+          <p className="line">EK WIL -- Ik wil dansen</p>
+          <p className="line">JY WIL -- Jij wilt dansen</p>
+          <p className="line">ONS WIL -- Wij willen dansen</p>
+          <p className="line">JULLE WIL -- Jullie willen dansen</p>
+          <p className="line">HULLE WIL -- Ze willen dansen.</p>
+          <p className="line">HY WIL -- Hij wil dansen</p>
+          
+          <p className="line">..</p>
+
+          <p className="line">HET (besit):</p>
+          <p className="line">EK HET -- Ik heb een wapen</p>
+          <p className="line">JY HET -- Jij hebt een wapen</p>
+          <p className="line">ONS HET -- We hebben een wapen</p>
+          <p className="line">JULLE HET -- Jullie hebben een wapen</p>
+          <p className="line">HULLE HET -- Ze hebben een wapen</p>
+          <p className="line">HY HET -- Hij heeft een wapen</p>
         </div>
       </div>
     </div>
