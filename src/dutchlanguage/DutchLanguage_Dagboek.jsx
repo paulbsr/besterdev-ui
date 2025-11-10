@@ -4,6 +4,100 @@ import { FaTimes } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+    const DateGroup = ({ dateKey, entries, handleDelete, styles }) => {
+    const [expanded, setExpanded] = useState(false);
+
+    return (
+        <div style={{ marginBottom: "10px" }}>
+            <div
+                onClick={() => setExpanded(!expanded)}
+                style={{
+                    cursor: "pointer",
+                    fontWeight: "bold",
+                    fontFamily: "Segoe UI",
+                    fontSize: "12pt",
+                    color: "#FF4F00",
+                }}
+            >
+                {dateKey}
+            </div>
+
+            {expanded && (
+                <div style={{ marginLeft: "15px", marginTop: "5px" }}>
+                    {entries
+                        .sort((a, b) => new Date(b.createdate) - new Date(a.createdate))
+                        .map((item) => (
+                            <TimeGroup
+                                key={item.id}
+                                item={item}
+                                handleDelete={handleDelete}
+                                styles={styles}
+                            />
+                        ))}
+                </div>
+            )}
+        </div>
+    );
+};
+
+const TimeGroup = ({ item, handleDelete, styles }) => {
+    const [expanded, setExpanded] = useState(false);
+    const d = new Date(item.createdate);
+    const hh = String(d.getHours()).padStart(2, "0");
+    const min = String(d.getMinutes()).padStart(2, "0");
+
+    return (
+        <div style={{ marginBottom: "6px" }}>
+            <div
+                onClick={() => setExpanded(!expanded)}
+                style={{
+                    cursor: "pointer",
+                    color: "black",
+                    fontFamily: "Segoe UI",
+                    fontSize: "11pt",
+                }}
+            >
+                {hh}:{min} - {item.myEntry}
+                <FaTimes
+                    title="Delete"
+                    style={{ ...styles.deleteIcon, marginLeft: "10px" }}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        handleDelete(item.id);
+                    }}
+                />
+            </div>
+
+            {expanded && (
+                <div
+                    style={{
+                        marginLeft: "15px",
+                        borderLeft: "1px solid #eee",
+                        paddingLeft: "10px",
+                        marginTop: "3px",
+                    }}
+                >
+                    <div style={{ color: "#000000" }}>{item.myEntry}</div>
+                    {item.aiEntry && (
+                        <div style={{ color: "#FF4F00" }}>{item.aiEntry}</div>
+                    )}
+                    {item.feedback && (
+                        <div
+                            style={{
+                                color: "grey",
+                                fontStyle: "italic",
+                                marginTop: "2px",
+                            }}
+                        >
+                            {item.feedback}
+                        </div>
+                    )}
+                </div>
+            )}
+        </div>
+    );
+};
+
 function DutchLanguage_Dagboek() {
     const [entry, setEntry] = useState("");
     const [feedback, setFeedback] = useState("");
@@ -41,12 +135,12 @@ function DutchLanguage_Dagboek() {
     };
 
     const resetTimer = () => {
-    clearInterval(timerRef.current);
-    setElapsed(0);
-    timerRef.current = setInterval(() => {
-        setElapsed((prev) => prev + 1);
-    }, 1000);
-};
+        clearInterval(timerRef.current);
+        setElapsed(0);
+        timerRef.current = setInterval(() => {
+            setElapsed((prev) => prev + 1);
+        }, 1000);
+    };
 
 
     const fetchAllEntries = async () => {
@@ -184,6 +278,9 @@ Please respond ONLY in raw JSON with keys "feedback" and "suggestedSentence".`,
         },
     };
 
+
+
+
     return (
         <div style={styles.container}>
             <ToastContainer />
@@ -297,116 +394,54 @@ Please respond ONLY in raw JSON with keys "feedback" and "suggestedSentence".`,
             )}
 
             {/* Diary entries list */}
-            <div style={{ marginTop: "20px" }}>
-                <button
-                    onClick={() => setShowEntries(!showEntries)}
-                    style={{
-                        fontFamily: "Segoe UI",
-                        padding: "6px 10px",
-                        fontSize: "11pt",
-                        borderRadius: "4px",
-                        border: "1px solid #ccc",
-                        background: "#f8f8f8",
-                        cursor: "pointer",
-                        marginBottom: "10px",
-                    }}
-                >
-                    {showEntries ? "Verberg dagboek" : "Toon dagboek"}
-                </button>
-
-                {showEntries && (
-                    <div>
-                        {allEntries
-                            .slice()
-                            .sort((a, b) => new Date(b.createdate) - new Date(a.createdate))
-                            .map((item) => (
-                                <div key={item.id}>
-                                    <div
-                                        style={{
-                                            display: "flex",
-                                            alignItems: "center",
-                                            justifyContent: "space-between",
-                                        }}
-                                    >
-                                        {/* <div
-                                            onClick={() =>
-                                                setExpandedEntryId(
-                                                    expandedEntryId === item.id ? null : item.id
-                                                )
-                                            }
-                                            style={{
-                                                cursor: "pointer",
-                                                color: "black",
-                                                marginBottom: "4px",
-                                            }}
-                                        >
-                                            {formatDate(item.createdate)}  -  {item.myEntry}
-                                        </div> */}
-
-                                        <div
-    onClick={() =>
-        setExpandedEntryId(
-            expandedEntryId === item.id ? null : item.id
-        )
-    }
-    style={{
-        cursor: "pointer",
-        color: "black",
-        marginBottom: "4px",
-        fontFamily: "Segoe UI",
-        fontSize: "10pt",
-    }}
->
-    {formatDate(item.createdate)}{" "}
-    <span
+{/* Diary entries list */}
+<div style={{ marginTop: "20px" }}>
+    <button
+        onClick={() => setShowEntries(!showEntries)}
         style={{
-            fontStyle: "italic",
-            fontSize: "8pt",
             fontFamily: "Segoe UI",
-            color: "black",
+            padding: "6px 10px",
+            fontSize: "11pt",
+            borderRadius: "4px",
+            border: "1px solid #ccc",
+            background: "#f8f8f8",
+            cursor: "pointer",
+            marginBottom: "10px",
         }}
     >
-        - {item.myEntry}
-    </span>
-</div>
-                                        <FaTimes
-                                            title="Delete"
-                                            style={styles.deleteIcon}
-                                            onClick={() => handleDelete(item.id)}
-                                        />
-                                    </div>
+        {showEntries ? "Verberg dagboek" : "Toon dagboek"}
+    </button>
 
-                                    {expandedEntryId === item.id && (
-                                        <div
-                                            style={{
-                                                marginLeft: "15px",
-                                                marginBottom: "6px",
-                                                paddingBottom: "6px",
-                                                border: "1px solid #eee",
-                                            }}
-                                        >
-                                            <div style={{ color: "#000000" }}>{item.myEntry}</div>
-                                            {item.aiEntry && (
-                                                <div style={{ color: "#FF4F00" }}>{item.aiEntry}</div>
-                                            )}
-                                            {item.feedback && (
-                                                <div
-                                                    style={{
-                                                        color: "grey",
-                                                        fontStyle: "italic",
-                                                        marginTop: "2px",
-                                                    }}
-                                                >
-                                                    {item.feedback}
-                                                </div>
-                                            )}
-                                        </div>
-                                    )}
-                                </div>
-                            ))}
-                    </div>
-                )}
-            </div>
+    {showEntries && (
+        <div>
+            {/** --- GROUP ENTRIES BY DATE --- */}
+            {Object.entries(
+                allEntries
+                    .slice()
+                    .sort((a, b) => new Date(b.createdate) - new Date(a.createdate))
+                    .reduce((acc, item) => {
+                        const d = new Date(item.createdate);
+                        const yyyy = d.getFullYear();
+                        const mm = String(d.getMonth() + 1).padStart(2, "0");
+                        const dd = String(d.getDate()).padStart(2, "0");
+                        const dateKey = `${yyyy}.${mm}.${dd}`;
+                        if (!acc[dateKey]) acc[dateKey] = [];
+                        acc[dateKey].push(item);
+                        return acc;
+                    }, {})
+            ).map(([dateKey, entries]) => (
+                <DateGroup
+                    key={dateKey}
+                    dateKey={dateKey}
+                    entries={entries}
+                    handleDelete={handleDelete}
+                    styles={styles}
+                />
+            ))}
+        </div>
+    )}
+</div>
+
         </div>
     );
 }

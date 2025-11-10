@@ -18,7 +18,6 @@ import 'react-tooltip/dist/react-tooltip.css';
 import { FaRadio } from "react-icons/fa6";
 import { RiWebcamFill } from "react-icons/ri";
 import { PiExamFill, PiNumberCircleOneBold } from "react-icons/pi";
-import { RiSpeakFill } from "react-icons/ri";
 import { FaNewspaper } from "react-icons/fa6";
 import { BsNewspaper } from "react-icons/bs";
 import { PiHouseSimpleBold } from "react-icons/pi";
@@ -115,19 +114,12 @@ export default function DutchLanguageHomePage() {
           <p className="line">Ik ben gegaan → I have gone / I went.</p>
           <p className="line">Ik heb gegeten → I have eaten / I ate.</p>
 
-          <p className="line underline spaced">Spelling:</p>
-          <p className="line">Rule#1: </p>
-          <p className="line">Rule#2: </p>
-          <p className="line">Rule#3: </p>
-          <p className="line">Rule#5: </p>
-        
           <p className="line underline spaced">Spelling Rule#4:</p>
           <p className="line"><i>'f' & 's' becomes 'v' & 'z'</i></p>
           <p className="line">brief → brieven</p>
           <p className="line">lief → lieve</p>
           <p className="line">roos → rozen</p>
           <p className="line">huis → huizen</p>
-
 
           <p className="line underline spaced">Voorbeelden:</p>
           <p className="line">IS:</p>
@@ -167,6 +159,16 @@ export default function DutchLanguageHomePage() {
           <p className="line">JULLE HET -- Jullie hebben een wapen</p>
           <p className="line">HULLE HET -- Ze hebben een wapen</p>
           <p className="line">HY HET -- Hij heeft een wapen</p>
+
+          <p className="line">..</p>
+
+          <p className="line">GEHAD (besit):</p>
+          <p className="line">EK HET GEHAD-- Ik had een wapen</p>
+          <p className="line">JY HET GEHAD -- Jij had een wapen</p>
+          <p className="line">ONS HET GEHAD -- We hadden een wapen</p>
+          <p className="line">JULLE HET GEHAD -- Je had een wapen</p>
+          <p className="line">HULLE HET GEHAD -- Ze headden een wapen</p>
+          <p className="line">HY HET GEHAD -- Hij had een wapen</p>
         </div>
       </div>
     </div>
