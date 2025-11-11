@@ -123,7 +123,6 @@ export default function DutchLanguageSentenceWords({
         padding: "16px",
         fontFamily: "Segoe UI",
         fontSize: "16px",
-        maxWidth: "1100px",
         marginBottom: "16px"
       }}
     >

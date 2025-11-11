@@ -109,7 +109,6 @@ export default function DutchLanguage_Nt2exam_SchrijvenInput(props) {
 
   return (
     <div className="Font-Segoe-Large-Howto" style={{
-      // marginTop: "16px",
       border: "1px solid #ddd",
       borderRadius: "8px",
       padding: "16px",

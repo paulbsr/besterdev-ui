@@ -47,27 +47,16 @@ export default function DutchLanguageTranslator() {
   };
 
   return (
-    // <div
-    //   style={{
-    //     border: "1px solid #ddd",
-    //     borderRadius: "8px",
-    //     padding: "16px",
-    //     maxWidth: "1100px",
-    //     marginBottom: "16px"
-    //   }}
-    // >
-
-            <div
-            className="Font-Segoe-Large-Howto" style={{
-                marginTop: "1px",
-                border: "1px solid #ddd",
-                borderRadius: "8px",
-                padding: "16px",
-                fontFamily: "Segoe UI",
-                fontSize: "16px",
-                marginBottom: "10px",
-            }}
-        >
+    <div
+      className="Font-Segoe-Large-Howto" style={{
+        border: "1px solid #ddd",
+        borderRadius: "8px",
+        padding: "16px",
+        fontFamily: "Segoe UI",
+        fontSize: "16px",
+        marginBottom: "16px",
+      }}
+    >
       <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>Vertaal Tussen Talen</h2>
       <p>Start Using Google LLC Cloud Translation API </p>
 

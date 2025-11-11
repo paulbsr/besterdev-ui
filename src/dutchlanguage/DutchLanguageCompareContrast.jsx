@@ -18,7 +18,7 @@ export default function DutchLanguageCompareContrast() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              question: `Generate one grammatically complex Dutch sentence (max 15 words) about ${subject}, followed by its Afrikaans translation. Do not add introductions, just output the Dutch sentence on one line and the Afrikaans translation on the next.`,
+              question: `Generate one grammatically complex Dutch sentence (minimum 15 words) about ${subject}, followed by its Afrikaans translation. Do not add introductions, just output the Dutch sentence on one line and the Afrikaans translation on the next.`,
             }),
           }
         );
@@ -73,8 +73,7 @@ export default function DutchLanguageCompareContrast() {
         padding: "16px",
         fontFamily: "Segoe UI",
         fontSize: "16px",
-        maxWidth: "1100px",
-        position: "relative",
+        marginBottom: "16px"
       }}
     >
       {/* countdown in corner */}

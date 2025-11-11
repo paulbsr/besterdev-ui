@@ -4,7 +4,7 @@ import { FaTimes } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-    const DateGroup = ({ dateKey, entries, handleDelete, styles }) => {
+const DateGroup = ({ dateKey, entries, handleDelete, styles }) => {
     const [expanded, setExpanded] = useState(false);
 
     return (
@@ -254,16 +254,27 @@ Please respond ONLY in raw JSON with keys "feedback" and "suggestedSentence".`,
     };
 
     const styles = {
+        // container: {
+        //     border: "1px solid #FF4F00",
+        //     borderRadius: "8px",
+        //     padding: "16px",
+        //     fontFamily: "Segoe UI",
+        //     fontSize: "16px",
+        //     maxWidth: "1100px",
+        //     marginTop: "16px",
+        //     marginBottom: "16px",
+        // },
+
         container: {
             border: "1px solid #FF4F00",
             borderRadius: "8px",
             padding: "16px",
             fontFamily: "Segoe UI",
             fontSize: "16px",
-            maxWidth: "1100px",
-            marginTop: "16px",
-            marginBottom: "16px",
+            marginBottom: "16px"
+
         },
+
         deleteIcon: {
             color: "#c0c0c0",
             marginLeft: "8px",
@@ -394,53 +405,53 @@ Please respond ONLY in raw JSON with keys "feedback" and "suggestedSentence".`,
             )}
 
             {/* Diary entries list */}
-{/* Diary entries list */}
-<div style={{ marginTop: "20px" }}>
-    <button
-        onClick={() => setShowEntries(!showEntries)}
-        style={{
-            fontFamily: "Segoe UI",
-            padding: "6px 10px",
-            fontSize: "11pt",
-            borderRadius: "4px",
-            border: "1px solid #ccc",
-            background: "#f8f8f8",
-            cursor: "pointer",
-            marginBottom: "10px",
-        }}
-    >
-        {showEntries ? "Verberg dagboek" : "Toon dagboek"}
-    </button>
+            {/* Diary entries list */}
+            <div style={{ marginTop: "20px" }}>
+                <button
+                    onClick={() => setShowEntries(!showEntries)}
+                    style={{
+                        fontFamily: "Segoe UI",
+                        padding: "6px 10px",
+                        fontSize: "11pt",
+                        borderRadius: "4px",
+                        border: "1px solid #ccc",
+                        background: "#f8f8f8",
+                        cursor: "pointer",
+                        marginBottom: "10px",
+                    }}
+                >
+                    {showEntries ? "Verberg dagboek" : "Toon dagboek"}
+                </button>
 
-    {showEntries && (
-        <div>
-            {/** --- GROUP ENTRIES BY DATE --- */}
-            {Object.entries(
-                allEntries
-                    .slice()
-                    .sort((a, b) => new Date(b.createdate) - new Date(a.createdate))
-                    .reduce((acc, item) => {
-                        const d = new Date(item.createdate);
-                        const yyyy = d.getFullYear();
-                        const mm = String(d.getMonth() + 1).padStart(2, "0");
-                        const dd = String(d.getDate()).padStart(2, "0");
-                        const dateKey = `${yyyy}.${mm}.${dd}`;
-                        if (!acc[dateKey]) acc[dateKey] = [];
-                        acc[dateKey].push(item);
-                        return acc;
-                    }, {})
-            ).map(([dateKey, entries]) => (
-                <DateGroup
-                    key={dateKey}
-                    dateKey={dateKey}
-                    entries={entries}
-                    handleDelete={handleDelete}
-                    styles={styles}
-                />
-            ))}
-        </div>
-    )}
-</div>
+                {showEntries && (
+                    <div>
+                        {/** --- GROUP ENTRIES BY DATE --- */}
+                        {Object.entries(
+                            allEntries
+                                .slice()
+                                .sort((a, b) => new Date(b.createdate) - new Date(a.createdate))
+                                .reduce((acc, item) => {
+                                    const d = new Date(item.createdate);
+                                    const yyyy = d.getFullYear();
+                                    const mm = String(d.getMonth() + 1).padStart(2, "0");
+                                    const dd = String(d.getDate()).padStart(2, "0");
+                                    const dateKey = `${yyyy}.${mm}.${dd}`;
+                                    if (!acc[dateKey]) acc[dateKey] = [];
+                                    acc[dateKey].push(item);
+                                    return acc;
+                                }, {})
+                        ).map(([dateKey, entries]) => (
+                            <DateGroup
+                                key={dateKey}
+                                dateKey={dateKey}
+                                entries={entries}
+                                handleDelete={handleDelete}
+                                styles={styles}
+                            />
+                        ))}
+                    </div>
+                )}
+            </div>
 
         </div>
     );

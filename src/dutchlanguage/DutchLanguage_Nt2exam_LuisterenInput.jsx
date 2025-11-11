@@ -78,16 +78,14 @@ export default function DutchLanguage_Nt2exam_LuisterenInput(props) {
     };
 
     return (
-        <div
-            className="Font-Segoe-Large-Howto"
+        <div className="Font-Segoe-Large-Howto"
             style={{
-                marginTop: "1px",
                 border: "1px solid #ddd",
                 borderRadius: "8px",
                 padding: "16px",
                 fontFamily: "Segoe UI",
                 fontSize: "16px",
-                marginBottom: "10px",
+                arginBottom: "16px",
             }}
         >
             <Tooltip id="insert" />

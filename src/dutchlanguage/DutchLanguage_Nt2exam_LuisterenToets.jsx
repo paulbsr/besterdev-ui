@@ -295,8 +295,7 @@ const styles = {
     padding: "16px",
     fontFamily: "Segoe UI",
     fontSize: "16px",
-    maxWidth: "1100px",
-    marginTop: "16px",
+    marginBottom: "16px",
   },
   headerRow: {
     display: "flex",

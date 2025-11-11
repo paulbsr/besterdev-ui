@@ -203,7 +203,8 @@ Format your answer strictly like this:
       padding: "16px",
       fontFamily: "Segoe UI",
       fontSize: "16px",
-      maxWidth: "1100px",
+      marginBottom: "16px"
+
     },
     headerRow: {
       // display: "flex",
