@@ -117,6 +117,8 @@ export default function DutchLanguage_Nt2exam_SchrijvenInput(props) {
       fontSize: "16px",
       marginBottom: "16px",
     }}>
+
+      
       <Tooltip id="insert" />
       <div onClick={toggleAccordion} style={{ cursor: "pointer" }}>
         <a>
