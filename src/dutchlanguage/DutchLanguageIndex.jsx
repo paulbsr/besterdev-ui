@@ -39,18 +39,19 @@ export default function DutchLanguageIndex() {
     fetchData();
   }, []);
 
-  const fetchData = async () => {
-    try {
-      const res = await axios.get(`${API_BASE}/dutchlanguage`);
-      const sorted = res.data.sort((a, b) =>
-        a.afrikaans.localeCompare(b.afrikaans)
-      );
-      setRecords(sorted);
-      setDutchMode(false); // default back to afrikaans mode
-    } catch (err) {
-      console.error("Error fetching data:", err);
-    }
-  };
+const fetchData = async () => {
+  try {
+    const res = await axios.get(`${API_BASE}/dutchlanguage`);
+    const sorted = res.data.sort((a, b) =>
+      a.dutch.localeCompare(b.dutch)
+    );
+    setRecords(sorted);
+    setDutchMode(true); // since we are showing Dutch first
+  } catch (err) {
+    console.error("Error fetching data:", err);
+  }
+};
+
 
   const addRow = async () => {
     if (!newRow.afrikaans || !newRow.dutch || !newRow.sample) return;
@@ -406,69 +407,6 @@ export default function DutchLanguageIndex() {
           );
         })}
       </div>
-
-      {/* Add row form */}
-      {/* {showAddRow ? (
-        // <div style={{ marginTop: "8px", textAlign: "right" }}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "6px",
-            alignItems: "flex-end",
-          }}
-        >
-          <input
-            style={{ ...inputStyle, width: "200px" }}
-            value={newRow.afrikaans}
-            onChange={(e) =>
-              setNewRow({ ...newRow, afrikaans: e.target.value })
-            }
-            placeholder="Afrikaans"
-          />
-          <input
-            value={newRow.dutch}
-            onChange={(e) => setNewRow({ ...newRow, dutch: e.target.value })}
-            placeholder="Dutch"
-            style={{ ...inputStyle, width: "200px" }}
-          />
-          <input
-            value={newRow.sample}
-            onChange={(e) => setNewRow({ ...newRow, sample: e.target.value })}
-            placeholder="Sample"
-            style={{ ...inputStyle, width: "300px" }}
-          />
-
-
-          <div>
-            <PiCheckCircleFill
-              size={28}
-              color="#007749"
-              style={{ cursor: "pointer", marginRight: "5px" }}
-              onClick={addRow}
-              title="Commit"
-            />
-            <IoArrowUndoCircle
-              size={28}
-              color="grey"
-              style={{ cursor: "pointer", marginRight: "8px" }}
-              onClick={() => setShowAddRow(false)}
-              title="Revert"
-            />
-          </div>
-
-
-        </div>
-      ) : (
-        <div style={{ textAlign: "right", marginTop: "4px" }}>
-          <FaPlus
-            size={18}
-            color="#777777"
-            style={{ cursor: "pointer" }}
-            onClick={() => setShowAddRow(true)}
-          />
-        </div>
-      )} */}
     </div>
   );
 }

@@ -99,11 +99,11 @@ export default function DutchLanguageHomePage() {
           <DutchLanguageWordExplain />
           <div>&nbsp;&nbsp;</div>
 
-          <p className="line underline spaced">Bijvoeglijke Naamwoorden:</p>
+          {/* <p className="line underline spaced">Bijvoeglijke Naamwoorden:</p>
           <p className="line"><i>Describe nouns. Gets trailing "-e"</i></p>
-          <p className="line"><b>de</b> rode auto (plural definite = die/the)</p>
-          <p className="line"><b>het</b> groene boek (singular definite = die/the)</p>
-          <p className="line"><b>een</b> grote man (singular indefinite = 'n/a/an)</p>
+          <p className="line">de <i>rode</i> auto (plural definite = die/the)</p>
+          <p className="line">het groene boek (singular definite = die/the)</p>
+          <p className="line">een grote man (singular indefinite = 'n/a/an)</p>
 
           <p className="line underline spaced">Zelfstandige naamwoorden:</p>
           <p className="line"><i>Words for people, places, things, ideas.</i></p>
@@ -112,7 +112,7 @@ export default function DutchLanguageHomePage() {
           <p className="line">Ik ben moe → I am tired</p>
           <p className="line">Jij hebt een auto → You have a car.</p>
           <p className="line">Ik ben gegaan → I have gone / I went.</p>
-          <p className="line">Ik heb gegeten → I have eaten / I ate.</p>
+          <p className="line">Ik heb gegeten → I have eaten / I ate.</p> */}
 
           <p className="line underline spaced">Spelling Rule#4:</p>
           <p className="line"><i>'f' & 's' becomes 'v' & 'z'</i></p>
@@ -122,7 +122,7 @@ export default function DutchLanguageHomePage() {
           <p className="line">huis → huizen</p>
 
           <p className="line underline spaced">Voorbeelden:</p>
-          <p className="line">IS:</p>
+          <p className="line"><b>IS:</b></p>
           <p className="line">EK IS -- Ik ben een Afrikaner</p>
           <p className="line">JY IS -- Jij bent een Afrikaner</p>
           <p className="line">ONS IS -- Wij zijn Afrikanen</p>
@@ -130,9 +130,20 @@ export default function DutchLanguageHomePage() {
           <p className="line">HULLE IS -- Zij zijn Afrikanen</p>
           <p className="line">HY IS -- Hij is Afrikaan</p>
 
-          <p className="line">..</p>
+          <p className="line">.</p>
 
-          <p className="line">KAN:</p>
+          <p className="line"><b>WAS:</b></p>
+          <p className="line">EK WAS -- Ik was droken</p>
+          <p className="line">JY WAS -- Jij was droken</p>
+          <p className="line">ONS WAS -- Wij waren droken</p>
+          <p className="line">JULLE WAS -- Jullie waren dronken</p>
+          <p className="line">HULLE WAS -- Ze waren dronken</p>
+          <p className="line">HY WAS -- Hij was dronken</p>
+          <p className="line">SY WAS -- Ze was dronken</p>
+
+          <p className="line">.</p>
+
+          <p className="line"><b>KAN:</b></p>
           <p className="line">EK KAN -- Ik kan komen</p>
           <p className="line">JY KAN -- Jij kunt komen</p>
           <p className="line">ONS KAN -- Wij kunnen komen</p>
@@ -140,9 +151,9 @@ export default function DutchLanguageHomePage() {
           <p className="line">HULLE KAN -- Zij kunnen komen</p>
           <p className="line">HY KAN -- Hij kan komen</p>
 
-          <p className="line">..</p>
+          <p className="line">.</p>
 
-          <p className="line">WIL:</p>
+          <p className="line"><b>WIL:</b></p>
           <p className="line">EK WIL -- Ik wil dansen</p>
           <p className="line">JY WIL -- Jij wilt dansen</p>
           <p className="line">ONS WIL -- Wij willen dansen</p>
@@ -150,9 +161,9 @@ export default function DutchLanguageHomePage() {
           <p className="line">HULLE WIL -- Ze willen dansen.</p>
           <p className="line">HY WIL -- Hij wil dansen</p>
           
-          <p className="line">..</p>
+          <p className="line">.</p>
 
-          <p className="line">HET (besit):</p>
+          <p className="line"><b>HET:</b></p>
           <p className="line">EK HET -- Ik heb een wapen</p>
           <p className="line">JY HET -- Jij hebt een wapen</p>
           <p className="line">ONS HET -- We hebben een wapen</p>
@@ -160,9 +171,9 @@ export default function DutchLanguageHomePage() {
           <p className="line">HULLE HET -- Ze hebben een wapen</p>
           <p className="line">HY HET -- Hij heeft een wapen</p>
 
-          <p className="line">..</p>
+          <p className="line">.</p>
 
-          <p className="line">GEHAD (besit):</p>
+          <p className="line"><b>GEHAD:</b></p>
           <p className="line">EK HET GEHAD-- Ik had een wapen</p>
           <p className="line">JY HET GEHAD -- Jij had een wapen</p>
           <p className="line">ONS HET GEHAD -- We hadden een wapen</p>
