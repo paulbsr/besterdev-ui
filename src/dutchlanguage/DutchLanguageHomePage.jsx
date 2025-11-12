@@ -165,6 +165,7 @@ export default function DutchLanguageHomePage() {
           <p className="Font-Segoe-14px-Black">JULLE HET -- Jullie hebben een wapen</p>
           <p className="Font-Segoe-14px-Black">HULLE HET -- Ze hebben een wapen</p>
           <p className="Font-Segoe-14px-Black">HY HET -- Hij heeft een wapen</p>
+          <p className="Font-Segoe-14px-Black">SY HET -- Hiske heeft beginnende diabetes. Zij heeft door haar diabetes een hoog bloedsuikergehalte</p>
 
           <p className="Font-Segoe-14px-Black">.</p>
 

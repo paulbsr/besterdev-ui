@@ -187,14 +187,13 @@ function DutchLanguage_Dagboek() {
             const savedId = saved.id;
 
             // Send to AI
-            const aiRes = await fetch(AI_ENDPOINT, {
+            const aiRes = await fetch(AI_ENDPOINT, 
+            {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    question: `You are a Dutch language teacher. A student wrote: "${entry}". 
-Please respond ONLY in raw JSON with keys "feedback" and "suggestedSentence".`,
-                }),
-            });
+                body: JSON.stringify({question: `You are a Dutch language teacher. A student wrote: "${entry}". Please respond ONLY in raw JSON with keys "feedback" and "suggestedSentence".`,}),
+            }
+            );
 
             const aiData = await aiRes.json();
             let aiText = aiData.answer || aiData.response || "";
