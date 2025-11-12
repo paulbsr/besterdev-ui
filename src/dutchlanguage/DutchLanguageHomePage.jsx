@@ -74,7 +74,24 @@ export default function DutchLanguageHomePage() {
             <a href="https://www.anwb.nl/verkeer?center=52.08720994322829%2C5.449947200775682&zoom=6.173985622710852" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Verkeer" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><FaCarCrash /></a>
             <a href="https://npo.nl/start/serie/eenvandaag/afleveringen" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO EenVandaag" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><PiNumberCircleOneBold /></a>
             <a href="https://www.facebook.com/StaatsexamensNt2" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="StaatsexamensNt2" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><FaFacebook /></a>
-                      
+
+
+<button
+  onClick={() => document.body.classList.toggle('dark')}
+  style={{
+    position: 'fixed',
+    top: '10px',
+    right: '10px',
+    padding: '6px 10px',
+    fontFamily: 'Segoe UI',
+    cursor: 'pointer',
+  }}
+>
+  Toggle Dark Mode
+</button>
+
+
+
           </div>
 
           <AskAI />

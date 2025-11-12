@@ -309,6 +309,7 @@ export default function CombinedCreateFP() {
                     setTask((p) => ({ ...p, requirement: e.target.value }))
                   }
                 />
+                <div>..</div>
                 <DatePicker
                   selected={task.targetDate}
                   onChange={(date) =>
@@ -369,6 +370,7 @@ const styles = {
     paddingLeft: "4px",
     width: "300px",
     marginLeft: "50px",
+    marginTop: "10px",
   },
   inputWide: {
     fontFamily: "Segoe UI",
@@ -388,7 +390,6 @@ const styles = {
     width: "770px",
     height: "60px",
     marginLeft: "50px",
-    marginTop: "10px",
   },
   select: {
     height: "32.5px",
@@ -397,7 +398,7 @@ const styles = {
     paddingLeft: "4px",
     width: "310px",
     marginLeft: "50px",
-    marginTop: "20px",
+
     marginBottom: "20px",
     fontFamily: "Segoe UI",
   },
