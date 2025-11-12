@@ -3,6 +3,7 @@ import { PiBookOpenTextBold } from "react-icons/pi";
 import { FaTimes } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FaBookOpen, FaBook } from "react-icons/fa";
 
 const DateGroup = ({ dateKey, entries, handleDelete, styles }) => {
     const [expanded, setExpanded] = useState(false);
@@ -325,7 +326,7 @@ Please respond ONLY in raw JSON with keys "feedback" and "suggestedSentence".`,
                     placeholder="Typ hier jouw dagboektekst..."
                     style={{
                         marginTop: "10px",
-                        height: "80px",
+                        height: "40px",
                         width: "98%",
                         padding: "6px",
                         fontFamily: "Segoe UI",
@@ -367,6 +368,7 @@ Please respond ONLY in raw JSON with keys "feedback" and "suggestedSentence".`,
                 </button>
             </form>
 
+
             {/* Latest entry display */}
             {recentData && (
                 <div
@@ -404,24 +406,47 @@ Please respond ONLY in raw JSON with keys "feedback" and "suggestedSentence".`,
                 </div>
             )}
 
-            {/* Diary entries list */}
-            {/* Diary entries list */}
             <div style={{ marginTop: "20px" }}>
-                <button
-                    onClick={() => setShowEntries(!showEntries)}
-                    style={{
-                        fontFamily: "Segoe UI",
-                        padding: "6px 10px",
-                        fontSize: "11pt",
-                        borderRadius: "4px",
-                        border: "1px solid #ccc",
-                        background: "#f8f8f8",
-                        cursor: "pointer",
-                        marginBottom: "10px",
-                    }}
-                >
+
+                <label style={{ display: "flex", alignItems: "center", cursor: "pointer", fontFamily: "Segoe UI", fontSize: "11pt" }}>
+                    <input
+                        type="checkbox"
+                        checked={showEntries}
+                        onChange={() => setShowEntries(!showEntries)}
+                        style={{ display: "none" }}
+                    />
+                    <span
+                        style={{
+                            width: "56px",
+                            height: "20px",
+                            background: showEntries ? "#FF4F00" : "#ccc",
+                            borderRadius: "20px",
+                            position: "relative",
+                            transition: "background 0.2s ease",
+                            marginRight: "8px"
+                        }}
+                    >
+                        <span
+                            style={{
+                                position: "absolute",
+                                top: "2px",
+                                left: showEntries ? "38px" : "2px",
+                                width: "16px",
+                                height: "16px",
+                                background: "#fff",
+                                borderRadius: "50%",
+                                transition: "left 0.8s ease"
+                            }}
+                        />
+                    </span>
                     {showEntries ? "Verberg dagboek" : "Toon dagboek"}
-                </button>
+                </label>
+
+
+
+
+
+
 
                 {showEntries && (
                     <div>

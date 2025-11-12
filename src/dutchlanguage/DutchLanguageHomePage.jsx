@@ -32,6 +32,7 @@ import { PiExamBold } from "react-icons/pi";
 import { PiTelevisionBold } from "react-icons/pi";
 import DutchLanguage_WordContext from "./DutchLanguage_WordContext";
 import { FaFacebook } from "react-icons/fa6";
+import DutchLanguage_Index from "./DutchLanguage_Index";
 
 export default function DutchLanguageHomePage() {
   return (
@@ -86,6 +87,7 @@ export default function DutchLanguageHomePage() {
           <DutchLanguageChallengeTranslate />
           <DutchLanguage_Nt2exam_SchrijvenInput />
           <DutchLanguage_Nt2exam_LuisterenInput />
+          <DutchLanguage_Index />
           <img src={imageNT2ExamTimetableJanuary} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} />
           <img src={imageNT2ExamTimes} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} />
         </div>
