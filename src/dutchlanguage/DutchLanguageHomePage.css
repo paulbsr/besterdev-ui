@@ -47,9 +47,9 @@
   margin-top: 12px; /* adds space above this line */
 }
 
-.Font-Segoe-Small-Black {
+.Font-Segoe-14px-Black {
     font-family: "Segoe UI";
-    font-size: 16px;       /* ✅ remove the quotes */
+    font-size: 14px;       /* ✅ remove the quotes */
     color: #000000;
     cursor: pointer;
     margin: 0;             /* removes default spacing between <p> tags */

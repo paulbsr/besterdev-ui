@@ -64,7 +64,7 @@ export default function DutchLanguageHomePage() {
             <a href="https://www.bvn.tv/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="BVN TV" style={{ cursor: "pointer", color: "#336791", fontSize: "30px", marginLeft: "20px" }}><PiTelevisionBold /></a>
             <a href="https://www.rtl.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="RTL News" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><FaNewspaper /></a>
             <a href="https://nos.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NOS News" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><BsNewspaper /></a>
-            <a href="https://www.skylinewebcams.com/en/webcam/netherlands/north-holland/amsterdam/amsterdam-dam-square.html" data-tooltip-id="insert" data-tooltip-content="Dam Square Live Webcam" target="_blank" rel="noopener noreferrer" style={{ cursor: "pointer", color: "#336791", fontSize: "25px", marginLeft: "20px" }}><RiWebcamFill /></a>
+            <a href="https://www.skyFont-Segoe-14px-Blackwebcams.com/en/webcam/netherlands/north-holland/amsterdam/amsterdam-dam-square.html" data-tooltip-id="insert" data-tooltip-content="Dam Square Live Webcam" target="_blank" rel="noopener noreferrer" style={{ cursor: "pointer", color: "#336791", fontSize: "25px", marginLeft: "20px" }}><RiWebcamFill /></a>
             <a href="https://www.staatsexamensnt2.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Staatsexamens NT2" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><PiExamBold /></a>
             <a href="https://oefenexamensnt2.nl/facet-openbaar-portaal/welkom" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Staatsexamens NT2 Oefen" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><PiExamFill /></a>
             <a href="https://www.knmi.nl/nederland-nu/weer/verwachtingen" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NL KNMI" style={{ cursor: "pointer", color: "#336791", fontSize: "30px", marginLeft: "20px" }}><TiWeatherPartlySunny /></a>
@@ -99,87 +99,83 @@ export default function DutchLanguageHomePage() {
           <DutchLanguageWordExplain />
           <div>&nbsp;&nbsp;</div>
 
-          {/* <p className="line underline spaced">Bijvoeglijke Naamwoorden:</p>
-          <p className="line"><i>Describe nouns. Gets trailing "-e"</i></p>
-          <p className="line">de <i>rode</i> auto (plural definite = die/the)</p>
-          <p className="line">het groene boek (singular definite = die/the)</p>
-          <p className="line">een grote man (singular indefinite = 'n/a/an)</p>
+          {/* <p className="Font-Segoe-14px-Black underFont-Segoe-14px-Black spaced">Bijvoeglijke Naamwoorden:</p>
+          <p className="Font-Segoe-14px-Black"><i>Describe nouns. Gets trailing "-e"</i></p>
+          <p className="Font-Segoe-14px-Black">de <i>rode</i> auto (plural definite = die/the)</p>
+          <p className="Font-Segoe-14px-Black">het groene boek (singular definite = die/the)</p>
+          <p className="Font-Segoe-14px-Black">een grote man (singular indefinite = 'n/a/an)</p>
 
-          <p className="line underline spaced">Zelfstandige naamwoorden:</p>
-          <p className="line"><i>Words for people, places, things, ideas.</i></p>
-          <p className="line">zijn = is (to be)</p>
-          <p className="line">hebben = het (to have)</p>
-          <p className="line">Ik ben moe → I am tired</p>
-          <p className="line">Jij hebt een auto → You have a car.</p>
-          <p className="line">Ik ben gegaan → I have gone / I went.</p>
-          <p className="line">Ik heb gegeten → I have eaten / I ate.</p> */}
+          <p className="Font-Segoe-14px-Black underFont-Segoe-14px-Black spaced">Zelfstandige naamwoorden:</p>
+          <p className="Font-Segoe-14px-Black"><i>Words for people, places, things, ideas.</i></p>
+          <p className="Font-Segoe-14px-Black">zijn = is (to be)</p>
+          <p className="Font-Segoe-14px-Black">hebben = het (to have)</p>
+          <p className="Font-Segoe-14px-Black">Ik ben moe → I am tired</p>
+          <p className="Font-Segoe-14px-Black">Jij hebt een auto → You have a car.</p>
+          <p className="Font-Segoe-14px-Black">Ik ben gegaan → I have gone / I went.</p>
+          <p className="Font-Segoe-14px-Black">Ik heb gegeten → I have eaten / I ate.</p> */}
+<div style={{ border: "1px solid #ddd", borderRadius: "8px", padding: "16px", marginBottom: "16px" }}>
 
-          <p className="line underline spaced">Spelling Rule#4:</p>
-          <p className="line"><i>'f' & 's' becomes 'v' & 'z'</i></p>
-          <p className="line">brief → brieven</p>
-          <p className="line">lief → lieve</p>
-          <p className="line">roos → rozen</p>
-          <p className="line">huis → huizen</p>
+          <p className="Font-Segoe-14px-Black"><b>IS:</b></p>
+          <p className="Font-Segoe-14px-Black">EK IS -- Ik ben een Afrikaner</p>
+          <p className="Font-Segoe-14px-Black">JY IS -- Jij bent een Afrikaner</p>
+          <p className="Font-Segoe-14px-Black">ONS IS -- Wij zijn Afrikanen</p>
+          <p className="Font-Segoe-14px-Black">JULLE IS -- Jullie zijn Afrikanen</p>
+          <p className="Font-Segoe-14px-Black">HULLE IS -- Zij zijn Afrikanen</p>
+          <p className="Font-Segoe-14px-Black">HY IS -- Hij is Afrikaan</p>
 
-          <p className="line underline spaced">Voorbeelden:</p>
-          <p className="line"><b>IS:</b></p>
-          <p className="line">EK IS -- Ik ben een Afrikaner</p>
-          <p className="line">JY IS -- Jij bent een Afrikaner</p>
-          <p className="line">ONS IS -- Wij zijn Afrikanen</p>
-          <p className="line">JULLE IS -- Jullie zijn Afrikanen</p>
-          <p className="line">HULLE IS -- Zij zijn Afrikanen</p>
-          <p className="line">HY IS -- Hij is Afrikaan</p>
+          <p className="Font-Segoe-14px-Black">.</p>
 
-          <p className="line">.</p>
+          <p className="Font-Segoe-14px-Black"><b>WAS:</b></p>
+          <p className="Font-Segoe-14px-Black">EK WAS -- Ik was droken</p>
+          <p className="Font-Segoe-14px-Black">JY WAS -- Jij was droken</p>
+          <p className="Font-Segoe-14px-Black">ONS WAS -- Wij waren droken</p>
+          <p className="Font-Segoe-14px-Black">JULLE WAS -- Jullie waren dronken</p>
+          <p className="Font-Segoe-14px-Black">HULLE WAS -- Ze waren dronken</p>
+          <p className="Font-Segoe-14px-Black">HY WAS -- Hij was dronken</p>
+          <p className="Font-Segoe-14px-Black">SY WAS -- Ze was dronken</p>
 
-          <p className="line"><b>WAS:</b></p>
-          <p className="line">EK WAS -- Ik was droken</p>
-          <p className="line">JY WAS -- Jij was droken</p>
-          <p className="line">ONS WAS -- Wij waren droken</p>
-          <p className="line">JULLE WAS -- Jullie waren dronken</p>
-          <p className="line">HULLE WAS -- Ze waren dronken</p>
-          <p className="line">HY WAS -- Hij was dronken</p>
-          <p className="line">SY WAS -- Ze was dronken</p>
+          <p className="Font-Segoe-14px-Black">.</p>
 
-          <p className="line">.</p>
+          <p className="Font-Segoe-14px-Black"><b>KAN:</b></p>
+          <p className="Font-Segoe-14px-Black">EK KAN -- Ik kan komen</p>
+          <p className="Font-Segoe-14px-Black">JY KAN -- Jij kunt komen</p>
+          <p className="Font-Segoe-14px-Black">ONS KAN -- Wij kunnen komen</p>
+          <p className="Font-Segoe-14px-Black">JULLE KAN -- Jullie kunnen komen</p>
+          <p className="Font-Segoe-14px-Black">HULLE KAN -- Zij kunnen komen</p>
+          <p className="Font-Segoe-14px-Black">HY KAN -- Hij kan komen</p>
 
-          <p className="line"><b>KAN:</b></p>
-          <p className="line">EK KAN -- Ik kan komen</p>
-          <p className="line">JY KAN -- Jij kunt komen</p>
-          <p className="line">ONS KAN -- Wij kunnen komen</p>
-          <p className="line">JULLE KAN -- Jullie kunnen komen</p>
-          <p className="line">HULLE KAN -- Zij kunnen komen</p>
-          <p className="line">HY KAN -- Hij kan komen</p>
+          <p className="Font-Segoe-14px-Black">.</p>
 
-          <p className="line">.</p>
-
-          <p className="line"><b>WIL:</b></p>
-          <p className="line">EK WIL -- Ik wil dansen</p>
-          <p className="line">JY WIL -- Jij wilt dansen</p>
-          <p className="line">ONS WIL -- Wij willen dansen</p>
-          <p className="line">JULLE WIL -- Jullie willen dansen</p>
-          <p className="line">HULLE WIL -- Ze willen dansen.</p>
-          <p className="line">HY WIL -- Hij wil dansen</p>
+          <p className="Font-Segoe-14px-Black"><b>WIL:</b></p>
+          <p className="Font-Segoe-14px-Black">EK WIL -- Ik wil dansen</p>
+          <p className="Font-Segoe-14px-Black">JY WIL -- Jij wilt dansen</p>
+          <p className="Font-Segoe-14px-Black">ONS WIL -- Wij willen dansen</p>
+          <p className="Font-Segoe-14px-Black">JULLE WIL -- Jullie willen dansen</p>
+          <p className="Font-Segoe-14px-Black">HULLE WIL -- Ze willen dansen.</p>
+          <p className="Font-Segoe-14px-Black">HY WIL -- Hij wil dansen</p>
           
-          <p className="line">.</p>
+          <p className="Font-Segoe-14px-Black">.</p>
 
-          <p className="line"><b>HET:</b></p>
-          <p className="line">EK HET -- Ik heb een wapen</p>
-          <p className="line">JY HET -- Jij hebt een wapen</p>
-          <p className="line">ONS HET -- We hebben een wapen</p>
-          <p className="line">JULLE HET -- Jullie hebben een wapen</p>
-          <p className="line">HULLE HET -- Ze hebben een wapen</p>
-          <p className="line">HY HET -- Hij heeft een wapen</p>
+          <p className="Font-Segoe-14px-Black"><b>HET:</b></p>
+          <p className="Font-Segoe-14px-Black">EK HET -- Ik heb een wapen</p>
+          <p className="Font-Segoe-14px-Black">JY HET -- Jij hebt een wapen</p>
+          <p className="Font-Segoe-14px-Black">ONS HET -- We hebben een wapen</p>
+          <p className="Font-Segoe-14px-Black">JULLE HET -- Jullie hebben een wapen</p>
+          <p className="Font-Segoe-14px-Black">HULLE HET -- Ze hebben een wapen</p>
+          <p className="Font-Segoe-14px-Black">HY HET -- Hij heeft een wapen</p>
 
-          <p className="line">.</p>
+          <p className="Font-Segoe-14px-Black">.</p>
 
-          <p className="line"><b>GEHAD:</b></p>
-          <p className="line">EK HET GEHAD-- Ik had een wapen</p>
-          <p className="line">JY HET GEHAD -- Jij had een wapen</p>
-          <p className="line">ONS HET GEHAD -- We hadden een wapen</p>
-          <p className="line">JULLE HET GEHAD -- Je had een wapen</p>
-          <p className="line">HULLE HET GEHAD -- Ze headden een wapen</p>
-          <p className="line">HY HET GEHAD -- Hij had een wapen</p>
+          <p className="Font-Segoe-14px-Black"><b>GEHAD:</b></p>
+          <p className="Font-Segoe-14px-Black">EK HET GEHAD-- Ik had een wapen</p>
+          <p className="Font-Segoe-14px-Black">JY HET GEHAD -- Jij had een wapen</p>
+          <p className="Font-Segoe-14px-Black">ONS HET GEHAD -- We hadden een wapen</p>
+          <p className="Font-Segoe-14px-Black">JULLE HET GEHAD -- Je had een wapen</p>
+          <p className="Font-Segoe-14px-Black">HULLE HET GEHAD -- Ze headden een wapen</p>
+          <p className="Font-Segoe-14px-Black">HY HET GEHAD -- Hij had een wapen</p>
+
+</div>
+
         </div>
       </div>
     </div>
