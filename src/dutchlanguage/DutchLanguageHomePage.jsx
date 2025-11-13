@@ -59,6 +59,7 @@ export default function DutchLanguageHomePage() {
           <div>&nbsp;&nbsp;</div>
           <div><DutchLanguageTicker /></div>
           <div><DutchLanguageCompareContrast /></div>
+          <div><DutchLanguage_Index /></div>
 
           <div style={{ marginTop: "10px", marginLeft: "45px" }}>
             <a href="https://www.nporadio1.nl/live" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO Radio 1" style={{ cursor: "pointer", color: "#336791", fontSize: "25px" }}><FaRadio /></a>
@@ -104,7 +105,7 @@ export default function DutchLanguageHomePage() {
           <DutchLanguageChallengeTranslate />
           <DutchLanguage_Nt2exam_SchrijvenInput />
           <DutchLanguage_Nt2exam_LuisterenInput />
-          <DutchLanguage_Index />
+
           <img src={imageNT2ExamTimetableJanuary} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} />
           <img src={imageNT2ExamTimes} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} />
         </div>
