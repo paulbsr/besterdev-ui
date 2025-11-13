@@ -56,7 +56,7 @@ export default function DutchLanguageSpellingChecker() {
   return (
     <div
       style={{
-        border: "1px solid #ddd",
+        border: "1px solid #FF4F00",
         borderRadius: "8px",
         padding: "16px",
         fontFamily: "Segoe UI",

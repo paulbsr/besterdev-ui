@@ -70,6 +70,7 @@ const WebSocketComponent = () => {
           whiteSpace: "normal",        // allows text to wrap to a new line
           overflowWrap: "break-word",  // breaks long words if necessary
           boxSizing: "border-box",     // includes padding in width calc
+          marginTop: "20px"
         }}
       >
 

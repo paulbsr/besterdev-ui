@@ -88,8 +88,9 @@ const DBSearchComponentBanner = () => {
           border: '1.25px solid #336791',
           borderRadius: '4px',
           paddingLeft: '4px',
-          width: '500px',
+          width: '760px',
           marginLeft: '50px',
+          marginTop: "20px"
         }}
         placeholder="Search BesterDev"
         type="text"

@@ -58,10 +58,7 @@ export default function DutchLanguageHomePage() {
           <img src={Image} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} />
           <div>&nbsp;&nbsp;</div>
           <div><DutchLanguageTicker /></div>
-          <div><DutchLanguageCompareContrast /></div>
-          <div><DutchLanguage_Index /></div>
-
-          <div style={{ marginTop: "10px", marginLeft: "45px" }}>
+            <div style={{ marginTop: "10px", marginLeft: "5px" }}>
             <a href="https://www.nporadio1.nl/live" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO Radio 1" style={{ cursor: "pointer", color: "#336791", fontSize: "25px" }}><FaRadio /></a>
             <a href="https://www.bvn.tv/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="BVN TV" style={{ cursor: "pointer", color: "#336791", fontSize: "30px", marginLeft: "20px" }}><PiTelevisionBold /></a>
             <a href="https://www.rtl.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="RTL News" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><FaNewspaper /></a>
@@ -75,6 +72,11 @@ export default function DutchLanguageHomePage() {
             <a href="https://www.anwb.nl/verkeer?center=52.08720994322829%2C5.449947200775682&zoom=6.173985622710852" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Verkeer" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><FaCarCrash /></a>
             <a href="https://npo.nl/start/serie/eenvandaag/afleveringen" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO EenVandaag" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><PiNumberCircleOneBold /></a>
             <a href="https://www.facebook.com/StaatsexamensNt2" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="StaatsexamensNt2" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><FaFacebook /></a>
+          </div>
+                    <div>&nbsp;&nbsp;</div>
+          <div><DutchLanguageCompareContrast /></div>
+          <div><DutchLanguage_Index /></div>
+
 
 
 <button
@@ -87,13 +89,12 @@ export default function DutchLanguageHomePage() {
     fontFamily: 'Segoe UI',
     cursor: 'pointer',
   }}
->
-  Toggle Dark Mode
+>Dark Mode
 </button>
 
 
 
-          </div>
+
 
           <AskAI />
           <DutchLanguage_Dagboek />
@@ -133,9 +134,9 @@ export default function DutchLanguageHomePage() {
           <p className="Font-Segoe-14px-Black">Jij hebt een auto → You have a car.</p>
           <p className="Font-Segoe-14px-Black">Ik ben gegaan → I have gone / I went.</p>
           <p className="Font-Segoe-14px-Black">Ik heb gegeten → I have eaten / I ate.</p> */}
-<div style={{ border: "1px solid #ddd", borderRadius: "8px", padding: "16px", marginBottom: "16px" }}>
+          <div style={{ border: "1px solid #ddd", borderRadius: "8px", padding: "16px", marginBottom: "16px" }}>
 
-          <p className="Font-Segoe-14px-Black"><b>IS:</b></p>
+          {/* <p className="Font-Segoe-14px-Black"><b>IS:</b></p>
           <p className="Font-Segoe-14px-Black">EK IS -- Ik ben een Afrikaner</p>
           <p className="Font-Segoe-14px-Black">JY IS -- Jij bent een Afrikaner</p>
           <p className="Font-Segoe-14px-Black">ONS IS -- Wij zijn Afrikanen</p>
@@ -174,9 +175,9 @@ export default function DutchLanguageHomePage() {
           <p className="Font-Segoe-14px-Black">HULLE WIL -- Ze willen dansen.</p>
           <p className="Font-Segoe-14px-Black">HY WIL -- Hij wil dansen</p>
           
-          <p className="Font-Segoe-14px-Black">.</p>
+          <p className="Font-Segoe-14px-Black">.</p> */}
 
-          <p className="Font-Segoe-14px-Black"><b>HET:</b></p>
+          {/* <p className="Font-Segoe-14px-Black"><b>HET:</b></p>
           <p className="Font-Segoe-14px-Black">EK HET -- Ik heb een wapen</p>
           <p className="Font-Segoe-14px-Black">JY HET -- Jij hebt een wapen</p>
           <p className="Font-Segoe-14px-Black">ONS HET -- We hebben een wapen</p>
@@ -193,7 +194,7 @@ export default function DutchLanguageHomePage() {
           <p className="Font-Segoe-14px-Black">ONS HET GEHAD -- We hadden een wapen</p>
           <p className="Font-Segoe-14px-Black">JULLE HET GEHAD -- Je had een wapen</p>
           <p className="Font-Segoe-14px-Black">HULLE HET GEHAD -- Ze headden een wapen</p>
-          <p className="Font-Segoe-14px-Black">HY HET GEHAD -- Hij had een wapen</p>
+          <p className="Font-Segoe-14px-Black">HY HET GEHAD -- Hij had een wapen</p> */}
 
 </div>
 
