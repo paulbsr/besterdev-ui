@@ -59,7 +59,7 @@ export default function DutchLanguageHomePage() {
           <img src={Image} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} />
           <div>&nbsp;&nbsp;</div>
           <div><DutchLanguageTicker /></div>
-            <div style={{ marginTop: "10px", marginLeft: "5px" }}>
+          <div style={{ marginTop: "10px", marginLeft: "5px" }}>
             <a href="https://www.nporadio1.nl/live" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO Radio 1" style={{ cursor: "pointer", color: "#336791", fontSize: "25px" }}><FaRadio /></a>
             <a href="https://www.bvn.tv/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="BVN TV" style={{ cursor: "pointer", color: "#336791", fontSize: "30px", marginLeft: "20px" }}><PiTelevisionBold /></a>
             <a href="https://www.rtl.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="RTL News" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><FaNewspaper /></a>
@@ -74,31 +74,24 @@ export default function DutchLanguageHomePage() {
             <a href="https://npo.nl/start/serie/eenvandaag/afleveringen" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO EenVandaag" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><PiNumberCircleOneBold /></a>
             <a href="https://www.facebook.com/StaatsexamensNt2" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="StaatsexamensNt2" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><FaFacebook /></a>
           </div>
-                    <div>&nbsp;&nbsp;</div>
-          <div><DutchLanguageCompareContrast /></div>
-          <div><DutchLanguage_Index /></div>
-          <div><DutchLanguage_Tenses/></div>
-
-
-
-<button
-  onClick={() => document.body.classList.toggle('dark')}
-  style={{
-    position: 'fixed',
-    top: '10px',
-    right: '10px',
-    padding: '6px 10px',
-    fontFamily: 'Segoe UI',
-    cursor: 'pointer',
-  }}
->Dark Mode
-</button>
-
-
-
-
 
           <AskAI />
+
+          <div><DutchLanguageCompareContrast /></div>
+          <div><DutchLanguage_Index /></div>
+          <div><DutchLanguage_Tenses /></div>
+          <button
+            onClick={() => document.body.classList.toggle('dark')}
+            style={{
+              position: 'fixed',
+              top: '10px',
+              right: '10px',
+              padding: '6px 10px',
+              fontFamily: 'Segoe UI',
+              cursor: 'pointer',
+            }}
+          >Dark Mode
+          </button>
           <DutchLanguage_Dagboek />
           <DutchLanguage_Nt2exam_SchrijvenToets />
           <DutchLanguage_Nt2exam_LuisterenToets />
@@ -108,7 +101,6 @@ export default function DutchLanguageHomePage() {
           <DutchLanguageChallengeTranslate />
           <DutchLanguage_Nt2exam_SchrijvenInput />
           <DutchLanguage_Nt2exam_LuisterenInput />
-
           <img src={imageNT2ExamTimetableJanuary} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} />
           <img src={imageNT2ExamTimes} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} />
         </div>
@@ -117,89 +109,9 @@ export default function DutchLanguageHomePage() {
         {/* REGTER COLUMN */}
         <div className="spacer"></div>
         <div className="right">
-          <DutchLanguage_WordContext/>
+          <DutchLanguage_WordContext />
           <DutchLanguageSpellingChecker />
           <DutchLanguageWordExplain />
-          <div>&nbsp;&nbsp;</div>
-
-          {/* <p className="Font-Segoe-14px-Black underFont-Segoe-14px-Black spaced">Bijvoeglijke Naamwoorden:</p>
-          <p className="Font-Segoe-14px-Black"><i>Describe nouns. Gets trailing "-e"</i></p>
-          <p className="Font-Segoe-14px-Black">de <i>rode</i> auto (plural definite = die/the)</p>
-          <p className="Font-Segoe-14px-Black">het groene boek (singular definite = die/the)</p>
-          <p className="Font-Segoe-14px-Black">een grote man (singular indefinite = 'n/a/an)</p>
-
-          <p className="Font-Segoe-14px-Black underFont-Segoe-14px-Black spaced">Zelfstandige naamwoorden:</p>
-          <p className="Font-Segoe-14px-Black"><i>Words for people, places, things, ideas.</i></p>
-          <p className="Font-Segoe-14px-Black">zijn = is (to be)</p>
-          <p className="Font-Segoe-14px-Black">hebben = het (to have)</p>
-          <p className="Font-Segoe-14px-Black">Ik ben moe → I am tired</p>
-          <p className="Font-Segoe-14px-Black">Jij hebt een auto → You have a car.</p>
-          <p className="Font-Segoe-14px-Black">Ik ben gegaan → I have gone / I went.</p>
-          <p className="Font-Segoe-14px-Black">Ik heb gegeten → I have eaten / I ate.</p> */}
-          <div style={{ border: "1px solid #ddd", borderRadius: "8px", padding: "16px", marginBottom: "16px" }}>
-
-          {/* <p className="Font-Segoe-14px-Black"><b>IS:</b></p>
-          <p className="Font-Segoe-14px-Black">EK IS -- Ik ben een Afrikaner</p>
-          <p className="Font-Segoe-14px-Black">JY IS -- Jij bent een Afrikaner</p>
-          <p className="Font-Segoe-14px-Black">ONS IS -- Wij zijn Afrikanen</p>
-          <p className="Font-Segoe-14px-Black">JULLE IS -- Jullie zijn Afrikanen</p>
-          <p className="Font-Segoe-14px-Black">HULLE IS -- Zij zijn Afrikanen</p>
-          <p className="Font-Segoe-14px-Black">HY IS -- Hij is Afrikaan</p>
-
-          <p className="Font-Segoe-14px-Black">.</p>
-
-          <p className="Font-Segoe-14px-Black"><b>WAS:</b></p>
-          <p className="Font-Segoe-14px-Black">EK WAS -- Ik was droken</p>
-          <p className="Font-Segoe-14px-Black">JY WAS -- Jij was droken</p>
-          <p className="Font-Segoe-14px-Black">ONS WAS -- Wij waren droken</p>
-          <p className="Font-Segoe-14px-Black">JULLE WAS -- Jullie waren dronken</p>
-          <p className="Font-Segoe-14px-Black">HULLE WAS -- Ze waren dronken</p>
-          <p className="Font-Segoe-14px-Black">HY WAS -- Hij was dronken</p>
-          <p className="Font-Segoe-14px-Black">SY WAS -- Ze was dronken</p>
-
-          <p className="Font-Segoe-14px-Black">.</p>
-
-          <p className="Font-Segoe-14px-Black"><b>KAN:</b></p>
-          <p className="Font-Segoe-14px-Black">EK KAN -- Ik kan komen</p>
-          <p className="Font-Segoe-14px-Black">JY KAN -- Jij kunt komen</p>
-          <p className="Font-Segoe-14px-Black">ONS KAN -- Wij kunnen komen</p>
-          <p className="Font-Segoe-14px-Black">JULLE KAN -- Jullie kunnen komen</p>
-          <p className="Font-Segoe-14px-Black">HULLE KAN -- Zij kunnen komen</p>
-          <p className="Font-Segoe-14px-Black">HY KAN -- Hij kan komen</p>
-
-          <p className="Font-Segoe-14px-Black">.</p>
-
-          <p className="Font-Segoe-14px-Black"><b>WIL:</b></p>
-          <p className="Font-Segoe-14px-Black">EK WIL -- Ik wil dansen</p>
-          <p className="Font-Segoe-14px-Black">JY WIL -- Jij wilt dansen</p>
-          <p className="Font-Segoe-14px-Black">ONS WIL -- Wij willen dansen</p>
-          <p className="Font-Segoe-14px-Black">JULLE WIL -- Jullie willen dansen</p>
-          <p className="Font-Segoe-14px-Black">HULLE WIL -- Ze willen dansen.</p>
-          <p className="Font-Segoe-14px-Black">HY WIL -- Hij wil dansen</p>
-          
-          <p className="Font-Segoe-14px-Black">.</p> */}
-
-          {/* <p className="Font-Segoe-14px-Black"><b>HET:</b></p>
-          <p className="Font-Segoe-14px-Black">EK HET -- Ik heb een wapen</p>
-          <p className="Font-Segoe-14px-Black">JY HET -- Jij hebt een wapen</p>
-          <p className="Font-Segoe-14px-Black">ONS HET -- We hebben een wapen</p>
-          <p className="Font-Segoe-14px-Black">JULLE HET -- Jullie hebben een wapen</p>
-          <p className="Font-Segoe-14px-Black">HULLE HET -- Ze hebben een wapen</p>
-          <p className="Font-Segoe-14px-Black">HY HET -- Hij heeft een wapen</p>
-          <p className="Font-Segoe-14px-Black">SY HET -- Hiske heeft beginnende diabetes. Zij heeft door haar diabetes een hoog bloedsuikergehalte</p>
-
-          <p className="Font-Segoe-14px-Black">.</p>
-
-          <p className="Font-Segoe-14px-Black"><b>GEHAD:</b></p>
-          <p className="Font-Segoe-14px-Black">EK HET GEHAD-- Ik had een wapen</p>
-          <p className="Font-Segoe-14px-Black">JY HET GEHAD -- Jij had een wapen</p>
-          <p className="Font-Segoe-14px-Black">ONS HET GEHAD -- We hadden een wapen</p>
-          <p className="Font-Segoe-14px-Black">JULLE HET GEHAD -- Je had een wapen</p>
-          <p className="Font-Segoe-14px-Black">HULLE HET GEHAD -- Ze headden een wapen</p>
-          <p className="Font-Segoe-14px-Black">HY HET GEHAD -- Hij had een wapen</p> */}
-
-</div>
-
         </div>
       </div>
     </div>

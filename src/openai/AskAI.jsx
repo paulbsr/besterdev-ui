@@ -48,7 +48,7 @@ export default function AskAI() {
   const styles = {
     container: {
       maxWidth: "950px",
-      padding: "10px",
+      padding: "2px",
       fontFamily: "Segoe UI",
     },
     form: {

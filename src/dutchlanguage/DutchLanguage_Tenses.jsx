@@ -67,21 +67,41 @@ export default function DutchLanguage_Tenses() {
         }
       }
 
-      console.log("Parsed table data:", parsed);
+      console.log("In jou <DutchLanguage_Tenses/> is Parsed table data:", parsed);
       setData(parsed);
     } catch (err) {
-      console.error("API error:", err);
+      console.error("In jou <DutchLanguage_Tenses/> API error:", err);
     }
 
     setLoading(false);
   };
 
   return (
-    <div style={{ fontFamily: "Segoe UI", padding: "20px" }}>
-      <h2 style={{ textAlign: "right", marginBottom: "20px" }}>Conjugatie</h2>
+    <div
+      className="Font-Segoe-Large-Howto"
+      style={{
+        border: "1px solid #FF4F00",
+        borderRadius: "8px",
+        padding: "16px",
+        fontFamily: "Segoe UI",
+        fontSize: "16px",
+        marginBottom: "16px",
+        marginTop: "16px",
+      }}
+    >
+      <h2
+        style={{
+          fontWeight: "bold",
+          fontSize: "22px",
+          marginBottom: "16px",
+          marginTop: "1px",
+        }}
+      >
+        Conjugatie
+      </h2>
 
       {/* Input for Dutch verb */}
-      <div style={{ textAlign: "right", marginBottom: "20px" }}>
+      <div style={{ textAlign: "left", marginBottom: "10px" }}>
         <input
           value={word}
           onChange={(e) => setWord(e.target.value)}
@@ -94,17 +114,17 @@ export default function DutchLanguage_Tenses() {
             borderRadius: "6px",
             fontSize: "16px",
           }}
-        />
+        />{loading && <p style={{ textAlign: "left" }}>Loading...</p>}
       </div>
 
-      {loading && <p style={{ textAlign: "right" }}>Loading...</p>}
+      {loading && <p style={{ textAlign: "left" }}>Loading...</p>}
 
       {/* Always render table */}
       <table
         style={{
           width: "100%",
           borderCollapse: "collapse",
-          fontSize: "16px",
+          fontSize: "14px",
         }}
       >
         <thead>
@@ -112,9 +132,9 @@ export default function DutchLanguage_Tenses() {
             <th style={th}>Tense</th>
             <th style={th}>Ik</th>
             <th style={th}>Jij</th>
-            <th style={th}>Hij</th>
             <th style={th}>Wij</th>
             <th style={th}>Jullie</th>
+            <th style={th}>Hij</th>
             <th style={th}>Zij</th>
           </tr>
         </thead>
@@ -123,27 +143,27 @@ export default function DutchLanguage_Tenses() {
             <td style={tdHeader}>Past Tense</td>
             <td style={td}>{data.pastIk}</td>
             <td style={td}>{data.pastJij}</td>
-            <td style={td}>{data.pastHij}</td>
             <td style={td}>{data.pastWij}</td>
             <td style={td}>{data.pastJullie}</td>
+            <td style={td}>{data.pastHij}</td>
             <td style={td}>{data.pastZij}</td>
           </tr>
           <tr>
             <td style={tdHeader}>Present Tense</td>
             <td style={td}>{data.presentIk}</td>
             <td style={td}>{data.presentJij}</td>
-            <td style={td}>{data.presentHij}</td>
             <td style={td}>{data.presentWij}</td>
             <td style={td}>{data.presentJullie}</td>
+            <td style={td}>{data.presentHij}</td>
             <td style={td}>{data.presentZij}</td>
           </tr>
           <tr>
             <td style={tdHeader}>Future Tense</td>
             <td style={td}>{data.futureIk}</td>
             <td style={td}>{data.futureJij}</td>
-            <td style={td}>{data.futureHij}</td>
             <td style={td}>{data.futureWij}</td>
             <td style={td}>{data.futureJullie}</td>
+            <td style={td}>{data.futureHij}</td>
             <td style={td}>{data.futureZij}</td>
           </tr>
         </tbody>
