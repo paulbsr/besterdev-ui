@@ -33,6 +33,7 @@ import { PiTelevisionBold } from "react-icons/pi";
 import DutchLanguage_WordContext from "./DutchLanguage_WordContext";
 import { FaFacebook } from "react-icons/fa6";
 import DutchLanguage_Index from "./DutchLanguage_Index";
+import DutchLanguage_Tenses from "./DutchLanguage_Tenses";
 
 export default function DutchLanguageHomePage() {
   return (
@@ -76,6 +77,7 @@ export default function DutchLanguageHomePage() {
                     <div>&nbsp;&nbsp;</div>
           <div><DutchLanguageCompareContrast /></div>
           <div><DutchLanguage_Index /></div>
+          <div><DutchLanguage_Tenses/></div>
 
 
 

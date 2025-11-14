@@ -162,23 +162,52 @@ export default function DutchLanguage_Index() {
                   }}
                 >
                   {editing.id === row.id && editing.field === "woord" ? (
+                    // <input
+                    //   type="text"
+                    //   value={editing.value}
+                    //   onChange={handleChange}
+                    //   onBlur={() => handleSave(row.id, "woord")}
+                    //   onKeyDown={(e) => handleKeyPress(e, row.id, "woord")}
+                    //   // autoFocus
+                    //   style={{
+                    //     width: "55%",
+                    //     border: "1px solid #d10e0eff",
+                    //     borderRadius: "3px",
+                    //     textAlign: "center",
+                    //   }}
+                    // />
+
                     <input
-                      type="text"
-                      value={editing.value}
-                      onChange={handleChange}
-                      onBlur={() => handleSave(row.id, "woord")}
-                      onKeyDown={(e) => handleKeyPress(e, row.id, "woord")}
-                      autoFocus
-                      style={{
-                        width: "85%",
-                        border: "1px solid #d10e0eff",
-                        borderRadius: "3px",
-                        textAlign: "center",
-                      }}
-                    />
-                  ) : (
-                    row.woord
-                  )}
+  type="text"
+  value={editing.value}
+  onChange={handleChange}
+  onBlur={() => handleSave(row.id, "woord")}
+  onKeyDown={(e) => handleKeyPress(e, row.id, "woord")}
+  autoFocus
+  style={{
+    width: "85%",
+    border: "1px solid #c58b8b",
+    borderRadius: "3px",
+    textAlign: "center",
+    padding: "3px",
+    fontSize: "13px",
+    outline: "none",
+    transition: "all 0.2s ease-in-out",
+    boxShadow: "0 1px 2px rgba(0, 0, 0, 0.1)",
+  }}
+  onFocus={(e) => {
+    e.target.style.border = "1px solid #FF4F00";
+    e.target.style.boxShadow = "0 0 5px rgba(139, 0, 0, 0.4)";
+  }}
+/>
+
+                  ) : 
+                  (
+                      <strong style={{ textAlign: "centre", display: "block" }}>
+    {row.woord}
+  </strong>
+                  )
+                  }
                 </td>
 
                 {/* Pronoun Columns */}
@@ -204,23 +233,24 @@ export default function DutchLanguage_Index() {
                         style={{
                           width: "85%",
                           border: "1px solid #c58b8b",
-                          borderRadius: "6px",
+                          borderRadius: "3px",
                           textAlign: "center",
-                          padding: "6px",
+                          padding: "3px",
                           fontSize: "13px",
                           outline: "none",
                           transition: "all 0.2s ease-in-out",
                           boxShadow: "0 1px 2px rgba(0, 0, 0, 0.1)",
                         }}
                         onFocus={(e) => {
-                          e.target.style.border = "1px solid #8b0000";
-                          e.target.style.boxShadow =
-                            "0 0 5px rgba(139, 0, 0, 0.4)";
+                          e.target.style.border = "1px solid #FF4F00";
+                          e.target.style.boxShadow = "0 0 5px rgba(139, 0, 0, 0.4)";
                         }}
                       />
-                    ) : (
+                    ) : 
+                    (
                       row[p.key]
-                    )}
+                    )
+                    }
                   </td>
                 ))}
               </tr>
