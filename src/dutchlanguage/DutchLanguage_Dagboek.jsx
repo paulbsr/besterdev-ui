@@ -3,7 +3,6 @@ import { PiBookOpenTextBold } from "react-icons/pi";
 import { FaTimes } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FaBookOpen, FaBook } from "react-icons/fa";
 
 const DateGroup = ({ dateKey, entries, handleDelete, styles }) => {
     const [expanded, setExpanded] = useState(false);
@@ -187,12 +186,12 @@ function DutchLanguage_Dagboek() {
             const savedId = saved.id;
 
             // Send to AI
-            const aiRes = await fetch(AI_ENDPOINT, 
-            {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({question: `You are a Dutch language teacher. A student wrote: "${entry}". Please respond ONLY in raw JSON with keys "feedback" and "suggestedSentence".`,}),
-            }
+            const aiRes = await fetch(AI_ENDPOINT,
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ question: `You are a Dutch language teacher. A student wrote: "${entry}". Please respond ONLY in raw JSON with keys "feedback" and "suggestedSentence".`, }),
+                }
             );
 
             const aiData = await aiRes.json();

@@ -3,6 +3,7 @@ import axios from "axios";
 import "./DutchLanguageHomePage.css";
 import AlertContext from "../Generic/Alerts/AlertContext";
 import { FaPlus } from "react-icons/fa";
+import { IoLanguage } from "react-icons/io5";
 
 const API_BASE =
   "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/dutchlanguageindex";
@@ -98,14 +99,15 @@ export default function DutchLanguage_Index() {
         marginTop: "16px",
       }}
     >
-      <h2
-        style={{
-          fontWeight: "bold",
-          fontSize: "22px",
-          marginBottom: "16px",
-          marginTop: "1px",
-        }}
-      >
+      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px", }}>
+        <IoLanguage
+          style={{
+            color: "#FF4F00",
+            fontSize: "30px",
+            cursor: "pointer",
+            marginRight: "10px",
+          }}
+        />
         Taal Index
       </h2>
 
@@ -162,51 +164,36 @@ export default function DutchLanguage_Index() {
                   }}
                 >
                   {editing.id === row.id && editing.field === "woord" ? (
-                    // <input
-                    //   type="text"
-                    //   value={editing.value}
-                    //   onChange={handleChange}
-                    //   onBlur={() => handleSave(row.id, "woord")}
-                    //   onKeyDown={(e) => handleKeyPress(e, row.id, "woord")}
-                    //   // autoFocus
-                    //   style={{
-                    //     width: "55%",
-                    //     border: "1px solid #d10e0eff",
-                    //     borderRadius: "3px",
-                    //     textAlign: "center",
-                    //   }}
-                    // />
-
                     <input
-  type="text"
-  value={editing.value}
-  onChange={handleChange}
-  onBlur={() => handleSave(row.id, "woord")}
-  onKeyDown={(e) => handleKeyPress(e, row.id, "woord")}
-  autoFocus
-  style={{
-    width: "85%",
-    border: "1px solid #c58b8b",
-    borderRadius: "3px",
-    textAlign: "center",
-    padding: "3px",
-    fontSize: "13px",
-    outline: "none",
-    transition: "all 0.2s ease-in-out",
-    boxShadow: "0 1px 2px rgba(0, 0, 0, 0.1)",
-  }}
-  onFocus={(e) => {
-    e.target.style.border = "1px solid #FF4F00";
-    e.target.style.boxShadow = "0 0 5px rgba(139, 0, 0, 0.4)";
-  }}
-/>
+                      type="text"
+                      value={editing.value}
+                      onChange={handleChange}
+                      onBlur={() => handleSave(row.id, "woord")}
+                      onKeyDown={(e) => handleKeyPress(e, row.id, "woord")}
+                      autoFocus
+                      style={{
+                        width: "85%",
+                        border: "1px solid #c58b8b",
+                        borderRadius: "3px",
+                        textAlign: "center",
+                        padding: "3px",
+                        fontSize: "13px",
+                        outline: "none",
+                        transition: "all 0.2s ease-in-out",
+                        boxShadow: "0 1px 2px rgba(0, 0, 0, 0.1)",
+                      }}
+                      onFocus={(e) => {
+                        e.target.style.border = "1px solid #FF4F00";
+                        e.target.style.boxShadow = "0 0 5px rgba(139, 0, 0, 0.4)";
+                      }}
+                    />
 
-                  ) : 
-                  (
+                  ) :
+                    (
                       <strong style={{ textAlign: "centre", display: "block" }}>
-    {row.woord}
-  </strong>
-                  )
+                        {row.woord}
+                      </strong>
+                    )
                   }
                 </td>
 
@@ -246,10 +233,10 @@ export default function DutchLanguage_Index() {
                           e.target.style.boxShadow = "0 0 5px rgba(139, 0, 0, 0.4)";
                         }}
                       />
-                    ) : 
-                    (
-                      row[p.key]
-                    )
+                    ) :
+                      (
+                        row[p.key]
+                      )
                     }
                   </td>
                 ))}

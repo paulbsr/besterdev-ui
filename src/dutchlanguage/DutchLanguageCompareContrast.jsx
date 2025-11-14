@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { IoMdSwap } from "react-icons/io";
+import { IoMdGitCompare } from "react-icons/io";
 
 export default function DutchLanguageCompareContrast() {
   const [dutch, setDutch] = useState("");
@@ -101,13 +102,15 @@ export default function DutchLanguageCompareContrast() {
       </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-        <h2
-          style={{
-            fontWeight: "bold",
-            fontSize: "22px",
-            margin: "1px 0 16px 0",
-          }}
-        >
+        <h2 style={{ fontWeight: "bold", fontSize: "22px", margin: "1px 0 16px 0", }}>
+           <IoMdGitCompare
+                                    style={{
+                                        color: "#FF4F00",
+                                        fontSize: "25px",
+                                        cursor: "pointer",
+                                        marginRight: "10px",
+                                    }}
+                                />
           Vergelijk en Contrast Talen
         </h2>
 

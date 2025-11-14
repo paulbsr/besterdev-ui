@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { PiBookOpenTextBold } from "react-icons/pi";
+import { PiSwapBold } from "react-icons/pi";
+import { AiOutlineNodeIndex } from "react-icons/ai";
 
 const API_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
 
@@ -89,16 +92,15 @@ export default function DutchLanguage_Tenses() {
         marginTop: "16px",
       }}
     >
-      <h2
-        style={{
-          fontWeight: "bold",
-          fontSize: "22px",
-          marginBottom: "16px",
-          marginTop: "1px",
-        }}
-      >
-        Conjugatie
-      </h2>
+      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px", }}>
+        <AiOutlineNodeIndex
+          style={{
+            color: "#FF4F00",
+            fontSize: "35px",
+            cursor: "pointer",
+            marginRight: "10px",
+          }}
+        />Conjugatie</h2>
 
       {/* Input for Dutch verb */}
       <div style={{ textAlign: "left", marginBottom: "10px" }}>
@@ -114,7 +116,7 @@ export default function DutchLanguage_Tenses() {
             borderRadius: "6px",
             fontSize: "16px",
           }}
-        />{loading && <p style={{ textAlign: "left" }}>Loading...</p>}
+        />
       </div>
 
       {loading && <p style={{ textAlign: "left" }}>Loading...</p>}
@@ -130,14 +132,16 @@ export default function DutchLanguage_Tenses() {
         <thead>
           <tr>
             <th style={th}>Tense</th>
-            <th style={th}>Ik</th>
-            <th style={th}>Jij</th>
-            <th style={th}>Wij</th>
-            <th style={th}>Jullie</th>
-            <th style={th}>Hij</th>
-            <th style={th}>Zij</th>
+            <th style={th}> 🧍‍♂️ Ik</th>
+            <th style={th}> 🫵 Jij</th>
+            <th style={th}> 👫 Wij</th>
+            <th style={th}> 👥 Jullie</th>
+            <th style={th}> 👨 Hij</th>
+            <th style={th}> 👩 Zij</th>
           </tr>
         </thead>
+
+
         <tbody>
           <tr>
             <td style={tdHeader}>Past Tense</td>

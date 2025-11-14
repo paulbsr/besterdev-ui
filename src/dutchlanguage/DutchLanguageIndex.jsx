@@ -7,6 +7,7 @@ import "react-tooltip/dist/react-tooltip.css";
 import { PiCheckCircleFill } from "react-icons/pi";
 import { IoArrowUndoCircle } from "react-icons/io5";
 import { LiaSortAlphaDownSolid } from "react-icons/lia";
+import { TbExchange } from "react-icons/tb";
 
 
 const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
@@ -39,18 +40,18 @@ export default function DutchLanguageIndex() {
     fetchData();
   }, []);
 
-const fetchData = async () => {
-  try {
-    const res = await axios.get(`${API_BASE}/dutchlanguage`);
-    const sorted = res.data.sort((a, b) =>
-      a.dutch.localeCompare(b.dutch)
-    );
-    setRecords(sorted);
-    setDutchMode(true); // since we are showing Dutch first
-  } catch (err) {
-    console.error("Error fetching data:", err);
-  }
-};
+  const fetchData = async () => {
+    try {
+      const res = await axios.get(`${API_BASE}/dutchlanguage`);
+      const sorted = res.data.sort((a, b) =>
+        a.dutch.localeCompare(b.dutch)
+      );
+      setRecords(sorted);
+      setDutchMode(true); // since we are showing Dutch first
+    } catch (err) {
+      console.error("Error fetching data:", err);
+    }
+  };
 
 
   const addRow = async () => {
@@ -164,14 +165,15 @@ const fetchData = async () => {
         opacity={1.0}
         variant="light"
       />
-      <h2
-        style={{
-          fontSize: "22px",
-          fontWeight: "bold",
-          marginBottom: "12px",
-          textAlign: "right",
-        }}
-      >
+      <h2 style={{ fontSize: "22px", fontWeight: "bold", marginBottom: "12px", textAlign: "right", }}>
+        <TbExchange
+          style={{
+            color: "#FF4F00",
+            fontSize: "35px",
+            cursor: "pointer",
+            marginRight: "10px",
+          }}
+        />
         Grammatica
       </h2>
 
@@ -278,7 +280,7 @@ const fetchData = async () => {
           size={25}
           color="#FF4F00"
           // style={{ cursor: "pointer", marginLeft: "20px", marginRight: "2px" }}
-                    style={{ cursor: "pointer" }}
+          style={{ cursor: "pointer" }}
           title="Sort by Dutch"
           onClick={() => {
             setRecords(
@@ -313,7 +315,7 @@ const fetchData = async () => {
           // Force Dutch on the left if in Dutch mode
           const dutchFirst = dutchMode || isSwapped;
 
-          
+
           return (
             <div
               key={rec.id}
@@ -332,7 +334,7 @@ const fetchData = async () => {
                     }}
                   >
                     <input
-                    //hierishy
+                      //hierishy
                       style={{ ...inputStyle, width: "200px", borderColor: "#007749", borderWidth: "1px" }}
                       value={editRow.afrikaans}
                       onChange={(e) =>
