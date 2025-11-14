@@ -93,13 +93,7 @@ export default function DutchLanguage_Tenses() {
       }}
     >
       <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px", }}>
-        <AiOutlineNodeIndex
-          style={{
-            color: "#FF4F00",
-            fontSize: "35px",
-            cursor: "pointer",
-            marginRight: "10px",
-          }}
+        <AiOutlineNodeIndex style={{ color: "#FF4F00", fontSize: "35px", cursor: "pointer", marginRight: "10px", }}
         />Conjugatie</h2>
 
       {/* Input for Dutch verb */}
@@ -132,14 +126,17 @@ export default function DutchLanguage_Tenses() {
         <thead>
           <tr>
             <th style={th}>Tense</th>
-            <th style={th}> 🧍‍♂️ Ik</th>
-            <th style={th}> 🫵 Jij</th>
-            <th style={th}> 👫 Wij</th>
-            <th style={th}> 👥 Jullie</th>
-            <th style={th}> 👨 Hij</th>
-            <th style={th}> 👩 Zij</th>
+<th style={th}><span style={{ fontSize: "1.75rem" }}>🧍‍♂️</span> Ik</th>
+<th style={th}><span style={{ fontSize: "1.75rem" }}>🫵</span> Jij</th>
+<th style={th}><span style={{ fontSize: "1.75rem" }}>👫</span> Wij</th>
+<th style={th}><span style={{ fontSize: "1.75rem" }}>👥</span> Jullie</th>
+<th style={th}><span style={{ fontSize: "1.75rem" }}>👨</span> Hij</th>
+<th style={th}><span style={{ fontSize: "1.75rem" }}>👩</span> Zij</th>
+
           </tr>
         </thead>
+
+        
 
 
         <tbody>
