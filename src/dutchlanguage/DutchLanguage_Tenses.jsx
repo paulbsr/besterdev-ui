@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { PiBookOpenTextBold } from "react-icons/pi";
-import { PiSwapBold } from "react-icons/pi";
+import "./DutchLanguageHomePage.css";
 import { AiOutlineNodeIndex } from "react-icons/ai";
 
 const API_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
@@ -102,11 +102,11 @@ export default function DutchLanguage_Tenses() {
           value={word}
           onChange={(e) => setWord(e.target.value)}
           onKeyDown={handleEnter}
-          placeholder="Enter Dutch verb..."
+          placeholder="Enter Dutch verb...."
           style={{
             padding: "8px",
-            width: "260px",
-            border: "1px solid #777",
+            width: "200px",
+            border: "1px solid #ddd",
             borderRadius: "6px",
             fontSize: "16px",
           }}
@@ -116,7 +116,7 @@ export default function DutchLanguage_Tenses() {
       {loading && <p style={{ textAlign: "left" }}>Loading...</p>}
 
       {/* Always render table */}
-      <table
+      <table className="IndexTable IndexTableHover"
         style={{
           width: "100%",
           borderCollapse: "collapse",
@@ -126,18 +126,14 @@ export default function DutchLanguage_Tenses() {
         <thead>
           <tr>
             <th style={th}>Tense</th>
-<th style={th}><span style={{ fontSize: "1.75rem" }}>🧍‍♂️</span> Ik</th>
-<th style={th}><span style={{ fontSize: "1.75rem" }}>🫵</span> Jij</th>
-<th style={th}><span style={{ fontSize: "1.75rem" }}>👫</span> Wij</th>
-<th style={th}><span style={{ fontSize: "1.75rem" }}>👥</span> Jullie</th>
-<th style={th}><span style={{ fontSize: "1.75rem" }}>👨</span> Hij</th>
-<th style={th}><span style={{ fontSize: "1.75rem" }}>👩</span> Zij</th>
-
+            <th style={th}><span style={{ fontSize: "1.75rem" }}>🧍‍♂️</span> Ik</th>
+            <th style={th}><span style={{ fontSize: "1.75rem" }}>🫵</span> Jij</th>
+            <th style={th}><span style={{ fontSize: "1.75rem" }}>👫</span> Wij</th>
+            <th style={th}><span style={{ fontSize: "1.75rem" }}>👥</span> Jullie</th>
+            <th style={th}><span style={{ fontSize: "1.75rem" }}>👨</span> Hij</th>
+            <th style={th}><span style={{ fontSize: "1.75rem" }}>👩</span> Zij</th>
           </tr>
         </thead>
-
-        
-
 
         <tbody>
           <tr>

@@ -139,12 +139,12 @@ export default function DutchLanguage_Index() {
                     padding: "6px",
                     fontWeight: "bold",
                     color: "#000000",
-                    fontSize: "20px", // ✅ larger avatar size
+                    fontSize: "18px", // ✅ larger avatar size
                     backgroundColor: "#f7f4f3"
                   }}
                 >
-                  <span style={{ fontSize: "28px", display: "block" }}>{p.avatar}</span>
-                  <span style={{ fontSize: "14px" }}>{p.label}</span>
+                  <span>{p.avatar} {p.label}</span>
+                  {/* <span style={{ fontSize: "14px" }}>{p.label}</span> */}
                 </th>
               ))}
             </tr>
