@@ -114,7 +114,7 @@ export default function DutchLanguage_Index() {
       <div style={{ overflowX: "auto" }}>
         <table
           className="IndexTable IndexTableHover"
-          style={{ width: "100%", borderCollapse: "collapse" }}
+          style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}
         >
           <thead>
             <tr>
@@ -172,7 +172,7 @@ export default function DutchLanguage_Index() {
                       onKeyDown={(e) => handleKeyPress(e, row.id, "woord")}
                       autoFocus
                       style={{
-                        width: "85%",
+                        width: "45%",
                         border: "1px solid #c58b8b",
                         borderRadius: "3px",
                         textAlign: "center",

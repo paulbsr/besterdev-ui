@@ -113,7 +113,14 @@ export default function DutchLanguage_Tenses() {
         />
       </div>
 
-      {loading && <p style={{ textAlign: "left" }}>Loading...</p>}
+      {/* {loading && <p style={{ textAlign: "left" }}>Loading...</p>} */}
+
+{loading && (
+  <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
+    <div className="spinner"></div>
+    <span>Loading...</span>
+  </div>
+)}
 
       {/* Always render table */}
       <table className="IndexTable IndexTableHover"
