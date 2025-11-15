@@ -133,12 +133,12 @@ export default function DutchLanguage_Tenses() {
         <thead>
           <tr>
             <th style={th}>Tense</th>
-            <th style={th}><span style={{ fontSize: "1.75rem" }}>🧍‍♂️</span> Ik</th>
-            <th style={th}><span style={{ fontSize: "1.75rem" }}>🫵</span> Jij</th>
-            <th style={th}><span style={{ fontSize: "1.75rem" }}>👫</span> Wij</th>
-            <th style={th}><span style={{ fontSize: "1.75rem" }}>👥</span> Jullie</th>
-            <th style={th}><span style={{ fontSize: "1.75rem" }}>👨</span> Hij</th>
-            <th style={th}><span style={{ fontSize: "1.75rem" }}>👩</span> Zij</th>
+            <th style={th}><span style={{ fontSize: "1.25rem" }}>🧍‍♂️</span> Ik</th>
+            <th style={th}><span style={{ fontSize: "1.25rem" }}>🫵</span> Jij</th>
+            <th style={th}><span style={{ fontSize: "1.25rem" }}>👫</span> Wij</th>
+            <th style={th}><span style={{ fontSize: "1.25rem" }}>👥</span> Jullie/Ze</th>
+            <th style={th}><span style={{ fontSize: "1.25rem" }}>👨</span> Hij</th>
+            <th style={th}><span style={{ fontSize: "1.25rem" }}>👩</span> Zij</th>
           </tr>
         </thead>
 
