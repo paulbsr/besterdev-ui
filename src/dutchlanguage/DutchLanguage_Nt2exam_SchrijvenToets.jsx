@@ -286,8 +286,32 @@ Format your answer strictly like this:
           Instructiefilm
         </a></p>
       </div>
+<button
+  onClick={fetchChallenge}
+  disabled={loading}
+  style={{
+    ...styles.button,
+    backgroundColor: loading ? "#ddd" : "#fff",
+    borderColor: "#FF4F00",
+    cursor: loading ? "not-allowed" : "pointer",
+    marginBottom: "10px",
+    marginTop: "10px",
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+  }}
+>
+  {loading ? (
+    <>
+      <div className="spinner"></div>
+      Even geduld...
+    </>
+  ) : (
+    "Nieuwe Schrijvenvraag"
+  )}
+</button>
 
-      <button
+      {/* <button
         onClick={fetchChallenge}
         disabled={loading}
         style={{
@@ -300,7 +324,9 @@ Format your answer strictly like this:
         }}
       >
         {loading ? "Even geduld..." : "Nieuwe Schrijvenvraag"}
-      </button>
+      </button> */}
+
+      
       {expanded && (
         <>
           {/* Challenge Display */}
@@ -368,27 +394,57 @@ Format your answer strictly like this:
 
 
 
-            <button
+            {/* <button
               type="submit"
               disabled={loading}
               style={{
                 fontFamily: "Segoe UI",
-                fontSize: "14px",
+                fontSize: "1^px",
                 marginTop: "8px",
                 padding: "8px 14px",
                 cursor: loading ? "not-allowed" : "pointer",
-                background: "#FF4F00",
+                background: "#FFFFFF",
                 color: "white",
-                border: "none",
+                border: "#FF4F00",
                 borderRadius: "6px",
               }}
             >
               {loading ? "Bezig met evaluatie..." : "Indienen"}
-            </button>
+            </button> */}
+
+            <button
+  type="submit"
+  disabled={loading}
+  style={{
+    fontFamily: "Segoe UI",
+    fontSize: "16px",
+    marginTop: "8px",
+    padding: "8px 14px",
+    cursor: loading ? "not-allowed" : "pointer",
+    background: "#FFFFFF",
+    color: "black",
+    background: "#FFFFFF",
+    borderColor: "#FF4F00",
+    borderRadius: "6px",
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+  }}
+>
+  {loading ? (
+    <>
+      <div className="spinner"></div>
+      Bezig met evaluatie...
+    </>
+  ) : (
+    "Indienen"
+  )}
+</button>
+
           </form>
 
           {feedback && (
-            <div style={{ marginTop: "16px", fontStyle: "italic" }}>
+            <div style={{ marginTop: "16px", fontStyle: "italic" }}>   
               {feedback}
             </div>
           )}

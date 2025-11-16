@@ -12,11 +12,12 @@ const API_BASE =
 const pronouns = [
   { label: "Ek", key: "ek", avatar: "🧍‍♂️" },
   { label: "Jy", key: "jy", avatar: "🫵" },
+  { label: "Hy", key: "hy", avatar: "👨" },
+  { label: "Sy", key: "sy", avatar: "👩" }, 
   { label: "Ons", key: "ons", avatar: "👫" },
   { label: "Julle", key: "julle", avatar: "👥" },
   { label: "Hulle", key: "hulle", avatar: "👨‍👩‍👧‍👦" },
-  { label: "Hy", key: "hy", avatar: "👨" },
-  { label: "Sy", key: "sy", avatar: "👩" },
+
 ];
 
 export default function DutchLanguage_Index() {
@@ -66,15 +67,16 @@ export default function DutchLanguage_Index() {
 
   // ✅ Add new empty row (removed "dit" field)
   const handleAddRow = async () => {
-    const newRow = {
+    const newRow = 
+    {
       woord: "",
       ek: "",
       jy: "",
+      hy: "",
+      sy: "",
       ons: "",
       julle: "",
       hulle: "",
-      hy: "",
-      sy: "",
     };
 
     try {
