@@ -45,6 +45,8 @@ const TimeGroup = ({ item, handleDelete, styles }) => {
     const d = new Date(item.createdate);
     const hh = String(d.getHours()).padStart(2, "0");
     const min = String(d.getMinutes()).padStart(2, "0");
+    const countWords = (text) => text ? text.trim().split(/\s+/).filter(Boolean).length : 0;
+
 
     return (
         <div style={{ marginBottom: "6px" }}>
@@ -58,6 +60,7 @@ const TimeGroup = ({ item, handleDelete, styles }) => {
                 }}
             >
                 {hh}:{min} - {item.myEntry}
+                <span style={{ color: "#c0c0c0", fontSize: "10pt", marginLeft: "6px" }}>({countWords(item.myEntry)} woorden)</span>
                 <FaTimes
                     title="Delete"
                     style={{ ...styles.deleteIcon, marginLeft: "10px" }}
@@ -113,6 +116,8 @@ function DutchLanguage_Dagboek() {
 
     const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/diary";
     const AI_ENDPOINT = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
+
+    const countWords = (text) => text ? text.trim().split(/\s+/).filter(Boolean).length : 0;
 
     // Fetch entries
     useEffect(() => {
@@ -241,7 +246,7 @@ function DutchLanguage_Dagboek() {
         try {
             const res = await fetch(`${API_BASE}/${id}`, { method: "DELETE" });
             if (res.status === 204) {
-                toast.success("Item succesvol verwijderd!", { position: "top-center", autoClose: 2000 });
+                // toast.success("Item succesvol verwijderd!", { position: "top-center", autoClose: 2000 });
                 setAllEntries((prev) => prev.filter((e) => e.id !== id));
             } else {
                 toast.error("Verwijderen mislukt.", { position: "top-center" });
@@ -362,7 +367,31 @@ function DutchLanguage_Dagboek() {
                         fontSize: "16px",
                     }}
                 >
-                    {loading ? "Bezig..." : "Verstuur"}
+                    {/* {loading ? "Bezig..." : "Verstuur"} */}
+                
+                {loading ? (
+  <div style={{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "6px"
+  }}>
+    <div
+      style={{
+        width: "14px",
+        height: "14px",
+        border: "2px solid #ccc",
+        borderTop: "2px solid #FF4F00",
+        borderRadius: "50%",
+        animation: "spin 1s linear infinite"
+      }}
+    ></div>
+    Bezig...
+  </div>
+) : (
+  "Verstuur"
+)}
+                
                 </button>
             </form>
 
@@ -384,7 +413,11 @@ function DutchLanguage_Dagboek() {
                         style={styles.clearIcon}
                         onClick={() => setRecentData(null)}
                     />
-                    <div style={{ color: "#000000" }}>{recentData.entry}</div>
+                    <div style={{ color: "#000000" }}>{recentData.entry}
+                        <span style={{ color: "#c0c0c0", fontSize: "10pt", marginLeft: "6px" }}>
+                            ({countWords(recentData.entry)} woorden)
+                        </span></div>
+
                     {recentData.aiSentence && (
                         <div style={{ color: "#FF4F00", marginTop: "4px" }}>
                             {recentData.aiSentence}

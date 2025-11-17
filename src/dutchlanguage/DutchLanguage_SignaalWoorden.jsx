@@ -82,7 +82,6 @@ export default function DutchLanguage_SignaalWoorden() {
 
             <strong>Top-5 Taalfouten</strong>
             <br />
-            <br />
             1. Volgorde van de woorden in de zin
             <br />
             2. Werkwoorden
@@ -92,6 +91,32 @@ export default function DutchLanguage_SignaalWoorden() {
             4. Spelling
             <br />
             5. Preposities
+
+            <br />
+            <br />
+
+            <strong>Lidwoorden:</strong>
+            <br />
+            Near (this / these)
+            <br />
+            1. deze = de-word + plurals
+            <br />
+            2. dit = het-word (singular)
+            <br />
+            Far (that / those)
+            <br />
+            3. die = de-word + plurals
+            <br />
+            4. dat = het-word (singular)
+                        <br />
+                        <br />
+        
+          de - plural definite
+                                  <br />
+          het - singular definite
+                                  <br />
+          een - singular indefinite
+
         </div>
     );
 }
