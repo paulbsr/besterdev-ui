@@ -34,6 +34,7 @@ import DutchLanguage_WordContext from "./DutchLanguage_WordContext";
 import { FaFacebook } from "react-icons/fa6";
 import DutchLanguage_Index from "./DutchLanguage_Index";
 import DutchLanguage_Tenses from "./DutchLanguage_Tenses";
+import DutchLanguage_SignaalWoorden from "./DutchLanguage_SignaalWoorden";
 
 export default function DutchLanguageHomePage() {
   return (
@@ -112,6 +113,90 @@ export default function DutchLanguageHomePage() {
           <DutchLanguage_WordContext />
           <DutchLanguageSpellingChecker />
           <DutchLanguageWordExplain />
+          <DutchLanguage_SignaalWoorden />
+
+
+{/* <div
+  style={{
+    fontFamily: "Segoe UI, sans-serif",
+    fontSize: "9pt",
+    whiteSpace: "pre-line",
+  }}
+>
+  {`Signaalwoorden zijn belangrijke woorden om een tekst snel te kunnen lezen en 
+begrijpen: het zijn de woorden waarmee de schrijver de structuur en gedachtegang 
+van zijn tekst duidelijk maakt. Na een signaalwoord kan er bijvoorbeeld een 
+tegenstelling komen, een voorbeeld, een conclusie of een uitleg. Let dus bij het lezen 
+op signaalwoorden om de tekst beter te begrijpen, en gebruik bij het schrijven 
+signaalwoorden om je tekst beter leesbaar en duidelijker te maken. 
+
+Er zijn verschillende soorten signaalwoorden:`}
+  
+  <br /><br />
+
+  <strong>Opsomming:</strong> {`ten eerste, en, eveneens, zowel ... als, tevens, daarbij, 
+vervolgens, bovendien, verder, ook, een andere, daarnaast, ten slotte, tot slot.`}
+
+  <br /><br />
+
+  <strong>Toelichting/voorbeeld:</strong> {`zoals, bijvoorbeeld, zo, een voorbeeld, dat blijkt uit, 
+dat komt voor bij, ter illustratie, onder andere, neem nou, u kent het wel, ter 
+verduidelijking.`}
+
+  <br /><br />
+
+  <strong>Volgorde:</strong> {`eerst, vervolgens, dan, daarna, later, voorafgaand, toen, terwijl, 
+voordat, nadat, zodra, intussen, vroeger.`}
+
+  <br /><br />
+
+  <strong>Tijdsaanduidingen:</strong> {`In 1972, een jaar later, op 12 mei, sinds die tijd, enz.`}
+
+  <br /><br />
+
+  <strong>Oorzaak/gevolg:</strong> {`door, waardoor, daardoor, doordat, zodat, te danken aan, te 
+wijten aan, als gevolg van, dientengevolge, had als gevolg, wegens.`}
+
+  <br /><br />
+
+  <strong>Doel/middel:</strong> {`om ... te, door te, door middel van, met behulp van, opdat, 
+daarmee, daartoe, teneinde, met als doel, daarvoor.`}
+
+  <br /><br />
+
+  <strong>Voorwaarde:</strong> {`als, indien, mits, wanneer, tenzij, stel dat, in het geval, 
+aangenomen dat.`}
+
+  <br /><br />
+
+  <strong>Reden/verklaring:</strong> {`want, omdat, dat blijkt uit, hierom, derhalve, aangezien, 
+vanwege, wegens, namelijk, immers, daarom.`}
+
+  <br /><br />
+
+  <strong>Vergelijking:</strong> {`net als, zoals, evenals, hetzelfde als, in vergelijking met, 
+vergeleken met.`}
+
+  <br /><br />
+
+  <strong>Tegenstelling/contrast:</strong> {`enerzijds/anderzijds, niettemin, toch, echter, maar, 
+daarentegen, integendeel, in plaats van, in tegenstelling tot, daar staat 
+tegenover, desondanks.`}
+
+  <br /><br />
+
+  <strong>Mate van belangrijkheid:</strong> {`erg, zeer, bijzonder, meest.`}
+
+  <br /><br />
+
+  <strong>Samenvatting/conclusie:</strong> {`dus, kortom, concluderend, samenvattend, 
+hieruit volgt, uiteindelijk, hieruit kunnen we afleiden, samengevat, alles bij 
+elkaar, met andere woorden, al met al, daarom, dat houdt in, alles overziend, 
+alles afwegend, slotsom.`}
+</div> */}
+
+
+          
         </div>
       </div>
     </div>
