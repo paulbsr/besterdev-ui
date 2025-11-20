@@ -8,27 +8,35 @@ import { IoLanguage } from "react-icons/io5";
 const API_BASE =
   "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/dutchlanguageindex";
 
-// ✅ Removed “Dit” and made avatars larger
+// Pronouns list
 const pronouns = [
   { label: "Ek", key: "ek", avatar: "🧍‍♂️" },
   { label: "Jy", key: "jy", avatar: "🫵" },
   { label: "Hy", key: "hy", avatar: "👨" },
-  { label: "Sy", key: "sy", avatar: "👩" }, 
+  { label: "Sy", key: "sy", avatar: "👩" },
   { label: "Ons", key: "ons", avatar: "👫" },
   { label: "Julle", key: "julle", avatar: "👥" },
   { label: "Hulle", key: "hulle", avatar: "👨‍👩‍👧‍👦" },
-
 ];
+
+// 🔠 Sort function used throughout
+const sortRows = (rows) =>
+  [...rows].sort((a, b) =>
+    (a.woord || "").localeCompare(b.woord || "", "nl", { sensitivity: "base" })
+  );
 
 export default function DutchLanguage_Index() {
   const [rows, setRows] = useState([]);
   const [editing, setEditing] = useState({ id: null, field: null, value: "" });
   const alertCtx = useContext(AlertContext);
 
+  // Load data
   useEffect(() => {
     axios
       .get(API_BASE)
-      .then((response) => setRows(response.data))
+      .then((response) => {
+        setRows(sortRows(response.data));
+      })
       .catch(() => alertCtx.error("Failed to load Dutch language data."));
   }, []);
 
@@ -52,7 +60,8 @@ export default function DutchLanguage_Index() {
 
     try {
       await axios.put(`${API_BASE}/${id}`, updatedRow);
-      setRows((prev) => prev.map((r) => (r.id === id ? updatedRow : r)));
+      const updatedList = rows.map((r) => (r.id === id ? updatedRow : r));
+      setRows(sortRows(updatedList)); // 🔠 sorted
       alertCtx.success("Value updated successfully.");
     } catch {
       alertCtx.error("Update failed.");
@@ -65,10 +74,8 @@ export default function DutchLanguage_Index() {
     if (e.key === "Enter") e.target.blur();
   };
 
-  // ✅ Add new empty row (removed "dit" field)
   const handleAddRow = async () => {
-    const newRow = 
-    {
+    const newRow = {
       woord: "",
       ek: "",
       jy: "",
@@ -81,7 +88,7 @@ export default function DutchLanguage_Index() {
 
     try {
       const response = await axios.post(API_BASE, newRow);
-      setRows((prev) => [...prev, response.data]);
+      setRows((prev) => sortRows([...prev, response.data])); // 🔠 sorted
       alertCtx.success("New row added successfully.");
     } catch {
       alertCtx.error("Failed to add new row.");
@@ -101,7 +108,14 @@ export default function DutchLanguage_Index() {
         marginTop: "16px",
       }}
     >
-      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px", }}>
+      <h2
+        style={{
+          fontWeight: "bold",
+          fontSize: "22px",
+          marginBottom: "16px",
+          marginTop: "1px",
+        }}
+      >
         <IoLanguage
           style={{
             color: "#FF4F00",
@@ -116,7 +130,11 @@ export default function DutchLanguage_Index() {
       <div style={{ overflowX: "auto" }}>
         <table
           className="IndexTable IndexTableHover"
-          style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}
+          style={{
+            width: "100%",
+            borderCollapse: "collapse",
+            tableLayout: "fixed",
+          }}
         >
           <thead>
             <tr>
@@ -127,7 +145,7 @@ export default function DutchLanguage_Index() {
                   padding: "6px",
                   fontWeight: "bold",
                   color: "#000000",
-                  backgroundColor: "#f7f4f3"
+                  backgroundColor: "#f7f4f3",
                 }}
               >
                 📖 Woord
@@ -141,12 +159,13 @@ export default function DutchLanguage_Index() {
                     padding: "6px",
                     fontWeight: "bold",
                     color: "#000000",
-                    fontSize: "18px", // ✅ larger avatar size
-                    backgroundColor: "#f7f4f3"
+                    fontSize: "18px",
+                    backgroundColor: "#f7f4f3",
                   }}
                 >
-                  <span>{p.avatar} {p.label}</span>
-                  {/* <span style={{ fontSize: "14px" }}>{p.label}</span> */}
+                  <span>
+                    {p.avatar} {p.label}
+                  </span>
                 </th>
               ))}
             </tr>
@@ -155,7 +174,7 @@ export default function DutchLanguage_Index() {
           <tbody>
             {rows.map((row) => (
               <tr key={row.id}>
-                {/* Woord Column */}
+                {/* Woord column */}
                 <td
                   onClick={() => handleCellClick(row.id, "woord", row.woord)}
                   style={{
@@ -182,28 +201,21 @@ export default function DutchLanguage_Index() {
                         fontSize: "13px",
                         outline: "none",
                         transition: "all 0.2s ease-in-out",
-                        boxShadow: "0 1px 2px rgba(0, 0, 0, 0.1)",
-                      }}
-                      onFocus={(e) => {
-                        e.target.style.border = "1px solid #FF4F00";
-                        e.target.style.boxShadow = "0 0 5px rgba(139, 0, 0, 0.4)";
+                        boxShadow: "0 1px 2px rgba(0,0,0,0.1)",
                       }}
                     />
-
-                  ) :
-                    (
-                      <strong style={{ textAlign: "centre", display: "block" }}>
-                        {row.woord}
-                      </strong>
-                    )
-                  }
+                  ) : (
+                    <strong style={{ display: "block" }}>{row.woord}</strong>
+                  )}
                 </td>
 
-                {/* Pronoun Columns */}
+                {/* Pronoun cells */}
                 {pronouns.map((p) => (
                   <td
                     key={p.key}
-                    onClick={() => handleCellClick(row.id, p.key, row[p.key])}
+                    onClick={() =>
+                      handleCellClick(row.id, p.key, row[p.key])
+                    }
                     style={{
                       cursor: "pointer",
                       border: "1px solid #ddd",
@@ -228,18 +240,12 @@ export default function DutchLanguage_Index() {
                           fontSize: "13px",
                           outline: "none",
                           transition: "all 0.2s ease-in-out",
-                          boxShadow: "0 1px 2px rgba(0, 0, 0, 0.1)",
-                        }}
-                        onFocus={(e) => {
-                          e.target.style.border = "1px solid #FF4F00";
-                          e.target.style.boxShadow = "0 0 5px rgba(139, 0, 0, 0.4)";
+                          boxShadow: "0 1px 2px rgba(0,0,0,0.1)",
                         }}
                       />
-                    ) :
-                      (
-                        row[p.key]
-                      )
-                    }
+                    ) : (
+                      row[p.key]
+                    )}
                   </td>
                 ))}
               </tr>
@@ -247,7 +253,7 @@ export default function DutchLanguage_Index() {
           </tbody>
         </table>
 
-        {/* Add Button */}
+        {/* Add Row */}
         <div
           style={{
             display: "flex",

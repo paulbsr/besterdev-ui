@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 
 const API_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
@@ -6,12 +5,16 @@ const API_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
 export default function DutchLanguage_WordContext() {
   const [word, setWord] = useState("");
   const [explanation, setExplanation] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const fetchExplanation = async () => {
     if (!word.trim()) {
       setExplanation("⚠️ Please type a word first.");
       return;
     }
+
+    setLoading(true);
+    setExplanation("");
 
     try {
       const res = await fetch(API_URL, {
@@ -25,19 +28,21 @@ export default function DutchLanguage_WordContext() {
       const data = await res.json();
       let output = data.answer?.trim() || "";
 
-      // Clean up if wrapped in "Optional[...]"
+      // Clean up Optional[...] wrapping if present
       output = output.replace(/^Optional\[/i, "").replace(/\]$/, "").trim();
 
       setExplanation(output);
     } catch (err) {
       console.error(err);
       setExplanation("❌ Error fetching explanation.");
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      e.preventDefault(); // Prevent form submission refresh
+      e.preventDefault();
       fetchExplanation();
     }
   };
@@ -93,9 +98,11 @@ export default function DutchLanguage_WordContext() {
       </label>
 
       <div style={{ display: "flex", gap: "6px", justifyContent: "center" }}>
+        {/* DETERMINE BUTTON WITH SPINNER */}
         <button
           type="button"
           onClick={fetchExplanation}
+          disabled={loading}
           style={{
             height: "35.5px",
             border: "1px solid #777777",
@@ -107,13 +114,37 @@ export default function DutchLanguage_WordContext() {
             fontSize: "16px",
           }}
         >
-          Determine
+          {loading ? (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "6px",
+              }}
+            >
+              <div
+                style={{
+                  width: "14px",
+                  height: "14px",
+                  border: "2px solid #ccc",
+                  borderTop: "2px solid #FF4F00",
+                  borderRadius: "50%",
+                  animation: "spin 1s linear infinite",
+                }}
+              ></div>
+              Thinking...
+            </div>
+          ) : (
+            "Determine"
+          )}
         </button>
 
         <button
           type="button"
           onClick={handleClear}
           style={{
+            marginLeft: "2px",
             height: "35.5px",
             border: "1px solid #777777",
             borderRadius: "4px",
@@ -139,6 +170,16 @@ export default function DutchLanguage_WordContext() {
           {explanation}
         </div>
       )}
+
+      {/* Spinner animation */}
+      <style>
+        {`
+          @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+          }
+        `}
+      </style>
     </div>
   );
 }
