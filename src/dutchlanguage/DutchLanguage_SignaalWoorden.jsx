@@ -15,7 +15,7 @@ export default function DutchLanguage_SignaalWoorden() {
                 fontSize: "16px",
             }}
         >
-            {`Signaalwoorden zijn belangrijke woorden om een tekst snel te kunnen lezen en begrijpen: het zijn de woorden waarmee de schrijver de structuur en gedachtegang van zijn tekst duidelijk maakt. Na een signaalwoord kan er bijvoorbeeld een tegenstelling komen, een voorbeeld, een conclusie of een uitleg. Let dus bij het lezen op signaalwoorden om de tekst beter te begrijpen, en gebruik bij het schrijven signaalwoorden om je tekst beter leesbaar en duidelijker te maken.`}
+            {`Na een signaalwoord kan er bijvoorbeeld een tegenstelling komen, een voorbeeld, een conclusie of een uitleg. Let dus bij het lezen op signaalwoorden om de tekst beter te begrijpen, en gebruik bij het schrijven signaalwoorden om je tekst beter leesbaar en duidelijker te maken.`}
 
             <br />
             <br />
