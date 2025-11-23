@@ -3,8 +3,23 @@ import React, { useState, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { SiChatbot } from "react-icons/si";
 import { TbMessageChatbot } from "react-icons/tb";
+import DutchLanguage_Chatbot_ScoreTrend from "./DutchLanguage_Chatbot_ScoreTrend";
+
+
+const spinnerStyles = `
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes slide {
+  0% { margin-left: -40%; }
+  50% { margin-left: 60%; }
+  100% { margin-left: -40%; }
+}
+`;
+
 
 function parseCreatedAt(createdAt) {
   if (!createdAt) return new Date();
@@ -157,14 +172,14 @@ export default function DutchLanguage_Chatbot() {
       const savedId = saved.id;
 
       const aiPrompt = {
-        question: `You are a Dutch language teacher + scorer. The scoring is 0 to 2. 0 = wrong or poor. 1 = acceptable. 2 =A student wrote: "${entry}". 
+        question: `You are a Dutch language teacher + scorer. The scoring is 0, 1 and 2. 0 = wrong or poor. 1 = acceptable. 2 = perfect. A student wrote: "${entry}". 
 Respond in JSON with:
 - grammarScore (0-2)
 - vocabularyScore (0-2)
 - spellingScore (0-2)
 - comprehensibilityScore (0-2)
 - botCorrection
-- botResponse (conversational about the topic, not linguistic feedback, always in Dutch)`
+- botResponse (conversational about the topic, not linguistic feedback, always in Dutch, encourage responses to be in the future tense or past tense)`
       };
 
       const aiRes = await fetch(AI_ENDPOINT, {
@@ -257,10 +272,11 @@ Respond in JSON with:
 
   return (
     <div style={{ border: "1px solid #FF4F00", borderRadius: "8px", padding: "16px", fontFamily: "Segoe UI", fontSize: "16px", marginBottom: "16px" }}>
+      <style>{spinnerStyles}</style>
+
       <ToastContainer />
       <h2 style={{ fontWeight: "bold", fontSize: "22px", margin: 0 }}>
-        <TbMessageChatbot style={{ color: "#FF4F00", fontSize: "40px", cursor: "pointer", marginRight: "10px" }} />
-        Dutch Language AI Chatbot
+        <TbMessageChatbot style={{ color: "#FF4F00", fontSize: "37px", cursor: "pointer", marginRight: "10px" }}/>Nederlandse AI Chatbot
       </h2>
 
       {/* <form onSubmit={handleSubmit}>
@@ -312,6 +328,53 @@ Respond in JSON with:
       overflow: "auto", // enables scrolling if content exceeds 2 lines
     }}
   />
+{/* {allEntries.length > 1 && <DutchLanguage_Chatbot_ScoreTrend entries={allEntries} />} */}
+
+
+
+
+
+
+{loading && (
+  <div style={{ marginTop: "10px", textAlign: "center" }}>
+    {/* Spinner */}
+    {/* <div
+      style={{
+        width: "28px",
+        height: "28px",
+        border: "4px solid #ffb899",
+        borderTop: "4px solid #FF4F00",
+        borderRadius: "50%",
+        margin: "0 auto",
+        animation: "spin 0.8s linear infinite",
+      }}
+    ></div> */}
+
+    {/* Thin orange progress bar */}
+    <div
+      style={{
+        marginTop: "8px",
+        height: "4px",
+        width: "100%",
+        background: "#ffe2d1",
+        overflow: "hidden",
+        borderRadius: "3px",
+      }}
+    >
+      <div
+        style={{
+          height: "100%",
+          width: "40%",
+          background: "#FF4F00",
+          animation: "slide 4.2s infinite",
+        }}
+      ></div>
+    </div>
+  </div>
+)}
+
+
+
 </form>
 
 
@@ -340,7 +403,9 @@ Respond in JSON with:
             {new Date(recentData.createdAtParsed).toLocaleString()}
           </div>
         </div>
+        
       )}
+<DutchLanguage_Chatbot_ScoreTrend entries={allEntries} />
 
       {/* <div style={{ marginTop: "20px" }}>
         <label style={{ display: "flex", alignItems: "center", cursor: "pointer", fontFamily: "Segoe UI", fontSize: "11pt" }}>

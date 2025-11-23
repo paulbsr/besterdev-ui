@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaQuestion } from "react-icons/fa";
 
 const API_URL =
   "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
@@ -56,6 +57,7 @@ export default function DutchLanguageWordExplain() {
     <div
       style={{
         marginTop: "16px",
+        marginBottom: "16px",
         border: "1px solid #FF4F00",
         borderRadius: "8px",
         padding: "16px",
@@ -71,6 +73,14 @@ export default function DutchLanguageWordExplain() {
           marginTop: "1px",
         }}
       >
+        <FaQuestion
+          style={{
+            color: "#FF4F00",
+            fontSize: "25px",
+            cursor: "pointer",
+            marginRight: "10px",
+          }}
+        />
         Nederlandse Woord Uitleg
       </h2>
 
@@ -97,16 +107,16 @@ export default function DutchLanguageWordExplain() {
           <button
             type="submit"
             disabled={loading}
-          style={{
-            height: "35.5px",
-            border: "1px solid #777777",
-            borderRadius: "4px",
-            backgroundColor: "#FFFFFF",
-            color: "#000000",
-            cursor: "pointer",
-            fontFamily: "Segoe UI",
-            fontSize: "16px",
-          }}
+            style={{
+              height: "35.5px",
+              border: "1px solid #777777",
+              borderRadius: "4px",
+              backgroundColor: "#FFFFFF",
+              color: "#000000",
+              cursor: "pointer",
+              fontFamily: "Segoe UI",
+              fontSize: "16px",
+            }}
           >
             {loading ? (
               <div
@@ -137,17 +147,17 @@ export default function DutchLanguageWordExplain() {
           <button
             type="button"
             onClick={handleClear}
-          style={{
-            marginLeft: "2px",
-            height: "35.5px",
-            border: "1px solid #777777",
-            borderRadius: "4px",
-            backgroundColor: "#FFFFFF",
-            color: "#000000",
-            cursor: "pointer",
-            fontFamily: "Segoe UI",
-            fontSize: "16px",
-          }}
+            style={{
+              marginLeft: "2px",
+              height: "35.5px",
+              border: "1px solid #777777",
+              borderRadius: "4px",
+              backgroundColor: "#FFFFFF",
+              color: "#000000",
+              cursor: "pointer",
+              fontFamily: "Segoe UI",
+              fontSize: "16px",
+            }}
           >
             Clear
           </button>

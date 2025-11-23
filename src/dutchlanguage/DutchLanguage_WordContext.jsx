@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { RiFileWord2Line } from "react-icons/ri";
 
 const API_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
 
@@ -63,27 +64,27 @@ export default function DutchLanguage_WordContext() {
         marginBottom: "16px",
       }}
     >
-      <h2
-        style={{
-          fontWeight: "bold",
-          fontSize: "22px",
-          marginBottom: "16px",
-          marginTop: "1px",
-        }}
-      >
+      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginTop: "1px", }}      >
+        <RiFileWord2Line
+          style={{
+            color: "#FF4F00",
+            fontSize: "28px",
+            cursor: "pointer",
+            marginRight: "10px",
+          }}
+        />
         Nederlandse Woordkonteks
       </h2>
 
       <label style={{ display: "block", marginBottom: "10px" }}>
-        Explain when the following word is used:{" "}
         <input
           type="text"
           value={word}
           onChange={(e) => setWord(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Enter a Dutch word"
+          placeholder="Uitleg wanneer je dit woord gebruikt"
           style={{
-            marginTop: "10px",
+            marginTop: "1px",
             height: "35.5px",
             border: "0.75px solid #777777",
             borderRadius: "4px",
@@ -136,7 +137,7 @@ export default function DutchLanguage_WordContext() {
               Thinking...
             </div>
           ) : (
-            "Determine"
+            "Bepalen"
           )}
         </button>
 

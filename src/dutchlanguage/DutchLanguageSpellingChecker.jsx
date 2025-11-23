@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { FaSpellCheck } from "react-icons/fa";
+import { ImSpellCheck } from "react-icons/im";
 
 const API_URL =
   "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
@@ -63,7 +65,16 @@ export default function DutchLanguageSpellingChecker() {
         fontSize: "16px",
       }}
     >
-      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>Nederlandse Spelling Checker</h2>
+      <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>
+                <ImSpellCheck
+                            style={{
+                              color: "#FF4F00",
+                              fontSize: "28px",
+                              cursor: "pointer",
+                              marginRight: "10px",
+                            }}
+                          />
+        Nederlandse Spelling Checker</h2>
 
       <form onSubmit={handleSubmit}>
         <input
