@@ -1,4 +1,3 @@
-import { Bold } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import {
   BarChart,
@@ -11,8 +10,9 @@ import {
 } from "recharts";
 
 export default function DutchLanguage_Chatbot_ScoreTrend() {
-  const [data, setData] = useState([]);
   const [allDays, setAllDays] = useState([]);
+  const [chartData, setChartData] = useState([]);
+  const [selectedDay, setSelectedDay] = useState(null);
 
   const formatDate = (value) => {
     if (Array.isArray(value)) {
@@ -20,6 +20,15 @@ export default function DutchLanguage_Chatbot_ScoreTrend() {
       return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
     }
     return new Date(value).toISOString().split("T")[0];
+  };
+
+  const buildChartData = (dayObj) => {
+    return [
+      { category: "Grammar", value: dayObj.Grammar },
+      { category: "Vocabulary", value: dayObj.Vocabulary },
+      { category: "Spelling", value: dayObj.Spelling },
+      { category: "Comprehensibility", value: dayObj.Comprehensibility },
+    ];
   };
 
   useEffect(() => {
@@ -66,47 +75,94 @@ export default function DutchLanguage_Chatbot_ScoreTrend() {
         setAllDays(averaged);
 
         if (averaged.length > 0) {
-          setData([averaged[averaged.length - 1]]);
+          const last = averaged[averaged.length - 1];
+          setSelectedDay(last);
+          setChartData(buildChartData(last));
         }
       } catch (err) {
-        console.error("Failed to fetch:", err);
+        console.error(err);
       }
     };
 
     fetchScores();
   }, []);
 
-  const VerticalCategoryLabel = ({ x, y, width, height, label }) => {
-    const cx = x + width / 2;
-    const cy = y + height / 2;
-    return (
-      <text
-        x={cx}
-        y={cy}
-        textAnchor="middle"
-        fontSize={12}
-        fill="#333"
-        transform={`rotate(-90, ${cx}, ${cy})`}
-      >
-        {label}
-      </text>
-    );
+  const handleSelect = (date) => {
+    const found = allDays.find((d) => d.date === date);
+    if (found) {
+      setSelectedDay(found);
+      setChartData(buildChartData(found));
+    }
   };
 
   return (
-    <div style={{ width: "100%", height: 360, marginTop: 20 }}>
-      {/* Dropdown and daily count on the same line */}
-      <div style={{ display: "flex", alignItems: "center", marginBottom: 10, gap: 10 }}>
+    <div style={{ width: "100%", height: 100, marginTop: 10, marginBottom: 20 }}>
+      {/* Dropdown + daily count */}
+
+
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart
+          data={chartData}
+          layout="vertical"
+          barCategoryGap="10%"   // tighter spacing
+          barGap={2}             // very small gap between bars
+          margin={{ top: 0, bottom: 0, left: 3, right: 1 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+
+          <YAxis
+            type="category"
+            dataKey="category"
+            width={0}           // hide axis label spacing
+            tick={false}        // completely remove ticks
+          />
+
+          <XAxis
+            type="number"
+            domain={[0, 2]}
+            ticks={[0, 1, 2]}
+            tick={{ fontSize: 10 }}
+          />
+
+          {/* <Bar dataKey="value" barSize={28} fill="#82ca9d"> */}
+            <Bar dataKey="value" barSize={28} fill="#FFF0E6"   stroke="#1a1212ff"  strokeWidth={0.2}>
+
+            {/* CATEGORY NAME INSIDE LEFT OF BAR */}
+            <LabelList
+              dataKey="category"
+              position="insideLeft"
+              fill="#1a1212ff"
+              fontSize={11}
+            />
+
+            {/* VALUE ON RIGHT END */}
+            <LabelList
+              dataKey="value"
+              position="right"
+              formatter={(v) => v.toFixed(2)}
+              fontSize={11}
+                            fill="#1a1212ff"
+            />
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+
+            <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          marginBottom: 10,
+          gap: 10,
+          marginLeft: 1,
+        }}
+      >
         <select
-          onChange={(e) => {
-            const selected = allDays.find((x) => x.date === e.target.value);
-            if (selected) setData([selected]);
-          }}
+          onChange={(e) => handleSelect(e.target.value)}
           style={{
-            padding: "4px 6px",
+            padding: "1px 4px",
             borderRadius: "4px",
-            fontSize: "12px",
-            height: "28px",
+            fontSize: "11px",
+            height: "20px",
           }}
         >
           {allDays.map((x) => (
@@ -115,58 +171,13 @@ export default function DutchLanguage_Chatbot_ScoreTrend() {
             </option>
           ))}
         </select>
-        {data.length > 0 && <span>Dagelijkse vermeldingen: {data[0].dailyCount}</span>}
+
+        {selectedDay && (
+          <span style={{ fontSize: 12 }}>
+            Dagelijkse vermeldingen: {selectedDay.dailyCount}
+          </span>
+        )}
       </div>
-
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date" tick={false} axisLine={false} />
-          <YAxis domain={[0, 2]} ticks={[0, 1, 2]} tick={{ fontSize: 10 }} />
-
-          <Bar dataKey="Grammar" fill="#ffb3b3">
-            <LabelList content={(props) => <VerticalCategoryLabel {...props} label="Grammar" />} />
-            <LabelList
-              dataKey="Grammar"
-              position="insideTop"
-              formatter={(v) => v.toFixed(2)}
-              fontSize={12}
-            />
-          </Bar>
-
-          <Bar dataKey="Vocabulary" fill="#b3d9ff">
-            <LabelList content={(props) => <VerticalCategoryLabel {...props} label="Vocabulary" />} />
-            <LabelList
-              dataKey="Vocabulary"
-              position="insideTop"
-              formatter={(v) => v.toFixed(2)}
-              fontSize={12}
-            />
-          </Bar>
-
-          <Bar dataKey="Spelling" fill="#c2f0c2">
-            <LabelList content={(props) => <VerticalCategoryLabel {...props} label="Spelling" />} />
-            <LabelList
-              dataKey="Spelling"
-              position="insideTop"
-              formatter={(v) => v.toFixed(2)}
-              fontSize={12}
-            />
-          </Bar>
-
-          <Bar dataKey="Comprehensibility" fill="#e6b3ff">
-            <LabelList
-              content={(props) => <VerticalCategoryLabel {...props} label="Comprehensibility" />}
-            />
-            <LabelList
-              dataKey="Comprehensibility"
-              position="insideTop"
-              formatter={(v) => v.toFixed(2)}
-              fontSize={12}
-            />
-          </Bar>
-        </BarChart>
-      </ResponsiveContainer>
     </div>
   );
 }
