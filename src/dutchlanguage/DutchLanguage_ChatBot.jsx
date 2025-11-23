@@ -279,31 +279,6 @@ Respond in JSON with:
         <TbMessageChatbot style={{ color: "#FF4F00", fontSize: "37px", cursor: "pointer", marginRight: "10px" }}/>Nederlandse AI Chatbot
       </h2>
 
-      {/* <form onSubmit={handleSubmit}>
-        <input
-          value={entry}
-          onChange={(e) => setEntry(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" && !e.shiftKey) {
-              e.preventDefault();
-              handleSubmit(e);
-            }
-          }}
-          placeholder="Converseren in het Nederlands..."
-          style={{
-            marginTop: "10px",
-            height: "40px",
-            width: "98%",
-            padding: "6px",
-            fontFamily: "Segoe UI",
-            fontSize: "12pt",
-            borderRadius: "4px",
-            border: "0.75px solid #777777",
-            resize: "none",
-          }}
-        />
-      </form> */}
-
       <form onSubmit={handleSubmit}>
   <textarea
     value={entry}
@@ -338,17 +313,7 @@ Respond in JSON with:
 {loading && (
   <div style={{ marginTop: "10px", textAlign: "center" }}>
     {/* Spinner */}
-    {/* <div
-      style={{
-        width: "28px",
-        height: "28px",
-        border: "4px solid #ffb899",
-        borderTop: "4px solid #FF4F00",
-        borderRadius: "50%",
-        margin: "0 auto",
-        animation: "spin 0.8s linear infinite",
-      }}
-    ></div> */}
+
 
     {/* Thin orange progress bar */}
     <div
@@ -407,40 +372,6 @@ Respond in JSON with:
       )}
 <DutchLanguage_Chatbot_ScoreTrend entries={allEntries} />
 
-      {/* <div style={{ marginTop: "20px" }}>
-        <label style={{ display: "flex", alignItems: "center", cursor: "pointer", fontFamily: "Segoe UI", fontSize: "11pt" }}>
-          <input type="checkbox" checked={showEntries} onChange={() => setShowEntries(!showEntries)} style={{ display: "none" }} />
-          <span style={{
-            width: "56px",
-            height: "20px",
-            background: showEntries ? "#FF4F00" : "#ccc",
-            borderRadius: "20px",
-            position: "relative",
-            transition: "background 0.2s ease",
-            marginRight: "8px",
-          }}>
-            <span style={{
-              position: "absolute",
-              top: "2px",
-              left: showEntries ? "38px" : "2px",
-              width: "16px",
-              height: "16px",
-              background: "#fff",
-              borderRadius: "50%",
-              transition: "left 0.8s ease",
-            }} />
-          </span>
-          {showEntries ? "Hide history" : "Show history"}
-        </label>
-
-        {showEntries && (
-          <div>
-            {Object.entries(groupedByDate).map(([dateKey, entries]) => (
-              <DateGroup key={dateKey} dateKey={dateKey} entries={entries} handleDelete={handleDelete} />
-            ))}
-          </div>
-        )}
-      </div> */}
     </div>
   );
 }
