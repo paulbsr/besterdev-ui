@@ -108,14 +108,30 @@ export default function DutchLanguage_SignaalWoorden() {
             3. die = de-word + plurals
             <br />
             4. dat = het-word (singular)
+            <br />
+            <br />
+
+            de - plural definite
+            <br />
+            het - singular definite
+            <br />
+            een - singular indefinite
+            <br />
                         <br />
-                        <br />
-        
-          de - plural definite
-                                  <br />
-          het - singular definite
-                                  <br />
-          een - singular indefinite
+
+            <strong>Het:</strong>
+            <br />
+            Heb (Ik)
+            <br />
+            Hebt (Jij)
+            <br />
+            Heeft (Hij/Zij/Het)
+            <br />
+            Hebben (Wij/Jullie/Zij)
+            <br />
+            Had (Ik/Hij/Zij/Het)
+            <br />
+            Hadden (Wij/Jullie/Zij)
 
         </div>
     );

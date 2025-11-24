@@ -125,7 +125,7 @@ export default function DutchLanguage_Chatbot_ScoreTrend() {
           />
 
           {/* <Bar dataKey="value" barSize={28} fill="#82ca9d"> */}
-            <Bar dataKey="value" barSize={28} fill="#FFF0E6"   stroke="#1a1212ff"  strokeWidth={0.2}>
+            <Bar dataKey="value" barSize={28} fill="#e1f4fdff"   stroke="#1a1212ff"  strokeWidth={0.2}>
 
             {/* CATEGORY NAME INSIDE LEFT OF BAR */}
             <LabelList

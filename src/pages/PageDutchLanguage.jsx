@@ -7,6 +7,7 @@ import CombinedCreateFP from '../quicks/CombinedCreateFP';
 import DutchLanguageHomePage from '../dutchlanguage/DutchLanguageHomePage';
 import Footer from '../Footer';
 import BreakingNews from '../breakingnews/BreakingNews';
+import DutchLanguageTicker from "../dutchlanguage/DutchLanguageTicker";
 
 export default function PageDutchLanguage() {
     return (
@@ -15,7 +16,8 @@ export default function PageDutchLanguage() {
         <GradientLine />
         <BannerLight />
         <GradientLineThin />
-        <BreakingNews />
+        {/* <BreakingNews /> */}
+        <DutchLanguageTicker />
         <CombinedCreateFP />
         <DutchLanguageHomePage />
         <Footer />

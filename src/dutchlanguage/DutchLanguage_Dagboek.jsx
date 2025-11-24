@@ -368,30 +368,30 @@ function DutchLanguage_Dagboek() {
                     }}
                 >
                     {/* {loading ? "Bezig..." : "Verstuur"} */}
-                
-                {loading ? (
-  <div style={{
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "6px"
-  }}>
-    <div
-      style={{
-        width: "14px",
-        height: "14px",
-        border: "2px solid #ccc",
-        borderTop: "2px solid #FF4F00",
-        borderRadius: "50%",
-        animation: "spin 1s linear infinite"
-      }}
-    ></div>
-    Bezig...
-  </div>
-) : (
-  "Verstuur"
-)}
-                
+
+                    {loading ? (
+                        <div style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            gap: "6px"
+                        }}>
+                            <div
+                                style={{
+                                    width: "14px",
+                                    height: "14px",
+                                    border: "2px solid #ccc",
+                                    borderTop: "2px solid #FF4F00",
+                                    borderRadius: "50%",
+                                    animation: "spin 1s linear infinite"
+                                }}
+                            ></div>
+                            Bezig...
+                        </div>
+                    ) : (
+                        "Verstuur"
+                    )}
+
                 </button>
             </form>
 
@@ -470,7 +470,10 @@ function DutchLanguage_Dagboek() {
                             }}
                         />
                     </span>
-                    {showEntries ? "Verberg dagboek" : "Toon dagboek"}
+                    {/* {showEntries ? "Verberg dagboek" : "Toon dagboek"} */}
+                    <span style={{ fontFamily: "Segoe UI", fontSize: 16, color: "#FF4F00" }}>
+                        {showEntries ? "Verberg dagboek" : "Toon dagboek"}
+                    </span>
                 </label>
 
 

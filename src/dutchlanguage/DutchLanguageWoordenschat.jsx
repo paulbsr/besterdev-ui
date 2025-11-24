@@ -7,6 +7,7 @@ import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';  // PASOPOLO! react-tooltip het AWS Builds opgefok
 import { PiCheckCircleFill } from "react-icons/pi";
 import { IoArrowUndoCircle } from "react-icons/io5";
+import { TbVocabulary } from "react-icons/tb";
 
 const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
 
@@ -90,7 +91,17 @@ export default function DutchLanguageWoordenschat() {
     return (
         <div style={{ fontFamily: "Segoe UI, sans-serif", fontSize: "14px" }}>
             <Tooltip id="tooltip" place="left" />
-            <h2 style={{ fontSize: "22px", fontWeight: "bold", marginBottom: "12px", textAlign: "right" }}>Woordenschat</h2>
+            <h2 style={{ fontSize: "22px", fontWeight: "bold", marginBottom: "12px", textAlign: "right" }}>
+                    <TbVocabulary
+                      style={{
+                        color: "#FF4F00",
+                        fontSize: "35px",
+                        cursor: "pointer",
+                        marginRight: "10px",
+                      }}
+                    />    
+                
+                Woordenschat</h2>
 
             <div>
                 {records.map((rec) => (
