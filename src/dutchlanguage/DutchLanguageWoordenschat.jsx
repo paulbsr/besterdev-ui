@@ -97,7 +97,7 @@ export default function DutchLanguageWoordenschat() {
                     <RxLetterSpacing
                       style={{
                         color: "#FF4F00",
-                        fontSize: "35px",
+                        fontSize: "25px",
                         cursor: "pointer",
                         marginRight: "10px",
                       }}

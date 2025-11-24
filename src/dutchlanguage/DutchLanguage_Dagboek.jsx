@@ -5,6 +5,7 @@ import { PiBookOpenTextBold } from "react-icons/pi";
 import { FaTimes } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import DutchLanguage_Dagboek_ScoreTrend from "./DutchLanguage_Dagboek_ScoreTrend.jsx";
 
 // ------------------- ScoreSquares -------------------
 
@@ -228,6 +229,7 @@ function DutchLanguage_Dagboek() {
                 <PiBookOpenTextBold style={{ color:"#FF4F00", fontSize:"35px", cursor:"pointer", marginRight:"10px" }} />
                 Mijn Dagboek in het Nederlands
             </h2>
+<DutchLanguage_Dagboek_ScoreTrend />
 
             {/* Form */}
             <form onSubmit={handleSubmit}>

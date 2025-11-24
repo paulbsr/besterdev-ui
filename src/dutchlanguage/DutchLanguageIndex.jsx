@@ -158,14 +158,16 @@ export default function DutchLanguageIndex() {
   };
 
   return (
-    <div style={{ fontFamily: "Segoe UI, sans-serif", fontSize: "14px" }}>
-      <Tooltip
+    <div style={{ border: "1px solid #FF4F00", borderRadius: "8px", padding: "16px", fontFamily: "Segoe UI", fontSize: "16px", marginBottom: "16px" }} 
+    // style={{ fontFamily: "Segoe UI, sans-serif", fontSize: "14px" }}
+    >
+      {/* <Tooltip
         id="index"
         place="right-end"
         style={{ backgroundColor: "#222", color: "#fff", borderRadius: "4px" }}
         opacity={1.0}
         variant="light"
-      />
+      /> */}
       <h2 style={{ fontSize: "22px", fontWeight: "bold", marginBottom: "12px", textAlign: "right", }}>
         <VscWordWrap
           style={{
