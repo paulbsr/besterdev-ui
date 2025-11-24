@@ -8,6 +8,7 @@ import { PiCheckCircleFill } from "react-icons/pi";
 import { IoArrowUndoCircle } from "react-icons/io5";
 import { LiaSortAlphaDownSolid } from "react-icons/lia";
 import { TbExchange } from "react-icons/tb";
+import { VscWordWrap } from "react-icons/vsc";
 
 
 const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
@@ -166,7 +167,7 @@ export default function DutchLanguageIndex() {
         variant="light"
       />
       <h2 style={{ fontSize: "22px", fontWeight: "bold", marginBottom: "12px", textAlign: "right", }}>
-        <TbExchange
+        <VscWordWrap
           style={{
             color: "#FF4F00",
             fontSize: "35px",

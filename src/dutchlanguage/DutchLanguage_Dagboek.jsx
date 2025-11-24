@@ -4,6 +4,35 @@ import { FaTimes } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+const ScoreSquares = ({ score }) => {
+    // Colors for each score position (left → right)
+    const colors = [
+        "#FF4F00",   // 0 → red/orange
+        "#FF8000",   // 1 → light orange
+        "#FFC000",   // 2 → yellow
+        "#A6D96A",   // 3 → light green
+        "#1A9850"    // 4 → strong green
+    ];
+
+    return (
+        <div style={{ display: "flex", gap: "4px", marginLeft: "6px" }}>
+            {[0, 1, 2, 3, 4].map((index) => (
+                <div
+                    key={index}
+                    style={{
+                        width: "10px",
+                        height: "10px",
+                        borderRadius: "1px",
+                        backgroundColor: index === score ? colors[index] : "#f0f0f0",
+                        border: "0.5px solid #ccc",
+                    }}
+                />
+            ))}
+        </div>
+    );
+};
+
+
 const DateGroup = ({ dateKey, entries, handleDelete, styles }) => {
     const [expanded, setExpanded] = useState(false);
 
@@ -60,7 +89,17 @@ const TimeGroup = ({ item, handleDelete, styles }) => {
                 }}
             >
                 {hh}:{min} - {item.myEntry}
-                <span style={{ color: "#c0c0c0", fontSize: "10pt", marginLeft: "6px" }}>({countWords(item.myEntry)} woorden)</span>
+                {/* <span style={{ color: "#c0c0c0", fontSize: "10pt", marginLeft: "6px" }}>({countWords(item.myEntry)} woorden)</span> */}
+                {/* <span style={{ color: "#c0c0c0", fontSize: "10pt", marginLeft: "6px" }}>(Woorden = {countWords(item.myEntry)} / Score = {item.score})</span> */}
+
+                <div style={{ display: "inline-flex", alignItems: "center" }}>
+                    <span style={{ color: "#c0c0c0", fontSize: "10pt", marginLeft: "6px" }}>
+                        {countWords(item.myEntry)} Woorden
+                    </span>
+                    <ScoreSquares score={item.score - 1} />
+                </div>
+
+
                 <FaTimes
                     title="Delete"
                     style={{ ...styles.deleteIcon, marginLeft: "10px" }}
@@ -115,6 +154,7 @@ function DutchLanguage_Dagboek() {
     const timerRef = useRef(null);
 
     const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/diary";
+    // const API_BASE = "http://localhost:8000/api/v1/diary";
     const AI_ENDPOINT = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
 
     const countWords = (text) => text ? text.trim().split(/\s+/).filter(Boolean).length : 0;
@@ -146,7 +186,6 @@ function DutchLanguage_Dagboek() {
             setElapsed((prev) => prev + 1);
         }, 1000);
     };
-
 
     const fetchAllEntries = async () => {
         try {
@@ -195,7 +234,19 @@ function DutchLanguage_Dagboek() {
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ question: `You are a Dutch language teacher. A student wrote: "${entry}". Please respond ONLY in raw JSON with keys "feedback" and "suggestedSentence".`, }),
+                    body: JSON.stringify({
+                        question:
+                        `
+                        You are a Dutch language teacher. A student wrote: "${entry}". Please respond ONLY in raw JSON with keys "feedback" and "suggestedSentence" and "score".
+                        Scoring rules:
+                        5 = Excellent, no or tiny mistakes  
+                        4 = Good, minor issues  
+                        3 = Understandable but several mistakes  
+                        2 = Many mistakes, meaning partly unclear  
+                        1 = Major errors, meaning unclear  
+                        0 = Completely incorrect or unrelated`
+                        ,
+                    }),
                 }
             );
 
@@ -209,25 +260,28 @@ function DutchLanguage_Dagboek() {
 
             let parsedFeedback = "";
             let parsedSentence = "";
+            let parsedScore = 0;
             try {
                 const parsed = JSON.parse(aiText);
                 parsedFeedback = parsed.feedback || "";
                 parsedSentence = parsed.suggestedSentence || "";
+                parsedScore = parsed.score ?? 0; // Ensure 0 if missing
             } catch {
                 parsedFeedback = aiText;
+                parsedScore = 0;
             }
 
             // Update UI
             setFeedback(parsedFeedback);
             setAiSentence(parsedSentence);
-            setRecentData({ entry, feedback: parsedFeedback, aiSentence: parsedSentence });
+            setRecentData({ entry, feedback: parsedFeedback, aiSentence: parsedSentence, score: parsedScore });
             resetTimer();
 
             // Update backend entry with AI feedback
             await fetch(`${API_BASE}/${savedId}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ feedback: parsedFeedback, aiEntry: parsedSentence }),
+                body: JSON.stringify({ feedback: parsedFeedback, aiEntry: parsedSentence, score: parsedScore ?? 0 }),
             });
 
             setEntry("");
@@ -258,17 +312,6 @@ function DutchLanguage_Dagboek() {
     };
 
     const styles = {
-        // container: {
-        //     border: "1px solid #FF4F00",
-        //     borderRadius: "8px",
-        //     padding: "16px",
-        //     fontFamily: "Segoe UI",
-        //     fontSize: "16px",
-        //     maxWidth: "1100px",
-        //     marginTop: "16px",
-        //     marginBottom: "16px",
-        // },
-
         container: {
             border: "1px solid #FF4F00",
             borderRadius: "8px",
@@ -367,7 +410,6 @@ function DutchLanguage_Dagboek() {
                         fontSize: "16px",
                     }}
                 >
-                    {/* {loading ? "Bezig..." : "Verstuur"} */}
 
                     {loading ? (
                         <div style={{
@@ -413,10 +455,13 @@ function DutchLanguage_Dagboek() {
                         style={styles.clearIcon}
                         onClick={() => setRecentData(null)}
                     />
-                    <div style={{ color: "#000000" }}>{recentData.entry}
-                        <span style={{ color: "#c0c0c0", fontSize: "10pt", marginLeft: "6px" }}>
-                            ({countWords(recentData.entry)} woorden)
-                        </span></div>
+
+                    <div style={{ color: "#000000", display: "flex", alignItems: "center", gap: "6px" }}>
+                        <span>{recentData.entry}</span>
+                        <span style={{ color: "#c0c0c0", fontSize: "10pt" }}>{countWords(recentData.entry)} woorden</span>
+                        <ScoreSquares score={recentData.score} />
+                    </div>
+
 
                     {recentData.aiSentence && (
                         <div style={{ color: "#FF4F00", marginTop: "4px" }}>
@@ -475,12 +520,6 @@ function DutchLanguage_Dagboek() {
                         {showEntries ? "Verberg dagboek" : "Toon dagboek"}
                     </span>
                 </label>
-
-
-
-
-
-
 
                 {showEntries && (
                     <div>

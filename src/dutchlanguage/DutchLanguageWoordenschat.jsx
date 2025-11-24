@@ -8,6 +8,7 @@ import { Tooltip } from 'react-tooltip';  // PASOPOLO! react-tooltip het AWS Bui
 import { PiCheckCircleFill } from "react-icons/pi";
 import { IoArrowUndoCircle } from "react-icons/io5";
 import { TbVocabulary } from "react-icons/tb";
+import { RxLetterSpacing } from "react-icons/rx";
 
 const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
 
@@ -92,7 +93,8 @@ export default function DutchLanguageWoordenschat() {
         <div style={{ fontFamily: "Segoe UI, sans-serif", fontSize: "14px" }}>
             <Tooltip id="tooltip" place="left" />
             <h2 style={{ fontSize: "22px", fontWeight: "bold", marginBottom: "12px", textAlign: "right" }}>
-                    <TbVocabulary
+
+                    <RxLetterSpacing
                       style={{
                         color: "#FF4F00",
                         fontSize: "35px",
