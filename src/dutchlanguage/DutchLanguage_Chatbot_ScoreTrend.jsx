@@ -28,6 +28,7 @@ export default function DutchLanguage_Chatbot_ScoreTrend() {
       { category: "Vocabulary", value: dayObj.Vocabulary },
       { category: "Spelling", value: dayObj.Spelling },
       { category: "Comprehensibility", value: dayObj.Comprehensibility },
+      { category: "Word Order", value: dayObj.Wordorder },
     ];
   };
 
@@ -48,6 +49,7 @@ export default function DutchLanguage_Chatbot_ScoreTrend() {
               Vocabulary: [],
               Spelling: [],
               Comprehensibility: [],
+              Wordorder: [],
               dailyCount: 0,
             };
           }
@@ -55,6 +57,7 @@ export default function DutchLanguage_Chatbot_ScoreTrend() {
           grouped[dateKey].Vocabulary.push(item.vocabulary);
           grouped[dateKey].Spelling.push(item.spelling);
           grouped[dateKey].Comprehensibility.push(item.comprehensibility);
+          grouped[dateKey].Wordorder.push(item.wordorder);
           grouped[dateKey].dailyCount += item.dailyCount || 1;
         });
 
@@ -67,6 +70,7 @@ export default function DutchLanguage_Chatbot_ScoreTrend() {
               Vocabulary: avg(scores.Vocabulary),
               Spelling: avg(scores.Spelling),
               Comprehensibility: avg(scores.Comprehensibility),
+              Wordorder: avg(scores.Wordorder),
               dailyCount: scores.dailyCount,
             };
           })

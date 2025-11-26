@@ -99,7 +99,7 @@ const TimeGroup = ({ item, handleDelete }) => {
           <div style={{ color: "#000000", marginBottom: "6px" }}>{item.userInput}</div>
 
           <div style={{ color: "#909090", marginBottom: "6px" }}>
-            Score (0-5): Grammar {item.grammarScore} • Vocab {item.vocabularyScore} • Spelling {item.spellingScore} • Comprehensibility {item.comprehensibilityScore}
+            Score (0-5): Grammar {item.grammarScore} • Vocab {item.vocabularyScore} • Spelling {item.spellingScore} • Comprehensibility {item.comprehensibilityScore} • Word Order {item.wordorderScore}
           </div>
 
           {item.botCorrection && (
@@ -164,6 +164,7 @@ export default function DutchLanguage_Chatbot() {
           vocabularyScore: 0,
           spellingScore: 0,
           comprehensibilityScore: 0,
+          wordorderScore: 0,
         }),
       });
 
@@ -178,6 +179,7 @@ Respond in JSON with:
 - vocabularyScore (0-2)
 - spellingScore (0-2)
 - comprehensibilityScore (0-2)
+- wordorderScore (0-2)
 - botCorrection
 - botResponse (conversational about the topic, not linguistic feedback, always in Dutch, encourage responses to be in the future tense or past tense)`
       };
@@ -203,6 +205,7 @@ Respond in JSON with:
           vocabularyScore: 0,
           spellingScore: 0,
           comprehensibilityScore: 0,
+          wordorderScore: 0,
           botCorrection: "",
           botResponse: String(aiText),
         };
@@ -218,6 +221,7 @@ Respond in JSON with:
         vocabularyScore: sanitizeScore(parsed.vocabularyScore),
         spellingScore: sanitizeScore(parsed.spellingScore),
         comprehensibilityScore: sanitizeScore(parsed.comprehensibilityScore),
+        wordorderScore: sanitizeScore(parsed.wordorderScore),
       };
 
       const updateRes = await fetch(`${API_BASE}/${savedId}`, {
@@ -358,7 +362,7 @@ Respond in JSON with:
           {recentData.botCorrection && <div style={{ color: "#FF4F00", marginBottom: "6px" }}>{recentData.botCorrection}</div>}
 
           <div style={{ color: "#909090", marginBottom: "6px", fontSize: "9pt" }}>
-            Grammar: {recentData.grammarScore} • Vocab: {recentData.vocabularyScore} • Spelling: {recentData.spellingScore} • Comprehension: {recentData.comprehensibilityScore}
+            Grammar: {recentData.grammarScore} • Vocab: {recentData.vocabularyScore} • Spelling: {recentData.spellingScore} • Comprehension: {recentData.comprehensibilityScore} • Word Order: {recentData.wordorderScore}  
           </div>
 
 

@@ -55,8 +55,8 @@ export default function DutchLanguageHomePage() {
         <div className="main">
           {/* <Tooltip id="insert" place="top" style={{ opacity: 1, backgroundColor: "#333", color: "#fff" }} /> */}
           <img src={Image} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} />
-          <div>&nbsp;&nbsp;</div>
-          <div><DutchLanguageTicker /></div>
+          {/* <div>&nbsp;&nbsp;</div> */}
+          {/* <div><DutchLanguageTicker /></div> */}
           <div style={{ marginTop: "10px", marginLeft: "5px" }}>
             <a href="https://www.nporadio1.nl/live" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO Radio 1" style={{ cursor: "pointer", color: "#336791", fontSize: "25px" }}><FaRadio /></a>
             <a href="https://www.bvn.tv/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="BVN TV" style={{ cursor: "pointer", color: "#336791", fontSize: "34px", marginLeft: "20px" }}><PiTelevisionSimpleDuotone /></a>
