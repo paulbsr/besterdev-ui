@@ -280,71 +280,71 @@ Respond in JSON with:
 
       <ToastContainer />
       <h2 style={{ fontWeight: "bold", fontSize: "22px", margin: 0 }}>
-        <TbMessageChatbot style={{ color: "#FF4F00", fontSize: "37px", cursor: "pointer", marginRight: "10px" }}/>Nederlandse AI Chatbot
+        <TbMessageChatbot style={{ color: "#FF4F00", fontSize: "37px", cursor: "pointer", marginRight: "10px" }} />Nederlandse AI Chatbot
       </h2>
 
       <form onSubmit={handleSubmit}>
-  <textarea
-    value={entry}
-    onChange={(e) => setEntry(e.target.value)}
-    onKeyDown={(e) => {
-      if (e.key === "Enter" && !e.shiftKey) {
-        e.preventDefault();
-        handleSubmit(e);
-      }
-    }}
-    placeholder="Converseren in het Nederlands..."
-    rows={2} // limits to 2 lines high
-    style={{
-      marginTop: "10px",
-      width: "98%",
-      padding: "6px",
-      fontFamily: "Segoe UI",
-      fontSize: "12pt",
-      borderRadius: "4px",
-      border: "0.75px solid #777777",
-      resize: "none", // disables manual resizing
-      overflow: "auto", // enables scrolling if content exceeds 2 lines
-    }}
-  />
-{/* {allEntries.length > 1 && <DutchLanguage_Chatbot_ScoreTrend entries={allEntries} />} */}
+        <textarea
+          value={entry}
+          onChange={(e) => setEntry(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault();
+              handleSubmit(e);
+            }
+          }}
+          placeholder="Converseren in het Nederlands..."
+          rows={2} // limits to 2 lines high
+          style={{
+            marginTop: "10px",
+            width: "98%",
+            padding: "6px",
+            fontFamily: "Segoe UI",
+            fontSize: "12pt",
+            borderRadius: "4px",
+            border: "0.75px solid #777777",
+            resize: "none", // disables manual resizing
+            overflow: "auto", // enables scrolling if content exceeds 2 lines
+          }}
+        />
+        {/* {allEntries.length > 1 && <DutchLanguage_Chatbot_ScoreTrend entries={allEntries} />} */}
 
 
 
 
 
 
-{loading && (
-  <div style={{ marginTop: "10px", textAlign: "center" }}>
-    {/* Spinner */}
+        {loading && (
+          <div style={{ marginTop: "10px", textAlign: "center" }}>
+            {/* Spinner */}
 
 
-    {/* Thin orange progress bar */}
-    <div
-      style={{
-        marginTop: "8px",
-        height: "4px",
-        width: "100%",
-        background: "#ffe2d1",
-        overflow: "hidden",
-        borderRadius: "3px",
-      }}
-    >
-      <div
-        style={{
-          height: "100%",
-          width: "40%",
-          background: "#FF4F00",
-          animation: "slide 4.2s infinite",
-        }}
-      ></div>
-    </div>
-  </div>
-)}
+            {/* Thin orange progress bar */}
+            <div
+              style={{
+                marginTop: "8px",
+                height: "4px",
+                width: "100%",
+                background: "#ffe2d1",
+                overflow: "hidden",
+                borderRadius: "3px",
+              }}
+            >
+              <div
+                style={{
+                  height: "100%",
+                  width: "40%",
+                  background: "#FF4F00",
+                  animation: "slide 4.2s infinite",
+                }}
+              ></div>
+            </div>
+          </div>
+        )}
 
 
 
-</form>
+      </form>
 
 
       {recentData && (
@@ -362,7 +362,7 @@ Respond in JSON with:
           {recentData.botCorrection && <div style={{ color: "#FF4F00", marginBottom: "6px" }}>{recentData.botCorrection}</div>}
 
           <div style={{ color: "#909090", marginBottom: "6px", fontSize: "9pt" }}>
-            Grammar: {recentData.grammarScore} • Vocab: {recentData.vocabularyScore} • Spelling: {recentData.spellingScore} • Comprehension: {recentData.comprehensibilityScore} • Word Order: {recentData.wordorderScore}  
+            Grammar: {recentData.grammarScore} • Vocab: {recentData.vocabularyScore} • Spelling: {recentData.spellingScore} • Comprehension: {recentData.comprehensibilityScore} • Word Order: {recentData.wordorderScore}
           </div>
 
 
@@ -372,9 +372,9 @@ Respond in JSON with:
             {new Date(recentData.createdAtParsed).toLocaleString()}
           </div>
         </div>
-        
+
       )}
-<DutchLanguage_Chatbot_ScoreTrend entries={allEntries} />
+      <DutchLanguage_Chatbot_ScoreTrend entries={allEntries} />
 
     </div>
   );

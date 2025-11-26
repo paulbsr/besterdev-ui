@@ -7,6 +7,7 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
+  ReferenceLine
 } from "recharts";
 
 const DutchLanguage_Dagboek_ScoreTrend = () => {
@@ -28,29 +29,35 @@ const DutchLanguage_Dagboek_ScoreTrend = () => {
 
   return (
     <div style={{ width: "100%", height: 150 }}>
-      {/* <h3 style={{ fontFamily: "Segoe UI", marginBottom: "1px" }}>
-        Daily Average Score Trend
-      </h3> */}
 
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data} margin={{ top: 20, right: 30, left: 2, bottom: 10 }}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date" tick={{ fontSize: 9 }} />
-          <YAxis
-            domain={[0, 5]}
-            ticks={[0, 1, 2, 3, 4, 5]}
-            tick={{ fontSize: 9 }}
-          />
-          <Tooltip />
-          <Line
-            type="monotone"
-            dataKey="averageScore"
-            stroke="#FF4F00"
-            strokeWidth={2}
-            dot={{ r: 3 }}
-          />
-        </LineChart>
-      </ResponsiveContainer>
+<ResponsiveContainer width="100%" height="100%">
+  <LineChart data={data} margin={{ top: 20, right: 30, left: 2, bottom: 10 }}>
+    <CartesianGrid strokeDasharray="5 5" />
+    <XAxis dataKey="date" tick={{ fontSize: 9 }} />
+    <YAxis
+      domain={[0, 5]}
+      ticks={[0, 1, 2, 3, 4, 5]}
+      tick={{ fontSize: 9 }}
+    />
+    <Tooltip />
+
+    {/* Horizontal dashed lines */}
+    <ReferenceLine y={1} stroke="#999" strokeDasharray="1 1" />
+    <ReferenceLine y={2} stroke="#999" strokeDasharray="1 1" />
+    <ReferenceLine y={3} stroke="#999" strokeDasharray="1 1" />
+    <ReferenceLine y={4} stroke="#999" strokeDasharray="1 1" />
+    <ReferenceLine y={5} stroke="#999" strokeDasharray="1 1" />
+    <Line
+      type="monotone"
+      dataKey="averageScore"
+      stroke="#FF4F00"
+      strokeWidth={2}
+      dot={{ r: 3 }}
+      strokeDasharray="1 1"
+    />
+  </LineChart>
+</ResponsiveContainer>
+
     </div>
   );
 };

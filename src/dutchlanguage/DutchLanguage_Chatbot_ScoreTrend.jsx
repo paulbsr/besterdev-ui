@@ -24,11 +24,12 @@ export default function DutchLanguage_Chatbot_ScoreTrend() {
 
   const buildChartData = (dayObj) => {
     return [
+      { category: "Word Order", value: dayObj.Wordorder },
       { category: "Grammar", value: dayObj.Grammar },
       { category: "Vocabulary", value: dayObj.Vocabulary },
       { category: "Spelling", value: dayObj.Spelling },
       { category: "Comprehensibility", value: dayObj.Comprehensibility },
-      { category: "Word Order", value: dayObj.Wordorder },
+
     ];
   };
 
@@ -66,11 +67,12 @@ export default function DutchLanguage_Chatbot_ScoreTrend() {
             const avg = (arr) => (arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : 0);
             return {
               date,
+              Wordorder: avg(scores.Wordorder),
               Grammar: avg(scores.Grammar),
               Vocabulary: avg(scores.Vocabulary),
               Spelling: avg(scores.Spelling),
               Comprehensibility: avg(scores.Comprehensibility),
-              Wordorder: avg(scores.Wordorder),
+
               dailyCount: scores.dailyCount,
             };
           })
@@ -129,13 +131,13 @@ export default function DutchLanguage_Chatbot_ScoreTrend() {
           />
 
           {/* <Bar dataKey="value" barSize={28} fill="#82ca9d"> */}
-            <Bar dataKey="value" barSize={28} fill="#e1f4fdff"   stroke="#1a1212ff"  strokeWidth={0.2}>
+          <Bar dataKey="value" barSize={28} fill="#FFE0CC">
 
             {/* CATEGORY NAME INSIDE LEFT OF BAR */}
             <LabelList
               dataKey="category"
               position="insideLeft"
-              fill="#1a1212ff"
+              fill="#2b2121ff"
               fontSize={11}
             />
 
@@ -145,13 +147,13 @@ export default function DutchLanguage_Chatbot_ScoreTrend() {
               position="right"
               formatter={(v) => v.toFixed(2)}
               fontSize={11}
-                            fill="#1a1212ff"
+              fill="#1a1212ff"
             />
           </Bar>
         </BarChart>
       </ResponsiveContainer>
 
-            <div
+      <div
         style={{
           display: "flex",
           alignItems: "center",
