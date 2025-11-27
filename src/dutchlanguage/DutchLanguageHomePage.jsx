@@ -32,13 +32,13 @@ import { TiWeatherPartlySunny } from "react-icons/ti";
 import { SiGoogletranslate } from "react-icons/si";
 import { RiWebcamFill } from "react-icons/ri";
 import { FaCarCrash } from "react-icons/fa";
+import DutchLanguage_Sentences from "./DutchLanguage_Sentences";
 
 export default function DutchLanguageHomePage() {
   return (
     <div>
       {/* Spacer at the very top */}
       <div style={{ height: "20px" }}></div>
-
       <div className="homepage-layout">
 
         {/* LINKER COLUMN#1 */}
@@ -53,10 +53,7 @@ export default function DutchLanguageHomePage() {
 
         {/* CENTRE COLUMN */}
         <div className="main">
-          {/* <Tooltip id="insert" place="top" style={{ opacity: 1, backgroundColor: "#333", color: "#fff" }} /> */}
           <img src={Image} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} />
-          {/* <div>&nbsp;&nbsp;</div> */}
-          {/* <div><DutchLanguageTicker /></div> */}
           <div style={{ marginTop: "10px", marginLeft: "5px" }}>
             <a href="https://www.nporadio1.nl/live" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO Radio 1" style={{ cursor: "pointer", color: "#336791", fontSize: "25px" }}><FaRadio /></a>
             <a href="https://www.bvn.tv/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="BVN TV" style={{ cursor: "pointer", color: "#336791", fontSize: "34px", marginLeft: "20px" }}><PiTelevisionSimpleDuotone /></a>
@@ -71,12 +68,12 @@ export default function DutchLanguageHomePage() {
             <a href="https://www.anwb.nl/verkeer?center=52.08720994322829%2C5.449947200775682&zoom=6.173985622710852" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Verkeer" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><FaCarCrash /></a>
             <a href="https://npo.nl/start/serie/eenvandaag/afleveringen" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO EenVandaag" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><PiNumberCircleOneBold /></a>
             <a href="https://www.facebook.com/StaatsexamensNt2" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="StaatsexamensNt2" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><FaFacebook /></a>
-
             <a href="https://anderetijden.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Andere Tijden" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><BsClockFill /></a>
           </div>
 
-          <AskAI />
+          {/* <AskAI /> */}
 
+          <div><DutchLanguage_Sentences /></div>
           <div><DutchLanguageCompareContrast /></div>
           <div><DutchLanguage_Index /></div>
           <div><DutchLanguage_Tenses /></div>

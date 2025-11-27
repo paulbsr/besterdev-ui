@@ -123,6 +123,8 @@ export default function DutchLanguage_SignaalWoorden() {
             <br />
             Heb (Ik)
             <br />
+            Hebbe (Have)
+            <br />
             Hebt (Jij)
             <br />
             Heeft (Hij/Zij/Het)

@@ -32,7 +32,7 @@ const DutchLanguage_Dagboek_ScoreTrend = () => {
 
 <ResponsiveContainer width="100%" height="100%">
   <LineChart data={data} margin={{ top: 20, right: 30, left: 2, bottom: 10 }}>
-    <CartesianGrid strokeDasharray="5 5" />
+    <CartesianGrid strokeDasharray="1 1" />
     <XAxis dataKey="date" tick={{ fontSize: 9 }} />
     <YAxis
       domain={[0, 5]}
@@ -52,8 +52,8 @@ const DutchLanguage_Dagboek_ScoreTrend = () => {
       dataKey="averageScore"
       stroke="#FF4F00"
       strokeWidth={2}
-      dot={{ r: 3 }}
-      strokeDasharray="1 1"
+      dot={{ r: 4 }}
+      strokeDasharray="5 0"
     />
   </LineChart>
 </ResponsiveContainer>
