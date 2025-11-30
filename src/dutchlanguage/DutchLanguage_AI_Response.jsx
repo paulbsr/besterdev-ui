@@ -1,30 +1,7 @@
 import React from "react";
 import DutchLanguage_AI_ScoreSquares from "./DutchLanguage_AI_ScoreSquares";
 
-// Reusable ScoreSquares
-// const ScoreSquares = ({ score }) => {
-//   const colors = ["#FF4F00", "#FF8000", "#FFC000", "#A6D96A", "#1A9850"];
-//   const index = score > 0 ? score - 1 : null;
 
-//   return (
-//     <div style={{ display: "flex", gap: "4px", marginLeft: "6px" }}>
-//       {[0, 1, 2, 3, 4].map((i) => (
-//         <div
-//           key={i}
-//           style={{
-//             width: "10px",
-//             height: "10px",
-//             borderRadius: "1px",
-//             backgroundColor: index === i ? colors[i] : "#f0f0f0",
-//             border: "0.5px solid #ccc",
-//           }}
-//         />
-//       ))}
-//     </div>
-//   );
-// };
-
-// ------------------- Common AI Response Component -------------------
 function DutchLanguage_AI_Response({ submission }) {
   if (!submission) return null;
 
@@ -83,18 +60,12 @@ function DutchLanguage_AI_Response({ submission }) {
         {submission.scoreSpelling !== undefined && (
           <span>Spelling: {submission.scoreSpelling}</span>
         )}
-        {/* {submission.scoreWordorder !== undefined && (
-          <span>Word Order: {submission.scoreWordorder}</span>
-        )} */}
         {submission.scoreGrammar !== undefined && (
           <span>Grammar: {submission.scoreGrammar}</span>
         )}
         {submission.scoreComprehensibility !== undefined && (
           <span>Comprehensibility: {submission.scoreComprehensibility}</span>
         )}
-        {/* {submission.scoreNoun !== undefined && (
-          <span>Nouns: {submission.scoreNoun}</span>
-        )} */}
         {submission.scoreVocabulary !== undefined && (
           <span>Vocabulary: {submission.scoreVocabulary}</span>
         )}
