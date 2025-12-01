@@ -19,22 +19,32 @@ function DutchLanguage_AI_Response({ submission }) {
         width: "99%"
       }}
     >
-      {/* User input + word count + score squares */}
-      <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-        <span style={{ color: "#000" }}>"{submission.userInput}"</span>
-        <span style={{ color: "#c0c0c0", fontSize: "10pt" }}>{countWords(submission.userInput)} woorden</span>
+      <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+        {/* Line 1: User Input */}
+        <div style={{ color: "#000" }}>
+          "{submission.userInput}"
+        </div>
 
-        <DutchLanguage_AI_ScoreSquares averageScore={submission.scoreUserAverage} />
+        {/* Line 2: Word count + Score Squares */}
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <span style={{ color: "#c0c0c0", fontSize: "10pt" }}>
+            {countWords(submission.userInput)} woorden
+          </span>
+
+          <DutchLanguage_AI_ScoreSquares
+            averageScore={submission.scoreUserAverage}
+          />
+        </div>
       </div>
 
       {/* AI suggestion */}
       {submission.aiCorrection && (
-        <div style={{ color: "#FF4F00", marginTop: "4px" }}>AI Correction:  {submission.aiCorrection}</div>
+        <div style={{ color: "#FF4F00", marginTop: "4px" }}>{submission.aiCorrection}</div>
       )}
 
       {/* AI feedback */}
       {submission.aiFeedback && (
-        <div style={{ color: "#474343ff", fontStyle: "italic", marginTop: "2px", }}>AI Feedback: {submission.aiFeedback}</div>
+        <div style={{ color: "#474343ff", fontStyle: "italic", marginTop: "2px", }}>{submission.aiFeedback}</div>
       )}
 
       {/* Optional: display individual 7 scores */}
@@ -47,7 +57,7 @@ function DutchLanguage_AI_Response({ submission }) {
           fontSize: "12px",
           color: "#999",
         }}
-      >AI Scores: &nbsp;
+      >
         {submission.scoreWordorder !== undefined && (
           <span>Word Order={submission.scoreWordorder}</span>
         )}

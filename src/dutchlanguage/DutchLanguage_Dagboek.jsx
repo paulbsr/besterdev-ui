@@ -29,9 +29,9 @@ const TimeGroup = ({ item, handleDelete, styles }) => {
     item.scoreWordorder,
     item.scoreNoun,
     item.scoreArticle,
+    item.scoreUserAverage,
   ].map((s) => (s === undefined || s === null ? 0 : Number(s)));
 
-  const average = scores.reduce((a, b) => a + b, 0) / (scores.length || 1);
 
   return (
     <div style={{ marginBottom: "6px" }}>
@@ -40,11 +40,12 @@ const TimeGroup = ({ item, handleDelete, styles }) => {
         style={{ cursor: "pointer", color: "black", fontFamily: "Segoe UI", fontSize: "11pt" }}
       >
         {hh}:{min} - {item.userInput}
+        
         <div style={{ display: "inline-flex", alignItems: "center" }}>
           <span style={{ color: "#c0c0c0", fontSize: "10pt", marginLeft: "6px" }}>
             {countWords(item.userInput)} Woorden
           </span>
-          <DutchLanguage_AI_ScoreSquares averageScore={average} />
+          <DutchLanguage_AI_ScoreSquares averageScore={item.scoreUserAverage} />
         </div>
 
         <FaTimes
@@ -74,7 +75,8 @@ const TimeGroup = ({ item, handleDelete, styles }) => {
               <span>Word Order: {item.scoreWordorder ?? 0}</span>
               <span>Noun/Verb: {item.scoreNoun ?? 0}</span>
               <span>Articles: {item.scoreArticle ?? 0}</span>
-              <span>AVG: {average.toFixed(2)} / 5</span>
+              {/* <span>AVG: {average.toFixed(2)} / 5</span> */}
+              <span>AVG: {item.scoreUserAverage} / 5</span>
             </div>
           </div>
         </div>

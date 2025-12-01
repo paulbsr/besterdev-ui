@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { TbTargetArrow } from "react-icons/tb";
-import DutchLanguage_MLDataSet_ScoreTrend_Barcharts from "./DutchLanguage_MLDataSet_ScoreTrend_Barcharts";
 
 import {
   LineChart,
@@ -48,7 +47,26 @@ const DutchLanguage_MLDataSet_ScoreTrend_Linechart = () => {
             ticks={[0, 1, 2, 3, 4, 5]}
             tick={{ fontSize: 9 }}
           />
-          <Tooltip />
+          {/* <Tooltip /> */}
+
+          <Tooltip
+            content={({ payload, label }) => {
+              if (!payload || payload.length === 0) return null;
+
+              const averageScore = payload[0]?.payload?.averageScore;
+              const count = payload[0]?.payload?.count;
+
+              return (
+                <div style={{ background: "white", padding: "6px", border: "1px solid #ccc", fontFamily: "Tahoma", fontSize: "10px" }}>
+                  <div><strong>{label}</strong></div>
+                  <div>Average Score: {averageScore}</div>
+                  <div>Count: {count}</div>
+                </div>
+              );
+            }}
+          />
+
+
 
           {/* Horizontal dashed lines */}
           <ReferenceLine y={1} stroke="#999" strokeDasharray="1 1" />
@@ -66,8 +84,6 @@ const DutchLanguage_MLDataSet_ScoreTrend_Linechart = () => {
           />
         </LineChart>
       </ResponsiveContainer>
-
-
     </div>
   );
 };
