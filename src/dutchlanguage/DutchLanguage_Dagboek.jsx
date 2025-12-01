@@ -4,7 +4,6 @@ import { PiBookOpenTextBold } from "react-icons/pi";
 import { FaTimes } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import DutchLanguage_Dagboek_ScoreTrend from "./DutchLanguage_Dagboek_ScoreTrend.jsx";
 import { DutchLanguage_AIEvaluator } from "./DutchLanguage_AIEvaluator"; // adjust path if necessary
 import DutchLanguage_AI_ScoreSquares from "./DutchLanguage_AI_ScoreSquares";
 import DutchLanguage_AI_Response from "./DutchLanguage_AI_Response";
@@ -181,10 +180,10 @@ const fetchAllEntries = async () => {
       const submission = await DutchLanguage_AIEvaluator({
         userInput: entry,
         promptType: "dagboek",
-        exerciseType: "DutchLanguage_Diary", // provided by you
+        exerciseType: "diary-entry", // provided by you
         originComponent: "DutchLanguage_Dagboek",
         difficultyLevel: 1,
-        userId: 121,
+        userId: 123,
         apiBase: API_BASE,
         aiEndpoint: AI_ENDPOINT,
       });
@@ -204,23 +203,40 @@ const fetchAllEntries = async () => {
     }
   };
 
+
   const handleDelete = async (id) => {
-    if (!window.confirm("Weet je zeker dat je dit dagboekitem wilt verwijderen?")) return;
-    try {
-      const res = await fetch(`${API_BASE}/${id}`, { method: "DELETE" });
-      if (res.status === 204 || res.ok) {
-        setAllEntries((prev) => prev.filter((e) => e.id !== id));
-        if (recentSubmission?.id === id) setRecentSubmission(null);
-      } else {
-        const text = await res.text();
-        console.error("Delete failed:", text);
-        toast.error("Verwijderen mislukt.", { position: "top-center" });
+  if (!window.confirm("Weet je zeker dat je dit dagboekitem wilt verwijderen?")) return;
+
+  try {
+    const res = await fetch(
+      `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/delete/${id}`,
+      { method: "DELETE" }
+    );
+
+    if (res.status === 204 || res.ok) {
+      // Update UI locally
+      setAllEntries((prev) => prev.filter((e) => e.id !== id));
+
+      if (recentSubmission?.id === id) {
+        setRecentSubmission(null);
       }
-    } catch (err) {
-      console.error(err);
-      toast.error("Fout bij verwijderen.", { position: "top-center" });
+
+      // ⭐ SUCCESS CONFIRMATION
+      toast.success("Dagboekitem succesvol verwijderd!", {
+        position: "top-center",
+      });
+
+    } else {
+      const text = await res.text();
+      console.error("Delete failed:", text);
+      toast.error("Verwijderen mislukt.", { position: "top-center" });
     }
-  };
+  } catch (err) {
+    console.error(err);
+    toast.error("Fout bij verwijderen.", { position: "top-center" });
+  }
+};
+
 
   // Group entries by date
   const groupedByDate = allEntries
@@ -245,7 +261,7 @@ const fetchAllEntries = async () => {
         Mijn Dagboek in het Nederlands (ML)
       </h2>
 
-      <DutchLanguage_Dagboek_ScoreTrend />
+      {/* <DutchLanguage_Dagboek_ScoreTrend /> */}
 
       <form onSubmit={handleSubmit}>
         <textarea

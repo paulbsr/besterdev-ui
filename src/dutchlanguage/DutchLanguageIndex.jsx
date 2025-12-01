@@ -2,12 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FaPlus, FaEdit } from "react-icons/fa";
 import { IoMdSwap } from "react-icons/io";
-import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 import { PiCheckCircleFill } from "react-icons/pi";
 import { IoArrowUndoCircle } from "react-icons/io5";
 import { LiaSortAlphaDownSolid } from "react-icons/lia";
-import { TbExchange } from "react-icons/tb";
 import { VscWordWrap } from "react-icons/vsc";
 
 

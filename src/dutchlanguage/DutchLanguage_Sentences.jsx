@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FiRefreshCw } from "react-icons/fi";
 import { DutchLanguage_AIEvaluator } from "./DutchLanguage_AIEvaluator";
 import DutchLanguage_AI_Response from "./DutchLanguage_AI_Response";
+import { FiTrash2, FiRefreshCw } from "react-icons/fi";
+import { FaTimes } from "react-icons/fa";
+
 
 function DutchLanguage_Sentences() {
   const [word, setWord] = useState("Laden...");
@@ -16,6 +18,12 @@ function DutchLanguage_Sentences() {
 
   const timerRef = useRef(null);
   const [elapsed, setElapsed] = useState(0);
+
+  const handleClearSubmission = () => {
+  setRecentSubmission(null);
+  setFeedback("");
+};
+
 
   // ------------------- Word Fetch -------------------
   const formatText = (text) => {
@@ -179,11 +187,36 @@ function DutchLanguage_Sentences() {
 
 
       {/* ------------------- Latest AI Submission ------------------- */}
-      {recentSubmission && (
+      {/* {recentSubmission && (
         <div style={{ marginBottom: "16px" }}>
           <DutchLanguage_AI_Response submission={recentSubmission} />
         </div>
-      )}
+      )} */}
+
+      {recentSubmission && (
+  <div style={{ 
+      marginBottom: "16px", 
+      position: "relative",
+      // paddingRight: "4px"
+  }}>
+    {/* Delete Icon */}
+    <FaTimes
+      onClick={handleClearSubmission}
+      title="Verwijderen"
+      style={{
+        position: "absolute",
+        right: "0px",
+        top: "4px",
+        cursor: "pointer",
+        fontSize: "18px",
+        color: "#c0c0c0"
+      }}
+    />
+
+    <DutchLanguage_AI_Response submission={recentSubmission} />
+  </div>
+)}
+
     </div>
   );
 }

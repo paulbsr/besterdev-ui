@@ -29,12 +29,12 @@ function DutchLanguage_AI_Response({ submission }) {
 
       {/* AI suggestion */}
       {submission.aiCorrection && (
-        <div style={{ color: "#FF4F00", marginTop: "4px" }}>{submission.aiCorrection}</div>
+        <div style={{ color: "#FF4F00", marginTop: "4px" }}>AI Correction:  {submission.aiCorrection}</div>
       )}
 
       {/* AI feedback */}
       {submission.aiFeedback && (
-        <div style={{ color: "grey", fontStyle: "italic", marginTop: "2px", }}>{submission.aiFeedback}</div>
+        <div style={{ color: "#474343ff", fontStyle: "italic", marginTop: "2px", }}>AI Feedback: {submission.aiFeedback}</div>
       )}
 
       {/* Optional: display individual 7 scores */}
@@ -44,33 +44,33 @@ function DutchLanguage_AI_Response({ submission }) {
           gap: "6px",
           flexWrap: "wrap",
           marginTop: "4px",
-          fontSize: "10px",
+          fontSize: "12px",
           color: "#999",
         }}
-      >AI Score
+      >AI Scores: &nbsp;
         {submission.scoreWordorder !== undefined && (
-          <span>Word Order: {submission.scoreWordorder}</span>
+          <span>Word Order={submission.scoreWordorder}</span>
         )}
         {submission.scoreNoun !== undefined && (
-          <span>Nouns (werkwoorden): {submission.scoreNoun}</span>
+          <span>Nouns={submission.scoreNoun}</span>
         )}
         {submission.scoreArticle !== undefined && (
-          <span>Articles (lidwoorden): {submission.scoreArticle}</span>
+          <span>Articles={submission.scoreArticle}</span>
         )}
         {submission.scoreSpelling !== undefined && (
-          <span>Spelling: {submission.scoreSpelling}</span>
+          <span>Spelling={submission.scoreSpelling}</span>
         )}
         {submission.scoreGrammar !== undefined && (
-          <span>Grammar: {submission.scoreGrammar}</span>
+          <span>Grammar={submission.scoreGrammar}</span>
         )}
         {submission.scoreComprehensibility !== undefined && (
-          <span>Comprehensibility: {submission.scoreComprehensibility}</span>
+          <span>Comprehensibility={submission.scoreComprehensibility}</span>
         )}
         {submission.scoreVocabulary !== undefined && (
-          <span>Vocabulary: {submission.scoreVocabulary}</span>
+          <span>Vocabulary={submission.scoreVocabulary}</span>
         )}
         {submission.scoreUserAverage !== undefined && (
-          <span>AVG: {submission.scoreUserAverage} / 5</span>
+          <span>AVG={submission.scoreUserAverage} / 5</span>
         )}
       </div>
     </div>
