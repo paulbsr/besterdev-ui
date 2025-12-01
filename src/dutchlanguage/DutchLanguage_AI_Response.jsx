@@ -31,9 +31,8 @@ function DutchLanguage_AI_Response({ submission }) {
             {countWords(submission.userInput)} woorden
           </span>
 
-          <DutchLanguage_AI_ScoreSquares
-            averageScore={submission.scoreUserAverage}
-          />
+          <DutchLanguage_AI_ScoreSquares averageScore={submission.scoreUserAverage}/>
+
         </div>
       </div>
 
@@ -50,37 +49,37 @@ function DutchLanguage_AI_Response({ submission }) {
       {/* Optional: display individual 7 scores */}
       <div
         style={{
-          display: "flex",
-          gap: "6px",
-          flexWrap: "wrap",
+          // display: "flex",
+          // gap: "6px",
+          // flexWrap: "wrap",
           marginTop: "4px",
-          fontSize: "12px",
-          color: "#999",
+          fontSize: "14px",
+          color: "#909090",
         }}
       >
         {submission.scoreWordorder !== undefined && (
-          <span>Word Order={submission.scoreWordorder}</span>
-        )}
-        {submission.scoreNoun !== undefined && (
-          <span>Nouns={submission.scoreNoun}</span>
-        )}
-        {submission.scoreArticle !== undefined && (
-          <span>Articles={submission.scoreArticle}</span>
-        )}
-        {submission.scoreSpelling !== undefined && (
-          <span>Spelling={submission.scoreSpelling}</span>
+        <span>Word Order: {submission.scoreWordorder} , </span>
         )}
         {submission.scoreGrammar !== undefined && (
-          <span>Grammar={submission.scoreGrammar}</span>
-        )}
-        {submission.scoreComprehensibility !== undefined && (
-          <span>Comprehensibility={submission.scoreComprehensibility}</span>
+        <span>Grammar: {submission.scoreGrammar} , </span>
         )}
         {submission.scoreVocabulary !== undefined && (
-          <span>Vocabulary={submission.scoreVocabulary}</span>
+        <span>Vocabulary: {submission.scoreVocabulary} , </span>
+        )}
+        {submission.scoreSpelling !== undefined && (
+        <span>Spelling: {submission.scoreSpelling} , </span>
+        )}
+        {submission.scoreComprehensibility !== undefined && (
+        <span>Comprehensibility: {submission.scoreComprehensibility} , </span>
+        )}
+        {submission.scoreNoun !== undefined && (
+          <span>Nouns: {submission.scoreNoun} , </span>
+        )}
+        {submission.scoreArticle !== undefined && (
+          <span>Articles: {submission.scoreArticle} , </span>
         )}
         {submission.scoreUserAverage !== undefined && (
-          <span>AVG={submission.scoreUserAverage} / 5</span>
+          <span>AVG: {submission.scoreUserAverage} / 5</span>
         )}
       </div>
     </div>

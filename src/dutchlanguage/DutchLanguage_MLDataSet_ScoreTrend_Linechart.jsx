@@ -42,6 +42,7 @@ const DutchLanguage_MLDataSet_ScoreTrend_Linechart = () => {
           <CartesianGrid strokeDasharray="1 1" />
 
           <XAxis dataKey="date" tick={{ fontSize: 9 }} />
+          
           <YAxis
             domain={[0, 5]}
             ticks={[0, 1, 2, 3, 4, 5]}

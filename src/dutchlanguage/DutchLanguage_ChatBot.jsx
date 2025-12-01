@@ -10,7 +10,7 @@ import DutchLanguage_AI_ScoreSquares from "./DutchLanguage_AI_ScoreSquares";
 // Config (provided)
 const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/add";
 const AI_ENDPOINT = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
-const API_ALL_DIARY = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/all/chatbot";
+const API_ALL_CHATBOT = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/all/chatbot";
 
 const countWords = (text) => (text ? text.trim().split(/\s+/).filter(Boolean).length : 0);
 
@@ -73,7 +73,7 @@ const DateGroup = ({ dateKey, entries, handleDelete }) => {
 
 const TimeGroup = ({ item, handleDelete }) => {
   const [expanded, setExpanded] = useState(false);
- 
+
   const d = new Date(item.createdAtParsed);
   const average = item?.scoreUserAverage ?? 0; // <-- safe fallback
 
@@ -123,14 +123,14 @@ const TimeGroup = ({ item, handleDelete }) => {
 
           {/* Scores line */}
           <div style={{ color: "#909090", marginBottom: "6px", fontSize: "10pt" }}>
-            Word Order={item.scoreWordorder}
-            • Grammar={item.scoreGrammar}
-            • Vocab={item.scoreVocabulary}
-            • Spelling={item.scoreSpelling}
-            • Comprehensibility={item.scoreComprehensibility}
-            • Nouns={item.scoreNoun}
-            • Articles={item.scoreArticle}
-
+            Word Order: {item.scoreWordorder} , 
+            Grammar: {item.scoreGrammar} , 
+            Vocab: {item.scoreVocabulary} , 
+            Spelling: {item.scoreSpelling} , 
+            Comprehensibility: {item.scoreComprehensibility} , 
+            Nouns: {item.scoreNoun} , 
+            Articles: {item.scoreArticle} , 
+            AVG: {item.scoreUserAverage} / 5
           </div>
 
           {item.aiCorrection && (
@@ -163,7 +163,7 @@ export default function DutchLanguage_Chatbot() {
 
   const fetchAllEntries = async () => {
     try {
-      const res = await fetch(API_ALL_DIARY);
+      const res = await fetch(API_ALL_CHATBOT);
       if (!res.ok) throw new Error("Failed to fetch entries");
       const data = await res.json();
       const normalized = (Array.isArray(data) ? data : [data]).map((it) => ({
@@ -315,15 +315,13 @@ export default function DutchLanguage_Chatbot() {
         </div>
       )}
 
-      <div style={{ marginTop: "8px" }}>
-      </div>
+      <div style={{ marginTop: "8px" }}></div>
 
       {/* Past entries grouped */}
       <div style={{ marginTop: "12px" }}>
         {Object.keys(groupedByDate).length === 0 && <div style={{ color: "#999" }}>Geen eerdere chatberichten.</div>}
         {Object.keys(groupedByDate).map((dateKey) => (
           <DateGroup key={dateKey} dateKey={dateKey} entries={groupedByDate[dateKey]} handleDelete={handleDelete} />
-          
         ))}
       </div>
     </div>
