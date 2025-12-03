@@ -33,8 +33,9 @@ import { SiGoogletranslate } from "react-icons/si";
 import { RiWebcamFill } from "react-icons/ri";
 import { FaCarCrash } from "react-icons/fa";
 import DutchLanguage_Sentences from "./DutchLanguage_Sentences";
-import DutchLanguage_MLDataSet_ScoreTrend_Linechart from "./DutchLanguage_MLDataSet_ScoreTrend_Linechart";
-import DutchLanguage_MLDataSet_ScoreTrend_Barcharts from "./DutchLanguage_MLDataSet_ScoreTrend_Barcharts";
+import DutchLanguage_MLDataSet_ScoreTrend_Accuracy from "./DutchLanguage_MLDataSet_ScoreTrend_Accuracy";
+import DutchLanguage_MLDataSet_ScoreTrend_Scores from "./DutchLanguage_MLDataSet_ScoreTrend_Scores";
+import DutchLanguage_MLDataSet_ScoreTrend_Activity from "./DutchLanguage_MLDataSet_ScoreTrend_Activity";
 
 export default function DutchLanguageHomePage() {
   return (
@@ -75,8 +76,10 @@ export default function DutchLanguageHomePage() {
 
           {/* <AskAI /> */}
 
-          <div><DutchLanguage_MLDataSet_ScoreTrend_Linechart /></div>
-          <div><DutchLanguage_MLDataSet_ScoreTrend_Barcharts /></div>
+          <div><DutchLanguage_MLDataSet_ScoreTrend_Accuracy /></div>
+          <div><DutchLanguage_MLDataSet_ScoreTrend_Activity /></div>
+          <div><DutchLanguage_MLDataSet_ScoreTrend_Scores /></div>
+
           <div><DutchLanguage_Sentences /></div>
           <div><DutchLanguageCompareContrast /></div>
           <div><DutchLanguage_Index /></div>

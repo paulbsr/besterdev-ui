@@ -8,8 +8,10 @@ import {
     CartesianGrid,
     LabelList,
 } from "recharts";
+import { FiBarChart2 } from "react-icons/fi";
+import { SiPagespeedinsights } from "react-icons/si";
 
-export default function DutchLanguage_MLDataSet_ScoreTrend_Barcharts() {
+export default function DutchLanguage_MLDataSet_ScoreTrend_Scores() {
     const [chartData, setChartData] = useState([]);
 
     const buildChartData = (obj) => {
@@ -42,11 +44,31 @@ export default function DutchLanguage_MLDataSet_ScoreTrend_Barcharts() {
     }, []);
 
     return (
-        <div style={{ width: "100%", height: 150, marginTop: 16, border: "1px solid #FF4F00", borderRadius: "8px", marginBottom: "10px", padding: "10px", boxSizing: "border-box" }}>
+        <div
+            style={{
+                width: "100%",
+                height: 200,
+                marginBottom: 16,
+                border: "1px solid #FF4F00",
+                borderRadius: "8px",
+                padding: "10px",
+                boxSizing: "border-box",
+            }}
+        >
+            <h2
+                style={{
+                    margin: 0,
+                    marginBottom: 10,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px",
+                }}
+            ><SiPagespeedinsights size={30} color="#FF4F00" />Score Insight</h2>
+
 
             <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={chartData} layout="vertical" barCategoryGap="10%" barGap={2}
-                    margin={{ top: 0, bottom: 0, left: 15, right: 10 }}
+                    margin={{ top: 1, bottom: 30, left: 45, right: 10 }}
                 >
                     <CartesianGrid strokeDasharray="3 3" />
 
@@ -73,10 +95,10 @@ export default function DutchLanguage_MLDataSet_ScoreTrend_Barcharts() {
                         />
                         <LabelList
                             dataKey="value"
-                            position="right"
                             formatter={(v) => v.toFixed(2)}
+                            position="right"
                             fontSize={11}
-                            fill="#1a1212ff"
+                            fill="#1a1212"
                         />
                     </Bar>
                 </BarChart>
