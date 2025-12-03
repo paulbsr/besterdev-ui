@@ -36,6 +36,7 @@ import DutchLanguage_Sentences from "./DutchLanguage_Sentences";
 import DutchLanguage_MLDataSet_ScoreTrend_Accuracy from "./DutchLanguage_MLDataSet_ScoreTrend_Accuracy";
 import DutchLanguage_MLDataSet_ScoreTrend_Scores from "./DutchLanguage_MLDataSet_ScoreTrend_Scores";
 import DutchLanguage_MLDataSet_ScoreTrend_Activity from "./DutchLanguage_MLDataSet_ScoreTrend_Activity";
+import DutchLanguage_Zintransformatie from "./DutchLanguage_Zintransformatie";
 
 export default function DutchLanguageHomePage() {
   return (
@@ -79,11 +80,12 @@ export default function DutchLanguageHomePage() {
           <div><DutchLanguage_MLDataSet_ScoreTrend_Accuracy /></div>
           <div><DutchLanguage_MLDataSet_ScoreTrend_Activity /></div>
           <div><DutchLanguage_MLDataSet_ScoreTrend_Scores /></div>
-
           <div><DutchLanguage_Sentences /></div>
+          <div><DutchLanguage_Zintransformatie /></div>
           <div><DutchLanguageCompareContrast /></div>
           <div><DutchLanguage_Index /></div>
           <div><DutchLanguage_Tenses /></div>
+
           <button
             onClick={() => document.body.classList.toggle('dark')}
             style={{
