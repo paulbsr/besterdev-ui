@@ -90,19 +90,19 @@ export default function DutchLanguageWoordenschat() {
     const defaultStyle = { color: "#000000", marginRight: "4px", cursor: "pointer" };
 
     return (
-        <div style={{ fontFamily: "Segoe UI, sans-serif", fontSize: "14px" }}>
+        <div style={{ border: "1px solid #FF4F00", borderRadius: "8px", padding: "16px", fontFamily: "Segoe UI", fontSize: "16px", marginBottom: "16px" }}>
             <Tooltip id="tooltip" place="left" />
             <h2 style={{ fontSize: "22px", fontWeight: "bold", marginBottom: "12px", textAlign: "right" }}>
 
-                    <RxLetterSpacing
-                      style={{
+                <RxLetterSpacing
+                    style={{
                         color: "#FF4F00",
                         fontSize: "25px",
                         cursor: "pointer",
                         marginRight: "10px",
-                      }}
-                    />    
-                
+                    }}
+                />
+
                 Woordenschat</h2>
 
             <div>
