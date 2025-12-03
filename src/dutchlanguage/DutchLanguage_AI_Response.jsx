@@ -16,7 +16,7 @@ function DutchLanguage_AI_Response({ submission }) {
         borderRadius: "8px",
         background: "#fafafa",
         marginBottom: "16px",
-        width: "99%"
+        // width: "99%"
       }}
     >
       <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
