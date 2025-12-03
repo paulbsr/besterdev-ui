@@ -422,6 +422,7 @@ function DutchLanguage_Sentences() {
               height: "16px",
               border: "2px solid #FF4F00",
               borderTop: "2px solid transparent",
+              borderBottom: "4px solid transparent",
               borderRadius: "50%",
               animation: "spin 0.8s linear infinite",
             }}
@@ -434,6 +435,7 @@ function DutchLanguage_Sentences() {
       {recentSubmission && (
         <div
           style={{
+            marginTop: "12px",
             marginBottom: "16px",
             position: "relative",
           }}

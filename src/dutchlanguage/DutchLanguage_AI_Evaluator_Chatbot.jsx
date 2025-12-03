@@ -83,7 +83,7 @@ You are a Dutch NT2/B2 language teacher and evaluator.  Student text: "${userInp
 Respond ONLY in raw JSON with these exact keys:
 {
   "aiCorrection": "corrected version in Dutch",
-  "aiFeedback": "conversational about the topic, not linguistic feedback, always in Dutch, encourage responses to be in the future tense or past tense",
+  "aiFeedback": "conversational about the topic, not linguistic feedback, always in Dutch, encourage responses to be in the future tense or past tense. Don't just encourage conversation but try to answer the user's questions also",
   "scoreGrammar": 0-5,
   "scoreVocabulary": 0-5,
   "scoreSpelling": 0-5,
