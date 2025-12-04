@@ -26,7 +26,7 @@ import DutchLanguage_Tenses from "./DutchLanguage_Tenses";
 import DutchLanguage_SignaalWoorden from "./DutchLanguage_SignaalWoorden";
 import DutchLanguage_ChatBot from "./DutchLanguage_ChatBot";
 import { PiExamFill, PiNumberCircleOneBold, PiExamBold, PiHouseSimpleBold, PiTelevisionSimpleDuotone } from "react-icons/pi";
-import { FaNewspaper, FaFacebook, FaRadio  } from "react-icons/fa6";
+import { FaNewspaper, FaFacebook, FaRadio } from "react-icons/fa6";
 import { BsNewspaper, BsClockFill } from "react-icons/bs";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { SiGoogletranslate } from "react-icons/si";
@@ -36,7 +36,9 @@ import DutchLanguage_Sentences from "./DutchLanguage_Sentences";
 import DutchLanguage_MLDataSet_ScoreTrend_Accuracy from "./DutchLanguage_MLDataSet_ScoreTrend_Accuracy";
 import DutchLanguage_MLDataSet_ScoreTrend_Scores from "./DutchLanguage_MLDataSet_ScoreTrend_Scores";
 import DutchLanguage_MLDataSet_ScoreTrend_Activity from "./DutchLanguage_MLDataSet_ScoreTrend_Activity";
+import DutchLanguage_MLDataSet_ScoreTrend_LengthVsScore from "./DutchLanguage_MLDataSet_ScoreTrend_LengthVsScore";
 import DutchLanguage_Zintransformatie from "./DutchLanguage_Zintransformatie";
+import DutchLanguage_Zintransformatie_Mini from "./DutchLanguage_Zintransformatie_Mini";
 
 export default function DutchLanguageHomePage() {
   return (
@@ -75,11 +77,11 @@ export default function DutchLanguageHomePage() {
             <a href="https://anderetijden.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Andere Tijden" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><BsClockFill /></a>
           </div>
 
-          {/* <AskAI /> */}
-
-          <div><DutchLanguage_MLDataSet_ScoreTrend_Accuracy /></div>
           <div><DutchLanguage_MLDataSet_ScoreTrend_Activity /></div>
+          <div><DutchLanguage_MLDataSet_ScoreTrend_LengthVsScore /></div>
+          <div><DutchLanguage_MLDataSet_ScoreTrend_Accuracy /></div>
           <div><DutchLanguage_MLDataSet_ScoreTrend_Scores /></div>
+          <div><DutchLanguage_Zintransformatie_Mini /></div>
           <div><DutchLanguage_Sentences /></div>
           <div><DutchLanguage_Zintransformatie /></div>
           <div><DutchLanguageCompareContrast /></div>
