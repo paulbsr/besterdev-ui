@@ -81,7 +81,7 @@ Return ONLY the converted sentence as plain text.`
           value={sentence}
           onChange={(e) => setSentence(e.target.value)}
           onKeyDown={handleEnter}
-          placeholder="Enter a sentence in Nederlands to transform to Present, Past, Future, Singular or Plural"
+          placeholder="Transform a sentence in Nederlands to Present, Past, Future, Singular or Plural"
           style={{
             padding: "8px",
             width: "590px",

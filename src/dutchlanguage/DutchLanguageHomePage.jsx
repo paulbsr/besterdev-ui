@@ -76,13 +76,14 @@ export default function DutchLanguageHomePage() {
             <a href="https://www.facebook.com/StaatsexamensNt2" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="StaatsexamensNt2" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><FaFacebook /></a>
             <a href="https://anderetijden.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Andere Tijden" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><BsClockFill /></a>
           </div>
-
+          <div><DutchLanguage_Dagboek /></div>
+          <div><DutchLanguage_Sentences /></div>
           <div><DutchLanguage_MLDataSet_ScoreTrend_Activity /></div>
           <div><DutchLanguage_MLDataSet_ScoreTrend_LengthVsScore /></div>
           <div><DutchLanguage_MLDataSet_ScoreTrend_Accuracy /></div>
           <div><DutchLanguage_MLDataSet_ScoreTrend_Scores /></div>
           <div><DutchLanguage_Zintransformatie_Mini /></div>
-          <div><DutchLanguage_Sentences /></div>
+
           <div><DutchLanguage_Zintransformatie /></div>
           <div><DutchLanguageCompareContrast /></div>
           <div><DutchLanguage_Index /></div>
@@ -100,7 +101,7 @@ export default function DutchLanguageHomePage() {
             }}
           >Dark Mode
           </button>
-          <DutchLanguage_Dagboek />
+
           <DutchLanguage_Nt2exam_SchrijvenToets />
           <DutchLanguage_Nt2exam_LuisterenToets />
           <DutchLanguageSentenceTrainerModal />
