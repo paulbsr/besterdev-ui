@@ -176,6 +176,8 @@ import 'react-tooltip/dist/react-tooltip.css';
 import './index.css';
 import './Fonts.css';
 
+import { RefreshProvider } from "./dutchlanguage/RefreshContext";
+
 // --- Firebase Configuration ---
 const firebaseConfig = {
   apiKey: "AIzaSyCwDLcoI45eQU61Y7GVXlBDAx-3Du_gQuA",
@@ -284,6 +286,7 @@ const App = () => {
 
   // --- Routes ---
   return (
+        <RefreshProvider>
     <Router>
       <Routes>
         <Route path='/' element={<PageHome searchPhrase={searchPhrase} />} />
@@ -307,6 +310,7 @@ const App = () => {
         <Route path='*' element={<PageHome searchPhrase={searchPhrase} />} />
       </Routes>
     </Router>
+    </RefreshProvider>
   );
 };
 

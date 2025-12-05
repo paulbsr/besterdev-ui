@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { DutchLanguage_AIEvaluator } from "./DutchLanguage_AIEvaluator";
 import DutchLanguage_AI_Response from "./DutchLanguage_AI_Response";
 import { FiRefreshCw } from "react-icons/fi";
 import { FaTimes } from "react-icons/fa";
+import { RefreshContext } from "./RefreshContext";
 
 function DutchLanguage_Sentences() {
   const [word, setWord] = useState("Laden...");
@@ -63,6 +64,10 @@ function DutchLanguage_Sentences() {
   const formatTime = (secs) => `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")}`;
 
   // ------------------- Submit Sentence -------------------
+
+  const { triggerRefresh } = useContext(RefreshContext);
+
+
   const handleSubmit = async (e) => {
     if (e.key !== "Enter") return;
     if (!sentence.trim()) return;
@@ -106,6 +111,7 @@ function DutchLanguage_Sentences() {
     } finally {
       setLoading(false);
     }
+      triggerRefresh();   // 🔥 Redraw all charts
   };
 
   // ------------------- New Word -------------------

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { RefreshContext } from "./RefreshContext";
 import {
     BarChart,
     Bar,
@@ -8,11 +9,13 @@ import {
     CartesianGrid,
     LabelList,
 } from "recharts";
-import { FiBarChart2 } from "react-icons/fi";
+
 import { SiPagespeedinsights } from "react-icons/si";
+
 
 export default function DutchLanguage_MLDataSet_ScoreTrend_Scores() {
     const [chartData, setChartData] = useState([]);
+    const { refreshKey } = useContext(RefreshContext);
 
     const buildChartData = (obj) => {
         return [
@@ -26,22 +29,29 @@ export default function DutchLanguage_MLDataSet_ScoreTrend_Scores() {
         ];
     };
 
+    // ✅ MOVE THIS OUTSIDE useEffect
+    const fetchGlobalAverages = async () => {
+        try {
+            const res = await fetch(
+                "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/global-averages"
+            );
+            const data = await res.json();
+            setChartData(buildChartData(data));
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    // load on component mount
     useEffect(() => {
-        const fetchGlobalAverages = async () => {
-            try {
-                const res = await fetch(
-                    "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/global-averages"
-                );
-                const data = await res.json();
-
-                setChartData(buildChartData(data));
-            } catch (err) {
-                console.error(err);
-            }
-        };
-
         fetchGlobalAverages();
     }, []);
+
+    // reload when refreshKey changes
+    useEffect(() => {
+        fetchGlobalAverages();
+    }, [refreshKey]);
+
 
     return (
         <div

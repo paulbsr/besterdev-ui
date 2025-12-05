@@ -1,10 +1,11 @@
 // DutchLanguage_Dagboek.jsx
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
+import "react-toastify/dist/ReactToastify.css";
 import { PiBookOpenTextBold } from "react-icons/pi";
 import { FaTimes } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { DutchLanguage_AIEvaluator } from "./DutchLanguage_AIEvaluator"; // adjust path if necessary
+import { RefreshContext } from "./RefreshContext";
 import DutchLanguage_AI_ScoreSquares from "./DutchLanguage_AI_ScoreSquares";
 import DutchLanguage_AI_Response from "./DutchLanguage_AI_Response";
 
@@ -169,13 +170,14 @@ const fetchAllEntries = async () => {
   }
 };
 
-
+const { triggerRefresh } = useContext(RefreshContext);
 
   const handleSubmit = async (e) => {
     e?.preventDefault?.();
     if (!entry.trim()) return;
     setLoading(true);
     setRecentSubmission(null);
+    triggerRefresh();
 
     try {
       // use the standardized AIEvaluator - it will create the DB row, call AI and update DB

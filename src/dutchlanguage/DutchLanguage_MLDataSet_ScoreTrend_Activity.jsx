@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { RefreshContext } from "./RefreshContext";
 import {
     BarChart,
     Bar,
@@ -12,36 +13,45 @@ import {
 
 import { RiNumbersFill } from "react-icons/ri";
 
-export default function DailyCountVerticalBarchart() {
 
+export default function DailyCountVerticalBarchart() {
+    const { refreshKey } = useContext(RefreshContext);
     const [data, setData] = useState([]);
 
+    useEffect(() => { fetchDailyCounts();}, [refreshKey]);
+
+    const fetchDailyCounts = async () => {
+        try {
+            const response = await fetch(
+                "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/daily-average-score"
+            );
+            const json = await response.json();
+
+            const mapped = json.map((item) => {
+                const d = new Date(item.date);
+                const year = d.getFullYear();
+                const month = String(d.getMonth() + 1).padStart(2, "0");
+                const day = String(d.getDate()).padStart(2, "0");
+
+                return {
+                    date: `${year}-${month}-${day}`,
+                    count: item.count,
+                };
+            });
+
+            setData(mapped);
+        } catch (err) {
+            console.error("Error fetching daily counts:", err);
+        }
+    };
+
+    // 🔥 re-fetch when refreshKey changes
     useEffect(() => {
-        const fetchDailyCounts = async () => {
-            try {
-                const response = await fetch(
-                    "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/daily-average-score"
-                );
-                const json = await response.json();
+        fetchDailyCounts();
+    }, [refreshKey]);
 
-                const mapped = json.map((item) => {
-                    const d = new Date(item.date);
-                    const year = d.getFullYear();
-                    const month = String(d.getMonth() + 1).padStart(2, "0");
-                    const day = String(d.getDate()).padStart(2, "0");
-
-                    return {
-                        date: `${year}-${month}-${day}`, // 2025-MM-DD
-                        count: item.count,
-                    };
-                });
-
-                setData(mapped);
-            } catch (err) {
-                console.error("Error fetching daily counts:", err);
-            }
-        };
-
+    // normal first load
+    useEffect(() => {
         fetchDailyCounts();
     }, []);
 
