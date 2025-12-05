@@ -162,7 +162,7 @@ export default function MultiAxis_LengthVsScore_Enhanced() {
                                     }}
                                 >
                                     <br />Avg Word Count: {Math.round(payload[0].payload.averageWordcount)}
-                                    <br />Score: {(payload[0].payload.averageScore / 5 * 100).toFixed(0)}%
+                                    <br />Score: <strong>{(payload[0].payload.averageScore / 5 * 100).toFixed(0)}%</strong>
                                     <br />Submissions: {payload[0].payload.count}
                                 </div>
                             ) : null

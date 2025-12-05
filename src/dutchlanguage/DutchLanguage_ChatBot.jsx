@@ -558,6 +558,7 @@ export default function DutchLanguage_Chatbot() {
         fontFamily: "Segoe UI",
         fontSize: "16px",
         marginBottom: "16px",
+        marginTop: "16px",
       }}
     >
       <ToastContainer />
@@ -595,9 +596,10 @@ export default function DutchLanguage_Chatbot() {
             padding: "6px",
             fontFamily: "Segoe UI",
             fontSize: "12pt",
-            borderRadius: "4px",
-            border: "0.75px solid #777777",
+            borderRadius: "6px",
+            border: "0.75px solid #ccc",
             resize: "none",
+            boxShadow: "10px 10px 10px rgba(0,0,0,0.2)",
           }}
         />
 

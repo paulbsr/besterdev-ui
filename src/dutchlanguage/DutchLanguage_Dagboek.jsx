@@ -41,7 +41,7 @@ const TimeGroup = ({ item, handleDelete, styles }) => {
         style={{ cursor: "pointer", color: "black", fontFamily: "Segoe UI", fontSize: "11pt" }}
       >
         {hh}:{min} - {item.userInput}
-        
+
         <div style={{ display: "inline-flex", alignItems: "center" }}>
           <span style={{ color: "#c0c0c0", fontSize: "10pt", marginLeft: "6px" }}>
             {countWords(item.userInput)} Woorden
@@ -141,36 +141,36 @@ function DutchLanguage_Dagboek() {
   };
 
 
-const fetchAllEntries = async () => {
-  try {
-    const res = await fetch(API_ALL_DIARY);
-    if (!res.ok) throw new Error("<Diary> failed to fetch /all/diary entries");
-    const data = await res.json();
+  const fetchAllEntries = async () => {
+    try {
+      const res = await fetch(API_ALL_DIARY);
+      if (!res.ok) throw new Error("<Diary> failed to fetch /all/diary entries");
+      const data = await res.json();
 
-    // Normalize createdAt
-    const normalized = (Array.isArray(data) ? data : [data]).map((item) => {
-      let createdDate;
+      // Normalize createdAt
+      const normalized = (Array.isArray(data) ? data : [data]).map((item) => {
+        let createdDate;
 
-      if (Array.isArray(item.createdAt)) {
-        const [y, m, d, hh, mm, ss, ns] = item.createdAt;
-        const ms = Math.floor(ns / 1e6); 
-        createdDate = new Date(y, m - 1, d, hh, mm, ss, ms).toISOString();
-      } else {
-        createdDate = item.createdAt;
-      }
+        if (Array.isArray(item.createdAt)) {
+          const [y, m, d, hh, mm, ss, ns] = item.createdAt;
+          const ms = Math.floor(ns / 1e6);
+          createdDate = new Date(y, m - 1, d, hh, mm, ss, ms).toISOString();
+        } else {
+          createdDate = item.createdAt;
+        }
 
-      return { ...item, createdate: createdDate };
-    });
+        return { ...item, createdate: createdDate };
+      });
 
-    setAllEntries(normalized);
+      setAllEntries(normalized);
 
-  } catch (err) {
-    console.error(err);
-    setAllEntries([]);
-  }
-};
+    } catch (err) {
+      console.error(err);
+      setAllEntries([]);
+    }
+  };
 
-const { triggerRefresh } = useContext(RefreshContext);
+  const { triggerRefresh } = useContext(RefreshContext);
 
   const handleSubmit = async (e) => {
     e?.preventDefault?.();
@@ -209,37 +209,37 @@ const { triggerRefresh } = useContext(RefreshContext);
 
 
   const handleDelete = async (id) => {
-  if (!window.confirm("Weet je zeker dat je dit dagboekitem wilt verwijderen?")) return;
+    if (!window.confirm("Weet je zeker dat je dit dagboekitem wilt verwijderen?")) return;
 
-  try {
-    const res = await fetch(
-      `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/delete/${id}`,
-      { method: "DELETE" }
-    );
+    try {
+      const res = await fetch(
+        `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/delete/${id}`,
+        { method: "DELETE" }
+      );
 
-    if (res.status === 204 || res.ok) {
-      // Update UI locally
-      setAllEntries((prev) => prev.filter((e) => e.id !== id));
+      if (res.status === 204 || res.ok) {
+        // Update UI locally
+        setAllEntries((prev) => prev.filter((e) => e.id !== id));
 
-      if (recentSubmission?.id === id) {
-        setRecentSubmission(null);
+        if (recentSubmission?.id === id) {
+          setRecentSubmission(null);
+        }
+
+        // ⭐ SUCCESS CONFIRMATION
+        toast.success("Dagboekitem succesvol verwijderd!", {
+          position: "top-center",
+        });
+
+      } else {
+        const text = await res.text();
+        console.error("Delete failed:", text);
+        toast.error("Verwijderen mislukt.", { position: "top-center" });
       }
-
-      // ⭐ SUCCESS CONFIRMATION
-      toast.success("Dagboekitem succesvol verwijderd!", {
-        position: "top-center",
-      });
-
-    } else {
-      const text = await res.text();
-      console.error("Delete failed:", text);
-      toast.error("Verwijderen mislukt.", { position: "top-center" });
+    } catch (err) {
+      console.error(err);
+      toast.error("Fout bij verwijderen.", { position: "top-center" });
     }
-  } catch (err) {
-    console.error(err);
-    toast.error("Fout bij verwijderen.", { position: "top-center" });
-  }
-};
+  };
 
 
   // Group entries by date
@@ -284,16 +284,17 @@ const { triggerRefresh } = useContext(RefreshContext);
           style={{
             marginTop: "10px",
             height: "40px",
-            width: "98%",
+            width: "99%",
             padding: "6px",
             fontFamily: "Segoe UI",
             fontSize: "12pt",
-            borderRadius: "4px",
-            border: "0.75px solid #777",
+            borderRadius: "6px",
+            border: "0.75px solid #ccc",
             resize: "vertical",
+            boxShadow: "10px 10px 10px rgba(0,0,0,0.2)",
           }}
         />
-        <div style={{ fontSize: "11pt", color: "grey", marginTop: "4px", marginBottom: "8px" }}>
+        <div style={{ fontSize: "10pt", color: "grey", marginTop: "4px", marginBottom: "8px" }}>
           Woorden: {wordCountState} | Tijd: {formatTime(elapsed)}
         </div>
         <button

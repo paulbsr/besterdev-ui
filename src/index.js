@@ -177,6 +177,7 @@ import './index.css';
 import './Fonts.css';
 
 import { RefreshProvider } from "./dutchlanguage/RefreshContext";
+import DutchLanguage_GlobalRightClick from './dutchlanguage/DutchLanguage_GlobalRightClick';
 
 // --- Firebase Configuration ---
 const firebaseConfig = {
@@ -287,6 +288,7 @@ const App = () => {
   // --- Routes ---
   return (
         <RefreshProvider>
+
     <Router>
       <Routes>
         <Route path='/' element={<PageHome searchPhrase={searchPhrase} />} />
@@ -310,6 +312,7 @@ const App = () => {
         <Route path='*' element={<PageHome searchPhrase={searchPhrase} />} />
       </Routes>
     </Router>
+
     </RefreshProvider>
   );
 };

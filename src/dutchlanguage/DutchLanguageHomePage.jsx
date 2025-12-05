@@ -19,6 +19,7 @@ import DutchLanguage_Nt2exam_LuisterenToets from "./DutchLanguage_Nt2exam_Luiste
 import imageNT2ExamTimetableJanuary from "./NT2ExamTimetableJanuary.jpg"
 import imageNT2ExamTimes from "./NT2ExamTimes.jpg"
 import Image from "./Amsterdam1.jpg"
+import ImageRight from "./Dutch_Image_1.jpg"
 import DutchLanguage_Dagboek from "./DutchLanguage_Dagboek";
 import DutchLanguage_WordContext from "./DutchLanguage_WordContext";
 import DutchLanguage_Index from "./DutchLanguage_Index";
@@ -118,6 +119,18 @@ export default function DutchLanguageHomePage() {
         {/* REGTER COLUMN */}
         <div className="spacer"></div>
         <div className="right">
+          {/* <img src={ImageRight} alt="Image" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} /> */}
+          <img
+  src={ImageRight}
+  alt="Image"
+  style={{
+    width: "390px",
+    height: "140px",
+    boxShadow: "10px 10px 10px rgba(0,0,0,0.2)",
+    borderRadius: "8px",
+  }}
+/>
+
           <DutchLanguage_ChatBot />
           <DutchLanguageWordExplain />
           <DutchLanguage_WordContext />

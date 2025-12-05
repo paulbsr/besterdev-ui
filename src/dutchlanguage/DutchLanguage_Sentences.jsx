@@ -111,7 +111,7 @@ function DutchLanguage_Sentences() {
     } finally {
       setLoading(false);
     }
-      triggerRefresh();   // 🔥 Redraw all charts
+    triggerRefresh();   // 🔥 Redraw all charts
   };
 
   // ------------------- New Word -------------------
@@ -131,8 +131,8 @@ function DutchLanguage_Sentences() {
           title="Nieuw woord"
           style={{
             position: "absolute",
-            right: "12px",
-            top: "22px",
+            right: "20px",
+            top: "34px",
             cursor: "pointer",
             fontSize: "20px",
             color: "#c0c0c0",
@@ -165,6 +165,7 @@ function DutchLanguage_Sentences() {
               outline: "none",
               fontSize: "13px",
               color: "#777",
+
             }}
             placeholder="Onderwerp..."
           />
@@ -177,9 +178,14 @@ function DutchLanguage_Sentences() {
             onKeyDown={handleSubmit}
             placeholder={`Gebruik dit woord in een correcte zin: ${word}`}
             style={{
-              border: "none",
-              outline: "none",
-              fontSize: "16px",
+              padding: "6px",
+              fontFamily: "Segoe UI",
+              fontSize: "12pt",
+              borderRadius: "6px",
+              border: "0.75px solid #ccc",
+              resize: "none",
+              boxShadow: "10px 10px 10px rgba(0,0,0,0.2)",
+              marginBottom: "10px",
             }}
           />
         </div>

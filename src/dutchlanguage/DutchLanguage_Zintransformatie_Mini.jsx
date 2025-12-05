@@ -48,32 +48,12 @@ Return ONLY the converted sentence as plain text.`
     <div
       className="Font-Segoe-Large-Howto"
       style={{
-        // border: "1px solid #FF4F00",
-        // borderRadius: "8px",
-        // padding: "16px",
         fontFamily: "Segoe UI",
         fontSize: "10px",
         marginBottom: "16px",
         marginTop: "16px",
       }}
     >
-      {/* <h2
-        style={{
-          fontWeight: "bold",
-          fontSize: "22px",
-          marginBottom: "16px",
-          marginTop: "1px",
-        }}
-      >
-        <TbTransform
-          style={{
-            color: "#FF4F00",
-            fontSize: "35px",
-            cursor: "pointer",
-            marginRight: "10px",
-          }}
-        />Zintransformatie
-      </h2> */}
 
       {/* Input Field */}
       <div style={{ marginBottom: "10px" }}>
@@ -84,10 +64,11 @@ Return ONLY the converted sentence as plain text.`
           placeholder="Transform a sentence in Nederlands to Present, Past, Future, Singular or Plural"
           style={{
             padding: "8px",
-            width: "590px",
+            width: "690px",
             border: "1px solid #ddd",
             borderRadius: "6px",
             fontSize: "12px",
+            height: "16.5px",
           }}
         />
 
@@ -96,11 +77,13 @@ Return ONLY the converted sentence as plain text.`
           onChange={(e) => setMode(e.target.value)}
           style={{
             padding: "8px",
-            width: "200px",
+            width: "120px",
             border: "1px solid #ddd",
             borderRadius: "6px",
             fontSize: "12px",
             marginLeft: "12px",
+            color: "#a0a0a0",
+
           }}
         >
           <option>Past Tense</option>
@@ -113,15 +96,16 @@ Return ONLY the converted sentence as plain text.`
         <button
           onClick={performConversion}
           style={{
-            height: "28.5px",
-            border: "1px solid #FF4F00",
-            borderRadius: "4px",
-            padding: "8px 8px",
-            fontSize: "10px",
+            height: "33.5px",
+            border: "1px solid #ddd",
+            borderRadius: "6px",
+            // padding: "8px 8px",
+            fontSize: "12px",
             cursor: "pointer",
             backgroundColor: "#FFFFFF",
             color: "#000000",
             marginLeft: "12px",
+            color: "#a0a0a0",
 
           }}
         >
