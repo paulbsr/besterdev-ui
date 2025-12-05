@@ -33,6 +33,7 @@ import { TiWeatherPartlySunny } from "react-icons/ti";
 import { SiGoogletranslate } from "react-icons/si";
 import { RiWebcamFill } from "react-icons/ri";
 import { FaCarCrash } from "react-icons/fa";
+import { TfiYoutube } from "react-icons/tfi";
 import DutchLanguage_Sentences from "./DutchLanguage_Sentences";
 import DutchLanguage_MLDataSet_ScoreTrend_Accuracy from "./DutchLanguage_MLDataSet_ScoreTrend_Accuracy";
 import DutchLanguage_MLDataSet_ScoreTrend_Scores from "./DutchLanguage_MLDataSet_ScoreTrend_Scores";
@@ -41,23 +42,20 @@ import DutchLanguage_MLDataSet_ScoreTrend_LengthVsScore from "./DutchLanguage_ML
 import DutchLanguage_Zintransformatie from "./DutchLanguage_Zintransformatie";
 import DutchLanguage_Zintransformatie_Mini from "./DutchLanguage_Zintransformatie_Mini";
 
+
+
 export default function DutchLanguageHomePage() {
   return (
     <div>
       {/* Spacer at the very top */}
       <div style={{ height: "20px" }}></div>
       <div className="homepage-layout">
-
         {/* LINKER COLUMN#1 */}
         <div className="left">
           <DutchLanguageIndex />
           <DutchLanguageWoordenschat />
         </div>
-
         <div className="spacer"></div>
-
-
-
         {/* CENTRE COLUMN */}
         <div className="main">
           <img src={Image} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} />
@@ -75,16 +73,17 @@ export default function DutchLanguageHomePage() {
             <a href="https://www.anwb.nl/verkeer?center=52.08720994322829%2C5.449947200775682&zoom=6.173985622710852" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Verkeer" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><FaCarCrash /></a>
             <a href="https://npo.nl/start/serie/eenvandaag/afleveringen" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO EenVandaag" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><PiNumberCircleOneBold /></a>
             <a href="https://www.facebook.com/StaatsexamensNt2" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="StaatsexamensNt2" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><FaFacebook /></a>
-            <a href="https://anderetijden.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Andere Tijden" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><BsClockFill /></a>
+            <a href="https://anderetijden.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Andere Tijden Website" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><BsClockFill /></a>
+            <a href="https://www.youtube.com/@AndereTijdenNTR/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Andere Tijden YouTube Channel" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><TfiYoutube /></a>
           </div>
-          <div><DutchLanguage_Dagboek /></div>
-          <div><DutchLanguage_Sentences /></div>
+
           <div><DutchLanguage_MLDataSet_ScoreTrend_Activity /></div>
           <div><DutchLanguage_MLDataSet_ScoreTrend_LengthVsScore /></div>
+          <div><DutchLanguage_Dagboek /></div>
+          <div><DutchLanguage_Sentences /></div>
           <div><DutchLanguage_MLDataSet_ScoreTrend_Accuracy /></div>
           <div><DutchLanguage_MLDataSet_ScoreTrend_Scores /></div>
           <div><DutchLanguage_Zintransformatie_Mini /></div>
-
           <div><DutchLanguage_Zintransformatie /></div>
           <div><DutchLanguageCompareContrast /></div>
           <div><DutchLanguage_Index /></div>
@@ -121,15 +120,15 @@ export default function DutchLanguageHomePage() {
         <div className="right">
           {/* <img src={ImageRight} alt="Image" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} /> */}
           <img
-  src={ImageRight}
-  alt="Image"
-  style={{
-    width: "390px",
-    height: "140px",
-    boxShadow: "10px 10px 10px rgba(0,0,0,0.2)",
-    borderRadius: "8px",
-  }}
-/>
+            src={ImageRight}
+            alt="Image"
+            style={{
+              width: "390px",
+              height: "140px",
+              boxShadow: "10px 10px 10px rgba(0,0,0,0.2)",
+              borderRadius: "8px",
+            }}
+          />
 
           <DutchLanguage_ChatBot />
           <DutchLanguageWordExplain />

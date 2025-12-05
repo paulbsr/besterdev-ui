@@ -85,10 +85,7 @@ export default function MultiAxis_LengthVsScore_Enhanced() {
                     alignItems: "center",
                     gap: "8px",
                 }}
-            >
-                <RiNumbersFill size={30} color="#FF4F00" />
-                Correlation between Sentence Length and Score
-            </h2>
+            ><RiNumbersFill size={30} color="#FF4F00" />Correlation between Sentence Length and Score</h2>
 
             {/* Controls */}
             <div style={{ marginBottom: "10px" }}>
@@ -185,8 +182,9 @@ export default function MultiAxis_LengthVsScore_Enhanced() {
                                 fontFamily="Segoe UI"
                                 dataKey="averageWordcount"
                                 position="top"
-                                fontSize={12}
+                                fontSize={14}
                                 offset={10}
+                                fill="#000000"
                                 formatter={(value) => Math.round(value)}
                             />
                         </Line>
@@ -217,9 +215,12 @@ export default function MultiAxis_LengthVsScore_Enhanced() {
                             <LabelList
                                 dataKey="averageScore"
                                 position="bottom"
-                                fontSize={12}
+                                fontSize={14}
                                 offset={10}
-                                formatter={(value) => `${value}/5.0`}
+                                fontFamily="Segoe UI"
+                                color="#000000"
+                                fill="#FF4F00"
+                                formatter={(value) => `${Math.round((value / 5) * 100)}%`}
                             />
                         </Line>
                     )}
