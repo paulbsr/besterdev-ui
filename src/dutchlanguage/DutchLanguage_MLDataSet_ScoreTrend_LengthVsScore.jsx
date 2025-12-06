@@ -94,6 +94,7 @@ export default function MultiAxis_LengthVsScore_Enhanced() {
                         type="checkbox"
                         checked={showWordCount}
                         onChange={() => setShowWordCount(!showWordCount)}
+                        style={{ accentColor: "#FF4F00" }}
                     />{" "}
                     Word Count
                 </label>
@@ -103,14 +104,15 @@ export default function MultiAxis_LengthVsScore_Enhanced() {
                         type="checkbox"
                         checked={showScore}
                         onChange={() => setShowScore(!showScore)}
+                        style={{ accentColor: "#FF4F00" }}
                     />{" "}
                     Score
                 </label>
 
-                <button onClick={exportCSV} style={{ marginRight: "10px" }}>
+                {/* <button onClick={exportCSV} style={{ marginRight: "10px" }}>
                     Export CSV
                 </button>
-                <button onClick={exportPNG}>Export PNG</button>
+                <button onClick={exportPNG}>Export PNG</button> */}
             </div>
 
             <ResponsiveContainer>
