@@ -1,19 +1,16 @@
 import { useState } from "react";
-import axios from "axios";
-import DatePicker from "react-datepicker";
 import { toast } from "react-toastify";
 import { GiGiftOfKnowledge, GiSpiderWeb } from "react-icons/gi";
 import { TbBrandSocketIo, TbBrandOauth } from "react-icons/tb";
 import { BsSearch } from "react-icons/bs";
 import { MdTask } from "react-icons/md";
-
+import { useCyclopediaApi } from "../cyclopedia/CyclopediaAPIProvider";
+import { useWebsiteApi } from "../websites/WebSiteAPIProvider";
+import axios from "axios";
+import DatePicker from "react-datepicker";
 import DBSearchComponentBanner from "../dbsearch/DBSearchComponentBanner";
 import WebSocketComponent from "../websockets/WebSocketComponent";
 import BearerToken from "../oauth2.0/BearerToken";
-
-import { useCyclopediaApi } from "../cyclopedia/CyclopediaAPIProvider";
-import { useWebsiteApi } from "../websites/WebSiteAPIProvider";
-
 import "react-tooltip/dist/react-tooltip.css";
 import "../Fonts.css";
 
@@ -340,9 +337,9 @@ const styles = {
     borderRadius: "8px",
     padding: "20px",
     backgroundColor: "#f7f4f3",
-    width: "50%",
+    width: "53%",
     margin: "0 auto",
-    boxShadow: "10px 10px 10px rgba(0,0,0,0.2)",
+    boxShadow: "20px 15px 10px rgba(0,0,0,0.7)",
     fontFamily: "Segoe UI",
     fontSize: "16px",
   },
@@ -358,7 +355,7 @@ const styles = {
     alignItems: "center",
     cursor: "pointer",
     gap: "6px",
-    marginLeft: "20px",
+    marginLeft: "35px",
   },
   icon: { color: "#4D4D4D", fontSize: "18px" },
   form: { marginTop: "10px" },

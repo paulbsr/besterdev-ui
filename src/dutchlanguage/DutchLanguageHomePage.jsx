@@ -26,9 +26,9 @@ import DutchLanguage_Index from "./DutchLanguage_Index";
 import DutchLanguage_Tenses from "./DutchLanguage_Tenses";
 import DutchLanguage_SignaalWoorden from "./DutchLanguage_SignaalWoorden";
 import DutchLanguage_ChatBot from "./DutchLanguage_ChatBot";
-import { PiExamFill, PiNumberCircleOneBold, PiExamBold, PiHouseSimpleBold, PiTelevisionSimpleDuotone } from "react-icons/pi";
+import { PiExamFill, PiNumberCircleOneBold, PiExamBold, PiHouseSimpleBold, PiTelevisionSimpleDuotone, PiFootprintsFill } from "react-icons/pi";
 import { FaNewspaper, FaFacebook, FaRadio } from "react-icons/fa6";
-import { BsNewspaper, BsClockFill } from "react-icons/bs";
+import { BsNewspaper, BsClockFill, BsFillDiamondFill } from "react-icons/bs";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { SiGoogletranslate } from "react-icons/si";
 import { RiWebcamFill } from "react-icons/ri";
@@ -41,6 +41,7 @@ import DutchLanguage_MLDataSet_ScoreTrend_Activity from "./DutchLanguage_MLDataS
 import DutchLanguage_MLDataSet_ScoreTrend_LengthVsScore from "./DutchLanguage_MLDataSet_ScoreTrend_LengthVsScore";
 import DutchLanguage_Zintransformatie from "./DutchLanguage_Zintransformatie";
 import DutchLanguage_Zintransformatie_Mini from "./DutchLanguage_Zintransformatie_Mini";
+import DutchLanguage_Lidwoorden from "./DutchLanguage_Lidwoorden";
 
 
 
@@ -61,7 +62,9 @@ export default function DutchLanguageHomePage() {
           <img src={Image} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} />
           <div style={{ marginTop: "10px", marginLeft: "5px" }}>
             <a href="https://www.nporadio1.nl/live" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO Radio 1" style={{ cursor: "pointer", color: "#336791", fontSize: "25px" }}><FaRadio /></a>
-            <a href="https://www.bvn.tv/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="BVN TV" style={{ cursor: "pointer", color: "#336791", fontSize: "34px", marginLeft: "20px" }}><PiTelevisionSimpleDuotone /></a>
+            <a href="https://www.bvn.tv/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="BVN TV" style={{ cursor: "pointer", color: "#E43111", fontSize: "34px", marginLeft: "20px" }}><PiTelevisionSimpleDuotone /></a>
+            <a href="https://npo.nl/start/serie/in-de-voetsporen-van/afleveringen" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO's In de voetsporen van" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><PiFootprintsFill /></a>
+            <a href="https://npo.nl/start" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO Start" style={{ cursor: "pointer", color: "#FF6D00", fontSize: "24px", marginLeft: "20px" }}><BsFillDiamondFill /></a>
             <a href="https://www.rtl.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="RTL News" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><FaNewspaper /></a>
             <a href="https://nos.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NOS News" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><BsNewspaper /></a>
             <a href="https://www.skyFont-Segoe-14px-Blackwebcams.com/en/webcam/netherlands/north-holland/amsterdam/amsterdam-dam-square.html" data-tooltip-id="insert" data-tooltip-content="Dam Square Live Webcam" target="_blank" rel="noopener noreferrer" style={{ cursor: "pointer", color: "#336791", fontSize: "25px", marginLeft: "20px" }}><RiWebcamFill /></a>
@@ -75,14 +78,16 @@ export default function DutchLanguageHomePage() {
             <a href="https://www.facebook.com/StaatsexamensNt2" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="StaatsexamensNt2" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><FaFacebook /></a>
             <a href="https://anderetijden.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Andere Tijden Website" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><BsClockFill /></a>
             <a href="https://www.youtube.com/@AndereTijdenNTR/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Andere Tijden YouTube Channel" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><TfiYoutube /></a>
+            
           </div>
 
           <div><DutchLanguage_MLDataSet_ScoreTrend_Activity /></div>
           <div><DutchLanguage_MLDataSet_ScoreTrend_LengthVsScore /></div>
+          <div><DutchLanguage_MLDataSet_ScoreTrend_Scores /></div>
+          <div><DutchLanguage_Lidwoorden /></div>
           <div><DutchLanguage_Dagboek /></div>
           <div><DutchLanguage_Sentences /></div>
-          <div><DutchLanguage_MLDataSet_ScoreTrend_Accuracy /></div>
-          <div><DutchLanguage_MLDataSet_ScoreTrend_Scores /></div>
+          {/* <div><DutchLanguage_MLDataSet_ScoreTrend_Accuracy /></div> */}
           <div><DutchLanguage_Zintransformatie_Mini /></div>
           <div><DutchLanguage_Zintransformatie /></div>
           <div><DutchLanguageCompareContrast /></div>
@@ -119,7 +124,7 @@ export default function DutchLanguageHomePage() {
         <div className="spacer"></div>
         <div className="right">
           {/* <img src={ImageRight} alt="Image" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} /> */}
-          <img
+          {/* <img
             src={ImageRight}
             alt="Image"
             style={{
@@ -128,7 +133,7 @@ export default function DutchLanguageHomePage() {
               boxShadow: "10px 10px 10px rgba(0,0,0,0.2)",
               borderRadius: "8px",
             }}
-          />
+          /> */}
 
           <DutchLanguage_ChatBot />
           <DutchLanguageWordExplain />
