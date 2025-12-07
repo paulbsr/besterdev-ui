@@ -117,6 +117,8 @@ function DutchLanguage_Dagboek() {
   const [wordCountState, setWordCountState] = useState(0);
   const [elapsed, setElapsed] = useState(0);
   const timerRef = useRef(null);
+  const [timerStarted, setTimerStarted] = useState(false);
+
 
   const styles = {
     container: { border: "1px solid #FF4F00", borderRadius: "8px", padding: "16px", fontFamily: "Segoe UI", fontSize: "16px", marginBottom: "16px" },
@@ -128,17 +130,24 @@ function DutchLanguage_Dagboek() {
     fetchAllEntries();
   }, []);
 
-  useEffect(() => {
-    timerRef.current = setInterval(() => setElapsed((p) => p + 1), 1000);
-    return () => clearInterval(timerRef.current);
-  }, []);
+  // useEffect(() => {
+  //   timerRef.current = setInterval(() => setElapsed((p) => p + 1), 1000);
+  //   return () => clearInterval(timerRef.current);
+  // }, []);
 
   const formatTime = (secs) => `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")}`;
+  // const resetTimer = () => {
+  //   clearInterval(timerRef.current);
+  //   setElapsed(0);
+  //   timerRef.current = setInterval(() => setElapsed((p) => p + 1), 1000);
+  // };
+
   const resetTimer = () => {
-    clearInterval(timerRef.current);
-    setElapsed(0);
-    timerRef.current = setInterval(() => setElapsed((p) => p + 1), 1000);
-  };
+  clearInterval(timerRef.current);
+  setElapsed(0);
+  setTimerStarted(false);
+};
+
 
 
   const fetchAllEntries = async () => {
@@ -270,10 +279,21 @@ function DutchLanguage_Dagboek() {
       <form onSubmit={handleSubmit}>
         <textarea
           value={entry}
+          // onChange={(e) => {
+          //   setEntry(e.target.value);
+          //   setWordCountState(countWords(e.target.value));
+          // }}
           onChange={(e) => {
-            setEntry(e.target.value);
-            setWordCountState(countWords(e.target.value));
-          }}
+  const text = e.target.value;
+  setEntry(text);
+  setWordCountState(countWords(text));
+
+  if (!timerStarted && text.trim().length > 0) {
+    setTimerStarted(true);
+    timerRef.current = setInterval(() => setElapsed((p) => p + 1), 1000);
+  }
+}}
+
           onKeyDown={(e) => {
             if (e.key === "Enter" && !e.shiftKey) {
               e.preventDefault();
