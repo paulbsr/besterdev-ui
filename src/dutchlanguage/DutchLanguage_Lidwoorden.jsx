@@ -63,28 +63,28 @@ export default function DutchLanguage_Lidwoorden() {
                                     <th colSpan={1} style={{ border: "1px solid #ccc", padding: "2px" }}><b>meervoud</b></th>
                                     <th colSpan={2} style={{ border: "1px solid #ccc", padding: "2px" }}><b>enkelvoud</b></th>
                                     <th colSpan={1} style={{ border: "1px solid #ccc", padding: "2px" }}><b>vorm</b></th>
-                                    <th colSpan={1} style={{ border: "1px solid #ccc", padding: "2px" }}><b>1 / 1e</b></th>
-                                    <th colSpan={1} style={{ border: "1px solid #ccc", padding: "2px" }}><b>2 / 2e</b></th>
-                                    <th colSpan={1} style={{ border: "1px solid #ccc", padding: "2px" }}><b>3 / 3e</b></th>
+                                    <th colSpan={5} style={{ border: "1px solid #ccc", padding: "2px" }}><b>enkelvoud</b></th>
+                                    <th colSpan={3} style={{ border: "1px solid #ccc", padding: "2px" }}><b>meervoud</b></th>
+                                    {/* <th colSpan={1} style={{ border: "1px solid #ccc", padding: "2px" }}><b>3 / 3e</b></th>
                                     <th colSpan={1} style={{ border: "1px solid #ccc", padding: "2px" }}><b>4 / 3e</b></th>
                                     <th colSpan={1} style={{ border: "1px solid #ccc", padding: "2px" }}><b>5 / 3e</b></th>
                                     <th colSpan={1} style={{ border: "1px solid #ccc", padding: "2px" }}><b>6 / 3e</b></th>
                                     <th colSpan={1} style={{ border: "1px solid #ccc", padding: "2px" }}><b>7 / 3e</b></th>
-                                    <th colSpan={1} style={{ border: "1px solid #ccc", padding: "2px" }}><b>8 / 3e</b></th>
+                                    <th colSpan={1} style={{ border: "1px solid #ccc", padding: "2px" }}><b>8 / 3e</b></th> */}
                                 </tr>
 
                                 <tr>
                                     <th colSpan={2} style={{ border: "1px solid #ccc", padding: "2px" }}><u>bepaalde</u></th>
                                     <th style={{ border: "1px solid #ccc", padding: "2px" }}><u>onbepaalde</u></th>
                                     <th style={{ border: "1px solid #ccc", padding: "2px" }}><u>gebruik</u></th>
-                                    <th style={{ border: "1px solid #ccc", padding: "2px" }}><u>Ik</u></th>
-                                    <th style={{ border: "1px solid #ccc", padding: "2px" }}><u>Jij</u></th>
-                                    <th style={{ border: "1px solid #ccc", padding: "2px" }}><u>Hij</u></th>
-                                    <th style={{ border: "1px solid #ccc", padding: "2px" }}><u>Zij</u></th>
-                                    <th style={{ border: "1px solid #ccc", padding: "2px" }}><u>Het</u></th>
-                                    <th style={{ border: "1px solid #ccc", padding: "2px" }}><u>Wij</u></th>
-                                    <th style={{ border: "1px solid #ccc", padding: "2px" }}><u>Jullie</u></th>
-                                    <th style={{ border: "1px solid #ccc", padding: "2px" }}><u>Ze</u></th>
+                                    <th style={{ border: "1px solid #ccc", padding: "2px" }}><u>Ik (1e)</u></th>
+                                    <th style={{ border: "1px solid #ccc", padding: "2px" }}><u>Jij (2e)</u></th>
+                                    <th style={{ border: "1px solid #ccc", padding: "2px" }}><u>Hij (3e)</u></th>
+                                    <th style={{ border: "1px solid #ccc", padding: "2px" }}><u>Zij (3e)</u></th>
+                                    <th style={{ border: "1px solid #ccc", padding: "2px" }}><u>Het (3e)</u></th>
+                                    <th style={{ border: "1px solid #ccc", padding: "2px" }}><u>Wij (3e)</u></th>
+                                    <th style={{ border: "1px solid #ccc", padding: "2px" }}><u>Jullie (3e)</u></th>
+                                    <th style={{ border: "1px solid #ccc", padding: "2px" }}><u>Ze (3e)</u></th>
                                 </tr>
                             </thead>
 

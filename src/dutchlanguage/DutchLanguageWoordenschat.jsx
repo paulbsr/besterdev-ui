@@ -10,6 +10,7 @@ import { IoArrowUndoCircle } from "react-icons/io5";
 import { TbVocabulary } from "react-icons/tb";
 import { RxLetterSpacing } from "react-icons/rx";
 
+
 const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
 
 export default function DutchLanguageWoordenschat() {
@@ -94,10 +95,10 @@ export default function DutchLanguageWoordenschat() {
             <Tooltip id="tooltip" place="left" />
             <h2 style={{ fontSize: "22px", fontWeight: "bold", marginBottom: "12px", textAlign: "right" }}>
 
-                <RxLetterSpacing
+                <TbVocabulary
                     style={{
                         color: "#FF4F00",
-                        fontSize: "25px",
+                        fontSize: "35px",
                         cursor: "pointer",
                         marginRight: "10px",
                     }}
@@ -111,19 +112,19 @@ export default function DutchLanguageWoordenschat() {
                         {editId === rec.id ? (
                             <>
                                 Woord: <input
-                                    style={{ ...inputStyle, width: "260px", marginBottom: "5px" }}
+                                    style={{ ...inputStyle, width: "250px", marginBottom: "5px" }}
                                     value={editRow.dutchWord}
                                     onChange={(e) => setEditRow({ ...editRow, dutchWord: e.target.value })}
                                 />
                                 <div></div>
                                 Beschrijving: <input
-                                    style={{ ...inputStyle, width: "260px", marginBottom: "5px" }}
+                                    style={{ ...inputStyle, width: "250px", marginBottom: "5px" }}
                                     value={editRow.description}
                                     onChange={(e) => setEditRow({ ...editRow, description: e.target.value })}
                                 />
                                 <div></div>
                                 Voorbeeld: <input
-                                    style={{ ...inputStyle, width: "260px", marginBottom: "5px" }}
+                                    style={{ ...inputStyle, width: "250px", marginBottom: "5px" }}
                                     value={editRow.use}
                                     onChange={(e) => setEditRow({ ...editRow, use: e.target.value })}
                                 />

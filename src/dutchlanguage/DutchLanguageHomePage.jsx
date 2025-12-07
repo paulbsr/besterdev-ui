@@ -53,10 +53,13 @@ export default function DutchLanguageHomePage() {
       <div className="homepage-layout">
         {/* LINKER COLUMN#1 */}
         <div className="left">
-          <DutchLanguageIndex />
           <DutchLanguageWoordenschat />
+          <DutchLanguageIndex />
+
         </div>
         <div className="spacer"></div>
+
+
         {/* CENTRE COLUMN */}
         <div className="main">
           <img src={Image} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} />
