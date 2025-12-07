@@ -101,7 +101,7 @@ function diffWords(before, after) {
       result.push(
         <span
           key={`add-${j}`}
-          style={{ color: "green" }}
+          style={{ color: "green", fontWeight: "bold" }}
         >
           {afterWords[j]}{" "}
         </span>
