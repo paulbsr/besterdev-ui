@@ -271,7 +271,7 @@ function DutchLanguage_Dagboek() {
           onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSubmit(e); } }}
           placeholder="Typ hier jouw dagboektekst..."
           style={{
-            marginTop: "10px", height: "40px", width: "99%", padding: "6px",
+            marginTop: "10px", height: "60px", width: "99%", padding: "6px",
             fontFamily: "Segoe UI", fontSize: "12pt", borderRadius: "6px", border: "0.75px solid #ccc",
             resize: "vertical", boxShadow: "10px 10px 10px rgba(0,0,0,0.2)"
           }}

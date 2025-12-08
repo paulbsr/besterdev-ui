@@ -13,7 +13,7 @@ import { TbVocabulary } from "react-icons/tb";
 
 const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
 
-export default function DutchLanguageIndex() {
+export default function DutchLanguage_Woordenschat() {
   const [records, setRecords] = useState([]);
   const [newRow, setNewRow] = useState({
     afrikaans: "",
@@ -120,7 +120,7 @@ export default function DutchLanguageIndex() {
   // Styles
   const lineStyle = {
     fontFamily: "Segoe UI, sans-serif",
-    fontSize: "16px",
+    fontSize: "14px",
     margin: "4px 0",
     textAlign: "right",
   };
@@ -197,12 +197,12 @@ export default function DutchLanguageIndex() {
             placeholder="Dutch"
             style={{ ...inputStyle, width: "300px", borderColor: "#FF4F00" }}
           />
-          <input
+          {/* <input
             value={newRow.sample}
             onChange={(e) => setNewRow({ ...newRow, sample: e.target.value })}
             placeholder="Sample"
             style={{ ...inputStyle, width: "300px", color: "#000000" }}
-          />
+          /> */}
 
 
           <div>
@@ -344,13 +344,13 @@ export default function DutchLanguageIndex() {
                         setEditRow({ ...editRow, dutch: e.target.value })
                       }
                     />
-                    <input
+                    {/* <input
                       style={{ ...inputStyle, width: "300px" }}
                       value={editRow.sample}
                       onChange={(e) =>
                         setEditRow({ ...editRow, sample: e.target.value })
                       }
-                    />
+                    /> */}
                   </div>
 
                   <div style={{ marginTop: "8px" }}>

@@ -2,7 +2,7 @@
 import "./DutchLanguageHomePage.css";
 import 'react-tooltip/dist/react-tooltip.css';
 import AskAI from '../openai/AskAI';
-import DutchLanguageIndex from "./DutchLanguageIndex";
+import DutchLanguage_Woordenschat from "./DutchLanguage_Woordenschat";
 import DutchLanguageTranslator from "./DutchLanguageTranslator";
 import DutchLanguageChallengeTranslate from "./DutchLanguageChallengeTranslate";
 import DutchLanguageSpellingChecker from "./DutchLanguageSpellingChecker";
@@ -12,17 +12,17 @@ import DutchLanguageSentenceWords from "./DutchLanguageSentenceWords";
 import DutchLanguageWordExplain from "./DutchLanguageWordExplain";
 import DutchLanguage_Nt2exam_SchrijvenToets from "./DutchLanguage_Nt2exam_SchrijvenToets";
 import DutchLanguage_Nt2exam_SchrijvenInput from "./DutchLanguage_Nt2exam_SchrijvenInput";
-import DutchLanguageWoordenschat from "./DutchLanguageWoordenschat";
+// import DutchLanguageWoordenschat from "./DutchLanguageWoordenschat";
 import DutchLanguageSentenceTrainerModal from "./DutchLanguageSentenceTrainerModal";
 import DutchLanguage_Nt2exam_LuisterenInput from "./DutchLanguage_Nt2exam_LuisterenInput";
 import DutchLanguage_Nt2exam_LuisterenToets from "./DutchLanguage_Nt2exam_LuisterenToets";
 import imageNT2ExamTimetableJanuary from "./NT2ExamTimetableJanuary.jpg"
 import imageNT2ExamTimes from "./NT2ExamTimes.jpg"
 import Image from "./Amsterdam1.jpg"
-import ImageRight from "./Dutch_Image_1.jpg"
+// import ImageRight from "./Dutch_Image_1.jpg"
 import DutchLanguage_Dagboek from "./DutchLanguage_Dagboek";
 import DutchLanguage_WordContext from "./DutchLanguage_WordContext";
-import DutchLanguage_Index from "./DutchLanguage_Index";
+// import DutchLanguage_Index from "./DutchLanguage_Index";
 import DutchLanguage_Tenses from "./DutchLanguage_Tenses";
 import DutchLanguage_SignaalWoorden from "./DutchLanguage_SignaalWoorden";
 import DutchLanguage_ChatBot from "./DutchLanguage_ChatBot";
@@ -35,7 +35,7 @@ import { RiWebcamFill } from "react-icons/ri";
 import { FaCarCrash } from "react-icons/fa";
 import { TfiYoutube } from "react-icons/tfi";
 import DutchLanguage_Sentences from "./DutchLanguage_Sentences";
-import DutchLanguage_MLDataSet_ScoreTrend_Accuracy from "./DutchLanguage_MLDataSet_ScoreTrend_Accuracy";
+// import DutchLanguage_MLDataSet_ScoreTrend_Accuracy from "./DutchLanguage_MLDataSet_ScoreTrend_Accuracy";
 import DutchLanguage_MLDataSet_ScoreTrend_Scores from "./DutchLanguage_MLDataSet_ScoreTrend_Scores";
 import DutchLanguage_MLDataSet_ScoreTrend_Activity from "./DutchLanguage_MLDataSet_ScoreTrend_Activity";
 import DutchLanguage_MLDataSet_ScoreTrend_LengthVsScore from "./DutchLanguage_MLDataSet_ScoreTrend_LengthVsScore";
@@ -54,7 +54,7 @@ export default function DutchLanguageHomePage() {
         {/* LINKER COLUMN#1 */}
         <div className="left">
           {/* <DutchLanguageWoordenschat /> */}
-          <DutchLanguageIndex />
+          <DutchLanguage_Woordenschat />
 
         </div>
         <div className="spacer"></div>
@@ -94,7 +94,7 @@ export default function DutchLanguageHomePage() {
           <div><DutchLanguage_Zintransformatie_Mini /></div>
           <div><DutchLanguage_Zintransformatie /></div>
           <div><DutchLanguageCompareContrast /></div>
-          <div><DutchLanguage_Index /></div>
+          {/* <div><DutchLanguage_Index /></div> */}
           <div><DutchLanguage_Tenses /></div>
 
           <button
