@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { FaPlus, FaCheck, FaTimes, FaEdit } from "react-icons/fa";
+import { FaPlus, FaEdit } from "react-icons/fa";
 import { SlActionRedo } from "react-icons/sl";
-import { CiUndo } from "react-icons/ci";
 import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';  // PASOPOLO! react-tooltip het AWS Builds opgefok
 import { PiCheckCircleFill } from "react-icons/pi";
 import { IoArrowUndoCircle } from "react-icons/io5";
 import { TbVocabulary } from "react-icons/tb";
-import { RxLetterSpacing } from "react-icons/rx";
 
 
 const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
@@ -104,7 +102,7 @@ export default function DutchLanguageWoordenschat() {
                     }}
                 />
 
-                Woordenschat</h2>
+                Woordenschat (retired)</h2>
 
             <div>
                 {records.map((rec) => (

@@ -92,7 +92,7 @@ export default function DutchLanguage_SignaalWoorden() {
             <br />
             5. Preposities
 
-            <br />
+            {/* <br />
             <br />
 
             <strong>Lidwoorden:</strong>
@@ -131,7 +131,7 @@ export default function DutchLanguage_SignaalWoorden() {
             <br />
             Had (Ik/Hij/Zij/Het)
             <br />
-            Hadden (Wij/Jullie/Zij)
+            Hadden (Wij/Jullie/Zij) */}
 
         </div>
     );

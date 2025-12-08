@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FaPlus, FaEdit } from "react-icons/fa";
-import { IoMdSwap } from "react-icons/io";
 import "react-tooltip/dist/react-tooltip.css";
 import { PiCheckCircleFill } from "react-icons/pi";
 import { IoArrowUndoCircle } from "react-icons/io5";
 import { LiaSortAlphaDownSolid } from "react-icons/lia";
 import { VscWordWrap } from "react-icons/vsc";
+import { SlActionRedo } from "react-icons/sl";
+import { TbVocabulary } from "react-icons/tb";
+
 
 
 const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
@@ -54,7 +56,9 @@ export default function DutchLanguageIndex() {
 
 
   const addRow = async () => {
-    if (!newRow.afrikaans || !newRow.dutch || !newRow.sample) return;
+    // if (!newRow.afrikaans || !newRow.dutch || !newRow.sample) return;
+    if (!newRow.afrikaans || !newRow.dutch) return;
+
     try {
       await axios.post(`${API_BASE}/dutchlanguage/create`, newRow);
       setNewRow({ afrikaans: "", dutch: "", sample: "" });
@@ -158,7 +162,7 @@ export default function DutchLanguageIndex() {
   return (
     <div style={{ border: "1px solid #FF4F00", borderRadius: "8px", padding: "16px", fontFamily: "Segoe UI", fontSize: "16px", marginBottom: "16px" }}>
       <h2 style={{ fontSize: "22px", fontWeight: "bold", marginBottom: "12px", textAlign: "right", }}>
-        <VscWordWrap
+        <TbVocabulary
           style={{
             color: "#FF4F00",
             fontSize: "35px",
@@ -166,7 +170,7 @@ export default function DutchLanguageIndex() {
             marginRight: "10px",
           }}
         />
-        Grammatica
+        Woordenschat
       </h2>
 
       {showAddRow ? (
@@ -371,7 +375,7 @@ export default function DutchLanguageIndex() {
                   {dutchFirst ? (
                     <>
                       <span style={dutchStyle}>{rec.dutch}</span>
-                      <IoMdSwap
+                      <SlActionRedo
                         size={15}
                         style={{ cursor: "pointer" }}
                         onClick={() => toggleSwap(rec.id)}
@@ -381,7 +385,7 @@ export default function DutchLanguageIndex() {
                   ) : (
                     <>
                       <span style={afrikaansStyle}>{rec.afrikaans}</span>
-                      <IoMdSwap
+                      <SlActionRedo
                         size={15}
                         style={{ cursor: "pointer" }}
                         onClick={() => toggleSwap(rec.id)}
