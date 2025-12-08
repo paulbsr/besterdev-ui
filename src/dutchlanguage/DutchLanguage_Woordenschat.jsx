@@ -5,7 +5,6 @@ import "react-tooltip/dist/react-tooltip.css";
 import { PiCheckCircleFill } from "react-icons/pi";
 import { IoArrowUndoCircle } from "react-icons/io5";
 import { LiaSortAlphaDownSolid } from "react-icons/lia";
-import { VscWordWrap } from "react-icons/vsc";
 import { SlActionRedo } from "react-icons/sl";
 import { TbVocabulary } from "react-icons/tb";
 
@@ -33,6 +32,9 @@ export default function DutchLanguage_Woordenschat() {
   // NEW filter states
   const [afrikaansFilter, setAfrikaansFilter] = useState("");
   const [dutchFilter, setDutchFilter] = useState("");
+  // NEW: Global search
+  const [searchTerm, setSearchTerm] = useState("");
+
 
   // Track if we're in "Dutch mode"
   const [dutchMode, setDutchMode] = useState(false);
@@ -107,15 +109,36 @@ export default function DutchLanguage_Woordenschat() {
   };
 
   // --- Apply filtering before rendering ---
+  // const filteredRecords = records.filter((rec) => {
+  //   const afrikaansMatch = afrikaansFilter
+  //     ? rec.afrikaans.toLowerCase().startsWith(afrikaansFilter.toLowerCase())
+  //     : true;
+  //   const dutchMatch = dutchFilter
+  //     ? rec.dutch.toLowerCase().startsWith(dutchFilter.toLowerCase())
+  //     : true;
+  //   return afrikaansMatch && dutchMatch;
+  // });
+
   const filteredRecords = records.filter((rec) => {
+    // existing letter-filters
     const afrikaansMatch = afrikaansFilter
       ? rec.afrikaans.toLowerCase().startsWith(afrikaansFilter.toLowerCase())
       : true;
+
     const dutchMatch = dutchFilter
       ? rec.dutch.toLowerCase().startsWith(dutchFilter.toLowerCase())
       : true;
-    return afrikaansMatch && dutchMatch;
+
+    // NEW full-text search
+    const globalMatch = searchTerm
+      ? rec.afrikaans.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      rec.dutch.toLowerCase().includes(searchTerm.toLowerCase())
+      : true;
+
+    return afrikaansMatch && dutchMatch && globalMatch;
   });
+
+
 
   // Styles
   const lineStyle = {
@@ -141,7 +164,7 @@ export default function DutchLanguage_Woordenschat() {
   const inputStyle = {
     fontFamily: "Segoe UI",
     fontSize: "14px",
-    width: "150px",
+    width: "100px",
     padding: "4px",
     borderRadius: "4px",
     border: "1px solid #777777",
@@ -161,17 +184,78 @@ export default function DutchLanguage_Woordenschat() {
 
   return (
     <div style={{ border: "1px solid #FF4F00", borderRadius: "8px", padding: "16px", fontFamily: "Segoe UI", fontSize: "16px", marginBottom: "16px" }}>
-      <h2 style={{ fontSize: "22px", fontWeight: "bold", marginBottom: "12px", textAlign: "right", }}>
-        <TbVocabulary
-          style={{
-            color: "#FF4F00",
-            fontSize: "35px",
-            cursor: "pointer",
-            marginRight: "10px",
-          }}
-        />
-        Woordenschat
-      </h2>
+     {/* Heading + Search Row */}
+<div
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: "12px",
+  }}
+>
+  {/* Left: Heading */}
+  <h2
+    style={{
+      fontSize: "22px",
+      fontWeight: "bold",
+      margin: 0,
+      display: "flex",
+      alignItems: "center",
+      gap: "10px",
+    }}
+  >
+    <TbVocabulary
+      style={{
+        color: "#FF4F00",
+        fontSize: "35px",
+        cursor: "pointer",
+      }}
+    />
+    Woordenschat
+  </h2>
+
+  {/* Right: Search input */}
+  <div style={{ position: "relative" }}>
+    <input
+      type="text"
+      value={searchTerm}
+      onChange={(e) => setSearchTerm(e.target.value)}
+      placeholder="Zoeken..."
+      style={{
+        fontFamily: "Segoe UI",
+        fontSize: "13px",
+        width: "100px",
+        padding: "2px 22px 2px 6px",
+        borderRadius: "4px",
+        border: "1px solid #777",
+        height: "20px",
+      }}
+    />
+
+    {/* Clear button */}
+    {searchTerm && (
+      <span
+        onClick={() => setSearchTerm("")}
+        style={{
+          position: "absolute",
+          right: "6px",
+          top: "50%",
+          transform: "translateY(-50%)",
+          cursor: "pointer",
+          fontSize: "16px",
+          color: "#777",
+          fontWeight: "bold",
+        }}
+      >
+        ×
+      </span>
+    )}
+  </div>
+</div>
+
+
+
+
 
       {showAddRow ? (
         // <div style={{ marginTop: "8px", textAlign: "right" }}>
@@ -184,7 +268,7 @@ export default function DutchLanguage_Woordenschat() {
           }}
         >
           <input
-            style={{ ...inputStyle, width: "300px", borderColor: "#007749" }}
+            style={{ ...inputStyle, width: "100px", borderColor: "#007749" }}
             value={newRow.afrikaans}
             onChange={(e) =>
               setNewRow({ ...newRow, afrikaans: e.target.value })
@@ -195,16 +279,8 @@ export default function DutchLanguage_Woordenschat() {
             value={newRow.dutch}
             onChange={(e) => setNewRow({ ...newRow, dutch: e.target.value })}
             placeholder="Dutch"
-            style={{ ...inputStyle, width: "300px", borderColor: "#FF4F00" }}
+            style={{ ...inputStyle, width: "100px", borderColor: "#FF4F00" }}
           />
-          {/* <input
-            value={newRow.sample}
-            onChange={(e) => setNewRow({ ...newRow, sample: e.target.value })}
-            placeholder="Sample"
-            style={{ ...inputStyle, width: "300px", color: "#000000" }}
-          /> */}
-
-
           <div>
             <PiCheckCircleFill
               size={28}
@@ -331,26 +407,19 @@ export default function DutchLanguage_Woordenschat() {
                   >
                     <input
                       //hierishy
-                      style={{ ...inputStyle, width: "200px", borderColor: "#007749", borderWidth: "1px" }}
+                      style={{ ...inputStyle, width: "100px", borderColor: "#007749", borderWidth: "1px" }}
                       value={editRow.afrikaans}
                       onChange={(e) =>
                         setEditRow({ ...editRow, afrikaans: e.target.value })
                       }
                     />
                     <input
-                      style={{ ...inputStyle, width: "200px", borderColor: "#FF4F00", borderWidth: "1px" }}
+                      style={{ ...inputStyle, width: "100px", borderColor: "#FF4F00", borderWidth: "1px" }}
                       value={editRow.dutch}
                       onChange={(e) =>
                         setEditRow({ ...editRow, dutch: e.target.value })
                       }
                     />
-                    {/* <input
-                      style={{ ...inputStyle, width: "300px" }}
-                      value={editRow.sample}
-                      onChange={(e) =>
-                        setEditRow({ ...editRow, sample: e.target.value })
-                      }
-                    /> */}
                   </div>
 
                   <div style={{ marginTop: "8px" }}>
