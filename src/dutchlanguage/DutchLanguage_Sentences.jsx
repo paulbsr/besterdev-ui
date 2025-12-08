@@ -1,3 +1,4 @@
+// Refactored DutchLanguage_Sentences.jsx with real-time word counter
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { DutchLanguage_AIEvaluator } from "./DutchLanguage_AIEvaluator";
 import DutchLanguage_AI_Response from "./DutchLanguage_AI_Response";
@@ -11,6 +12,7 @@ function DutchLanguage_Sentences() {
   const [feedback, setFeedback] = useState("");
   const [loading, setLoading] = useState(false);
   const [recentSubmission, setRecentSubmission] = useState(null);
+  const [wordCount, setWordCount] = useState(0);
 
   const [topic, setTopic] = useState("De Goude Eeuw");
 
@@ -19,6 +21,8 @@ function DutchLanguage_Sentences() {
 
   const timerRef = useRef(null);
   const [elapsed, setElapsed] = useState(0);
+
+  const { triggerRefresh } = useContext(RefreshContext);
 
   const handleClearSubmission = () => {
     setRecentSubmission(null);
@@ -61,13 +65,13 @@ function DutchLanguage_Sentences() {
     timerRef.current = setInterval(() => setElapsed((prev) => prev + 1), 1000);
   };
 
-  const formatTime = (secs) => `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")}`;
+  // ------------------- Word Counter -------------------
+  useEffect(() => {
+    const words = sentence.trim().split(/\s+/).filter((w) => w.length > 0);
+    setWordCount(words.length);
+  }, [sentence]);
 
   // ------------------- Submit Sentence -------------------
-
-  const { triggerRefresh } = useContext(RefreshContext);
-
-
   const handleSubmit = async (e) => {
     if (e.key !== "Enter") return;
     if (!sentence.trim()) return;
@@ -105,13 +109,15 @@ function DutchLanguage_Sentences() {
 
       resetTimer();
       setSentence("");
+      setWordCount(0);
     } catch (err) {
       console.error(err);
       setFeedback("Er is een fout opgetreden bij het controleren.");
     } finally {
       setLoading(false);
     }
-    triggerRefresh();   // 🔥 Redraw all charts
+
+    triggerRefresh();
   };
 
   // ------------------- New Word -------------------
@@ -119,12 +125,11 @@ function DutchLanguage_Sentences() {
     await fetchWord(topic);
     setSentence("");
     setFeedback("");
+    setWordCount(0);
   };
 
   return (
     <div style={{ fontFamily: "Segoe UI", width: "100%" }}>
-
-      {/* ---------- REFRESH ICON ---------- */}
       <div style={{ position: "relative", width: "100%" }}>
         <FiRefreshCw
           onClick={handleNewWord}
@@ -132,29 +137,27 @@ function DutchLanguage_Sentences() {
           style={{
             position: "absolute",
             right: "20px",
-            top: "34px",
+            top: "38px",
             cursor: "pointer",
             fontSize: "20px",
             color: "#c0c0c0",
           }}
         />
 
-        {/* ---------- CUSTOM INPUT CONTAINER ---------- */}
         <div
           style={{
             border: "1px solid #FF4F00",
             borderRadius: "6px",
-            padding: "6px 10px",
+            padding: "10px 12px",
             marginTop: "10px",
             marginBottom: "16px",
             display: "flex",
             flexDirection: "column",
-            gap: "4px",
-            height: "60px",
-            justifyContent: "center",
+            gap: "6px",
+            height: "130px",
+            justifyContent: "flex-start",
           }}
         >
-          {/* Topic input */}
           <input
             type="text"
             value={topic}
@@ -165,33 +168,35 @@ function DutchLanguage_Sentences() {
               outline: "none",
               fontSize: "13px",
               color: "#777",
-
             }}
             placeholder="Onderwerp..."
           />
 
-          {/* Sentence input */}
-          <input
-            type="text"
+          <textarea
             value={sentence}
             onChange={(e) => setSentence(e.target.value)}
             onKeyDown={handleSubmit}
             placeholder={`Gebruik dit woord in een correcte zin: ${word}`}
             style={{
-              padding: "6px",
+              padding: "12px",
               fontFamily: "Segoe UI",
-              fontSize: "12pt",
+              fontSize: "13pt",
               borderRadius: "6px",
               border: "0.75px solid #ccc",
-              resize: "none",
               boxShadow: "10px 10px 10px rgba(0,0,0,0.2)",
-              marginBottom: "10px",
+              minHeight: "50px",
+              resize: "vertical",
+              width: "98%",
             }}
           />
+
+          {/* Real-time word counter */}
+          <div style={{ fontSize: "12px", color: "#888", marginTop: "3px" }}>
+            Woorden: {wordCount}
+          </div>
         </div>
       </div>
 
-      {/* ---------- LOADING ---------- */}
       {loading && (
         <div
           style={{
@@ -218,15 +223,8 @@ function DutchLanguage_Sentences() {
         </div>
       )}
 
-      {/* ---------- AI FEEDBACK ---------- */}
       {recentSubmission && (
-        <div
-          style={{
-            marginTop: "12px",
-            marginBottom: "16px",
-            position: "relative",
-          }}
-        >
+        <div style={{ marginTop: "12px", marginBottom: "16px", position: "relative" }}>
           <FaTimes
             onClick={handleClearSubmission}
             title="Verwijderen"
