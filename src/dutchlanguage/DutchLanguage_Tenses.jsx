@@ -94,7 +94,7 @@ export default function DutchLanguage_Tenses() {
     >
       <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px", }}>
         <AiOutlineNodeIndex style={{ color: "#FF4F00", fontSize: "35px", cursor: "pointer", marginRight: "10px", }}
-        />Conjugatie</h2>
+        />Werkwoord  Conjugatie (Verbs)</h2>
 
       {/* Input for Dutch verb */}
       <div style={{ textAlign: "left", marginBottom: "10px" }}>
@@ -115,12 +115,12 @@ export default function DutchLanguage_Tenses() {
 
       {/* {loading && <p style={{ textAlign: "left" }}>Loading...</p>} */}
 
-{loading && (
-  <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
-    <div className="spinner"></div>
-    <span>Loading...</span>
-  </div>
-)}
+      {loading && (
+        <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
+          <div className="spinner"></div>
+          <span>Loading...</span>
+        </div>
+      )}
 
       {/* Always render table */}
       <table className="IndexTable IndexTableHover"
@@ -134,11 +134,12 @@ export default function DutchLanguage_Tenses() {
           <tr>
             <th style={th}>Tense</th>
             <th style={th}><span style={{ fontSize: "1.25rem" }}>🧍‍♂️</span> Ik</th>
-            <th style={th}><span style={{ fontSize: "1.25rem" }}>🫵</span> Jij</th>
-            <th style={th}><span style={{ fontSize: "1.25rem" }}>👫</span> Wij</th>
-            <th style={th}><span style={{ fontSize: "1.25rem" }}>👥</span> Jullie/Ze</th>
-            <th style={th}><span style={{ fontSize: "1.25rem" }}>👨</span> Hij</th>
-            <th style={th}><span style={{ fontSize: "1.25rem" }}>👩</span> Zij</th>
+            <th style={th}><span style={{ fontSize: "1.25rem" }}>🫵👨👩</span> Jij / Hij / Zij / Het</th>
+            {/* <th style={th}><span style={{ fontSize: "1.25rem" }}></span> Hij / Zij (3e)</th> */}
+            <th style={th}><span style={{ fontSize: "1.25rem" }}>👫👥 👥</span> Wij / Jullie / Zij</th>
+            {/* <th style={th}><span style={{ fontSize: "1.25rem" }}></span> Zij</th> */}
+            {/* <th style={th}><span style={{ fontSize: "1.25rem" }}>👥👥</span> Jullie / Zij (3e)</th> */}
+
           </tr>
         </thead>
 
@@ -147,28 +148,31 @@ export default function DutchLanguage_Tenses() {
             <td style={tdHeader}>Past Tense</td>
             <td style={td}>{data.pastIk}</td>
             <td style={td}>{data.pastJij}</td>
+            {/* <td style={td}>{data.pastHij}</td> */}
             <td style={td}>{data.pastWij}</td>
-            <td style={td}>{data.pastJullie}</td>
-            <td style={td}>{data.pastHij}</td>
-            <td style={td}>{data.pastZij}</td>
+            {/* <td style={td}>{data.pastZij}</td> */}
+            {/* <td style={td}>{data.pastJullie}</td> */}
+
           </tr>
           <tr>
             <td style={tdHeader}>Present Tense</td>
-            <td style={td}>{data.presentIk}</td>
-            <td style={td}>{data.presentJij}</td>
-            <td style={td}>{data.presentWij}</td>
-            <td style={td}>{data.presentJullie}</td>
-            <td style={td}>{data.presentHij}</td>
-            <td style={td}>{data.presentZij}</td>
+            <td style={td}>stamwoord:  <b>{data.presentIk}</b></td>
+            <td style={td}>stamwoord+t:  <b>{data.presentJij}</b></td>
+            {/* <td style={td}>{data.presentHij}</td> */}
+            {/* <td style={td}>{data.presentWij}</td> */}
+            {/* <td style={td}>{data.presentZij}</td> */}
+            <td style={td}>stamwoord+en:  <b>{data.presentJullie}</b></td>
+
           </tr>
           <tr>
             <td style={tdHeader}>Future Tense</td>
             <td style={td}>{data.futureIk}</td>
             <td style={td}>{data.futureJij}</td>
-            <td style={td}>{data.futureWij}</td>
-            <td style={td}>{data.futureJullie}</td>
-            <td style={td}>{data.futureHij}</td>
+            {/* <td style={td}>{data.futureHij}</td> */}
+            {/* <td style={td}>{data.futureWij}</td> */}
             <td style={td}>{data.futureZij}</td>
+            {/* <td style={td}>{data.futureJullie}</td> */}
+
           </tr>
         </tbody>
       </table>

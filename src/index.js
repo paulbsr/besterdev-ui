@@ -292,7 +292,8 @@ const App = () => {
     <Router>
       <Routes>
         <Route path='/' element={<PageHome searchPhrase={searchPhrase} />} />
-        <Route path='/home' element={<PageHome searchPhrase={searchPhrase} />} />
+        {/* <Route path='/home' element={<PageHome searchPhrase={searchPhrase} />} /> */}
+        <Route path='/home' element={<PageDutchLanguage />} />
         <Route path='/search' element={<PageSearch />} />
         <Route path='/screen' element={<PageSearch />} />
         <Route path='/hunt' element={<PageSearch />} />

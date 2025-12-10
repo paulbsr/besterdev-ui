@@ -22,7 +22,7 @@ import Image from "./Amsterdam1.jpg"
 // import ImageRight from "./Dutch_Image_1.jpg"
 import DutchLanguage_Dagboek from "./DutchLanguage_Dagboek";
 import DutchLanguage_WordContext from "./DutchLanguage_WordContext";
-// import DutchLanguage_Index from "./DutchLanguage_Index";
+import DutchLanguage_Index from "./DutchLanguage_Index";
 import DutchLanguage_Tenses from "./DutchLanguage_Tenses";
 import DutchLanguage_SignaalWoorden from "./DutchLanguage_SignaalWoorden";
 import DutchLanguage_ChatBot from "./DutchLanguage_ChatBot";
@@ -56,6 +56,7 @@ export default function DutchLanguageHomePage() {
           {/* <DutchLanguageWoordenschat /> */}
           <DutchLanguage_Woordenschat />
 
+
         </div>
         <div className="spacer"></div>
 
@@ -81,13 +82,15 @@ export default function DutchLanguageHomePage() {
             <a href="https://www.facebook.com/StaatsexamensNt2" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="StaatsexamensNt2" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><FaFacebook /></a>
             <a href="https://anderetijden.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Andere Tijden Website" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><BsClockFill /></a>
             <a href="https://www.youtube.com/@AndereTijdenNTR/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Andere Tijden YouTube Channel" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><TfiYoutube /></a>
-            
+
           </div>
 
           <div><DutchLanguage_MLDataSet_ScoreTrend_Activity /></div>
           <div><DutchLanguage_MLDataSet_ScoreTrend_LengthVsScore /></div>
           <div><DutchLanguage_MLDataSet_ScoreTrend_Scores /></div>
           <div><DutchLanguage_Lidwoorden /></div>
+          <div><DutchLanguage_Index /></div>
+          <div><DutchLanguage_Tenses /></div>
           <div><DutchLanguage_Dagboek /></div>
           <div><DutchLanguage_Sentences /></div>
           {/* <div><DutchLanguage_MLDataSet_ScoreTrend_Accuracy /></div> */}
@@ -95,7 +98,7 @@ export default function DutchLanguageHomePage() {
           <div><DutchLanguage_Zintransformatie /></div>
           <div><DutchLanguageCompareContrast /></div>
           {/* <div><DutchLanguage_Index /></div> */}
-          <div><DutchLanguage_Tenses /></div>
+
 
           <button
             onClick={() => document.body.classList.toggle('dark')}
