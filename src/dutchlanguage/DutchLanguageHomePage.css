@@ -1,10 +1,20 @@
-.homepage-layout {
+.homepages-layouts {
   display: grid;
   grid-template-columns: 22% 1% 54% 1% 22%;
   gap: 0; /* optional, since spacers are explicit */
   width: 100%;
   min-height: 100vh; /* makes it full height like a page */
 }
+
+.homepage-layout {
+  display: grid;
+  grid-template-columns: 22% 1% 54% 1% 22%;
+  width: 100%;
+  min-height: 100vh;
+  align-items: start; /* helps sticky behave correctly */
+}
+
+
 
 .left {
   border: 1px solid #FFFFFF;
@@ -138,5 +148,19 @@ body.dark a {
 .OrangeButton:hover {
   background: #ff4f00;
   color: white;
+}
+
+.lefts {
+  position: sticky;
+  top: 20px; /* distance from the top when it becomes sticky */
+  height: fit-content;
+  align-self: flex-start;
+}
+
+.left {
+  position: sticky;
+  top: 20px;    /* same as your top spacer */
+  align-self: start;
+  height: fit-content;
 }
 

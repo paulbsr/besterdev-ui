@@ -251,6 +251,14 @@ export default function DutchLanguage_Woordenschat() {
             alignItems: "flex-end",
           }}
         >
+
+          <input
+            value={newRow.dutch}
+            onChange={(e) => setNewRow({ ...newRow, dutch: e.target.value })}
+            placeholder="Dutch"
+            style={{ ...inputStyle, width: "100px", borderColor: "#FF4F00" }}
+          />
+
           <input
             style={{ ...inputStyle, width: "100px", borderColor: "#007749" }}
             value={newRow.afrikaans}
@@ -258,12 +266,6 @@ export default function DutchLanguage_Woordenschat() {
               setNewRow({ ...newRow, afrikaans: e.target.value })
             }
             placeholder="Afrikaans"
-          />
-          <input
-            value={newRow.dutch}
-            onChange={(e) => setNewRow({ ...newRow, dutch: e.target.value })}
-            placeholder="Dutch"
-            style={{ ...inputStyle, width: "100px", borderColor: "#FF4F00" }}
           />
           <div>
             <PiCheckCircleFill
@@ -389,6 +391,13 @@ export default function DutchLanguage_Woordenschat() {
                     }}
                   >
                     <input
+                      style={{ ...inputStyle, width: "100px", borderColor: "#FF4F00", borderWidth: "1px" }}
+                      value={editRow.dutch}
+                      onChange={(e) =>
+                        setEditRow({ ...editRow, dutch: e.target.value })
+                      }
+                    />
+                    <input
                       //hierishy
                       style={{ ...inputStyle, width: "100px", borderColor: "#007749", borderWidth: "1px" }}
                       value={editRow.afrikaans}
@@ -396,13 +405,7 @@ export default function DutchLanguage_Woordenschat() {
                         setEditRow({ ...editRow, afrikaans: e.target.value })
                       }
                     />
-                    <input
-                      style={{ ...inputStyle, width: "100px", borderColor: "#FF4F00", borderWidth: "1px" }}
-                      value={editRow.dutch}
-                      onChange={(e) =>
-                        setEditRow({ ...editRow, dutch: e.target.value })
-                      }
-                    />
+
                   </div>
 
                   <div style={{ marginTop: "8px" }}>

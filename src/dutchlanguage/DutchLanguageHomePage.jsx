@@ -53,7 +53,6 @@ export default function DutchLanguageHomePage() {
       <div className="homepage-layout">
         {/* LINKER COLUMN#1 */}
         <div className="left">
-          {/* <DutchLanguageWoordenschat /> */}
           <DutchLanguage_Woordenschat />
 
 
