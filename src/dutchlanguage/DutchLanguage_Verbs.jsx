@@ -28,7 +28,7 @@ const EMPTY_TENSES = {
   futureZij: "",
 };
 
-export default function DutchLanguage_Tenses() {
+export default function DutchLanguage_Verbs() {
   const [word, setWord] = useState("");
   const [data, setData] = useState(EMPTY_TENSES);
   const [loading, setLoading] = useState(false);
@@ -118,7 +118,7 @@ export default function DutchLanguage_Tenses() {
       {loading && (
         <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
           <div className="spinner"></div>
-          <span>Loading...</span>
+          <span>Compiling...</span>
         </div>
       )}
 
@@ -136,7 +136,7 @@ export default function DutchLanguage_Tenses() {
             <th style={th}><span style={{ fontSize: "1.25rem" }}>🧍‍♂️</span> Ik</th>
             <th style={th}><span style={{ fontSize: "1.25rem" }}>🫵👨👩</span> Jij / Hij / Zij / Het</th>
             {/* <th style={th}><span style={{ fontSize: "1.25rem" }}></span> Hij / Zij (3e)</th> */}
-            <th style={th}><span style={{ fontSize: "1.25rem" }}>👫👥 👥</span> Wij / Jullie / Zij</th>
+            <th style={th}><span style={{ fontSize: "1.25rem" }}>👫👥 👨‍👩‍👧‍👦</span> Wij / Jullie / Zij</th>
             {/* <th style={th}><span style={{ fontSize: "1.25rem" }}></span> Zij</th> */}
             {/* <th style={th}><span style={{ fontSize: "1.25rem" }}>👥👥</span> Jullie / Zij (3e)</th> */}
 
@@ -147,9 +147,9 @@ export default function DutchLanguage_Tenses() {
           <tr>
             <td style={tdHeader}>Past Tense</td>
             <td style={td}>{data.pastIk}</td>
-            <td style={td}>{data.pastJij}</td>
+            <td style={td}>stamwoord+t/e: <b>{data.pastJij}</b></td>
             {/* <td style={td}>{data.pastHij}</td> */}
-            <td style={td}>{data.pastWij}</td>
+            <td style={td}>stamwoord+ten: <b>{data.pastWij}</b></td>
             {/* <td style={td}>{data.pastZij}</td> */}
             {/* <td style={td}>{data.pastJullie}</td> */}
 
@@ -157,8 +157,8 @@ export default function DutchLanguage_Tenses() {
           <tr>
             <td style={tdHeader}>Present Tense</td>
             <td style={td}>stamwoord:  <b>{data.presentIk}</b></td>
-            <td style={td}>stamwoord+t:  <b>{data.presentJij}</b></td>
-            {/* <td style={td}>{data.presentHij}</td> */}
+            {/* <td style={td}>stamwoord+t:  <b>{data.presentJij}</b></td> */}
+            <td style={td}>stamwoord+t:  <b>{data.presentHij}</b></td>
             {/* <td style={td}>{data.presentWij}</td> */}
             {/* <td style={td}>{data.presentZij}</td> */}
             <td style={td}>stamwoord+en:  <b>{data.presentJullie}</b></td>
@@ -166,11 +166,11 @@ export default function DutchLanguage_Tenses() {
           </tr>
           <tr>
             <td style={tdHeader}>Future Tense</td>
-            <td style={td}>{data.futureIk}</td>
-            <td style={td}>{data.futureJij}</td>
+            <td style={td}>zal+en: <b>{data.futureIk}</b></td>
+            <td style={td}>zal/zult+en: <b>{data.futureJij}</b></td>
             {/* <td style={td}>{data.futureHij}</td> */}
             {/* <td style={td}>{data.futureWij}</td> */}
-            <td style={td}>{data.futureZij}</td>
+            <td style={td}>zullen+en: <b>{data.futureZij}</b></td>
             {/* <td style={td}>{data.futureJullie}</td> */}
 
           </tr>

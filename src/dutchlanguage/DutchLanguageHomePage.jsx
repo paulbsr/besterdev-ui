@@ -23,7 +23,7 @@ import Image from "./Amsterdam1.jpg"
 import DutchLanguage_Dagboek from "./DutchLanguage_Dagboek";
 import DutchLanguage_WordContext from "./DutchLanguage_WordContext";
 import DutchLanguage_Index from "./DutchLanguage_Index";
-import DutchLanguage_Tenses from "./DutchLanguage_Tenses";
+import DutchLanguage_Verbs from "./DutchLanguage_Verbs";
 import DutchLanguage_SignaalWoorden from "./DutchLanguage_SignaalWoorden";
 import DutchLanguage_ChatBot from "./DutchLanguage_ChatBot";
 import { PiExamFill, PiNumberCircleOneBold, PiExamBold, PiHouseSimpleBold, PiTelevisionSimpleDuotone, PiFootprintsFill } from "react-icons/pi";
@@ -89,8 +89,8 @@ export default function DutchLanguageHomePage() {
           <div><DutchLanguage_MLDataSet_ScoreTrend_LengthVsScore /></div>
           <div><DutchLanguage_MLDataSet_ScoreTrend_Scores /></div>
           <div><DutchLanguage_Lidwoorden /></div>
+          <div><DutchLanguage_Verbs /></div>
           <div><DutchLanguage_Index /></div>
-          <div><DutchLanguage_Tenses /></div>
           <div><DutchLanguage_Dagboek /></div>
           <div><DutchLanguage_Sentences /></div>
           {/* <div><DutchLanguage_MLDataSet_ScoreTrend_Accuracy /></div> */}
