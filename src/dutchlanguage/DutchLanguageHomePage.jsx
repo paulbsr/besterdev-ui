@@ -89,13 +89,13 @@ export default function DutchLanguageHomePage() {
           <div><DutchLanguage_MLDataSet_ScoreTrend_Scores /></div>
           <div><DutchLanguage_Lidwoorden /></div>
           <div><DutchLanguage_Verbs /></div>
-          <div><DutchLanguage_Index /></div>
           <div><DutchLanguage_Dagboek /></div>
           <div><DutchLanguage_Sentences /></div>
           {/* <div><DutchLanguage_MLDataSet_ScoreTrend_Accuracy /></div> */}
           <div><DutchLanguage_Zintransformatie_Mini /></div>
           <div><DutchLanguage_Zintransformatie /></div>
           <div><DutchLanguageCompareContrast /></div>
+          <div><DutchLanguage_Index /></div>
           {/* <div><DutchLanguage_Index /></div> */}
 
 
