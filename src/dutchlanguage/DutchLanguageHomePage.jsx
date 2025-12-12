@@ -19,11 +19,10 @@ import DutchLanguage_Nt2exam_LuisterenToets from "./DutchLanguage_Nt2exam_Luiste
 import imageNT2ExamTimetableJanuary from "./NT2ExamTimetableJanuary.jpg"
 import imageNT2ExamTimes from "./NT2ExamTimes.jpg"
 import Image from "./Amsterdam1.jpg"
-// import ImageRight from "./Dutch_Image_1.jpg"
 import DutchLanguage_Dagboek from "./DutchLanguage_Dagboek";
 import DutchLanguage_WordContext from "./DutchLanguage_WordContext";
 import DutchLanguage_Index from "./DutchLanguage_Index";
-import DutchLanguage_Verbs from "./DutchLanguage_Verbs";
+import DutchLanguage_Werkwoorden from "./DutchLanguage_Werkwoorden";
 import DutchLanguage_SignaalWoorden from "./DutchLanguage_SignaalWoorden";
 import DutchLanguage_ChatBot from "./DutchLanguage_ChatBot";
 import { PiExamFill, PiNumberCircleOneBold, PiExamBold, PiHouseSimpleBold, PiTelevisionSimpleDuotone, PiFootprintsFill } from "react-icons/pi";
@@ -88,7 +87,7 @@ export default function DutchLanguageHomePage() {
           <div><DutchLanguage_MLDataSet_ScoreTrend_LengthVsScore /></div>
           <div><DutchLanguage_MLDataSet_ScoreTrend_Scores /></div>
           <div><DutchLanguage_Lidwoorden /></div>
-          <div><DutchLanguage_Verbs /></div>
+          <div><DutchLanguage_Werkwoorden /></div>
           <div><DutchLanguage_Dagboek /></div>
           <div><DutchLanguage_Sentences /></div>
           {/* <div><DutchLanguage_MLDataSet_ScoreTrend_Accuracy /></div> */}
@@ -122,6 +121,7 @@ export default function DutchLanguageHomePage() {
           <DutchLanguage_Nt2exam_LuisterenInput />
           <img src={imageNT2ExamTimetableJanuary} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} />
           <img src={imageNT2ExamTimes} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} />
+
         </div>
 
 
@@ -145,6 +145,7 @@ export default function DutchLanguageHomePage() {
           <DutchLanguage_WordContext />
           <DutchLanguageSpellingChecker />
           <DutchLanguage_SignaalWoorden />
+
         </div>
       </div>
     </div>
