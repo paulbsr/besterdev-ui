@@ -61,7 +61,7 @@ export const auth = getAuth(app);
 const App = () => {
   const [searchPhrase, setSearchPhrase] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [countdown, setCountdown] = useState(1); // 9-second countdown
+  const [countdown, setCountdown] = useState(0); // 9-second countdown
   const username = 'besterdev-ui';
   const password = 'TZXWF498UR5PGQLH6E3CMBDNSYJAKV72';
   const basicAuth = Buffer.from(`${username}:${password}`).toString('base64');

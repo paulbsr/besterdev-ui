@@ -3,6 +3,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./DutchLanguageHomePage.css";
 import { AiOutlineNodeIndex } from "react-icons/ai";
+import { GrUserWorker } from "react-icons/gr";
+import { BsTools } from "react-icons/bs";
+import { GiTreeRoots } from "react-icons/gi";
+import { ImInfinite } from "react-icons/im";
+import { PiInfinityFill } from "react-icons/pi";
 
 const API_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
 
@@ -129,10 +134,10 @@ export default function DutchLanguage_Werkwoorden() {
           marginTop: "1px",
         }}
       >
-        <AiOutlineNodeIndex
+        <BsTools
           style={{
             color: "#FF4F00",
-            fontSize: "35px",
+            fontSize: "30px",
             cursor: "pointer",
             marginRight: "10px",
           }}
@@ -231,35 +236,39 @@ export default function DutchLanguage_Werkwoorden() {
 
         <tbody>
           <tr>
-            <td style={{...tdHeader, color: "#0066FF"}}>Past Tense</td>
+            <td style={{ ...tdHeader, color: "#0066FF" }}>Past Tense</td>
             {/* <td style={td, color: "#0066FF"}>stem: <b>{data.pastIk}</b></td> */}
-            <td style={{ ...td, color: "#0066FF" }}>stem: <b>{data.pastIk}</b></td>
-            <td style={{ ...td, color: "#0066FF" }}>stem+t/e: <b>{data.pastJij}</b></td>
-            <td style={{ ...td, color: "#0066FF" }}>stem+t/en: <b>{data.pastWij}</b></td>
+            <td style={{ ...td, color: "#0066FF" }}><GiTreeRoots style={{ color: "#008000", fontSize: "20px", marginRight: "5px" }} />stem: <b>{data.pastIk}</b>  ('t kofschip rule)</td>
+            <td style={{ ...td, color: "#0066FF" }}><GiTreeRoots style={{ color: "#008000", fontSize: "20px", marginRight: "5px" }} />stem+t/e: <b>{data.pastJij}</b></td>
+            <td style={{ ...td, color: "#0066FF" }}><GiTreeRoots style={{ color: "#008000", fontSize: "20px", marginRight: "5px" }} />stem+t/en: <b>{data.pastWij}</b></td>
           </tr>
           <tr>
             <td style={tdHeader}>Present Tense</td>
-            <td style={td}>stem: <b>{data.presentIk}</b></td>
-            <td style={td}>stem+t: <b>{data.presentHij}</b></td>
-            <td style={td}>Infinitive: <b>{data.presentJullie}</b></td>
+            <td style={td}><GiTreeRoots style={{ color: "#008000", fontSize: "20px", marginRight: "5px" }} />stem: <b>{data.presentIk}</b></td>
+            <td style={td}><GiTreeRoots style={{ color: "#008000", fontSize: "20px", marginRight: "5px" }} />stem+t: <b>{data.presentHij}</b></td>
+            <td style={td}><ImInfinite style={{ color: "#CC00CC", fontSize: "20px", marginRight: "5px" }} />Infinitive: <b>{data.presentJullie}</b></td>
           </tr>
           <tr>
-            <td style={{...tdHeader, color: "#EA5C5F"}}>Future Tense</td>
-            <td style={{ ...td, color: "#EA5C5F" }}>zal+Infinitive: <b>{data.futureIk}</b></td>
-            <td style={{ ...td, color: "#EA5C5F" }}>zal/zult+Infinitive: <b>{data.futureJij}</b></td>
-            <td style={{ ...td, color: "#EA5C5F" }}>zullen+Infinitive: <b>{data.futureZij}</b></td>
+            <td style={{ ...tdHeader, color: "#EA5C5F" }}>Future Tense</td>
+            <td style={{ ...td, color: "#EA5C5F" }}><ImInfinite style={{ color: "#CC00CC", fontSize: "20px", marginRight: "5px" }} />zal+Infinitive: <b>{data.futureIk}</b></td>
+            <td style={{ ...td, color: "#EA5C5F" }}><ImInfinite style={{ color: "#CC00CC", fontSize: "20px", marginRight: "5px" }} />zult/zal+Infinitive: <b>{data.futureJij}</b></td>
+            <td style={{ ...td, color: "#EA5C5F" }}><ImInfinite style={{ color: "#CC00CC", fontSize: "20px", marginRight: "5px" }} />zullen+Infinitive: <b>{data.futureZij}</b></td>
           </tr>
         </tbody>
       </table>
 
-<div>
-  <p style={{ margin: 0 }}>Stem vs. Infinitive Rules:</p>
-  <p style={{ margin: 0, fontFamily: "Segoe UI", fontSize: "14px" }}>Rule#1: Use Stem in <i>Tegenwoordige Tijd - "Ik <b>loop</b> naar coffeeshop Green Place ."</i> (jij/hij/zij/het loopt)</p>
-  <p style={{ margin: 0, fontFamily: "Segoe UI", fontSize: "14px" }}>Rule#3: Use Infinitive in <i style={{ margin: 0, fontFamily: "Segoe UI", fontSize: "14px", color: "#EA5C5F" }}>Toekomstige Tijd</i> - <i>Dan <u>zal</u> ik op Kloveniersburgwal <b>zitten</b>, vreselijk gerookt."</i>(Jij zult.. Hij/Zij/Het zal.. Wij/Jullie/Zij zullen..)</p>
-  <p style={{ margin: 0, fontFamily: "Segoe UI", fontSize: "14px" }}>Rule#2: Use Infinitive after <i>Modals</i> (kunnen, willen, moeten, mogen, zullen, laten)  - <i>"Ik <u>wil</u> veel Starlato hybrid <b>roken</b> in deze coffeeshop."</i></p>
-  <p style={{ margin: 0, fontFamily: "Segoe UI", fontSize: "14px" }}>Rule#4: Use Infinitive after <i>"..om te.."</i> - <i>Ik probeer <u>om te</u><b> praten</b>, maar mijn brein is nu kapot."</i></p>
-</div>
-
+      <div>
+        <p style={{ margin: 0 }}>Stem vs. Infinitive Rules:</p>
+        <p style={{ margin: 0, fontFamily: "Segoe UI", fontSize: "14px" }}>Rule#1: Use Stem in <i>Tegenwoordige Tijd - "Ik <b>loop</b> naar coffeeshop Green Place ."</i> (jij/hij/zij/het loopt)</p>
+        <p style={{ margin: 0, fontFamily: "Segoe UI", fontSize: "14px" }}>Rule#2: Use Infinitive in <i>Toekomstige Tijd</i> - <i>Dan <u>zal</u> ik op Kloveniersburgwal <b>zitten</b>, vreselijk gerookt."</i> (Jij zult.. Hij/Zij/Het zal.. Wij/Jullie/Zij zullen..)</p>
+        <p style={{ margin: 0, fontFamily: "Segoe UI", fontSize: "14px" }}>Rule#3: Use Infinitive after <i>Modals</i> (kan, wil, moet, mag, zal, laat)  - <i>"Ik <u>wil</u> veel Starlato hybrid <b>roken</b> in deze coffeeshop."</i></p>
+        <p style={{ margin: 0, fontFamily: "Segoe UI", fontSize: "14px" }}>Rule#4: Use Infinitive after <i>"..om te.."</i> - <i>Ik probeer <u>om te</u><b> praten</b>, maar mijn brein is nu kapot."</i></p>
+        {/* <p>..</p> */}
+        <p style={{ margin: 0 }}>The ’t kofschip Rule for 1e Persoon Verleden Tijd</p>
+        <p style={{ margin: 0, fontFamily: "Segoe UI", fontSize: "14px" }}>Rule#1: If the stem word ends in t, k, f, s, ch, p - use “-te/n” in the past tense (dan<b>s</b>te).</p>
+        <p style={{ margin: 0, fontFamily: "Segoe UI", fontSize: "14px" }}>Rule#2: If the stem word ends with anything else - use “-de/n” in the past tense (woo<b>n</b>de).</p>
+      </div>
+        
     </div>
   );
 }
@@ -275,7 +284,6 @@ const th = {
 const tdHeader = {
   border: "1px solid #ccc",
   padding: "8px",
-  // fontWeight: "bold",
   background: "#fafafa",
 };
 
