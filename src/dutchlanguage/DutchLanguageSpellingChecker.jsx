@@ -35,7 +35,7 @@ export default function DutchLanguageSpellingChecker() {
         setFeedback(`✅ "${word}" is spelled correctly!`);
       } else if (output.toLowerCase().startsWith("incorrect")) {
         const suggestion = output.replace(/incorrect[:]?/i, "").trim();
-        setFeedback(`❌ Incorrect. Correcte spelling: "${suggestion}"`);
+        setFeedback(`❌ Verkeerd! Correcte spelling is "${suggestion}"`);
       } else {
         setFeedback(`⚠️ Unexpected response: ${output}`);
       }

@@ -55,8 +55,8 @@ export default function DutchLanguage_Lidwoorden() {
                         <th colSpan={1} style={{ border: "1px solid #ccc", padding: "2px" }}><b>meervoud</b></th>
                         <th colSpan={2} style={{ border: "1px solid #ccc", padding: "2px" }}><b>enkelvoud</b></th>
                         <th colSpan={1} style={{ border: "1px solid #ccc", padding: "2px" }}><b>vorm</b></th>
-                        <th colSpan={5} style={{ border: "1px solid #ccc", padding: "2px" }}><b>enkelvoud</b></th>
-                        <th colSpan={3} style={{ border: "1px solid #ccc", padding: "2px" }}><b>meervoud</b></th>
+                        <th colSpan={5} style={{ border: "1px solid #ccc", padding: "2px", backgroundColor: "#FFFFE6", }}><b>enkelvoud</b></th>
+                        <th colSpan={3} style={{ border: "1px solid #ccc", padding: "2px", backgroundColor: "#FFFFCC" }}><b>meervoud</b></th>
                     </tr>
 
                     <tr>
@@ -77,7 +77,7 @@ export default function DutchLanguage_Lidwoorden() {
                 <tbody>
                     {/* ---- first row ---- */}
                     <tr>
-                        <td style={{ border: "1px solid #ccc", padding: "2px" }}>de (75%)</td>
+                        <td style={{ border: "1px solid #ccc", padding: "2px", backgroundColor: "#FFFFCC" }}>de (75%)</td>
                         <td style={{ border: "1px solid #ccc", padding: "2px" }}>het
                             <span style={{ display: "block", fontSize: "12px" }}>(-je/verkleining)</span>
                         </td>

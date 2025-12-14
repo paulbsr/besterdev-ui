@@ -7,6 +7,7 @@ import { IoArrowUndoCircle } from "react-icons/io5";
 import { LiaSortAlphaDownSolid } from "react-icons/lia";
 import { SlActionRedo } from "react-icons/sl";
 import { TbVocabulary } from "react-icons/tb";
+import { Tooltip } from "react-tooltip";
 
 
 
@@ -58,7 +59,7 @@ export default function DutchLanguage_Woordenschat() {
 
 
   const addRow = async () => {
-    // if (!newRow.afrikaans || !newRow.dutch || !newRow.sample) return;
+    if (!newRow.afrikaans || !newRow.dutch || !newRow.sample) return;
     if (!newRow.afrikaans || !newRow.dutch) return;
 
     try {
@@ -172,7 +173,26 @@ export default function DutchLanguage_Woordenschat() {
   };
 
   return (
+
+
+
+
     <div style={{ border: "1px solid #FF4F00", borderRadius: "8px", padding: "16px", fontFamily: "Segoe UI", fontSize: "16px", marginBottom: "16px" }}>
+
+      <Tooltip
+        id="index"
+        place="right"
+        style={{
+          backgroundColor: "#000000",
+          color: "#ffffff",
+          fontSize: "13px",
+          // maxWidth: "300px",
+          // color: "#000000",
+          // zIndex: 9999,
+        }}
+      />
+
+
       {/* Heading + Search Row */}
       <div
         style={{
@@ -260,13 +280,24 @@ export default function DutchLanguage_Woordenschat() {
           />
 
           <input
-            style={{ ...inputStyle, width: "100px", borderColor: "#007749" }}
+            style={{ ...inputStyle, width: "175px", borderColor: "#007749" }}
             value={newRow.afrikaans}
             onChange={(e) =>
               setNewRow({ ...newRow, afrikaans: e.target.value })
             }
             placeholder="Afrikaans"
           />
+
+
+          <input
+            style={{ ...inputStyle, width: "250px", borderColor: "#999" }}
+            value={newRow.sample}
+            onChange={(e) =>
+              setNewRow({ ...newRow, sample: e.target.value })
+            }
+            placeholder="Voorbeeld"
+          />
+
           <div>
             <PiCheckCircleFill
               size={28}
@@ -399,13 +430,19 @@ export default function DutchLanguage_Woordenschat() {
                     />
                     <input
                       //hierishy
-                      style={{ ...inputStyle, width: "100px", borderColor: "#007749", borderWidth: "1px" }}
+                      style={{ ...inputStyle, width: "175px", borderColor: "#007749", borderWidth: "1px" }}
                       value={editRow.afrikaans}
                       onChange={(e) =>
                         setEditRow({ ...editRow, afrikaans: e.target.value })
                       }
+                    /><input
+                      style={{ ...inputStyle, width: "250px", borderColor: "#999" }}
+                      value={editRow.sample}
+                      onChange={(e) =>
+                        setEditRow({ ...editRow, sample: e.target.value })
+                      }
+                      placeholder="Voorbeeld"
                     />
-
                   </div>
 
                   <div style={{ marginTop: "8px" }}>
