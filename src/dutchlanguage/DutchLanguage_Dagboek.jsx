@@ -221,7 +221,7 @@ function DutchLanguage_Dagboek() {
       if (res.status === 204 || res.ok) {
         setAllEntries((prev) => prev.filter((e) => e.id !== id));
         if (recentSubmission?.id === id) setRecentSubmission(null);
-        toast.success("Dagboekitem succesvol verwijderd!", { position: "top-center" });
+        // toast.success("Dagboekitem succesvol verwijderd!", { position: "top-center" });
       } else {
         const text = await res.text();
         console.error("Delete failed:", text);

@@ -52,11 +52,11 @@ export default function DutchLanguage_Lidwoorden() {
             >
                 <thead>
                     <tr>
-                        <th colSpan={1} style={{ border: "1px solid #ccc", padding: "2px" }}><b>meervoud</b></th>
-                        <th colSpan={2} style={{ border: "1px solid #ccc", padding: "2px" }}><b>enkelvoud</b></th>
+                        <th colSpan={1} style={{ border: "1px solid #ccc", padding: "2px", backgroundColor: "#f5cba9ff" }}><b>meervoud</b></th>
+                        <th colSpan={2} style={{ border: "1px solid #ccc", padding: "2px", backgroundColor: "#f3e5d5ff" }}><b>enkelvoud</b></th>
                         <th colSpan={1} style={{ border: "1px solid #ccc", padding: "2px" }}><b>vorm</b></th>
-                        <th colSpan={5} style={{ border: "1px solid #ccc", padding: "2px", backgroundColor: "#FFFFE6", }}><b>enkelvoud</b></th>
-                        <th colSpan={3} style={{ border: "1px solid #ccc", padding: "2px", backgroundColor: "#FFFFCC" }}><b>meervoud</b></th>
+                        <th colSpan={5} style={{ border: "1px solid #ccc", padding: "2px", backgroundColor: "#f3e5d5ff" }}><b>enkelvoud</b></th>
+                        <th colSpan={3} style={{ border: "1px solid #ccc", padding: "2px", backgroundColor: "#f5cba9ff" }}><b>meervoud</b></th>
                     </tr>
 
                     <tr>
@@ -77,54 +77,54 @@ export default function DutchLanguage_Lidwoorden() {
                 <tbody>
                     {/* ---- first row ---- */}
                     <tr>
-                        <td style={{ border: "1px solid #ccc", padding: "2px", backgroundColor: "#FFFFCC" }}>de (75%)</td>
-                        <td style={{ border: "1px solid #ccc", padding: "2px" }}>het
+                        <td style={{ border: "1px solid #ccc", padding: "2px", backgroundColor: "#f5cba9ff" }}>de (75%)</td>
+                        <td style={{ border: "1px solid #ccc", padding: "2px", backgroundColor: "#f3e5d5ff" }}>het
                             <span style={{ display: "block", fontSize: "12px" }}>(-je/verkleining)</span>
                         </td>
 
-                        <td style={{ border: "1px solid #ccc", padding: "2px" }}>een</td>
+                        <td style={{ border: "1px solid #ccc", padding: "2px", backgroundColor: "#f3e5d5ff" }}>een</td>
 
                         <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF" }}>verlede
                             <span style={{ display: "block", fontSize: "12px", color: "#000000" }}>"I am.."</span>
                             <span style={{ display: "block", fontSize: "12px", color: "#EA5C5F" }}>toekoms</span>
                         </td>
 
-                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF" }}>was
+                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF", backgroundColor: "#f3e5d5ff" }}>was
                             <span style={{ display: "block", fontSize: "12px", color: "#000000" }}>ben</span>
                             <span style={{ display: "block", fontSize: "12px", color: "#EA5C5F" }}>zal zijn</span>
                         </td>
 
-                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF" }}>was
+                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF", backgroundColor: "#f3e5d5ff" }}>was
                             <span style={{ display: "block", fontSize: "12px", color: "#000000" }}>bent</span>
                             <span style={{ display: "block", fontSize: "12px", color: "#EA5C5F" }}>zult zijn</span>
                         </td>
 
-                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF" }}>was
+                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF", backgroundColor: "#f3e5d5ff" }}>was
                             <span style={{ display: "block", fontSize: "12px", color: "#000000" }}>is</span>
                             <span style={{ display: "block", fontSize: "12px", color: "#EA5C5F" }}>zal zijn</span>
                         </td>
 
-                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF" }}>was
+                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF", backgroundColor: "#f3e5d5ff" }}>was
                             <span style={{ display: "block", fontSize: "12px", color: "#000000" }}>is</span>
                             <span style={{ display: "block", fontSize: "12px", color: "#EA5C5F" }}>zal zijn</span>
                         </td>
 
-                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF" }}>was
+                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF", backgroundColor: "#f3e5d5ff" }}>was
                             <span style={{ display: "block", fontSize: "12px", color: "#000000" }}>is</span>
                             <span style={{ display: "block", fontSize: "12px", color: "#EA5C5F" }}>zal zijn</span>
                         </td>
 
-                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF" }}>waren
+                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF", backgroundColor: "#f5cba9ff" }}>waren
                             <span style={{ display: "block", fontSize: "12px", color: "#000000" }}>zijn</span>
                             <span style={{ display: "block", fontSize: "12px", color: "#EA5C5F" }}>zullen zijn</span>
                         </td>
 
-                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF" }}>waren
+                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF", backgroundColor: "#f5cba9ff" }}>waren
                             <span style={{ display: "block", fontSize: "12px", color: "#000000" }}>zijn</span>
                             <span style={{ display: "block", fontSize: "12px", color: "#EA5C5F" }}>zullen zijn</span>
                         </td>
 
-                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF" }}>waren
+                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF", backgroundColor: "#f5cba9ff" }}>waren
                             <span style={{ display: "block", fontSize: "12px", color: "#000000" }}>zijn</span>
                             <span style={{ display: "block", fontSize: "12px", color: "#EA5C5F" }}>zullen zijn</span>
                         </td>
@@ -149,42 +149,42 @@ export default function DutchLanguage_Lidwoorden() {
                             <span style={{ display: "block", fontSize: "12px", color: "#EA5C5F" }}>toekoms</span>
                         </td>
 
-                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF" }}>had
+                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF", backgroundColor: "#f3e5d5ff" }}>had
                             <span style={{ display: "block", fontSize: "12px", color: "#000000" }}>heb</span>
                             <span style={{ display: "block", fontSize: "12px", color: "#EA5C5F" }}>zal hebben</span>
                         </td>
 
-                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF" }}>had
+                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF", backgroundColor: "#f3e5d5ff" }}>had
                             <span style={{ display: "block", fontSize: "12px", color: "#000000" }}>hebt</span>
                             <span style={{ display: "block", fontSize: "12px", color: "#EA5C5F" }}>zult hebben</span>
                         </td>
 
-                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF" }}>had
+                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF", backgroundColor: "#f3e5d5ff" }}>had
                             <span style={{ display: "block", fontSize: "12px", color: "#000000" }}>heeft</span>
                             <span style={{ display: "block", fontSize: "12px", color: "#EA5C5F" }}>zal hebben</span>
                         </td>
 
-                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF" }}>had
+                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF", backgroundColor: "#f3e5d5ff" }}>had
                             <span style={{ display: "block", fontSize: "12px", color: "#000000" }}>heeft</span>
                             <span style={{ display: "block", fontSize: "12px", color: "#EA5C5F" }}>zal hebben</span>
                         </td>
 
-                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF" }}>had
+                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF", backgroundColor: "#f3e5d5ff" }}>had
                             <span style={{ display: "block", fontSize: "12px", color: "#000000" }}>heeft</span>
                             <span style={{ display: "block", fontSize: "12px", color: "#EA5C5F" }}>zal hebben</span>
                         </td>
 
-                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF" }}>hadden
+                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF", backgroundColor: "#f5cba9ff" }}>hadden
                             <span style={{ display: "block", fontSize: "12px", color: "#000000" }}>hebben</span>
                             <span style={{ display: "block", fontSize: "12px", color: "#EA5C5F" }}>zullen hebben</span>
                         </td>
 
-                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF" }}>hadden
+                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF", backgroundColor: "#f5cba9ff" }}>hadden
                             <span style={{ display: "block", fontSize: "12px", color: "#000000" }}>hebben</span>
                             <span style={{ display: "block", fontSize: "12px", color: "#EA5C5F" }}>zullen hebben</span>
                         </td>
 
-                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF" }}>hadden
+                        <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF", backgroundColor: "#f5cba9ff" }}>hadden
                             <span style={{ display: "block", fontSize: "12px", color: "#000000" }}>hebben</span>
                             <span style={{ display: "block", fontSize: "12px", color: "#EA5C5F" }}>zullen hebben</span>
                         </td>

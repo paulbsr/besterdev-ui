@@ -14,6 +14,7 @@ import {
 } from "recharts";
 import axios from "axios";
 import { RiNumbersFill } from "react-icons/ri";
+import { ImTextWidth } from "react-icons/im";
 
 const API_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/daily-average-score";
 
@@ -85,7 +86,7 @@ export default function MultiAxis_LengthVsScore_Enhanced() {
                     alignItems: "center",
                     gap: "8px",
                 }}
-            ><RiNumbersFill size={30} color="#FF4F00" />Correlation between Sentence Length and Score</h2>
+            ><ImTextWidth size={27} color="#FF4F00" />Correlation between Sentence Length and Score</h2>
 
             {/* Controls */}
             <div style={{ marginBottom: "10px" }}>
