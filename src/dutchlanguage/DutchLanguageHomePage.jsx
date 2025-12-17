@@ -41,6 +41,7 @@ import DutchLanguage_MLDataSet_ScoreTrend_LengthVsScore from "./DutchLanguage_ML
 import DutchLanguage_Zintransformatie from "./DutchLanguage_Zintransformatie";
 import DutchLanguage_Zintransformatie_Mini from "./DutchLanguage_Zintransformatie_Mini";
 import DutchLanguage_Lidwoorden from "./DutchLanguage_Lidwoorden";
+import DutchLanguage_Nt2exam_LezenInputText from "./DutchLanguage_Nt2exam_LezenInputTex";
 
 
 
@@ -117,10 +118,13 @@ export default function DutchLanguageHomePage() {
           <DutchLanguageSentenceWords />
           <DutchLanguageTranslator />
           <DutchLanguageChallengeTranslate />
+          
+          <DutchLanguage_Nt2exam_LezenInputText />
           <DutchLanguage_Nt2exam_SchrijvenInput />
           <DutchLanguage_Nt2exam_LuisterenInput />
-          <img src={imageNT2ExamTimetableJanuary} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} />
-          <img src={imageNT2ExamTimes} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} />
+
+          {/* <img src={imageNT2ExamTimetableJanuary} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} /> */}
+          {/* <img src={imageNT2ExamTimes} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} /> */}
 
         </div>
 
