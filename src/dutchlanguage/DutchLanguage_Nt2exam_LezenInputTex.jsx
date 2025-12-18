@@ -116,8 +116,8 @@ export default function DutchLanguage_Nt2exam_LezenInputText(props) {
             <textarea
               style={{
                 ...baseInputStyle,
-                width: "850px",
-                height: "240px",
+                width: "1000px",
+                height: "550px",
                 whiteSpace: "pre-wrap",
                 resize: "vertical"
               }}

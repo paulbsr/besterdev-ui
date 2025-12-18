@@ -42,6 +42,7 @@ import DutchLanguage_Zintransformatie from "./DutchLanguage_Zintransformatie";
 import DutchLanguage_Zintransformatie_Mini from "./DutchLanguage_Zintransformatie_Mini";
 import DutchLanguage_Lidwoorden from "./DutchLanguage_Lidwoorden";
 import DutchLanguage_Nt2exam_LezenInputText from "./DutchLanguage_Nt2exam_LezenInputTex";
+import DutchLanguage_Nt2exam_LezenInputQuestion from "./DutchLanguage_Nt2exam_LezenInputQuestion";
 
 
 
@@ -119,6 +120,7 @@ export default function DutchLanguageHomePage() {
           <DutchLanguageTranslator />
           <DutchLanguageChallengeTranslate />
           
+          <DutchLanguage_Nt2exam_LezenInputQuestion />
           <DutchLanguage_Nt2exam_LezenInputText />
           <DutchLanguage_Nt2exam_SchrijvenInput />
           <DutchLanguage_Nt2exam_LuisterenInput />
