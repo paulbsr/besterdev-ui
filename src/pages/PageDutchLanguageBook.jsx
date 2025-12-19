@@ -21,7 +21,7 @@ export default function PageDutchLanguageBook() {
         <CombinedCreateFP />
         {/* <DutchLanguageHomePage /> */}
         <DutchLanguageMijnBoek />
-        <Footer />
+        {/* <Footer /> */}
         <ToastComponent />
       </div>
     )

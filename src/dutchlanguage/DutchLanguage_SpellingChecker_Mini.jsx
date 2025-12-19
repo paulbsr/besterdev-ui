@@ -108,9 +108,17 @@ export default function DutchLanguage_SpellingChecker_Mini() {
           Clear
         </button>
       </form>
-      
+
       {feedback && (
-        <div style={{ marginTop: "16px", fontWeight: "500" }}>{feedback}</div>
+        <div style={{
+          marginTop: "12px",
+          fontFamily: "Segoe UI",
+          fontSize: "12px",
+          fontStyle: "italic",
+          color: "#000000",
+          marginBottom: "8px",
+          whiteSpace: "pre-wrap",
+        }}>{feedback}</div>
       )}
     </div>
   );

@@ -1,5 +1,3 @@
-import { GrArticle } from "react-icons/gr";
-import { TbTargetArrow } from "react-icons/tb";
 import { PiArticleNyTimes } from "react-icons/pi";
 
 export default function DutchLanguage_Lidwoorden() {

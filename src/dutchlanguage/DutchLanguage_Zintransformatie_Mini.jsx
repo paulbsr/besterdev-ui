@@ -122,44 +122,52 @@ Return ONLY the converted sentence as plain text.`
 
       {/* Loading Spinner */}
       {!loading && output && (
-  <div
-    style={{
-      background: "#fafafa",
-      border: "1px solid #ddd",
-      borderRadius: "6px",
-      padding: "12px",
-      fontSize: "10px",
-      whitespace: "pre-wrap",
-      position: "relative",
-    }}
-  >
-    <strong>Omgezette zin:</strong>
+        <div
+          style={{
+            background: "#fafafa",
+            border: "1px solid #ddd",
+            borderRadius: "6px",
+            padding: "12px",
+            fontSize: "10px",
+            whitespace: "pre-wrap",
+            position: "relative",
+          }}
+        >
+          <strong>Omgezette zin:</strong>
 
-    {/* Clear Icon */}
-<span
-  title="clear"
-  onClick={() => {
-    setOutput("");
-    setSentence("");   // CLEAR INPUT FIELD
-  }}
-  style={{
-    position: "absolute",
-    top: "10px",
-    right: "10px",
-    cursor: "pointer",
-    color: "#28a745",
-    fontSize: "20px",
-  }}
->
-          <FaTimes
-            title="Clear"
-            style={{ color: "#ccc", cursor: "pointer", position: "absolute", top: "10px", right: "1px" }}
-          />
-</span>
+          {/* Clear Icon */}
+          <span
+            title="clear"
+            onClick={() => {
+              setOutput("");
+              setSentence("");   // CLEAR INPUT FIELD
+            }}
+            style={{
+              position: "absolute",
+              top: "10px",
+              right: "10px",
+              cursor: "pointer",
+              color: "#28a745",
+              fontSize: "20px",
+            }}
+          >
+            <FaTimes
+              title="Clear"
+              style={{
+                marginTop: "12px",
+                fontFamily: "Segoe UI",
+                fontSize: "12px",
+                fontStyle: "italic",
+                color: "#000000",
+                marginBottom: "8px",
+                whiteSpace: "pre-wrap",
+              }}
+            />
+          </span>
 
-    <p style={{ marginTop: "8px" }}>{output}</p>
-  </div>
-)}
+          <p style={{ marginTop: "8px" }}>{output}</p>
+        </div>
+      )}
 
     </div>
   );

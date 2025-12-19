@@ -138,7 +138,7 @@ export default function DutchLanguage_WordExplain_Mini() {
             fontFamily: "Segoe UI",
             fontSize: "12px",
             fontStyle: "italic",
-            color: "#a0a0a0",
+            color: "#000000",
             marginBottom: "8px",
             whiteSpace: "pre-wrap",
           }}

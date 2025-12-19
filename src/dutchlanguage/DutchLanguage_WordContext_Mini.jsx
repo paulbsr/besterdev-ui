@@ -136,8 +136,12 @@ export default function DutchLanguage_WordContext() {
             {explanation && (
                 <div
                     style={{
-                        marginTop: "16px",
-                        fontWeight: "500",
+                        marginTop: "12px",
+                        fontFamily: "Segoe UI",
+                        fontSize: "12px",
+                        fontStyle: "italic",
+                        color: "#000000",
+                        marginBottom: "8px",
                         whiteSpace: "pre-wrap",
                     }}
                 >

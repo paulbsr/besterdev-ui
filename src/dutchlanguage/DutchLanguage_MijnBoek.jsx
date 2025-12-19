@@ -18,6 +18,7 @@ import 'react-tooltip/dist/react-tooltip.css';
 import AskAI from '../openai/AskAI';
 import Image from "./Amsterdam1.jpg";
 import "./DutchLanguageHomePage.css"
+import DutchLanguage_MijnBoek_Start from "./DutchLanguage_MijnBoek_Start";
 
 
 
@@ -65,6 +66,7 @@ export default function DutchLanguageMijnBoek() {
                     <div><DutchLanguage_SpellingChecker_Mini /></div>
                     <div><DutchLanguage_Lidwoorden /></div>
                     <div><DutchLanguage_Werkwoorden /></div>
+                    <div><DutchLanguage_MijnBoek_Start /></div>
                     <button
                         onClick={() => document.body.classList.toggle('dark')}
                         style={{
