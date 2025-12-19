@@ -9,7 +9,7 @@ import { SiSpringboot, SiFirebase, SiJavascript, SiJira, SiAwsamplify } from 're
 import { BiLogoPostgresql, BiLogoHeroku, BiLogoGithub, BiLogoGoogle } from 'react-icons/bi';
 import { BsPatchQuestion, BsPeopleFill } from 'react-icons/bs';
 import { MdManageAccounts, MdTask } from 'react-icons/md';
-import { GiWindmill } from "react-icons/gi";
+import { GiWindmill, GiOpenBook } from "react-icons/gi";
 import { SiOpenai, SiVault, SiGooglecloud } from "react-icons/si";
 import { IoHome } from 'react-icons/io5';
 import { FaAws } from "react-icons/fa6";
@@ -28,6 +28,7 @@ const internalLinks = [
   { tooltip: 'Candidate Hunt', icon: <FaPeopleArrows style={iconStyle('#336791', 30)} />, path: '/hunt' },
   { tooltip: 'Candidates', icon: <MdManageAccounts style={iconStyle('#336791', 35)} />, path: '/candidatemanage' },
   { tooltip: 'Dutch Language', icon: <GiWindmill style={iconStyle('#FF4F00', 32 )} />, path: '/dutchlanguage' },
+  { tooltip: 'Mijn Boek', icon: <GiOpenBook style={iconStyle('#336791', 32 )} />, path: '/dutchlanguagebook' },
 ];
 
 const externalLinks = [

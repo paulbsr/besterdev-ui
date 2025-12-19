@@ -9,7 +9,7 @@ import DutchLanguageSpellingChecker from "./DutchLanguageSpellingChecker";
 import DutchLanguageCompareContrast from "./DutchLanguageCompareContrast";
 import DutchLanguageTicker from "./DutchLanguageTicker";
 import DutchLanguageSentenceWords from "./DutchLanguageSentenceWords";
-import DutchLanguageWordExplain from "./DutchLanguageWordExplain";
+import DutchLanguageWordExplain from "./DutchLanguage_WordExplain";
 import DutchLanguage_Nt2exam_SchrijvenToets from "./DutchLanguage_Nt2exam_SchrijvenToets";
 import DutchLanguage_Nt2exam_SchrijvenInput from "./DutchLanguage_Nt2exam_SchrijvenInput";
 // import DutchLanguageWoordenschat from "./DutchLanguageWoordenschat";

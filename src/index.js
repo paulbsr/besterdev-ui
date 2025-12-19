@@ -41,6 +41,7 @@ import './Fonts.css';
 
 import { RefreshProvider } from "./dutchlanguage/RefreshContext";
 import { Navigate } from "react-router-dom";
+import PageDutchLanguageBook from './pages/PageDutchLanguageBook';
 
 // --- Firebase Configuration ---
 const firebaseConfig = {
@@ -160,6 +161,7 @@ const App = () => {
 
   {/* Dutch Language page */}
   <Route path="/dutchlanguage" element={<PageDutchLanguage />} />
+  <Route path="/dutchlanguagebook" element={<PageDutchLanguageBook />} />
 
   {/* Real home page */}
   <Route path="/home" element={<PageHome searchPhrase={searchPhrase} />} />

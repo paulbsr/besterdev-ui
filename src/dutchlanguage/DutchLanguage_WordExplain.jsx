@@ -4,7 +4,7 @@ import { FaQuestion } from "react-icons/fa";
 const API_URL =
   "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
 
-export default function DutchLanguageWordExplain() {
+export default function DutchLanguage_WordExplain() {
   const [word, setWord] = useState("");
   const [explanation, setExplanation] = useState("");
   const [loading, setLoading] = useState(false);

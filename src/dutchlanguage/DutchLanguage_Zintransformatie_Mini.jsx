@@ -83,7 +83,6 @@ Return ONLY the converted sentence as plain text.`
             fontSize: "12px",
             marginLeft: "12px",
             color: "#a0a0a0",
-
           }}
         >
           <option>Past Tense</option>

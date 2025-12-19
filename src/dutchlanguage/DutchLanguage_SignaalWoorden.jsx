@@ -12,10 +12,11 @@ export default function DutchLanguage_SignaalWoorden() {
                 borderRadius: "8px",
                 padding: "16px",
                 fontFamily: "Segoe UI",
-                fontSize: "16px",
+                fontSize: "13px",
             }}
         >
-            {`Na een signaalwoord kan er bijvoorbeeld een tegenstelling komen, een voorbeeld, een conclusie of een uitleg. Let dus bij het lezen op signaalwoorden om de tekst beter te begrijpen, en gebruik bij het schrijven signaalwoorden om je tekst beter leesbaar en duidelijker te maken.`}
+            {/* {`Na een signaalwoord kan er bijvoorbeeld een tegenstelling komen, een voorbeeld, een conclusie of een uitleg. Let dus bij het lezen op signaalwoorden om de tekst beter te begrijpen, en gebruik bij het schrijven signaalwoorden om je tekst beter leesbaar en duidelijker te maken.`} */}
+            {`Gebruik bij het schrijven signaalwoorden om je tekst beter leesbaar en duidelijker te maken.`}
 
             <br />
             <br />

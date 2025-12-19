@@ -6,9 +6,11 @@ import ToastComponent from '../ToastComponent';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
 import DutchLanguageHomePage from '../dutchlanguage/DutchLanguageHomePage';
 import Footer from '../Footer';
+import BreakingNews from '../breakingnews/BreakingNews';
 import DutchLanguageTicker from "../dutchlanguage/DutchLanguageTicker";
+import DutchLanguageMijnBoek from '../dutchlanguage/DutchLanguage_MijnBoek';
 
-export default function PageDutchLanguage() {
+export default function PageDutchLanguageBook() {
     return (
       <div>
         <BannerWhiteDutchLanguage />
@@ -17,7 +19,8 @@ export default function PageDutchLanguage() {
         <GradientLineThin />
         <DutchLanguageTicker />
         <CombinedCreateFP />
-        <DutchLanguageHomePage />
+        {/* <DutchLanguageHomePage /> */}
+        <DutchLanguageMijnBoek />
         <Footer />
         <ToastComponent />
       </div>

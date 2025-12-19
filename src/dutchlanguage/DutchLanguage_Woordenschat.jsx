@@ -186,9 +186,6 @@ export default function DutchLanguage_Woordenschat() {
           backgroundColor: "#000000",
           color: "#ffffff",
           fontSize: "13px",
-          // maxWidth: "300px",
-          // color: "#000000",
-          // zIndex: 9999,
         }}
       />
 
