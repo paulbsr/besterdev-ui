@@ -9,8 +9,6 @@ import { SlActionRedo } from "react-icons/sl";
 import { TbVocabulary } from "react-icons/tb";
 import { Tooltip } from "react-tooltip";
 
-
-
 const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
 
 export default function DutchLanguage_Woordenschat() {

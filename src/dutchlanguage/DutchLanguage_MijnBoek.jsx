@@ -6,20 +6,15 @@ import { SiGoogletranslate } from "react-icons/si";
 import { RiWebcamFill } from "react-icons/ri";
 import { FaCarCrash } from "react-icons/fa";
 import { TfiYoutube } from "react-icons/tfi";
-import DutchLanguage_Zintransformatie_Mini from "./DutchLanguage_Zintransformatie_Mini";
-import DutchLanguage_SpellingChecker_Mini from "./DutchLanguage_SpellingChecker_Mini";
-import DutchLanguage_WordExplain_Mini from "./DutchLanguage_WordExplain_Mini";
 import DutchLanguage_SignaalWoorden from "./DutchLanguage_SignaalWoorden";
+import DutchLanguage_MijnBoek_Start from "./DutchLanguage_MijnBoek_Start";
 import DutchLanguage_Woordenschat from "./DutchLanguage_Woordenschat";
 import DutchLanguage_Werkwoorden from "./DutchLanguage_Werkwoorden";
 import DutchLanguage_Lidwoorden from "./DutchLanguage_Lidwoorden";
-import DutchLanguage_WordContext_Mini from "./DutchLanguage_WordContext_Mini";
 import 'react-tooltip/dist/react-tooltip.css';
 import AskAI from '../openai/AskAI';
 import Image from "./Amsterdam1.jpg";
 import "./DutchLanguageHomePage.css"
-import DutchLanguage_MijnBoek_Start from "./DutchLanguage_MijnBoek_Start";
-
 
 
 export default function DutchLanguageMijnBoek() {
@@ -31,8 +26,6 @@ export default function DutchLanguageMijnBoek() {
                 {/* LINKER COLUMN#1 */}
                 <div className="left">
                     <DutchLanguage_Woordenschat />
-
-
                 </div>
                 <div className="spacer"></div>
 
@@ -60,13 +53,10 @@ export default function DutchLanguageMijnBoek() {
                         <a href="https://www.youtube.com/@AndereTijdenNTR/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Andere Tijden YouTube Channel" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><TfiYoutube /></a>
 
                     </div>
-                    <div><DutchLanguage_Zintransformatie_Mini /></div>
-                    <div><DutchLanguage_WordExplain_Mini /></div>
-                    <div><DutchLanguage_WordContext_Mini /></div>
-                    <div><DutchLanguage_SpellingChecker_Mini /></div>
+                    <div><DutchLanguage_MijnBoek_Start /></div>
                     <div><DutchLanguage_Lidwoorden /></div>
                     <div><DutchLanguage_Werkwoorden /></div>
-                    <div><DutchLanguage_MijnBoek_Start /></div>
+
                     <button
                         onClick={() => document.body.classList.toggle('dark')}
                         style={{
@@ -85,9 +75,7 @@ export default function DutchLanguageMijnBoek() {
                 {/* REGTER COLUMN */}
                 <div className="spacer"></div>
                 <div className="right">
-                    {/* <DutchLanguageWordExplain /> */}
-                    {/* <DutchLanguage_WordContext /> */}
-                    
+
                     <DutchLanguage_SignaalWoorden />
 
                 </div>

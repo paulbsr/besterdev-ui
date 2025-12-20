@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import DutchLanguage_MijnBoek_Paragrapgh from "./DutchLanguage_MijnBoek_Paragrapgh";
-import { AiOutlineDown, AiOutlineRight } from "react-icons/ai";
-import { PiShootingStarThin, PiStarThin } from "react-icons/pi";
+import { PiShootingStarThin, PiStarThin, PiRocketLaunchThin } from "react-icons/pi";
+import { GiFireworkRocket, GiBrightExplosion } from "react-icons/gi";
+import { FaPlus } from "react-icons/fa";
 
 export default function DutchLanguage_MijnBoek_Chapter({
   chapter,
@@ -42,11 +43,11 @@ export default function DutchLanguage_MijnBoek_Chapter({
     <div style={{ marginBottom: "20px" }}>
       {/* Chapter header */}
       <h3
-        style={{ fontFamily: "Candara", fontSize: "20px", cursor: "pointer", color: "blue" }}
+        style={{ fontFamily: "Segoe UI", fontSize: "18px", cursor: "pointer", color: "black" }}
         onClick={() => setOpen(!open)}
       >
-        {/* {open ? "▼" : "▶"} Hoofdstuk {chapter.chapterNumber}:{" "} */}
-        {open ? <PiShootingStarThin size={25} color="#cc3535ff" /> : <PiStarThin size={25} color="#cc3535ff" />} Hoofdstuk {chapter.chapterNumber}:
+
+        {open ? <PiShootingStarThin size={25} color="#FF4F00" /> : <PiRocketLaunchThin size={25} color="#FF4F00" />} Hoofdstuk {chapter.chapterNumber}:
 
         {chapter.chapterName}
       </h3>
@@ -65,9 +66,12 @@ export default function DutchLanguage_MijnBoek_Chapter({
 
           {/* Create new paragraph */}
           {!creating ? (
-            <button onClick={() => setCreating(true)}>
-              ➕ Nieuwe paragraaf
-            </button>
+            <FaPlus
+              size={18}
+              color="#777777"
+              style={{ cursor: "pointer" }}
+              onClick={() => setCreating(true)}
+            />
           ) : (
             <div style={{ marginTop: "10px" }}>
               <b>Paragraaf {nextParagraphNumber}</b>

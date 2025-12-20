@@ -1,14 +1,70 @@
 import React, { useState } from "react";
-import { FaQuestion } from "react-icons/fa";
 
-const API_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
+const API_URL =
+  "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
+
+/* ---------------- Styles ---------------- */
+
+const styles = {
+  form: {
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+  },
+  input: {
+    width: "300px",
+    height: "27px",
+    padding: "6px 8px",
+    fontSize: "12px",
+    border: "1px solid #ddd",
+    borderRadius: "6px",
+    boxSizing: "border-box",
+  },
+  button: {
+    height: "27px",
+    padding: "0 10px",
+    fontSize: "12px",
+    border: "1px solid #ddd",
+    borderRadius: "6px",
+    backgroundColor: "#fff",
+    color: "#a0a0a0",
+    display: "flex",
+    alignItems: "center",
+    gap: "6px",
+    cursor: "pointer",
+  },
+  buttonDisabled: {
+    cursor: "default",
+    opacity: 0.8,
+  },
+  spinner: {
+    width: "12px",
+    height: "12px",
+    border: "2px solid #ccc",
+    borderTop: "2px solid #FF4F00",
+    borderRadius: "50%",
+    animation: "spin 1s linear infinite",
+  },
+  result: {
+    marginTop: "12px",
+    fontFamily: "Segoe UI",
+    fontSize: "12px",
+    fontStyle: "italic",
+    whiteSpace: "pre-wrap",
+    color: "#000",
+  },
+};
+
+/* ---------------- Component ---------------- */
 
 export default function DutchLanguage_WordExplain_Mini() {
   const [word, setWord] = useState("");
   const [explanation, setExplanation] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const explainWord = async () => {
+  /* -------- Logic -------- */
+
+  const fetchExplanation = async () => {
     if (!word.trim()) {
       setExplanation("⚠️ Please type a word first.");
       return;
@@ -18,7 +74,7 @@ export default function DutchLanguage_WordExplain_Mini() {
       setLoading(true);
       setExplanation("");
 
-      const res = await fetch(API_URL, {
+      const response = await fetch(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -26,13 +82,14 @@ export default function DutchLanguage_WordExplain_Mini() {
         }),
       });
 
-      const data = await res.json();
-      let output = data.answer?.trim() || "";
+      const data = await response.json();
+      const cleaned =
+        data.answer
+          ?.replace(/^Optional\[/i, "")
+          .replace(/\]$/, "")
+          .trim() || "";
 
-      // Clean Optional[...] wrapper
-      output = output.replace(/^Optional\[/i, "").replace(/\]$/, "").trim();
-
-      setExplanation(output);
+      setExplanation(cleaned);
     } catch (err) {
       console.error(err);
       setExplanation("❌ Error retrieving explanation.");
@@ -43,116 +100,58 @@ export default function DutchLanguage_WordExplain_Mini() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    explainWord();
+    if (!loading) fetchExplanation();
   };
 
   const handleClear = () => {
+    if (loading) return;
     setWord("");
     setExplanation("");
-    setLoading(false);
   };
+
+  /* -------- Render -------- */
 
   return (
     <div>
-
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={styles.form}>
         <input
           type="text"
           value={word}
           onChange={(e) => setWord(e.target.value)}
-          placeholder="Nederlandse Woord Verduideliking"
-          style={{
-            padding: "8px",
-            width: "690px",
-            border: "1px solid #ddd",
-            borderRadius: "6px",
-            fontSize: "12px",
-            height: "16.5px",
-          }}
+          placeholder="Verduidelijk Nederlandse woord"
+          style={styles.input}
         />
-
-        <button
-          type="submit"
-          disabled={loading}
-          style={{
-            height: "33.5px",
-            border: "1px solid #ddd",
-            borderRadius: "6px",
-            fontSize: "12px",
-            cursor: "pointer",
-            backgroundColor: "#FFFFFF",
-            color: "#000000",
-            marginLeft: "12px",
-            color: "#a0a0a0",
-          }}
-        >
-          {loading ? (
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "6px",
-              }}
-            >
-              <div
-                style={{
-                  width: "14px",
-                  height: "14px",
-                  border: "2px solid #ccc",
-                  borderTop: "2px solid #FF4F00",
-                  borderRadius: "50%",
-                  animation: "spin 1s linear infinite",
-                }}
-              ></div>
-              Bezig...
-            </div>
-          ) : (
-            "Verduidelijk"
-          )}
-        </button>
 
         <button
           type="button"
           onClick={handleClear}
+          disabled={loading}
           style={{
-            height: "33.5px",
-            border: "1px solid #ddd",
-            borderRadius: "6px",
-            fontSize: "12px",
-            cursor: "pointer",
-            backgroundColor: "#FFFFFF",
-            color: "#000000",
-            marginLeft: "12px",
-            color: "#a0a0a0",
+            ...styles.button,
+            ...(loading ? styles.buttonDisabled : {}),
           }}
         >
-          Clear
+          {loading ? (
+            <>
+              <span style={styles.spinner} />
+              Bezig…
+            </>
+          ) : (
+            "Clear"
+          )}
         </button>
       </form>
 
       {!loading && explanation && (
-        <div
-          style={{
-            marginTop: "12px",
-            fontFamily: "Segoe UI",
-            fontSize: "12px",
-            fontStyle: "italic",
-            color: "#000000",
-            marginBottom: "8px",
-            whiteSpace: "pre-wrap",
-          }}
-        >
-          {explanation}
-        </div>
+        <div style={styles.result}>{explanation}</div>
       )}
 
-      {/* Spinner animation keyframes */}
+      {/* Spinner keyframes */}
       <style>
         {`
           @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
           }
         `}
       </style>
