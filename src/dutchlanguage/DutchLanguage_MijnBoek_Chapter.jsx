@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import DutchLanguage_MijnBoek_Paragrapgh from "./DutchLanguage_MijnBoek_Paragrapgh";
-import { PiShootingStarThin, PiStarThin, PiRocketLaunchThin } from "react-icons/pi";
-import { GiFireworkRocket, GiBrightExplosion } from "react-icons/gi";
+import { PiShootingStarThin, PiRocketLaunchThin } from "react-icons/pi";
 import { FaPlus } from "react-icons/fa";
+import { Tooltip } from '@mui/material';
+import { GiCheckMark } from "react-icons/gi"; //Commit
+import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard
+
 
 export default function DutchLanguage_MijnBoek_Chapter({
   chapter,
@@ -39,6 +42,21 @@ export default function DutchLanguage_MijnBoek_Chapter({
       });
   };
 
+
+  const actionButtonStyle = {
+    display: "flex",
+    alignItems: "center",
+    height: "27px",
+    border: "1px solid #000000",
+    borderRadius: "6px",
+    fontSize: "12px",
+    cursor: "pointer",
+    backgroundColor: "#FFFFFF",
+    color: "#000000",
+    gap: "4px"
+  };
+
+
   return (
     <div style={{ marginBottom: "20px" }}>
       {/* Chapter header */}
@@ -66,12 +84,8 @@ export default function DutchLanguage_MijnBoek_Chapter({
 
           {/* Create new paragraph */}
           {!creating ? (
-            <FaPlus
-              size={18}
-              color="#777777"
-              style={{ cursor: "pointer" }}
-              onClick={() => setCreating(true)}
-            />
+
+            <Tooltip title='Voeg een Paragraaf toe' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => setCreating(true)}><FaPlus style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
           ) : (
             <div style={{ marginTop: "10px" }}>
               <b>Paragraaf {nextParagraphNumber}</b>
@@ -79,11 +93,18 @@ export default function DutchLanguage_MijnBoek_Chapter({
                 value={newText}
                 onChange={e => setNewText(e.target.value)}
                 rows={4}
-                style={{ width: "100%" }}
+                style={{
+                  width: "100%",
+                  border: "0.5px solid #FF4F00",
+                  outline: "none"        // removes default blue focus ring
+                }}
               />
               <br />
-              <button onClick={createParagraph}>💾 Opslaan</button>
-              <button onClick={() => setCreating(false)}>❌ Annuleren</button>
+
+              <div style={{ display: "flex", gap: "10px", marginTop: "6px" }}>
+                <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={createParagraph}><GiCheckMark style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
+                <Tooltip title='Discard' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => setCreating(false)}><PiArrowCounterClockwiseBold style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
+              </div>
             </div>
           )}
         </div>

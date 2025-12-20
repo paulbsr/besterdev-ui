@@ -1,7 +1,23 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import DutchLanguage_MijnBoek_Chapter from "./DutchLanguage_MijnBoek_Chapter";
-import { FaPenAlt } from "react-icons/fa";
+import { FaPenAlt, FaPlus } from "react-icons/fa";
+import { Tooltip } from '@mui/material';
+import { IoIosCheckmarkCircle } from "react-icons/io";
+import { MdCancel } from "react-icons/md"
+
+const actionButtonStyle = {
+  display: "flex",
+  alignItems: "center",
+  height: "27px",
+  border: "1px solid #000000",
+  borderRadius: "6px",
+  fontSize: "12px",
+  cursor: "pointer",
+  backgroundColor: "#FFFFFF",
+  color: "#000000",
+  gap: "4px"
+};
 
 export default function MijnBoek() {
   const [chapters, setChapters] = useState([]);
@@ -92,22 +108,60 @@ export default function MijnBoek() {
 
       {/* Add new chapter */}
       {!creatingChapter ? (
-        <button onClick={() => setCreatingChapter(true)}>
-          ➕ Nieuw Hoofdstuk
-        </button>
-      ) : (
-        <div style={{ marginTop: "10px", marginBottom: "20px" }}>
-          <input
-            type="text"
-            placeholder="Hoofdstuk naam"
-            value={newChapterName}
-            onChange={(e) => setNewChapterName(e.target.value)}
-            style={{ width: "300px", marginRight: "10px" }}
-          />
-          <button onClick={createChapter}>💾 Opslaan</button>
-          <button onClick={() => setCreatingChapter(false)}>❌ Annuleren</button>
-        </div>
-      )}
+        <Tooltip title={`Add a Chapter`} placement="top-end">
+          <FaPlus
+            size={18}
+            color="#777777"
+            style={{ cursor: "pointer" }}
+            onClick={() => setCreatingChapter(true)}
+          /></Tooltip>
+
+      )
+        :
+        (
+          <div
+            style={{
+              marginTop: "10px",
+              marginBottom: "20px",
+              display: "flex",
+              alignItems: "center",
+              gap: "10px"
+            }}
+          >
+
+            <input
+              type="text"
+              placeholder="Hoofdstuk naam"
+              value={newChapterName}
+              onChange={(e) => setNewChapterName(e.target.value)}
+              style={{
+                width: "300px",
+                height: "27px",
+                border: "1px solid #000000",
+                borderRadius: "6px",
+                fontSize: "12px",
+                backgroundColor: "#FFFFFF",
+                color: "#000000"
+              }}
+            />
+
+            <button
+              type="button"
+              onClick={createChapter}
+              style={actionButtonStyle}>
+              <IoIosCheckmarkCircle size={16} />
+              Opslaan
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setCreatingChapter(false)}
+              style={actionButtonStyle}>
+              <MdCancel size={16} />
+              Annuleren
+            </button>
+          </div>
+        )}
 
       {/* Chapters */}
       {chapters

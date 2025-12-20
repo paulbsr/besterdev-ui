@@ -10,8 +10,8 @@ const styles = {
   container: {
     fontFamily: "Segoe UI",
     fontSize: "10px",
-    // marginBottom: "16px",
-    // marginTop: "16px",
+    marginTop: "10px"
+
   },
   form: {
     display: "flex",

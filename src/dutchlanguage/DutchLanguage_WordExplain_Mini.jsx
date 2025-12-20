@@ -19,6 +19,7 @@ const styles = {
     border: "1px solid #ddd",
     borderRadius: "6px",
     boxSizing: "border-box",
+    marginTop: "10px"
   },
   button: {
     height: "27px",
