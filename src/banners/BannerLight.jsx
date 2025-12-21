@@ -28,13 +28,11 @@ const internalLinks = [
   { tooltip: 'Candidate Hunt', icon: <FaPeopleArrows style={iconStyle('#336791', 30)} />, path: '/hunt' },
   { tooltip: 'Candidates', icon: <MdManageAccounts style={iconStyle('#336791', 35)} />, path: '/candidatemanage' },
   { tooltip: 'Dutch Language', icon: <GiWindmill style={iconStyle('#FF4F00', 32 )} />, path: '/dutchlanguage' },
-  { tooltip: 'Mijn Boek', icon: <GiOpenBook style={iconStyle('#336791', 32 )} />, path: '/dutchlanguagebook' },
+  { tooltip: 'Mijn Boek', icon: <GiOpenBook style={iconStyle('#FF4F00', 32 )} />, path: '/dutchlanguagebook' },
 ];
 
 const externalLinks = [
   { tooltip: 'OpenAI API', icon: <SiOpenai style={iconStyle('#10A37F', 31)} />, href: 'https://platform.openai.com/api-keys' },
-  // { tooltip: 'Jira', icon: <SiJira style={iconStyle('#336791', 26)} />, href: 'https://besterdev.atlassian.net/jira/your-work' },
-  // { tooltip: 'Confluence', icon: <FaConfluence style={iconStyle('#336791', 26)} />, href: 'https://besterdev.atlassian.net/wiki/home' },
   { tooltip: 'ReactJS v18.2.0', icon: <FaReact style={iconStyle('#61dafb', 35)} />, href: 'https://www.reactjs.com' },
   { tooltip: 'JavaScript', icon: <SiJavascript style={iconStyle('#F0DB4F', 32)} />, href: 'https://www.nodejs.org/en' },
   { tooltip: 'NodeJS v20.9.0', icon: <FaNodeJs style={iconStyle('#336791', 35)} />, href: 'https://www.nodejs.org/en' },

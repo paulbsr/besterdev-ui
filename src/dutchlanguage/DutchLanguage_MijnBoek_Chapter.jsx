@@ -65,10 +65,7 @@ export default function DutchLanguage_MijnBoek_Chapter({
         onClick={() => setOpen(!open)}
       >
 
-        {open ? <PiShootingStarThin size={25} color="#FF4F00" /> : <PiRocketLaunchThin size={25} color="#FF4F00" />} Hoofdstuk {chapter.chapterNumber}:
-
-        {chapter.chapterName}
-      </h3>
+        {open ? <PiShootingStarThin size={25} color="#FF4F00" /> : <PiRocketLaunchThin size={25} color="#FF4F00" />} <u>Hoofdstuk {chapter.chapterNumber}</u>: {chapter.chapterName}</h3>
 
       {/* Paragraph numbers */}
       {open && (
