@@ -13,18 +13,18 @@ const styles = {
   },
   input: {
     width: "300px",
-    height: "27px",
+    height: "40px",
     padding: "6px 8px",
-    fontSize: "12px",
+    fontSize: "14px",
     border: "1px solid #ddd",
     borderRadius: "6px",
     boxSizing: "border-box",
     marginTop: "10px"
   },
   button: {
-    height: "27px",
+    height: "40px",
     padding: "0 10px",
-    fontSize: "12px",
+    fontSize: "14px",
     border: "1px solid #ddd",
     borderRadius: "6px",
     backgroundColor: "#fff",
@@ -33,6 +33,7 @@ const styles = {
     alignItems: "center",
     gap: "6px",
     cursor: "pointer",
+    marginTop: "10px"
   },
   buttonDisabled: {
     cursor: "default",
@@ -49,7 +50,7 @@ const styles = {
   result: {
     marginTop: "12px",
     fontFamily: "Segoe UI",
-    fontSize: "12px",
+    fontSize: "16px",
     fontStyle: "italic",
     whiteSpace: "pre-wrap",
     color: "#000",

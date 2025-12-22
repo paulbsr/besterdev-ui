@@ -10,8 +10,7 @@ const styles = {
   container: {
     fontFamily: "Segoe UI",
     fontSize: "10px",
-    marginTop: "10px"
-
+    marginTop: "10px",
   },
   form: {
     display: "flex",
@@ -21,9 +20,9 @@ const styles = {
   },
   input: {
     width: "555px",
-    height: "27px",
+    height: "40px",
     padding: "6px 8px",
-    fontSize: "12px",
+    fontSize: "14px",
     border: "1px solid #ddd",
     borderRadius: "6px",
     boxSizing: "border-box",
@@ -33,13 +32,14 @@ const styles = {
     width: "120px",
     border: "1px solid #ddd",
     borderRadius: "6px",
-    fontSize: "12px",
+    fontSize: "14px",
     color: "#a0a0a0",
+        height: "40px",
   },
   button: {
-    height: "31px",
+    height: "40px",
     padding: "0 10px",
-    fontSize: "12px",
+    fontSize: "14px",
     border: "1px solid #ddd",
     borderRadius: "6px",
     backgroundColor: "#fff",
@@ -51,7 +51,7 @@ const styles = {
     border: "1px solid #ddd",
     borderRadius: "6px",
     padding: "12px",
-    fontSize: "10px",
+    fontSize: "16px",
     whiteSpace: "pre-wrap",
     position: "relative",
   },

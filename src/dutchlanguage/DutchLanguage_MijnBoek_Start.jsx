@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import DutchLanguage_MijnBoek_Chapter from "./DutchLanguage_MijnBoek_Chapter";
 import { IoIosCheckmarkCircle } from "react-icons/io";
-import { FaPenAlt, FaPlus } from "react-icons/fa";
+import { FaPenAlt, FaPlus, FaPenNib } from "react-icons/fa";
 import { MdCancel } from "react-icons/md"
 import { Tooltip } from '@mui/material';
-
 
 const actionButtonStyle = {
   display: "flex",
@@ -79,6 +78,7 @@ export default function MijnBoek() {
   };
 
   return (
+
     <div style={{
       border: "1px solid #FF4F00",
       borderRadius: "8px",
@@ -96,10 +96,10 @@ export default function MijnBoek() {
           marginTop: "1px",
         }}
       >
-        <FaPenAlt
+        <FaPenNib
           style={{
             color: "#FF4F00",
-            fontSize: "22px",
+            fontSize: "26px",
             cursor: "pointer",
             marginRight: "10px",
           }}

@@ -83,7 +83,7 @@ export default function DutchLanguage_Lidwoorden() {
                         <td style={{ border: "1px solid #ccc", padding: "2px", backgroundColor: "#f3e5d5ff" }}>een</td>
 
                         <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF" }}>verlede
-                            <span style={{ display: "block", fontSize: "12px", color: "#000000" }}>"I am.."</span>
+                            <span style={{ display: "block", fontSize: "12px", color: "#000000" }}>"Ek is.."</span>
                             <span style={{ display: "block", fontSize: "12px", color: "#EA5C5F" }}>toekoms</span>
                         </td>
 
@@ -143,7 +143,7 @@ export default function DutchLanguage_Lidwoorden() {
                         <td style={{ border: "1px solid #ccc", padding: "2px" }}></td>
 
                         <td style={{ border: "1px solid #ccc", padding: "2px", color: "#0066FF" }}>verlede
-                            <span style={{ display: "block", fontSize: "12px", color: "#000000" }}>"I have.."</span>
+                            <span style={{ display: "block", fontSize: "12px", color: "#000000" }}>"Ek het.."</span>
                             <span style={{ display: "block", fontSize: "12px", color: "#EA5C5F" }}>toekoms</span>
                         </td>
 
