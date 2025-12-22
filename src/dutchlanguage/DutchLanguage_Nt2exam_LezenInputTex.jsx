@@ -71,7 +71,7 @@ export default function DutchLanguage_Nt2exam_LezenInputText(props) {
       }}
     >
       <div onClick={toggleAccordion} style={{ cursor: "pointer" }}>
-        <h2 style={{ fontSize: "22px", margin: 0 }}>
+        <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>
           Insert NT2 Lezen-II Exam Text
         </h2>
       </div>

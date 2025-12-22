@@ -14,6 +14,7 @@ export default function DutchLanguage_Nt2exam_LezenInputQuestion() {
     const [optionA, setOptionA] = useState("");
     const [optionB, setOptionB] = useState("");
     const [optionC, setOptionC] = useState("");
+    const [optionD, setOptionD] = useState("");
     const [answerCorrect, setAnswerCorrect] = useState("");
     const [readingTexts, setReadingTexts] = useState([]);
     const [readingTextId, setReadingTextId] = useState("");
@@ -37,6 +38,7 @@ export default function DutchLanguage_Nt2exam_LezenInputQuestion() {
         setOptionA("");
         setOptionB("");
         setOptionC("");
+        setOptionD("");
         setAnswerCorrect("");
     };
 
@@ -48,15 +50,28 @@ export default function DutchLanguage_Nt2exam_LezenInputQuestion() {
             return;
         }
 
+        // const payload = {
+        //     year: Number(year),
+        //     questionNumber: Number(questionNumber),
+        //     question,
+        //     optionA,
+        //     optionB,
+        //     optionC,
+        //     optionD,
+        //     answerCorrect
+        // };
+
         const payload = {
             year: Number(year),
             questionNumber: Number(questionNumber),
             question,
-            optionA,
-            optionB,
-            optionC,
+            optionA: `A - ${optionA}`,
+            optionB: `B - ${optionB}`,
+            optionC: `C - ${optionC}`,
+            optionD: `D - ${optionD}`,
             answerCorrect
         };
+
 
         try {
             const response = await axios.post(
@@ -88,7 +103,7 @@ export default function DutchLanguage_Nt2exam_LezenInputQuestion() {
             }}
         >
             <div onClick={toggleAccordion} style={{ cursor: "pointer" }}>
-                <h2 style={{ fontSize: "20px", margin: 0 }}>
+                <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>
                     Insert NT2 Lezen-II Exam Questions
                 </h2>
             </div>
@@ -163,8 +178,16 @@ export default function DutchLanguage_Nt2exam_LezenInputQuestion() {
                         />
 
                         <input
+                            style={{ ...baseInputStyle, width: "480px" }}
+                            placeholder="Option D"
+                            value={optionD}
+                            onChange={(e) => setOptionD(e.target.value)}
+                            required
+                        />
+
+                        <input
                             style={{ ...baseInputStyle, width: "120px" }}
-                            placeholder="Correct (A/B/C)"
+                            placeholder="Correct (A/B/C/D)"
                             value={answerCorrect}
                             onChange={(e) => setAnswerCorrect(e.target.value.toUpperCase())}
                             required
