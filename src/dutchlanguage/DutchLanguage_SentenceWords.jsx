@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 const API_URL =
   "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
 
-export default function DutchLanguageSentenceWords({
+export default function DutchLanguage_SentenceWords({
   subject = "dagelijks leven",
 }) {
   const [challenge, setChallenge] = useState(""); // sentence with blanks

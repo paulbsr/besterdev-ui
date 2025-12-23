@@ -13,7 +13,7 @@ import { TbSquareRoundedLetterR } from "react-icons/tb";
 const today = new Date(); // Create a new Date object representing today's date
 const formattedDate = today.toISOString().split('T')[0]; // Convert the date to the desired format (YYYY-MM-DD)
 const Footer = () => (
-<div className="footer Font-Verdana-Small-Footer">
+<div className="Font-Verdana-Small-Footer">
     <TbSquareRoundedLetterP style={{color: 'black', fontSize: '20px' }}/>
     <TbSquareRoundedLetterA style={{color: 'black', fontSize: '20px' }}/>
     <TbSquareRoundedLetterU style={{color: 'black', fontSize: '20px' }}/>

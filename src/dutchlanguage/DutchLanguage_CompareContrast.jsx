@@ -3,7 +3,7 @@ import { IoMdSwap } from "react-icons/io";
 import { IoMdGitCompare } from "react-icons/io";
 import { TbExchange } from "react-icons/tb";
 
-export default function DutchLanguageCompareContrast() {
+export default function DutchLanguage_CompareContrast() {
   const [dutch, setDutch] = useState("");
   const [afrikaans, setAfrikaans] = useState("");
   const [subject, setSubject] = useState("Dutch politics VVD");

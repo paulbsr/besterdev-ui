@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../Fonts.css";
+import "../../Fonts.css";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { baseInputStyle } from "../baseInputStyle";
+import { baseInputStyle } from "../../baseInputStyle";
 
 export default function DutchLanguage_Nt2exam_SchrijvenInput(props) {
   const [isExpanded, setExpanded] = useState(false);

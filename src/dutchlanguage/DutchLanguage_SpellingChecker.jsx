@@ -5,7 +5,7 @@ import { ImSpellCheck } from "react-icons/im";
 const API_URL =
   "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
 
-export default function DutchLanguageSpellingChecker() {
+export default function DutchLanguage_SpellingChecker() {
   const [word, setWord] = useState("");
   const [feedback, setFeedback] = useState("");
 

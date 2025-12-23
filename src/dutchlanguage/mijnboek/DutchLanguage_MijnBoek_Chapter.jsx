@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import DutchLanguage_MijnBoek_Paragrapgh from "./DutchLanguage_MijnBoek_Paragrapgh";
+import DutchLanguage_MijnBoek_Paragrapgh from "../mijnboek/DutchLanguage_MijnBoek_Paragrapgh";
 import { PiShootingStarThin, PiRocketLaunchThin } from "react-icons/pi";
 import { FaPlus } from "react-icons/fa";
 import { Tooltip } from '@mui/material';

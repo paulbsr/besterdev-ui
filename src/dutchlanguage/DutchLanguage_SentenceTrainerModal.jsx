@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function DutchLanguageSentenceTrainerModal() {
+function DutchLanguage_SentenceTrainerModal() {
   const [word, setWord] = useState("Laden...");
   const [sentence, setSentence] = useState("");
   const [feedback, setFeedback] = useState("");
@@ -291,5 +291,5 @@ function DutchLanguageSentenceTrainerModal() {
   );
 }
 
-export default DutchLanguageSentenceTrainerModal;
+export default DutchLanguage_SentenceTrainerModal;
 

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "../Fonts.css";
+import "../../Fonts.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { baseInputStyle } from "../baseInputStyle";
+import { baseInputStyle } from "../../baseInputStyle";
 
 export default function DutchLanguage_Nt2exam_LezenInputQuestion() {
     const [isExpanded, setExpanded] = useState(false);
@@ -49,17 +49,6 @@ export default function DutchLanguage_Nt2exam_LezenInputQuestion() {
             toast.error("No reading text selected");
             return;
         }
-
-        // const payload = {
-        //     year: Number(year),
-        //     questionNumber: Number(questionNumber),
-        //     question,
-        //     optionA,
-        //     optionB,
-        //     optionC,
-        //     optionD,
-        //     answerCorrect
-        // };
 
         const payload = {
             year: Number(year),
@@ -128,14 +117,16 @@ export default function DutchLanguage_Nt2exam_LezenInputQuestion() {
                         </select>
 
 
-
-                        <input
-                            style={{ ...baseInputStyle, width: "100px" }}
-                            placeholder="Year"
+                        <select
+                            style={{ ...baseInputStyle, width: "84px" }}
                             value={year}
                             onChange={(e) => setYear(e.target.value)}
                             required
-                        />
+                        >
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                        </select>
 
                         <input
                             style={{ ...baseInputStyle, width: "100px" }}
@@ -154,7 +145,7 @@ export default function DutchLanguage_Nt2exam_LezenInputQuestion() {
                         />
 
                         <input
-                            style={{ ...baseInputStyle, width: "480px" }}
+                            style={{ ...baseInputStyle, width: "800px" }}
                             placeholder="Option A"
                             value={optionA}
                             onChange={(e) => setOptionA(e.target.value)}
@@ -162,7 +153,7 @@ export default function DutchLanguage_Nt2exam_LezenInputQuestion() {
                         />
 
                         <input
-                            style={{ ...baseInputStyle, width: "480px" }}
+                            style={{ ...baseInputStyle, width: "800px" }}
                             placeholder="Option B"
                             value={optionB}
                             onChange={(e) => setOptionB(e.target.value)}
@@ -170,7 +161,7 @@ export default function DutchLanguage_Nt2exam_LezenInputQuestion() {
                         />
 
                         <input
-                            style={{ ...baseInputStyle, width: "480px" }}
+                            style={{ ...baseInputStyle, width: "800px" }}
                             placeholder="Option C"
                             value={optionC}
                             onChange={(e) => setOptionC(e.target.value)}
@@ -178,7 +169,7 @@ export default function DutchLanguage_Nt2exam_LezenInputQuestion() {
                         />
 
                         <input
-                            style={{ ...baseInputStyle, width: "480px" }}
+                            style={{ ...baseInputStyle, width: "800px" }}
                             placeholder="Option D"
                             value={optionD}
                             onChange={(e) => setOptionD(e.target.value)}

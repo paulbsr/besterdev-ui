@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
-const API_URL =
-  "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
+const API_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
 
-export default function DutchLanguageChallengeTranslate({ subject = "daily life" }) {
+export default function DutchLanguage_ChallengeTranslate({ subject = "daily life" }) {
   const [prompt, setPrompt] = useState("");
   const [correctDutch, setCorrectDutch] = useState("");
   const [userInput, setUserInput] = useState("");

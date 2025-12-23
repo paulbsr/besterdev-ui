@@ -14,8 +14,6 @@
   align-items: start; /* helps sticky behave correctly */
 }
 
-
-
 .left {
   border: 1px solid #FFFFFF;
   border-radius: 8px;

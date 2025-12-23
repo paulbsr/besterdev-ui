@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "../Fonts.css";
+import "../../Fonts.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { baseInputStyle } from "../baseInputStyle";
+import { baseInputStyle } from "../../baseInputStyle";
 
 export default function DutchLanguage_Nt2exam_LezenInputText(props) {
   const [isExpanded, setExpanded] = useState(false);

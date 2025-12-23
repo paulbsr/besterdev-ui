@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import "./DutchLanguageHomePage.css";
+import "./DutchLanguage_HomePage.css";
 import AlertContext from "../Generic/Alerts/AlertContext";
 import { FaPlus } from "react-icons/fa";
 import { IoLanguage } from "react-icons/io5";

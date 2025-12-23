@@ -1,6 +1,6 @@
 // Refactored DutchLanguage_Sentences.jsx with real-time word counter
 import React, { useState, useEffect, useRef, useContext } from "react";
-import { DutchLanguage_AIEvaluator } from "./DutchLanguage_AIEvaluator";
+import { DutchLanguage_AIEvaluator } from "./DutchLanguage_AI_Evaluator";
 import DutchLanguage_AI_Response from "./DutchLanguage_AI_Response";
 import { FiRefreshCw } from "react-icons/fi";
 import { FaTimes } from "react-icons/fa";

@@ -5,7 +5,8 @@ import GradientLineThin from '../gradientlines/GradientLineThin';
 import ToastComponent from '../ToastComponent';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
 import DutchLanguageTicker from "../dutchlanguage/DutchLanguageTicker";
-import DutchLanguageMijnBoek from '../dutchlanguage/DutchLanguage_MijnBoek';
+import DutchLanguageMijnBoek from '../dutchlanguage/mijnboek/DutchLanguage_MijnBoek';
+import Footer from '../Footer';
 
 export default function PageDutchLanguageBook() {
     return (
@@ -17,6 +18,7 @@ export default function PageDutchLanguageBook() {
         <DutchLanguageTicker />
         <CombinedCreateFP />
         <DutchLanguageMijnBoek />
+        <Footer />
         <ToastComponent />
       </div>
     )

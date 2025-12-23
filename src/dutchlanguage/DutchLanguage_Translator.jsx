@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import DutchAfrikaansSentence from "./DutchAfrikaansSentence";
 
-export default function DutchLanguageTranslator() {
+export default function DutchLanguage_Translator() {
   const [text, setText] = useState("");
   const [translation, setTranslation] = useState("");
   const [loading, setLoading] = useState(false);

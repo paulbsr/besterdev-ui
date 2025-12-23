@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { FaTimes } from "react-icons/fa";
 import { TbTransform } from "react-icons/tb";
-import "./DutchLanguageHomePage.css";
+import "./DutchLanguage_HomePage.css";
 
 const API_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
 

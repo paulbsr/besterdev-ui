@@ -6,15 +6,14 @@ import { SiGoogletranslate } from "react-icons/si";
 import { RiWebcamFill } from "react-icons/ri";
 import { FaCarCrash } from "react-icons/fa";
 import { TfiYoutube } from "react-icons/tfi";
-import DutchLanguage_SignaalWoorden from "./DutchLanguage_SignaalWoorden";
-import DutchLanguage_MijnBoek_Start from "./DutchLanguage_MijnBoek_Start";
-import DutchLanguage_Woordenschat from "./DutchLanguage_Woordenschat";
-import DutchLanguage_Werkwoorden from "./DutchLanguage_Werkwoorden";
-import DutchLanguage_Lidwoorden from "./DutchLanguage_Lidwoorden";
+import DutchLanguage_SignaalWoorden from "../DutchLanguage_SignaalWoorden";
+import DutchLanguage_MijnBoek_Start from "../mijnboek/DutchLanguage_MijnBoek_Start";
+import DutchLanguage_Woordenschat from "../DutchLanguage_Woordenschat";
+import DutchLanguage_Werkwoorden from "../DutchLanguage_Werkwoorden";
+import DutchLanguage_Lidwoorden from "../DutchLanguage_Lidwoorden";
 import 'react-tooltip/dist/react-tooltip.css';
-import AskAI from '../openai/AskAI';
-import Image from "./Amsterdam1.jpg";
-import "./DutchLanguageHomePage.css"
+import Image from "../Amsterdam1.jpg";
+import "../DutchLanguage_HomePage.css"
 
 
 export default function DutchLanguageMijnBoek() {

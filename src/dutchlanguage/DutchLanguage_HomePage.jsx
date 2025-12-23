@@ -1,21 +1,23 @@
 
-import "./DutchLanguageHomePage.css";
+import "./DutchLanguage_HomePage.css";
 import 'react-tooltip/dist/react-tooltip.css';
 import AskAI from '../openai/AskAI';
 import DutchLanguage_Woordenschat from "./DutchLanguage_Woordenschat";
-import DutchLanguageTranslator from "./DutchLanguageTranslator";
-import DutchLanguageChallengeTranslate from "./DutchLanguageChallengeTranslate";
-import DutchLanguageSpellingChecker from "./DutchLanguageSpellingChecker";
-import DutchLanguageCompareContrast from "./DutchLanguageCompareContrast";
+import DutchLanguage_Translator from "./DutchLanguage_Translator";
+import DutchLanguage_ChallengeTranslate from "./DutchLanguage_ChallengeTranslate";
+import DutchLanguage_SpellingChecker from "./DutchLanguage_SpellingChecker";
+import DutchLanguage_CompareContrast from "./DutchLanguage_CompareContrast";
 import DutchLanguageTicker from "./DutchLanguageTicker";
-import DutchLanguageSentenceWords from "./DutchLanguageSentenceWords";
-import DutchLanguageWordExplain from "./DutchLanguage_WordExplain";
-import DutchLanguage_Nt2exam_SchrijvenToets from "./DutchLanguage_Nt2exam_SchrijvenToets";
-import DutchLanguage_Nt2exam_SchrijvenInput from "./DutchLanguage_Nt2exam_SchrijvenInput";
+import DutchLanguage_SentenceWords from "./DutchLanguage_SentenceWords";
+import DutchLanguage_WordExplain from "./DutchLanguage_WordExplain";
 // import DutchLanguageWoordenschat from "./DutchLanguageWoordenschat";
-import DutchLanguageSentenceTrainerModal from "./DutchLanguageSentenceTrainerModal";
-import DutchLanguage_Nt2exam_LuisterenInput from "./DutchLanguage_Nt2exam_LuisterenInput";
-import DutchLanguage_Nt2exam_LuisterenToets from "./DutchLanguage_Nt2exam_LuisterenToets";
+import DutchLanguage_SentenceTrainerModal from "./DutchLanguage_SentenceTrainerModal";
+import DutchLanguage_Nt2exam_LuisterenInput from "./nt2exam/DutchLanguage_Nt2exam_LuisterenInput";
+import DutchLanguage_Nt2exam_LuisterenToets from "./nt2exam/DutchLanguage_Nt2exam_LuisterenToets";
+import DutchLanguage_Nt2exam_LezenInputText from "./nt2exam/DutchLanguage_Nt2exam_LezenInputTex";
+import DutchLanguage_Nt2exam_LezenInputQuestion from "./nt2exam/DutchLanguage_Nt2exam_LezenInputQuestion";
+import DutchLanguage_Nt2exam_SchrijvenToets from "./nt2exam/DutchLanguage_Nt2exam_SchrijvenToets";
+import DutchLanguage_Nt2exam_SchrijvenInput from "./nt2exam/DutchLanguage_Nt2exam_SchrijvenInput";
 import imageNT2ExamTimetableJanuary from "./NT2ExamTimetableJanuary.jpg"
 import imageNT2ExamTimes from "./NT2ExamTimes.jpg"
 import Image from "./Amsterdam1.jpg"
@@ -39,14 +41,13 @@ import DutchLanguage_MLDataSet_ScoreTrend_Scores from "./DutchLanguage_MLDataSet
 import DutchLanguage_MLDataSet_ScoreTrend_Activity from "./DutchLanguage_MLDataSet_ScoreTrend_Activity";
 import DutchLanguage_MLDataSet_ScoreTrend_LengthVsScore from "./DutchLanguage_MLDataSet_ScoreTrend_LengthVsScore";
 import DutchLanguage_Zintransformatie from "./DutchLanguage_Zintransformatie";
-import DutchLanguage_Zintransformatie_Mini from "./DutchLanguage_Zintransformatie_Mini";
+import DutchLanguage_Zintransformatie_Mini from "./minis/DutchLanguage_Zintransformatie_Mini";
 import DutchLanguage_Lidwoorden from "./DutchLanguage_Lidwoorden";
-import DutchLanguage_Nt2exam_LezenInputText from "./DutchLanguage_Nt2exam_LezenInputTex";
-import DutchLanguage_Nt2exam_LezenInputQuestion from "./DutchLanguage_Nt2exam_LezenInputQuestion";
 
 
 
-export default function DutchLanguageHomePage() {
+
+export default function DutchLanguage_HomePage() {
   return (
     <div>
       {/* Spacer at the very top */}
@@ -95,7 +96,7 @@ export default function DutchLanguageHomePage() {
           {/* <div><DutchLanguage_MLDataSet_ScoreTrend_Accuracy /></div> */}
           <div><DutchLanguage_Zintransformatie_Mini /></div>
           <div><DutchLanguage_Zintransformatie /></div>
-          <div><DutchLanguageCompareContrast /></div>
+          <div><DutchLanguage_CompareContrast /></div>
           <div><DutchLanguage_Index /></div>
           {/* <div><DutchLanguage_Index /></div> */}
 
@@ -115,41 +116,25 @@ export default function DutchLanguageHomePage() {
 
           <DutchLanguage_Nt2exam_SchrijvenToets />
           <DutchLanguage_Nt2exam_LuisterenToets />
-          <DutchLanguageSentenceTrainerModal />
-          <DutchLanguageSentenceWords />
-          <DutchLanguageTranslator />
-          <DutchLanguageChallengeTranslate />
-          
+          <DutchLanguage_SentenceTrainerModal />
+          <DutchLanguage_SentenceWords />
+          <DutchLanguage_Translator />
+          <DutchLanguage_ChallengeTranslate />
           <DutchLanguage_Nt2exam_LezenInputQuestion />
           <DutchLanguage_Nt2exam_LezenInputText />
           <DutchLanguage_Nt2exam_SchrijvenInput />
           <DutchLanguage_Nt2exam_LuisterenInput />
-
-          {/* <img src={imageNT2ExamTimetableJanuary} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} /> */}
-          {/* <img src={imageNT2ExamTimes} alt="Amsterdam" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} /> */}
-
         </div>
 
 
         {/* REGTER COLUMN */}
         <div className="spacer"></div>
         <div className="right">
-          {/* <img src={ImageRight} alt="Image" style={{ boxShadow: "10px 10px 10px rgba(0,0,0,0.2)", borderRadius: "8px", }} /> */}
-          {/* <img
-            src={ImageRight}
-            alt="Image"
-            style={{
-              width: "390px",
-              height: "140px",
-              boxShadow: "10px 10px 10px rgba(0,0,0,0.2)",
-              borderRadius: "8px",
-            }}
-          /> */}
 
           <DutchLanguage_ChatBot />
-          <DutchLanguageWordExplain />
+          <DutchLanguage_WordExplain />
           <DutchLanguage_WordContext />
-          <DutchLanguageSpellingChecker />
+          <DutchLanguage_SpellingChecker />
           <DutchLanguage_SignaalWoorden />
 
         </div>

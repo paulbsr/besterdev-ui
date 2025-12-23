@@ -3,7 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { PiBookOpenTextBold } from "react-icons/pi";
 import { FaTimes } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
-import { DutchLanguage_AIEvaluator } from "./DutchLanguage_AIEvaluator"; 
+import { DutchLanguage_AIEvaluator } from "./DutchLanguage_AI_Evaluator"; 
 import { RefreshContext } from "./RefreshContext";
 import DutchLanguage_AI_ScoreSquares from "./DutchLanguage_AI_ScoreSquares";
 import DutchLanguage_AI_Response from "./DutchLanguage_AI_Response";

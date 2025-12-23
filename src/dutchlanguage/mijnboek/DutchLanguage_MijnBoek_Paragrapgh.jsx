@@ -16,11 +16,11 @@ import { SiConvertio, SiGoogletranslate } from "react-icons/si";
 import { GiQuillInk } from "react-icons/gi";
 import { PiBookOpenText } from "react-icons/pi";
 
-import DutchLanguage_WordExplain_Mini from "./DutchLanguage_WordExplain_Mini";
-import DutchLanguage_WordContext_Mini from "./DutchLanguage_WordContext_Mini";
-import DutchLanguage_SpellingChecker_Mini from "./DutchLanguage_SpellingChecker_Mini";
-import DutchLanguage_Zintransformatie_Mini from "./DutchLanguage_Zintransformatie_Mini";
-import DutchLanguage_Dagboek_Mini from "./DutchLanguage_Dagboek_Mini";
+import DutchLanguage_WordExplain_Mini from "../minis/DutchLanguage_WordExplain_Mini";
+import DutchLanguage_WordContext_Mini from "../minis/DutchLanguage_WordContext_Mini";
+import DutchLanguage_SpellingChecker_Mini from "../minis/DutchLanguage_SpellingChecker_Mini";
+import DutchLanguage_Zintransformatie_Mini from "../minis/DutchLanguage_Zintransformatie_Mini";
+import DutchLanguage_Dagboek_Mini from "../minis/DutchLanguage_Dagboek_Mini";
 
 const API_BASE =
   "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/mijn-nederlandse-boek";

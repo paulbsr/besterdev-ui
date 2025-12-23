@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import DutchLanguage_MijnBoek_Chapter from "./DutchLanguage_MijnBoek_Chapter";
+import DutchLanguage_MijnBoek_Chapter from "../mijnboek/DutchLanguage_MijnBoek_Chapter";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { FaPenAlt, FaPlus, FaPenNib } from "react-icons/fa";
 import { MdCancel } from "react-icons/md"
