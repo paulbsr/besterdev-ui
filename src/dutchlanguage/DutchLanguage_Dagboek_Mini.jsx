@@ -3,7 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { PiBookOpenTextBold } from "react-icons/pi";
 import { FaTimes } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
-import { DutchLanguage_AIEvaluator } from "./DutchLanguage_AIEvaluator"; 
+import { DutchLanguage_AIEvaluator } from "./DutchLanguage_AIEvaluator";
 import { RefreshContext } from "./RefreshContext";
 import DutchLanguage_AI_ScoreSquares from "./DutchLanguage_AI_ScoreSquares";
 import DutchLanguage_AI_Response from "./DutchLanguage_AI_Response";
@@ -109,31 +109,6 @@ const TimeGroup = ({ item, handleDelete, styles }) => {
 };
 
 // ------------------------
-// Date grouping component
-// ------------------------
-// const DateGroup = ({ dateKey, entries, handleDelete, styles }) => {
-//   const [expanded, setExpanded] = useState(false);
-//   return (
-//     <div style={{ marginBottom: "10px" }}>
-//       <div
-//         onClick={() => setExpanded(!expanded)}
-//         style={{ cursor: "pointer", fontWeight: "bold", fontFamily: "Segoe UI", fontSize: "12pt", color: "#ddd" }}
-//       >
-//         {dateKey}
-//       </div>
-
-//       {expanded && (
-//         <div style={{ marginLeft: "15px", marginTop: "5px" }}>
-//           {entries
-//             .sort((a, b) => new Date(b.createdate) - new Date(a.createdate))
-//             .map((item) => <TimeGroup key={item.id} item={item} handleDelete={handleDelete} styles={styles} />)}
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// ------------------------
 // Main Dagboek component
 // ------------------------
 function DutchLanguage_Dagboek_Mini() {
@@ -155,33 +130,9 @@ function DutchLanguage_Dagboek_Mini() {
 
   const { triggerRefresh } = useContext(RefreshContext);
 
-//   useEffect(() => { fetchAllEntries(); }, []);
-
   const formatTime = (secs) => `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")}`;
   const resetTimer = () => { clearInterval(timerRef.current); setElapsed(0); setTimerStarted(false); };
 
-//   const fetchAllEntries = async () => {
-//     try {
-//       const res = await fetch("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/all/diary");
-//       if (!res.ok) throw new Error("<Diary> failed to fetch /all/diary entries");
-//       const data = await res.json();
-
-//       const normalized = (Array.isArray(data) ? data : [data]).map((item) => {
-//         let createdDate;
-//         if (Array.isArray(item.createdAt)) {
-//           const [y, m, d, hh, mm, ss, ns] = item.createdAt;
-//           const ms = Math.floor(ns / 1e6);
-//           createdDate = new Date(y, m - 1, d, hh, mm, ss, ms).toISOString();
-//         } else createdDate = item.createdAt;
-//         return { ...item, createdate: createdDate };
-//       });
-
-//       setAllEntries(normalized);
-//     } catch (err) {
-//       console.error(err);
-//       setAllEntries([]);
-//     }
-//   };
 
   const handleSubmit = async (e) => {
     e?.preventDefault?.();
@@ -202,61 +153,16 @@ function DutchLanguage_Dagboek_Mini() {
 
       setRecentSubmission(submission);
       setEntry(""); setWordCountState(0); resetTimer();
-    //   fetchAllEntries();
+      //   fetchAllEntries();
     } catch (err) {
       console.error("Dagboek submit error:", err);
       toast.error("Fout bij verzenden: " + (err.message || ""), { position: "top-center" });
     } finally { setLoading(false); }
   };
 
-//   const handleDelete = async (id) => {
-//     if (!window.confirm("Weet je zeker dat je dit dagboekitem wilt verwijderen?")) return;
-
-//     try {
-//       const res = await fetch(
-//         `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/delete/${id}`,
-//         { method: "DELETE" }
-//       );
-
-//       if (res.status === 204 || res.ok) {
-//         setAllEntries((prev) => prev.filter((e) => e.id !== id));
-//         if (recentSubmission?.id === id) setRecentSubmission(null);
-//         // toast.success("Dagboekitem succesvol verwijderd!", { position: "top-center" });
-//       } else {
-//         const text = await res.text();
-//         console.error("Delete failed:", text);
-//         toast.error("Verwijderen mislukt.", { position: "top-center" });
-//       }
-//     } catch (err) {
-//       console.error(err);
-//       toast.error("Fout bij verwijderen.", { position: "top-center" });
-//     }
-//   };
-
-  // group entries by date
-//   const groupedByDate = allEntries
-//     .slice()
-//     .sort((a, b) => new Date(b.createdate) - new Date(a.createdate))
-//     .reduce((acc, item) => {
-//       const d = new Date(item.createdate);
-//       const yyyy = d.getFullYear();
-//       const mm = String(d.getMonth() + 1).padStart(2, "0");
-//       const dd = String(d.getDate()).padStart(2, "0");
-//       const dateKey = `${yyyy}.${mm}.${dd}`;
-//       if (!acc[dateKey]) acc[dateKey] = [];
-//       acc[dateKey].push(item);
-//       return acc;
-//     }, {});
-
   return (
-    // <div style={styles.container}>
-          <div>
+    <div>
       <ToastContainer />
-      {/* <h2 style={{ fontWeight: "bold", fontSize: "22px", margin: 0 }}>
-        <PiBookOpenTextBold style={{ color: "#ddd", fontSize: "35px", cursor: "pointer", marginRight: "10px" }} />
-        Mijn Dagboek in het Nederlands (ML)
-      </h2> */}
-
       <form onSubmit={handleSubmit}>
         <input
           value={entry}
@@ -272,27 +178,27 @@ function DutchLanguage_Dagboek_Mini() {
           onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSubmit(e); } }}
           placeholder="Typ hier jouw dagboektekst..."
           style={{
-    width: "800px",
-    height: "40px",
-    padding: "6px 8px",
-    fontSize: "14px",
-    border: "1px solid #ddd",
-    borderRadius: "6px",
-    boxSizing: "border-box",
-    marginTop: "10px"
+            width: "811px",
+            height: "40px",
+            padding: "6px 8px",
+            fontSize: "14px",
+            border: "1px solid #ddd",
+            borderRadius: "6px",
+            boxSizing: "border-box",
+            marginTop: "10px"
           }}
         />
 
-                <button type="submit" disabled={loading} 
+        <button type="submit" disabled={loading}
           style={{
-            height: "40px", 
-            width: "90px", 
-            border: "1px solid #ddd", 
+            height: "40px",
+            width: "90px",
+            border: "1px solid #ddd",
             borderRadius: "6px",
-            backgroundColor: "#fff", 
-    color: "#a0a0a0",
-            cursor: "pointer", 
-            fontFamily: "Segoe UI", 
+            backgroundColor: "#fff",
+            color: "#a0a0a0",
+            cursor: "pointer",
+            fontFamily: "Segoe UI",
             fontSize: "16px",
             marginLeft: "8px",
           }}>
@@ -314,23 +220,6 @@ function DutchLanguage_Dagboek_Mini() {
         </div>
       )}
 
-      {/* <div style={{ marginTop: "20px" }}>
-        <label style={{ display: "flex", alignItems: "center", cursor: "pointer", fontFamily: "Segoe UI", fontSize: "11pt" }}>
-          <input type="checkbox" checked={showEntries} onChange={() => setShowEntries(!showEntries)} style={{ display: "none" }} />
-          <span style={{ width: "56px", height: "20px", background: showEntries ? "#ddd" : "#ccc", borderRadius: "20px", position: "relative", transition: "background 0.2s ease", marginRight: "8px" }}>
-            <span style={{ position: "absolute", top: "2px", left: showEntries ? "38px" : "2px", width: "16px", height: "16px", background: "#fff", borderRadius: "50%", transition: "left 0.8s ease" }} />
-          </span>
-          <span style={{ fontFamily: "Segoe UI", fontSize: 16, color: "#ddd" }}>{showEntries ? "Verberg dagboek" : "Toon dagboek"}</span>
-        </label>
-
-        {showEntries && (
-          <div>
-            {Object.entries(groupedByDate).map(([dateKey, entries]) => (
-              <DateGroup key={dateKey} dateKey={dateKey} entries={entries} handleDelete={handleDelete} styles={styles} />
-            ))}
-          </div>
-        )}
-      </div> */}
     </div>
   );
 }

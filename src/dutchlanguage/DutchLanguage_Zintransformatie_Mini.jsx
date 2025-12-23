@@ -29,7 +29,7 @@ const styles = {
   },
   select: {
     padding: "6px 8px",
-    width: "120px",
+    width: "130px",
     border: "1px solid #ddd",
     borderRadius: "6px",
     fontSize: "14px",
