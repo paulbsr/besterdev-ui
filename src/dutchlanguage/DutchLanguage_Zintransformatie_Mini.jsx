@@ -16,10 +16,10 @@ const styles = {
     display: "flex",
     alignItems: "center",
     gap: "8px",
-    marginBottom: "10px",
+    // marginBottom: "10px",
   },
   input: {
-    width: "555px",
+    width: "655px",
     height: "40px",
     padding: "6px 8px",
     fontSize: "14px",

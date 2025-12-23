@@ -14,11 +14,13 @@ import { HiQuestionMarkCircle } from "react-icons/hi";
 import { ImSpellCheck } from "react-icons/im";
 import { SiConvertio, SiGoogletranslate } from "react-icons/si";
 import { GiQuillInk } from "react-icons/gi";
+import { PiBookOpenText } from "react-icons/pi";
 
 import DutchLanguage_WordExplain_Mini from "./DutchLanguage_WordExplain_Mini";
 import DutchLanguage_WordContext_Mini from "./DutchLanguage_WordContext_Mini";
 import DutchLanguage_SpellingChecker_Mini from "./DutchLanguage_SpellingChecker_Mini";
 import DutchLanguage_Zintransformatie_Mini from "./DutchLanguage_Zintransformatie_Mini";
+import DutchLanguage_Dagboek_Mini from "./DutchLanguage_Dagboek_Mini";
 
 const API_BASE =
   "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/mijn-nederlandse-boek";
@@ -47,7 +49,8 @@ export default function DutchLanguage_MijnBoek_Paragraph({ paragraph }) {
     explain: false,
     context: false,
     spelling: false,
-    conversion: false
+    conversion: false,
+    dagboek: false,
   });
 
   /* ---------------- Load paragraph lazily ---------------- */
@@ -71,7 +74,8 @@ export default function DutchLanguage_MijnBoek_Paragraph({ paragraph }) {
       explain: false,
       context: false,
       spelling: false,
-      conversion: false
+      conversion: false,
+      dagboek: false,
     });
 
   const togglePanel = key =>
@@ -155,7 +159,16 @@ export default function DutchLanguage_MijnBoek_Paragraph({ paragraph }) {
 
       <Tooltip title="Google Translate" placement="top-end">
       <a href="https://translate.google.com/?sl=nl&tl=af&op=translate" target="_blank" rel="noopener noreferrer" style={{ cursor: "pointer", color: "#0099FF", fontSize: "24px", marginLeft: "20px" }}><SiGoogletranslate /></a>
-</Tooltip>
+      </Tooltip>
+
+      <Tooltip title="Dagboek" placement="top-end">
+        <button
+          style={iconButtonStyle}
+          onClick={() => togglePanel("dagboek")}
+        >
+          <PiBookOpenText style={{ color: "#0099FF", fontSize: "25px" }} />
+        </button>
+      </Tooltip>
 
     </div>
   );
@@ -201,9 +214,11 @@ export default function DutchLanguage_MijnBoek_Paragraph({ paragraph }) {
             gap: "6px"
           }}
         >
-          {open ? (
+          {open ? 
+          (
             <PiEyeThin size={25} color="#FF4F00" />
-          ) : (
+          ) : 
+          (
             <PiEyeClosedThin size={25} color="#FF4F00" />
           )}
           <i>Paragraaf {paragraph.paragraphNumber}</i>
@@ -299,6 +314,9 @@ export default function DutchLanguage_MijnBoek_Paragraph({ paragraph }) {
               )}
               {panels.conversion && (
                 <DutchLanguage_Zintransformatie_Mini text={text} />
+              )}
+              {panels.dagboek && (
+                <DutchLanguage_Dagboek_Mini text={text} />
               )}
             </>
           )}
