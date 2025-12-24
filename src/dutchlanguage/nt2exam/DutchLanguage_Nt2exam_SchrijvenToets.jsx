@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaRegPenToSquare } from "react-icons/fa6";
+import { FcMultipleInputs } from "react-icons/fc";
 
 const API_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
 const QUESTIONS_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/schrijven/questions/onerandom";

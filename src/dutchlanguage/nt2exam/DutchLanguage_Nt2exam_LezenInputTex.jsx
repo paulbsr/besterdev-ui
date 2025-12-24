@@ -4,10 +4,10 @@ import "../../Fonts.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { baseInputStyle } from "../../baseInputStyle";
+import { FcMultipleInputs } from "react-icons/fc";
 
 export default function DutchLanguage_Nt2exam_LezenInputText(props) {
   const [isExpanded, setExpanded] = useState(false);
-
   const [year, setYear] = useState("");
   const [topic, setTopic] = useState("");
   const [heading, setHeading] = useState("");
@@ -72,6 +72,14 @@ export default function DutchLanguage_Nt2exam_LezenInputText(props) {
     >
       <div onClick={toggleAccordion} style={{ cursor: "pointer" }}>
         <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>
+          <FcMultipleInputs
+            style={{
+              color: "#FF4F00",
+              fontSize: "25px",
+              cursor: "pointer",
+              marginRight: "8px",
+            }}
+          />
           Insert NT2 Lezen-II Exam Text
         </h2>
       </div>

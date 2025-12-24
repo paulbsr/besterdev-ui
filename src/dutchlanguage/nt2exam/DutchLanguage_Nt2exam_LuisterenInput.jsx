@@ -6,6 +6,7 @@ import { Tooltip } from "react-tooltip";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { baseInputStyle } from "../../baseInputStyle";
+import { FcMultipleInputs } from "react-icons/fc";
 
 export default function DutchLanguage_Nt2exam_LuisterenInput(props) {
     const [isExpanded, setExpanded] = useState(false);
@@ -99,6 +100,14 @@ export default function DutchLanguage_Nt2exam_LuisterenInput(props) {
                             marginTop: "1px",
                         }}
                     >
+                        <FcMultipleInputs
+                            style={{
+                                color: "#FF4F00",
+                                fontSize: "25px",
+                                cursor: "pointer",
+                                marginRight: "8px",
+                            }}
+                        />
                         Insert NT2 Luisteren-II Exam Question
                     </h2>
                 </a>
