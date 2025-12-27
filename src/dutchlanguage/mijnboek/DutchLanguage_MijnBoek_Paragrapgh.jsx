@@ -7,7 +7,6 @@ import {
   PiEyeThin,
   PiArrowCounterClockwiseBold
 } from "react-icons/pi";
-import { BsPencil } from "react-icons/bs";
 import { GiCheckMark } from "react-icons/gi";
 import { RiSpeakFill } from "react-icons/ri";
 import { HiQuestionMarkCircle } from "react-icons/hi";
@@ -107,14 +106,14 @@ export default function DutchLanguage_MijnBoek_Paragraph({ paragraph }) {
     <div style={{ display: "flex", gap: "10px", marginTop: "8px" }}>
       <Tooltip title="Opslaan" placement="top-end">
         <button style={iconButtonStyle} onClick={saveParagraph}>
-          <GiCheckMark style={{ color: "#0099FF", fontSize: "20px" }} />
+          <GiCheckMark style={{ color: "#21468B", fontSize: "20px" }} />
         </button>
       </Tooltip>
 
       <Tooltip title="Annuleren" placement="top-end">
         <button style={iconButtonStyle} onClick={cancelEdit}>
           <PiArrowCounterClockwiseBold
-            style={{ color: "#0099FF", fontSize: "20px" }}
+            style={{ color: "#21468B", fontSize: "20px" }}
           />
         </button>
       </Tooltip>
@@ -124,7 +123,7 @@ export default function DutchLanguage_MijnBoek_Paragraph({ paragraph }) {
           style={iconButtonStyle}
           onClick={() => togglePanel("explain")}
         >
-          <RiSpeakFill style={{ color: "#0099FF", fontSize: "20px" }} />
+          <RiSpeakFill style={{ color: "#21468B", fontSize: "20px" }} />
         </button>
       </Tooltip>
 
@@ -134,7 +133,7 @@ export default function DutchLanguage_MijnBoek_Paragraph({ paragraph }) {
           onClick={() => togglePanel("context")}
         >
           <HiQuestionMarkCircle
-            style={{ color: "#0099FF", fontSize: "22px" }}
+            style={{ color: "#21468B", fontSize: "22px" }}
           />
         </button>
       </Tooltip>
@@ -144,7 +143,7 @@ export default function DutchLanguage_MijnBoek_Paragraph({ paragraph }) {
           style={iconButtonStyle}
           onClick={() => togglePanel("spelling")}
         >
-          <ImSpellCheck style={{ color: "#0099FF", fontSize: "20px" }} />
+          <ImSpellCheck style={{ color: "#21468B", fontSize: "20px" }} />
         </button>
       </Tooltip>
 
@@ -153,12 +152,12 @@ export default function DutchLanguage_MijnBoek_Paragraph({ paragraph }) {
           style={iconButtonStyle}
           onClick={() => togglePanel("conversion")}
         >
-          <SiConvertio style={{ color: "#0099FF", fontSize: "20px" }} />
+          <SiConvertio style={{ color: "#21468B", fontSize: "20px" }} />
         </button>
       </Tooltip>
 
       <Tooltip title="Google Translate" placement="top-end">
-      <a href="https://translate.google.com/?sl=nl&tl=af&op=translate" target="_blank" rel="noopener noreferrer" style={{ cursor: "pointer", color: "#0099FF", fontSize: "24px", marginLeft: "20px" }}><SiGoogletranslate /></a>
+      <a href="https://translate.google.com/?sl=nl&tl=af&op=translate" target="_blank" rel="noopener noreferrer" style={{ cursor: "pointer", color: "#21468B", fontSize: "24px", marginLeft: "20px" }}><SiGoogletranslate /></a>
       </Tooltip>
 
       <Tooltip title="Dagboek" placement="top-end">
@@ -166,7 +165,7 @@ export default function DutchLanguage_MijnBoek_Paragraph({ paragraph }) {
           style={iconButtonStyle}
           onClick={() => togglePanel("dagboek")}
         >
-          <PiBookOpenText style={{ color: "#0099FF", fontSize: "25px" }} />
+          <PiBookOpenText style={{ color: "#21468B", fontSize: "25px" }} />
         </button>
       </Tooltip>
 
@@ -216,10 +215,10 @@ export default function DutchLanguage_MijnBoek_Paragraph({ paragraph }) {
         >
           {open ? 
           (
-            <PiEyeThin size={25} color="#FF4F00" />
+            <PiEyeThin size={25} color="#AE1C28" />
           ) : 
           (
-            <PiEyeClosedThin size={25} color="#FF4F00" />
+            <PiEyeClosedThin size={25} color="#AE1C28" />
           )}
           <i>Paragraaf {paragraph.paragraphNumber}</i>
         </div>
@@ -256,7 +255,7 @@ export default function DutchLanguage_MijnBoek_Paragraph({ paragraph }) {
                     }}
                     onClick={() => setEditing(true)}
                   >
-                    <GiQuillInk style={{ color: "#0099FF", fontSize: "25px" }} />
+                    <GiQuillInk style={{ color: "#21468B", fontSize: "25px" }} />
                   </button>
                 </Tooltip>
               </div>
@@ -276,7 +275,7 @@ export default function DutchLanguage_MijnBoek_Paragraph({ paragraph }) {
                 rows={9}
                 style={{
                   width: "100%",
-                  border: "0.5px solid #0099FF",
+                  border: "0.5px solid #21468B",
                   borderRadius: "6px",
                   outline: "none",
                   fontFamily: "Candara",
@@ -293,7 +292,7 @@ export default function DutchLanguage_MijnBoek_Paragraph({ paragraph }) {
                   width: "99%",
                   marginTop: "6px",
                   padding: "6px 8px",
-                  border: "0.5px solid #0099FF",
+                  border: "0.5px solid #21468B",
                   outline: "none",
                   fontFamily: "Candara",
                   fontSize: "18px",

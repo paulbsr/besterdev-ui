@@ -65,7 +65,7 @@ export default function DutchLanguage_MijnBoek_Chapter({
         onClick={() => setOpen(!open)}
       >
 
-        {open ? <PiShootingStarThin size={25} color="#FF4F00" /> : <PiRocketLaunchThin size={25} color="#FF4F00" />} <u>Hoofdstuk {chapter.chapterNumber}</u>: {chapter.chapterName}</h3>
+        {open ? <PiShootingStarThin size={25} color="#AE1C28" /> : <PiRocketLaunchThin size={25} color="#AE1C28" />} <u>Hoofdstuk {chapter.chapterNumber}</u>: {chapter.chapterName}</h3>
 
       {/* Paragraph numbers */}
       {open && (
@@ -92,7 +92,7 @@ export default function DutchLanguage_MijnBoek_Chapter({
                 rows={4}
                 style={{
                   width: "100%",
-                  border: "0.5px solid #FF4F00",
+                  border: "0.5px solid #AE1C28",
                   outline: "none"        // removes default blue focus ring
                 }}
               />

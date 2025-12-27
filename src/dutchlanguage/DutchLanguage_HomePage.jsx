@@ -43,6 +43,7 @@ import DutchLanguage_MLDataSet_ScoreTrend_LengthVsScore from "./DutchLanguage_ML
 import DutchLanguage_Zintransformatie from "./DutchLanguage_Zintransformatie";
 import DutchLanguage_Zintransformatie_Mini from "./minis/DutchLanguage_Zintransformatie_Mini";
 import DutchLanguage_Lidwoorden from "./DutchLanguage_Lidwoorden";
+import DutchLanguage_NT2exam_LezenToets from "./nt2exam/DutchLanguage_NT2exam_LezenToets";
 
 
 
@@ -79,7 +80,7 @@ export default function DutchLanguage_HomePage() {
             <a href="https://www.taalthuis.com/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Taal Thuis" style={{ cursor: "pointer", color: "#336791", fontSize: "28px", marginLeft: "20px" }}><PiHouseSimpleBold /></a>
             <a href="https://translate.google.com/?sl=nl&tl=af&op=translate" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Google Translate" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><SiGoogletranslate /></a>
             <a href="https://www.anwb.nl/verkeer?center=52.08720994322829%2C5.449947200775682&zoom=6.173985622710852" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Verkeer" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><FaCarCrash /></a>
-            <a href="https://npo.nl/start/serie/eenvandaag/afleveringen" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="NPO EenVandaag" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><PiNumberCircleOneBold /></a>
+            <a href="https://eenvandaag.avrotros.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="EenVandaag.nl" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><PiNumberCircleOneBold /></a>
             <a href="https://www.facebook.com/StaatsexamensNt2" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="StaatsexamensNt2" style={{ cursor: "pointer", color: "#336791", fontSize: "27px", marginLeft: "20px" }}><FaFacebook /></a>
             <a href="https://anderetijden.nl/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Andere Tijden Website" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><BsClockFill /></a>
             <a href="https://www.youtube.com/@AndereTijdenNTR/" target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content="Andere Tijden YouTube Channel" style={{ cursor: "pointer", color: "#336791", fontSize: "24px", marginLeft: "20px" }}><TfiYoutube /></a>
@@ -113,7 +114,7 @@ export default function DutchLanguage_HomePage() {
             }}
           >Dark Mode
           </button>
-
+          <DutchLanguage_NT2exam_LezenToets />
           <DutchLanguage_Nt2exam_SchrijvenToets />
           <DutchLanguage_Nt2exam_LuisterenToets />
           <DutchLanguage_SentenceTrainerModal />

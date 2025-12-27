@@ -80,7 +80,7 @@ export default function MijnBoek() {
   return (
 
     <div style={{
-      border: "1px solid #FF4F00",
+      border: "1px solid #AE1C28",
       borderRadius: "8px",
       padding: "16px",
       fontFamily: "Segoe UI",
@@ -98,7 +98,7 @@ export default function MijnBoek() {
       >
         <FaPenNib
           style={{
-            color: "#FF4F00",
+            color: "#AE1C28",
             fontSize: "26px",
             cursor: "pointer",
             marginRight: "10px",
