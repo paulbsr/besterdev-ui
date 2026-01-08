@@ -130,14 +130,16 @@ export default function DutchLanguage_Lidwoorden() {
 
                     {/* ---- second row ---- */}
                     <tr>
-                        <td style={{ border: "1px solid #ccc", padding: "2px" }}>deze & die
+                        <td style={{ border: "1px solid #ccc", padding: "2px" }}>
+                            Near: "..deze.." (these)
                             <span style={{ display: "block", fontSize: "0.8em" }}></span>
-                            Near (this / these)
+                            Far: "..die.." (those)
                         </td>
 
-                        <td style={{ border: "1px solid #ccc", padding: "2px" }}>dit & dat
+                        <td style={{ border: "1px solid #ccc", padding: "2px" }}>
+                            Near: "..dit.." (this)
                             <span style={{ display: "block", fontSize: "0.8em" }}></span>
-                            Far (that / those)
+                            Far: "..dat.." (that)
                         </td>
 
                         <td style={{ border: "1px solid #ccc", padding: "2px" }}></td>

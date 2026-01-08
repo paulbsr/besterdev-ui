@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { FaBookReader } from "react-icons/fa";
 
 
@@ -95,26 +95,26 @@ export default function DutchLanguage_NT2exam_LezenToets() {
 
   /* ================= TIMER ================= */
 
-const [timeLeft, setTimeLeft] = useState(0); // seconds
+  const [timeLeft, setTimeLeft] = useState(0); // seconds
 
-useEffect(() => {
-  if (!data) return;
+  useEffect(() => {
+    if (!data) return;
 
-  // start at 15 minutes when text loads
-  setTimeLeft(15 * 60);
+    // start at 15 minutes when text loads
+    setTimeLeft(15 * 60);
 
-  const interval = setInterval(() => {
-    setTimeLeft(prev => {
-      if (prev <= 1) {
-        clearInterval(interval);
-        return 0;
-      }
-      return prev - 1;
-    });
-  }, 1000);
+    const interval = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev <= 1) {
+          clearInterval(interval);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
 
-  return () => clearInterval(interval);
-}, [data]);
+    return () => clearInterval(interval);
+  }, [data]);
 
 
 
@@ -128,6 +128,7 @@ useEffect(() => {
           />
           Nederlands Staatsexamen NT2 :: Lezen-II Toets
         </h2>
+        
 
         {data && (
           <button
@@ -141,9 +142,7 @@ useEffect(() => {
 
       <p style={styles.info}>
         Tekst: 6 •{" "}       Tijdsduur: ±100 minuten •{" "}
-        <a href={instructiefilmlezen} target="_blank" rel="noreferrer">
-          Instructiefilm
-        </a>
+        <a href={instructiefilmlezen} target="_blank" rel="noreferrer">Instructiefilm</a>
       </p>
 
 
@@ -151,7 +150,6 @@ useEffect(() => {
         onClick={fetchRandomText}
         disabled={loading}
         style={{
-          //  ...styles.button,
           height: "40.5px",
           border: "1px solid #777",
           borderRadius: "4px",
@@ -160,7 +158,8 @@ useEffect(() => {
           marginTop: "10px",
           cursor: loading ? "not-allowed" : "pointer",
           backgroundColor: loading ? "#ddd" : "#fff",
-          borderColor: "#FF4F00"
+          borderColor: "#FF4F00",
+          width: "180px",
 
         }}
       >
@@ -184,11 +183,11 @@ useEffect(() => {
           </div>
 
 
-{data && (
-  <div style={styles.timer}>
-    ⏱ {formatTime(timeLeft)}
-  </div>
-)}
+          {data && (
+            <div style={styles.timer}>
+              ⏱ {formatTime(timeLeft)}
+            </div>
+          )}
 
 
           {/* QUESTIONS */}
@@ -227,18 +226,18 @@ useEffect(() => {
                     style={{
                       ...styles.submitButton,
                       color: submitted[q.id]
-                        ? "#4CAF50"
-                        : "#FF4F00",
+                        ? "#3326f0ff"
+                        : "#000000",
                       borderColor: submitted[q.id]
-                        ? "#4CAF50"
-                        : "#FF4F00"
+                        ? "#777"
+                        : "#777"
                     }}
                   >
                     {submitting[q.id]
                       ? "Opslaan…"
                       : submitted[q.id]
                         ? "✔ Opgeslagen"
-                        : "Submit"}
+                        : "Controleer Antwoord"}
                   </button>
                 </div>
               </div>
@@ -265,6 +264,7 @@ const styles = {
     justifyContent: "space-between",
     alignItems: "center"
   },
+
   title: { margin: 0 },
   info: { fontSize: "12px" },
   button: {
@@ -273,21 +273,16 @@ const styles = {
     borderRadius: "4px",
     border: "1px solid #777"
   },
-  // collapseButton: {
-  //   fontSize: "10px",
-  //   cursor: "pointer"
-  // },
 
-    collapseButton: {
-    border: "1px solid #ccc",
-    backgroundColor: "#fff",
+  collapseButton: {
+    border: "1px solid #777",
+    backgroundColor: "#ffffff",
     borderRadius: "4px",
     padding: "5px 10px",
     cursor: "pointer",
     fontSize: "10px",
   },
 
-  
   meta: { marginTop: "10px" },
   topic: { fontStyle: "italic" },
   textBox: {
@@ -296,6 +291,7 @@ const styles = {
     padding: "16px",
     marginTop: "12px"
   },
+
   heading: { color: "#FF4F00" },
   paragraph: { lineHeight: 1.6 },
   questionBox: {
@@ -304,6 +300,7 @@ const styles = {
     padding: "12px",
     marginBottom: "12px"
   },
+
   questionTitle: { fontWeight: "bold" },
   questionText: { fontSize: "16px" },
   answerRow: {
@@ -311,22 +308,37 @@ const styles = {
     gap: "10px",
     marginTop: "8px"
   },
+
   select: {
-    flex: 1,
-    height: "40px"
-  },
-  submitButton: {
-    minWidth: "120px",
-    color: "#fff",
-    border: "none",
+    height: "40.5px",
+    border: "1px solid #777",
     borderRadius: "4px",
-    cursor: "pointer"
+    paddingLeft: "10px",
+    width: "750px",
+    fontSize: "16px",
+    backgroundColor: "#fff",
   },
+
+  submitButton: {
+  //   minWidth: "120px",
+  //   color: "#fff",
+  //   border: "none",
+  //   borderRadius: "6px",
+  //   cursor: "pointer"
+  // },
+    height: "40.5px",
+    border: "1px solid #777",
+    borderRadius: "4px",
+    padding: "8px 8px",
+    fontSize: "16px",
+    backgroundColor: "#fff",
+  },
+  
   timer: {
-  color: "red",
-  fontWeight: "bold",
-  fontSize: "20px",
-  marginTop: "6px"
-},
+    color: "red",
+    fontWeight: "bold",
+    fontSize: "20px",
+    marginTop: "6px"
+  },
 
 };

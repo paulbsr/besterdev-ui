@@ -182,7 +182,7 @@ function DutchLanguage_Sentences() {
               fontFamily: "Segoe UI",
               fontSize: "13pt",
               borderRadius: "6px",
-              border: "0.75px solid #ccc",
+              border: "0.75px solid #FF4F00",
               boxShadow: "10px 10px 10px rgba(0,0,0,0.2)",
               minHeight: "50px",
               resize: "vertical",

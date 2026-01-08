@@ -172,8 +172,7 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
         }}
       >
         <p style={{ margin: 0 }}>
-          Vragen: 37-40 • Maximumscore: 37-40 • Cesuur: 24 (65%) • Tijdsduur: ±90
-          minuten •{" "}
+          Vragen: 37-40 • Maximumscore: 37-40 • Cesuur: 24 (65%) • Tijdsduur: ±90 minuten •{" "}
           <a
             href={instructiefilmluisteren}
             target="_blank"
@@ -194,6 +193,7 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
           cursor: loading ? "not-allowed" : "pointer",
           marginBottom: "10px",
           marginTop: "10px",
+          width: "180px",
         }}
       >
         {loading ? "Even geduld..." : "Nieuwe Luistervraag"}
@@ -352,4 +352,15 @@ const styles = {
     fontSize: "16px",
     backgroundColor: "#fff",
   },
+
+    submitButton: {
+    minWidth: "120px",
+    color: "#fff",
+    border: "none",
+    borderRadius: "4px",
+    cursor: "pointer"
+  },
+  
 };
+
+

@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { FaRegPenToSquare } from "react-icons/fa6";
-import { FcMultipleInputs } from "react-icons/fc";
-
-const API_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
-const QUESTIONS_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/schrijven/questions/onerandom";
 
 export default function DutchLanguage_Nt2exam_SchrijvenToets() {
   const [challenge, setChallenge] = useState(null);
@@ -12,9 +8,11 @@ export default function DutchLanguage_Nt2exam_SchrijvenToets() {
   const [criteriaScores, setCriteriaScores] = useState(null);
   const [loading, setLoading] = useState(false);
   const [expanded, setExpanded] = useState(false); // 👈 controls expand/collapse
-  const instructiefilmschrijven = "https://www.staatsexamensnt2.nl/documenten/videos/2025/8/4/instructiefilm-schrijven"
   const [wordCount, setWordCount] = useState(0);
   const [secondsElapsed, setSecondsElapsed] = useState(0);
+  const instructiefilmschrijven = "https://www.staatsexamensnt2.nl/documenten/videos/2025/8/4/instructiefilm-schrijven"
+  const API_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
+  const QUESTIONS_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/schrijven/questions/onerandom";
 
   // -------------------------------
   // Safe JSON parser
@@ -266,11 +264,9 @@ Format your answer strictly like this:
   // UI Rendering
   // -------------------------------
   return (
-
-
     <div style={styles.container}>
       <div style={styles.headerRow}>
-        <h2 style={styles.title}><FaRegPenToSquare style={{ color: '#FF4F00', fontSize: '25px', cursor: 'pointer', marginRight: '10px' }} /> Nederlands Staatsexamen NT2 :: Schrijven-II Toets</h2>
+        <h2 style={styles.title}><FaRegPenToSquare style={{ color: '#FF4F00', fontSize: '25px', cursor: 'pointer', marginRight: '10px' }} />Nederlands Staatsexamen NT2 :: Schrijven-II Toets</h2>
 
         {challenge && (
           <button
@@ -287,32 +283,7 @@ Format your answer strictly like this:
           Instructiefilm
         </a></p>
       </div>
-<button
-  onClick={fetchChallenge}
-  disabled={loading}
-  style={{
-    ...styles.button,
-    backgroundColor: loading ? "#ddd" : "#fff",
-    borderColor: "#FF4F00",
-    cursor: loading ? "not-allowed" : "pointer",
-    marginBottom: "10px",
-    marginTop: "10px",
-    display: "flex",
-    alignItems: "center",
-    gap: "8px",
-  }}
->
-  {loading ? (
-    <>
-      <div className="spinner"></div>
-      Even geduld...
-    </>
-  ) : (
-    "Nieuwe Schrijvenvraag"
-  )}
-</button>
-
-      {/* <button
+      <button
         onClick={fetchChallenge}
         disabled={loading}
         style={{
@@ -322,12 +293,21 @@ Format your answer strictly like this:
           cursor: loading ? "not-allowed" : "pointer",
           marginBottom: "10px",
           marginTop: "10px",
+          display: "flex",
+          alignItems: "center",
+          gap: "8px",
         }}
       >
-        {loading ? "Even geduld..." : "Nieuwe Schrijvenvraag"}
-      </button> */}
+        {loading ? (
+          <>
+            <div className="spinner"></div>
+            Even geduld...
+          </>
+        ) : (
+          "Nieuwe Schrijvenvraag"
+        )}
+      </button>
 
-      
       {expanded && (
         <>
           {/* Challenge Display */}
@@ -383,69 +363,44 @@ Format your answer strictly like this:
               }}
             />
 
-            {/* <div style={{ fontSize: "13px", color: "#555", marginTop: "4px" }}>
-              Woorden: {wordCount}
-            </div> */}
-
             <div style={{ fontSize: "13px", color: "#555", marginTop: "4px", display: "flex", justifyContent: "space-between", width: "98%" }}>
               <span>Woorden: {wordCount}</span>
               <span>Tijd: {formatTime(secondsElapsed)}</span>
             </div>
 
-
-
-
-            {/* <button
+            <button
               type="submit"
               disabled={loading}
               style={{
                 fontFamily: "Segoe UI",
-                fontSize: "1^px",
+                fontSize: "16px",
                 marginTop: "8px",
                 padding: "8px 14px",
                 cursor: loading ? "not-allowed" : "pointer",
                 background: "#FFFFFF",
-                color: "white",
-                border: "#FF4F00",
+                color: "black",
+                background: "#FFFFFF",
+                borderColor: "#FF4F00",
                 borderRadius: "6px",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
               }}
             >
-              {loading ? "Bezig met evaluatie..." : "Indienen"}
-            </button> */}
-
-            <button
-  type="submit"
-  disabled={loading}
-  style={{
-    fontFamily: "Segoe UI",
-    fontSize: "16px",
-    marginTop: "8px",
-    padding: "8px 14px",
-    cursor: loading ? "not-allowed" : "pointer",
-    background: "#FFFFFF",
-    color: "black",
-    background: "#FFFFFF",
-    borderColor: "#FF4F00",
-    borderRadius: "6px",
-    display: "flex",
-    alignItems: "center",
-    gap: "8px",
-  }}
->
-  {loading ? (
-    <>
-      <div className="spinner"></div>
-      Bezig met evaluatie...
-    </>
-  ) : (
-    "Indienen"
-  )}
-</button>
+              {loading ? (
+                <>
+                  <div className="spinner"></div>
+                  Bezig met evaluatie...
+                </>
+              ) : (
+                "Indienen"
+              )}
+            </button>
 
           </form>
 
           {feedback && (
-            <div style={{ marginTop: "16px", fontStyle: "italic" }}>   
+            <div style={{ marginTop: "16px", fontStyle: "italic" }}>
               {feedback}
             </div>
           )}
