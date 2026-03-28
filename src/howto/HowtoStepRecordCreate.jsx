@@ -22,7 +22,7 @@ export default function HowtoStepRecordCreate_original(props) {
       step_id_fk: step_id_fk,
     };
 
-      const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/create`, StepRecordPost);
+      const response = await OAuth2APIClient.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/create`, StepRecordPost);
       if (response.status === 200) {
         props.setCheckForRecords(!props.checkForRecords);
         toast.success(`Step Record#${steprecord_number} added.`)

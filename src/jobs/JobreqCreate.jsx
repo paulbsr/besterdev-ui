@@ -71,7 +71,7 @@ export default function JobreqCreate(props) {
       }
 
       try {
-        const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs/create`, jobreqPOST);
+        const response = await OAuth2APIClient.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs/create`, jobreqPOST);
         if (response.status === 200) {
           props.setCheckForRecords(!props.checkForRecords);
           toast.success(`${jrnumber} for ${company} memorialized.`)

@@ -9,7 +9,7 @@ import { FaRegTrashAlt } from 'react-icons/fa'; //Delete
 import { BsPencil } from "react-icons/bs";
 import MyCVEmployerRoleDetailsCreate from './MyCVEmployerRoleDetailsCreate';
 import { MdAddCircleOutline } from "react-icons/md";
-
+import OAuth2APIClient from "../oauth2/OAuth2APIClient"
 
 function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, role_desc, role_name, checkForRecords, setCheckForRecords }) {
     const [isExpanded, setExpanded] = useState(false);
@@ -40,7 +40,7 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
             'roledetail_desc': roledetail_desc,
         }
 
-        const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/role_detail/update/${roledetail_id}`, RoleDetailPUT)
+        const response = await OAuth2APIClient.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/role_detail/update/${roledetail_id}`, RoleDetailPUT)
         setCheckForRecords(!checkForRecords)
         toast.success(`Role Detail amended. ${roledetail_id} ${roledetail_name} ${roledetail_desc}`)
         onEditCancel();
@@ -48,7 +48,7 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
 
 
     const onEditDelete = (roledetail_id) => {
-        axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/delete/${roledetail_id}`)
+        OAuth2APIClient.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/delete/${roledetail_id}`)
             .then((response) => 
             {
                 window.alert('Are you sure you want to delete');

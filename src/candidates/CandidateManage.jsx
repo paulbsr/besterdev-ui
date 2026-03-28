@@ -16,6 +16,7 @@ import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import CandidateCreate from "./CandidateCreate";
 import GradientLineRusty from "../gradientlines/GradientLineRusty";
+import OAuth2APIClient from "../oauth2/OAuth2APIClient"
 
 dayjs.extend(utc);
 
@@ -47,8 +48,10 @@ export default function CandidateManage() {
   useEffect(() => {
     const fetchCandidates = async () => {
       try {
-        const res = await axios.get(
-          "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates"
+        // const res = await OAuth2APIClient.get(
+                  const res = await OAuth2APIClient.get(
+          // "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates"
+          "http://localhost:8000/api/v1/candidates"
         );
         const sorted = res.data.sort((a, b) =>
           a.firstname.localeCompare(b.firstname)
@@ -94,8 +97,9 @@ export default function CandidateManage() {
 
   const onEditSave = async () => {
     try {
-      await axios.put(
-        `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/update/${editingId}`,
+      await OAuth2APIClient.put(
+        // `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/update/${editingId}`,
+                `http://localhost:8000/api/v1/candidates/update/${editingId}`,
         editingCandidate
       );
       toast.success(`${editingCandidate.firstname} ${editingCandidate.lastname} updated.`);
@@ -114,8 +118,9 @@ export default function CandidateManage() {
     if (!confirmed) return;
 
     try {
-      await axios.delete(
-        `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/delete/${row.id}`
+      await OAuth2APIClient.delete(
+        // `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/delete/${row.id}`
+                `http://localhost:8000/api/v1/candidates/delete/${row.id}`
       );
       toast.success(`${row.firstname} ${row.lastname} has been deleted.`);
       setCheckForRecords((prev) => !prev);

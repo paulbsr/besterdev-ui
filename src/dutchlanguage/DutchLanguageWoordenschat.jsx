@@ -24,7 +24,7 @@ export default function DutchLanguageWoordenschat() {
 
     const fetchData = async () => {
         try {
-            const res = await axios.get(`${API_BASE}/dutchlanguagewoordenschat`);
+            const res = await OAuth2APIClient.get(`${API_BASE}/dutchlanguagewoordenschat`);
             const data = Array.isArray(res.data) ? res.data : res.data.data || [];
             const sorted = data.sort((a, b) => a.dutchWord.localeCompare(b.dutchWord));
             setRecords(sorted);
@@ -36,7 +36,7 @@ export default function DutchLanguageWoordenschat() {
     const addRow = async () => {
         if (!newRow.dutchWord || !newRow.description || !newRow.use) return;
         try {
-            await axios.post(`${API_BASE}/dutchlanguagewoordenschat/create`, newRow);
+            await OAuth2APIClient.post(`${API_BASE}/dutchlanguagewoordenschat/create`, newRow);
             setNewRow({ dutchWord: "", description: "", use: "" });
             setShowAddRow(false);
             fetchData();
@@ -57,7 +57,7 @@ export default function DutchLanguageWoordenschat() {
 
     const saveEdit = async (id) => {
         try {
-            await axios.put(`${API_BASE}/dutchlanguagewoordenschat/update/${id}`, editRow);
+            await OAuth2APIClient.put(`${API_BASE}/dutchlanguagewoordenschat/update/${id}`, editRow);
             setEditId(null);
             setEditRow({ dutchWord: "", description: "", use: "" });
             fetchData();

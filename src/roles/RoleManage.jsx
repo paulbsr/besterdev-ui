@@ -59,7 +59,7 @@ export default function RoleManage() {
   // Save changes
   const handleSave = async () => {
     try {
-      await axios.put(`${API_BASE}/update/${editingId}`, editedRole);
+      await OAuth2APIClient.put(`${API_BASE}/update/${editingId}`, editedRole);
       alert(`Role "${editedRole.rolename}" has been updated.`);
       setRefreshFlag(!refreshFlag);
       handleCancel();
@@ -73,7 +73,7 @@ export default function RoleManage() {
   const handleDelete = async (role) => {
     if (!window.confirm(`Are you sure you want to delete "${role.rolename}"?`)) return;
     try {
-      await axios.delete(`${API_BASE}/delete/${role.id}`);
+      await OAuth2APIClient.delete(`${API_BASE}/delete/${role.id}`);
       alert(`Role "${role.rolename}" has been deleted.`);
       setRefreshFlag(!refreshFlag);
     } catch (error) {

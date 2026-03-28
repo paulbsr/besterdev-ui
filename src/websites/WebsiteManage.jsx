@@ -51,7 +51,7 @@ export default function WebsiteManage(props) {
       'websiteUrl': website_url,
       'websiteCat': website_cat,
     }
-    await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/update/${editing}`, websitePUT)
+    await OAuth2APIClient.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/update/${editing}`, websitePUT)
       .then((response) => {
         setCheckForRecords(!checkForRecords);
         toast.success(`Website updated.`)
@@ -61,7 +61,7 @@ export default function WebsiteManage(props) {
   }
 
   const onEditDelete = (row) => {
-    axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/delete/${row.websiteId}`)
+    OAuth2APIClient.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/delete/${row.websiteId}`)
       .then((response) => {
         window.alert('Are you sure you want to delete');
         setCheckForRecords(!checkForRecords);

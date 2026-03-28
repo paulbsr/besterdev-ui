@@ -24,7 +24,7 @@ export default function BreakingNewsAPI() {
                 twodays.setDate(today.getDate() - 2);
                 const dayTwo = twodays.toISOString().split('T')[0]; // Convert to YYYY-MM-DD
 
-                axios.get(`https://newsapi.org/v2/everything?q=${newsapiSearchPhrase}&from=${dayTwo}&to=${dayOne}&language=en&apiKey=b9451c67f79e404bb72c2a9460262fed`)
+                OAuth2APIClient.get(`https://newsapi.org/v2/everything?q=${newsapiSearchPhrase}&from=${dayTwo}&to=${dayOne}&language=en&apiKey=b9451c67f79e404bb72c2a9460262fed`)
                     .then((response) => {
                         const newsapiDataIB = response.data.articles;
 
@@ -38,8 +38,8 @@ export default function BreakingNewsAPI() {
 
                         const serializedData = JSON.stringify(postData);
 
-                        axios.post('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/news/create', serializedData, {
-                            // axios.post('http://localhost:8000/api/v1/news/create', serializedData, {
+                        OAuth2APIClient.post('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/news/create', serializedData, {
+                            // OAuth2APIClient.post('http://localhost:8000/api/v1/news/create', serializedData, {
                             headers: { 'Content-Type': 'application/json' }
                         })
                             .then(

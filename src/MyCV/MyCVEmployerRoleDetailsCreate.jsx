@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import axios from "axios";
+import OAuth2APIClient from "../oauth2/OAuth2APIClient"
 import "../Fonts.css";
 import { toast } from 'react-toastify';
 
@@ -18,7 +18,7 @@ export default function MyCVEmployerRoleDetailsCreate(props) {
       parent_role_id: props.parent_role_id1,
     };
 
-      const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/role_detail/create`, RoleDetailPost);
+      const response = await OAuth2APIClient.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/role_detail/create`, RoleDetailPost);
       if (response.status === 200) {
         props.setCheckForRecords(!props.checkForRecords);
         toast.success(`Role Detail added.`)

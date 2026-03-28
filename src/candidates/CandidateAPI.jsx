@@ -77,7 +77,7 @@ export default function CandidateAPI() {
         reqnum,
         employer
       };
-      await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/create`, payload);
+      await OAuth2APIClient.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/create`, payload);
       setComment('');
       setRefresh(prev => !prev);
     } catch (err) {

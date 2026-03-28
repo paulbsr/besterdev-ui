@@ -12,7 +12,7 @@ export const HowtoAPIProvider = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtos');
+        const response = await OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtos');
         const sortedhowtodata = response.data.sort((b, a) => b.howto_name.localeCompare(a.howto_name));
         setHowtorootdata(sortedhowtodata);
       } catch (err) {

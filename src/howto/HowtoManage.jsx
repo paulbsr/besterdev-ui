@@ -57,7 +57,7 @@ export default function HowtoManage() {
           "howto_date": howto_date,
         } 
         
-           await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howto/update/${editing}`, howtoPUT)
+           await OAuth2APIClient.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howto/update/${editing}`, howtoPUT)
            .then((response) => {
             setCheckForRecords(!checkForRecords); 
             toast.success(`${howto_name} updated.`)
@@ -67,7 +67,7 @@ export default function HowtoManage() {
         }
 
             const onEditDelete = () => {
-              axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howto/delete/${editing}`)
+              OAuth2APIClient.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howto/delete/${editing}`)
                 .then((response) => 
                 {
                   window.alert('Are you sure you want to delete');

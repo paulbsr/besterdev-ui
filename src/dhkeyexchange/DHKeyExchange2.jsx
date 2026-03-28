@@ -42,7 +42,7 @@ function DHKeyExchange2({ howto_ids }) {
 
   const generateDHParameters = async () => {
     try {
-      const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/parameters/generate`);
+      const response = await OAuth2APIClient.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/parameters/generate`);
       setDhparameters(response.data);
     } catch (error) {
       console.error('Error in DHParameters:', error);
@@ -52,7 +52,7 @@ function DHKeyExchange2({ howto_ids }) {
 
   const generateDHParameterSpecObject = async () => {
     try {
-      const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/dhparameterspecobject/generate`);
+      const response = await OAuth2APIClient.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/dhparameterspecobject/generate`);
       setDhparameterspecobject(response.data);
     } catch (error) {
       console.error('Error in DH ParameterSpecObject:', error);
@@ -62,7 +62,7 @@ function DHKeyExchange2({ howto_ids }) {
 
   const generateKeyPairServer = async () => {
     try {
-      const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/keypair/generate-server`);
+      const response = await OAuth2APIClient.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/keypair/generate-server`);
       setDhkeypairserver(response.data);
     } catch (error) {
       console.error('Error in DH KeyPair Server:', error);
@@ -72,7 +72,7 @@ function DHKeyExchange2({ howto_ids }) {
 
   const generateKeyPairClient = async () => {
     try {
-      const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/keypair/generate-client`);
+      const response = await OAuth2APIClient.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/keypair/generate-client`);
       setDhkeypairclient(response.data);
     } catch (error) {
       console.error('Error in DH KeyPair Client:', error);
@@ -82,7 +82,7 @@ function DHKeyExchange2({ howto_ids }) {
 
   const generateSharedSecretServer = async () => {
     try {
-      const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/sharedsecret/generate-server`);
+      const response = await OAuth2APIClient.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/sharedsecret/generate-server`);
       setDhsharedsecretserver(response.data);
     } catch (error) {
       console.error('Error in DH SharedSecret Server:', error);
@@ -92,7 +92,7 @@ function DHKeyExchange2({ howto_ids }) {
 
   const generateSharedSecretClient = async () => {
     try {
-      const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/sharedsecret/generate-client`);
+      const response = await OAuth2APIClient.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/sharedsecret/generate-client`);
       setDhsharedsecretclient(response.data);
     } catch (error) {
       console.error('Error in DH SharedSecret Client:', error);
@@ -102,7 +102,7 @@ function DHKeyExchange2({ howto_ids }) {
 
     const generateSharedSecretHash = async () => {
     try {
-      const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/sharedsecret/generate-hash`);
+      const response = await OAuth2APIClient.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/sharedsecret/generate-hash`);
       setDhsharedsecrethash(response.data);
     } catch (error) {
       console.error('Error in DH SharedSecret Hash:', error);
@@ -112,7 +112,7 @@ function DHKeyExchange2({ howto_ids }) {
 
   const generateAESSecretKey = async () => {
     try {
-      const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/aessecretkey/generate`);
+      const response = await OAuth2APIClient.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/dh/aessecretkey/generate`);
       setAessecretkey(response.data);
     } catch (error) {
       console.error('Error in AES SecretKey:', error);

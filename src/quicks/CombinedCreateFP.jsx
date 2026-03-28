@@ -10,7 +10,7 @@ import axios from "axios";
 import DatePicker from "react-datepicker";
 import DBSearchComponentBanner from "../dbsearch/DBSearchComponentBanner";
 import WebSocketComponent from "../websockets/WebSocketComponent";
-import BearerToken from "../oauth2.0/BearerToken";
+import BearerToken from "../oauth2/BearerToken";
 import "react-tooltip/dist/react-tooltip.css";
 import "../Fonts.css";
 
@@ -71,7 +71,7 @@ export default function CombinedCreateFP() {
       cyclopediaUrl: cyclopedia.url,
     };
     try {
-      const res = await axios.post(`${API_BASE}/cyclopedia/create`, payload);
+      const res = await OAuth2APIClient.post(`${API_BASE}/cyclopedia/create`, payload);
       if (res.status === 200) {
         setRefreshCyclopediarootdata((prev) => !prev);
         toast.success(`${cyclopedia.name} memorialized.`);
@@ -91,7 +91,7 @@ export default function CombinedCreateFP() {
       websiteCat: website.cat,
     };
     try {
-      const res = await axios.post(`${API_BASE}/websites/create`, payload);
+      const res = await OAuth2APIClient.post(`${API_BASE}/websites/create`, payload);
       if (res.status === 200) {
         setRefreshWebsiterootdata((prev) => !prev);
         toast.success(`${website.name} added.`);
@@ -119,7 +119,7 @@ export default function CombinedCreateFP() {
     };
 
     try {
-      const res = await axios.post(`${API_BASE}/tasks/create`, payload);
+      const res = await OAuth2APIClient.post(`${API_BASE}/tasks/create`, payload);
       res.status === 200
         ? toast.success("Task added.")
         : toast.error("Task not added");

@@ -34,7 +34,7 @@ export default function HowtoStepCreate(props) {
         'step_obj': step_obj,
       }
 
-      const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtostep/create`, newRecord);
+      const response = await OAuth2APIClient.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtostep/create`, newRecord);
       if (response.status === 200) {
         props.setCheckForRecords(!props.checkForRecords);
         toast.success(`Step ${step_number} added.`);
@@ -53,8 +53,8 @@ export default function HowtoStepCreate(props) {
     <div className='Font-Verdana-Small-Postgres'>&nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-        <a data-tooltip-id="insert" data-tooltip-content="Add a Step"><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
-        <b>Add a Step <IoFootstepsOutline style={{ color: '#D5441C', fontSize: '18px', cursor: 'pointer' }} /> to <i>"{props.howto_name}"</i></b>
+        <a data-tooltip-id="insert" data-tooltip-content="Add a Step"><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} />
+        <b>Add a Step <IoFootstepsOutline style={{ color: '#D5441C', fontSize: '18px', cursor: 'pointer' }} /> to <i>"{props.howto_name}"</i></b></a>
         <div>&nbsp;</div>
       </div>
 

@@ -39,7 +39,7 @@ export default function PeopleScorecardCreate({ checkForRecords, setCheckForReco
     });
 
     try {
-      const response = await axios.post(
+      const response = await OAuth2APIClient.post(
         "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/scorecard_people/create",
         newTask
       );

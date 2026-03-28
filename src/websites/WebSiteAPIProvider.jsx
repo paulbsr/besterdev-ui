@@ -13,7 +13,7 @@ export const WebSiteAPIProvider = ({ children }) => {
     const fetchData = async () => {
       setLoading(true); // Start loading before the fetch
       try {
-        const response = await axios.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites');
+        const response = await OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites');
 
         const sortedwebsitedata = response.data.sort((b, a) => b.websiteName.localeCompare(a.websiteName));
         setWebsiterootdata(sortedwebsitedata);

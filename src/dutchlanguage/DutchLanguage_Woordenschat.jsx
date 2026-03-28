@@ -44,7 +44,7 @@ export default function DutchLanguage_Woordenschat() {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get(`${API_BASE}/dutchlanguage`);
+      const res = await OAuth2APIClient.get(`${API_BASE}/dutchlanguage`);
       const sorted = res.data.sort((a, b) =>
         a.dutch.localeCompare(b.dutch)
       );
@@ -61,7 +61,7 @@ export default function DutchLanguage_Woordenschat() {
     if (!newRow.afrikaans || !newRow.dutch) return;
 
     try {
-      await axios.post(`${API_BASE}/dutchlanguage/create`, newRow);
+      await OAuth2APIClient.post(`${API_BASE}/dutchlanguage/create`, newRow);
       setNewRow({ afrikaans: "", dutch: "", sample: "" });
       setShowAddRow(false);
       fetchData();
@@ -86,7 +86,7 @@ export default function DutchLanguage_Woordenschat() {
 
   const saveEdit = async (id) => {
     try {
-      await axios.put(`${API_BASE}/dutchlanguage/update/${id}`, editRow);
+      await OAuth2APIClient.put(`${API_BASE}/dutchlanguage/update/${id}`, editRow);
       setEditId(null);
       setEditRow({ afrikaans: "", dutch: "", sample: "" });
       fetchData();

@@ -10,7 +10,7 @@ import { BiLogoPostgresql, BiLogoHeroku, BiLogoGithub, BiLogoGoogle } from 'reac
 import { BsPatchQuestion, BsPeopleFill } from 'react-icons/bs';
 import { MdManageAccounts, MdTask } from 'react-icons/md';
 import { GiWindmill, GiOpenBook } from "react-icons/gi";
-import { SiOpenai, SiVault, SiGooglecloud } from "react-icons/si";
+import { SiOpenai, SiVault, SiGooglecloud, SiAuth0 } from "react-icons/si";
 import { IoHome } from 'react-icons/io5';
 import { FaAws } from "react-icons/fa6";
 
@@ -38,15 +38,15 @@ const externalLinks = [
   { tooltip: 'NodeJS v20.9.0', icon: <FaNodeJs style={iconStyle('#336791', 35)} />, href: 'https://www.nodejs.org/en' },
   { tooltip: 'Java 17.0.9', icon: <FaJava style={iconStyle('#D5441C', 40)} />, href: 'https://www.java.com/en' },
   { tooltip: 'Spring Boot v3.4.0', icon: <SiSpringboot style={iconStyle('#336791', 33)} />, href: 'https://spring.io/projects/spring-boot' },
-  { tooltip: 'PostgreSQL on Heroku', icon: <BiLogoPostgresql style={iconStyle('#336791', 33)} />, href: 'https://spring.io/projects/spring-boot' },
-  { tooltip: 'GitHub', icon: <BiLogoGithub style={iconStyle('#000000', 33)} />, href: 'https://github.com' },
-  { tooltip: 'AWS', icon: <FaAws style={iconStyle('#ff8500', 33)} />, href: 'https://eu-west-1.console.aws.amazon.com/amplify/home' },
-  { tooltip: 'Heroku API Backend', icon: <BiLogoHeroku style={iconStyle('#6762a6', 33)} />, href: 'https://dashboard.heroku.com/apps' },
+  { tooltip: 'PostgreSQL DB on Heroku', icon: <BiLogoPostgresql style={iconStyle('#336791', 33)} />, href: 'https://spring.io/projects/spring-boot' },
+  { tooltip: 'GitHub for Repositories', icon: <BiLogoGithub style={iconStyle('#000000', 33)} />, href: 'https://github.com' },
+  { tooltip: 'AWS for Front-end UI', icon: <FaAws style={iconStyle('#ff8500', 33)} />, href: 'https://eu-west-1.console.aws.amazon.com/amplify/home' },
+  { tooltip: 'Heroku for Back-end APIs', icon: <BiLogoHeroku style={iconStyle('#6762a6', 33)} />, href: 'https://dashboard.heroku.com/apps' },
   { tooltip: 'Google Account', icon: <BiLogoGoogle style={iconStyle('#4688F1', 33)} />, href: 'https://myaccount.google.com/' },
   { tooltip: 'Google Cloud Console', icon: <SiGooglecloud style={iconStyle('#4688F1', 31)} />, href: 'https://console.cloud.google.com/welcome?hl=en&project=besterdev-nederlands' },
-  { tooltip: 'Firebase Auth', icon: <SiFirebase style={iconStyle('#FFCB2B', 33)} />, href: 'https://console.firebase.google.com/project/besterdev-432e9/overview' },
-  { tooltip: 'HashiCorp Vault', icon: <SiVault style={iconStyle('#000000', 30)} />, href: 'https://portal.cloud.hashicorp.com/orgs/4603e2a7-5b9d-4f7c-ac72-4fca0378803d/projects/fa3017fe-349f-4651-972e-1a2242b0b9d9' },
-  
+  { tooltip: 'Firebase for Auth', icon: <SiFirebase style={iconStyle('#FFCB2B', 33)} />, href: 'https://console.firebase.google.com/project/besterdev-432e9/overview' },
+  { tooltip: 'HashiCorp for Vault', icon: <SiVault style={iconStyle('#000000', 30)} />, href: 'https://portal.cloud.hashicorp.com/orgs/4603e2a7-5b9d-4f7c-ac72-4fca0378803d/projects/fa3017fe-349f-4651-972e-1a2242b0b9d9' },
+  { tooltip: 'Auth0 for Bearer Tokens', icon: <SiAuth0 style={iconStyle('#000000', 30)} />, href: 'https://manage.auth0.com/dashboard/us/dev-zfn2vy40864n84pi/' },
 ];
 
 const BannerLight = () => {

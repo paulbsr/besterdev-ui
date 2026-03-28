@@ -97,7 +97,7 @@ Transformation: "${mode}"
 Return ONLY the converted sentence as plain text.`,
       };
 
-      const res = await axios.post(API_URL, payload);
+      const res = await OAuth2APIClient.post(API_URL, payload);
       let text = res.data.answer || "";
 
       text = text.replace(/```/g, "").trim();

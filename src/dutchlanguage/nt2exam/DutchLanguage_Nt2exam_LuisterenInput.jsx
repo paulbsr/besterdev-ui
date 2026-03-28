@@ -59,7 +59,7 @@ export default function DutchLanguage_Nt2exam_LuisterenInput(props) {
         };
 
         try {
-            const response = await axios.post(
+            const response = await OAuth2APIClient.post(
                 "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/luisteren",
                 newRecord
             );
@@ -127,7 +127,7 @@ export default function DutchLanguage_Nt2exam_LuisterenInput(props) {
                                 <option value="2022">2022</option>
                                 <option value="2023">2023</option>
                                 <option value="2024">2024</option>
-                                <option value="2024">2025</option>
+                                <option value="2025">2025</option>
                             </select>
 
                             Track:

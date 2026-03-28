@@ -57,8 +57,8 @@ function TaskRecordAccordion_forTaskEdit({
             childrecord: taskrecord,
         };
 
-        const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
-        // const response = await axios.put(`http://localhost:8000/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
+        const response = await OAuth2APIClient.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
+        // const response = await OAuth2APIClient.put(`http://localhost:8000/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
         if (response.status === 202) {
             setCheckForRecords(!checkForRecords); 
             toast.success(`Task Record updated.`);

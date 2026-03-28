@@ -12,7 +12,7 @@ export const BreakingNewsAPIProvider = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/news');
+        const response = await OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/news');
         // const sortedwebsitedata = response.data.sort((b, a) => b.website_name.localeCompare(a.website_name));
         const newsDataDB = response.data;
         // shuffleArray(newsDataDB);

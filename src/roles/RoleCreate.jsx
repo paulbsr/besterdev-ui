@@ -32,7 +32,7 @@ export default function RoleCreate() {
     setSubmitting(true);
 
     try {
-      const response = await axios.post(`${API_BASE}/create`, form);
+      const response = await OAuth2APIClient.post(`${API_BASE}/create`, form);
 
       if (response.status === 200) {
         alert(`Role "${form.rolename}" has been added successfully.`);

@@ -13,7 +13,7 @@ function BearerToken() {
       const password = 'password';
       const credentials = btoa(`${username}:${password}`); // base64 encode
 
-      const response = await axios.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/auth/token',
+      const response = await OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/auth/token',
         {
           headers: {
             Authorization: `Basic ${credentials}`,

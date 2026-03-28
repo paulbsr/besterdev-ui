@@ -38,8 +38,8 @@ function CyclopediaManage() {
 
 
   const onEditDelete = (row) => {
-    axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/delete/${row.cyclopediaId}`)
-      // axios.delete(`http://localhost:8000/api/v1/cyclopedia/delete/${row.cyclopediaId}`)
+    OAuth2APIClient.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/delete/${row.cyclopediaId}`)
+      // OAuth2APIClient.delete(`http://localhost:8000/api/v1/cyclopedia/delete/${row.cyclopediaId}`)
       .then((response) => {
         window.alert('Are you sure you want to delete');
         toast.success(`${cyclopediaName} purged.`)
@@ -58,7 +58,7 @@ function CyclopediaManage() {
       'cyclopediaRef': cyclopediaRef,
     }
 
-    const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${editing}`, CyclopediaRecordPUT)
+    const response = await OAuth2APIClient.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${editing}`, CyclopediaRecordPUT)
     toast.success(`Cyclopedia Record amended.`)
     setCheckForRecords(!checkForRecords);
     onEditCancel();

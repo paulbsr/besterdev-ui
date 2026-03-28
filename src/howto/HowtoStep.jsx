@@ -44,7 +44,7 @@ export default function HowtoStep({ howto_id, step_id, step_number, step_name, s
       'step_obj': stepobjective,
     }
 
-    const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtostep/update/${step_id}`, updatedStep)
+    const response = await OAuth2APIClient.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtostep/update/${step_id}`, updatedStep)
       .then((response) => 
       {
         setCheckForRecords(!checkForRecords);
@@ -102,7 +102,10 @@ export default function HowtoStep({ howto_id, step_id, step_number, step_name, s
           :
           <>
             <i onClick={toggleAccordion}>
-              <i className="Font-Segoe-Large-Howto"><u>Step-{step_number}&nbsp;</u><IoFootstepsOutline style={{ color: '#D5441C', fontSize: '18px', cursor: 'pointer' }}/>&nbsp;</i>
+              <IoFootstepsOutline style={{ color: '#D5441C', fontSize: '18px', cursor: 'pointer' }}/>&nbsp;
+              <i className="Font-Segoe-Large-Howto"><u>Step-{step_number}</u>:
+              {/* <IoFootstepsOutline style={{ color: '#D5441C', fontSize: '18px', cursor: 'pointer' }}/> */}
+              &nbsp;</i>
               <b className="Font-Segoe-Large-Howto">{step_name}</b>
             </i>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

@@ -57,7 +57,7 @@ const PageLogin = (props) => {
   };
 
   const handleSearchPhraseUpdate = async () => {
-    const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/searchphrase/update?newValue=${newSearchPhrase}`);
+    const response = await OAuth2APIClient.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/searchphrase/update?newValue=${newSearchPhrase}`);
   };
 
   return (

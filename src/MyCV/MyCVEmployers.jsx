@@ -41,7 +41,7 @@ export default function MyCVEmployers({ mycvdata, employer_id, employer_name, em
             'employer_desc': employerdesc
         }
 
-        const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employer_desc/update/${employer_id}`, updatedEmployer)
+        const response = await OAuth2APIClient.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employer_desc/update/${employer_id}`, updatedEmployer)
             .then((response) => {
                 setCheckForRecords(!checkForRecords);
                 toast.success(`${employer_name} updated.`)

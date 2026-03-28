@@ -30,7 +30,7 @@ Return ONLY the converted sentence as plain text.`
     };
 
     try {
-      const res = await axios.post(API_URL, payload);
+      const res = await OAuth2APIClient.post(API_URL, payload);
       let text = res.data.answer || "";
 
       // Remove potential markdown

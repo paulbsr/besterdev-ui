@@ -42,14 +42,14 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, employer_name, checkForRec
             'role_desc': roledesc
         }
 
-        const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/role_desc/update/${role_id}`, MyCVEmployerRolePUT)
+        const response = await OAuth2APIClient.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/role_desc/update/${role_id}`, MyCVEmployerRolePUT)
         setCheckForRecords(!checkForRecords)
         toast.success(`${role_id} amended.`)
         onEditCancel();
     }
 
     const onEditDelete = (steprecord_id) => {
-        axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/delete/${steprecord_id}`)
+        OAuth2APIClient.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/delete/${steprecord_id}`)
             .then((response) => 
             {
                 window.alert('Are you sure you want to delete');

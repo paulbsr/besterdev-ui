@@ -27,7 +27,7 @@ const DBSearchComponent = () => {
   const handleSearch = async (event) => {
     event.preventDefault(); // Prevent default form submission
     try {
-      const response = await axios.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/search?keyword=${searchQuery}`);
+      const response = await OAuth2APIClient.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/search?keyword=${searchQuery}`);
       setSearchResults(response.data);
       setNorecordsFound(response.data.length === 0);
     } catch (error) {
@@ -54,7 +54,7 @@ const DBSearchComponent = () => {
     }
 
     try {
-      await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${cyclopediaidedit}`, CyclopediaRecordPUT);
+      await OAuth2APIClient.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${cyclopediaidedit}`, CyclopediaRecordPUT);
       toast.success(`Cyclopedia Record amended.`);
       setCheckForRecords(!checkForRecords);
       onEditCancel();

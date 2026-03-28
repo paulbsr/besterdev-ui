@@ -59,7 +59,7 @@ export default function DutchLanguage_Index() {
     const updatedRow = { ...targetRow, [field]: updatedValue };
 
     try {
-      await axios.put(`${API_BASE}/${id}`, updatedRow);
+      await OAuth2APIClient.put(`${API_BASE}/${id}`, updatedRow);
       const updatedList = rows.map((r) => (r.id === id ? updatedRow : r));
       setRows(sortRows(updatedList)); // 🔠 sorted
       alertCtx.success("Value updated successfully.");
@@ -87,7 +87,7 @@ export default function DutchLanguage_Index() {
     };
 
     try {
-      const response = await axios.post(API_BASE, newRow);
+      const response = await OAuth2APIClient.post(API_BASE, newRow);
       setRows((prev) => sortRows([...prev, response.data])); // 🔠 sorted
       alertCtx.success("New row added successfully.");
     } catch {

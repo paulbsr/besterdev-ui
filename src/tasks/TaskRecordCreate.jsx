@@ -30,8 +30,8 @@ export default function TaskRecordCreate(props) {
         var UpdateTaskStatus = { taskstatus: status };
         
         try {
-            // const response = await axios.post(`http://localhost:8000/api/v1/taskrecords/create`, NewChildRecord);
-            const response = await axios.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/create`, NewChildRecord);
+            // const response = await OAuth2APIClient.post(`http://localhost:8000/api/v1/taskrecords/create`, NewChildRecord);
+            const response = await OAuth2APIClient.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/create`, NewChildRecord);
             if (response.status === 200) 
                 {
                 props.setCheckForRecords(!props.checkForRecords); 
@@ -47,8 +47,8 @@ export default function TaskRecordCreate(props) {
         
         
         try {
-            // const response = await axios.put(`http://localhost:8000/api/v1/tasks/update/taskstatus/${parentid}`, UpdateTaskStatus);
-            const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskstatus/${parentid}`, UpdateTaskStatus);
+            // const response = await OAuth2APIClient.put(`http://localhost:8000/api/v1/tasks/update/taskstatus/${parentid}`, UpdateTaskStatus);
+            const response = await OAuth2APIClient.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskstatus/${parentid}`, UpdateTaskStatus);
             if (response.status === 202) {
                 props.setCheckForRecords(!props.checkForRecords);
                 // setCheckForRecords(!checkForRecords);

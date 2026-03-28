@@ -87,7 +87,7 @@ export default function DutchLanguage_Nt2exam_SchrijvenInput(props) {
 
 
     try {
-      const response = await axios.post(
+      const response = await OAuth2APIClient.post(
         "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/schrijven/post",
         newRecord
       );

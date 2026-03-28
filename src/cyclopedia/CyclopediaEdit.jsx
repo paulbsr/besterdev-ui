@@ -40,7 +40,7 @@ export default function CyclopediaEdit(props) {
         };
 
         try {
-            await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${props.cyclopediaId}`, CyclopediaRecordPUT);
+            await OAuth2APIClient.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${props.cyclopediaId}`, CyclopediaRecordPUT);
             toast.success(`Cyclopedia Record amended.`);
             setEditing(false);
             setRefreshCyclopediarootdata(prev => !prev);  // Assuming setRefresh triggers a data refetch

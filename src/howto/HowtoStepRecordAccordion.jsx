@@ -45,14 +45,14 @@ function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, step_name,
             'steprecord_date': steprecord_date,
         }
 
-        const response = await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/update/${steprecord_id}`, StepRecordPUT)
+        const response = await OAuth2APIClient.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/update/${steprecord_id}`, StepRecordPUT)
         setCheckForRecords(!checkForRecords)
         toast.success(`Step Record amended.`)
         onEditCancel();
     }
 
     const onEditDelete = (steprecord_id) => {
-        axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/delete/${steprecord_id}`)
+        OAuth2APIClient.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/delete/${steprecord_id}`)
             .then((response) => {
                 window.alert('Are you sure you want to delete');
                 setCheckForRecords(!checkForRecords);

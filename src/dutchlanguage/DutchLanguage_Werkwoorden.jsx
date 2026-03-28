@@ -57,7 +57,7 @@ export default function DutchLanguage_Werkwoorden() {
     };
 
     try {
-      const res = await axios.post(API_URL, payload);
+      const res = await OAuth2APIClient.post(API_URL, payload);
 
       let parsed = { ...EMPTY_TENSES };
 
@@ -92,7 +92,7 @@ export default function DutchLanguage_Werkwoorden() {
     };
 
     try {
-      const res = await axios.post(API_URL, payload);
+      const res = await OAuth2APIClient.post(API_URL, payload);
 
       let parsed = null;
       if (res.data.answer) {

@@ -92,14 +92,14 @@ export default function JobreqManage() {
             "wa": wa
         }
                                
-           await axios.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs/update/${editing}`, jobreqPUT)
+           await OAuth2APIClient.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs/update/${editing}`, jobreqPUT)
            .then((response) => {setCheckForRecords(!checkForRecords); toast.success(`${jrnumber} has been updated.`);})
            onEditCancel();
          }
        }
 
           const onEditDelete = (row) => {
-            axios.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs/delete/${row.id}`)
+            OAuth2APIClient.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs/delete/${row.id}`)
             .then((response) => 
             {
               window.alert('Are you sure you want to delete');
