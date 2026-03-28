@@ -5,7 +5,7 @@ import { BiSolidMessageRoundedAdd } from "react-icons/bi";
 import { Tooltip } from "@mui/material";
 import { BsArrowCounterclockwise, BsPencil } from "react-icons/bs"; //revert
 import { GiCheckMark } from "react-icons/gi"; //Commit
-import axios from "axios";
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 import TaskRecordCreate from "./TaskRecordCreate";
 import TaskRecordStatusByColourLong_forTaskEdit from "./TaskRecordStatusByColourLong_forTaskEdit";
 import "../Fonts.css";
@@ -58,7 +58,6 @@ function TaskRecordAccordion_forTaskEdit({
         };
 
         const response = await OAuth2APIClient.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
-        // const response = await OAuth2APIClient.put(`http://localhost:8000/api/v1/taskrecords/update/${childid}`, updatedTaskRecord)
         if (response.status === 202) {
             setCheckForRecords(!checkForRecords); 
             toast.success(`Task Record updated.`);

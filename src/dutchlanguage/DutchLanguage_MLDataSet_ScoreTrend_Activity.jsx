@@ -10,7 +10,7 @@ import {
     ResponsiveContainer,
     LabelList,
 } from "recharts";
-
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 import { RiNumbersFill } from "react-icons/ri";
 
 
@@ -18,15 +18,12 @@ export default function DailyCountVerticalBarchart() {
     const { refreshKey } = useContext(RefreshContext);
     const [data, setData] = useState([]);
 
-    useEffect(() => { fetchDailyCounts();}, [refreshKey]);
+    useEffect(() => { fetchDailyCounts(); }, [refreshKey]);
 
     const fetchDailyCounts = async () => {
         try {
-            const response = await fetch(
-                "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/daily-average-score"
-            );
+            const response = await OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/daily-average-score");
             const json = await response.json();
-
             const mapped = json.map((item) => {
                 const d = new Date(item.date);
                 const year = d.getFullYear();

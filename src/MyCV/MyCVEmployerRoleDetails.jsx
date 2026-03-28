@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from "axios";
 import '../Fonts.css'
 import { Tooltip } from '@mui/material';
 import { toast } from 'react-toastify';

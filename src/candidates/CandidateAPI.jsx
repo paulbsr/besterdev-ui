@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from 'react';
-import axios from 'axios';
 import '../Fonts.css';
 import { FaPersonCircleQuestion, FaLinkedin } from "react-icons/fa6";
 import { Tooltip } from 'react-tooltip';
@@ -7,6 +6,7 @@ import ColouredBox from '../ColouredBox';
 import spacer from '../graphix/besterdev_spacer_white.png';
 import GradientLineLinkedIn from '../gradientlines/GradientLineLinkedIn';
 import 'react-tooltip/dist/react-tooltip.css';
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
 export default function CandidateAPI() {
   const today = new Date().toISOString().split('T')[0];
@@ -27,7 +27,7 @@ export default function CandidateAPI() {
   // --- Fetch Helpers ---
   const fetchRandomCandidate = useCallback(async () => {
     try {
-      const { data } = await axios('https://randomuser.me/api/');
+      const { data } = await OAuth2APIClient.get('https://randomuser.me/api/');
       setCandidatedata(data.results);
     } catch (err) {
       console.error('Error fetching candidate:', err);
@@ -36,7 +36,7 @@ export default function CandidateAPI() {
 
   const fetchJobReqs = useCallback(async () => {
     try {
-      const { data } = await axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs');
+      const { data } = await OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs');
       setJobreqs(data.sort((a, b) => a.company.localeCompare(b.company)));
     } catch (err) {
       console.error('Error fetching job reqs:', err);
@@ -45,7 +45,7 @@ export default function CandidateAPI() {
 
   const fetchCandidates = useCallback(async () => {
     try {
-      const { data } = await axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates');
+      const { data } = await OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates');
       setCandidatecount(data.sort((a, b) => a.firstname.localeCompare(b.firstname)));
     } catch (err) {
       console.error('Error fetching candidates:', err);

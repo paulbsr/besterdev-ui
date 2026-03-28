@@ -8,6 +8,7 @@ import { LiaSortAlphaDownSolid } from "react-icons/lia";
 import { SlActionRedo } from "react-icons/sl";
 import { TbVocabulary } from "react-icons/tb";
 import { Tooltip } from "react-tooltip";
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
 const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
 

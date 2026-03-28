@@ -14,7 +14,7 @@ import ObjectSupport from "dayjs/plugin/objectSupport";
 import TaskPopOut from "./TaskPopOut";
 import { toast } from 'react-toastify';
 import { PiRocketLaunchLight } from "react-icons/pi";
-
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
 export default function Task({
     project_handle,
@@ -44,7 +44,7 @@ export default function Task({
     //send request for the task taskDuration if the task has been completed
     useEffect(() => {
         if (taskstatus === "DONE") {
-            axios(
+            OAuth2APIClient.get(
                 `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/duration/${id}`
             )
                 .then((response) => {
@@ -96,9 +96,7 @@ export default function Task({
             return;
         }
 
-        const response = await axios
-            .put(
-                `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskdetails/${id}`, updatedTask)
+        const response = await OAuth2APIClient.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskdetails/${id}`, updatedTask)
         // `http://localhost:8000/api/v1/tasks/update/taskdetails/${id}`,updatedTask)
         if (response.status === 202) {
             setCheckForRecords(!checkForRecords);

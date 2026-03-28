@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../Fonts.css';
 import 'react-tooltip/dist/react-tooltip.css';
@@ -13,6 +12,7 @@ import { GiWindmill, GiOpenBook } from "react-icons/gi";
 import { SiOpenai, SiVault, SiGooglecloud, SiAuth0 } from "react-icons/si";
 import { IoHome } from 'react-icons/io5';
 import { FaAws } from "react-icons/fa6";
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
 const iconStyle = (color, size) => ({ color, fontSize: size, cursor: 'pointer' });
 
@@ -53,14 +53,35 @@ const BannerLight = () => {
   const navigate = useNavigate();
   const [searchPhrase, setSearchPhrase] = useState('');
 
+  // useEffect(() => {
+  //   OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/searchphrase')
+  //     .then((response) => {
+  //       const phrase = response.data?.[0]?.searchphrase;
+  //       if (phrase) setSearchPhrase(phrase);
+  //     })
+  //     .catch((e) => console.error('In <BannerLight/> is jou searchPhrase:', searchPhrase));
+  // }, []);
+
   useEffect(() => {
-    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/searchphrase')
-      .then((response) => {
-        const phrase = response.data?.[0]?.searchphrase;
-        if (phrase) setSearchPhrase(phrase);
-      })
-      .catch((e) => console.error('In <BannerLight/> is jou searchPhrase:', searchPhrase));
-  }, []);
+  let mounted = true;
+
+  (async () => {
+    try {
+      const response = await OAuth2APIClient.get('/api/v1/searchphrase');
+      const phrase = response.data?.[0]?.searchphrase;
+
+      if (mounted && phrase) {
+        setSearchPhrase(phrase);
+      }
+    } catch (e) {
+      console.error('❌ <BannerLight/> failed to load searchPhrase', e);
+    }
+  })();
+
+  return () => {
+    mounted = false;
+  };
+}, []);
 
   return (
     <div className="banner-light-left" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '15px' }}>

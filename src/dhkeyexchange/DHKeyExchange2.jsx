@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { TbHttpGet } from "react-icons/tb"
 import { Tooltip } from '@mui/material'
 import { BsPatchQuestion } from "react-icons/bs"
-import axios from 'axios'
 import '../Fonts.css'
 import GradientLineRusty from "../gradientlines/GradientLineRusty";
 import DHStep1 from '../graphix/DH-PGLParameters.jpg'
@@ -14,6 +13,7 @@ import DHStep6 from '../graphix/DH-ClientSharedSecret.jpg'
 import DHStep7 from '../graphix/DH-SHA256Digest.jpg'
 import DHStep8 from '../graphix/DH-AESSecretKey.jpg'
 import DHImage from '../graphix/dh2.jpg'
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
 
 function DHKeyExchange2({ howto_ids }) {
@@ -30,7 +30,7 @@ function DHKeyExchange2({ howto_ids }) {
   const [aessecretkey, setAessecretkey] = useState([]);
 
   useEffect(() => {
-    axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howto/${howto_ids}`)
+    OAuth2APIClient.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howto/${howto_ids}`)
       .then((response) => {
         const howto = response.data;
         howto.howto_steps.sort((a, b) => a.step_number - b.step_number);

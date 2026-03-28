@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
 import '../Fonts.css';
-import axios from 'axios'
 import 'react-dropdown/style.css';
 import {FaPen, FaCheck, FaRegTrashAlt} from 'react-icons/fa';
 import {PiArrowCounterClockwiseBold} from 'react-icons/pi';
@@ -13,6 +12,7 @@ import 'react-tooltip/dist/react-tooltip.css'
 import JobreqCreate from './JobreqCreate';
 import { toast } from 'react-toastify';
 import GradientLineRusty from '../gradientlines/GradientLineRusty';
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 dayjs.extend(utc);
 
 
@@ -37,7 +37,7 @@ export default function JobreqManage() {
   const [wa, setWa] = useState(null);
 
   useEffect(() => {
-    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs')
+    OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs')
       .then((response) => {const SortedJobreqData = response.data.sort((b, a) => b.jrnumber.localeCompare(a.jrnumber)); setJobreqdata(SortedJobreqData);}) //sort reqnumber alphabetically
       .catch((e)=> console.error(e));}, [checkForRecords]);
 

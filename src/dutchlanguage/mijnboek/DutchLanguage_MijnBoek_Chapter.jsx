@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import OAuth2APIClient from '../../oauth2/OAuth2APIClient';
 import DutchLanguage_MijnBoek_Paragrapgh from "../mijnboek/DutchLanguage_MijnBoek_Paragrapgh";
 import { PiShootingStarThin, PiRocketLaunchThin } from "react-icons/pi";
 import { FaPlus } from "react-icons/fa";
@@ -23,9 +23,7 @@ export default function DutchLanguage_MijnBoek_Chapter({
       : 1;
 
   const createParagraph = () => {
-    axios
-      .post(
-        "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/mijn-nederlandse-boek",
+    OAuth2APIClient.post("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/mijn-nederlandse-boek",
         {
           chapterNumber: chapter.chapterNumber,
           chapterName: chapter.chapterName,

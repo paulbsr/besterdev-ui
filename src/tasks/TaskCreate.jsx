@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 import "../Fonts.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -38,8 +38,7 @@ export default function TaskCreate(props) {
             };
             try 
             {
-                const response = await OAuth2APIClient.post
-                (`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/create`, newtask);
+                const response = await OAuth2APIClient.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/create`, newtask);
                 if (response.status === 200) 
                 {
                     props.setCheckForRecords(!props.checkForRecords);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import OAuth2APIClient from '../../oauth2/OAuth2APIClient';
 import DutchLanguage_MijnBoek_Chapter from "../mijnboek/DutchLanguage_MijnBoek_Chapter";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { FaPenAlt, FaPlus, FaPenNib } from "react-icons/fa";
@@ -27,10 +27,7 @@ export default function MijnBoek() {
 
   // Load book index
   useEffect(() => {
-    axios
-      .get(
-        "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/mijn-nederlandse-boek/index"
-      )
+    OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/mijn-nederlandse-boek/index")
       .then((res) => {
         const grouped = {};
         res.data.forEach((row) => {
@@ -58,9 +55,7 @@ export default function MijnBoek() {
         ? Math.max(...chapters.map((c) => c.chapterNumber)) + 1
         : 1;
 
-    axios
-      .post(
-        "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/mijn-nederlandse-boek",
+    OAuth2APIClient.post("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/mijn-nederlandse-boek",
         {
           chapterNumber: nextChapterNumber,
           chapterName: newChapterName || `Nieuw Hoofdstuk ${nextChapterNumber}`,

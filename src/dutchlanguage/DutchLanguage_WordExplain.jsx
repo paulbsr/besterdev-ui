@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { FaQuestion } from "react-icons/fa";
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
+
 
 const API_URL =
   "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
@@ -19,7 +21,7 @@ export default function DutchLanguage_WordExplain() {
       setLoading(true);
       setExplanation("");
 
-      const res = await fetch(API_URL, {
+      const res = await OAuth2APIClient.post(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

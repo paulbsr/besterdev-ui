@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
+
 
 function FlipCard({ width = 1000, minHeight = 75 }) {
   const [flipped, setFlipped] = useState(false);
@@ -26,14 +28,14 @@ function FlipCard({ width = 1000, minHeight = 75 }) {
       setTerm("Loading...");
       setChallenge("Loading challenge...");
 
-      const termRes = await fetch(
+      const termRes = await OAuth2APIClient.get(
         "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/random"
       );
       const termData = await termRes.json();
       const newTerm = termData.cyclopediaName || "Unknown Term";
       setTerm(newTerm);
 
-      const challengeRes = await fetch(
+      const challengeRes = await OAuth2APIClient.post(
         "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
         {
           method: "POST",
@@ -159,7 +161,7 @@ function FlipCard({ width = 1000, minHeight = 75 }) {
     setResponse("");
 
     try {
-      const res = await fetch(
+      const res = await OAuth2APIClient.post(
         "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
         {
           method: "POST",
@@ -187,7 +189,7 @@ function FlipCard({ width = 1000, minHeight = 75 }) {
     setResponse("");
 
     try {
-      const res = await fetch(
+      const res = await OAuth2APIClient.post(
         "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
         {
           method: "POST",

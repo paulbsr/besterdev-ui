@@ -1,6 +1,6 @@
 // HowtoApiContext.js
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
 const HowtoApiContext = createContext();
 

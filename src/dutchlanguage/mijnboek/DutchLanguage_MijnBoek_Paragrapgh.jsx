@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import OAuth2APIClient from '../../oauth2/OAuth2APIClient';
 import { Tooltip } from "@mui/material";
-
 import {
   PiEyeClosedThin,
   PiEyeThin,
@@ -14,7 +13,6 @@ import { ImSpellCheck } from "react-icons/im";
 import { SiConvertio, SiGoogletranslate } from "react-icons/si";
 import { GiQuillInk } from "react-icons/gi";
 import { PiBookOpenText } from "react-icons/pi";
-
 import DutchLanguage_WordExplain_Mini from "../minis/DutchLanguage_WordExplain_Mini";
 import DutchLanguage_WordContext_Mini from "../minis/DutchLanguage_WordContext_Mini";
 import DutchLanguage_SpellingChecker_Mini from "../minis/DutchLanguage_SpellingChecker_Mini";
@@ -39,11 +37,9 @@ export default function DutchLanguage_MijnBoek_Paragraph({ paragraph }) {
   const [open, setOpen] = useState(false);
   const [editing, setEditing] = useState(false);
   const [loading, setLoading] = useState(false);
-
   const [text, setText] = useState("");
   const [notas, setNotas] = useState("");
   const [updated, setUpdated] = useState(null);
-
   const [panels, setPanels] = useState({
     explain: false,
     context: false,
@@ -57,8 +53,7 @@ export default function DutchLanguage_MijnBoek_Paragraph({ paragraph }) {
     if (!open || text) return;
 
     setLoading(true);
-    axios
-      .get(`${API_BASE}/paragraph/text/${paragraph.id}`)
+    OAuth2APIClient.get(`${API_BASE}/paragraph/text/${paragraph.id}`)
       .then(res => {
         setText(res.data.paragraphText ?? "");
         setNotas(res.data.notas ?? "");
@@ -86,7 +81,7 @@ export default function DutchLanguage_MijnBoek_Paragraph({ paragraph }) {
   };
 
   const saveParagraph = () => {
-    axios
+    OAuth2APIClient
       .put(`${API_BASE}/${paragraph.id}`, {
         chapterNumber: paragraph.chapterNumber,
         chapterName: paragraph.chapterName,

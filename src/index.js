@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import axios from 'axios';
+import OAuth2APIClient from './oauth2/OAuth2APIClient';
 import { Buffer } from 'buffer';
 
 // Providers
@@ -43,6 +43,8 @@ import { RefreshProvider } from "./dutchlanguage/RefreshContext";
 import { Navigate } from "react-router-dom";
 import PageDutchLanguageBook from './pages/PageDutchLanguageBook';
 
+
+
 // --- Firebase Configuration ---
 const firebaseConfig = {
   apiKey: "AIzaSyCwDLcoI45eQU61Y7GVXlBDAx-3Du_gQuA",
@@ -71,30 +73,55 @@ const App = () => {
     let mounted = true;
     let countdownTimer;
 
-    const fetchData = async () => {
-      try {
-        const response = await axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/searchphrase');
-        const phrase = response.data?.[0]?.searchphrase || "";
-        if (mounted) {
-          setSearchPhrase(phrase);
-          console.log('✅ Search phrase loaded:', phrase);
+    // const fetchData = async () => {
+    //   try {
+    //     const response = await OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/searchphrase');
+    //     const phrase = response.data?.[0]?.searchphrase || "";
+    //     if (mounted) {
+    //       setSearchPhrase(phrase);
+    //       console.log('✅ Search phrase loaded:', phrase);
+    //     }
+    //   } catch (error) {
+    //     console.error('❌ Error loading search phrase:', error);
+    //   } finally {
+    //     // Start countdown timer
+    //     countdownTimer = setInterval(() => {
+    //       setCountdown((prev) => {
+    //         if (prev <= 1) {
+    //           clearInterval(countdownTimer);
+    //           if (mounted) setLoading(false);
+    //           return 0;
+    //         }
+    //         return prev - 1;
+    //       });
+    //     }, 1000);
+    //   }
+    // };
+
+const fetchData = async () => {
+  try {
+    const response = await OAuth2APIClient.get('/api/v1/searchphrase');
+    const phrase = response.data?.[0]?.searchphrase || "";
+
+    if (mounted) {
+      setSearchPhrase(phrase);
+      console.log('✅ Search phrase loaded:', phrase);
+    }
+  } catch (error) {
+    console.error('❌ Error loading search phrase:', error);
+  } finally {
+    countdownTimer = setInterval(() => {
+      setCountdown((prev) => {
+        if (prev <= 1) {
+          clearInterval(countdownTimer);
+          if (mounted) setLoading(false);
+          return 0;
         }
-      } catch (error) {
-        console.error('❌ Error loading search phrase:', error);
-      } finally {
-        // Start countdown timer
-        countdownTimer = setInterval(() => {
-          setCountdown((prev) => {
-            if (prev <= 1) {
-              clearInterval(countdownTimer);
-              if (mounted) setLoading(false);
-              return 0;
-            }
-            return prev - 1;
-          });
-        }, 1000);
-      }
-    };
+        return prev - 1;
+      });
+    }, 1000);
+  }
+};
 
     fetchData();
 

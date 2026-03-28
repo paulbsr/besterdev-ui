@@ -9,7 +9,7 @@ import {
     CartesianGrid,
     LabelList,
 } from "recharts";
-
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 import { SiPagespeedinsights } from "react-icons/si";
 
 
@@ -32,9 +32,7 @@ export default function DutchLanguage_MLDataSet_ScoreTrend_Scores() {
     // ✅ MOVE THIS OUTSIDE useEffect
     const fetchGlobalAverages = async () => {
         try {
-            const res = await fetch(
-                "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/global-averages"
-            );
+            const res = await OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/global-averages");
             const data = await res.json();
             setChartData(buildChartData(data));
         } catch (err) {

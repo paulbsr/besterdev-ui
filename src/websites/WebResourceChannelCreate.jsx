@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import AlertContext from "../Generic/Alerts/AlertContext";
-import axios from 'axios';
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 import '../Fonts.css';
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
@@ -76,7 +76,7 @@ export default function WebResourceChannelCreate(props) {
 
 
   useEffect(() => {
-    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs')
+    OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs')
       .then((response) => {const sortedjobreqs = response.data.sort((b, a) => b.company.localeCompare(a.company));
         setJobreqs(sortedjobreqs);
       })

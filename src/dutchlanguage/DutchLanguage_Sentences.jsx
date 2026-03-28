@@ -5,6 +5,8 @@ import DutchLanguage_AI_Response from "./DutchLanguage_AI_Response";
 import { FiRefreshCw } from "react-icons/fi";
 import { FaTimes } from "react-icons/fa";
 import { RefreshContext } from "./RefreshContext";
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
+
 
 function DutchLanguage_Sentences() {
   const [word, setWord] = useState("Laden...");
@@ -38,7 +40,7 @@ function DutchLanguage_Sentences() {
   const fetchWord = async (customTopic = topic) => {
     try {
       setWord("Laden...");
-      const res = await fetch(API_ASK, {
+      const res = await OAuth2APIClient.post(API_ASK, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'
 import HowtoStep from './HowtoStep';
 import GradientLineRusty from "../gradientlines/GradientLineRusty";
 import HowtoStepCreate from './HowtoStepCreate';
 import '../Fonts.css'
 import HowtoUrlCreate from './HowtoUrlCreate';
 import { BsPatchQuestion } from "react-icons/bs";
-
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
 
 
@@ -17,7 +16,7 @@ function HowtoStepAccordion({ howto_ids }) {
 
 
   useEffect(() => {
-    axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howto/${howto_ids}`)
+    OAuth2APIClient.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howto/${howto_ids}`)
       .then((response) => {
         const howto = response.data;
         howto.howto_steps.sort((a, b) => a.step_number - b.step_number);

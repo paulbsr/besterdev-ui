@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 import TaskCreate from "./TaskCreate";
 import Task from "./Task";
 import "./Fonts.css";
@@ -42,7 +42,7 @@ import TaskEdit from "./TaskEdit";
 
 
         useEffect(() => {
-            axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/asms/${asms_number}`)
+            OAuth2APIClient.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/asms/${asms_number}`)
                 .then((response) => {
                     setParenttask(response.data.sort((a, b) => b.id - a.id));
                     setCheckForRecords(!checkForRecords);

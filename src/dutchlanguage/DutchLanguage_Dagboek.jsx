@@ -7,6 +7,8 @@ import { DutchLanguage_AIEvaluator } from "./DutchLanguage_AI_Evaluator";
 import { RefreshContext } from "./RefreshContext";
 import DutchLanguage_AI_ScoreSquares from "./DutchLanguage_AI_ScoreSquares";
 import DutchLanguage_AI_Response from "./DutchLanguage_AI_Response";
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
+
 
 // ------------------------
 // Helper: Count words
@@ -162,7 +164,7 @@ function DutchLanguage_Dagboek() {
 
   const fetchAllEntries = async () => {
     try {
-      const res = await fetch("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/all/diary");
+      const res = await OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/all/diary");
       if (!res.ok) throw new Error("<Diary> failed to fetch /all/diary entries");
       const data = await res.json();
 
@@ -213,7 +215,7 @@ function DutchLanguage_Dagboek() {
     if (!window.confirm("Weet je zeker dat je dit dagboekitem wilt verwijderen?")) return;
 
     try {
-      const res = await fetch(
+      const res = await OAuth2APIClient.get(
         `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/delete/${id}`,
         { method: "DELETE" }
       );

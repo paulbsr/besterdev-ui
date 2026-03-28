@@ -8,7 +8,7 @@
     if (!entry.trim()) return;
     setLoading(true);
     try {
-      const createRes = await fetch(API_BASE, {
+      const createRes = await OAuth2APIClient.get(API_BASE, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -39,7 +39,7 @@ Respond in JSON with:
 - botResponse (conversational about the topic, not linguistic feedback, always in Dutch, encourage responses to be in the future tense or past tense)`
       };
 
-      const aiRes = await fetch(AI_ENDPOINT, {
+      const aiRes = await OAuth2APIClient.get(AI_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(aiPrompt),
@@ -79,7 +79,7 @@ Respond in JSON with:
         wordorderScore: sanitizeScore(parsed.wordorderScore),
       };
 
-      const updateRes = await fetch(`${API_BASE}/${savedId}`, {
+      const updateRes = await OAuth2APIClient.get(`${API_BASE}/${savedId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatePayload),
@@ -150,7 +150,7 @@ Respond in JSON with:
           `,
         };
   
-        const res = await fetch(API_URL, {
+        const res = await OAuth2APIClient.get(API_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
@@ -207,7 +207,7 @@ Respond in JSON with:
       };
   
       try {
-        const res = await fetch(
+        const res = await OAuth2APIClient.get(
           `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/schrijven/put/${id}`,
           // `http://localhost:8000/api/v1/nt2exam/schrijven/put/${id}`,
           {
@@ -250,7 +250,7 @@ Respond in JSON with:
 
         try {
             // Save user entry
-            const postRes = await fetch(API_BASE, {
+            const postRes = await OAuth2APIClient.get(API_BASE, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ myEntry: entry, aiEntry: "", feedback: "" })
@@ -259,7 +259,7 @@ Respond in JSON with:
             const savedId = saved.id;
 
             // AI request
-            const aiRes = await fetch(AI_ENDPOINT, {
+            const aiRes = await OAuth2APIClient.get(AI_ENDPOINT, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -298,7 +298,7 @@ Respond in JSON with:
             resetTimer();
 
             // Update backend entry
-            await fetch(`${API_BASE}/${savedId}`, {
+            await OAuth2APIClient.get(`${API_BASE}/${savedId}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ feedback: parsedFeedback, aiEntry: parsedSentence, score: parsedScore })

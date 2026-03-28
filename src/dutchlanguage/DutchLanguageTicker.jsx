@@ -1,6 +1,7 @@
 import { useState, useEffect, React } from 'react';
 import { Stack } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
 export default function DutchLanguageTicker() {
   const [sentences, setSentences] = useState([]);
@@ -10,7 +11,7 @@ export default function DutchLanguageTicker() {
     const fetchDutchSentences = async () => {
       try {
         // Call your API that wraps OpenAI
-        const res = await fetch(
+        const res = await OAuth2APIClient.post(
           "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
           {
             method: "POST",

@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
 import AlertContext from "../Generic/Alerts/AlertContext";
-import axios from 'axios';
 import '../Fonts.css';
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
@@ -11,6 +10,7 @@ import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 import { toast } from 'react-toastify';
 import { baseInputStyle } from "../baseInputStyle";
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 dayjs.extend(utc);
 
 
@@ -90,7 +90,7 @@ export default function JobreqCreate(props) {
 
 
   useEffect(() => {
-    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers')
+    OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers')
       .then((response) => { const sortedemployerrecords = response.data.sort((b, a) => b.empname.localeCompare(a.empname)); 
         setEmployerDropDown(sortedemployerrecords); }) //sort empname alphabetically
       .catch((e) => console.error(e));

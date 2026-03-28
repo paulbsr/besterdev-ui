@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
 export default function RoleDropdown(props) {
   const [roles, setRoles] = useState(null);
 
   useEffect(() => {
-    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs')
+    OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs')
       .then((response) => {
         const sortedrolerecords = response.data.sort((b, a) => b.company.localeCompare(a.company));
         setRoles(sortedrolerecords);

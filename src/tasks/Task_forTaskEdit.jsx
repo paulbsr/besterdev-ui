@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "../Fonts.css";
 import "./Task.css";
 import { getStatusByColourTaskText } from "../getStatusByColourTaskText";
@@ -12,6 +11,7 @@ import dayjs from "dayjs";
 import ObjectSupport from "dayjs/plugin/objectSupport";
 import { toast } from 'react-toastify';
 import TaskRecordAccordion_forTaskEdit from "./TaskRecordAccordion_forTaskEdit";
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
 
 export default function Task_forTaskEdit({
@@ -45,7 +45,7 @@ export default function Task_forTaskEdit({
     //send request for the task taskDuration if the task has been completed
     useEffect(() => {
         if (taskstatus === "DONE") {
-            axios(
+            OAuth2APIClient.get(
                 `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/taskrecords/duration/${id}`
             )
                 .then((response) => {
@@ -99,10 +99,8 @@ export default function Task_forTaskEdit({
             // alertCtx.warning(`Please fill in ${noDetails.join(", ")}`);
             return;
         }
-        
-        const response = await axios
-            .put(
-                `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskdetails/${id}`,updatedTask)
+
+        const response = await OAuth2APIClient.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskdetails/${id}`,updatedTask)
                 // `http://localhost:8000/api/v1/tasks/update/taskdetails/${id}`,updatedTask)
                 if (response.status === 202) 
                     {

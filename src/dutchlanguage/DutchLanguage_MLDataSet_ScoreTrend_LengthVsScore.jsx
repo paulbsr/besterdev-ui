@@ -12,7 +12,7 @@ import {
     LabelList,
     ReferenceArea
 } from "recharts";
-import axios from "axios";
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 import { RiNumbersFill } from "react-icons/ri";
 import { ImTextWidth } from "react-icons/im";
 
@@ -27,8 +27,7 @@ export default function MultiAxis_LengthVsScore_Enhanced() {
 
     // Fetch data
     const fetchDailyCounts = () => {
-        axios
-            .get(API_URL)
+        OAuth2APIClient.get(API_URL)
             .then((res) => setData(res.data))
             .catch((err) => console.error("Error loading ML dataset:", err));
     };

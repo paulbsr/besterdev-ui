@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaBookReader } from "react-icons/fa";
-
+import OAuth2APIClient from '../../oauth2/OAuth2APIClient';
 
 
 const formatTime = seconds => {
@@ -40,7 +40,7 @@ export default function DutchLanguage_NT2exam_LezenToets() {
     const randomId = Math.floor(Math.random() * 18) + 1;
 
     try {
-      const res = await fetch(`${BASE_URL}/${randomId}`);
+      const res = await OAuth2APIClient.get(`${BASE_URL}/${randomId}`);
       if (!res.ok) throw new Error("Failed to fetch reading text");
       const json = await res.json();
       setData(json);
@@ -67,7 +67,7 @@ export default function DutchLanguage_NT2exam_LezenToets() {
     setSubmitting(prev => ({ ...prev, [questionId]: true }));
 
     try {
-      const res = await fetch(
+      const res = await OAuth2APIClient.get(
         `${ANSWER_URL}/${questionId}/answerTry`,
         {
           method: "PUT",

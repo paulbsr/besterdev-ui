@@ -1,5 +1,6 @@
 import { BorderTop } from "@mui/icons-material";
 import React, { useState } from "react";
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
 export default function AskAI() {
   const [text, setText] = useState("");
@@ -16,7 +17,7 @@ export default function AskAI() {
     const question = `Answer the following in a maximum of three sentences: ${text}`;
 
     try {
-      const res = await fetch(
+      const res = await OAuth2APIClient.post(
         "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
         {
           method: "POST",

@@ -6,7 +6,7 @@ import { BsSearch } from "react-icons/bs";
 import { MdTask } from "react-icons/md";
 import { useCyclopediaApi } from "../cyclopedia/CyclopediaAPIProvider";
 import { useWebsiteApi } from "../websites/WebSiteAPIProvider";
-import axios from "axios";
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 import DatePicker from "react-datepicker";
 import DBSearchComponentBanner from "../dbsearch/DBSearchComponentBanner";
 import WebSocketComponent from "../websockets/WebSocketComponent";

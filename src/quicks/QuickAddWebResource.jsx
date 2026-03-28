@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from 'axios';
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 import '../Fonts.css';
 import { toast } from 'react-toastify';
 import { useWebsiteApi } from '../websites/WebSiteAPIProvider';

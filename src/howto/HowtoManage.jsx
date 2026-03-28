@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
 import '../Fonts.css';
-import axios from 'axios'
 import 'react-dropdown/style.css';
 import {FaPen, FaCheck, FaRegTrashAlt} from 'react-icons/fa';
 import {PiArrowCounterClockwiseBold} from 'react-icons/pi';
@@ -13,6 +12,7 @@ import GradientLineRusty from '../gradientlines/GradientLineRusty';
 import HowtoCreate from './HowtoCreate';
 import { BsPatchQuestion } from "react-icons/bs";
 import { useHowtoApi } from './HowtoAPIProvider';
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 dayjs.extend(utc);
 
 

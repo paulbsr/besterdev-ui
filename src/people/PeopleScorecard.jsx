@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import axios from "axios";
 import "../Fonts.css";
 
 import {
@@ -19,14 +18,13 @@ import {
 
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
-
 import AlertContext from "../Generic/Alerts/AlertContext";
 import PeopleScorecardUpdate from "./PeopleScorecardUpdate";
 import PeopleScorecardCreate from "./PeopleScorecardCreate";
 import MouseoverPopover from "../MouseoverPopover";
 import GradientLineRusty from "../gradientlines/GradientLineRusty";
 import { getStatusColor } from "../getStatusColor";
-
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 import ImageAvatar_Conor from "../graphix/Avatars/ImageAvatar_Conor";
 import ImageAvatar_Monique from "../graphix/Avatars/ImageAvatar_Monique";
 import ImageAvatar_Leo from "../graphix/Avatars/ImageAvatar_Leo";
@@ -34,8 +32,7 @@ import ImageAvatar_Shikha from "../graphix/Avatars/ImageAvatar_Shikha";
 import ImageAvatar_Felipe from "../graphix/Avatars/ImageAvatar_Felipe";
 import ImageAvatar_Thiago from "../graphix/Avatars/ImageAvatar_Thiago";
 
-const API_BASE =
-  "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/scorecard_people";
+const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/scorecard_people";
 
 const teamMembers = [
   { name: "Conor Lynch", key: "conor_lynch", avatar: <ImageAvatar_Conor /> },
@@ -59,8 +56,7 @@ export default function PeopleScorecard() {
   const year = new Date().getFullYear();
 
   useEffect(() => {
-    axios
-      .get(API_BASE)
+    OAuth2APIClient.get(API_BASE)
       .then((response) => {
         const sorted = response.data.sort((a, b) =>
           a.taskName.localeCompare(b.taskName)
@@ -74,8 +70,7 @@ export default function PeopleScorecard() {
   if (error) return <p>A PeopleScorecard GET error occurred.</p>;
 
   const handleDelete = (taskName, id) => {
-    axios
-      .delete(`${API_BASE}/delete/${id}`)
+    OAuth2APIClient.delete(`${API_BASE}/delete/${id}`)
       .then(() => {
         alertCtx.success(`Task '${taskName}' successfully deleted`);
         setCheckForRecords((prev) => !prev);
@@ -99,8 +94,7 @@ export default function PeopleScorecard() {
       return;
     }
 
-    axios
-      .put(`${API_BASE}/update/taskname/${id}`, taskName)
+    OAuth2APIClient.put(`${API_BASE}/update/taskname/${id}`, taskName)
       .then(() => {
         alertCtx.success(`Task '${taskName}' successfully updated`);
         setCheckForRecords((prev) => !prev);

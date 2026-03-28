@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaRegPenToSquare } from "react-icons/fa6";
+import OAuth2APIClient from '../../oauth2/OAuth2APIClient';
+
 
 export default function DutchLanguage_Nt2exam_SchrijvenToets() {
   const [challenge, setChallenge] = useState(null);
@@ -50,7 +52,7 @@ export default function DutchLanguage_Nt2exam_SchrijvenToets() {
     setChallenge(null);
 
     try {
-      const res = await fetch(QUESTIONS_URL);
+      const res = await OAuth2APIClient.get(QUESTIONS_URL);
       const data = await res.json();
 
       if (data && typeof data === "object") {
@@ -106,7 +108,7 @@ Format your answer strictly like this:
         `,
       };
 
-      const res = await fetch(API_URL, {
+      const res = await OAuth2APIClient.post(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -163,7 +165,7 @@ Format your answer strictly like this:
     };
 
     try {
-      const res = await fetch(
+      const res = await OAuth2APIClient.get(
         `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/schrijven/put/${id}`,
         // `http://localhost:8000/api/v1/nt2exam/schrijven/put/${id}`,
         {

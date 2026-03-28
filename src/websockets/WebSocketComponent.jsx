@@ -2,6 +2,9 @@ import React, { useEffect, useState, useCallback } from "react";
 import { TbBrandSocketIo } from "react-icons/tb";
 import SockJS from "sockjs-client";
 import { Client } from "@stomp/stompjs";
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
+
+
 
 const SOCKET_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/ws";
 const TRIGGER_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/triggerwebsocketevent";
@@ -43,7 +46,7 @@ const WebSocketComponent = () => {
 
   const handleClick = useCallback(async () => {
     try {
-      const response = await fetch(TRIGGER_URL, { method: "GET" });
+      const response = await OAuth2APIClient.get(TRIGGER_URL, { method: "GET" });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       console.log("WebSocket endpoint hit successfully");
     } catch (error) {

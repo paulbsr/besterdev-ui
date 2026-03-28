@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { IoMdSwap } from "react-icons/io";
 import { IoMdGitCompare } from "react-icons/io";
 import { TbExchange } from "react-icons/tb";
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
+
 
 export default function DutchLanguage_CompareContrast() {
   const [dutch, setDutch] = useState("");
@@ -16,8 +18,7 @@ export default function DutchLanguage_CompareContrast() {
 
   const fetchSentence = async () => {
     try {
-      const res = await fetch(
-        "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
+      const res = await OAuth2APIClient.post("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

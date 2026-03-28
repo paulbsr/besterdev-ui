@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ImageUploading from 'react-images-uploading';
-import axios from 'axios';
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 import { toast } from 'react-toastify';
 import { MdCamera, MdOutlineCamera } from "react-icons/md";
 import { Tooltip } from '@mui/material';

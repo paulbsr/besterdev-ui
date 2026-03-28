@@ -8,6 +8,8 @@ import { DutchLanguage_AI_Evaluator_Chatbot } from "./DutchLanguage_AI_Evaluator
 import DutchLanguage_AI_ScoreSquares from "./DutchLanguage_AI_ScoreSquares";
 import { GiAngryEyes } from "react-icons/gi";
 import { RefreshContext } from "./RefreshContext";
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
+
 
 const API_BASE =
   "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/add";
@@ -181,7 +183,7 @@ export default function DutchLanguage_Chatbot() {
 
   const fetchAllEntries = async () => {
     try {
-      const res = await fetch(API_ALL_CHATBOT);
+      const res = await OAuth2APIClient.get(API_ALL_CHATBOT);
       if (!res.ok) throw new Error("Failed to fetch entries");
 
       const data = await res.json();

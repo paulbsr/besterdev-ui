@@ -1,5 +1,5 @@
 // src/common/askAI.js
-
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 /**
  * Standardised AI request + DB persistence
  *
@@ -34,7 +34,7 @@ export async function DutchLanguage_AI_Evaluator_Chatbot({
   // -------------------------------------------------------
   // 1. CREATE DB ROW FIRST (empty scores)
   // -------------------------------------------------------
-  const createRes = await fetch(apiBase, {
+  const createRes = await OAuth2APIClient.get(apiBase, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -103,7 +103,7 @@ Do NOT include code fences.
   // -------------------------------------------------------
   // 3. AI Request
   // -------------------------------------------------------
-  const aiRes = await fetch(aiEndpoint, {
+  const aiRes = await OAuth2APIClient.get(aiEndpoint, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ question: prompt }),
@@ -169,7 +169,7 @@ try {
     charCount: userInput.length,
   };
 
-  const updateRes = await fetch(`${apiBase}/${savedId}`, {
+  const updateRes = await OAuth2APIClient.get(`${apiBase}/${savedId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(updatePayload),

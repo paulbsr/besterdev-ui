@@ -2,7 +2,7 @@ import { SiJsonwebtokens } from 'react-icons/si';
 import { VscCopy } from "react-icons/vsc";
 import { toast } from 'react-toastify';
 import { useState } from 'react';
-import axios from 'axios';
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
 function BearerToken() {
   const [bearertoken, setBearertoken] = useState(null);

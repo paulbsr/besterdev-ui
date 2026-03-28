@@ -15,7 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import '../Fonts.css';
 import Footer from '../Footer';
 import ToastComponent from '../ToastComponent';
-import axios from 'axios';
+
 
 const PageLogin = (props) => {
   const [email, setEmail] = useState('');

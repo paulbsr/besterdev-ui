@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import '../Fonts.css';
 import 'react-dropdown/style.css';
-import axios from 'axios'
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 import { FaPen, FaCheck, FaRegTrashAlt } from 'react-icons/fa';
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
 import { toast } from 'react-toastify';

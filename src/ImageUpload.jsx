@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import ImageUploading from 'react-images-uploading';
-import axios from 'axios';
 import { toast } from 'react-toastify';
 import { MdCamera } from "react-icons/md";
 import { Tooltip } from '@mui/material';

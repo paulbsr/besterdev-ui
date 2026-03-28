@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 import './Fonts.css';
 import 'react-dropdown/style.css';
 import { FaPen, FaCheck, FaRegTrashAlt } from 'react-icons/fa';
@@ -23,8 +23,7 @@ export default function RoleManage() {
 
   // Fetch roles on mount or refresh
   useEffect(() => {
-    axios
-      .get(API_BASE)
+    OAuth2APIClient.get(API_BASE)
       .then(({ data }) => {
         const sorted = data.sort((a, b) => a.rolename.localeCompare(b.rolename));
         setRoles(sorted);

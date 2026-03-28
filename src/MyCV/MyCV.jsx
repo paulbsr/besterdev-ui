@@ -3,7 +3,6 @@ import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
 import '../Fonts.css';
 import 'react-dropdown/style.css';
-import axios from 'axios'
 import Image from './Darknet12.png'
 import TUS from './TUS.png'
 import TUS2 from './TUS2.png'
@@ -17,6 +16,7 @@ import { MdOutlineSummarize } from "react-icons/md";
 import { FaHighlighter } from "react-icons/fa6";
 import { IoTrophyOutline } from "react-icons/io5";
 import { GiSkills } from "react-icons/gi";
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
 
 export default function MyCV(props) {
@@ -38,7 +38,7 @@ export default function MyCV(props) {
 
 
   useEffect(() => {
-    axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/mycv`)
+    OAuth2APIClient.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/mycv`)
       .then((response) => {
         const cvdata = response.data;
         cvdata.sort((a, b) => b.employer_id - a.employer_id);
@@ -51,7 +51,7 @@ export default function MyCV(props) {
 
 
   useEffect(() => {
-    axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/mycv/summary`)
+    OAuth2APIClient.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/mycv/summary`)
       .then((response) => {
         const mycvcareersummaryIB = response.data;
         setMycvcareersummary(mycvcareersummaryIB);
@@ -64,7 +64,7 @@ export default function MyCV(props) {
 
 
   useEffect(() => {
-    axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/mycv/expertise`)
+    OAuth2APIClient.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/mycv/expertise`)
       .then((response) => {
         const mycvcareerexpertiseIB = response.data;
         mycvcareerexpertiseIB.sort((a, b) => a.id - b.id);
@@ -78,7 +78,7 @@ export default function MyCV(props) {
 
 
   useEffect(() => {
-    axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/mycv/highlights`)
+    OAuth2APIClient.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/mycv/highlights`)
       .then((response) => {
         const mycvcareerhighlightsIB = response.data;
         mycvcareerhighlightsIB.sort((a, b) => b.id - a.id);

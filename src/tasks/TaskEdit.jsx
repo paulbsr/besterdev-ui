@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import '../Fonts.css';
 import 'react-dropdown/style.css';
 import Task_forTaskEdit from './Task_forTaskEdit';
-
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
 export default function TaskEdit(props) {
   const [isExpanded, setExpanded] = useState(false);
@@ -13,7 +12,7 @@ export default function TaskEdit(props) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/${props.task_id}`)
+    OAuth2APIClient.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/${props.task_id}`)
       .then((response) => {
         const tasksdata = response.data;
         setTaskData(tasksdata);

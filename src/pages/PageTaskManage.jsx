@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import BannerWhite from '../banners/BannerWhite';
 import GradientLine from '../gradientlines/GradientLine';
 import BannerLight from '../banners/BannerLight';
@@ -12,6 +11,7 @@ import TaskOverview from '../tasks/TaskOverview';
 import { TaskContext } from "../Contexts";
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
 import DutchLanguageTicker from '../dutchlanguage/DutchLanguageTicker';
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
 export default function PageTaskManage() {
   const [tasks, setTasks] = useState([]);
@@ -19,7 +19,7 @@ export default function PageTaskManage() {
   const [checkForRecords, setCheckForRecords] = useState(true);
 
   useEffect(() => {
-    axios(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks`)
+    OAuth2APIClient.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks`)
       .then((response) => {
         setTasks(response.data);
         setError(null);

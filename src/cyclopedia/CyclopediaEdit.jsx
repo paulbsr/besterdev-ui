@@ -1,4 +1,4 @@
-import axios from 'axios';
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 import '../Fonts.css';
 import { useState, useEffect } from 'react';
 import { Tooltip } from '@mui/material';

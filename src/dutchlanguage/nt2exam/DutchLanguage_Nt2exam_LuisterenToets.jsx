@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaEarDeaf } from "react-icons/fa6";
+import OAuth2APIClient from '../../oauth2/OAuth2APIClient';
+
 
 const API_URL =
   "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/luisteren/wip";
@@ -52,7 +54,7 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
   // Progress fetcher
   const fetchProgress = async () => {
     try {
-      const res = await fetch(PROGRESS_URL);
+      const res = await OAuth2APIClient.get(PROGRESS_URL);
       if (!res.ok) throw new Error("Failed to fetch progress");
       const value = await res.json();
       setProgress(parseFloat(value).toFixed(1));
@@ -75,7 +77,7 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
     setAudioReady(false);
 
     try {
-      const res = await fetch(API_URL);
+      const res = await OAuth2APIClient.get(API_URL);
       if (!res.ok) throw new Error("Failed to fetch question list");
       const data = await res.json();
       const list = Array.isArray(data)
@@ -127,7 +129,7 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
           ? `C - ${question.optionC}`
           : userAnswer;
 
-      await fetch(`${API_URL}/${question.id}/answerTry`, {
+      await OAuth2APIClient.get(`${API_URL}/${question.id}/answerTry`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(fullAnswer),

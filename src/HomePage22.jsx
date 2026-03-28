@@ -2,7 +2,6 @@ import { useState, useEffect, React } from 'react'
 import { Tooltip } from 'react-tooltip'
 import './Fonts.css';
 import 'react-dropdown/style.css';
-import axios from 'axios'
 import Image from './graphix/12.png' //Lady Liberty
 import DBSearchComponent from './dbsearch/DBSearchComponent';
 import TaskSummaryHomepage from './tasks/TaskSummaryHomepage';
@@ -11,6 +10,7 @@ import { useHowtoApi } from './howto/HowtoAPIProvider';
 import { useNavigate } from 'react-router-dom';
 import FlipCard from './flipcard/FlipCard';
 import AskAI from './openai/AskAI';
+import OAuth2APIClient from './oauth2/OAuth2APIClient';
 
 export default function HomePage22(props) {
   const [isExpanded, setExpanded] = useState(false);
@@ -19,15 +19,14 @@ export default function HomePage22(props) {
   const [showHowtoEdit, setShowHowtoEdit] = useState(false);
   const [howtoIdd, setHowtoIdd] = useState(null);
   const { websiterootdata, loading, error } = useWebsiteApi(); //gebruik van die nuwe useContext :-)
-  // const { cyclopediarootdata } = useCyclopediaApi(); //gebruik van die nuwe useContext :-)
   const { howtorootdata } = useHowtoApi(); //gebruik van die nuwe useContext :-)
   const [fourtyRandomRecords, setFourtyRandomRecords] = useState([]);
   const navigate = useNavigate();
 
 
   useEffect(() => {
-    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks')
-      // axios('http://localhost:8000/api/v1/tasks')
+    OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks')
+      // OAuth2APIClient.get('http://localhost:8000/api/v1/tasks')
       .then((response) => {
         const sortedtaskdata = response.data.sort((b, a) => b.taskname.localeCompare(a.taskname));
         setTaskdata(sortedtaskdata);
@@ -36,9 +35,32 @@ export default function HomePage22(props) {
   }, [props.checkForRecords]);
 
 
+// useEffect(() => {
+//   let mounted = true;
+
+//   (async () => {
+//     try {
+//       const response = await OAuth2APIClient.get('/api/v1/tasks');
+
+//       const sortedTaskData = response.data.sort(
+//         (b, a) => b.taskname.localeCompare(a.taskname)
+//       );
+
+//       if (mounted) {
+//         setTaskdata(sortedTaskData);
+//       }
+//     } catch (e) {
+//       console.error('❌ Failed to load tasks', e);
+//     }
+//   })();
+
+//   return () => {
+//     mounted = false;
+//   };
+// }, [props.checkForRecords]);
+
   useEffect(() => {
-    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/alphabet/random')
-      // axios('http://localhost:8000/api/v1/cyclopedia/alphabet/random')
+    OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/alphabet/random')
       .then((response) => {
         const fourtyRandomRecordsAPI = response.data;
         setFourtyRandomRecords(fourtyRandomRecordsAPI);
@@ -48,8 +70,7 @@ export default function HomePage22(props) {
 
 
   useEffect(() => {
-    axios
-      .get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/triggerwebsocketevent")
+    OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/triggerwebsocketevent")
       .then(() => {
         console.log("WebSocket event triggered.");
       })

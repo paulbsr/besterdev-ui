@@ -2,7 +2,7 @@ import { useState, useEffect, React } from 'react'
 import { Stack } from "@mui/material";
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
-
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
 export default function CyclopediaTicker(props) {
   const [ fourtyRandomRecords, setFourtyRandomRecords] = useState([]);
@@ -10,7 +10,7 @@ export default function CyclopediaTicker(props) {
 
 
     useEffect(() => {
-        axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/random40')
+        OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/random40')
         .then((response) => {
           const fourtyRandomRecordsAPI = response.data;
           setFourtyRandomRecords(fourtyRandomRecordsAPI);

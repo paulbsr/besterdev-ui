@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from 'react'
 import GradientLineRusty from '../gradientlines/GradientLineRusty';
 import { FaPen, FaCheck, FaRegTrashAlt } from 'react-icons/fa';
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 import { baseInputStyle } from '../baseInputStyle';
 import { FaPeopleGroup } from "react-icons/fa6";
 import EmployerCreate from './EmployerCreate';
@@ -9,9 +10,7 @@ import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 import { toast } from 'react-toastify';
 import 'react-dropdown/style.css';
-import axios from 'axios'
 import '../Fonts.css'
-
 
 
 export default function EmployerManage1(props) {
@@ -30,7 +29,7 @@ export default function EmployerManage1(props) {
 
 
   useEffect(() => {
-    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers')
+    OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers')
       .then((response) => { const sortedemployerrecords = response.data.sort((b, a) => b.empname.localeCompare(a.empname)); setEmployerrecords(sortedemployerrecords); }) //sort empname alphabetically
       .catch((e) => console.error(e));
   }, [checkForRecords]);

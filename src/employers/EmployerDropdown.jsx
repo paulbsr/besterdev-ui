@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
 export default function EmployerDropdown(props) {
   const [employers, setEmployers] = useState(null);
 
   useEffect(() => {
-    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers')
+    OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers')
       .then((response) => {
         const sortedemployerrecords = response.data.sort((b, a) => b.empname.localeCompare(a.empname));
         setEmployers(sortedemployerrecords);

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import '../Fonts.css';
 import { Tooltip } from 'react-tooltip';
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
+
 
 const TaskSummaryHomepage = (props) => {
   const [taskdata, setTaskdata] = useState([]);
@@ -13,7 +14,7 @@ const TaskSummaryHomepage = (props) => {
   });
 
   useEffect(() => {
-    axios('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks')
+    OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks')
       .then((response) => {
         const sortedtaskdata = response.data.sort((b, a) => b.taskname.localeCompare(a.taskname));
         setTaskdata(sortedtaskdata);

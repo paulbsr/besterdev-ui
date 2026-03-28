@@ -8,7 +8,6 @@ import {
 } from "react-icons/fa";
 import { PiArrowCounterClockwiseBold } from "react-icons/pi";
 import { MdManageAccounts } from "react-icons/md";
-import axios from "axios";
 import "react-tooltip/dist/react-tooltip.css";
 import "../Fonts.css";
 import "react-dropdown/style.css";

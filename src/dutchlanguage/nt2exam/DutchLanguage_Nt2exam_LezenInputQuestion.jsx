@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "../../Fonts.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { baseInputStyle } from "../../baseInputStyle";
 import { FcMultipleInputs } from "react-icons/fc";
+import OAuth2APIClient from '../../oauth2/OAuth2APIClient';
 
 export default function DutchLanguage_Nt2exam_LezenInputQuestion() {
     const [isExpanded, setExpanded] = useState(false);
@@ -21,8 +21,7 @@ export default function DutchLanguage_Nt2exam_LezenInputQuestion() {
     const [readingTextId, setReadingTextId] = useState("");
 
     useEffect(() => {
-        axios
-            .get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/lezen/texts")
+        OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/lezen/texts")
             .then(res => setReadingTexts(res.data))
             .catch(err => {
                 console.error(err);
@@ -64,12 +63,7 @@ export default function DutchLanguage_Nt2exam_LezenInputQuestion() {
 
 
         try {
-            const response = await OAuth2APIClient.post(
-                `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/lezen/texts/${readingTextId}/questions`,
-                // `http://localhost:8000/api/v1/nt2exam/lezen/texts/${readingTextId}/questions`,
-                payload
-            );
-
+            const response = await OAuth2APIClient.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/lezen/texts/${readingTextId}/questions`, payload);
             if (response.status === 201 || response.status === 200) {
                 toast.success(`Question ${questionNumber} saved`);
                 resetForm();

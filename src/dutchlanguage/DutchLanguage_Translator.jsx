@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import DutchAfrikaansSentence from "./DutchAfrikaansSentence";
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
 export default function DutchLanguage_Translator() {
   const [text, setText] = useState("");
@@ -16,7 +16,7 @@ export default function DutchLanguage_Translator() {
         : `Translate from Dutch to Afrikaans but return the word or phrase only. if a single word then produce a short sentence with that single word: ${text}`;
 
     try {
-      const res = await fetch(
+      const res = await OAuth2APIClient.post(
         "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
         {
           method: "POST",
