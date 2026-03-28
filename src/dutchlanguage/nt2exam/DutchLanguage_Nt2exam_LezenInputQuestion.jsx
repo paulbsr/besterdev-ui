@@ -137,6 +137,7 @@ export default function DutchLanguage_Nt2exam_LezenInputQuestion() {
                             <option value="2022">2022</option>
                             <option value="2023">2023</option>
                             <option value="2024">2024</option>
+                            <option value="2025">2025</option>
                         </select>
 
                         <input
@@ -188,10 +189,10 @@ export default function DutchLanguage_Nt2exam_LezenInputQuestion() {
                         />
 
                         <input
-                            style={{ ...baseInputStyle, width: "120px" }}
+                            style={{ ...baseInputStyle, width: "620px" }}
                             placeholder="Correct (A/B/C/D)"
                             value={answerCorrect}
-                            onChange={(e) => setAnswerCorrect(e.target.value.toUpperCase())}
+                            onChange={(e) => setAnswerCorrect(e.target.value)}
                             required
                         />
                     </div>
