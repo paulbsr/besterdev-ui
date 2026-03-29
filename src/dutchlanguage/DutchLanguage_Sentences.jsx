@@ -48,7 +48,7 @@ function DutchLanguage_Sentences() {
         }),
       });
 
-      const data = await res.json();
+      const data = res.data;
       setWord(formatText(data.answer || data.response || "onbekend woord"));
     } catch {
       setWord("Fout bij laden");

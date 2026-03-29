@@ -53,7 +53,7 @@ export default function DutchLanguage_Nt2exam_SchrijvenToets() {
 
     try {
       const res = await OAuth2APIClient.get(QUESTIONS_URL);
-      const data = await res.json();
+      const data = res.data;
 
       if (data && typeof data === "object") {
         setChallenge(data);
@@ -114,7 +114,7 @@ Format your answer strictly like this:
         body: JSON.stringify(payload),
       });
 
-      const data = await res.json();
+      const data = res.data;
       const aiResponse = data.answer || "";
       const parsed = safeJsonParse(aiResponse);
 
@@ -165,22 +165,24 @@ Format your answer strictly like this:
     };
 
     try {
-      const res = await OAuth2APIClient.get(
-        `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/schrijven/put/${id}`,
-        // `http://localhost:8000/api/v1/nt2exam/schrijven/put/${id}`,
+      const res = await OAuth2APIClient.put(`/api/v1/nt2exam/schrijven/put/${id}`, updatedEntity, // ← Axios sends this as JSON automatically
         {
-          method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(updatedEntity),
         }
       );
 
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const saved = await res.json();
+      // Axios throws automatically on 4xx/5xx, no res.ok check needed
+      const saved = res.data;
+
       console.log("✅ Successfully persisted feedback:", saved);
     } catch (err) {
-      console.error("❌ Error saving feedback:", err);
+      console.error(
+        "❌ Error saving feedback:",
+        err.response?.status,
+        err.response?.data || err.message
+      );
     }
+
   };
 
   useEffect(() => {

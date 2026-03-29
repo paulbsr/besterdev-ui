@@ -37,11 +37,8 @@ export default function DutchLanguage_Chatbot_ScoreTrend() {
   useEffect(() => {
     const fetchScores = async () => {
       try {
-        const res = await OAuth2APIClient.get(
-          "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/chatbot/averagescores"
-        );
-        const entries = await res.json();
-
+        const res = await OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/chatbot/averagescores");
+        const entries = res.data;
         const grouped = {};
         entries.forEach((item) => {
           const dateKey = formatDate(item.date);

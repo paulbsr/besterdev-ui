@@ -168,7 +168,7 @@ function FlipCard({ width = 1000, minHeight = 75 }) {
         }
       );
 
-      const data = await res.json();
+      const data = res.data;
       const rawResponse = data.answer || data.response || "No feedback available";
       setResponse(formatText(rawResponse));
     } catch (err) {
@@ -196,7 +196,7 @@ function FlipCard({ width = 1000, minHeight = 75 }) {
         }
       );
 
-      const data = await res.json();
+      const data = res.data;
       const rawResponse = data.answer || data.response || "No answer available";
       setResponse(formatText(rawResponse));
     } catch (err) {

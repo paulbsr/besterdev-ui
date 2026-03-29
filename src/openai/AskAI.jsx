@@ -26,7 +26,7 @@ export default function AskAI() {
         }
       );
 
-      const data = await res.json();
+      const data = res.data;
 
       const cleaned = (data.answer || "")
         .replace(/optional/i, "")

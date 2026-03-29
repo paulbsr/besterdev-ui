@@ -3,13 +3,9 @@ import { FaEarDeaf } from "react-icons/fa6";
 import OAuth2APIClient from '../../oauth2/OAuth2APIClient';
 
 
-const API_URL =
-  "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/luisteren/wip";
-const PROGRESS_URL =
-  "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/luisteren/progress";
-
-const instructiefilmluisteren =
-  "https://www.staatsexamensnt2.nl/documenten/videos/2025/8/4/instructiefilm-luisteren";
+const API_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/luisteren/wip";
+const PROGRESS_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/nt2exam/luisteren/progress";
+const instructiefilmluisteren = "https://www.staatsexamensnt2.nl/documenten/videos/2025/8/4/instructiefilm-luisteren";
 
 export default function DutchLanguage_Nt2exam_LuisterenToets() {
   const [question, setQuestion] = useState(null);
@@ -55,11 +51,11 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
   const fetchProgress = async () => {
     try {
       const res = await OAuth2APIClient.get(PROGRESS_URL);
-      if (!res.ok) throw new Error("Failed to fetch progress");
-      const value = await res.json();
+      // if (!res.ok) throw new Error("Failed to fetch progress");
+      const value = res.data;
       setProgress(parseFloat(value).toFixed(1));
     } catch (err) {
-      console.error("❌ Error fetching progress:", err);
+      console.error("❌ In <LuisterenToets> Error fetching progress:", err);
     }
   };
 
@@ -78,8 +74,7 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
 
     try {
       const res = await OAuth2APIClient.get(API_URL);
-      if (!res.ok) throw new Error("Failed to fetch question list");
-      const data = await res.json();
+      const data = res.data;
       const list = Array.isArray(data)
         ? data
         : Array.isArray(data?.questions)

@@ -156,7 +156,7 @@ Respond in JSON with:
           body: JSON.stringify(payload),
         });
   
-        const data = await res.json();
+        const data = res.data;
         const aiResponse = data.answer || "";
         const parsed = safeJsonParse(aiResponse);
   
@@ -218,7 +218,7 @@ Respond in JSON with:
         );
   
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const saved = await res.json();
+        const saved = res.data;
         console.log("✅ Successfully persisted feedback:", saved);
       } catch (err) {
         console.error("❌ Error saving feedback:", err);

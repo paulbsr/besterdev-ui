@@ -86,7 +86,7 @@ export default function DutchLanguage_WordContext_Mini() {
         }),
       });
 
-      const data = await res.json();
+      const data = res.data;
       const cleaned =
         data.answer
           ?.replace(/^Optional\[/i, "")

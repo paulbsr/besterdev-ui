@@ -17,7 +17,7 @@ export async function getAccessToken() {
   accessToken = data.access_token;
   expiresAt = Date.now() + data.expires_in * 1000; // expires_in is in seconds
 
-console.log(`[${new Date().toISOString()}] Got new access token:`, accessToken);
+console.log(`[${new Date().toISOString()}] Received a Bearer Token from the Auth0 SEC-AUTH-Z authority`);
 
   return accessToken;
 }

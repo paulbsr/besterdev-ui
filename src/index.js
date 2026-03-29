@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import { Navigate } from "react-router-dom";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import OAuth2APIClient from './oauth2/OAuth2APIClient';
 import { Buffer } from 'buffer';
+import { RefreshProvider } from "./dutchlanguage/RefreshContext";
+import PageDutchLanguageBook from './pages/PageDutchLanguageBook';
 
 // Providers
 import { BreakingNewsAPIProvider } from './breakingnews/BreakingNewsAPIProvider';
@@ -39,10 +42,6 @@ import 'react-tooltip/dist/react-tooltip.css';
 import './index.css';
 import './Fonts.css';
 
-import { RefreshProvider } from "./dutchlanguage/RefreshContext";
-import { Navigate } from "react-router-dom";
-import PageDutchLanguageBook from './pages/PageDutchLanguageBook';
-
 
 
 // --- Firebase Configuration ---
@@ -73,55 +72,30 @@ const App = () => {
     let mounted = true;
     let countdownTimer;
 
-    // const fetchData = async () => {
-    //   try {
-    //     const response = await OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/searchphrase');
-    //     const phrase = response.data?.[0]?.searchphrase || "";
-    //     if (mounted) {
-    //       setSearchPhrase(phrase);
-    //       console.log('✅ Search phrase loaded:', phrase);
-    //     }
-    //   } catch (error) {
-    //     console.error('❌ Error loading search phrase:', error);
-    //   } finally {
-    //     // Start countdown timer
-    //     countdownTimer = setInterval(() => {
-    //       setCountdown((prev) => {
-    //         if (prev <= 1) {
-    //           clearInterval(countdownTimer);
-    //           if (mounted) setLoading(false);
-    //           return 0;
-    //         }
-    //         return prev - 1;
-    //       });
-    //     }, 1000);
-    //   }
-    // };
+    const fetchData = async () => {
+      try {
+        const response = await OAuth2APIClient.get('/api/v1/searchphrase');
+        const phrase = response.data?.[0]?.searchphrase || "";
 
-const fetchData = async () => {
-  try {
-    const response = await OAuth2APIClient.get('/api/v1/searchphrase');
-    const phrase = response.data?.[0]?.searchphrase || "";
-
-    if (mounted) {
-      setSearchPhrase(phrase);
-      console.log('✅ Search phrase loaded:', phrase);
-    }
-  } catch (error) {
-    console.error('❌ Error loading search phrase:', error);
-  } finally {
-    countdownTimer = setInterval(() => {
-      setCountdown((prev) => {
-        if (prev <= 1) {
-          clearInterval(countdownTimer);
-          if (mounted) setLoading(false);
-          return 0;
+        if (mounted) {
+          setSearchPhrase(phrase);
+          console.log('✅ Search phrase:', phrase);
         }
-        return prev - 1;
-      });
-    }, 1000);
-  }
-};
+      } catch (error) {
+        console.error('❌ Error loading search phrase:', error);
+      } finally {
+        countdownTimer = setInterval(() => {
+          setCountdown((prev) => {
+            if (prev <= 1) {
+              clearInterval(countdownTimer);
+              if (mounted) setLoading(false);
+              return 0;
+            }
+            return prev - 1;
+          });
+        }, 1000);
+      }
+    };
 
     fetchData();
 
@@ -172,56 +146,51 @@ const fetchData = async () => {
     );
   }
 
-  console.log('BasicAuth:', basicAuth);
-  console.log('searchPhrase:', searchPhrase);
+  console.log('✅ BasicAuth:', basicAuth);
+  console.log('✅ searchPhrase:', searchPhrase);
 
   // --- Routes ---
   return (
-        <RefreshProvider>
+    <RefreshProvider>
+      <Router>
+        <Routes>
+          {/* Default landing page */}
+          <Route path="/" element={<Navigate to="/dutchlanguage" replace />} />
 
-    <Router>
+          {/* Dutch Language page */}
+          <Route path="/dutchlanguage" element={<PageDutchLanguage />} />
+          <Route path="/dutchlanguagebook" element={<PageDutchLanguageBook />} />
 
+          {/* Real home page */}
+          <Route path="/home" element={<PageHome searchPhrase={searchPhrase} />} />
 
-<Routes>
-  {/* Default landing page */}
-  <Route path="/" element={<Navigate to="/dutchlanguage" replace />} />
+          {/* Search pages */}
+          <Route path="/search" element={<PageSearch />} />
+          <Route path="/screen" element={<PageSearch />} />
+          <Route path="/hunt" element={<PageSearch />} />
 
-  {/* Dutch Language page */}
-  <Route path="/dutchlanguage" element={<PageDutchLanguage />} />
-  <Route path="/dutchlanguagebook" element={<PageDutchLanguageBook />} />
+          {/* Management pages */}
+          <Route path="/candidatemanage" element={<PageManage />} />
+          <Route path="/howtomanage" element={<PageHowtoManage />} />
+          <Route path="/cyclopediamanage" element={<PageCyclopedia />} />
+          <Route path="/webresourcemanage" element={<PageResources />} />
+          <Route path="/peoplescorecard" element={<PagePeopleScorecard />} />
+          <Route path="/taskmanage" element={<PageTaskManage />} />
 
-  {/* Real home page */}
-  <Route path="/home" element={<PageHome searchPhrase={searchPhrase} />} />
+          {/* Editors */}
+          <Route path="/taskedit/:task_id" element={<PageTaskEdit />} />
+          <Route path="/cyclopediaedit/:cyclopediaId" element={<PageCyclopediaEdit />} />
+          <Route path="/howtoedit/:howto_id" element={<PageHowtoEdit />} />
 
-  {/* Search pages */}
-  <Route path="/search" element={<PageSearch />} />
-  <Route path="/screen" element={<PageSearch />} />
-  <Route path="/hunt" element={<PageSearch />} />
+          {/* Misc pages */}
+          <Route path="/mycv" element={<PageMyCV />} />
+          <Route path="/dhkeyexchange" element={<PageDHKeyExchange />} />
+          <Route path="/swagger" element={<PageSwagger />} />
 
-  {/* Management pages */}
-  <Route path="/candidatemanage" element={<PageManage />} />
-  <Route path="/howtomanage" element={<PageHowtoManage />} />
-  <Route path="/cyclopediamanage" element={<PageCyclopedia />} />
-  <Route path="/webresourcemanage" element={<PageResources />} />
-  <Route path="/peoplescorecard" element={<PagePeopleScorecard />} />
-  <Route path="/taskmanage" element={<PageTaskManage />} />
-
-  {/* Editors */}
-  <Route path="/taskedit/:task_id" element={<PageTaskEdit />} />
-  <Route path="/cyclopediaedit/:cyclopediaId" element={<PageCyclopediaEdit />} />
-  <Route path="/howtoedit/:howto_id" element={<PageHowtoEdit />} />
-
-  {/* Misc pages */}
-  <Route path="/mycv" element={<PageMyCV />} />
-  <Route path="/dhkeyexchange" element={<PageDHKeyExchange />} />
-  <Route path="/swagger" element={<PageSwagger />} />
-
-  {/* Catch-all */}
-  <Route path="*" element={<Navigate to="/dutchlanguage" replace />} />
-</Routes>
-
-    </Router>
-
+          {/* Catch-all */}
+          <Route path="*" element={<Navigate to="/dutchlanguage" replace />} />
+        </Routes>
+      </Router>
     </RefreshProvider>
   );
 };

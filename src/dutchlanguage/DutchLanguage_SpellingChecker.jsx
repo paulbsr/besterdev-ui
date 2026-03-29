@@ -21,13 +21,10 @@ export default function DutchLanguage_SpellingChecker() {
       const res = await OAuth2APIClient.post(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          question: `Check if the following Dutch word is spelled correctly: "${word}". 
-          Answer only with "Correct" or "Incorrect: [correct spelling]".`,
-        }),
+        body: JSON.stringify({ question: `Check if the following Dutch word is spelled correctly: "${word}". Answer only with "Correct" or "Incorrect: [correct spelling]".`, }),
       });
 
-      const data = await res.json();
+      const data = res.data;
       let output = data.answer?.trim() || "";
 
       // Clean up weird formatting like "Optional[Incorrect: verwordt]"

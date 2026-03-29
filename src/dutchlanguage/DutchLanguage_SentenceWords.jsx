@@ -31,7 +31,7 @@ export default function DutchLanguage_SentenceWords({
         }),
       });
 
-      const data = await res.json();
+      const data = res.data;
       const output = data.answer || "";
 
       const parts = output.split("MISSING:");
@@ -74,7 +74,7 @@ export default function DutchLanguage_SentenceWords({
         }),
       });
 
-      const data = await res.json();
+      const data = res.data;
       setFeedback(data.answer || "⚠️ No evaluation received.");
     } catch (err) {
       console.error(err);

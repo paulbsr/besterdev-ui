@@ -165,7 +165,7 @@ function DutchLanguage_Dagboek() {
   const fetchAllEntries = async () => {
     try {
       const res = await OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/all/diary");
-      if (!res.ok) throw new Error("<Diary> failed to fetch /all/diary entries");
+      // if (!res.ok) throw new Error("<Diary> failed to fetch /all/diary entries");
       const data = res.data;
 
       const normalized = (Array.isArray(data) ? data : [data]).map((item) => {
@@ -215,7 +215,7 @@ function DutchLanguage_Dagboek() {
     if (!window.confirm("Weet je zeker dat je dit dagboekitem wilt verwijderen?")) return;
 
     try {
-      const res = await OAuth2APIClient.get(
+      const res = await OAuth2APIClient.delete(
         `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/delete/${id}`,
         { method: "DELETE" }
       );

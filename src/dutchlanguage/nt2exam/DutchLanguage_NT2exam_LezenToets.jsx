@@ -39,17 +39,31 @@ export default function DutchLanguage_NT2exam_LezenToets() {
 
     const randomId = Math.floor(Math.random() * 18) + 1;
 
-    try {
-      const res = await OAuth2APIClient.get(`${BASE_URL}/${randomId}`);
-      if (!res.ok) throw new Error("Failed to fetch reading text");
-      const json = await res.json();
-      setData(json);
-    } catch (err) {
-      console.error("❌ Error fetching text:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
+  //   try {
+  //     const res = await OAuth2APIClient.get(`${BASE_URL}/${randomId}`);
+  //     if (!res.ok) throw new Error("Failed to fetch reading text");
+  //     const json = await res.json();
+  //     setData(json);
+  //   } catch (err) {
+  //     console.error("❌ Error fetching text:", err);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+  try {
+  const res = await OAuth2APIClient.get(`${BASE_URL}/${randomId}`);
+  setData(res.data);
+} catch (err) {
+  console.error(
+    "❌ Error fetching text:",
+    err.response?.status,
+    err.response?.data || err.message
+  );
+} finally {
+  setLoading(false);
+}
+};
 
   /* ================= ANSWERS ================= */
 

@@ -19,7 +19,7 @@ export default function DutchLanguage_ChallengeTranslate({ subject = "daily life
         }),
       });
 
-      const data = await res.json();
+      const data = res.data;
       const output = data.answer || "";
 
       // Expecting two lines: Dutch and Afrikaans

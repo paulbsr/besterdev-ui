@@ -25,7 +25,7 @@ export default function DutchLanguage_Translator() {
         }
       );
 
-      const data = await res.json();
+      const data = res.data;
 
       // Clean the response
       let cleaned = (data.answer || "")

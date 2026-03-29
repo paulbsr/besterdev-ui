@@ -28,7 +28,7 @@ export default function DutchLanguage_WordContext() {
         }),
       });
 
-      const data = await res.json();
+      const data = res.data;
       let output = data.answer?.trim() || "";
 
       // Clean up Optional[...] wrapping if present
