@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 import { FaTimes } from "react-icons/fa";
 import { TbTransform } from "react-icons/tb";
 import "./DutchLanguage_HomePage.css";

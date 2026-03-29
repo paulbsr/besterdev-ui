@@ -9,7 +9,7 @@ import { FaRegTrashAlt } from 'react-icons/fa'; //Delete
 import Tenure from './Tenure';
 import MyCVEmployerRoleDetails from './MyCVEmployerRoleDetails';
 import { BsPencil } from "react-icons/bs";
-import { Image } from 'react-bootstrap';
+// import { Image } from 'react-bootstrap';
 
 
 function MyCVEmployerRoles({ mycvdata1, employer_id1, employer_name, checkForRecords, setCheckForRecords }) {
@@ -114,7 +114,7 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, employer_name, checkForRec
                         <tr>
 
                             <div className="CV-Font-Calibri-Large-Italic-PG" onClick={() => handleRoleClick(role.role_id)} style={{ cursor: 'pointer' }}>
-                                <Image src={employerImages[role.role_employer]} width="27" height="27" alt="Employer Logo" />
+                                {/* <Image src={employerImages[role.role_employer]} width="27" height="27" alt="Employer Logo" /> */}
                                     &nbsp;&nbsp;
                                     {role.role_name}
                                 
