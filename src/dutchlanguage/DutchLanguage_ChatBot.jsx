@@ -11,14 +11,9 @@ import { RefreshContext } from "./RefreshContext";
 import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
 
-const API_BASE =
-  "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/add";
-
-  const AI_ENDPOINT = 
-  "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
-
-const API_ALL_CHATBOT =
-  "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/all/chatbot";
+const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/add";
+const AI_ENDPOINT = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask";
+const API_ALL_CHATBOT = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/all/chatbot";
 
 const countWords = (text) =>
   text ? text.trim().split(/\s+/).filter(Boolean).length : 0;
@@ -181,23 +176,41 @@ export default function DutchLanguage_Chatbot() {
     fetchAllEntries();
   }, []);
 
+  // const fetchAllEntries = async () => {
+  //   try {
+  //     const res = await OAuth2APIClient.get(API_ALL_CHATBOT);
+  //     if (!res.ok) throw new Error("In <DutchLanguage_ChatBot> failed to fetch Chatbot history");
+
+  //     const data = res.data;
+  //     const normalized = (Array.isArray(data) ? data : [data]).map((it) => ({
+  //       ...it,
+  //       createdAtParsed: parseCreatedAt(it.createdAt),
+  //     }));
+
+  //     setAllEntries(normalized);
+  //   } catch (err) {
+  //     console.error(err);
+  //     setAllEntries([]);
+  //   }
+  // };
+
   const fetchAllEntries = async () => {
-    try {
-      const res = await OAuth2APIClient.get(API_ALL_CHATBOT);
-      if (!res.ok) throw new Error("Failed to fetch entries");
+  try {
+    const res = await OAuth2APIClient.get(API_ALL_CHATBOT);
 
-      const data = await res.json();
-      const normalized = (Array.isArray(data) ? data : [data]).map((it) => ({
-        ...it,
-        createdAtParsed: parseCreatedAt(it.createdAt),
-      }));
+    const data = res.data;
 
-      setAllEntries(normalized);
-    } catch (err) {
-      console.error(err);
-      setAllEntries([]);
-    }
-  };
+    const normalized = (Array.isArray(data) ? data : [data]).map((it) => ({
+      ...it,
+      createdAtParsed: parseCreatedAt(it.createdAt),
+    }));
+
+    setAllEntries(normalized);
+  } catch (err) {
+    console.error("Failed to fetch chatbot history:", err);
+    setAllEntries([]);
+  }
+};
 
   const handleSubmit = async (e) => {
     e?.preventDefault();

@@ -24,18 +24,26 @@ function DutchLanguage_SentenceTrainerModal() {
     try {
       setWord("Laden...");
 
-      const res = await OAuth2APIClient.post(
-        "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
+      // const res = await OAuth2APIClient.post("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
+      //   {
+      //     method: "POST",
+      //     headers: { "Content-Type": "application/json" },
+      //     body: JSON.stringify({
+      //       question: `Geef mij één willekeurig Nederlands woord over onderwerp ${customTopic}, zonder uitleg of zinnen. Alleen het woord.`,
+      //     }),
+      //   }
+      // );
+
+            const res = await OAuth2APIClient.post("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
         {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            question: `Geef mij één willekeurig Nederlands woord over onderwerp ${customTopic}, zonder uitleg of zinnen. Alleen het woord.`,
-          }),
+          question: "Geef mij één willekeurig Nederlands woord over onderwerp ${customTopic}, zonder uitleg of zinnen. Alleen het woord."
+        },
+        {
+          headers: { "Content-Type": "application/json" }
         }
       );
 
-      const data = await res.json();
+      const data = res.data;
       const newWord =
         formatText(data.answer || data.response || "") || "onbekend woord";
 
@@ -73,7 +81,7 @@ function DutchLanguage_SentenceTrainerModal() {
         }
       );
 
-      const data = await res.json();
+      const data = res.data;
       const rawFeedback = data.answer || data.response || "Geen feedback beschikbaar";
       setFeedback(formatText(rawFeedback));
     } catch (err) {

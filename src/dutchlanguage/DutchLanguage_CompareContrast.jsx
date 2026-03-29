@@ -18,17 +18,27 @@ export default function DutchLanguage_CompareContrast() {
 
   const fetchSentence = async () => {
     try {
-      const res = await OAuth2APIClient.post("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
+      // const res = await OAuth2APIClient.post("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
+      //   {
+      //     method: "POST",
+      //     headers: { "Content-Type": "application/json" },
+      //     body: JSON.stringify({
+      //       question: `Generate one grammatically complex Dutch sentence (minimum 15 words) about ${subject}, followed by its Afrikaans translation. Do not add introductions, just output the Dutch sentence on one line and the Afrikaans translation on the next.`,
+      //     }),
+      //   }
+      // );
+
+      const res = await OAuth2APIClient.post(
+        "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
         {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            question: `Generate one grammatically complex Dutch sentence (minimum 15 words) about ${subject}, followed by its Afrikaans translation. Do not add introductions, just output the Dutch sentence on one line and the Afrikaans translation on the next.`,
-          }),
+          question: "Generate one grammatically complex Dutch sentence (minimum 15 words) about ${subject}, followed by its Afrikaans translation. Do not add introductions, just output the Dutch sentence on one line and the Afrikaans translation on the next."
+        },
+        {
+          headers: { "Content-Type": "application/json" }
         }
       );
 
-      const data = await res.json();
+      const data = res.data;
 
       let cleaned = (data.answer || "")
         .replace(/optional/i, "")

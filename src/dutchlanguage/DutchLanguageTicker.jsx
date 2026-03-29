@@ -11,18 +11,27 @@ export default function DutchLanguageTicker() {
     const fetchDutchSentences = async () => {
       try {
         // Call your API that wraps OpenAI
+        // const res = await OAuth2APIClient.post("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
+        //   {
+        //     method: "POST",
+        //     headers: { "Content-Type": "application/json" },
+        //     body: JSON.stringify({
+        //       question:
+        //         "Act like a Dutch language high school teacher and generate 8 complex Dutch language sntences any topic. Just provide them as natural Dutch. No introductions."
+        //     }),
+        //   }
+        // );
+
         const res = await OAuth2APIClient.post("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
           {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              question:
-                "Act like a Dutch language high school teacher and generate 8 complex Dutch language sntences any topic. Just provide them as natural Dutch. No introductions."
-            }),
+            question: "Act like a Dutch language high school teacher and generate 8 complex Dutch language sentences on any topic. Just provide them as natural Dutch. No introductions."
+          },
+          {
+            headers: { "Content-Type": "application/json" }
           }
         );
 
-        const data = await res.json();
+        const data = res.data;
 
         // Clean response
         let cleaned = (data.answer || "")
