@@ -47,14 +47,8 @@ export default function CandidateManage() {
   useEffect(() => {
     const fetchCandidates = async () => {
       try {
-        // const res = await OAuth2APIClient.get(
-                  const res = await OAuth2APIClient.get(
-          // "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates"
-          "http://localhost:8000/api/v1/candidates"
-        );
-        const sorted = res.data.sort((a, b) =>
-          a.firstname.localeCompare(b.firstname)
-        );
+        const res = await OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates");
+        const sorted = res.data.sort((a, b) => a.firstname.localeCompare(b.firstname));
         setTableData(sorted);
       } catch (err) {
         console.error("Error fetching candidates:", err);

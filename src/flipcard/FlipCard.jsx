@@ -10,7 +10,6 @@ function FlipCard({ width = 1000, minHeight = 75 }) {
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState("");
   const [cardHeight, setCardHeight] = useState(minHeight);
-
   const backRef = useRef(null);
   const frontRef = useRef(null);
 
@@ -28,15 +27,12 @@ function FlipCard({ width = 1000, minHeight = 75 }) {
       setTerm("Loading...");
       setChallenge("Loading challenge...");
 
-      const termRes = await OAuth2APIClient.get(
-        "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/random"
-      );
+      const termRes = await OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/random");
       const termData = await termRes.json();
       const newTerm = termData.cyclopediaName || "Unknown Term";
       setTerm(newTerm);
 
-      const challengeRes = await OAuth2APIClient.post(
-        "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
+      const challengeRes = await OAuth2APIClient.post("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
