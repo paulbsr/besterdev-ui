@@ -197,7 +197,7 @@ function FlipCard({ width = 1000, minHeight = 75 }) {
       const data = res.data;
       const rawResponse = data.answer || data.response || "No feedback available";
       setResponse(formatText(rawResponse));
-      setIsCorrect(data.status === "correct"); // example frontend consumption
+      // setIsCorrect(data.status === "correct"); // example frontend consumption
     } 
     
     catch (err) {
