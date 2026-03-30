@@ -8,7 +8,6 @@ import TaskSummaryHomepage from './tasks/TaskSummaryHomepage';
 import { useWebsiteApi } from './websites/WebSiteAPIProvider';
 import { useHowtoApi } from './howto/HowtoAPIProvider';
 import { useNavigate } from 'react-router-dom';
-import FlipCard from './flipcard/FlipCard';
 import AskAI from './openai/AskAI';
 import OAuth2APIClient from './oauth2/OAuth2APIClient';
 
@@ -233,7 +232,6 @@ export default function HomePage22(props) {
               ))}
             </tbody>
           </table>
-                  <FlipCard />
         </div>
       </>
     );

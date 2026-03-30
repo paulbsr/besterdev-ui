@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import "react-toastify/dist/ReactToastify.css";
-import { PiBookOpenTextBold } from "react-icons/pi";
 import { FaTimes } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import { DutchLanguage_AIEvaluator } from "../DutchLanguage_AI_Evaluator";
@@ -155,7 +154,7 @@ function DutchLanguage_Dagboek_Mini() {
       setEntry(""); setWordCountState(0); resetTimer();
       //   fetchAllEntries();
     } catch (err) {
-      console.error("Dagboek submit error:", err);
+      console.error("Front Page Dagboek submit error:", err);
       toast.error("Fout bij verzenden: " + (err.message || ""), { position: "top-center" });
     } finally { setLoading(false); }
   };
