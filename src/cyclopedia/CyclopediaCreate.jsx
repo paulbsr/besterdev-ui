@@ -45,7 +45,7 @@ export default function CyclopediaCreate() {
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
           <a data-tooltip-id="insert" data-tooltip-content="Add Cyclopedia"><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} />
-        <b style={{ cursor: 'pointer' }}>Add a <i>"Cyclopedia"</i> entry:</b></a>
+        <b style={{ fontFamily: "Candara", fontSize: "medium", color: "#336791", cursor: "pointer" }}>Add a <i>"Cyclopedia"</i> entry</b></a>
         <div>&nbsp;</div>
       </div>
 
@@ -78,7 +78,7 @@ export default function CyclopediaCreate() {
                 
                 <div>
                   <img alt="1" src={spacer} />
-                  <img alt="1" src={spacer} />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Add to Cyclopedia</button></div>
+                  <img alt="1" src={spacer} />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#ffffff', color: '#336791', cursor: 'pointer' }}>Add to Cyclopedia</button></div>
                 
                 <div>&nbsp;</div>
                 <div>&nbsp;</div>

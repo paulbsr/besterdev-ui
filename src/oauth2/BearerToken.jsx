@@ -2,7 +2,7 @@ import { SiJsonwebtokens } from 'react-icons/si';
 import { VscCopy } from "react-icons/vsc";
 import { toast } from 'react-toastify';
 import { useState } from 'react';
-import OAuth2APIClient from '../oauth2/OAuth2APIClient';
+import axios from 'axios';
 
 function BearerToken() {
   const [bearertoken, setBearertoken] = useState(null);
@@ -13,7 +13,8 @@ function BearerToken() {
       const password = 'password';
       const credentials = btoa(`${username}:${password}`); // base64 encode
 
-      const response = await OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/auth/token',
+      const response = await axios.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/auth/token',
+        
         {
           headers: {
             Authorization: `Basic ${credentials}`,
