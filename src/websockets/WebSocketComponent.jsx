@@ -46,9 +46,9 @@ const WebSocketComponent = () => {
 
   const handleClick = useCallback(async () => {
     try {
-      const response = await OAuth2APIClient.get(TRIGGER_URL, { method: "GET" });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      console.log("WebSocket endpoint hit successfully");
+      const response = await OAuth2APIClient(TRIGGER_URL);
+      // if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      console.log("WebSocket endpoint hit successfully:", response.data);
     } catch (error) {
       console.error("Error hitting WebSocket endpoint:", error);
     }

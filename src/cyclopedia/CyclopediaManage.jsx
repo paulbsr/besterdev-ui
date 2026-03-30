@@ -174,8 +174,8 @@ function CyclopediaManage() {
                     </>
                   </td>
 
-                  <td>{row.cyclopediaId === editing ? (<input style={{ ...baseInputStyle, width: '350px' }} value={cyclopediaName} onChange={(e) => setCyclopediaName(e.target.value)} />) : (row.cyclopediaName)}</td>
-                  <td>{row.cyclopediaId === editing ? (<textarea style={{ ...baseInputStyle, width: '1240px' }} value={cyclopediaDesc} onChange={(e) => setCyclopediaDesc(e.target.value)} />) : (row.cyclopediaDesc)}</td>
+                  <td>{row.cyclopediaId === editing ? (<input style={{ ...baseInputStyle, width: "95%", fontFamily: "Candara", fontSize: "16px", }} value={cyclopediaName} onChange={(e) => setCyclopediaName(e.target.value)} />) : (row.cyclopediaName)}</td>
+                  <td>{row.cyclopediaId === editing ? (<textarea style={{ ...baseInputStyle, width: "99%", fontFamily: "Candara", fontSize: "16px",}} value={cyclopediaDesc} onChange={(e) => setCyclopediaDesc(e.target.value)} />) : (row.cyclopediaDesc)}</td>
                 </tr>
               )
             })

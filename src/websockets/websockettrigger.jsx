@@ -6,21 +6,37 @@ import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 function WebSocketTrigger() {
   const [loading, setLoading] = useState(false);
 
+  // const handleClick = async () => {
+  //   setLoading(true);
+  //   try {
+  //     const response = await OAuth2APIClient.get(
+  //       `${process.env.NEXT_PUBLIC_API_URL || "https://besterdev-api-13a0246c9cf2.herokuapp.com"}/api/v1/triggerwebsocketevent`,
+  //       { method: "GET" }
+  //     );
+
+  //     if (!response.ok) {throw new Error(`HTTP error: ${response.status}`);}
+
+  //     console.log("WebSocket Endpoint hit successfully");
+  //   } catch (error) {
+  //     console.error("Error hitting WebSocket endpoint:", error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   const handleClick = async () => {
     setLoading(true);
     try {
-      const response = await OAuth2APIClient.get(
-        `${process.env.NEXT_PUBLIC_API_URL || "https://besterdev-api-13a0246c9cf2.herokuapp.com"}/api/v1/triggerwebsocketevent`,
-        { method: "GET" }
-      );
-
-      if (!response.ok) {
-        throw new Error(`HTTP error: ${response.status}`);
-      }
-
-      console.log("WebSocket Endpoint hit successfully");
+      const response = await OAuth2APIClient.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/triggerwebsocketevent`);
+console.log("Full response:", response);
+      console.log("WebSocket Endpoint hit successfully", response.data);
+      console.log("Full response:", response);
     } catch (error) {
-      console.error("Error hitting WebSocket endpoint:", error);
+      console.error(
+        "Error hitting WebSocket endpoint:",
+        error.response?.status,
+        error.response?.data || error.message
+      );
     } finally {
       setLoading(false);
     }
