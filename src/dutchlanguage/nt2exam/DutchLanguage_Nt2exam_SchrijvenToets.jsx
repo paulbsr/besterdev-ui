@@ -108,11 +108,7 @@ Format your answer strictly like this:
         `,
       };
 
-      const res = await OAuth2APIClient.post(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+      const res = await OAuth2APIClient.post(API_URL, payload);
 
       const data = res.data;
       const aiResponse = data.answer || "";

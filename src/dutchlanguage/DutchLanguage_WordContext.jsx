@@ -21,11 +21,7 @@ export default function DutchLanguage_WordContext() {
 
     try {
       const res = await OAuth2APIClient.post(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          question: `Explain in English when the Dutch word "${word}" is used, and provide a short example sentence in Dutch with its English translation.`,
-        }),
+        question: `Explain in English when the Dutch word "${word}" is used, and provide a short example sentence in Dutch with its English translation.`,
       });
 
       const data = res.data;

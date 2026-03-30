@@ -40,13 +40,14 @@ function DutchLanguage_Sentences() {
   const fetchWord = async (customTopic = topic) => {
     try {
       setWord("Laden...");
-      const res = await OAuth2APIClient.post(API_ASK, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      const res = await OAuth2APIClient.post(API_ASK,
+        {
           question: `Geef mij één willekeurig Nederlands woord over onderwerp ${customTopic}, zonder uitleg of zinnen. Alleen het woord.`,
-        }),
-      });
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
 
       const data = res.data;
       setWord(formatText(data.answer || data.response || "onbekend woord"));

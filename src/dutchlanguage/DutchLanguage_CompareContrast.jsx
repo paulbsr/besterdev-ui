@@ -28,8 +28,7 @@ export default function DutchLanguage_CompareContrast() {
       //   }
       // );
 
-      const res = await OAuth2APIClient.post(
-        "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
+      const res = await OAuth2APIClient.post("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
         {
           question: "Generate one grammatically complex Dutch sentence (minimum 15 words) about ${subject}, followed by its Afrikaans translation. Do not add introductions, just output the Dutch sentence on one line and the Afrikaans translation on the next."
         },

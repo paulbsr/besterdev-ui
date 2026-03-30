@@ -24,7 +24,6 @@ export function CyclopediaImageUpload(props) {
 
         try {
             const response = await OAuth2APIClient.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopediaimages/upload`, formData, { //HEROKU
-                // const response = await OAuth2APIClient.post(`http://localhost:8000/api/v1/cyclopediaimages/upload`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

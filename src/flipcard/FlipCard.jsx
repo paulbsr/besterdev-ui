@@ -32,19 +32,38 @@ function FlipCard({ width = 1000, minHeight = 75 }) {
       const newTerm = termData.cyclopediaName || "Unknown Term";
       setTerm(newTerm);
 
-      const challengeRes = await OAuth2APIClient.post("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
+      // const challengeRes = await OAuth2APIClient.post("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
+      //   {
+      //     method: "POST",
+      //     headers: { "Content-Type": "application/json" },
+      //     body: JSON.stringify({
+      //       question: `Firstly, create a one-sentence summary or defition about the topic ${newTerm} and then generate a one-sentence question about the topic ${newTerm}. Do not include the word 'Summary' or "Definition" or "Question" in your response.`,
+      //     }),
+      //   }
+      // );
+
+      // const challengeData = await challengeRes.json();
+      // const rawChallenge = challengeData.answer || challengeData.response || "Could not generate challenge";
+      // setChallenge(formatText(rawChallenge));
+      const challengeRes = await OAuth2APIClient.post(
+        "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
         {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            question: `Firstly, create a one-sentence summary or defition about the topic ${newTerm} and then generate a one-sentence question about the topic ${newTerm}. Do not include the word 'Summary' or "Definition" or "Question" in your response.`,
-          }),
+          question: `Firstly, create a one-sentence summary or definition about the topic ${newTerm} and then generate a one-sentence question about the topic ${newTerm}. Do not include the word 'Summary', 'Definition', or 'Question' in your response.`
+        },
+        {
+          headers: { "Content-Type": "application/json" }
         }
       );
 
-      const challengeData = await challengeRes.json();
-      const rawChallenge = challengeData.answer || challengeData.response || "Could not generate challenge";
+      const challengeData = challengeRes.data;
+      const rawChallenge =
+        challengeData.answer ||
+        challengeData.response ||
+        "Could not generate challenge";
+
       setChallenge(formatText(rawChallenge));
+
+
     } catch (err) {
       console.error("Error fetching term or challenge:", err);
       setTerm("Error loading term");
@@ -157,21 +176,31 @@ function FlipCard({ width = 1000, minHeight = 75 }) {
     setResponse("");
 
     try {
-      const res = await OAuth2APIClient.post(
-        "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            question: `Evaluate the accuracy of the answer to the question about "${term}": ${answer}. Provide the correct answer in no more than 3 sentences. Start your response with either "correct" or "incorrect". Add that value o the JSON so that it can be consumed by the front end. `,
-          }),
-        }
-      );
+      // const res = await OAuth2APIClient.post(
+      //   "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
+      //   {
+      //     method: "POST",
+      //     headers: { "Content-Type": "application/json" },
+      //     body: JSON.stringify({
+      //       question: `Evaluate the accuracy of the answer to the question about "${term}": ${answer}. Provide the correct answer in no more than 3 sentences. Start your response with either "correct" or "incorrect". Add that value o the JSON so that it can be consumed by the front end. `,
+      //     }),
+      //   }
+      // );
+
+        const res = await OAuth2APIClient.post(
+    "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
+    {
+      question: `Evaluate the accuracy of the answer to the question about "${term}": ${answer}. Provide the correct answer in no more than 3 sentences. Start your response with either "correct" or "incorrect". Add that value to the JSON so that it can be consumed by the front end.`,
+    }
+  );
 
       const data = res.data;
       const rawResponse = data.answer || data.response || "No feedback available";
       setResponse(formatText(rawResponse));
-    } catch (err) {
+      setIsCorrect(data.status === "correct"); // example frontend consumption
+    } 
+    
+    catch (err) {
       console.error("Error submitting answer:", err);
       setResponse("Failed to submit answer");
     } finally {
@@ -185,20 +214,39 @@ function FlipCard({ width = 1000, minHeight = 75 }) {
     setResponse("");
 
     try {
+      // const res = await OAuth2APIClient.post(
+      //   "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
+      //   {
+      //     method: "POST",
+      //     headers: { "Content-Type": "application/json" },
+      //     body: JSON.stringify({
+      //       question: `Provide a concise technical answer about "${term}" in no more than three sentences.`,
+      //     }),
+      //   }
+      // );
+
+      // const data = res.data;
+      // const rawResponse = data.answer || data.response || "No answer available";
+      // setResponse(formatText(rawResponse));
       const res = await OAuth2APIClient.post(
         "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
         {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            question: `Provide a concise technical answer about "${term}" in no more than three sentences.`,
-          }),
+          question: `Provide a concise technical answer about "${term}" in no more than three sentences.`,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
       );
 
-      const data = res.data;
-      const rawResponse = data.answer || data.response || "No answer available";
+      const rawResponse =
+        res.data?.answer ||
+        res.data?.response ||
+        "No answer available";
+
       setResponse(formatText(rawResponse));
+
     } catch (err) {
       console.error("Error fetching technical answer:", err);
       setResponse("Failed to fetch answer");

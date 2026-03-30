@@ -66,23 +66,35 @@ function DutchLanguage_SentenceTrainerModal() {
     setFeedback("");
 
     try {
+      // const res = await OAuth2APIClient.post(
+      //   "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
+      //   {
+      //     method: "POST",
+      //     headers: { "Content-Type": "application/json" },
+      //     body: JSON.stringify({
+      //       question: `You are a Dutch high school teacher. A student wrote the following sentence using the word "${word}": "${sentence}". 
+      //       Check if the sentence is grammatically correct and natural. 
+      //       If correct, start with "correct" and give praise. 
+      //       If incorrect, start with "incorrect" and explain the mistake(s). 
+      //       Suggest a corrected version of the sentence in Dutch.`,
+      //     }),
+      //   }
+      // );
+
+      // const data = res.data;
+      // const rawFeedback = data.answer || data.response || "Geen feedback beschikbaar";
+      // setFeedback(formatText(rawFeedback));
+
       const res = await OAuth2APIClient.post(
-        "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            question: `You are a Dutch high school teacher. A student wrote the following sentence using the word "${word}": "${sentence}". 
-            Check if the sentence is grammatically correct and natural. 
-            If correct, start with "correct" and give praise. 
-            If incorrect, start with "incorrect" and explain the mistake(s). 
-            Suggest a corrected version of the sentence in Dutch.`,
-          }),
-        }
+        "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask", {
+          question: `You are a Dutch high school teacher. A student wrote the following sentence using the word "${word}": "${sentence}". Check if the sentence is grammatically correct and natural.
+If correct, start with "correct" and give praise. If incorrect, start with "incorrect" and explain the mistake(s). Suggest a corrected version of the sentence in Dutch.`,
+}
       );
 
       const data = res.data;
-      const rawFeedback = data.answer || data.response || "Geen feedback beschikbaar";
+      const rawFeedback = data.answer ?? data.response ?? "Geen feedback beschikbaar";
+
       setFeedback(formatText(rawFeedback));
     } catch (err) {
       console.error("Error checking sentence:", err);

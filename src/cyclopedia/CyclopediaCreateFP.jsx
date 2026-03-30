@@ -26,16 +26,11 @@ export default function CyclopediaCreateFP() {
     };
   
     try {
-      const response = await OAuth2APIClient.post(
-        `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/create`,
-        newRecord
-      );
-  
-      if (response.status === 200) {
+      const response = await OAuth2APIClient.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/create`, newRecord);
+        if (response.status === 200) {
         setCheckForRecords(!checkForRecords);
         toast.success(`${cyclopedia_name} memorialized.`);
-  
-        // Clear input fields after successful submission
+          // Clear input fields after successful submission
         setCyclopedia_name('');
         setCyclopedia_desc('');
         setCyclopedia_url('');

@@ -19,11 +19,7 @@ export default function AskAI() {
     try {
       const res = await OAuth2APIClient.post(
         "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ question }),
-        }
+        { question }
       );
 
       const data = res.data;

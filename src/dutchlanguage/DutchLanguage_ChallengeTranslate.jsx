@@ -11,16 +11,23 @@ export default function DutchLanguage_ChallengeTranslate({ subject = "daily life
 
   const fetchSentence = async () => {
     try {
+      // const res = await OAuth2APIClient.post(API_URL, {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({
+      //     question: `Generate one grammatically complex Dutch sentence (max 15 words) about ${subject}, followed by its Afrikaans translation. Do not add introductions, just output the Dutch sentence on one line and the Afrikaans translation on the next.`
+      //   }),
+      // });
+
+      // const data = res.data;
+      // const output = data.answer || "";
+
       const res = await OAuth2APIClient.post(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          question: `Generate one grammatically complex Dutch sentence (max 15 words) about ${subject}, followed by its Afrikaans translation. Do not add introductions, just output the Dutch sentence on one line and the Afrikaans translation on the next.`
-        }),
+        question: `Generate one grammatically complex Dutch sentence (max 15 words) about ${subject}, followed by its Afrikaans translation. Do not add introductions, just output the Dutch sentence on one line and the Afrikaans translation on the next.`,
       });
 
       const data = res.data;
-      const output = data.answer || "";
+      const output = data.answer ?? "";
 
       // Expecting two lines: Dutch and Afrikaans
       const lines = output.split("\n").map(l => l.trim()).filter(Boolean);

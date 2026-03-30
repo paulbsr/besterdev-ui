@@ -18,11 +18,7 @@ export default function DutchLanguage_SpellingChecker() {
     }
 
     try {
-      const res = await OAuth2APIClient.post(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question: `Check if the following Dutch word is spelled correctly: "${word}". Answer only with "Correct" or "Incorrect: [correct spelling]".`, }),
-      });
+      const res = await OAuth2APIClient.post(API_URL, { question: `Check if the following Dutch word is spelled correctly: "${word}". Answer only with "Correct" or "Incorrect: [correct spelling]".`, });
 
       const data = res.data;
       let output = data.answer?.trim() || "";
@@ -65,14 +61,14 @@ export default function DutchLanguage_SpellingChecker() {
       }}
     >
       <h2 style={{ fontWeight: "bold", fontSize: "22px", marginBottom: "16px", marginTop: "1px" }}>
-                <ImSpellCheck
-                            style={{
-                              color: "#FF4F00",
-                              fontSize: "28px",
-                              cursor: "pointer",
-                              marginRight: "10px",
-                            }}
-                          />
+        <ImSpellCheck
+          style={{
+            color: "#FF4F00",
+            fontSize: "28px",
+            cursor: "pointer",
+            marginRight: "10px",
+          }}
+        />
         Nederlandse Spelling Checker</h2>
 
       <form onSubmit={handleSubmit}>
@@ -94,38 +90,38 @@ export default function DutchLanguage_SpellingChecker() {
           }}
         />
         <div style={{ display: "flex", gap: "2px", justifyContent: "center" }}>
-        <button
-          type="submit"
-          style={{
-            height: "35.5px",
-            border: "1px solid #777777",
-            borderRadius: "4px",
-            backgroundColor: "#FFFFFF",
-            color: "#000000",
-            cursor: "pointer",
-            fontFamily: "Segoe UI",
-            fontSize: "16px",
-          }}
-        >Check
-        </button>
+          <button
+            type="submit"
+            style={{
+              height: "35.5px",
+              border: "1px solid #777777",
+              borderRadius: "4px",
+              backgroundColor: "#FFFFFF",
+              color: "#000000",
+              cursor: "pointer",
+              fontFamily: "Segoe UI",
+              fontSize: "16px",
+            }}
+          >Check
+          </button>
 
-        <button
-          type="button"
-          onClick={handleClear}
-          style={{
-            marginLeft: "8px",
-            height: "35.5px",
-            border: "1px solid #777777",
-            borderRadius: "4px",
-            backgroundColor: "#FFFFFF",
-            color: "#000000",
-            cursor: "pointer",
-            fontFamily: "Segoe UI",
-            fontSize: "16px",
-          }}
-        >
-          Clear
-        </button></div>
+          <button
+            type="button"
+            onClick={handleClear}
+            style={{
+              marginLeft: "8px",
+              height: "35.5px",
+              border: "1px solid #777777",
+              borderRadius: "4px",
+              backgroundColor: "#FFFFFF",
+              color: "#000000",
+              cursor: "pointer",
+              fontFamily: "Segoe UI",
+              fontSize: "16px",
+            }}
+          >
+            Clear
+          </button></div>
       </form>
 
       {feedback && (

@@ -20,16 +20,15 @@ export default function DutchLanguage_SentenceWords({
       setLoading(true);
       setFeedback("");
 
-      const res = await OAuth2APIClient.post(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          question: `Maak één lange, complexe Nederlandse zin over ${subjectInput}.
-          Laat drie of vier willekeurige woorden weg en vervang ze door [BLANK].
-          Schrijf de zin eerst. 
-          Daarna op een nieuwe regel: "MISSING:" gevolgd door een komma-gescheiden lijst van de ontbrekende woorden in de juiste volgorde.`,
-        }),
-      });
+const res = await OAuth2APIClient.post(
+  API_URL,
+  {
+    question: `Maak één lange, complexe Nederlandse zin over ${subjectInput}. Laat drie of vier willekeurige woorden weg en vervang ze door [BLANK]. Schrijf de zin eerst. Daarna op een nieuwe regel: "MISSING:" gevolgd door een komma-gescheiden lijst van de ontbrekende woorden in de juiste volgorde.`,
+  },
+  {
+    headers: { "Content-Type": "application/json" },
+  }
+);
 
       const data = res.data;
       const output = data.answer || "";
@@ -63,15 +62,13 @@ export default function DutchLanguage_SentenceWords({
       setFeedback("Validating...");
 
       const res = await OAuth2APIClient.post(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          question: `Beoordeel of de gebruiker de juiste Nederlandse woorden heeft ingevuld.
-          Zin: "${challenge}"
-          Juiste woorden: ${JSON.stringify(missingWords)}
-          Antwoorden gebruiker: ${JSON.stringify(userInputs)}
-          Geef duidelijke feedback in het Nederlands: zeg per woord of het correct is, en geef indien nodig de juiste vorm.`,
-        }),
+        question: `Beoordeel of de gebruiker de juiste Nederlandse woorden heeft ingevuld.
+Zin: "${challenge}"
+Juiste woorden: ${JSON.stringify(missingWords)}
+Antwoorden gebruiker: ${JSON.stringify(userInputs)}
+Geef duidelijke feedback in het Nederlands: zeg per woord of het correct is, en geef indien nodig de juiste vorm.`,
+      }, {
+        headers: { "Content-Type": "application/json" }
       });
 
       const data = res.data;

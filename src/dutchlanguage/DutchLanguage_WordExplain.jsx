@@ -22,11 +22,7 @@ export default function DutchLanguage_WordExplain() {
       setExplanation("");
 
       const res = await OAuth2APIClient.post(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          question: `Explain the following Dutch word in a single sentence (its grammar role), and then give exactly ONE example sentence showing correct usage: "${word}".`,
-        }),
+        question: `Explain the following Dutch word in a single sentence (its grammar role), and then give exactly ONE example sentence showing correct usage: "${word}".`,
       });
 
       const data = res.data;
