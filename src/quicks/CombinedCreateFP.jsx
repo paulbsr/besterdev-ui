@@ -437,8 +437,7 @@ import BearerToken from "../oauth2/BearerToken";
 
 import "../Fonts.css";
 
-const API_BASE =
-  "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
+const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
 
 /* -------------------------------------------------------
    Small reusable UI pieces
@@ -454,8 +453,8 @@ const SectionButton = ({ icon: Icon, label, active, onClick }) => (
       gap: 8,
       padding: "8px 14px",
       borderRadius: 8,
-      border: "1px solid #ccc",
-      background: active ? "#eef3ff" : "#fff",
+      border: active ? "1.75px solid #336791" : "1px solid #ccc",
+      background: active ? "#F7F7F7" : "#fff",
       cursor: "pointer",
       fontSize: 14,
     }}
@@ -481,7 +480,7 @@ const Card = ({ children }) => (
 
 const Field = ({ label, children }) => (
   <label style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-    <span style={{ fontSize: 13, color: "#555" }}>{label}</span>
+    <span style={{ fontSize: 14, color: "#555" }}>{label}</span>
     {children}
   </label>
 );
@@ -784,7 +783,7 @@ export default function CombinedCreateFP() {
               />
             </Field>
 
-            <Field label="Category">
+            <Field label="Category...........">
               <select
                 style={inputStyle}
                 value={website.cat}

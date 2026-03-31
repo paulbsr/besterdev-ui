@@ -62,7 +62,7 @@ const WebSocketComponent = () => {
           Height: "28.5px",
           display: "inline-block",
           border: "1px solid #336791",
-          borderRadius: "4px",
+          borderRadius: "6px",
           padding: "4px 8px",
           backgroundColor: "#FFFFFF",
           width: "900px",
