@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { TbBrandSocketIo } from "react-icons/tb";
 import SockJS from "sockjs-client";
 import { Client } from "@stomp/stompjs";
 import OAuth2APIClient from '../oauth2/OAuth2APIClient';
@@ -47,7 +46,6 @@ const WebSocketComponent = () => {
   const handleClick = useCallback(async () => {
     try {
       const response = await OAuth2APIClient(TRIGGER_URL);
-      // if (!response.ok) throw new Error(`HTTP ${response.status}`);
       console.log("WebSocket endpoint hit successfully:", response.data);
     } catch (error) {
       console.error("Error hitting WebSocket endpoint:", error);
@@ -60,8 +58,8 @@ const WebSocketComponent = () => {
     <div onClick={handleClick} style={{ cursor: "pointer" }}>
       <div
         style={{
-          marginLeft: "50px",
-          minHeight: "28.5px",
+          marginLeft: "10px",
+          Height: "28.5px",
           display: "inline-block",
           border: "1px solid #336791",
           borderRadius: "4px",
@@ -73,7 +71,7 @@ const WebSocketComponent = () => {
           whiteSpace: "normal",        // allows text to wrap to a new line
           overflowWrap: "break-word",  // breaks long words if necessary
           boxSizing: "border-box",     // includes padding in width calc
-          marginTop: "20px"
+          marginTop: "10px"
         }}
       >
 

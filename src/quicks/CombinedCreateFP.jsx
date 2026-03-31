@@ -486,6 +486,16 @@ const Field = ({ label, children }) => (
   </label>
 );
 
+// styles.js or at top of the component file
+export const inputStyle = {
+  marginBottom: '10px',
+  height: '24.5px',
+  border: '1px solid #336791',
+  borderRadius: '6px',
+  backgroundColor: '#ffffff',
+  cursor: 'pointer',
+};
+
 /* -------------------------------------------------------
    Main Component
 ------------------------------------------------------- */
@@ -563,8 +573,8 @@ export default function CombinedCreateFP() {
 
   const websiteCategories = websiterootdata
     ? [...new Set(websiterootdata.map((w) => w.websiteCat))]
-        .filter((c) => !c.startsWith("HOWTO"))
-        .sort()
+      .filter((c) => !c.startsWith("HOWTO"))
+      .sort()
     : [];
 
   /* ---------------- Task ---------------- */
@@ -687,6 +697,7 @@ export default function CombinedCreateFP() {
           <form onSubmit={submitCyclopedia} className="grid-2">
             <Field label="Name">
               <input
+                style={inputStyle}
                 value={cyclopedia.name}
                 onChange={(e) =>
                   setCyclopedia((p) => ({
@@ -700,6 +711,7 @@ export default function CombinedCreateFP() {
 
             <Field label="URL">
               <input
+                style={inputStyle}
                 value={cyclopedia.url}
                 onChange={(e) =>
                   setCyclopedia((p) => ({
@@ -712,6 +724,7 @@ export default function CombinedCreateFP() {
 
             <Field label="Description">
               <textarea
+                style={inputStyle}
                 rows={3}
                 value={cyclopedia.desc}
                 onChange={(e) =>
@@ -724,7 +737,19 @@ export default function CombinedCreateFP() {
               />
             </Field>
 
-            <button type="submit">Save</button>
+            <button type="submit" 
+            style={{
+              marginLeft: '1px',
+              marginTop: '10px',
+              height: '30.5px',
+              border: '1px solid #336791',
+              borderRadius: '6px',
+              backgroundColor: '#ffffff',
+              color: '#336791',
+              cursor: 'pointer',
+            }}
+            >Save</button>
+
           </form>
         </Card>
       )}
@@ -734,6 +759,7 @@ export default function CombinedCreateFP() {
           <form onSubmit={submitWebsite} className="grid-2">
             <Field label="Name">
               <input
+                style={inputStyle}
                 value={website.name}
                 onChange={(e) =>
                   setWebsite((p) => ({
@@ -747,6 +773,7 @@ export default function CombinedCreateFP() {
 
             <Field label="URL">
               <input
+                style={inputStyle}
                 value={website.url}
                 onChange={(e) =>
                   setWebsite((p) => ({
@@ -759,6 +786,7 @@ export default function CombinedCreateFP() {
 
             <Field label="Category">
               <select
+                style={inputStyle}
                 value={website.cat}
                 onChange={(e) =>
                   setWebsite((p) => ({
@@ -779,7 +807,16 @@ export default function CombinedCreateFP() {
               </select>
             </Field>
 
-            <button type="submit">Save</button>
+            <button type="submit" style={{
+              marginLeft: '1px',
+              marginTop: '10px',
+              height: '30.5px',
+              border: '1px solid #336791',
+              borderRadius: '6px',
+              backgroundColor: '#ffffff',
+              color: '#336791',
+              cursor: 'pointer',
+            }}>Save</button>
           </form>
         </Card>
       )}
@@ -789,6 +826,7 @@ export default function CombinedCreateFP() {
           <form onSubmit={submitTask} className="grid-2">
             <Field label="Module">
               <select
+                style={inputStyle}
                 value={task.moduleId}
                 onChange={(e) => {
                   const mod = TASK_MODULES.find(
@@ -815,6 +853,7 @@ export default function CombinedCreateFP() {
 
             <Field label="Task name">
               <input
+                style={inputStyle}
                 value={task.name}
                 onChange={(e) =>
                   setTask((p) => ({
@@ -828,6 +867,7 @@ export default function CombinedCreateFP() {
 
             <Field label="Description">
               <input
+                style={inputStyle}
                 value={task.requirement}
                 onChange={(e) =>
                   setTask((p) => ({
@@ -840,6 +880,7 @@ export default function CombinedCreateFP() {
 
             <Field label="Target date">
               <DatePicker
+                style={inputStyle}
                 selected={task.targetDate}
                 onChange={(date) =>
                   setTask((p) => ({
@@ -852,7 +893,17 @@ export default function CombinedCreateFP() {
               />
             </Field>
 
-            <button type="submit">Create task</button>
+            <button type="submit"
+              style={{
+                marginLeft: '1px',
+                marginTop: '10px',
+                height: '30.5px',
+                border: '1px solid #336791',
+                borderRadius: '6px',
+                backgroundColor: '#ffffff',
+                color: '#336791',
+                cursor: 'pointer',
+              }}>Create task</button>
           </form>
         </Card>
       )}

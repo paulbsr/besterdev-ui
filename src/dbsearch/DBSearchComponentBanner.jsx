@@ -81,16 +81,16 @@ const DBSearchComponentBanner = () => {
       {/* <div style={{ color: '#ffffff' }}>&nbsp;</div> */}
 
       <input
-        // style={{ height: '22.5px', border: '0.75px solid #ccc', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }}
+        // style={{ height: '22.5px', border: '0.75px solid #ccc', borderRadius: '6px', padding: 0, paddingLeft: '10px', width: '200px' }}
         style={{
           fontFamily: 'Segoe UI',
           height: '28.5px',
           border: '1.25px solid #336791',
-          borderRadius: '4px',
+          borderRadius: '6px',
           paddingLeft: '4px',
-          width: '760px',
-          marginLeft: '50px',
-          marginTop: "20px"
+          width: '700px',
+          marginLeft: '10px',
+          marginTop: "10px",
         }}
         placeholder="Search BesterDev"
         type="text"
@@ -104,9 +104,9 @@ const DBSearchComponentBanner = () => {
         // style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #000000', borderRadius: '5px', backgroundColor: '#ffffff', color: '#000000', cursor: 'pointer' }}>
         style={{
           marginLeft: '10px',
-          height: '33.5px',
+          height: '30.5px',
           border: '1px solid #336791',
-          borderRadius: '4px',
+          borderRadius: '6px',
           backgroundColor: '#ffffff',
           color: '#336791',
           cursor: 'pointer',
@@ -120,9 +120,9 @@ const DBSearchComponentBanner = () => {
         // style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #000000', borderRadius: '5px', backgroundColor: '#ffffff', color: '#000000', cursor: 'pointer' }}>
         style={{
           marginLeft: '10px',
-          height: '33.5px',
+          height: '30.5px',
           border: '1px solid #336791',
-          borderRadius: '4px',
+          borderRadius: '6px',
           backgroundColor: '#ffffff',
           color: '#336791',
           cursor: 'pointer',
@@ -146,13 +146,13 @@ const DBSearchComponentBanner = () => {
                         required
                         defaultValue={result.cyclopediaName}
                         onChange={(e) => setCyclopedianame(e.target.value)}
-                        style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '21.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '350px', padding: 0, paddingLeft: '9px' }}
+                        style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '21.5px', border: '1.25px solid #D5441C', borderRadius: '6px', width: '350px', padding: 0, paddingLeft: '9px' }}
                       />
                       <textarea
                         required
                         defaultValue={result.cyclopediaDesc}
                         onChange={(e) => setCyclopediadesc(e.target.value)}
-                        style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '21.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }}
+                        style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '21.5px', border: '1.25px solid #D5441C', borderRadius: '6px', padding: 0, paddingLeft: '10px', width: '1000px' }}
                       />
                     </>
                   ) : (
