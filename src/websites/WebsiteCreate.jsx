@@ -44,7 +44,7 @@ export default function WebSiteCreate(props) {
     <div className='Font-Verdana-Small-Postgres'>&nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-          <img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} />
+          <GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} />
         <b>Memorialize a Website, Tool or Book:</b>
         <div>&nbsp;</div>
       </div>
@@ -53,15 +53,16 @@ export default function WebSiteCreate(props) {
         <div>
           <div>
             <form onSubmit={handleSubmit}>
-              <div><img alt="1" src={spacer2} /></div>
               <div className='Font-Verdana-Small-Postgres'>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Resource Name:&nbsp;&nbsp;<input style={{ height: '25.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} placeholder="Required" type="text" value={website_name} onChange={(event) => setWebsite_name(event.target.value)} required />
-                <img alt="1" src={spacer} />Resource Description:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '830px' }} placeholder="Required" type="text" value={website_desc} onChange={(event) => setWebsite_desc(event.target.value)} required />
-                <img alt="1" src={spacer} />Resource Catagory:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '200px' }} type="text" value={website_cat} onChange={(event) => setWebsite_cat(event.target.value)} />
+                Resource Name:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '400px' }} placeholder="Required" type="text" value={website_name} onChange={(event) => setWebsite_name(event.target.value)} required />
                 <div>&nbsp;</div>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Resource URL:&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '890px' }} placeholder="Required" type="text" value={website_url} onChange={(event) => setWebsite_url(event.target.value)} required />
-                <img alt="1" src={spacer} /><button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Memorialize</button>
+                Resource Catagory:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '380px' }} type="text" value={website_cat} onChange={(event) => setWebsite_cat(event.target.value)} />
                 <div>&nbsp;</div>
+                Resource Description:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '850px' }} placeholder="Required" type="text" value={website_desc} onChange={(event) => setWebsite_desc(event.target.value)} required />
+                <div>&nbsp;</div>
+                Resource URL:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '900px' }} placeholder="Required" type="text" value={website_url} onChange={(event) => setWebsite_url(event.target.value)} required />
+                <div>&nbsp;</div>
+                <button className="Font-Verdana-Small-Postgres" type="submit" style={{ height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Memorialize</button>
                 <div>&nbsp;</div>
               </div>
             </form>

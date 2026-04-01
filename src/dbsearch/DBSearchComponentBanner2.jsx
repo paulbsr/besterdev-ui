@@ -418,8 +418,8 @@ const DBSearchComponentBanner2 = () => {
               position: 'absolute',
               right: '8px',
               top: '50%',
-              transform: 'translateY(-50%)',
-              color: '#999',
+              transform: 'translateY(-10%)',
+              color: '#000000',
               cursor: 'pointer',
             }}
             onMouseOver={(e) => (e.target.style.color = '#336791')}
