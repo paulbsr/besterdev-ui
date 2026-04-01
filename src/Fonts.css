@@ -645,3 +645,8 @@
 .problem-color {background-color: rgb(190, 0, 0, .25);}
 .fill {width: 99%;}
 
+.search-input::placeholder {
+  color: #000000;        /* placeholder colour */
+  font-size: 14px;       /* placeholder font size */
+  opacity: 1;            /* prevents browser dimming */
+}

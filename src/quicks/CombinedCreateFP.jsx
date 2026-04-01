@@ -430,7 +430,7 @@ import OAuth2APIClient from "../oauth2/OAuth2APIClient";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import DBSearchComponentBanner2 from "../dbsearch/DBSearchComponentBanner2";
 import DBSearchComponentBanner from "../dbsearch/DBSearchComponentBanner";
 import WebSocketComponent from "../websockets/WebSocketComponent";
 import BearerToken from "../oauth2/BearerToken";
@@ -653,6 +653,10 @@ export default function CombinedCreateFP() {
           justifyContent: "center",
         }}
       >
+
+
+
+
         <SectionButton
           icon={GiGiftOfKnowledge}
           label="Cyclopedia"
@@ -683,12 +687,14 @@ export default function CombinedCreateFP() {
           active={open === "ws"}
           onClick={() => toggle("ws")}
         />
-        <SectionButton
+        {/* <SectionButton
           icon={BsSearch}
           label="Search"
           active={open === "search"}
           onClick={() => toggle("search")}
-        />
+        /> */}
+
+                <DBSearchComponentBanner2 />
       </div>
 
       {open === "cyclopedia" && (
