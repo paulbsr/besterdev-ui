@@ -637,12 +637,12 @@ export default function CombinedCreateFP() {
     <div
       className="Font-Segoe-Small"
       style={{
-        maxWidth: 960,
+        maxWidth: 1010,
         margin: "20px auto",
-        padding: 20,
+        padding: 10,
         background: "#f7f7f7",
-        borderRadius: 12,
-        boxShadow: "0 10px 30px rgba(0,0,0,.15)",
+        borderRadius: 8,
+        boxShadow: "10px 10px 10px rgba(0,0,0,0.2)",
       }}
     >
       <div

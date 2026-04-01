@@ -65,7 +65,7 @@ function BearerToken() {
       >
 
         {/* <SiJsonwebtokens title="Fetch a Bearer Token" style={{ color: '#4D4D4D', fontSize: '18px', cursor: 'pointer' }} />&nbsp; */}
-        GET Bearer Token:
+        GET Bearer Token from local Vendor:
         <VscCopy
           onClick={(e) => {
             e.stopPropagation(); // Prevents triggering the td onClick
