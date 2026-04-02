@@ -1,33 +1,29 @@
-// BreakingNewsApiContext.js
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useCallback } from 'react';
 import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
 const BreakingNewsApiContext = createContext();
 
 export const BreakingNewsAPIProvider = ({ children }) => {
   const [breakingnews, setBreakingnews] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchBreakingNews = async () => {
-      try {
-        const response = await OAuth2APIClient.get(
-          'https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/breakingnews'
-        );
-        setBreakingnews(response.data);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchBreakingNews();
+  const refreshBreakingNews = useCallback(async () => {
+    setLoading(true);
+    try {
+      const res = await OAuth2APIClient.get('/api/v1/breakingnews');
+      setBreakingnews(res.data);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   return (
-    <BreakingNewsApiContext.Provider value={{ breakingnews, loading, error }}>
+    <BreakingNewsApiContext.Provider
+      value={{ breakingnews, loading, error, refreshBreakingNews }}
+    >
       {children}
     </BreakingNewsApiContext.Provider>
   );
