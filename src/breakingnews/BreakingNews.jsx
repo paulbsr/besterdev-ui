@@ -59,7 +59,7 @@ export default function BreakingNews() {
   if (error) return <div>Error</div>;
 
   const shuffledNews = [...breakingnews].sort(() => Math.random() - 0.5);
-
+console.log('breakingnews length:', breakingnews?.length);
   return (
     <marquee scrollamount="6">
       <Stack direction="row" spacing={2}>

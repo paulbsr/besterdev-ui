@@ -41,6 +41,7 @@ import { getAuth } from 'firebase/auth';
 import 'react-tooltip/dist/react-tooltip.css';
 import './index.css';
 import './Fonts.css';
+import { Home } from 'lucide-react';
 
 
 
