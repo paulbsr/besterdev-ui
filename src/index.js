@@ -8,7 +8,7 @@ import { RefreshProvider } from "./dutchlanguage/RefreshContext";
 import PageDutchLanguageBook from './pages/PageDutchLanguageBook';
 
 // Providers
-import { BreakingNewsAPIProvider } from './breakingnews/BreakingNewsAPIProvider';
+// import { BreakingNewsAPIProvider } from './breakingnews/BreakingNewsAPIProvider';
 import { CyclopediaAPIProvider } from './cyclopedia/CyclopediaAPIProvider';
 import { WebSiteAPIProvider } from './websites/WebSiteAPIProvider';
 import { HowtoAPIProvider } from './howto/HowtoAPIProvider';
@@ -198,7 +198,7 @@ const App = () => {
 // --- Render App ---
 ReactDOM.render(
   <React.StrictMode>
-    <BreakingNewsAPIProvider>
+    {/* <BreakingNewsAPIProvider> */}
       <HowtoAPIProvider>
         <CyclopediaAPIProvider>
           <WebSiteAPIProvider>
@@ -206,7 +206,7 @@ ReactDOM.render(
           </WebSiteAPIProvider>
         </CyclopediaAPIProvider>
       </HowtoAPIProvider>
-    </BreakingNewsAPIProvider>
+    {/* </BreakingNewsAPIProvider> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

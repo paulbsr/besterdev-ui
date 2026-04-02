@@ -19,7 +19,7 @@ export default function PageSearch() {
       <GradientLine />
       <BannerLight />
       <GradientLineThin />
-      <BreakingNews />
+      {/* <BreakingNews /> */}
       <GradientLineThin />
       <CyclopediaTicker />
       <GradientLineThin />

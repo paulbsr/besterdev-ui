@@ -7,13 +7,11 @@ import HomePage22 from '../HomePage22';
 import ToastComponent from '../ToastComponent';
 import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
-import BreakingNewsAPI from '../breakingnews/BreakingNewsAPI';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
 
 export default function PageHome() {
     return (
       <div>
-        <BreakingNewsAPI />
         <BannerWhite />
         <GradientLine />
         <BannerLight />
