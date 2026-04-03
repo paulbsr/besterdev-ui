@@ -687,14 +687,14 @@ export default function CombinedCreateFP() {
           active={open === "ws"}
           onClick={() => toggle("ws")}
         />
-        {/* <SectionButton
+        <SectionButton
           icon={BsSearch}
           label="Search"
           active={open === "search"}
           onClick={() => toggle("search")}
-        /> */}
+        />
 
-                <DBSearchComponentBanner2 />
+                {/* <DBSearchComponentBanner /> */}
       </div>
 
       {open === "cyclopedia" && (

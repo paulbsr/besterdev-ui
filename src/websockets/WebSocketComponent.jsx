@@ -61,11 +61,11 @@ const WebSocketComponent = () => {
           marginLeft: "10px",
           Height: "28.5px",
           display: "inline-block",
-          border: "1px solid #336791",
+          // border: "1px solid #336791",
           borderRadius: "6px",
           padding: "4px 8px",
           backgroundColor: "#FFFFFF",
-          width: "900px",
+          // width: "900px",
           fontFamily: "Segoe UI",
           color: "#336791",
           whiteSpace: "normal",        // allows text to wrap to a new line
