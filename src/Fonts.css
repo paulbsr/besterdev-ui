@@ -650,3 +650,23 @@
   font-size: 14px;       /* placeholder font size */
   opacity: 1;            /* prevents browser dimming */
 }
+
+.custom-datepicker-input {
+  width: 120px;
+  height: 23.5px;
+  margin-right: 10px;
+  margin-top: 10px;
+  padding: 4px 8px;
+
+  /* border: 1px solid #555; */
+  border: 1px solid #336791;
+  border-radius: 6px;
+  background-color: #FFFFFF;
+  color: #000;
+  font-size: 14px;
+}
+
+.custom-datepicker-input:focus {
+  outline: none;
+  border-color: #61dafb;
+}
