@@ -103,19 +103,6 @@ function CyclopediaManage() {
       </div>
 
 
-      {/* <div style={{ margin: '12px 0' }}>
-  <input
-    type="text"
-    placeholder="Search cyclopedia..."
-    value={searchTerm}
-    onChange={(e) => setSearchTerm(e.target.value)}
-    style={{
-      ...baseInputStyle,
-      width: '400px'
-    }}
-  />
-</div> */}
-
       <div
         style={{
           width: '80%',
@@ -147,8 +134,8 @@ function CyclopediaManage() {
           <thead style={{ background: 'linear-gradient(to right, #f0f4f8, #d9e2ec)', boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.1)' }}>
             <tr>
               <th style={{ width: '30px', borderRadius: '4px' }} align='center'>Tool</th>
-              <th style={{ width: '400px', borderRadius: '4px' }} align='center'>Name</th>
-              <th style={{ width: '1500px', borderRadius: '4px' }} align='center'>Description</th>
+              <th style={{ width: '150px', borderRadius: '4px' }} align='center'>Name</th>
+              <th style={{ width: '550px', borderRadius: '4px' }} align='center'>Description</th>
             </tr>
           </thead>
 

@@ -282,10 +282,10 @@ function WebsiteManage() {
           >
             <tr>
               <th style={{ width: '30px' }} align="center">Tool</th>
-              <th style={{ width: '300px' }} align="center">Name</th>
-              <th style={{ width: '800px' }} align="center">Description</th>
+              <th style={{ width: '200px' }} align="center">Name</th>
+              <th style={{ width: '500px' }} align="center">Description</th>
               <th style={{ width: '400px' }} align="center">URL</th>
-              <th style={{ width: '200px' }} align="center">Category</th>
+              <th style={{ width: '100px' }} align="center">Category</th>
             </tr>
           </thead>
 
@@ -295,42 +295,12 @@ function WebsiteManage() {
                 <td>
                   {row.websiteId === editing ? (
                     <>
-                      <Tooltip title="Commit">
-                        <button
-                          style={toolBtn('#336791')}
-                          onClick={onEditSave}
-                        >
-                          <FaCheck style={iconStyle} />
-                        </button>
-                      </Tooltip>
-                      &nbsp;
-                      <Tooltip title="Revert">
-                        <button
-                          style={toolBtn('silver')}
-                          onClick={onEditCancel}
-                        >
-                          <PiArrowCounterClockwiseBold style={iconStyle} />
-                        </button>
-                      </Tooltip>
-                      &nbsp;
-                      <Tooltip title="Purge">
-                        <button
-                          style={toolBtn('#D5441C')}
-                          onClick={() => onEditDelete(row)}
-                        >
-                          <FaRegTrashAlt style={iconStyle} />
-                        </button>
-                      </Tooltip>
+                      <Tooltip title="Commit"><button style={toolBtn('#336791')}onClick={onEditSave}><FaCheck style={iconStyle} /></button></Tooltip>&nbsp;
+                      <Tooltip title="Revert"><button style={toolBtn('silver')}onClick={onEditCancel}><PiArrowCounterClockwiseBold style={iconStyle} /></button></Tooltip>&nbsp;
+                      <Tooltip title="Purge"><button style={toolBtn('#D5441C')}onClick={() => onEditDelete(row)}><FaRegTrashAlt style={iconStyle} /></button></Tooltip>
                     </>
                   ) : (
-                    <Tooltip title="Edit">
-                      <button
-                        style={toolBtn('#336791')}
-                        onClick={() => handleEdit(row)}
-                      >
-                        <FaPen style={iconStyle} />
-                      </button>
-                    </Tooltip>
+                    <Tooltip title="Edit"><button style={toolBtn('#336791')}onClick={() => handleEdit(row)}><FaPen style={iconStyle} /></button></Tooltip>
                   )}
                 </td>
 

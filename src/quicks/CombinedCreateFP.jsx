@@ -285,10 +285,9 @@ export default function CombinedCreateFP() {
       {open === "cyclopedia" && (
         <Card>
           <form onSubmit={submitCyclopedia} className="grid-2">
-            {/* <Field label="Name"> */}
             <input
               placeholder="Cyclopedia Name"
-              style={{ ...inputStyle, width: 370, marginRight: 10 }}
+              style={{ ...inputStyle, width: '370px', marginRight: '10px' }}
               value={cyclopedia.name}
               onChange={(e) =>
                 setCyclopedia((p) => ({
@@ -301,7 +300,7 @@ export default function CombinedCreateFP() {
 
             <input
               placeholder="Supporting URL"
-              style={{ ...inputStyle, width: 510, marginRight: 10 }}
+              style={{ ...inputStyle, width: '510px', marginRight: '10px', background: '#F7F7F7', }}
               value={cyclopedia.url}
               onChange={(e) =>
                 setCyclopedia((p) => ({
@@ -314,7 +313,6 @@ export default function CombinedCreateFP() {
 
             <button type="submit"
               style={{
-                // marginLeft: '1px',
                 marginTop: '10px',
                 height: '30.5px',
                 border: '1px solid #336791',
