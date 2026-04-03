@@ -696,42 +696,60 @@ export default function CombinedCreateFP() {
           onClick={() => toggle("search")}
         />
 
-                {/* <DBSearchComponentBanner /> */}
+        {/* <DBSearchComponentBanner /> */}
       </div>
 
       {open === "cyclopedia" && (
         <Card>
           <form onSubmit={submitCyclopedia} className="grid-2">
-            <Field label="Name">
-              <input
-                style={inputStyle}
-                value={cyclopedia.name}
-                onChange={(e) =>
-                  setCyclopedia((p) => ({
-                    ...p,
-                    name: e.target.value,
-                  }))
-                }
-                required
-              />
-            </Field>
+            {/* <Field label="Name"> */}
+            <input
+              placeholder="Cyclopedia Name"
+              style={{ ...inputStyle, width: 370, marginRight: 10 }}
+              value={cyclopedia.name}
+              onChange={(e) =>
+                setCyclopedia((p) => ({
+                  ...p,
+                  name: e.target.value,
+                }))
+              }
+              required
+            />
+            {/* </Field> */}
 
-            <Field label="URL">
-              <input
-                style={inputStyle}
-                value={cyclopedia.url}
-                onChange={(e) =>
-                  setCyclopedia((p) => ({
-                    ...p,
-                    url: e.target.value,
-                  }))
-                }
-              />
-            </Field>
+            {/* <Field label="URL"> */}
+            <input
+              placeholder="Supporting URL"
+              style={{ ...inputStyle, width: 510, marginRight: 10 }}
+              value={cyclopedia.url}
+              onChange={(e) =>
+                setCyclopedia((p) => ({
+                  ...p,
+                  url: e.target.value,
+                }))
+              }
+            />
+            {/* </Field> */}
 
-            <Field label="Description">
+            <button type="submit"
+              style={{
+                // marginLeft: '1px',
+                marginTop: '10px',
+                height: '30.5px',
+                border: '1px solid #336791',
+                borderRadius: '6px',
+                backgroundColor: '#ffffff',
+                color: '#336791',
+                cursor: 'pointer',
+                width: '60px'
+              }}
+            >Save</button>
+
+
+            <Field>
               <textarea
-                style={inputStyle}
+              placeholder="Description"
+                style={{inputStyle, marginTop: '5', borderRadius: '6px', border: '1px solid #336791',}}
                 rows={3}
                 value={cyclopedia.desc}
                 onChange={(e) =>
@@ -744,6 +762,67 @@ export default function CombinedCreateFP() {
               />
             </Field>
 
+
+
+          </form>
+        </Card>
+      )}
+
+      {open === "website" && (
+        <Card>
+          <form onSubmit={submitWebsite} className="grid-2">
+            {/* <Field> */}
+            <input
+              placeholder="Web-based resource"
+              style={{ ...inputStyle, width: 300, marginRight: 10 }}
+              value={website.name}
+              onChange={(e) =>
+                setWebsite((p) => ({
+                  ...p,
+                  name: e.target.value,
+                }))
+              }
+              required
+            />
+            {/* </Field> */}
+
+            {/* <Field> */}
+            <input
+              placeholder="URL"
+              style={{ ...inputStyle, width: 450, marginRight: 10 }}
+              value={website.url}
+              onChange={(e) =>
+                setWebsite((p) => ({
+                  ...p,
+                  url: e.target.value,
+                }))
+              }
+            />
+            {/* </Field> */}
+
+            {/* <Field> */}
+            <select
+              style={{ ...inputStyle, width: 120, marginRight: 10, height: 30.5 }}
+              value={website.cat}
+              onChange={(e) =>
+                setWebsite((p) => ({
+                  ...p,
+                  cat: e.target.value,
+                }))
+              }
+              required
+            >
+              <option value="" disabled>
+                Category
+              </option>
+              {websiteCategories.map((c) => (
+                <option key={c} value={c}>
+                  {c}
+                </option>
+              ))}
+            </select>
+            {/* </Field> */}
+
             <button type="submit" 
             style={{
               marginLeft: '1px',
@@ -754,77 +833,7 @@ export default function CombinedCreateFP() {
               backgroundColor: '#ffffff',
               color: '#336791',
               cursor: 'pointer',
-            }}
-            >Save</button>
-
-          </form>
-        </Card>
-      )}
-
-      {open === "website" && (
-        <Card>
-          <form onSubmit={submitWebsite} className="grid-2">
-            {/* <Field> */}
-              <input
-              placeholder="Web-based resource"
-                style={{ ...inputStyle, width: 300, marginRight: 10 }}
-                value={website.name}
-                onChange={(e) =>
-                  setWebsite((p) => ({
-                    ...p,
-                    name: e.target.value,
-                  }))
-                }
-                required
-              />
-            {/* </Field> */}
-
-            {/* <Field> */}
-              <input
-              placeholder="URL"
-                style={{ ...inputStyle, width: 450, marginRight: 10 }}
-                value={website.url}
-                onChange={(e) =>
-                  setWebsite((p) => ({
-                    ...p,
-                    url: e.target.value,
-                  }))
-                }
-              />
-            {/* </Field> */}
-
-            {/* <Field> */}
-              <select
-                style={{ ...inputStyle, width: 120, marginRight: 10, height: 30.5 }}
-                value={website.cat}
-                onChange={(e) =>
-                  setWebsite((p) => ({
-                    ...p,
-                    cat: e.target.value,
-                  }))
-                }
-                required
-              >
-                <option value="" disabled>
-                  Category
-                </option>
-                {websiteCategories.map((c) => (
-                  <option key={c} value={c}>
-                    {c}
-                  </option>
-                ))}
-              </select>
-            {/* </Field> */}
-
-            <button type="submit" style={{
-              marginLeft: '1px',
-              marginTop: '10px',
-              height: '30.5px',
-              border: '1px solid #336791',
-              borderRadius: '6px',
-              backgroundColor: '#ffffff',
-              color: '#336791',
-              cursor: 'pointer',
+              width: '60px'
             }}>Save</button>
           </form>
         </Card>
