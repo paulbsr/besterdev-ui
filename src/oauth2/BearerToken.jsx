@@ -48,20 +48,21 @@ function BearerToken() {
       <div
         style={{
           marginLeft: "10px",
-                    marginRight: "10px",
+          marginRight: "10px",
           Height: "28.5px",
           display: "inline-block",
-          border: "1px solid #336791",
+          // border: "1px solid #336791",
           borderRadius: "6px",
           padding: "4px 8px",
           backgroundColor: "#FFFFFF",
           // width: "900px",
           fontFamily: "Segoe UI",
+          fontSize: "12pt",
           color: "#336791",
           whiteSpace: "normal",        // allows text to wrap to a new line
           overflowWrap: "break-word",  // breaks long words if necessary
           boxSizing: "border-box",     // includes padding in width calc
-          marginTop: "10px"
+          // marginTop: "10px"
         }}
       >
 
@@ -72,11 +73,23 @@ function BearerToken() {
             copyToClipboard(bearertoken);
           }}
           size={18}
-          style={{ color: '#4D4D4D', cursor: 'pointer', marginLeft: "3px" }}
+          style={{ 
+            color: '#4D4D4D', 
+            cursor: 'pointer', 
+            marginLeft: "3px" }}
         />
-        <span style={{ fontFamily: "Segoe UI", fontSize: "9pt", color: "#D5441C", fontStyle: "italic", marginLeft: "1px" }}>{bearertoken?.BearerToken} &nbsp;</span>
+        <span style={{ 
+          fontFamily: "Segoe UI", 
+          fontSize: "10pt", 
+          color: "#D5441C", 
+          fontStyle: "italic", 
+          marginLeft: "1px", 
+          overflowWrap: "break-word" }}
+          >{bearertoken?.BearerToken}
+        </span>
+
       </div>
-      <div>&nbsp;</div>
+      {/* <div>&nbsp;</div> */}
     </div>
   );
 }

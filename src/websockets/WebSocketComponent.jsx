@@ -71,7 +71,10 @@ const WebSocketComponent = () => {
           whiteSpace: "normal",        // allows text to wrap to a new line
           overflowWrap: "break-word",  // breaks long words if necessary
           boxSizing: "border-box",     // includes padding in width calc
-          marginTop: "10px"
+          // marginTop: "10px"
+          fontFamily: "Segoe UI",
+          fontSize: "12pt",
+
         }}
       >
 
@@ -88,7 +91,7 @@ const WebSocketComponent = () => {
           (Event @ {time}) <strong>{name}:</strong> {desc}
         </span>
       </div>
-      <div>&nbsp;</div>
+      {/* <div>&nbsp;</div> */}
     </div>
   );
 };

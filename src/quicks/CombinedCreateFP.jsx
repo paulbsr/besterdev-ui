@@ -457,6 +457,8 @@ const SectionButton = ({ icon: Icon, label, active, onClick }) => (
       background: active ? "#F7F7F7" : "#fff",
       cursor: "pointer",
       fontSize: 14,
+      width: 150,
+      justifyContent: "center"
     }}
   >
     <Icon size={18} />
@@ -488,7 +490,7 @@ const Field = ({ label, children }) => (
 // styles.js or at top of the component file
 export const inputStyle = {
   marginBottom: '10px',
-  height: '24.5px',
+  height: '27.5px',
   border: '1px solid #336791',
   borderRadius: '6px',
   backgroundColor: '#ffffff',
@@ -665,7 +667,7 @@ export default function CombinedCreateFP() {
         />
         <SectionButton
           icon={GiSpiderWeb}
-          label="Website"
+          label="Web Resource"
           active={open === "website"}
           onClick={() => toggle("website")}
         />
@@ -762,9 +764,10 @@ export default function CombinedCreateFP() {
       {open === "website" && (
         <Card>
           <form onSubmit={submitWebsite} className="grid-2">
-            <Field label="Name">
+            {/* <Field> */}
               <input
-                style={inputStyle}
+              placeholder="Web-based resource"
+                style={{ ...inputStyle, width: 300, marginRight: 10 }}
                 value={website.name}
                 onChange={(e) =>
                   setWebsite((p) => ({
@@ -774,11 +777,12 @@ export default function CombinedCreateFP() {
                 }
                 required
               />
-            </Field>
+            {/* </Field> */}
 
-            <Field label="URL">
+            {/* <Field> */}
               <input
-                style={inputStyle}
+              placeholder="URL"
+                style={{ ...inputStyle, width: 450, marginRight: 10 }}
                 value={website.url}
                 onChange={(e) =>
                   setWebsite((p) => ({
@@ -787,11 +791,11 @@ export default function CombinedCreateFP() {
                   }))
                 }
               />
-            </Field>
+            {/* </Field> */}
 
-            <Field label="Category...........">
+            {/* <Field> */}
               <select
-                style={inputStyle}
+                style={{ ...inputStyle, width: 120, marginRight: 10, height: 30.5 }}
                 value={website.cat}
                 onChange={(e) =>
                   setWebsite((p) => ({
@@ -802,7 +806,7 @@ export default function CombinedCreateFP() {
                 required
               >
                 <option value="" disabled>
-                  Select category
+                  Category
                 </option>
                 {websiteCategories.map((c) => (
                   <option key={c} value={c}>
@@ -810,7 +814,7 @@ export default function CombinedCreateFP() {
                   </option>
                 ))}
               </select>
-            </Field>
+            {/* </Field> */}
 
             <button type="submit" style={{
               marginLeft: '1px',
