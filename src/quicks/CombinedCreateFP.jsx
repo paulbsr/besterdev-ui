@@ -45,7 +45,8 @@ const SectionButton = ({ icon: Icon, label, active, onClick }) => (
       cursor: "pointer",
       fontSize: 14,
       width: 150,
-      justifyContent: "center"
+      justifyContent: "center",
+      boxShadow: '5px 5px 4px rgba(0,0,0,0.2)',
     }}
   >
     <Icon size={18} />
