@@ -44,8 +44,9 @@ export default function WebSiteCreate(props) {
     <div className='Font-Verdana-Small-Postgres'>&nbsp;
       <Tooltip id="insert" />
       <div onClick={toggleAccordion}>
-          <GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} />
-        <b>Memorialize a Website, Tool or Book:</b>
+          <GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer', marginLeft: '60px' }} />
+        {/* <b>Memorialize a Website, Tool or Book:</b> */}
+        <b style={{ fontFamily: "Candara", fontSize: "medium", color: "#336791", cursor: "pointer" }}>Memorialize a Website, Tool or Book:</b>
         <div>&nbsp;</div>
       </div>
 

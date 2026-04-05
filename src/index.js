@@ -8,7 +8,7 @@ import { RefreshProvider } from "./dutchlanguage/RefreshContext";
 import PageDutchLanguageBook from './pages/PageDutchLanguageBook';
 
 // Providers
-import { BreakingNewsAPIProvider } from './breakingnews/BreakingNewsApiContext';
+import { BreakingNewsAPIProvider } from './breakingnews/BreakingNewsApiContext';  // <--Nuwe een Mar-26!
 import { CyclopediaAPIProvider } from './cyclopedia/CyclopediaAPIProvider';
 import { WebSiteAPIProvider } from './websites/WebSiteAPIProvider';
 import { HowtoAPIProvider } from './howto/HowtoAPIProvider';
@@ -16,6 +16,7 @@ import { HowtoAPIProvider } from './howto/HowtoAPIProvider';
 // Pages
 import PagePeopleScorecard from './pages/PagePeopleScorecard';
 import PageCyclopediaEdit from './pages/PageCyclopediaEdit';
+import PageDutchLanguage from './pages/PageDutchLanguage';
 import PageDHKeyExchange from './pages/PageDHKeyExchange';
 import PageHowtoManage from './pages/PageHowtoManage';
 import PageCyclopedia from './pages/PageCyclopedia';
@@ -28,7 +29,7 @@ import PageManage from './pages/PageManage';
 import PageSearch from './pages/PageSearch';
 import PageHome from './pages/PageHome';
 import PageMyCV from './pages/PageMyCV';
-import PageDutchLanguage from './pages/PageDutchLanguage';
+
 
 // Firebase
 import firebase from 'firebase/compat/app';
@@ -73,7 +74,7 @@ const App = () => {
     let mounted = true;
     let countdownTimer;
 
-    const fetchData = async () => {
+    const fetcSearchphrase = async () => {
       try {
         const response = await OAuth2APIClient.get('/api/v1/searchphrase');
         const phrase = response.data?.[0]?.searchphrase || "";
@@ -83,7 +84,7 @@ const App = () => {
           console.log('✅ Search phrase:', phrase);
         }
       } catch (error) {
-        console.error('❌ Error loading search phrase:', error);
+        console.error('❌ <Index.js> Error loading search phrase:', error);
       } finally {
         countdownTimer = setInterval(() => {
           setCountdown((prev) => {
@@ -98,7 +99,7 @@ const App = () => {
       }
     };
 
-    fetchData();
+    fetcSearchphrase();
 
     return () => {
       mounted = false;
@@ -120,9 +121,7 @@ const App = () => {
           color: '#444',
         }}
       >
-        <div style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>
-          Pre-loading tons of useful data, doesn't take long …
-        </div>
+        <div style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Pre-loading tons of useful data, doesn't take long …</div>
         <div
           style={{
             width: '60px',
@@ -134,9 +133,7 @@ const App = () => {
             marginBottom: '1rem',
           }}
         />
-        <div style={{ fontSize: '1.1rem', color: '#666' }}>
-          BesterDev will render in {countdown} second{countdown !== 1 ? 's' : ''}
-        </div>
+        <div style={{ fontSize: '1.1rem', color: '#666' }}>BesterDev will render in {countdown} second{countdown !== 1 ? 's' : ''}</div>
         <style>{`
           @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -147,8 +144,8 @@ const App = () => {
     );
   }
 
-  console.log('✅ BasicAuth:', basicAuth);
-  console.log('✅ searchPhrase:', searchPhrase);
+  console.log('✅ In <Index.js> is OAuth2.0 BearerToken:', basicAuth);
+  console.log('✅ In <Index.js> is searchPhrase:', searchPhrase);
 
   // --- Routes ---
   return (
@@ -199,7 +196,6 @@ const App = () => {
 // --- Render App ---
 ReactDOM.render(
   <React.StrictMode>
-
     <HowtoAPIProvider>
       <CyclopediaAPIProvider>
         <WebSiteAPIProvider>

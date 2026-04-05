@@ -3,8 +3,6 @@ import SockJS from "sockjs-client";
 import { Client } from "@stomp/stompjs";
 import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
-
-
 const SOCKET_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/ws";
 const TRIGGER_URL = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/triggerwebsocketevent";
 
@@ -61,20 +59,16 @@ const WebSocketComponent = () => {
           marginLeft: "10px",
           Height: "28.5px",
           display: "inline-block",
-          // border: "1px solid #336791",
           borderRadius: "6px",
           padding: "4px 8px",
           backgroundColor: "#FFFFFF",
-          // width: "900px",
           fontFamily: "Segoe UI",
           color: "#336791",
           whiteSpace: "normal",        // allows text to wrap to a new line
           overflowWrap: "break-word",  // breaks long words if necessary
           boxSizing: "border-box",     // includes padding in width calc
-          // marginTop: "10px"
           fontFamily: "Segoe UI",
           fontSize: "12pt",
-
         }}
       >
 
@@ -91,7 +85,6 @@ const WebSocketComponent = () => {
           (Event @ {time}) <strong>{name}:</strong> {desc}
         </span>
       </div>
-      {/* <div>&nbsp;</div> */}
     </div>
   );
 };

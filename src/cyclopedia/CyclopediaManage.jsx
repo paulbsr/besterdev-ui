@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Tooltip } from '@mui/material';
 import { toast } from 'react-toastify';
 import { FaPen, FaCheck, FaRegTrashAlt } from 'react-icons/fa';
@@ -20,9 +20,14 @@ function CyclopediaManage() {
   const [cyclopediaRef, setCyclopediaRef] = useState();
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [isExpanded, setExpanded] = useState(false);
-  const { cyclopediarootdata, loading, error } = useCyclopediaApi(); //gebruik van die nuwexuseContect :-)
+  // const { cyclopediarootdata, loading, error } = useCyclopediaApi(); //gebruik van die nuwexuseContect :-)
+  const { cyclopedia, loading, error, reload } = useCyclopediaApi(); //gebruik van die nuwexuseContect :-)
   const [searchTerm, setSearchTerm] = useState('');
 
+    useEffect(() => {
+  reload();
+}, [reload]);
+  
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
@@ -66,13 +71,16 @@ function CyclopediaManage() {
     onEditCancel();
   }
 
-  const filteredCyclopedia = cyclopediarootdata.filter((row) => {
+  // const filteredCyclopedia = cyclopediarootdata.filter((row) => {
+      const filteredCyclopedia = (cyclopedia ?? []).filter((row) => {
     const term = searchTerm.toLowerCase();
     return (
       row.cyclopediaName?.toLowerCase().includes(term) ||
       row.cyclopediaDesc?.toLowerCase().includes(term)
     );
   });
+
+
 
   return (
     <div>
@@ -88,7 +96,7 @@ function CyclopediaManage() {
         justifyContent: 'flex-start',
       }} onClick={toggleAccordion}>
         <GiGiftOfKnowledge style={{ color: '#336791', fontSize: '38px' }} />&nbsp; &nbsp;&nbsp;
-        <b style={{ fontFamily: "Candara", fontSize: "x-large", color: "#336791" }}>Manage the {cyclopediarootdata.length} Cyclopedia Entries</b>
+        <b style={{ fontFamily: "Candara", fontSize: "x-large", color: "#336791" }}>Manage the {cyclopedia?.length ?? 0} Cyclopedia Entries</b>
       </div>
 
       <div

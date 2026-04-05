@@ -10,13 +10,21 @@ import { GiGiftOfKnowledge } from "react-icons/gi";
 
 export default function CyclopediaEdit(props) {
     const [cyclopediadata, setCyclopediadata] = useState([]);
-    const { cyclopediarootdata, loading, error, setRefreshCyclopediarootdata } = useCyclopediaApi();
     const [editing, setEditing] = useState(false);
     const [cyclopediaName, setCyclopediaName] = useState('');
     const [cyclopediaDesc, setCyclopediaDesc] = useState('');
     const [cyclopediaRef, setCyclopediaRef] = useState('');
     const [cyclopediaUrl, setCyclopediaUrl] = useState('');
     // const [checkForRecords, setCheckForRecords] = useState(true);
+
+
+// const { cyclopediarootdata, loading, error, setRefreshCyclopediarootdata } = useCyclopediaApi(); 
+
+    const { cyclopedia, loading, reload } = useCyclopediaApi();
+
+useEffect(() => {
+  reload();
+}, [reload]);
 
     const handleEdit = (item) => {
         setCyclopediaName(item.cyclopediaName);

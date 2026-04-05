@@ -17,7 +17,6 @@ import OAuth2APIClient from "../oauth2/OAuth2APIClient";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import DBSearchComponentBanner2 from "../dbsearch/DBSearchComponentBanner2";
 import DBSearchComponentBanner from "../dbsearch/DBSearchComponentBanner";
 import WebSocketComponent from "../websockets/WebSocketComponent";
 import BearerToken from "../oauth2/BearerToken";
@@ -263,7 +262,7 @@ export default function CombinedCreateFP() {
         />
         <SectionButton
           icon={TbBrandOauth}
-          label="OAuth2"
+          label="OAuth2.0"
           active={open === "oauth"}
           onClick={() => toggle("oauth")}
         />
@@ -444,10 +443,6 @@ export default function CombinedCreateFP() {
                 }))
               }
             />
-
-
-
-
 
 
             <select

@@ -1,6 +1,5 @@
 import { useState, useEffect, React } from 'react'
 import { Stack } from "@mui/material";
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
@@ -16,7 +15,6 @@ export default function CyclopediaTicker(props) {
           setFourtyRandomRecords(fourtyRandomRecordsAPI);
         })
         .catch((e) => console.error(e));
-      // }, [props.checkForRecords]);
     }, []);
 
 

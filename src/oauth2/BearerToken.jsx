@@ -28,7 +28,6 @@ function BearerToken() {
     }
   };
 
-
   const copyToClipboard = (bearertoken) => {
     const token = bearertoken?.BearerToken;
     if (!token) {
@@ -87,9 +86,7 @@ function BearerToken() {
           overflowWrap: "break-word" }}
           >{bearertoken?.BearerToken}
         </span>
-
       </div>
-      {/* <div>&nbsp;</div> */}
     </div>
   );
 }
