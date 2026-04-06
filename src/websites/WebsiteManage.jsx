@@ -1,142 +1,5 @@
-// import { useState } from 'react'
-// import '../Fonts.css';
-// import 'react-dropdown/style.css';
-// import OAuth2APIClient from '../oauth2/OAuth2APIClient';
-// import { FaPen, FaCheck, FaRegTrashAlt } from 'react-icons/fa';
-// import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
-// import { toast } from 'react-toastify';
-// import GradientLineRusty from '../gradientlines/GradientLineRusty';
-// import WebsiteCreate from './WebsiteCreate';
-// import { useWebsiteApi } from './WebSiteAPIProvider';
-// import { GiSpiderWeb } from "react-icons/gi";
-
-
-
-// export default function WebsiteManage(props) {
-//   const [isExpanded, setExpanded] = useState(false);
-//   const toggleAccordion = () => { setExpanded(!isExpanded); };
-//   const [checkForRecords, setCheckForRecords] = useState(true);
-//   const [editing, setEditing] = useState("")
-//   const [website_name, setWebsite_name] = useState();
-//   const [website_desc, setWebsite_desc] = useState();
-//   const [website_url, setWebsite_url] = useState();
-//   const [website_cat, setWebsite_cat] = useState();
-//   const { websiterootdata, loading, error } = useWebsiteApi(); //gebruik van die nuwe useContect :-)
-//   if (loading) return <div>Loading...</div>;
-//   if (error) return <div>Error: {error.message}</div>;
-
-
-//   const handleEdit = (row) => {
-//     setEditing(row.websiteId)
-//     setWebsite_name(row.websiteName)
-//     setWebsite_desc(row.websiteDesc)
-//     setWebsite_url(row.websiteUrl)
-//     setWebsite_cat(row.websiteCat)
-//   };
-
-//   const onEditCancel = () => {
-//     setEditing("");
-//     setWebsite_name(null)
-//     setWebsite_desc(null)
-//     setWebsite_url(null)
-//     setWebsite_cat(null)
-//   };
-
-
-//   const onEditSave = async () => {
-//     const websitePUT =
-//     {
-//       'websiteName': website_name,
-//       'websiteDesc': website_desc,
-//       'websiteUrl': website_url,
-//       'websiteCat': website_cat,
-//     }
-//     await OAuth2APIClient.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/update/${editing}`, websitePUT)
-//       .then((response) => {
-//         setCheckForRecords(!checkForRecords);
-//         toast.success(`Website updated.`)
-//       }
-//       )
-//     onEditCancel();
-//   }
-
-//   const onEditDelete = (row) => {
-//     OAuth2APIClient.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/delete/${row.websiteId}`)
-//       .then((response) => {
-//         window.alert('Are you sure you want to delete');
-//         setCheckForRecords(!checkForRecords);
-//         toast.success(`${website_name} purged.`)
-//       }
-//       )
-//   };
-
-//   return (
-
-//     // <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
-//         <div>&nbsp; &nbsp;
-
-//       <div onClick={toggleAccordion}>
-//         &nbsp; &nbsp;
-//         <GiSpiderWeb style={{ color: '#336791', fontSize: '42px', cursor: 'pointer' }} />
-//         &nbsp;<b style={{ fontFamily: "Verdana", fontSize: "medium", fontWeight: "bold", color: "#336791" }}>Manage the {websiterootdata.length} Tools, Websites or Books</b>
-//       </div>
-
-//       <WebsiteCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
-
-//       <table className="Table6">
-//         <thead style={{ background: 'linear-gradient(to right, #f0f4f8, #d9e2ec)', boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.1)' }}>
-//           <tr>
-//             <th style={{ width: '20px', borderRadius: '4px' }} align='center'></th>
-//             <th style={{ width: '400px', borderRadius: '4px' }} align='center'>Tool / Website / Book</th>
-//             <th style={{ width: '800px', borderRadius: '4px' }} align='center'>Value / Description / Action</th>
-//             <th style={{ width: '400px', borderRadius: '4px' }} align='center'>URL</th>
-//             <th style={{ width: '200px', borderRadius: '4px' }} align='center'>Category</th>
-//           </tr>
-//         </thead>
-
-//         <tbody>
-//           {websiterootdata.map((row) => {
-
-//             return (
-//               <tr key={row.websiteId}>
-//                 <td>
-//                   <>
-//                     {row.websiteId === editing ?
-//                       (
-//                         <>
-//                           <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#336791', outline: 'none' }} type='button' onClick={() => onEditSave()}><a><FaCheck style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>&nbsp;
-//                           <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'silver', outline: 'none' }} type='button' onClick={() => onEditCancel()}><a><PiArrowCounterClockwiseBold style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>&nbsp;
-//                           <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#D5441C', outline: 'none' }} type='button' onClick={() => onEditDelete(row)}><a><FaRegTrashAlt style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>
-//                         </>
-//                       )
-//                       :
-//                       (
-//                         <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#336791', outline: 'none' }} type='button' onClick={() => handleEdit(row)}><a><FaPen style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>
-//                       )
-//                     }
-//                   </>
-//                 </td>
-
-//                 <td>{row.websiteId === editing ? (<input style={{ height: '30px', width: '380px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_name} onChange={(e) => setWebsite_name(e.target.value)} />) : (<a href={row.websiteUrl} target="_blank" rel="noreferrer">{row.websiteName}</a>)}</td>
-//                 <td className="asmshover">{row.websiteId === editing ? (<textarea style={{ height: '30px', width: '780px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_desc} onChange={(e) => setWebsite_desc(e.target.value)} />) : (row.websiteDesc)}</td>
-//                 <td className="asmshover">{row.websiteId === editing ? (<input style={{ height: '30px', width: '380px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_url} onChange={(e) => setWebsite_url(e.target.value)} />) : "URL is te lank"}</td>
-//                 <td className="asmshover">{row.websiteId === editing ? (<input style={{ height: '30px', width: '180px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '5px' }} value={website_cat} onChange={(e) => setWebsite_cat(e.target.value)} />) : (row.websiteCat)}</td>
-
-//               </tr>
-//             )
-//           })
-//           }
-//         </tbody>
-//       </table>
-//       <div>&nbsp;</div>
-//       <GradientLineRusty />
-//       <div>&nbsp;</div>
-//     </div>
-//   );
-// }
-
 import { useState } from 'react';
-import { Tooltip } from '@mui/material';
+import { Tooltip } from 'react-tooltip';
 import { toast } from 'react-toastify';
 import { FaPen, FaCheck, FaRegTrashAlt } from 'react-icons/fa';
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
@@ -217,8 +80,6 @@ function WebsiteManage() {
 
   return (
     <div>
-      <Tooltip id="website-tooltips" />
-
       <div>&nbsp;</div>
       <div>&nbsp;</div>
 
@@ -295,12 +156,13 @@ function WebsiteManage() {
                 <td>
                   {row.websiteId === editing ? (
                     <>
-                      <Tooltip title="Commit"><button style={toolBtn('#336791')}onClick={onEditSave}><FaCheck style={iconStyle} /></button></Tooltip>&nbsp;
-                      <Tooltip title="Revert"><button style={toolBtn('silver')}onClick={onEditCancel}><PiArrowCounterClockwiseBold style={iconStyle} /></button></Tooltip>&nbsp;
-                      <Tooltip title="Purge"><button style={toolBtn('#D5441C')}onClick={() => onEditDelete(row)}><FaRegTrashAlt style={iconStyle} /></button></Tooltip>
+                      <Tooltip id="reactTooltip" place="left" />
+                      <button style={toolBtn('#336791')} onClick={onEditSave} data-tooltip-id="reactTooltip" data-tooltip-content="Commit"><FaCheck style={iconStyle} /></button>
+                      <button style={toolBtn('silver')} onClick={onEditCancel} data-tooltip-id="reactTooltip" data-tooltip-content="Revert"><PiArrowCounterClockwiseBold style={iconStyle} /></button>
+                      <button style={toolBtn('#D5441C')} onClick={() => onEditDelete(row)} data-tooltip-id="reactTooltip" data-tooltip-content="Purge"><FaRegTrashAlt style={iconStyle} /></button>
                     </>
                   ) : (
-                    <Tooltip title="Edit"><button style={toolBtn('#336791')}onClick={() => handleEdit(row)}><FaPen style={iconStyle} /></button></Tooltip>
+                    <button style={toolBtn('#336791')} onClick={() => handleEdit(row)} data-tooltip-id="reactTooltip" data-tooltip-content="Edit"><FaPen style={iconStyle} /></button>
                   )}
                 </td>
 

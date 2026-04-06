@@ -104,7 +104,7 @@ const DBSearchComponentBanner = () => {
         type="submit"
         // style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #000000', borderRadius: '5px', backgroundColor: '#ffffff', color: '#000000', cursor: 'pointer' }}>
         style={{
-          marginLeft: '10px',
+          marginLeft: '20px',
           height: '30.5px',
           border: '1px solid #336791',
           borderRadius: '6px',
@@ -120,7 +120,7 @@ const DBSearchComponentBanner = () => {
         onClick={handleCancel}
         // style={{ marginLeft: '10px', height: '22.5px', border: '1px solid #000000', borderRadius: '5px', backgroundColor: '#ffffff', color: '#000000', cursor: 'pointer' }}>
         style={{
-          marginLeft: '10px',
+          marginLeft: '20px',
           height: '30.5px',
           border: '1px solid #336791',
           borderRadius: '6px',

@@ -1,6 +1,4 @@
 import React, { useContext, useState } from "react";
-import axios from "axios";
-import { Tooltip } from "@mui/material";
 import { GiHummingbird } from "react-icons/gi";
 import AlertContext from "../Generic/Alerts/AlertContext";
 
@@ -22,8 +20,7 @@ export default function PeopleScorecardCreate({ checkForRecords, setCheckForReco
 
   const toggleAccordion = () => setExpanded((prev) => !prev);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async (event) => { event.preventDefault();
 
     const newTask = {
       taskName,
@@ -68,9 +65,7 @@ export default function PeopleScorecardCreate({ checkForRecords, setCheckForReco
   return (
     <div className="people-scorecard-create">
       <div onClick={toggleAccordion} style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: "8px" }}>
-        <Tooltip title="Add a Task" placement="top">
-          <GiHummingbird style={{ color: "#336791", fontSize: "25px" }} />
-        </Tooltip>
+        <GiHummingbird style={{ color: "#336791", fontSize: "25px" }} />
         <span className="Font-Verdana-Small-Postgres">Add Task to People Scorecard</span>
       </div>
 
