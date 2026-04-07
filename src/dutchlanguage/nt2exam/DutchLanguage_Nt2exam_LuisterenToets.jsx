@@ -51,7 +51,6 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
   const fetchProgress = async () => {
     try {
       const res = await OAuth2APIClient.get(PROGRESS_URL);
-      // if (!res.ok) throw new Error("Failed to fetch progress");
       const value = res.data;
       setProgress(parseFloat(value).toFixed(1));
     } catch (err) {
@@ -78,8 +77,8 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
       const list = Array.isArray(data)
         ? data
         : Array.isArray(data?.questions)
-        ? data.questions
-        : [];
+          ? data.questions
+          : [];
 
       if (list.length === 0) throw new Error("No questions found.");
 
@@ -119,16 +118,20 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
         userAnswer === "A"
           ? `A - ${question.optionA}`
           : userAnswer === "B"
-          ? `B - ${question.optionB}`
-          : userAnswer === "C"
-          ? `C - ${question.optionC}`
-          : userAnswer;
+            ? `B - ${question.optionB}`
+            : userAnswer === "C"
+              ? `C - ${question.optionC}`
+              : userAnswer;
 
-      await OAuth2APIClient.get(`${API_URL}/${question.id}/answerTry`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(fullAnswer),
-      });
+      await OAuth2APIClient.put(
+        `${API_URL}/${question.id}/answerTry`,
+        fullAnswer, // <-- plain string
+        {
+          headers: {
+            "Content-Type": "text/plain",
+          },
+        }
+      );
 
       console.log("✅ Answer persisted:", fullAnswer);
       fetchProgress();
@@ -150,7 +153,7 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
   return (
     <div style={styles.container}>
       <div style={styles.headerRow}>
-        <h2 style={styles.title}><FaEarDeaf style={{ color: '#FF4F00', fontSize: '25px', cursor: 'pointer', marginRight: '10px' }}/>Nederlands Staatsexamen NT2 :: Luisteren-II Toets</h2>
+        <h2 style={styles.title}><FaEarDeaf style={{ color: '#FF4F00', fontSize: '25px', cursor: 'pointer', marginRight: '10px' }} />Nederlands Staatsexamen NT2 :: Luisteren-II Toets</h2>
 
         {question && (
           <button onClick={toggleCollapse} style={styles.collapseButton}>
@@ -350,14 +353,14 @@ const styles = {
     backgroundColor: "#fff",
   },
 
-    submitButton: {
+  submitButton: {
     minWidth: "120px",
     color: "#fff",
     border: "none",
     borderRadius: "4px",
     cursor: "pointer"
   },
-  
+
 };
 
 
