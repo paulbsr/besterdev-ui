@@ -27,6 +27,7 @@ import {
   SiVault,
   SiGooglecloud,
   SiAuth0,
+  SiSwagger,
 } from 'react-icons/si';
 import {
   BiLogoPostgresql,
@@ -80,6 +81,7 @@ const externalLinks = [
   { tooltip: 'Firebase', icon: <SiFirebase style={iconStyle('#FFCB2B', 33)} />, href: 'https://console.firebase.google.com' },
   { tooltip: 'HashiCorp Vault', icon: <SiVault style={iconStyle('#000', 30)} />, href: 'https://portal.cloud.hashicorp.com' },
   { tooltip: 'Auth0', icon: <SiAuth0 style={iconStyle('#000', 30)} />, href: 'https://manage.auth0.com' },
+  { tooltip: 'Swagger', icon: <SiSwagger style={iconStyle('#85EA2D', 30)} />, href: 'https:///besterdev-api-13a0246c9cf2.herokuapp.com/swagger-ui/index.html' },
 ];
 
 const BannerLight = () => {

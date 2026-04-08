@@ -237,9 +237,10 @@
 //     );
 // }
 
-import React, { useState, useEffect } from 'react';
+
 import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 import '../Fonts.css';
+import { useState, useEffect } from 'react';
 import { Tooltip } from '@mui/material';
 import { useCyclopediaApi } from './CyclopediaAPIProvider';
 import { GiSpiderWeb, GiGiftOfKnowledge } from "react-icons/gi";
@@ -247,223 +248,218 @@ import { toast } from 'react-toastify';
 import { CyclopediaImageUpload } from './CyclopediaImageUpload';
 
 export default function CyclopediaEdit({ cyclopediaId }) {
-    const { cyclopedia, loading, error, reload } = useCyclopediaApi();
-    const [cyclopediadata, setCyclopediadata] = useState([]);
-    const [editingId, setEditingId] = useState(null);
+  const { cyclopedia, loading, reload } = useCyclopediaApi();
 
-    const [cyclopediaName, setCyclopediaName] = useState('');
-    const [cyclopediaDesc, setCyclopediaDesc] = useState('');
-    const [cyclopediaUrl, setCyclopediaUrl] = useState('');
+  const [editingId, setEditingId] = useState(null);
 
-    // Filter the specific cyclopedia by ID whenever data changes
-    useEffect(() => {
-        if (cyclopedia && Array.isArray(cyclopedia)) {
-            const filtered = cyclopedia
-                .filter(item => String(item.cyclopediaId) === String(cyclopediaId))
-                .sort((a, b) => a.cyclopediaName.localeCompare(b.cyclopediaName));
-            setCyclopediadata(filtered);
-        }
-    }, [cyclopedia, cyclopediaId]);
+  const [form, setForm] = useState({
+    cyclopediaName: '',
+    cyclopediaDesc: '',
+    cyclopediaUrl: '',
+    cyclopediaRef: ''
+  });
 
-    const handleEdit = (item) => {
-        setEditingId(item.cyclopediaId);
-        setCyclopediaName(item.cyclopediaName || '');
-        setCyclopediaDesc(item.cyclopediaDesc || '');
-        setCyclopediaUrl(item.cyclopediaUrl || '');
-    };
+  /* ------------------ initial load ------------------ */
+  useEffect(() => {
+    reload();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    const onEditCancel = () => {
-        setEditingId(null);
-    };
+  /* ------------------ helpers ------------------ */
+  const record = Array.isArray(cyclopedia)
+    ? cyclopedia.find(c => String(c.cyclopediaId) === String(cyclopediaId))
+    : null;
 
-    const onEditSave = async () => {
-        try {
-            await OAuth2APIClient.put(
-                `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${editingId}`,
-                { cyclopediaName, cyclopediaDesc, cyclopediaUrl }
-            );
-            toast.success('Cyclopedia record updated.');
-            setEditingId(null);
-            reload();
-        } catch (err) {
-            console.error('Error updating:', err);
-            toast.error('Failed to update Cyclopedia record.');
-        }
-    };
+  const startEdit = (item) => {
+    setForm({
+      cyclopediaName: item.cyclopediaName || '',
+      cyclopediaDesc: item.cyclopediaDesc || '',
+      cyclopediaUrl: item.cyclopediaUrl || '',
+      cyclopediaRef: item.cyclopediaRef || ''
+    });
+    setEditingId(item.cyclopediaId);
+  };
 
-    if (loading) return <div>Loading Cyclopedia...</div>;
-    if (error) return <div>Error: {error.message}</div>;
-    if (!cyclopediadata.length) return <div>No data available</div>;
+  const cancelEdit = () => {
+    setEditingId(null);
+  };
 
-    return (
-        <div className="Font-Verdana-Medium-Postgres">
-            {cyclopediadata.map(item => (
-                <div key={item.cyclopediaId} style={{ marginBottom: '30px' }}>
-                    {editingId === item.cyclopediaId ? (
-                        <div>
-                            <div style={{ marginBottom: '10px' }}>
-                                <Tooltip title="Save Changes" placement="top">
-                                    <button
-                                        style={buttonStyle('#D5441C')}
-                                        onClick={onEditSave}
-                                    >
-                                        Update
-                                    </button>
-                                </Tooltip>
-                                <Tooltip title="Cancel" placement="top">
-                                    <button
-                                        style={buttonStyle('#336791')}
-                                        onClick={onEditCancel}
-                                    >
-                                        Revert
-                                    </button>
-                                </Tooltip>
-                            </div>
+  const saveEdit = async () => {
+    try {
+      await OAuth2APIClient.put(
+        `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${editingId}`,
+        form
+      );
+      toast.success('Cyclopedia record updated');
+      setEditingId(null);
+      reload();
+    } catch (err) {
+      console.error(err);
+      toast.error('Failed to update record');
+    }
+  };
 
-                            <div style={{ marginBottom: '10px' }}>
-                                <label><i>Cyclopedia Name:</i></label><br />
-                                <input
-                                    type="text"
-                                    value={cyclopediaName}
-                                    onChange={e => setCyclopediaName(e.target.value)}
-                                    style={inputStyle}
-                                />
-                            </div>
+  if (loading) return <div>Loading Cyclopedia…</div>;
+  if (!record) return <div>No Cyclopedia found</div>;
 
-                            <div style={{ marginBottom: '10px' }}>
-                                <label><i>Cyclopedia Description:</i></label><br />
-                                <textarea
-                                    value={cyclopediaDesc}
-                                    onChange={e => setCyclopediaDesc(e.target.value)}
-                                    style={textareaStyle(150)}
-                                />
-                            </div>
+  const isEditing = editingId === record.cyclopediaId;
 
-                            <div style={{ marginBottom: '10px' }}>
-                                <label><i>Cyclopedia URL:</i></label><br />
-                                <input
-                                    type="text"
-                                    value={cyclopediaUrl}
-                                    onChange={e => setCyclopediaUrl(e.target.value)}
-                                    style={inputStyle}
-                                />
-                            </div>
+  /* ------------------ render ------------------ */
+  return (
+    <div className="Font-Verdana-Medium-Postgres">
+      <table style={{ width: '100%' }}>
+        <tbody>
+          <tr>
+            <td className="Table-home-left" style={{ width: '15%' }} />
+            <td style={{ width: '70%' }}>
 
-                            <div style={{ marginBottom: '10px' }}>
-                                {item.cyclopediaImageEntity?.cyclopediaImage ? (
-                                    <img
-                                        src={`data:image/jpeg;base64,${item.cyclopediaImageEntity.cyclopediaImage}`}
-                                        alt={cyclopediaName}
-                                        style={{ maxWidth: '100%', height: 'auto' }}
-                                    />
-                                ) : (
-                                    <div>No image associated</div>
-                                )}
-                            </div>
-                        </div>
-                    ) : (
-                        <div>
-                            <Tooltip title={`Edit Cyclopedia #${item.cyclopediaId}`} placement="top">
-                                <button
-                                    style={{ ...iconButtonStyle }}
-                                    onClick={() => handleEdit(item)}
-                                >
-                                    <GiGiftOfKnowledge style={{ fontSize: '40px', color: '#4D4D4D' }} />
-                                </button>
-                            </Tooltip>
+              {/* ---------- HEADER ---------- */}
+              <div className="Font-Segoe-Large-Howto">
+                {!isEditing && (
+                  <>
+                    <Tooltip title={`Cyclopedia #${record.cyclopediaId}`}>
+                      <GiGiftOfKnowledge style={{ fontSize: 40, color: '#4D4D4D' }} />
+                    </Tooltip>
 
-                            <a
-                                href={item.cyclopediaUrl}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="Font-Segoe-XLarge-FP"
-                                style={{ fontWeight: 'bold', marginLeft: '10px' }}
-                            >
-                                {item.cyclopediaName}
-                            </a>
+                    &nbsp;&nbsp;
 
-                            <CyclopediaImageUpload
-                                cyclopedia_id_fk={item.cyclopediaId}
-                                cyclopedia_name={item.cyclopediaName}
-                                cyclopedia_id={item.cyclopediaId}
-                            />
+                    <a
+                      className="Font-Segoe-XLarge-FP"
+                      href={record.cyclopediaUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <b>{record.cyclopediaName}</b>
+                    </a>
 
-                            <div style={{ marginTop: '10px' }}>
-                                <GiSpiderWeb style={{ color: '#4D4D4D', fontSize: '19px' }} />&nbsp;
-                                <a
-                                    href={item.cyclopediaUrl}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="Font-Segoe-Medium"
-                                >
-                                    {item.cyclopediaUrl}
-                                </a>
-                            </div>
+                    &nbsp;&nbsp;
 
-                            {item.cyclopediaImageEntity?.cyclopediaImage ? (
-                                <img
-                                    src={`data:image/jpeg;base64,${item.cyclopediaImageEntity.cyclopediaImage}`}
-                                    alt={item.cyclopediaName}
-                                    style={{ maxWidth: '100%', height: 'auto', marginTop: '10px' }}
-                                />
-                            ) : (
-                                <div>No image available</div>
-                            )}
+                    <Tooltip title="Edit">
+                      <button
+                        onClick={() => startEdit(record)}
+                        style={editBtn}
+                      >
+                        Edit
+                      </button>
+                    </Tooltip>
+                  </>
+                )}
+              </div>
 
-                            <div style={{ marginTop: '10px' }}>
-                                <textarea
-                                    value={item.cyclopediaDesc}
-                                    readOnly
-                                    style={textareaStyle(400, '#FFFFFF')}
-                                />
-                            </div>
-                        </div>
-                    )}
-                </div>
-            ))}
-        </div>
-    );
+              {/* ---------- EDIT MODE ---------- */}
+              {isEditing ? (
+                <>
+                  <div>
+                    <button style={saveBtn} onClick={saveEdit}>Update</button>
+                    &nbsp;
+                    <button style={cancelBtn} onClick={cancelEdit}>Cancel</button>
+                  </div>
+
+                  <br />
+
+                  <label>Name</label>
+                  <input
+                    value={form.cyclopediaName}
+                    onChange={e => setForm({ ...form, cyclopediaName: e.target.value })}
+                    style={inputStyle}
+                  />
+
+                  <br /><br />
+
+                  <label>Description</label>
+                  <textarea
+                    value={form.cyclopediaDesc}
+                    onChange={e => setForm({ ...form, cyclopediaDesc: e.target.value })}
+                    style={{ ...inputStyle, height: 150 }}
+                  />
+
+                  <br /><br />
+
+                  <label>URL</label>
+                  <input
+                    value={form.cyclopediaUrl}
+                    onChange={e => setForm({ ...form, cyclopediaUrl: e.target.value })}
+                    style={inputStyle}
+                  />
+                </>
+              ) : (
+                /* ---------- VIEW MODE ---------- */
+                <>
+                  <div>
+                    <GiSpiderWeb />&nbsp;
+                    <a href={record.cyclopediaUrl} target="_blank" rel="noreferrer">
+                      {record.cyclopediaUrl}
+                    </a>
+                  </div>
+
+                  <br />
+
+                  {record.cyclopediaImageEntity?.cyclopediaImage ? (
+                    <img
+                      src={`data:image/jpeg;base64,${record.cyclopediaImageEntity.cyclopediaImage}`}
+                      alt={record.cyclopediaName}
+                      style={{ maxWidth: '100%' }}
+                    />
+                  ) : (
+                    <div>No image available</div>
+                  )}
+
+                  <br /><br />
+
+                  <textarea
+                    readOnly
+                    value={record.cyclopediaDesc}
+                    style={{
+                      ...inputStyle,
+                      height: 400,
+                      borderColor: '#fff'
+                    }}
+                  />
+
+                  <br /><br />
+
+                  <CyclopediaImageUpload
+                    cyclopedia_id_fk={record.cyclopediaId}
+                    cyclopedia_name={record.cyclopediaName}
+                    cyclopedia_id={record.cyclopediaId}
+                  />
+                </>
+              )}
+            </td>
+            <td className="Table-home-right" style={{ width: '15%' }} />
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
 }
 
-// Reusable styles
-const buttonStyle = (bgColor) => ({
-    marginRight: '5px',
-    height: '25px',
-    border: `1px solid ${bgColor}`,
-    borderRadius: '4px',
-    backgroundColor: bgColor,
-    color: '#FFFFFF',
-    cursor: 'pointer',
-    fontSize: '12px',
-    padding: '0 10px',
-});
+/* ------------------ styles ------------------ */
 
 const inputStyle = {
-    fontFamily: 'Segoe UI',
-    fontSize: 'Large',
-    height: '27.5px',
-    border: '1.25px solid #336791',
-    borderRadius: '4px',
-    paddingLeft: '5px',
-    width: '910px',
+  width: '100%',
+  fontFamily: 'Segoe UI',
+  fontSize: 'Large',
+  border: '1.25px solid #336791',
+  borderRadius: '4px'
 };
 
-const textareaStyle = (height, borderColor = '#336791') => ({
-    fontFamily: 'Segoe UI',
-    fontSize: 'Large',
-    height: `${height}px`,
-    border: `1.25px solid ${borderColor}`,
-    borderRadius: '4px',
-    paddingLeft: '5px',
-    width: '910px',
-    resize: 'vertical',
-});
+const editBtn = {
+  border: '1px solid #4D4D4D',
+  background: '#fff',
+  cursor: 'pointer'
+};
 
-const iconButtonStyle = {
-    height: '45px',
-    width: '45px',
-    border: 'none',
-    borderRadius: '3px',
-    backgroundColor: 'white',
-    cursor: 'pointer',
+const saveBtn = {
+  background: '#D5441C',
+  color: '#fff',
+  border: '1px solid #D5441C',
+  cursor: 'pointer'
+};
+
+const cancelBtn = {
+  background: '#336791',
+  color: '#fff',
+  border: '1px solid #336791',
+  cursor: 'pointer'
 };
