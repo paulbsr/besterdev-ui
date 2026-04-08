@@ -13,7 +13,16 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
   const [feedback, setFeedback] = useState("");
   const [loading, setLoading] = useState(false);
   const [collapsed, setCollapsed] = useState(true);
-  const [progress, setProgress] = useState(null);
+
+  const [progress, setProgress] = useState({
+  totalQuestions: 0,
+  totalAnswered: 0,
+  totalCorrect: 0,
+  totalWrong: 0,
+  percentAnswered: 0,
+  percentCorrect: 0,
+  percentWrong: 0,
+});
 
   // Reading countdown timer (25 sec)
   const [timeLeft, setTimeLeft] = useState(0);
@@ -48,16 +57,23 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
   useEffect(() => () => clearInterval(timerRef.current), []);
 
   // Progress fetcher
-  const fetchProgress = async () => {
-    try {
-      const res = await OAuth2APIClient.get(PROGRESS_URL);
-      const value = res.data;
-      setProgress(parseFloat(value).toFixed(1));
-    } catch (err) {
-      console.error("❌ In <LuisterenToets> Error fetching progress:", err);
-    }
-  };
-
+  // const fetchProgress = async () => {
+  //   try {
+  //     const res = await OAuth2APIClient.get(PROGRESS_URL);
+  //     const value = res.data;
+  //     setProgress(parseFloat(value).toFixed(1));
+  //   } catch (err) {
+  //     console.error("❌ In <LuisterenToets> Error fetching progress:", err);
+  //   }
+  // };
+const fetchProgress = async () => {
+  try {
+    const res = await OAuth2APIClient.get(PROGRESS_URL);
+    setProgress(res.data); // 👈 store the whole object
+  } catch (err) {
+    console.error("❌ In <DutchLanguage_Nt2exam_LuisterenToets> Error fetching progress:", err);
+  }
+};
   useEffect(() => {
     fetchProgress();
   }, []);
@@ -206,14 +222,8 @@ export default function DutchLanguage_Nt2exam_LuisterenToets() {
             <strong>Track:</strong> {question.trackNumber} •{" "}
             <strong>Opgave:</strong> {question.opgave} •{" "}
             <strong>Onderwerp:</strong>{" "}
-            <a
-              href={question.trackTypeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {question.trackType}
-            </a>{" "}
-            • <strong>Compleet:</strong> {progress}%
+            <a href={question.trackTypeUrl} target="_blank" rel="noopener noreferrer">{question.trackType}</a>{" "}
+            • <strong>Compleet:</strong> {progress.percentAnswered}% ({progress.totalAnswered} uit {progress.totalQuestions} beantwoord met {progress.totalCorrect} korrek en {progress.totalWrong} verkeerd.) 
           </div>
 
           <blockquote style={styles.questionText}>{question.question}</blockquote>
