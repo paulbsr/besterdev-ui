@@ -91,7 +91,8 @@ const DBSearchComponentBanner = () => {
           width: '700px',
           marginLeft: '10px',
           marginTop: "10px",
-                boxShadow: '10px 10px 10px rgba(0,0,0,0.2)',
+          marginBottom: "10px",
+          boxShadow: '10px 10px 10px rgba(0,0,0,0.2)',
         }}
         placeholder="Search BesterDev"
         type="text"
