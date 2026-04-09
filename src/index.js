@@ -64,15 +64,15 @@ export const auth = getAuth(app);
 // --- Main App Component ---
 const App = () => {
   const [searchPhrase, setSearchPhrase] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [countdown, setCountdown] = useState(0); // 9-second countdown
+  // const [loading, setLoading] = useState(true);
+  // const [countdown, setCountdown] = useState(0); // 9-second countdown
   const username = 'besterdev-ui';
   const password = 'TZXWF498UR5PGQLH6E3CMBDNSYJAKV72';
   const basicAuth = Buffer.from(`${username}:${password}`).toString('base64');
 
   useEffect(() => {
     let mounted = true;
-    let countdownTimer;
+    // let countdownTimer;
 
     const fetcSearchphrase = async () => {
       try {
@@ -81,71 +81,73 @@ const App = () => {
 
         if (mounted) {
           setSearchPhrase(phrase);
-          console.log('✅ Search phrase:', phrase);
+          console.log('<Index.js> Search phrase:', phrase);
         }
       } catch (error) {
-        console.error('❌ <Index.js> Error loading search phrase:', error);
-      } finally {
-        countdownTimer = setInterval(() => {
-          setCountdown((prev) => {
-            if (prev <= 1) {
-              clearInterval(countdownTimer);
-              if (mounted) setLoading(false);
-              return 0;
-            }
-            return prev - 1;
-          });
-        }, 1000);
-      }
+        console.error('<Index.js> Error loading search phrase:', error);
+      } 
+      
+      // finally {
+      //   countdownTimer = setInterval(() => {
+      //     setCountdown((prev) => {
+      //       if (prev <= 1) {
+      //         clearInterval(countdownTimer);
+      //         if (mounted) setLoading(false);
+      //         return 0;
+      //       }
+      //       return prev - 1;
+      //     });
+      //   }, 1000);
+      // }
     };
 
     fetcSearchphrase();
 
     return () => {
       mounted = false;
-      clearInterval(countdownTimer);
+      // clearInterval(countdownTimer);
     };
   }, []);
 
   // --- Loading Screen ---
-  if (loading || !searchPhrase) {
-    return (
-      <div
-        style={{
-          display: 'flex',
-          height: '100vh',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexDirection: 'column',
-          fontFamily: 'sans-serif',
-          color: '#444',
-        }}
-      >
-        <div style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Pre-loading tons of useful data, doesn't take long …</div>
-        <div
-          style={{
-            width: '60px',
-            height: '60px',
-            border: '5px solid #ddd',
-            borderTop: '5px solid #333',
-            borderRadius: '50%',
-            animation: 'spin 1s linear infinite',
-            marginBottom: '1rem',
-          }}
-        />
-        <div style={{ fontSize: '1.1rem', color: '#666' }}>BesterDev will render in {countdown} second{countdown !== 1 ? 's' : ''}</div>
-        <style>{`
-          @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-          }
-        `}</style>
-      </div>
-    );
-  }
+  // if (loading || !searchPhrase) {
+  //   return (
+  //     <div
+  //       style={{
+  //         display: 'flex',
+  //         height: '100vh',
+  //         alignItems: 'center',
+  //         justifyContent: 'center',
+  //         flexDirection: 'column',
+  //         fontFamily: 'sans-serif',
+  //         color: '#444',
+  //       }}
+  //     >
+  //       <div style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Pre-loading tons of useful data, doesn't take long …</div>
+  //       <div
+  //         style={{
+  //           width: '60px',
+  //           height: '60px',
+  //           border: '5px solid #ddd',
+  //           borderTop: '5px solid #333',
+  //           borderRadius: '50%',
+  //           animation: 'spin 1s linear infinite',
+  //           marginBottom: '1rem',
+  //         }}
+  //       />
+  //       <div style={{ fontSize: '1.1rem', color: '#666' }}>BesterDev will render in {countdown} second{countdown !== 1 ? 's' : ''}</div>
+  //       <style>{`
+  //         @keyframes spin {
+  //           0% { transform: rotate(0deg); }
+  //           100% { transform: rotate(360deg); }
+  //         }
+  //       `}</style>
+  //     </div>
+  //   );
+  // }
 
-  console.log('✅ In <Index.js> is OAuth2.0 BearerToken:', basicAuth);
-  console.log('✅ In <Index.js> is searchPhrase:', searchPhrase);
+  console.log('✅ In <Index.js> is OAuth2.0 BearerToken from local mint:', basicAuth);
+  console.log('✅ In <Index.js> is NewsAPI searchPhrase:', searchPhrase);
 
   // --- Routes ---
   return (

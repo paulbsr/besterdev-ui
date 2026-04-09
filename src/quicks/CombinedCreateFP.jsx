@@ -300,7 +300,7 @@ export default function CombinedCreateFP() {
 
             <input
               placeholder="Supporting URL"
-              style={{ ...inputStyle, width: '510px', marginRight: '10px', background: '#F7F7F7', }}
+              style={{ ...inputStyle, width: '510px', marginRight: '10px', background: '#FFFFFF', }}
               value={cyclopedia.url}
               onChange={(e) =>
                 setCyclopedia((p) => ({
