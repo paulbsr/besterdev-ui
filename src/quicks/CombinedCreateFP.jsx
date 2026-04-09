@@ -340,9 +340,6 @@ export default function CombinedCreateFP() {
                 required
               />
             </Field>
-
-
-
           </form>
         </Card>
       )}
