@@ -248,7 +248,7 @@ import { toast } from 'react-toastify';
 import { CyclopediaImageUpload } from './CyclopediaImageUpload';
 
 export default function CyclopediaEdit({ cyclopediaId }) {
-  const { cyclopedia, loading, reload } = useCyclopediaApi();
+  const { cyclopediaData, loading, reload } = useCyclopediaApi();
 
   const [editingId, setEditingId] = useState(null);
 
@@ -266,8 +266,8 @@ export default function CyclopediaEdit({ cyclopediaId }) {
   }, []);
 
   /* ------------------ helpers ------------------ */
-  const record = Array.isArray(cyclopedia)
-    ? cyclopedia.find(c => String(c.cyclopediaId) === String(cyclopediaId))
+  const record = Array.isArray(cyclopediaData)
+    ? cyclopediaData.find(c => String(c.cyclopediaId) === String(cyclopediaId))
     : null;
 
   const startEdit = (item) => {
@@ -334,14 +334,20 @@ export default function CyclopediaEdit({ cyclopediaId }) {
 
                     &nbsp;&nbsp;
 
-                    <Tooltip title="Edit">
-                      <button
+                    <Tooltip title={`Edit ${record.cyclopediaId}`}>
+                      <button 
                         onClick={() => startEdit(record)}
                         style={editBtn}
                       >
                         Edit
                       </button>
                     </Tooltip>
+
+                    <CyclopediaImageUpload 
+                    cyclopedia_id_fk={record.cyclopediaId}
+                    cyclopedia_name={record.cyclopediaName}
+                    cyclopedia_id={record.cyclopediaId}
+                  />
                   </>
                 )}
               </div>
@@ -445,9 +451,10 @@ const inputStyle = {
 };
 
 const editBtn = {
-  border: '1px solid #4D4D4D',
-  background: '#fff',
-  cursor: 'pointer'
+  background: '#336791',
+  color: '#fff',
+  border: '1px solid #336791',
+  cursor: 'pointer',
 };
 
 const saveBtn = {

@@ -137,7 +137,7 @@ Geef duidelijke feedback in het Nederlands: zeg per woord of het correct is, en 
       </h2>
 
       <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-        <label style={{ fontWeight: "600", whiteSpace: "nowrap" }}>
+        <label style={{ fontWeight: "100", whiteSpace: "nowrap" }}>
           Specificeer een onderwerp:
         </label>
         <input

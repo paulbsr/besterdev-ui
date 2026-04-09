@@ -20,8 +20,7 @@ function CyclopediaManage() {
   const [cyclopediaRef, setCyclopediaRef] = useState();
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [isExpanded, setExpanded] = useState(false);
-  // const { cyclopediarootdata, loading, error } = useCyclopediaApi(); //gebruik van die nuwexuseContect :-)
-  const { cyclopedia, loading, error, reload } = useCyclopediaApi(); //gebruik van die nuwexuseContect :-)
+  const { cyclopediaData, loading, error, reload } = useCyclopediaApi(); //gebruik van die nuwexuseContect :-)
   const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
@@ -29,7 +28,7 @@ function CyclopediaManage() {
 }, [reload]);
   
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div>Loading everything...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
 
@@ -71,8 +70,7 @@ function CyclopediaManage() {
     onEditCancel();
   }
 
-  // const filteredCyclopedia = cyclopediarootdata.filter((row) => {
-      const filteredCyclopedia = (cyclopedia ?? []).filter((row) => {
+    const filteredCyclopedia = (cyclopediaData ?? []).filter((row) => {
     const term = searchTerm.toLowerCase();
     return (
       row.cyclopediaName?.toLowerCase().includes(term) ||
@@ -88,7 +86,7 @@ function CyclopediaManage() {
 
       <Tooltip id="insert" />
       <div>&nbsp;</div>
-            <div>&nbsp;</div>
+      <div>&nbsp;</div>
       <div style={{
         width: '80%',
         margin: '12px auto',
@@ -96,7 +94,7 @@ function CyclopediaManage() {
         justifyContent: 'flex-start',
       }} onClick={toggleAccordion}>
         <GiGiftOfKnowledge style={{ color: '#336791', fontSize: '38px' }} />&nbsp; &nbsp;&nbsp;
-        <b style={{ fontFamily: "Candara", fontSize: "x-large", color: "#336791" }}>Manage the {cyclopedia?.length ?? 0} Cyclopedia Entries</b>
+        <b style={{ fontFamily: "Candara", fontSize: "x-large", color: "#336791" }}>Manage the {cyclopediaData?.length ?? 0} Cyclopedia Entries</b>
       </div>
 
       <div

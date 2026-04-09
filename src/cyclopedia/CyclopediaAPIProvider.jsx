@@ -77,7 +77,7 @@ export const CyclopediaAPIProvider = ({ children }) => {
   return (
     <CyclopediaApiContext.Provider
       value={{
-        cyclopedia: data,
+        cyclopediaData: data,
         loading,
         error,
         reload: loadCyclopedia

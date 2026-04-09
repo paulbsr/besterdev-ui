@@ -98,7 +98,7 @@ export default function DutchLanguage_Index() {
     <div
       className="Font-Segoe-Large-Howto"
       style={{
-        border: "1px solid #FF4F00",
+        border: "1px solid #ddd",
         borderRadius: "8px",
         padding: "16px",
         fontFamily: "Segoe UI",

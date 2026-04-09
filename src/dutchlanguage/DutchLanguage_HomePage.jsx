@@ -98,7 +98,6 @@ export default function DutchLanguage_HomePage() {
           <div><DutchLanguage_Zintransformatie_Mini /></div>
           <div><DutchLanguage_Zintransformatie /></div>
           <div><DutchLanguage_CompareContrast /></div>
-          <div><DutchLanguage_Index /></div>
           {/* <div><DutchLanguage_Index /></div> */}
 
 
@@ -121,6 +120,7 @@ export default function DutchLanguage_HomePage() {
           <DutchLanguage_SentenceWords />
           <DutchLanguage_Translator />
           <DutchLanguage_ChallengeTranslate />
+          <div><DutchLanguage_Index /></div>
           <DutchLanguage_Nt2exam_LezenInputQuestion />
           <DutchLanguage_Nt2exam_LezenInputText />
           <DutchLanguage_Nt2exam_SchrijvenInput />
