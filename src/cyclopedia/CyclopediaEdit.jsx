@@ -103,8 +103,8 @@ export default function CyclopediaEdit({ cyclopediaId }) {
 
                     &nbsp;&nbsp;
 
-                    <Tooltip title={`Edit ${record.cyclopediaId}`}>
-                      <button 
+                    <Tooltip title={`Edit ${record.cyclopediaId}`} placement="top">
+                      <button
                         onClick={() => startEdit(record)}
                         style={editBtn}
                       >
@@ -112,7 +112,7 @@ export default function CyclopediaEdit({ cyclopediaId }) {
                       </button>
                     </Tooltip>
 
-                    <CyclopediaImageUpload 
+                    <CyclopediaImageUpload
                       cyclopedia_id_fk={record.cyclopediaId}
                       cyclopedia_name={record.cyclopediaName}
                       cyclopedia_id={record.cyclopediaId}
@@ -220,8 +220,8 @@ const inputStyle = {
 };
 
 const editBtn = {
-  background: '#336791',
-  color: '#fff',
+  background: '#FFFFFF',
+  color: '#000000',
   border: '1px solid #336791',
   cursor: 'pointer',
 };

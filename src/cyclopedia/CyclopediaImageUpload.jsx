@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ImageUploading from 'react-images-uploading';
 import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 import { toast } from 'react-toastify';
-import { MdCamera, MdOutlineCamera } from "react-icons/md";
 import { Tooltip } from '@mui/material';
 import { useCyclopediaApi } from './CyclopediaAPIProvider';
-import { BsCamera } from "react-icons/bs";
 import { CiCamera } from "react-icons/ci";
-import { PiCameraLight } from "react-icons/pi";
 
 export function CyclopediaImageUpload(props) {
     const [image, setImage] = React.useState([]);
@@ -63,7 +60,7 @@ export function CyclopediaImageUpload(props) {
             ) =>
             (
                 <React.Fragment>
-                    <Tooltip title='Add or Replace an image for this Cyclopedia Entry' placement="top">
+                    <Tooltip title='Add / Replace image' placement="top">
                         <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={onImageUpload}>
                             <CiCamera style={{ color: '#4D4D4D', display: 'block', margin: 'auto', fontSize: '31px' }} />
                         </button>
