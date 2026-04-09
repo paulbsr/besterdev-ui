@@ -61,8 +61,8 @@ export function CyclopediaImageUpload(props) {
             (
                 <React.Fragment>
                     <Tooltip title='Add / Replace image' placement="top">
-                        <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={onImageUpload}>
-                            <CiCamera style={{ color: '#4D4D4D', display: 'block', margin: 'auto', fontSize: '31px' }} />
+                        <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer', marginLeft: '15px' }} type='button' onClick={onImageUpload}>
+                            <CiCamera style={{ color: '#4D4D4D', display: 'block', margin: 'auto', fontSize: '33px' }} />
                         </button>
 
                     </Tooltip>

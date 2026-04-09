@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import { Navigate } from "react-router-dom";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import OAuth2APIClient from './oauth2/OAuth2APIClient';
-import { Buffer } from 'buffer';
-import { RefreshProvider } from "./dutchlanguage/RefreshContext";
 import PageDutchLanguageBook from './pages/PageDutchLanguageBook';
+import { RefreshProvider } from "./dutchlanguage/RefreshContext";
+import OAuth2APIClient from './oauth2/OAuth2APIClient';
+import { Navigate } from "react-router-dom";
+import ReactDOM from 'react-dom';
+import { Buffer } from 'buffer';
 
 // Providers
-import { BreakingNewsAPIProvider } from './breakingnews/BreakingNewsApiContext';  // <--Nuwe een Mar-26!
+import { BreakingNewsAPIProvider } from './breakingnews/BreakingNewsApiContext';  // <--Nuwe een Mar'26
 import { CyclopediaAPIProvider } from './cyclopedia/CyclopediaAPIProvider';
 import { WebSiteAPIProvider } from './websites/WebSiteAPIProvider';
 import { HowtoAPIProvider } from './howto/HowtoAPIProvider';
@@ -30,20 +30,17 @@ import PageSearch from './pages/PageSearch';
 import PageHome from './pages/PageHome';
 import PageMyCV from './pages/PageMyCV';
 
-
 // Firebase
+import { initializeApp } from 'firebase/app';
 import firebase from 'firebase/compat/app';
+import { getAuth } from 'firebase/auth';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
 
 // Styles
 import 'react-tooltip/dist/react-tooltip.css';
 import './index.css';
 import './Fonts.css';
-import { Home } from 'lucide-react';
-
 
 
 // --- Firebase Configuration ---
@@ -64,15 +61,12 @@ export const auth = getAuth(app);
 // --- Main App Component ---
 const App = () => {
   const [searchPhrase, setSearchPhrase] = useState(null);
-  // const [loading, setLoading] = useState(true);
-  // const [countdown, setCountdown] = useState(0); // 9-second countdown
   const username = 'besterdev-ui';
   const password = 'TZXWF498UR5PGQLH6E3CMBDNSYJAKV72';
   const basicAuth = Buffer.from(`${username}:${password}`).toString('base64');
 
   useEffect(() => {
     let mounted = true;
-    // let countdownTimer;
 
     const fetcSearchphrase = async () => {
       try {
@@ -86,65 +80,14 @@ const App = () => {
       } catch (error) {
         console.error('<Index.js> Error loading search phrase:', error);
       } 
-      
-      // finally {
-      //   countdownTimer = setInterval(() => {
-      //     setCountdown((prev) => {
-      //       if (prev <= 1) {
-      //         clearInterval(countdownTimer);
-      //         if (mounted) setLoading(false);
-      //         return 0;
-      //       }
-      //       return prev - 1;
-      //     });
-      //   }, 1000);
-      // }
     };
 
     fetcSearchphrase();
 
     return () => {
       mounted = false;
-      // clearInterval(countdownTimer);
     };
   }, []);
-
-  // --- Loading Screen ---
-  // if (loading || !searchPhrase) {
-  //   return (
-  //     <div
-  //       style={{
-  //         display: 'flex',
-  //         height: '100vh',
-  //         alignItems: 'center',
-  //         justifyContent: 'center',
-  //         flexDirection: 'column',
-  //         fontFamily: 'sans-serif',
-  //         color: '#444',
-  //       }}
-  //     >
-  //       <div style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Pre-loading tons of useful data, doesn't take long …</div>
-  //       <div
-  //         style={{
-  //           width: '60px',
-  //           height: '60px',
-  //           border: '5px solid #ddd',
-  //           borderTop: '5px solid #333',
-  //           borderRadius: '50%',
-  //           animation: 'spin 1s linear infinite',
-  //           marginBottom: '1rem',
-  //         }}
-  //       />
-  //       <div style={{ fontSize: '1.1rem', color: '#666' }}>BesterDev will render in {countdown} second{countdown !== 1 ? 's' : ''}</div>
-  //       <style>{`
-  //         @keyframes spin {
-  //           0% { transform: rotate(0deg); }
-  //           100% { transform: rotate(360deg); }
-  //         }
-  //       `}</style>
-  //     </div>
-  //   );
-  // }
 
   console.log('✅ In <Index.js> is OAuth2.0 BearerToken from local mint:', basicAuth);
   console.log('✅ In <Index.js> is NewsAPI searchPhrase:', searchPhrase);

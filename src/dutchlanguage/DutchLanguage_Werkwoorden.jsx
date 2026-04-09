@@ -155,8 +155,33 @@ export default function DutchLanguage_Werkwoorden() {
             border: "1px solid #ddd",
             borderRadius: "6px",
             fontSize: "16px",
+            marginRight: "20px"
           }}
         />
+
+        <input
+          value={checkWord}
+          onChange={(e) => setCheckWord(e.target.value)}
+          onKeyDown={handleCheck}
+          placeholder="Check Stem/Infinitive"
+          style={{
+            padding: "8px",
+            width: "200px",
+            border: "1px solid #ddd",
+            borderRadius: "6px",
+            fontSize: "16px",
+            marginRight: "20px"
+          }}
+        />
+
+        {checking && <span>Checking...</span>}
+
+        {checkResult && (
+          <span>
+            <b>Stem:</b> {checkResult.stem || "-"} / <b>Infinitive:</b>{" "}
+            {checkResult.infinitive || "-"}
+          </span>
+        )}
 
         {/* NEW: Stem/Infinitive Checker */}
         <div
@@ -168,28 +193,6 @@ export default function DutchLanguage_Werkwoorden() {
             gap: "12px",
           }}
         >
-          <input
-            value={checkWord}
-            onChange={(e) => setCheckWord(e.target.value)}
-            onKeyDown={handleCheck}
-            placeholder="Check Stem/Infinitive"
-            style={{
-              padding: "8px",
-              width: "200px",
-              border: "1px solid #ddd",
-              borderRadius: "6px",
-              fontSize: "16px",
-            }}
-          />
-
-          {checking && <span>Checking...</span>}
-
-          {checkResult && (
-            <span>
-              <b>Stem:</b> {checkResult.stem || "-"} / <b>Infinitive:</b>{" "}
-              {checkResult.infinitive || "-"}
-            </span>
-          )}
         </div>
       </div>
 
@@ -203,7 +206,7 @@ export default function DutchLanguage_Werkwoorden() {
           }}
         >
           <div className="spinner"></div>
-          <span>Compiling...</span>
+          <span>Compiling.....</span>
         </div>
       )}
 
@@ -214,11 +217,13 @@ export default function DutchLanguage_Werkwoorden() {
           width: "100%",
           borderCollapse: "collapse",
           fontSize: "14px",
+          borderRadius: "6px"
         }}
       >
         <thead>
           <tr>
             <th style={th}>Tense</th>
+            
             <th style={th}>
               <span style={{ fontSize: "1.25rem" }}>🧍‍♂️</span> Ik
             </th>
@@ -234,7 +239,6 @@ export default function DutchLanguage_Werkwoorden() {
         <tbody>
           <tr>
             <td style={{ ...tdHeader, color: "#0066FF" }}>Past Tense</td>
-            {/* <td style={td, color: "#0066FF"}>stem: <b>{data.pastIk}</b></td> */}
             <td style={{ ...td, color: "#0066FF" }}><GiTreeRoots style={{ color: "#333333", fontSize: "20px", marginRight: "5px" }} />stem: <b>{data.pastIk}</b>  ('t kofschip rule)</td>
             <td style={{ ...td, color: "#0066FF" }}><GiTreeRoots style={{ color: "#333333", fontSize: "20px", marginRight: "5px" }} />stem+t/e: <b>{data.pastJij}</b></td>
             <td style={{ ...td, color: "#0066FF" }}><GiTreeRoots style={{ color: "#333333", fontSize: "20px", marginRight: "5px" }} />stem+t/en: <b>{data.pastWij}</b></td>
@@ -260,12 +264,10 @@ export default function DutchLanguage_Werkwoorden() {
         <p style={{ margin: 0, fontFamily: "Segoe UI", fontSize: "14px" }}>Rule#2: Use Infinitive in <i>Toekomstige Tijd</i> - <i>Dan <u>zal</u> ik op Kloveniersburgwal <b>zitten</b>, vreselijk gerookt."</i> (Jij zult.. Hij/Zij/Het zal.. Wij/Jullie/Zij zullen..)</p>
         <p style={{ margin: 0, fontFamily: "Segoe UI", fontSize: "14px" }}>Rule#3: Use Infinitive after <i>Modals</i> (kan, wil, moet, mag, zal, laat)  - <i>"Ik <u>wil</u> veel Starlato hybrid <b>roken</b> in deze coffeeshop."</i></p>
         <p style={{ margin: 0, fontFamily: "Segoe UI", fontSize: "14px" }}>Rule#4: Use Infinitive after <i>"..om te.."</i> - <i>Ik probeer <u>om te</u><b> praten</b>, maar mijn brein is nu kapot."</i></p>
-        {/* <p>..</p> */}
         <p style={{ margin: 0 }}>The ’t kofschip Rule for 1e Persoon Verleden Tijd</p>
         <p style={{ margin: 0, fontFamily: "Segoe UI", fontSize: "14px" }}>Rule#1: If the stem word ends in t, k, f, s, ch, p - use “-te/n” in the past tense (dan<b>s</b>te).</p>
         <p style={{ margin: 0, fontFamily: "Segoe UI", fontSize: "14px" }}>Rule#2: If the stem word ends with anything else - use “-de/n” in the past tense (woo<b>n</b>de).</p>
       </div>
-        
     </div>
   );
 }

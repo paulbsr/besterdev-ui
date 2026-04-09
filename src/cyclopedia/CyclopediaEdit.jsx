@@ -126,17 +126,24 @@ export default function CyclopediaEdit({ cyclopediaId }) {
                 <>
                   <div>
                     <button style={saveBtn} onClick={saveEdit}>Update</button>
-                    &nbsp;
+                    &nbsp; &nbsp;
                     <button style={cancelBtn} onClick={cancelEdit}>Cancel</button>
                   </div>
 
                   <br />
 
-                  <label>Name</label>
+                  <label>Name: &nbsp;</label>
                   <input
                     value={form.cyclopediaName}
                     onChange={e => setForm({ ...form, cyclopediaName: e.target.value })}
-                    style={inputStyle}
+                    style={{...inputStyle, width: 550}}
+                  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <label>URL: &nbsp;</label>
+                  <input
+                    value={form.cyclopediaUrl}
+                    onChange={e => setForm({ ...form, cyclopediaUrl: e.target.value })}
+                    style={{...inputStyle, width: 635}}
                   />
 
                   <br /><br />
@@ -150,12 +157,6 @@ export default function CyclopediaEdit({ cyclopediaId }) {
 
                   <br /><br />
 
-                  <label>URL</label>
-                  <input
-                    value={form.cyclopediaUrl}
-                    onChange={e => setForm({ ...form, cyclopediaUrl: e.target.value })}
-                    style={inputStyle}
-                  />
                 </>
               ) : (
                 /* ---------- VIEW MODE ---------- */
@@ -222,20 +223,29 @@ const inputStyle = {
 const editBtn = {
   background: '#FFFFFF',
   color: '#000000',
-  border: '1px solid #336791',
+  border: '1px solid #000000',
   cursor: 'pointer',
+  borderRadius: '4px',
+  width: '65px',
+  height: '25px',
 };
 
 const saveBtn = {
   background: '#D5441C',
   color: '#fff',
   border: '1px solid #D5441C',
-  cursor: 'pointer'
+  cursor: 'pointer',
+  borderRadius: '4px',
+  width: '65px',
+  height: '25px',
 };
 
 const cancelBtn = {
   background: '#336791',
   color: '#fff',
   border: '1px solid #336791',
-  cursor: 'pointer'
+  cursor: 'pointer',
+  borderRadius: '4px',
+  width: '65px',
+  height: '25px',
 };

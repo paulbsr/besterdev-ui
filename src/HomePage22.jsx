@@ -34,29 +34,29 @@ export default function HomePage22(props) {
   }, [props.checkForRecords]);
 
 
-// useEffect(() => {
-//   let mounted = true;
+  // useEffect(() => {
+  //   let mounted = true;
 
-//   (async () => {
-//     try {
-//       const response = await OAuth2APIClient.get('/api/v1/tasks');
+  //   (async () => {
+  //     try {
+  //       const response = await OAuth2APIClient.get('/api/v1/tasks');
 
-//       const sortedTaskData = response.data.sort(
-//         (b, a) => b.taskname.localeCompare(a.taskname)
-//       );
+  //       const sortedTaskData = response.data.sort(
+  //         (b, a) => b.taskname.localeCompare(a.taskname)
+  //       );
 
-//       if (mounted) {
-//         setTaskdata(sortedTaskData);
-//       }
-//     } catch (e) {
-//       console.error('❌ Failed to load tasks', e);
-//     }
-//   })();
+  //       if (mounted) {
+  //         setTaskdata(sortedTaskData);
+  //       }
+  //     } catch (e) {
+  //       console.error('❌ Failed to load tasks', e);
+  //     }
+  //   })();
 
-//   return () => {
-//     mounted = false;
-//   };
-// }, [props.checkForRecords]);
+  //   return () => {
+  //     mounted = false;
+  //   };
+  // }, [props.checkForRecords]);
 
   useEffect(() => {
     OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/alphabet/random')
@@ -187,7 +187,7 @@ export default function HomePage22(props) {
 
     return (
       <>
-      <AskAI/>
+        <AskAI />
         {/* <DBSearchComponent /> */}
 
         <TaskSummaryHomepage />
@@ -196,20 +196,7 @@ export default function HomePage22(props) {
           <div className='Font-Spacer-White'>Make this spacer white</div>
 
           <div className="Font-Segoe-Large-FP">
-            {/* {cyclopediarootdata.length}:
-            {alphabet.split('').map((letter, index) => (
-              <span
-                style={{ cursor: 'pointer' }}
-                key={index}
-                className={selectedLetter === letter ? 'selected' : ''}
-                onClick={() => setSelectedLetter(letter)}
-              >
-                &nbsp;&nbsp;{letter}
-              </span>
-            )
-          )
-          } */}
-            {/* &nbsp; &nbsp; ({cyclopediarootdata.length}) */}
+
           </div>
 
           <div className='Font-Spacer-White'>Make this spacer white</div>
@@ -316,9 +303,9 @@ export default function HomePage22(props) {
         <tbody>
           <tr style={{ height: '20px' }}>
             {/* <td style={{ width: '25%' }}></td> */}
-            <td style={{ width: '25%'}}></td>
+            <td style={{ width: '25%' }}></td>
             <td style={{ width: '1%' }}></td>
-            <td style={{ width: '48%' }}><img src={Image} style={{boxShadow: '10px 10px 10px rgba(0,0,0,0.2)', borderRadius: '8px'}}/></td>
+            <td style={{ width: '48%' }}><img src={Image} style={{ boxShadow: '10px 10px 10px rgba(0,0,0,0.2)', borderRadius: '8px' }} /></td>
             <td style={{ width: '1%' }}></td>
             <td style={{ width: '25%' }}></td>
           </tr>
