@@ -164,7 +164,10 @@ function DutchLanguage_Dagboek() {
 
   const fetchAllEntries = async () => {
     try {
-      const res = await OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/all/diary");
+      const res = await OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/all/diary",
+          {
+            caller: 'DutchLanguage_Dagboek'
+          });
       // if (!res.ok) throw new Error("<Diary> failed to fetch /all/diary entries");
       const data = res.data;
 

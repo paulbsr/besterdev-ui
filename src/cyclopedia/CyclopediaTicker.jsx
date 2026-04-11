@@ -9,7 +9,11 @@ export default function CyclopediaTicker(props) {
 
 
     useEffect(() => {
-        OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/random40')
+        OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/random40',
+          {
+            caller: 'CyclopediaTicker'
+          }
+        )
         .then((response) => {
           const fourtyRandomRecordsAPI = response.data;
           setFourtyRandomRecords(fourtyRandomRecordsAPI);

@@ -22,7 +22,10 @@ export default function CyclopediaEdit({ cyclopediaId }) {
     setLoading(true);
     try {
       const response = await OAuth2APIClient.get(
-        `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/${cyclopediaId}`
+        `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/${cyclopediaId},
+          {
+            caller: 'CyclopediaEdit'
+          }`
       );
       setRecord(response.data);
     } catch (err) {

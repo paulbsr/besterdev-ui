@@ -70,7 +70,12 @@ const App = () => {
 
     const fetcSearchphrase = async () => {
       try {
-        const response = await OAuth2APIClient.get('/api/v1/searchphrase');
+        const response = await OAuth2APIClient.get('/api/v1/searchphrase',
+          {
+            caller: 'Index'
+          });
+        
+        
         const phrase = response.data?.[0]?.searchphrase || "";
 
         if (mounted) {
@@ -89,8 +94,8 @@ const App = () => {
     };
   }, []);
 
-  console.log('✅ In <Index.js> is OAuth2.0 BearerToken from local mint:', basicAuth);
-  console.log('✅ In <Index.js> is NewsAPI searchPhrase:', searchPhrase);
+  console.log('In <Index.js> is OAuth2.0 BearerToken from local mint:', basicAuth);
+  console.log('In <Index.js> is NewsAPI searchPhrase:', searchPhrase);
 
   // --- Routes ---
   return (

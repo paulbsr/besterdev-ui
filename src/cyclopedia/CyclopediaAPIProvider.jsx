@@ -14,9 +14,8 @@ export const CyclopediaAPIProvider = ({ children }) => {
     setError(null);
 
     try {
-      const response = await OAuth2APIClient.get(
-        '/api/v1/cyclopedia',
-        { signal: controller.signal }
+      const response = await OAuth2APIClient.get('/api/v1/cyclopedia',
+        { signal: controller.signal, caller: 'CyclopediaAPIProvider' }
       );
 
       setData(

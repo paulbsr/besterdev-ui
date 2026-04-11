@@ -27,7 +27,11 @@ const DBSearchComponentBanner = () => {
   const handleSearch = async (event) => {
     event.preventDefault(); // Prevent default form submission
     try {
-      const response = await OAuth2APIClient.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/search?keyword=${searchQuery}`);
+      const response = await OAuth2APIClient.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/search?keyword=${searchQuery}`,
+          {
+            caller: 'DBSearchComponentBanner'
+          }
+        );
       setSearchResults(response.data);
       setNorecordsFound(response.data.length === 0);
     } catch (error) {

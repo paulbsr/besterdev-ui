@@ -11,7 +11,11 @@ export const BreakingNewsAPIProvider = ({ children }) => {
   const refreshBreakingNews = async () => {
     try {
       setLoading(true);
-      const res = await OAuth2APIClient.get('/api/v1/breakingnews');
+      const res = await OAuth2APIClient.get('/api/v1/breakingnews',
+          {
+            caller: 'BreakingNewsAPIProvider'
+          }
+        );
       setBreakingnews(res.data);
     } catch (e) {
       setError(e);

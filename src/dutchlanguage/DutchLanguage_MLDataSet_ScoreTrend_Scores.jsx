@@ -32,7 +32,11 @@ export default function DutchLanguage_MLDataSet_ScoreTrend_Scores() {
     // ✅ MOVE THIS OUTSIDE useEffect
     const fetchGlobalAverages = async () => {
         try {
-            const res = await OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/global-averages");
+            const res = await OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/global-averages",
+          {
+            caller: 'DutchLanguage_MLDataSet_ScoreTrend_Scores'
+          }
+        );
             const data = res.data;
             setChartData(buildChartData(data));
         } catch (err) {

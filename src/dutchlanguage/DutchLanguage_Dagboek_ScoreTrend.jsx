@@ -14,7 +14,11 @@ const DutchLanguage_Dagboek_ScoreTrend = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/diary/daily-average-score")
+    OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/diary/daily-average-score",
+          {
+            caller: 'DutchLanguage_Dagboek_ScoreTrend'
+          }
+        )
       .then((res) => res.json())
       .then((json) => {
         // Ensure one decimal place for averageScore

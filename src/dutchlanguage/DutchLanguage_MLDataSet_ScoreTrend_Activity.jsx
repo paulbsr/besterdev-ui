@@ -22,7 +22,11 @@ export default function DailyCountVerticalBarchart() {
 
     const fetchDailyCounts = async () => {
         try {
-            const response = await OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/daily-average-score");
+            const response = await OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/daily-average-score",
+          {
+            caller: 'DailyCountVerticalBarchart'
+          }
+        );
             const json = response.data;
             const mapped = json.map((item) => {
                 const d = new Date(item.date);

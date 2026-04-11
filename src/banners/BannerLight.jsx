@@ -96,7 +96,10 @@ const BannerLight = () => {
 
     (async () => {
       try {
-        const res = await OAuth2APIClient.get('/api/v1/searchphrase');
+        const res = await OAuth2APIClient.get('/api/v1/searchphrase',
+          {
+            caller: 'Bannerlight'
+          });
         const phrase = res.data?.[0]?.searchphrase;
         if (mounted && phrase) setSearchPhrase(phrase);
       } catch (e) {
@@ -109,23 +112,6 @@ const BannerLight = () => {
     };
   }, []);
 
-  // const submitEdit = async () => {
-  //   if (!editValue.trim() || editValue === searchPhrase) {
-  //     setIsEditing(false);
-  //     return;
-  //   }
-
-  //   try {
-  //     await OAuth2APIClient.put(
-  //       `/api/v1/searchphrase/update?newValue=${encodeURIComponent(editValue)}`
-  //     );
-  //     setSearchPhrase(editValue);
-  //   } catch (e) {
-  //     console.error('❌ Failed to update search phrase', e);
-  //   } finally {
-  //     setIsEditing(false);
-  //   }
-  // };
 
   const submitEdit = async () => {
   if (!editValue.trim() || editValue === searchPhrase) {

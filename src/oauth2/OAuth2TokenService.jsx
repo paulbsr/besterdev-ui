@@ -1,7 +1,7 @@
 let accessToken = null;
 let expiresAt = null;
 
-export async function getAccessToken() {
+export async function getAccessToken(caller = 'unknown') {
   // Return cached token if it’s still valid
   if (accessToken && Date.now() < expiresAt) {
     return accessToken;
@@ -17,7 +17,7 @@ export async function getAccessToken() {
   accessToken = data.access_token;
   expiresAt = Date.now() + data.expires_in * 1000; // expires_in is in seconds
 
-console.log(`[${new Date().toISOString()}] Received a Bearer Token from the Auth0 SEC-AUTH-Z authority`);
+console.log(`[${new Date().toISOString()}] In <OAuth2TokenService>: Fetched a Auth0 BearerToken via BE API for ${caller}`);
 
   return accessToken;
 }

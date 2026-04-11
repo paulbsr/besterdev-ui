@@ -24,7 +24,10 @@ const DutchLanguage_MLDataSet_ScoreTrend_Accuracy = () => {
   //  FETCH FUNCTION (Fix)
   // -----------------------
   const fetchChartData = () => {
-    OAuth2APIClient.get(API_URL)
+    OAuth2APIClient.get(API_URL),
+          {
+            caller: 'DutchLanguage_MLDataSet_ScoreTrend_Accuracy'
+          }
       .then((res) => res.json())
       .then((json) => {
         const formatted = json.map((item) => ({

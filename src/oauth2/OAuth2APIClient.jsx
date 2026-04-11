@@ -6,8 +6,11 @@ const OAuth2APIClient = axios.create({
 });
 
 OAuth2APIClient.interceptors.request.use(async (config) => {
-  const token = await getAccessToken();
+  const caller = config.caller || 'unknown';
+
+  const token = await getAccessToken(caller);
   config.headers.Authorization = `Bearer ${token}`;
+
   return config;
 });
 

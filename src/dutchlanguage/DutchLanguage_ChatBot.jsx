@@ -176,27 +176,13 @@ export default function DutchLanguage_Chatbot() {
     fetchAllEntries();
   }, []);
 
-  // const fetchAllEntries = async () => {
-  //   try {
-  //     const res = await OAuth2APIClient.get(API_ALL_CHATBOT);
-  //     if (!res.ok) throw new Error("In <DutchLanguage_ChatBot> failed to fetch Chatbot history");
-
-  //     const data = res.data;
-  //     const normalized = (Array.isArray(data) ? data : [data]).map((it) => ({
-  //       ...it,
-  //       createdAtParsed: parseCreatedAt(it.createdAt),
-  //     }));
-
-  //     setAllEntries(normalized);
-  //   } catch (err) {
-  //     console.error(err);
-  //     setAllEntries([]);
-  //   }
-  // };
-
   const fetchAllEntries = async () => {
   try {
-    const res = await OAuth2APIClient.get(API_ALL_CHATBOT);
+    const res = await OAuth2APIClient.get(API_ALL_CHATBOT,
+          {
+            caller: 'DutchLanguage_Chatbot'
+          }
+        );
 
     const data = res.data;
 

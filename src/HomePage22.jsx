@@ -24,8 +24,11 @@ export default function HomePage22(props) {
 
 
   useEffect(() => {
-    OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks')
-      // OAuth2APIClient.get('http://localhost:8000/api/v1/tasks')
+    OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks',
+          {
+            caller: 'HomePage22/tasks'
+          }
+        )
       .then((response) => {
         const sortedtaskdata = response.data.sort((b, a) => b.taskname.localeCompare(a.taskname));
         setTaskdata(sortedtaskdata);
@@ -34,32 +37,11 @@ export default function HomePage22(props) {
   }, [props.checkForRecords]);
 
 
-  // useEffect(() => {
-  //   let mounted = true;
-
-  //   (async () => {
-  //     try {
-  //       const response = await OAuth2APIClient.get('/api/v1/tasks');
-
-  //       const sortedTaskData = response.data.sort(
-  //         (b, a) => b.taskname.localeCompare(a.taskname)
-  //       );
-
-  //       if (mounted) {
-  //         setTaskdata(sortedTaskData);
-  //       }
-  //     } catch (e) {
-  //       console.error('❌ Failed to load tasks', e);
-  //     }
-  //   })();
-
-  //   return () => {
-  //     mounted = false;
-  //   };
-  // }, [props.checkForRecords]);
-
   useEffect(() => {
-    OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/alphabet/random')
+    OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/alphabet/random',
+          {
+            caller: 'HomePage22/cyclopedia'
+          })
       .then((response) => {
         const fourtyRandomRecordsAPI = response.data;
         setFourtyRandomRecords(fourtyRandomRecordsAPI);
@@ -69,7 +51,10 @@ export default function HomePage22(props) {
 
 
   useEffect(() => {
-    OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/triggerwebsocketevent")
+    OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/triggerwebsocketevent",
+          {
+            caller: 'HomePage22/websocket'
+          })
       .then(() => {
         console.log("WebSocket event triggered.");
       })
@@ -78,14 +63,6 @@ export default function HomePage22(props) {
       });
   }, []);
 
-
-
-  // const shuffleCyclopediaArray = (array) => {
-  //   for (let i = array.length - 1; i > 0; i--) {
-  //     const j = Math.floor(Math.random() * (i + 1));
-  //     [array[i], array[j]] = [array[j], array[i]];
-  //   }
-  // };
 
   const handleLinkClick = (howtoId) => {
     setHowtoIdd(howtoId);
