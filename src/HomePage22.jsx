@@ -172,14 +172,13 @@ export default function HomePage22(props) {
         <div>
           <div className='Font-Spacer-White'>Make this spacer white</div>
 
-          <div className="Font-Segoe-Large-FP">
-
-          </div>
+          <div className="Font-Segoe-Large-FP"></div>
 
           <div className='Font-Spacer-White'>Make this spacer white</div>
 
           <table className="Table-home-centre">
             <tbody>
+
               {fourtyRandomRecords.map((rowc, index) => (
                 <tr key={index}>
                   <td className="fphover2">

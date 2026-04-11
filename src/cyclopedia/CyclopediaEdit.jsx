@@ -22,10 +22,10 @@ export default function CyclopediaEdit({ cyclopediaId }) {
     setLoading(true);
     try {
       const response = await OAuth2APIClient.get(
-        `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/${cyclopediaId},
-          {
-            caller: 'CyclopediaEdit'
-          }`
+        `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/${cyclopediaId}`,
+        {
+          caller: 'CyclopediaEdit' 
+        }
       );
       setRecord(response.data);
     } catch (err) {
@@ -139,14 +139,14 @@ export default function CyclopediaEdit({ cyclopediaId }) {
                   <input
                     value={form.cyclopediaName}
                     onChange={e => setForm({ ...form, cyclopediaName: e.target.value })}
-                    style={{...inputStyle, width: 550}}
+                    style={{ ...inputStyle, width: 550 }}
                   />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                   <label>URL: &nbsp;</label>
                   <input
                     value={form.cyclopediaUrl}
                     onChange={e => setForm({ ...form, cyclopediaUrl: e.target.value })}
-                    style={{...inputStyle, width: 635}}
+                    style={{ ...inputStyle, width: 635 }}
                   />
 
                   <br /><br />

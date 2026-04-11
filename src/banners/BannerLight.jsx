@@ -41,6 +41,7 @@ import { IoHome } from 'react-icons/io5';
 import { FaAws } from 'react-icons/fa6';
 
 import OAuth2APIClient from '../oauth2/OAuth2APIClient';
+import ConsoleFrame from '../consolelogs/ConsoleFrame';
 
 
 
@@ -221,5 +222,4 @@ const { refreshBreakingNews } = useBreakingNewsApi();
     </div>
   );
 };
-
 export default BannerLight;

@@ -22,6 +22,7 @@ import WebSocketComponent from "../websockets/WebSocketComponent";
 import BearerToken from "../oauth2/BearerToken";
 
 import "../Fonts.css";
+import ConsoleFrame from "../consolelogs/ConsoleFrame";
 
 const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
 
@@ -496,6 +497,8 @@ export default function CombinedCreateFP() {
       {open === "oauth" && <Card><BearerToken /></Card>}
       {open === "ws" && <Card><WebSocketComponent /></Card>}
       {open === "search" && <Card><DBSearchComponentBanner /></Card>}
+      <div>.</div>
+      <ConsoleFrame />
     </div>
   );
 }

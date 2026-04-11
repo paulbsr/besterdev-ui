@@ -24,7 +24,7 @@ export default function DailyCountVerticalBarchart() {
         try {
             const response = await OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/daily-average-score",
           {
-            caller: 'DailyCountVerticalBarchart'
+            caller: 'DutchLanguage_MLDataSet_ScoreTrend_Activity'
           }
         );
             const json = response.data;

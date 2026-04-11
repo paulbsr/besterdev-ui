@@ -29,7 +29,7 @@ export default function MultiAxis_LengthVsScore_Enhanced() {
     const fetchDailyCounts = () => {
         OAuth2APIClient.get(API_URL,
           {
-            caller: 'DutchLanguage_fetchDailyCounts'
+            caller: 'DutchLanguage_MLDataSet_ScoreTrend_LethvsScore'
           })
             .then((res) => setData(res.data))
             .catch((err) => console.error("Error loading ML dataset:", err));
