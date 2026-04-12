@@ -177,26 +177,26 @@ export default function DutchLanguage_Chatbot() {
   }, []);
 
   const fetchAllEntries = async () => {
-  try {
-    const res = await OAuth2APIClient.get(API_ALL_CHATBOT,
-          {
-            caller: 'DutchLanguage_Chatbot'
-          }
-        );
+    try {
+      const res = await OAuth2APIClient.get(API_ALL_CHATBOT,
+        {
+          caller: 'DutchLanguage_Chatbot'
+        }
+      );
 
-    const data = res.data;
+      const data = res.data;
 
-    const normalized = (Array.isArray(data) ? data : [data]).map((it) => ({
-      ...it,
-      createdAtParsed: parseCreatedAt(it.createdAt),
-    }));
+      const normalized = (Array.isArray(data) ? data : [data]).map((it) => ({
+        ...it,
+        createdAtParsed: parseCreatedAt(it.createdAt),
+      }));
 
-    setAllEntries(normalized);
-  } catch (err) {
-    console.error("Failed to fetch chatbot history:", err);
-    setAllEntries([]);
-  }
-};
+      setAllEntries(normalized);
+    } catch (err) {
+      console.error("Failed to fetch chatbot history:", err);
+      setAllEntries([]);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e?.preventDefault();
@@ -206,16 +206,18 @@ export default function DutchLanguage_Chatbot() {
     triggerRefresh();
 
     try {
-      const updated = await DutchLanguage_AI_Evaluator_Chatbot({
-        userInput: entry,
-        promptType: "chatbot",
-        exerciseType: "chatbot",
-        originComponent: "DutchLanguage_Chatbot",
-        difficultyLevel: 1,
-        userId: 111,
-        apiBase: API_BASE,
-        aiEndpoint: AI_ENDPOINT,
-      });
+      const updated = await DutchLanguage_AI_Evaluator_Chatbot(
+        {
+          userInput: entry,
+          promptType: "chatbot",
+          exerciseType: "chatbot",
+          originComponent: "DutchLanguage_Chatbot",
+          difficultyLevel: 1,
+          userId: 111,
+          apiBase: API_BASE,
+          aiEndpoint: AI_ENDPOINT,
+        }
+      );
 
       const rec = {
         ...updated,
@@ -229,9 +231,7 @@ export default function DutchLanguage_Chatbot() {
       fetchAllEntries();
     } catch (err) {
       console.error(err);
-      toast.error("Er is een fout opgetreden bij het verwerken van de AI-evaluatie.", {
-        position: "top-center",
-      });
+      toast.error("Error in AI-evaluation", { position: "bottom-right", });
     } finally {
       setLoading(false);
     }

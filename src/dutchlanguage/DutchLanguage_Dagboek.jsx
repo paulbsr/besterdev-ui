@@ -3,7 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { PiBookOpenTextBold } from "react-icons/pi";
 import { FaTimes } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
-import { DutchLanguage_AIEvaluator } from "./DutchLanguage_AI_Evaluator"; 
+import { DutchLanguage_AIEvaluator } from "./DutchLanguage_AI_Evaluator";
 import { RefreshContext } from "./RefreshContext";
 import DutchLanguage_AI_ScoreSquares from "./DutchLanguage_AI_ScoreSquares";
 import DutchLanguage_AI_Response from "./DutchLanguage_AI_Response";
@@ -165,9 +165,9 @@ function DutchLanguage_Dagboek() {
   const fetchAllEntries = async () => {
     try {
       const res = await OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/all/diary",
-          {
-            caller: 'DutchLanguage_Dagboek'
-          });
+        {
+          caller: 'DutchLanguage_Dagboek'
+        });
       // if (!res.ok) throw new Error("<Diary> failed to fetch /all/diary entries");
       const data = res.data;
 
@@ -191,26 +191,30 @@ function DutchLanguage_Dagboek() {
   const handleSubmit = async (e) => {
     e?.preventDefault?.();
     if (!entry.trim()) return;
-    setLoading(true); setRecentSubmission(null); triggerRefresh();
+    setLoading(true);
+    setRecentSubmission(null);
+    triggerRefresh();
 
     try {
-      const submission = await DutchLanguage_AIEvaluator({
-        userInput: entry,
-        promptType: "dagboek",
-        exerciseType: "diary-entry",
-        originComponent: "DutchLanguage_Dagboek",
-        difficultyLevel: 1,
-        userId: 123,
-        apiBase: "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/add",
-        aiEndpoint: "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
-      });
+      const submission = await DutchLanguage_AIEvaluator(
+        {
+          userInput: entry,
+          promptType: "dagboek",
+          exerciseType: "dagboek",
+          originComponent: "DutchLanguage_Dagboek",
+          difficultyLevel: 1,
+          userId: 123,
+          apiBase: "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/ml-dataset/add",
+          aiEndpoint: "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
+        }
+      );
 
       setRecentSubmission(submission);
       setEntry(""); setWordCountState(0); resetTimer();
       fetchAllEntries();
     } catch (err) {
       console.error("Dagboek submit error:", err);
-      toast.error("Fout bij verzenden: " + (err.message || ""), { position: "top-center" });
+      toast.error("Fout bij verzenden: " + (err.message || ""), { position: "top-right" });
     } finally { setLoading(false); }
   };
 
@@ -276,15 +280,15 @@ function DutchLanguage_Dagboek() {
           onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSubmit(e); } }}
           placeholder="Typ hier jouw dagboektekst..."
           style={{
-            marginTop: "10px", 
+            marginTop: "10px",
             height: "60px",
-            width: "99%", 
+            width: "99%",
             padding: "6px",
-            fontFamily: "Segoe UI", 
-            fontSize: "12pt", 
-            borderRadius: "6px", 
+            fontFamily: "Segoe UI",
+            fontSize: "12pt",
+            borderRadius: "6px",
             border: "0.75px solid #FF4F00",
-            resize: "vertical", 
+            resize: "vertical",
             boxShadow: "10px 10px 10px rgba(0,0,0,0.2)"
           }}
         />

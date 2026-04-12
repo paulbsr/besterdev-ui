@@ -34,37 +34,44 @@ export async function DutchLanguage_AI_Evaluator_Chatbot({
   // -------------------------------------------------------
   // 1. CREATE DB ROW FIRST (empty scores)
   // -------------------------------------------------------
-  const createRes = await OAuth2APIClient.get(apiBase, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      userId,
-      originComponent,
-      exerciseType,
-      difficultyLevel,
-      userInput,
-      aiCorrection: "",
-      aiFeedback: "",
-      scoreWordorder: 0,
-      scoreGrammar: 0,
-      scoreVocabulary: 0,
-      scoreSpelling: 0,
-      scoreComprehensibility: 0,
-      scoreNoun: 0,
-      scoreArticle: 0,
-      timeSpentMs: 0,
-      wordCount: userInput.split(" ").length,
-      charCount: userInput.length,
-      userRollingAccuracy: 0,
-      userAvgScore: 0,
-      wasHintUsed: null,
-      answerCorrect: null,
-    }),
-  });
 
-  if (!createRes.ok) throw new Error("In <DutchLanguage_AI_Evaluator_Chatbot> Failed to create DB entry");
+  let createRes;
+  try {
+    createRes = await OAuth2APIClient.post(
+      apiBase,
+      {
+        userId,
+        originComponent,
+        exerciseType,
+        difficultyLevel,
+        userInput,
+        aiCorrection: "",
+        aiFeedback: "",
+        scoreWordorder: 0,
+        scoreGrammar: 0,
+        scoreVocabulary: 0,
+        scoreSpelling: 0,
+        scoreComprehensibility: 0,
+        scoreNoun: 0,
+        scoreArticle: 0,
+        timeSpentMs: 0,
+        wordCount: userInput.trim().split(/\s+/).length,
+        charCount: userInput.length,
+        userRollingAccuracy: 0,
+        userAvgScore: 0,
+        wasHintUsed: null,
+        answerCorrect: null,
+      },
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+  } catch (err) {
+    console.error("DB CREATE FAILED:", err.response?.data || err.message);
+    throw new Error("In <DutchLanguage_AI_Evaluator_Chatbot> Failed to create DB entry");
+  }
 
-  const dbRecord = await createRes.json();
+  const dbRecord = createRes.data;
   const savedId = dbRecord.id;
 
   // -------------------------------------------------------
@@ -103,13 +110,15 @@ Do NOT include code fences.
   // -------------------------------------------------------
   // 3. AI Request
   // -------------------------------------------------------
-  const aiRes = await OAuth2APIClient.get(aiEndpoint, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ question: prompt }),
-  });
 
-  const aiData = await aiRes.json();
+  const aiRes = await OAuth2APIClient.post(
+    aiEndpoint,
+    { question: prompt },
+    { headers: { "Content-Type": "application/json" } }
+  );
+
+  const aiData = aiRes.data;
+
   let aiText = aiData.answer || aiData.response || JSON.stringify(aiData);
 
   // remove wrapping junk
@@ -121,27 +130,27 @@ Do NOT include code fences.
     .trim();
 
   let parsed = {};
-try {
-  // Extract JSON object between the first { and the last }
-  const jsonMatch = aiText.match(/\{[\s\S]*\}/);
-  if (!jsonMatch) throw new Error("No JSON found in AI output");
+  try {
+    // Extract JSON object between the first { and the last }
+    const jsonMatch = aiText.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) throw new Error("No JSON found in AI output");
 
-  const cleanJson = jsonMatch[0];
-  parsed = JSON.parse(cleanJson);
-} catch (err) {
-  console.warn("❌ AI JSON failed, fallback:", err);
-  parsed = {
-    aiCorrection: "",
-    aiFeedback: aiText, // show raw text instead of empty
-    scoreGrammar: 0,
-    scoreVocabulary: 0,
-    scoreSpelling: 0,
-    scoreComprehensibility: 0,
-    scoreWordorder: 0,
-    scoreNoun: 0,
-    scoreArticle: 0,
-  };
-}
+    const cleanJson = jsonMatch[0];
+    parsed = JSON.parse(cleanJson);
+  } catch (err) {
+    console.warn("AI JSON failed, fallback:", err);
+    parsed = {
+      aiCorrection: "",
+      aiFeedback: aiText, // show raw text instead of empty
+      scoreGrammar: 0,
+      scoreVocabulary: 0,
+      scoreSpelling: 0,
+      scoreComprehensibility: 0,
+      scoreWordorder: 0,
+      scoreNoun: 0,
+      scoreArticle: 0,
+    };
+  }
 
 
   const safe = (val) => Math.max(0, Math.min(5, Number(val) || 0));
@@ -169,19 +178,21 @@ try {
     charCount: userInput.length,
   };
 
-  const updateRes = await OAuth2APIClient.get(`${apiBase}/${savedId}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(updatePayload),
-  });
 
-  if (!updateRes.ok) {
-    console.error(await updateRes.text());
+  let updateRes;
+  try {
+    updateRes = await OAuth2APIClient.put(
+      `${apiBase}/${savedId}`,
+      updatePayload,
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+  } catch (err) {
+    console.error("DB UPDATE FAILED:", err.response?.data || err.message);
     throw new Error("Failed to update DB with AI results");
   }
 
-  const updated = await updateRes.json();
-
-  return updated;
+  return updateRes.data;
 }
 

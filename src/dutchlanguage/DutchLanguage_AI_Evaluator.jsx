@@ -1,4 +1,3 @@
-// src/common/askAI.js
 import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 /**
  * Standardised AI request + DB persistence
@@ -12,7 +11,6 @@ import OAuth2APIClient from '../oauth2/OAuth2APIClient';
  * @param {number} params.userId
  * @param {string} params.apiBase - DB API endpoint (POST + PUT)
  * @param {string} params.aiEndpoint - AI endpoint (POST)
- *
  * @returns fully normalised DB object (same shape for every component)
  */
 export async function DutchLanguage_AIEvaluator({
@@ -31,42 +29,7 @@ export async function DutchLanguage_AIEvaluator({
   if (!apiBase) throw new Error("apiBase is required");
   if (!aiEndpoint) throw new Error("aiEndpoint is required");
 
-  // -------------------------------------------------------
-  // 1. CREATE DB ROW FIRST (empty scores)
-  // -------------------------------------------------------
-  // const createRes = await OAuth2APIClient.get(apiBase, {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify({
-  //     userId,
-  //     originComponent,
-  //     exerciseType,
-  //     difficultyLevel,
-  //     userInput,
-  //     aiCorrection: "",
-  //     aiFeedback: "",
-  //     scoreWordorder: 0,
-  //     scoreGrammar: 0,
-  //     scoreVocabulary: 0,
-  //     scoreSpelling: 0,
-  //     scoreComprehensibility: 0,
-  //     scoreNoun: 0,
-  //     scoreArticle: 0,
-  //     timeSpentMs: 0,
-  //     wordCount: userInput.split(" ").length,
-  //     charCount: userInput.length,
-  //     userRollingAccuracy: 0,
-  //     userAvgScore: 0,
-  //     wasHintUsed: null,
-  //     answerCorrect: null,
-  //   }),
-  // });
-  // if (!createRes.ok) throw new Error("In <DutchLanguage_AIEvaluator> Failed to create DB entry");
-  // const dbRecord = await createRes.json();
-  // const savedId = dbRecord.id;
-
-const createRes = await OAuth2APIClient.post(
-  apiBase,
+const createRes = await OAuth2APIClient.post(apiBase,
   {
     userId,
     originComponent,
@@ -133,24 +96,11 @@ Do NOT wrap in markdown.
 Do NOT include code fences.
 `;
 
-  // -------------------------------------------------------
-  // 3. AI Request
-  // -------------------------------------------------------
-  // const aiRes = await OAuth2APIClient.get(aiEndpoint, {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify({ question: prompt }),
-  // });
-
-  // const aiData = await aiRes.json();
-  // let aiText = aiData.answer || aiData.response || JSON.stringify(aiData);
-
-  const aiRes = await OAuth2APIClient.post(
+  const aiRes = await OAuth2APIClient.post
+(
   aiEndpoint,
   { question: prompt },
-  {
-    headers: { "Content-Type": "application/json" },
-  }
+  { headers: { "Content-Type": "application/json"},}
 );
 
 const aiData = aiRes.data;
@@ -213,25 +163,10 @@ try {
     charCount: userInput.length,
   };
 
-  // const updateRes = await OAuth2APIClient.get(`${apiBase}/${savedId}`, {
-  //   method: "PUT",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify(updatePayload),
-  // });
-
-  // if (!updateRes.ok) {
-  //   console.error(await updateRes.text());
-  //   throw new Error("Failed to update DB with AI results");
-  // }
-
-  // const updated = await updateRes.json();
-
-
 let updated;
 
 try {
-  const updateRes = await OAuth2APIClient.put(
-    `${apiBase}/${savedId}`,
+  const updateRes = await OAuth2APIClient.put(`${apiBase}/${savedId}`,
     updatePayload,
     {
       headers: { "Content-Type": "application/json" },

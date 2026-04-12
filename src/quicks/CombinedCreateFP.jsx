@@ -497,7 +497,6 @@ export default function CombinedCreateFP() {
       {open === "oauth" && <Card><BearerToken /></Card>}
       {open === "ws" && <Card><WebSocketComponent /></Card>}
       {open === "search" && <Card><DBSearchComponentBanner /></Card>}
-      <div>.</div>
       <ConsoleFrame />
     </div>
   );
