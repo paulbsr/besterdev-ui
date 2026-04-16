@@ -2,6 +2,8 @@ import { useState, useEffect, React } from 'react'
 import { Stack } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 import OAuth2APIClient from '../oauth2/OAuth2APIClient';
+import '../Fonts.css'
+
 
 export default function CyclopediaTicker(props) {
   const [ fourtyRandomRecords, setFourtyRandomRecords] = useState([]);
@@ -26,6 +28,7 @@ export default function CyclopediaTicker(props) {
   return (
     <>
       {fourtyRandomRecords.length > 0 ? (
+        <div className="ticker-container">
         <marquee scrollamount="5">
           <Stack direction="row">
             {fourtyRandomRecords.map((ticker) => (
@@ -37,6 +40,7 @@ export default function CyclopediaTicker(props) {
             ))}
           </Stack>
         </marquee>
+        </div>
       ) 
       : 
       (

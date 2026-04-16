@@ -541,7 +541,7 @@
     width: 100%;
   }
 
-  .ticker {
+  /* .ticker {
     color: #ee0b0b;
     padding-left: 25px;
     padding-right: 25px;
@@ -552,7 +552,7 @@
     font-weight: normal;
     text-align: right;
     vertical-align: top;
-}
+} */
 
 .marquee-container {
     width: 100%;
@@ -674,4 +674,38 @@
 .custom-datepicker-input:focus {
   outline: none;
   border-color: #61dafb;
+}
+
+.ticker {
+  margin-right: 16px;
+  padding: 6px 14px;
+  background: linear-gradient(180deg, #ffffff, #f3f6fa);
+  border-radius: 999px;
+  box-shadow: 
+    0 2px 4px rgba(0,0,0,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ticker:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 14px rgba(0,0,0,0.18);
+}
+
+.ticker {
+  margin-right: 16px;
+  padding: 6px 14px;
+  background: linear-gradient(180deg, #ffffff, #f3f6fa);
+  border-radius: 999px;
+  box-shadow: 
+    0 2px 4px rgba(0,0,0,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ticker:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 14px rgba(0,0,0,0.18);
 }

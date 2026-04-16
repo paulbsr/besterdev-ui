@@ -2,6 +2,8 @@ import { useState, useEffect, React } from 'react';
 import { Stack } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 import OAuth2APIClient from '../oauth2/OAuth2APIClient';
+import '../Fonts.css'
+
 
 export default function DutchLanguageTicker() {
   const [sentences, setSentences] = useState([]);
@@ -60,15 +62,15 @@ export default function DutchLanguageTicker() {
       {sentences.length > 0 ? (
         <marquee scrollamount="5">
           <Stack direction="row">
-            {sentences.map((sentence, idx) => (
-              <div className="ticker" key={idx}>
+            {sentences.map((sentence) => (
+              <div className="ticker">
                 <span
                   style={{
                     fontFamily: "Segoe UI",
                     fontSize: "18px",
                     fontStyle: "italic",
                     color: "#FF4F00",
-                    cursor: "default",
+                    cursor: "pointer",
                   }}
                 >
                   {sentence}
