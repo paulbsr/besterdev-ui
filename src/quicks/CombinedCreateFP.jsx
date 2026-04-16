@@ -96,7 +96,7 @@ export default function CombinedCreateFP() {
 
   /* ---------------- Cyclopedia ---------------- */
 
-  const { setRefreshCyclopediarootdata } = useCyclopediaApi();
+  // const { setRefreshCyclopediarootdata } = useCyclopediaApi();
 
   const [cyclopedia, setCyclopedia] = useState({
     name: "",
@@ -119,9 +119,9 @@ export default function CombinedCreateFP() {
 
       toast.success("Cyclopedia entry saved");
       setCyclopedia({ name: "", desc: "", url: "" });
-      setRefreshCyclopediarootdata((v) => !v);
+      // setRefreshCyclopediarootdata((v) => !v);
     } catch (err) {
-      console.error(err);
+      console.error('In <CombinedCreateFP> is jou Cyclopedia onSubmit error:', err);
       toast.error("Failed to save cyclopedia entry");
     }
   };
