@@ -5,6 +5,7 @@
 }
 
 .homepage-top,
+
 .homepage-main {
   display: grid;
   grid-template-columns: 25% 50% 25%;
@@ -16,10 +17,6 @@
   border-radius: 8px;
   box-shadow: 10px 10px 10px rgba(0,0,0,0.2);
 }
-
-
-
-
 
 .Font-Spacer-White {
     font-family: "Verdana";
@@ -57,13 +54,6 @@
     font-weight: bold;
     color: #336791;
 }
-
-/* .Font-Verdana-Medium-Postgres {
-    font-family: "Verdana";
-    font-size: medium;
-    font-weight: bold;
-    color: #336791;
-} */
 
 .Font-Verdana-Medium-Italic-Rusty {
     font-family: "Verdana";
@@ -232,8 +222,6 @@
     color: #0c0c0c;
     cursor: pointer;
 }
-
-
 
 .Font-Segoe-Large-FP {
     font-family: "Segoe UI";
@@ -662,8 +650,6 @@
   margin-right: 10px;
   margin-top: 10px;
   padding: 4px 8px;
-
-  /* border: 1px solid #555; */
   border: 1px solid #336791;
   border-radius: 6px;
   background-color: #FFFFFF;
@@ -678,7 +664,9 @@
 
 .ticker {
   margin-right: 16px;
-  padding: 6px 14px;
+  margin-top: 5px;
+  margin-bottom: 2px;
+  padding: 2px 14px;
   background: linear-gradient(180deg, #ffffff, #f3f6fa);
   border-radius: 999px;
   box-shadow: 
@@ -688,24 +676,7 @@
 }
 
 .ticker:hover {
-  transform: translateY(-2px);
-  box-shadow: 
-    0 6px 14px rgba(0,0,0,0.18);
-}
-
-.ticker {
-  margin-right: 16px;
-  padding: 6px 14px;
-  background: linear-gradient(180deg, #ffffff, #f3f6fa);
-  border-radius: 999px;
-  box-shadow: 
-    0 2px 4px rgba(0,0,0,0.12),
-    inset 0 1px 0 rgba(255,255,255,0.6);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.ticker:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: 
     0 6px 14px rgba(0,0,0,0.18);
 }
