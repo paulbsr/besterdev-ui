@@ -13,25 +13,27 @@ export default function BreakingNews() {
   const shuffledNews = [...breakingnews].sort(() => Math.random() - 0.5);
   console.log('breakingnews length:', breakingnews?.length);
   return (
-    <div className="ticker">
+    <div>
       <marquee scrollamount="6">
         <Stack direction="row" spacing={2}>
           {shuffledNews.map((news) => (
-            <a
-              key={news.news_url}
-              href={news.news_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                fontFamily: 'Segoe UI',
-                fontSize: 'medium',
-                color: '#336791',
-                textDecoration: 'none',
-              }}
-            >
-              {news.news_source}:{' '}
-              <i style={{ color: '#D5441C' }}>{news.news_title}</i>
-            </a>
+            <div className="ticker" key={news.news_url}>
+              <a
+                href={news.news_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily: 'Segoe UI',
+                  fontSize: 'medium',
+                  color: '#336791',
+                  textDecoration: 'none',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {news.news_source}:{' '}
+                <i style={{ color: '#D5441C' }}>{news.news_title}</i>
+              </a>
+            </div>
           ))}
         </Stack>
       </marquee>
