@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import '../Fonts.css';
 import 'react-tooltip/dist/react-tooltip.css';
 import { useBreakingNewsApi } from '../breakingnews/BreakingNewsApiContext';
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
+import ConsoleFrame from '../consolelogs/ConsoleFrame';
 
 import {
   FaReact,
@@ -39,10 +41,6 @@ import { BsPatchQuestion, BsPeopleFill } from 'react-icons/bs';
 import { MdManageAccounts, MdTask } from 'react-icons/md';
 import { IoHome } from 'react-icons/io5';
 import { FaAws } from 'react-icons/fa6';
-
-import OAuth2APIClient from '../oauth2/OAuth2APIClient';
-import ConsoleFrame from '../consolelogs/ConsoleFrame';
-
 
 
 const iconStyle = (color, size) => ({
@@ -149,7 +147,7 @@ const { refreshBreakingNews } = useBreakingNewsApi();
         gap: '15px',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>&nbsp;&nbsp;
         <GiRapidshareArrow style={iconStyle('#336791', 28)} />
         <span style={{ fontFamily: 'Segoe UI', color: '#336791' }}>
           Breaking News is about:
@@ -189,12 +187,12 @@ const { refreshBreakingNews } = useBreakingNewsApi();
             }}
             title="Click to edit"
           >
-            {searchPhrase}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {searchPhrase}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </i>
         )}
       </div>
 
-      {internalLinks.map(({ tooltip, icon, path }, idx) => (
+      {/* {internalLinks.map(({ tooltip, icon, path }, idx) => (
         <a
           key={idx}
           data-tooltip-id="insert"
@@ -205,9 +203,25 @@ const { refreshBreakingNews } = useBreakingNewsApi();
         >
           {icon}
         </a>
-      ))}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      ))} */}
 
-      {externalLinks.map(({ tooltip, icon, href }, idx) => (
+      {internalLinks.map(({ tooltip, icon, path }, idx) => (
+  <div
+    key={idx}
+    className="icon-pill"
+    data-tooltip-id="insert"
+    data-tooltip-content={tooltip}
+    onClick={() => navigate(path)}
+    role="button"
+    tabIndex={0}
+  >
+    {icon}
+  </div>
+))}
+      
+      
+
+      {/* {externalLinks.map(({ tooltip, icon, href }, idx) => (
         <a
           key={idx}
           data-tooltip-id="insert"
@@ -218,7 +232,21 @@ const { refreshBreakingNews } = useBreakingNewsApi();
         >
           {icon}
         </a>
-      ))}
+      ))} */}
+
+      {externalLinks.map(({ tooltip, icon, href }, idx) => (
+  <a
+    key={idx}
+    className="icon-pill"
+    data-tooltip-id="insert"
+    data-tooltip-content={tooltip}
+    href={href}
+    target="_blank"
+    rel="noreferrer"
+  >
+    {icon}
+  </a>
+))}
     </div>
   );
 };
