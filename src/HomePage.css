@@ -1,3 +1,48 @@
+/* ================================
+   THEME TOKENS
+================================ */
+
+:root {
+  --bg-page: #f4f6fa;
+  --bg-panel: #ffffff;
+  --bg-panel-soft: #f9fafb;
+
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+
+  --border-subtle: rgba(0,0,0,0.08);
+
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+
+  --shadow-panel: 0 6px 18px rgba(0,0,0,0.08);
+  --shadow-hero: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+/* DARK MODE */
+[data-theme="dark"] {
+  --bg-page: #0b0f19;
+  --bg-panel: #121826;
+  --bg-panel-soft: #1a2235;
+
+  --text-primary: #e5e7eb;
+  --text-secondary: #c7d2fe;
+  --text-muted: #94a3b8;
+
+  --border-subtle: rgba(255,255,255,0.08);
+
+  --accent: #60a5fa;
+  --accent-hover: #93c5fd;
+
+  /* Shadows become glow */
+  --shadow-panel: 0 0 0 1px rgba(255,255,255,0.04),
+                  0 12px 32px rgba(0,0,0,0.6);
+
+  --shadow-hero: 0 20px 50px rgba(0,0,0,0.75);
+}
+
+
 /* ---------------- ROOT ---------------- */
 
 .page-container {

@@ -1,487 +1,487 @@
-// import { useState, useEffect, React } from 'react'
-// import { Tooltip } from 'react-tooltip'
-// import './Fonts.css';
-// import 'react-dropdown/style.css';
-// import Image from './graphix/12.png' //Lady Liberty
-// import DBSearchComponent from './dbsearch/DBSearchComponent';
-// import TaskSummaryHomepage from './tasks/TaskSummaryHomepage';
-// import { useWebsiteApi } from './websites/WebSiteAPIProvider';
-// import { useHowtoApi } from './howto/HowtoAPIProvider';
-// import { useNavigate } from 'react-router-dom';
-// import AskAI from './openai/AskAI';
-// import OAuth2APIClient from './oauth2/OAuth2APIClient';
-
-// export default function HomePage22(props) {
-//   const [isExpanded, setExpanded] = useState(false);
-//   const toggleAccordion = () => { setExpanded(!isExpanded); };
-//   const [taskdata, setTaskdata] = useState([]);
-//   const [showHowtoEdit, setShowHowtoEdit] = useState(false);
-//   const [howtoIdd, setHowtoIdd] = useState(null);
-//   const { websiterootdata, loading, error } = useWebsiteApi(); //gebruik van die nuwe useContext :-)
-//   const { howtorootdata } = useHowtoApi(); //gebruik van die nuwe useContext :-)
-//   const [fourtyRandomRecords, setFourtyRandomRecords] = useState([]);
-//   const navigate = useNavigate();
-
-
-//   useEffect(() => {
-//     OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks',
-//           {
-//             caller: 'HomePage22/tasks'
-//           }
-//         )
-//       .then((response) => {
-//         const sortedtaskdata = response.data.sort((b, a) => b.taskname.localeCompare(a.taskname));
-//         setTaskdata(sortedtaskdata);
-//       })
-//       .catch((e) => console.error(e));
-//   }, [props.checkForRecords]);
-
-
-//   useEffect(() => {
-//     OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/alphabet/random',
-//           {
-//             caller: 'HomePage22/cyclopedia'
-//           })
-//       .then((response) => {
-//         const fourtyRandomRecordsAPI = response.data;
-//         setFourtyRandomRecords(fourtyRandomRecordsAPI);
-//       })
-//       .catch((e) => console.error(e));
-//   }, [props.checkForRecords]);
-
-
-//   useEffect(() => {
-//     OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/triggerwebsocketevent",
-//           {
-//             caller: 'HomePage22/websocket'
-//           })
-//       .then(() => {
-//         console.log("WebSocket event triggered.");
-//       })
-//       .catch((error) => {
-//         console.error("Failed to trigger WebSocket event:", error);
-//       });
-//   }, []);
-
-
-//   const handleLinkClick = (howtoId) => {
-//     setHowtoIdd(howtoId);
-//     setShowHowtoEdit(true);
-//   };
-
-//   if (loading) return <div>Loading...</div>;
-//   if (error) return <div>Error: {error.message}</div>;
-
-
-//   const InnerTableLeft = () => {
-//     const groupedData = {};
-//     websiterootdata.forEach((row) => {
-//       if (!groupedData[row.websiteCat]) {
-//         groupedData[row.websiteCat] = [];
-//       }
-//       groupedData[row.websiteCat].push(row);
-//     });
-
-//     const sortedCategories = Object.keys(groupedData).sort();
-
-//     // State to manage which categories are expanded
-//     const [expandedCategories, setExpandedCategories] = useState({});
-
-//     // Function to toggle category expansion
-//     const toggleCategory = (category) => {
-//       setExpandedCategories(prevState => ({
-//         ...prevState,
-//         [category]: !prevState[category]
-//       }));
-//     };
-
-//     return (
-//       <div className="scrollable-container">
-//         <table className="Table-home-left">
-//           <tbody>
-//             {sortedCategories
-//               .filter(
-//                 category =>
-//                   category !== "HOWTO :: CMM -> 2-Quality Engineering (QE)" &&
-//                   category !== "HOWTO :: CMM -> 1-Site Reliability Engineering​ (SRE)" &&
-//                   category !== "HOWTO :: CMM -> 3-Observability (OBS)" &&
-//                   category !== "HOWTO :: CMM -> 4-Chaos Engineering (CE)"
-//               )
-//               .map((category) => (
-//                 <>
-//                   <tr key={category}>
-//                     <th
-//                       // colSpan="2"
-//                       style={{ textAlign: 'right', borderBottom: '1px solid #ddd', cursor: 'pointer' }}
-//                       className="Table-home-left-heading"
-//                       onClick={() => toggleCategory(category)}
-//                     >
-//                       {category.includes("HOWTO")
-//                         ? category.replace("HOWTO :: CMM ->", "").replace("HOWTO :: ", "")
-//                         : category}
-//                     </th>
-//                   </tr>
-
-//                   {/* Conditionally render the category's content based on expanded state */}
-//                   {expandedCategories[category] && groupedData[category].map((record, index) => (
-//                     <tr key={index}>
-//                       <td style={{ width: '1%', verticalAlign: 'top' }} className="Table-home-left-text">
-//                         <a href={record.websiteUrl} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.websiteDesc}>
-//                           {record.websiteName}
-//                         </a>
-//                         {/* <div>&nbsp;</div> */}
-//                       </td>
-//                     </tr>
-
-//                   ))}
-//                 </>
-//               ))}
-//           </tbody>
-//         </table>
-//       </div>
-//     );
-//   };
-
-//   const InnerTableCentre = () => {
-//     // const [selectedLetter, setSelectedLetter] = useState(null);
-
-//     // Assuming cyclopediadata is an array of objects with a property 'cyclopediaName'
-//     // const filteredData = selectedLetter ? cyclopediarootdata.filter((rowc) => rowc.cyclopediaName && rowc.cyclopediaName.startsWith(selectedLetter)) : cyclopediarootdata;
-
-//     // const firstTwentyCyclopediaRecords = filteredData.slice(0, 40);
-
-//     // const alphabet = 'A-B-C-D-E-F-G-H-I-J-K-L-M-N-O-P-Q-R-S-T-U-V-W-X-Y-Z';
-
-//     const groupedData2 = {};
-//     taskdata.forEach((row) => {
-//       if (!groupedData2[row.taskstatus]) {
-//         groupedData2[row.taskstatus] = [];
-//       }
-//       groupedData2[row.taskstatus].push(row);
-//     });
-
-//     const sortedCategories2 = Object.keys(groupedData2).sort();
-
-//     return (
-//       <>
-//         <AskAI />
-//         {/* <DBSearchComponent /> */}
-
-//         <TaskSummaryHomepage />
-
-//         <div>
-//           <div className='Font-Spacer-White'>Make this spacer white</div>
-
-//           <div className="Font-Segoe-Large-FP"></div>
-
-//           <div className='Font-Spacer-White'>Make this spacer white</div>
-
-//           <table className="Table-home-centre">
-//             <tbody>
-
-//               {fourtyRandomRecords.map((rowc, index) => (
-//                 <tr key={index}>
-//                   <td className="fphover2">
-//                     {rowc && (
-//                       <div style={{ cursor: 'pointer' }}>
-//                         <a onClick={() => navigate(`/cyclopediaedit/${rowc.cyclopediaId}`)}>
-//                           <b>{rowc.cyclopediaName}:</b>&nbsp;<i>{rowc.cyclopediaDesc}</i>
-//                         </a>
-//                         <div className='Font-Spacer-White'>Make this spacer white</div>
-//                       </div>
-//                     )}
-//                   </td>
-//                 </tr>
-//               ))}
-//             </tbody>
-//           </table>
-//         </div>
-//       </>
-//     );
-//   };
-
-
-
-
-
-//   const InnerTableRight = () => {
-//     const amazonIframes = [
-//       "https://read.amazon.co.uk/kp/card?asin=B077WWRK8B&preview=inline&linkCode=kpe&ref_=cm_sw_r_kb_dp_F3HQKNR4EF2MMXB0WS0D",
-//       "https://read.amazon.co.uk/kp/card?asin=B081Y5262X&preview=inline&linkCode=kpe&ref_=cm_sw_r_kb_dp_H757NZNCTQK525FX3349",
-//     ];
-
-//     const groupedHowtoData = {};
-//     howtorootdata.forEach((row) => {
-//       if (!groupedHowtoData[row.howto_cat]) {
-//         groupedHowtoData[row.howto_cat] = [];
-//       }
-//       groupedHowtoData[row.howto_cat].push(row);
-//     });
-
-//     const sortedHowtoCategories = Object.keys(groupedHowtoData).sort();
-
-//     return (
-//       <div>
-//         <table className="Table-home-centre">
-//           <Tooltip id="insert" />
-//           <tbody>
-//             {sortedHowtoCategories.map((category) => (
-//               <>
-//                 &nbsp;
-//                 <tr key={category}>
-//                   <th colSpan="2" style={{ textAlign: 'left', borderBottom: '1px solid #ddd' }} className="Table-home-right-heading">
-//                     {category}
-//                   </th>
-//                 </tr>
-//                 {groupedHowtoData[category].map((record, index) => (
-//                   <tr key={index}>
-//                     <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-right-text">
-//                       <a href={`/howtoedit/${record.howto_id}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.howto_summary}>
-//                         {record.howto_name}
-//                       </a>
-//                     </td>
-//                   </tr>
-//                 ))}
-//               </>
-//             ))}
-
-//             <div>&nbsp;</div>
-//             <div>&nbsp;</div>
-//             <div>&nbsp;</div>
-//             {howtorootdata.length > 0 && (
-//               <tr>
-//                 <td>
-//                   {amazonIframes.map((iframeUrl, iframeIndex) => (
-//                     <iframe
-//                       key={iframeIndex}
-//                       type="text/html"
-//                       sandbox="allow-scripts allow-same-origin allow-popups"
-//                       width="336"
-//                       height="550"
-//                       frameBorder="0"
-//                       allowFullScreen
-//                       style={{ maxWidth: '100%' }}
-//                       src={iframeUrl}
-//                     ></iframe>
-//                   ))}
-//                 </td>
-//               </tr>
-//             )}
-//           </tbody>
-//         </table>
-//       </div>
-//     );
-//   };
-
-//   const OuterTable = () => (
-//     <>
-//       <table style={{ width: '100%' }}>
-//         <tbody>
-//           <tr style={{ height: '20px' }}>
-//             {/* <td style={{ width: '25%' }}></td> */}
-//             <td style={{ width: '25%' }}></td>
-//             <td style={{ width: '1%' }}></td>
-//             <td style={{ width: '48%' }}><img src={Image} style={{ boxShadow: '10px 10px 10px rgba(0,0,0,0.2)', borderRadius: '8px' }} /></td>
-//             <td style={{ width: '1%' }}></td>
-//             <td style={{ width: '25%' }}></td>
-//           </tr>
-//         </tbody>
-//       </table>
-
-//       <table style={{ width: '100%' }}>
-//         <tbody>
-//           <tr style={{ height: '20px' }}>
-//             <td style={{ width: '5%' }}></td>
-//             <td style={{ width: '90%' }}></td>
-//             <td style={{ width: '5%' }}></td>
-//           </tr>
-//         </tbody>
-//       </table>
-
-//       <table>
-//         <tbody>
-//           <tr>
-//             <td style={{ width: '25%' }} className="Table-home-left"><InnerTableLeft /></td>
-//             <td style={{ width: '1%' }}></td>
-//             <td style={{ width: '48%' }} className="Table-home-centre"><InnerTableCentre /></td>
-//             <td style={{ width: '1%' }}></td>
-//             <td style={{ width: '25%' }} className="Table-home-right"><InnerTableRight /></td>
-//           </tr>
-//         </tbody>
-//       </table>
-//     </>
-//   );
-
-//   return (
-//     <div>
-//       &nbsp; &nbsp;
-//       <OuterTable />
-//       <table style={{ width: '100%' }}>
-//         <thead>
-//           <tr></tr>
-//         </thead>
-//         <tbody>
-//           <tr>
-//             <td></td>
-//           </tr>
-//         </tbody>
-//       </table>
-
-//       <table style={{ width: '100%' }}>
-//         <thead>
-//           <tr>
-//             <th style={{ width: '25%' }}></th>
-//             <th style={{ width: '1%' }}></th>
-//             <th style={{ width: '48%' }}></th>
-//             <th style={{ width: '1%' }}></th>
-//             <th style={{ width: '25%' }}></th>
-//           </tr>
-//         </thead>
-//       </table>
-//     </div>
-//   );
-// }
-
-import { useEffect, useState } from 'react';
-import { Tooltip } from 'react-tooltip';
-import { useNavigate } from 'react-router-dom';
-
-import './HomePage.css';
-import Image from './graphix/12.png';
-
-import AskAI from './openai/AskAI';
+import { useState, useEffect, React } from 'react'
+import { Tooltip } from 'react-tooltip'
+import './Fonts.css';
+import 'react-dropdown/style.css';
+import Image from './graphix/12.png' //Lady Liberty
+import DBSearchComponent from './dbsearch/DBSearchComponent';
 import TaskSummaryHomepage from './tasks/TaskSummaryHomepage';
 import { useWebsiteApi } from './websites/WebSiteAPIProvider';
 import { useHowtoApi } from './howto/HowtoAPIProvider';
+import { useNavigate } from 'react-router-dom';
+import AskAI from './openai/AskAI';
 import OAuth2APIClient from './oauth2/OAuth2APIClient';
 
 export default function HomePage22(props) {
+  const [isExpanded, setExpanded] = useState(false);
+  const toggleAccordion = () => { setExpanded(!isExpanded); };
+  const [taskdata, setTaskdata] = useState([]);
+  const [showHowtoEdit, setShowHowtoEdit] = useState(false);
+  const [howtoIdd, setHowtoIdd] = useState(null);
+  const { websiterootdata, loading, error } = useWebsiteApi(); //gebruik van die nuwe useContext :-)
+  const { howtorootdata } = useHowtoApi(); //gebruik van die nuwe useContext :-)
+  const [fourtyRandomRecords, setFourtyRandomRecords] = useState([]);
   const navigate = useNavigate();
 
-  const { websiterootdata, loading, error } = useWebsiteApi();
-  const { howtorootdata } = useHowtoApi();
-
-  const [taskdata, setTaskdata] = useState([]);
-  const [randomCyclopedia, setRandomCyclopedia] = useState([]);
-
-  /* ---------------- DATA ---------------- */
 
   useEffect(() => {
-    OAuth2APIClient.get('/api/v1/tasks', { caller: 'HomePage22/tasks' })
-      .then(r => setTaskdata(r.data))
-      .catch(console.error);
+    OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks',
+      {
+        caller: 'HomePage22/tasks'
+      }
+    )
+      .then((response) => {
+        const sortedtaskdata = response.data.sort((b, a) => b.taskname.localeCompare(a.taskname));
+        setTaskdata(sortedtaskdata);
+      })
+      .catch((e) => console.error(e));
   }, [props.checkForRecords]);
+
 
   useEffect(() => {
-    OAuth2APIClient.get('/api/v1/cyclopedia/alphabet/random', { caller: 'HomePage22/cyclopedia' })
-      .then(r => setRandomCyclopedia(r.data))
-      .catch(console.error);
+    OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/alphabet/random',
+      {
+        caller: 'HomePage22/cyclopedia'
+      })
+      .then((response) => {
+        const fourtyRandomRecordsAPI = response.data;
+        setFourtyRandomRecords(fourtyRandomRecordsAPI);
+      })
+      .catch((e) => console.error(e));
   }, [props.checkForRecords]);
 
-  if (loading) return <div className="page-container">Loading…</div>;
-  if (error) return <div className="page-container">Error: {error.message}</div>;
 
-  /* ---------------- GROUPING ---------------- */
+  useEffect(() => {
+    OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/triggerwebsocketevent",
+      {
+        caller: 'HomePage22/websocket'
+      })
+      .then(() => {
+        console.log("WebSocket event triggered.");
+      })
+      .catch((error) => {
+        console.error("Failed to trigger WebSocket event:", error);
+      });
+  }, []);
 
-  const websitesByCategory = websiterootdata.reduce((acc, r) => {
-    acc[r.websiteCat] ??= [];
-    acc[r.websiteCat].push(r);
-    return acc;
-  }, {});
 
-  const howtosByCategory = howtorootdata.reduce((acc, r) => {
-    acc[r.howto_cat] ??= [];
-    acc[r.howto_cat].push(r);
-    return acc;
-  }, {});
+  const handleLinkClick = (howtoId) => {
+    setHowtoIdd(howtoId);
+    setShowHowtoEdit(true);
+  };
 
-  /* ---------------- RENDER ---------------- */
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
+
+  const InnerTableLeft = () => {
+    const groupedData = {};
+    websiterootdata.forEach((row) => {
+      if (!groupedData[row.websiteCat]) {
+        groupedData[row.websiteCat] = [];
+      }
+      groupedData[row.websiteCat].push(row);
+    });
+
+    const sortedCategories = Object.keys(groupedData).sort();
+
+    // State to manage which categories are expanded
+    const [expandedCategories, setExpandedCategories] = useState({});
+
+    // Function to toggle category expansion
+    const toggleCategory = (category) => {
+      setExpandedCategories(prevState => ({
+        ...prevState,
+        [category]: !prevState[category]
+      }));
+    };
+
+    return (
+      <div className="scrollable-container">
+        <table className="Table-home-left">
+          <tbody>
+            {sortedCategories
+              .filter(
+                category =>
+                  category !== "HOWTO :: CMM -> 2-Quality Engineering (QE)" &&
+                  category !== "HOWTO :: CMM -> 1-Site Reliability Engineering​ (SRE)" &&
+                  category !== "HOWTO :: CMM -> 3-Observability (OBS)" &&
+                  category !== "HOWTO :: CMM -> 4-Chaos Engineering (CE)"
+              )
+              .map((category) => (
+                <>
+                  <tr key={category}>
+                    <th
+                      // colSpan="2"
+                      style={{ textAlign: 'right', borderBottom: '1px solid #ddd', cursor: 'pointer' }}
+                      className="Table-home-left-heading"
+                      onClick={() => toggleCategory(category)}
+                    >
+                      {category.includes("HOWTO")
+                        ? category.replace("HOWTO :: CMM ->", "").replace("HOWTO :: ", "")
+                        : category}
+                    </th>
+                  </tr>
+
+                  {/* Conditionally render the category's content based on expanded state */}
+                  {expandedCategories[category] && groupedData[category].map((record, index) => (
+                    <tr key={index}>
+                      <td style={{ width: '1%', verticalAlign: 'top' }} className="Table-home-left-text">
+                        <a href={record.websiteUrl} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.websiteDesc}>
+                          {record.websiteName}
+                        </a>
+                        {/* <div>&nbsp;</div> */}
+                      </td>
+                    </tr>
+
+                  ))}
+                </>
+              ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  };
+
+  const InnerTableCentre = () => {
+    // const [selectedLetter, setSelectedLetter] = useState(null);
+
+    // Assuming cyclopediadata is an array of objects with a property 'cyclopediaName'
+    // const filteredData = selectedLetter ? cyclopediarootdata.filter((rowc) => rowc.cyclopediaName && rowc.cyclopediaName.startsWith(selectedLetter)) : cyclopediarootdata;
+
+    // const firstTwentyCyclopediaRecords = filteredData.slice(0, 40);
+
+    // const alphabet = 'A-B-C-D-E-F-G-H-I-J-K-L-M-N-O-P-Q-R-S-T-U-V-W-X-Y-Z';
+
+    const groupedData2 = {};
+    taskdata.forEach((row) => {
+      if (!groupedData2[row.taskstatus]) {
+        groupedData2[row.taskstatus] = [];
+      }
+      groupedData2[row.taskstatus].push(row);
+    });
+
+    const sortedCategories2 = Object.keys(groupedData2).sort();
+
+    return (
+      <>
+        <AskAI />
+        {/* <DBSearchComponent /> */}
+
+        <TaskSummaryHomepage />
+
+        <div>
+          <div className='Font-Spacer-White'>Make this spacer white</div>
+
+          <div className="Font-Segoe-Large-FP"></div>
+
+          <div className='Font-Spacer-White'>Make this spacer white</div>
+
+          <table className="Table-home-centre">
+            <tbody>
+
+              {fourtyRandomRecords.map((rowc, index) => (
+                <tr key={index}>
+                  <td className="fphover2">
+                    {rowc && (
+                      <div style={{ cursor: 'pointer' }}>
+                        <a onClick={() => navigate(`/cyclopediaedit/${rowc.cyclopediaId}`)}>
+                          <b>{rowc.cyclopediaName}:</b>&nbsp;<i>{rowc.cyclopediaDesc}</i>
+                        </a>
+                        <div className='Font-Spacer-White'>Make this spacer white</div>
+                      </div>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </>
+    );
+  };
+
+
+
+
+
+  const InnerTableRight = () => {
+    const amazonIframes = [
+      "https://read.amazon.co.uk/kp/card?asin=B077WWRK8B&preview=inline&linkCode=kpe&ref_=cm_sw_r_kb_dp_F3HQKNR4EF2MMXB0WS0D",
+      "https://read.amazon.co.uk/kp/card?asin=B081Y5262X&preview=inline&linkCode=kpe&ref_=cm_sw_r_kb_dp_H757NZNCTQK525FX3349",
+    ];
+
+    const groupedHowtoData = {};
+    howtorootdata.forEach((row) => {
+      if (!groupedHowtoData[row.howto_cat]) {
+        groupedHowtoData[row.howto_cat] = [];
+      }
+      groupedHowtoData[row.howto_cat].push(row);
+    });
+
+    const sortedHowtoCategories = Object.keys(groupedHowtoData).sort();
+
+    return (
+      <div>
+        <table className="Table-home-centre">
+          <Tooltip id="insert" />
+          <tbody>
+            {sortedHowtoCategories.map((category) => (
+              <>
+                &nbsp;
+                <tr key={category}>
+                  <th colSpan="2" style={{ textAlign: 'left', borderBottom: '1px solid #ddd' }} className="Table-home-right-heading">
+                    {category}
+                  </th>
+                </tr>
+                {groupedHowtoData[category].map((record, index) => (
+                  <tr key={index}>
+                    <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-right-text">
+                      <a href={`/howtoedit/${record.howto_id}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.howto_summary}>
+                        {record.howto_name}
+                      </a>
+                    </td>
+                  </tr>
+                ))}
+              </>
+            ))}
+
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            {howtorootdata.length > 0 && (
+              <tr>
+                <td>
+                  {amazonIframes.map((iframeUrl, iframeIndex) => (
+                    <iframe
+                      key={iframeIndex}
+                      type="text/html"
+                      sandbox="allow-scripts allow-same-origin allow-popups"
+                      width="336"
+                      height="550"
+                      frameBorder="0"
+                      allowFullScreen
+                      style={{ maxWidth: '100%' }}
+                      src={iframeUrl}
+                    ></iframe>
+                  ))}
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+    );
+  };
+
+  const OuterTable = () => (
+    <>
+      <table style={{ width: '100%' }}>
+        <tbody>
+          <tr style={{ height: '20px' }}>
+            {/* <td style={{ width: '25%' }}></td> */}
+            <td style={{ width: '25%' }}></td>
+            <td style={{ width: '1%' }}></td>
+            <td style={{ width: '48%' }}><img src={Image} style={{ boxShadow: '10px 10px 10px rgba(0,0,0,0.2)', borderRadius: '8px' }} /></td>
+            <td style={{ width: '1%' }}></td>
+            <td style={{ width: '25%' }}></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table style={{ width: '100%' }}>
+        <tbody>
+          <tr style={{ height: '20px' }}>
+            <td style={{ width: '5%' }}></td>
+            <td style={{ width: '90%' }}></td>
+            <td style={{ width: '5%' }}></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table>
+        <tbody>
+          <tr>
+            <td style={{ width: '25%' }} className="Table-home-left"><InnerTableLeft /></td>
+            <td style={{ width: '1%' }}></td>
+            <td style={{ width: '48%' }} className="Table-home-centre"><InnerTableCentre /></td>
+            <td style={{ width: '1%' }}></td>
+            <td style={{ width: '25%' }} className="Table-home-right"><InnerTableRight /></td>
+          </tr>
+        </tbody>
+      </table>
+    </>
+  );
 
   return (
-    <div className="page-container">
-      <Tooltip id="insert" />
+    <div>
+      &nbsp; &nbsp;
+      <OuterTable />
+      <table style={{ width: '100%' }}>
+        <thead>
+          <tr></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
 
-      {/* HERO */}
-      <section className="hero">
-        <img src={Image} alt="Hero" />
-      </section>
-
-      {/* MAIN GRID */}
-      <section className="home-grid">
-
-        {/* LEFT */}
-        <aside className="panel left-panel">
-          <h3 className="panel-title">Resources</h3>
-
-          {Object.keys(websitesByCategory)
-            .sort()
-            .map(cat => (
-              <details key={cat}>
-                <summary>{cat.replace('HOWTO ::', '').trim()}</summary>
-                <ul>
-                  {websitesByCategory[cat].map(w => (
-                    <li key={w.websiteUrl}>
-                      <a
-                        href={w.websiteUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        data-tooltip-id="insert"
-                        data-tooltip-content={w.websiteDesc}
-                      >
-                        {w.websiteName}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </details>
-            ))}
-        </aside>
-
-        {/* CENTRE */}
-        <main className="panel centre-panel stack">
-          <AskAI />
-
-          <TaskSummaryHomepage />
-
-          <section>
-            <h3 className="panel-title">Cyclopedia (Random)</h3>
-            <ul className="readable">
-              {randomCyclopedia.map(c => (
-                <li key={c.cyclopediaId}>
-                  <a onClick={() => navigate(`/cyclopediaedit/${c.cyclopediaId}`)}>
-                    <strong>{c.cyclopediaName}:</strong> {c.cyclopediaDesc}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </section>
-        </main>
-
-        {/* RIGHT */}
-        <aside className="panel right-panel">
-          <h3 className="panel-title">How-To</h3>
-
-          {Object.keys(howtosByCategory).sort().map(cat => (
-            <section key={cat}>
-              <h4>{cat}</h4>
-              <ul>
-                {howtosByCategory[cat].map(h => (
-                  <li key={h.howto_id}>
-                    <a
-                      href={`/howtoedit/${h.howto_id}`}
-                      data-tooltip-id="insert"
-                      data-tooltip-content={h.howto_summary}
-                    >
-                      {h.howto_name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))}
-        </aside>
-
-      </section>
+      <table style={{ width: '100%' }}>
+        <thead>
+          <tr>
+            <th style={{ width: '25%' }}></th>
+            <th style={{ width: '1%' }}></th>
+            <th style={{ width: '48%' }}></th>
+            <th style={{ width: '1%' }}></th>
+            <th style={{ width: '25%' }}></th>
+          </tr>
+        </thead>
+      </table>
     </div>
   );
 }
+
+// import { useEffect, useState } from 'react';
+// import { Tooltip } from 'react-tooltip';
+// import { useNavigate } from 'react-router-dom';
+
+// import './HomePage.css';
+// import Image from './graphix/12.png';
+
+// import AskAI from './openai/AskAI';
+// import TaskSummaryHomepage from './tasks/TaskSummaryHomepage';
+// import { useWebsiteApi } from './websites/WebSiteAPIProvider';
+// import { useHowtoApi } from './howto/HowtoAPIProvider';
+// import OAuth2APIClient from './oauth2/OAuth2APIClient';
+
+// export default function HomePage22(props) {
+//   const navigate = useNavigate();
+
+//   const { websiterootdata, loading, error } = useWebsiteApi();
+//   const { howtorootdata } = useHowtoApi();
+
+//   const [taskdata, setTaskdata] = useState([]);
+//   const [randomCyclopedia, setRandomCyclopedia] = useState([]);
+
+//   /* ---------------- DATA ---------------- */
+
+//   useEffect(() => {
+//     OAuth2APIClient.get('/api/v1/tasks', { caller: 'HomePage22/tasks' })
+//       .then(r => setTaskdata(r.data))
+//       .catch(console.error);
+//   }, [props.checkForRecords]);
+
+//   useEffect(() => {
+//     OAuth2APIClient.get('/api/v1/cyclopedia/alphabet/random', { caller: 'HomePage22/cyclopedia' })
+//       .then(r => setRandomCyclopedia(r.data))
+//       .catch(console.error);
+//   }, [props.checkForRecords]);
+
+//   if (loading) return <div className="page-container">Loading…</div>;
+//   if (error) return <div className="page-container">Error: {error.message}</div>;
+
+//   /* ---------------- GROUPING ---------------- */
+
+//   const websitesByCategory = websiterootdata.reduce((acc, r) => {
+//     acc[r.websiteCat] ??= [];
+//     acc[r.websiteCat].push(r);
+//     return acc;
+//   }, {});
+
+//   const howtosByCategory = howtorootdata.reduce((acc, r) => {
+//     acc[r.howto_cat] ??= [];
+//     acc[r.howto_cat].push(r);
+//     return acc;
+//   }, {});
+
+//   /* ---------------- RENDER ---------------- */
+
+//   return (
+//     <div className="page-container">
+//       <Tooltip id="insert" />
+
+//       {/* HERO */}
+//       <section className="hero">
+//         <img src={Image} alt="Hero" />
+//       </section>
+
+//       {/* MAIN GRID */}
+//       <section className="home-grid">
+
+//         {/* LEFT */}
+//         <aside className="panel left-panel">
+//           <h3 className="panel-title">Resources</h3>
+
+//           {Object.keys(websitesByCategory)
+//             .sort()
+//             .map(cat => (
+//               <details key={cat}>
+//                 <summary>{cat.replace('HOWTO ::', '').trim()}</summary>
+//                 <ul>
+//                   {websitesByCategory[cat].map(w => (
+//                     <li key={w.websiteUrl}>
+//                       <a
+//                         href={w.websiteUrl}
+//                         target="_blank"
+//                         rel="noopener noreferrer"
+//                         data-tooltip-id="insert"
+//                         data-tooltip-content={w.websiteDesc}
+//                       >
+//                         {w.websiteName}
+//                       </a>
+//                     </li>
+//                   ))}
+//                 </ul>
+//               </details>
+//             ))}
+//         </aside>
+
+//         {/* CENTRE */}
+//         <main className="panel centre-panel stack">
+//           <AskAI />
+
+//           <TaskSummaryHomepage />
+
+//           <section>
+//             <h3 className="panel-title">Cyclopedia (Random)</h3>
+//             <ul className="readable">
+//               {randomCyclopedia.map(c => (
+//                 <li key={c.cyclopediaId}>
+//                   <a onClick={() => navigate(`/cyclopediaedit/${c.cyclopediaId}`)}>
+//                     <strong>{c.cyclopediaName}:</strong> {c.cyclopediaDesc}
+//                   </a>
+//                 </li>
+//               ))}
+//             </ul>
+//           </section>
+//         </main>
+
+//         {/* RIGHT */}
+//         <aside className="panel right-panel">
+//           <h3 className="panel-title">How-To</h3>
+
+//           {Object.keys(howtosByCategory).sort().map(cat => (
+//             <section key={cat}>
+//               <h4>{cat}</h4>
+//               <ul>
+//                 {howtosByCategory[cat].map(h => (
+//                   <li key={h.howto_id}>
+//                     <a
+//                       href={`/howtoedit/${h.howto_id}`}
+//                       data-tooltip-id="insert"
+//                       data-tooltip-content={h.howto_summary}
+//                     >
+//                       {h.howto_name}
+//                     </a>
+//                   </li>
+//                 ))}
+//               </ul>
+//             </section>
+//           ))}
+//         </aside>
+
+//       </section>
+//     </div>
+//   );
+// }
