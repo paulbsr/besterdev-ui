@@ -25,10 +25,10 @@ export default function HomePage22(props) {
 
   useEffect(() => {
     OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks',
-      {
-        caller: 'HomePage22/tasks'
-      }
-    )
+          {
+            caller: 'HomePage22/tasks'
+          }
+        )
       .then((response) => {
         const sortedtaskdata = response.data.sort((b, a) => b.taskname.localeCompare(a.taskname));
         setTaskdata(sortedtaskdata);
@@ -39,9 +39,9 @@ export default function HomePage22(props) {
 
   useEffect(() => {
     OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/alphabet/random',
-      {
-        caller: 'HomePage22/cyclopedia'
-      })
+          {
+            caller: 'HomePage22/cyclopedia'
+          })
       .then((response) => {
         const fourtyRandomRecordsAPI = response.data;
         setFourtyRandomRecords(fourtyRandomRecordsAPI);
@@ -52,9 +52,9 @@ export default function HomePage22(props) {
 
   useEffect(() => {
     OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/triggerwebsocketevent",
-      {
-        caller: 'HomePage22/websocket'
-      })
+          {
+            caller: 'HomePage22/websocket'
+          })
       .then(() => {
         console.log("WebSocket event triggered.");
       })
@@ -341,6 +341,13 @@ export default function HomePage22(props) {
     </div>
   );
 }
+
+
+
+
+
+
+
 
 // import { useEffect, useState } from 'react';
 // import { Tooltip } from 'react-tooltip';
