@@ -228,7 +228,7 @@ export default function CombinedCreateFP() {
       style={{
         maxWidth: 1010,
         margin: "20px auto",
-        padding: 10,
+        padding: 18,
         background: "#f7f7f7",
         borderRadius: 8,
         boxShadow: "10px 10px 10px rgba(0,0,0,0.2)",
@@ -242,43 +242,59 @@ export default function CombinedCreateFP() {
           justifyContent: "center",
         }}
       >
+        <div className="tickerfp">
+          <SectionButton
+            icon={GiGiftOfKnowledge}
+            label="Cyclopedia"
+            active={open === "cyclopedia"}
+            onClick={() => toggle("cyclopedia")}
+          />
+        </div>
 
-        <SectionButton
-          icon={GiGiftOfKnowledge}
-          label="Cyclopedia"
-          active={open === "cyclopedia"}
-          onClick={() => toggle("cyclopedia")}
-        />
-        <SectionButton
-          icon={GiSpiderWeb}
-          label="Web Resource"
-          active={open === "website"}
-          onClick={() => toggle("website")}
-        />
-        <SectionButton
-          icon={MdTask}
-          label="Task"
-          active={open === "task"}
-          onClick={() => toggle("task")}
-        />
-        <SectionButton
-          icon={TbBrandOauth}
-          label="OAuth2.0"
-          active={open === "oauth"}
-          onClick={() => toggle("oauth")}
-        />
-        <SectionButton
-          icon={TbBrandSocketIo}
-          label="WebSocket"
-          active={open === "ws"}
-          onClick={() => toggle("ws")}
-        />
-        <SectionButton
-          icon={BsSearch}
-          label="Search"
-          active={open === "search"}
-          onClick={() => toggle("search")}
-        />
+        <div className="tickerfp">
+          <SectionButton
+            icon={GiSpiderWeb}
+            label="Web Resource"
+            active={open === "website"}
+            onClick={() => toggle("website")}
+          />
+        </div>
+
+        <div className="tickerfp">
+          <SectionButton
+            icon={MdTask}
+            label="Task"
+            active={open === "task"}
+            onClick={() => toggle("task")}
+          />
+        </div>
+
+        <div className="tickerfp">
+          <SectionButton
+            icon={TbBrandOauth}
+            label="OAuth2.0"
+            active={open === "oauth"}
+            onClick={() => toggle("oauth")}
+          />
+        </div>
+
+        <div className="tickerfp">
+          <SectionButton
+            icon={TbBrandSocketIo}
+            label="WebSocket"
+            active={open === "ws"}
+            onClick={() => toggle("ws")}
+          />
+        </div>
+
+        <div className="tickerfp">
+          <SectionButton
+            icon={BsSearch}
+            label="Search"
+            active={open === "search"}
+            onClick={() => toggle("search")}
+          />
+        </div>
 
         {/* <DBSearchComponentBanner /> */}
       </div>
