@@ -10,7 +10,7 @@ import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import TaskOverview from '../tasks/TaskOverview';
 import { TaskContext } from "../Contexts";
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
-import DutchLanguageTicker from '../dutchlanguage/DutchLanguageTicker';
+import DutchLanguage_Ticker from '../dutchlanguage/DutchLanguage_Ticker';
 import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
 export default function PageTaskManage() {
@@ -41,7 +41,7 @@ export default function PageTaskManage() {
       <GradientLineThin />
       <CyclopediaTicker />
       <GradientLineThin />
-      <DutchLanguageTicker />
+      <DutchLanguage_Ticker />
       <GradientLineThin />
       <CombinedCreateFP />
       <TaskContext.Provider value={tasks}>

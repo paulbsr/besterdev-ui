@@ -8,7 +8,7 @@ import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import TaskEdit from '../tasks/TaskEdit';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
-import DutchLanguageTicker from '../dutchlanguage/DutchLanguageTicker';
+import DutchLanguage_Ticker from '../dutchlanguage/DutchLanguage_Ticker';
 
 export default function PageTaskEdit() {
 
@@ -25,7 +25,7 @@ export default function PageTaskEdit() {
         <GradientLineThin />
         <CyclopediaTicker />
         <GradientLineThin />
-        <DutchLanguageTicker />
+        <DutchLanguage_Ticker />
         <GradientLineThin />
         <CombinedCreateFP />
         <TaskEdit task_id={task_id}/>

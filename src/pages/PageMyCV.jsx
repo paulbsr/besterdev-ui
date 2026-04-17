@@ -6,7 +6,7 @@ import MyCV from '../MyCV/MyCV';
 import MyCV_BannerLight from '../MyCV/MyCV_BannerLight';
 import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
-import DutchLanguageTicker from '../dutchlanguage/DutchLanguageTicker';
+import DutchLanguage_Ticker from '../dutchlanguage/DutchLanguage_Ticker';
 
 export default function PageMyCV() {
     return (
@@ -19,7 +19,7 @@ export default function PageMyCV() {
         <GradientLineThin />
         <CyclopediaTicker />
         <GradientLineThin />
-        <DutchLanguageTicker />
+        <DutchLanguage_Ticker />
         <GradientLineThin />
         <MyCV />
         <ToastComponent />

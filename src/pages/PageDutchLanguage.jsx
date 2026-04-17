@@ -6,27 +6,27 @@ import ToastComponent from '../ToastComponent';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
 import DutchLanguage_HomePage from '../dutchlanguage/DutchLanguage_HomePage';
 import Footer from '../Footer';
-import DutchLanguageTicker from "../dutchlanguage/DutchLanguageTicker";
+import DutchLanguage_Ticker from "../dutchlanguage/DutchLanguage_Ticker";
 import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 
 export default function PageDutchLanguage() {
-    return (
-      <div>
-        <BannerWhiteDutchLanguage />
-        <GradientLine />
-        <BannerLight />
-        <GradientLineThin />
-                <BreakingNews />
-      <GradientLineThin />
+  return (
+    <div>
+      <BannerWhiteDutchLanguage />
+      <GradientLine />
+      <BannerLight />
+      {/* <GradientLineThin /> */}
+      <BreakingNews />
+      {/* <GradientLineThin /> */}
       <CyclopediaTicker />
-      <GradientLineThin />
-        <DutchLanguageTicker />
-      <GradientLineThin />
+      {/* <GradientLineThin /> */}
+      <DutchLanguage_Ticker />
+      {/* <GradientLineThin /> */}
       <CombinedCreateFP />
-        <DutchLanguage_HomePage />
-        <Footer />
-        <ToastComponent />
-      </div>
-    )
-  };
+      <DutchLanguage_HomePage />
+      <Footer />
+      <ToastComponent />
+    </div>
+  )
+};

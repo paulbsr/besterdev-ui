@@ -8,7 +8,7 @@ import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import PeopleScorecard from '../people/PeopleScorecard'
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
-import DutchLanguageTicker from '../dutchlanguage/DutchLanguageTicker';
+import DutchLanguage_Ticker from '../dutchlanguage/DutchLanguage_Ticker';
 
 export default function PagePeopleScorecard(cyclopediadata) {
 
@@ -22,7 +22,7 @@ export default function PagePeopleScorecard(cyclopediadata) {
       <GradientLineThin />
       <CyclopediaTicker />
       <GradientLineThin />
-      <DutchLanguageTicker />
+      <DutchLanguage_Ticker />
       <GradientLine />
       <CombinedCreateFP />
       <PeopleScorecard />

@@ -4,7 +4,7 @@ import BannerLight from '../banners/BannerLight';
 import GradientLineThin from '../gradientlines/GradientLineThin';
 import ToastComponent from '../ToastComponent';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
-import DutchLanguageTicker from "../dutchlanguage/DutchLanguageTicker";
+import DutchLanguage_Ticker from "../dutchlanguage/DutchLanguage_Ticker";
 import DutchLanguageMijnBoek from '../dutchlanguage/mijnboek/DutchLanguage_MijnBoek';
 import Footer from '../Footer';
 
@@ -15,7 +15,7 @@ export default function PageDutchLanguageBook() {
         <GradientLine />
         <BannerLight />
         <GradientLineThin />
-        <DutchLanguageTicker />
+        <DutchLanguage_Ticker />
         <CombinedCreateFP />
         <DutchLanguageMijnBoek />
         <Footer />

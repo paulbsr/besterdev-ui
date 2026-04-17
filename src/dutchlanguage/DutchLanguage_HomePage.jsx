@@ -7,7 +7,7 @@ import DutchLanguage_Translator from "./DutchLanguage_Translator";
 import DutchLanguage_ChallengeTranslate from "./DutchLanguage_ChallengeTranslate";
 import DutchLanguage_SpellingChecker from "./DutchLanguage_SpellingChecker";
 import DutchLanguage_CompareContrast from "./DutchLanguage_CompareContrast";
-import DutchLanguageTicker from "./DutchLanguageTicker";
+import DutchLanguage_Ticker from "./DutchLanguage_Ticker";
 import DutchLanguage_SentenceWords from "./DutchLanguage_SentenceWords";
 import DutchLanguage_WordExplain from "./DutchLanguage_WordExplain";
 // import DutchLanguageWoordenschat from "./DutchLanguageWoordenschat";

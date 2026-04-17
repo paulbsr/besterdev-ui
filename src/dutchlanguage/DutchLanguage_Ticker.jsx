@@ -5,24 +5,13 @@ import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 import '../Fonts.css'
 
 
-export default function DutchLanguageTicker() {
+export default function DutchLanguage_Ticker() {
   const [sentences, setSentences] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchDutchSentences = async () => {
       try {
-        // Call your API that wraps OpenAI
-        // const res = await OAuth2APIClient.post("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
-        //   {
-        //     method: "POST",
-        //     headers: { "Content-Type": "application/json" },
-        //     body: JSON.stringify({
-        //       question:
-        //         "Act like a Dutch language high school teacher and generate 8 complex Dutch language sntences any topic. Just provide them as natural Dutch. No introductions."
-        //     }),
-        //   }
-        // );
 
         const res = await OAuth2APIClient.post("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/ask",
           {
@@ -35,11 +24,12 @@ export default function DutchLanguageTicker() {
 
         const data = res.data;
 
-        // Clean response
         let cleaned = (data.answer || "")
           .replace(/optional/i, "")
           .replace(/[\[\]]/g, "")
           .replace(/Sure!.*translations:?/i, "")
+          // 🔴 remove numbered list prefixes
+          .replace(/^\s*\d+[\.\)\-]\s*/gm, "")
           .trim();
 
         // Split into sentences (assuming they come separated by newlines or periods)
@@ -62,8 +52,8 @@ export default function DutchLanguageTicker() {
       {sentences.length > 0 ? (
         <marquee scrollamount="5">
           <Stack direction="row">
-            {sentences.map((sentence) => (
-              <div className="ticker">
+            {sentences.map((sentence, index) => (
+              <div className="ticker" key={index}>
                 <span
                   style={{
                     fontFamily: "Segoe UI",

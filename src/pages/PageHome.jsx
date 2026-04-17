@@ -8,7 +8,7 @@ import ToastComponent from '../ToastComponent';
 import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
-import DutchLanguageTicker from "../dutchlanguage/DutchLanguageTicker";
+import DutchLanguage_Ticker from "../dutchlanguage/DutchLanguage_Ticker";
 
 export default function PageHome() {
     return (
@@ -21,7 +21,7 @@ export default function PageHome() {
         <GradientLineThin />
         <CyclopediaTicker />
         <GradientLineThin />
-        <DutchLanguageTicker />
+        <DutchLanguage_Ticker />
         <GradientLineThin />
         <CombinedCreateFP />
         <HomePage22 />
