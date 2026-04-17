@@ -16,13 +16,13 @@ export default function PageDutchLanguage() {
       <BannerWhiteDutchLanguage />
       <GradientLine />
       <BannerLight />
-      {/* <GradientLineThin /> */}
+      <GradientLineThin />
       <BreakingNews />
-      {/* <GradientLineThin /> */}
+      <GradientLineThin />
       <CyclopediaTicker />
-      {/* <GradientLineThin /> */}
+      <GradientLineThin />
       <DutchLanguage_Ticker />
-      {/* <GradientLineThin /> */}
+      <GradientLineThin />
       <CombinedCreateFP />
       <DutchLanguage_HomePage />
       <Footer />

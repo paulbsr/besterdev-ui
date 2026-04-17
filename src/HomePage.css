@@ -1,0 +1,109 @@
+/* ---------------- ROOT ---------------- */
+
+.page-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* ---------------- HERO ---------------- */
+
+.hero {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.hero img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+/* ---------------- GRID ---------------- */
+
+.home-grid {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr) 320px;
+  gap: 24px;
+  align-items: start;
+}
+
+/* ---------------- PANELS ---------------- */
+
+.panel {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.panel-title {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+/* ---------------- STACK ---------------- */
+
+.stack > * + * {
+  margin-top: 20px;
+}
+
+/* ---------------- LISTS ---------------- */
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li + li {
+  margin-top: 8px;
+}
+
+/* ---------------- DETAILS ---------------- */
+
+details summary {
+  cursor: pointer;
+  font-weight: 600;
+  margin: 6px 0;
+}
+
+/* ---------------- READABILITY ---------------- */
+
+.readable {
+  max-width: 70ch;
+}
+
+/* ---------------- STICKY SIDE PANELS ---------------- */
+
+.left-panel,
+.right-panel {
+  position: sticky;
+  top: 24px;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+
+@media (max-width: 1200px) {
+  .home-grid {
+    grid-template-columns: 260px 1fr;
+  }
+
+  .right-panel {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .left-panel {
+    position: static;
+  }
+}
