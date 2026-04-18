@@ -150,7 +150,7 @@ const { refreshBreakingNews } = useBreakingNewsApi();
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>&nbsp;&nbsp;
         <GiRapidshareArrow style={iconStyle('#336791', 28)} />
         <span style={{ fontFamily: 'Segoe UI', color: '#336791' }}>
-          Breaking News is about:
+          Breaking News topic:
         </span>
 
         {isEditing ? (

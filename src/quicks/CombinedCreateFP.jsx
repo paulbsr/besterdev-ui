@@ -46,7 +46,7 @@ const SectionButton = ({ icon: Icon, label, active, onClick }) => (
       fontSize: 14,
       width: 150,
       justifyContent: "center",
-      boxShadow: '5px 5px 4px rgba(0,0,0,0.2)',
+      boxShadow: '10px 10px 5px rgba(0,0,0,0.2)',
     }}
   >
     <Icon size={18} />
@@ -230,7 +230,7 @@ export default function CombinedCreateFP() {
         margin: "20px auto",
         padding: 18,
         background: "#f7f7f7",
-        borderRadius: 8,
+        borderRadius: 12,
         boxShadow: "10px 10px 10px rgba(0,0,0,0.2)",
       }}
     >

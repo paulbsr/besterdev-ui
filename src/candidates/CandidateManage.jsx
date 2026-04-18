@@ -91,8 +91,7 @@ export default function CandidateManage() {
   const onEditSave = async () => {
     try {
       await OAuth2APIClient.put(
-        // `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/update/${editingId}`,
-                `http://localhost:8000/api/v1/candidates/update/${editingId}`,
+        `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/update/${editingId}`,
         editingCandidate
       );
       toast.success(`${editingCandidate.firstname} ${editingCandidate.lastname} updated.`);
@@ -111,10 +110,7 @@ export default function CandidateManage() {
     if (!confirmed) return;
 
     try {
-      await OAuth2APIClient.delete(
-        // `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/delete/${row.id}`
-                `http://localhost:8000/api/v1/candidates/delete/${row.id}`
-      );
+      await OAuth2APIClient.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/delete/${row.id}`);
       toast.success(`${row.firstname} ${row.lastname} has been deleted.`);
       setCheckForRecords((prev) => !prev);
     } catch (err) {
