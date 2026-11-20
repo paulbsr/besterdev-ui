@@ -70,7 +70,7 @@ function BearerToken() {
   const tokenStyle = {
     fontFamily: "Segoe UI",
     fontSize: "8pt",
-    color: "#D5441C",
+    color: "var(--home-accent, #D5441C)",
     fontStyle: "italic",
     marginLeft: "4px",
     maxWidth: "100%",

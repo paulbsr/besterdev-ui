@@ -77,7 +77,7 @@ const WebSocketComponent = () => {
           style={{
             fontFamily: "Segoe UI",
             fontSize: "12pt",
-            color: "#D5441C",
+            color: "var(--home-accent, #D5441C)",
             fontStyle: "italic",
             marginLeft: "4px",
           }}

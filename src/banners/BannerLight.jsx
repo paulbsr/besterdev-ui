@@ -44,13 +44,13 @@ import { FaAws } from 'react-icons/fa6';
 
 
 const iconStyle = (color, size) => ({
-  color,
+  color: color === '#336791' ? 'var(--home-text, #336791)' : color,
   fontSize: size,
   cursor: 'pointer',
 });
 
 const internalLinks = [
-  { tooltip: 'Home', icon: <IoHome style={iconStyle('#000', 28)} />, path: '/home' },
+  { tooltip: 'Home', icon: <IoHome style={iconStyle('var(--home-text, #000)', 28)} />, path: '/home' },
   { tooltip: 'Cyclopedia', icon: <GiGiftOfKnowledge style={iconStyle('#336791', 31)} />, path: '/cyclopediamanage' },
   { tooltip: 'Web Resources', icon: <GiSpiderWeb style={iconStyle('#336791', 30)} />, path: '/webresourcemanage' },
   { tooltip: 'HOWTOs', icon: <BsPatchQuestion style={iconStyle('#336791', 29)} />, path: '/howtomanage' },
@@ -149,7 +149,7 @@ const { refreshBreakingNews } = useBreakingNewsApi();
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>&nbsp;&nbsp;
         <GiRapidshareArrow style={iconStyle('#336791', 28)} />
-        <span style={{ fontFamily: 'Segoe UI', color: '#336791' }}>
+        <span style={{ fontFamily: 'Segoe UI', color: 'var(--home-text, #336791)' }}>
           Breaking News topic:
         </span>
 
@@ -165,7 +165,7 @@ const { refreshBreakingNews } = useBreakingNewsApi();
             style={{
               fontFamily: 'Segoe UI',
               fontSize: 'medium',
-              color: '#D5441C',
+              color: 'var(--home-accent, #D5441C)',
               border: '1.25px solid #ccc',
               borderRadius: 4,
               padding: '2px 6px',
@@ -181,7 +181,7 @@ const { refreshBreakingNews } = useBreakingNewsApi();
             }}
             style={{
               fontFamily: 'Segoe UI',
-              color: '#D5441C',
+              color: 'var(--home-accent, #D5441C)',
               cursor: 'pointer',
               // textDecoration: 'underline dotted',
             }}

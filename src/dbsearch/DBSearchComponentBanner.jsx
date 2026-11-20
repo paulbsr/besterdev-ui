@@ -81,8 +81,9 @@ const DBSearchComponentBanner = () => {
   };
 
   return (
-    <form onSubmit={handleSearch}>
+    <form className="home-db-search-form" onSubmit={handleSearch}>
       <input
+        className="home-db-search-input"
         style={{
           fontFamily: 'Segoe UI',
           height: '28.5px',
@@ -103,6 +104,7 @@ const DBSearchComponentBanner = () => {
       />
 
       <button
+        className="home-db-search-submit"
         type="submit"
         style={{
           marginLeft: '20px',
@@ -117,6 +119,7 @@ const DBSearchComponentBanner = () => {
       </button>
 
       <button
+        className="home-db-search-clear"
         type="button"
         onClick={handleCancel}
         style={{
@@ -132,7 +135,7 @@ const DBSearchComponentBanner = () => {
       </button>
 
       {searchResults.length > 0 ? (
-        <>
+        <div className="home-db-search-results">
           {searchResults.map((result) => {
             if (result.cyclopediaName) {
               return (
@@ -246,10 +249,10 @@ const DBSearchComponentBanner = () => {
             }
             return null; // Ignore other types of results
           })}
-        </>
+        </div>
       )
         :
-        noRecordsFound ? (<div>No record exists for search phase: "{searchQuery}"</div>)
+        noRecordsFound ? (<div className="home-db-search-empty">No record exists for search phase: "{searchQuery}"</div>)
           :
           null
       }

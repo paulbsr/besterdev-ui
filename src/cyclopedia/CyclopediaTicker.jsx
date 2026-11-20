@@ -33,7 +33,7 @@ export default function CyclopediaTicker(props) {
           <Stack direction="row">
             {fourtyRandomRecords.map((ticker) => (
               <div className="ticker" key={ticker.cyclopediaId}>
-                <a onClick={() => navigate(`/cyclopediaedit/${ticker.cyclopediaId}`)} style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: '#336791', textDecoration: 'none', cursor: 'pointer' }}>
+                <a onClick={() => navigate(`/cyclopediaedit/${ticker.cyclopediaId}`)} style={{ fontFamily: 'Segoe UI', fontSize: 'medium', color: 'var(--home-text, #336791)', textDecoration: 'none', cursor: 'pointer' }}>
                   <i>{ticker.cyclopediaName}</i>
                   </a>
               </div>

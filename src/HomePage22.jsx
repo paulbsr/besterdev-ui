@@ -2,39 +2,24 @@ import { useState, useEffect, React } from 'react'
 import { Tooltip } from 'react-tooltip'
 import './Fonts.css';
 import 'react-dropdown/style.css';
-import Image from './graphix/12.png' //Lady Liberty
+import KnowledgeHero from './graphix/knowledge-hero.svg';
 import DBSearchComponent from './dbsearch/DBSearchComponent';
 import TaskSummaryHomepage from './tasks/TaskSummaryHomepage';
 import { useWebsiteApi } from './websites/WebSiteAPIProvider';
 import { useHowtoApi } from './howto/HowtoAPIProvider';
 import { useNavigate } from 'react-router-dom';
-import AskAI from './openai/AskAI';
 import OAuth2APIClient from './oauth2/OAuth2APIClient';
+import './HomePage.css';
 
 export default function HomePage22(props) {
   const [isExpanded, setExpanded] = useState(false);
   const toggleAccordion = () => { setExpanded(!isExpanded); };
-  const [taskdata, setTaskdata] = useState([]);
   const [showHowtoEdit, setShowHowtoEdit] = useState(false);
   const [howtoIdd, setHowtoIdd] = useState(null);
   const { websiterootdata, loading, error } = useWebsiteApi(); //gebruik van die nuwe useContext :-)
   const { howtorootdata } = useHowtoApi(); //gebruik van die nuwe useContext :-)
   const [fourtyRandomRecords, setFourtyRandomRecords] = useState([]);
   const navigate = useNavigate();
-
-
-  useEffect(() => {
-    OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks',
-          {
-            caller: 'HomePage22/tasks'
-          }
-        )
-      .then((response) => {
-        const sortedtaskdata = response.data.sort((b, a) => b.taskname.localeCompare(a.taskname));
-        setTaskdata(sortedtaskdata);
-      })
-      .catch((e) => console.error(e));
-  }, [props.checkForRecords]);
 
 
   useEffect(() => {
@@ -143,60 +128,36 @@ export default function HomePage22(props) {
   };
 
   const InnerTableCentre = () => {
-    // const [selectedLetter, setSelectedLetter] = useState(null);
-
-    // Assuming cyclopediadata is an array of objects with a property 'cyclopediaName'
-    // const filteredData = selectedLetter ? cyclopediarootdata.filter((rowc) => rowc.cyclopediaName && rowc.cyclopediaName.startsWith(selectedLetter)) : cyclopediarootdata;
-
-    // const firstTwentyCyclopediaRecords = filteredData.slice(0, 40);
-
-    // const alphabet = 'A-B-C-D-E-F-G-H-I-J-K-L-M-N-O-P-Q-R-S-T-U-V-W-X-Y-Z';
-
-    const groupedData2 = {};
-    taskdata.forEach((row) => {
-      if (!groupedData2[row.taskstatus]) {
-        groupedData2[row.taskstatus] = [];
-      }
-      groupedData2[row.taskstatus].push(row);
-    });
-
-    const sortedCategories2 = Object.keys(groupedData2).sort();
-
     return (
-      <>
-        <AskAI />
-        {/* <DBSearchComponent /> */}
+      <div className="home-overview-sections">
+        <section className="home-overview-card" aria-labelledby="home-overview-tasks-title">
+          <h3 id="home-overview-tasks-title" className="home-overview-card-heading">Tasks</h3>
+          <TaskSummaryHomepage />
+        </section>
 
-        <TaskSummaryHomepage />
-
-        <div>
-          <div className='Font-Spacer-White'>Make this spacer white</div>
-
-          <div className="Font-Segoe-Large-FP"></div>
-
-          <div className='Font-Spacer-White'>Make this spacer white</div>
-
-          <table className="Table-home-centre">
+        <section className="home-overview-card" aria-labelledby="home-overview-cyclopedia-title">
+          <h3 id="home-overview-cyclopedia-title" className="home-overview-card-heading">Cyclopedia</h3>
+          <div className="home-overview-cyclopedia-list">
+            <table className="Table-home-centre">
             <tbody>
-
               {fourtyRandomRecords.map((rowc, index) => (
                 <tr key={index}>
                   <td className="fphover2">
                     {rowc && (
                       <div style={{ cursor: 'pointer' }}>
                         <a onClick={() => navigate(`/cyclopediaedit/${rowc.cyclopediaId}`)}>
-                          <b>{rowc.cyclopediaName}:</b>&nbsp;<i>{rowc.cyclopediaDesc}</i>
+                          <b className="home-centre-topic">{rowc.cyclopediaName}:</b>&nbsp;<i>{rowc.cyclopediaDesc}</i>
                         </a>
-                        <div className='Font-Spacer-White'>Make this spacer white</div>
                       </div>
                     )}
                   </td>
                 </tr>
               ))}
             </tbody>
-          </table>
-        </div>
-      </>
+            </table>
+          </div>
+        </section>
+      </div>
     );
   };
 
@@ -205,13 +166,9 @@ export default function HomePage22(props) {
 
 
   const InnerTableRight = () => {
-    const amazonIframes = [
-      "https://read.amazon.co.uk/kp/card?asin=B077WWRK8B&preview=inline&linkCode=kpe&ref_=cm_sw_r_kb_dp_F3HQKNR4EF2MMXB0WS0D",
-      "https://read.amazon.co.uk/kp/card?asin=B081Y5262X&preview=inline&linkCode=kpe&ref_=cm_sw_r_kb_dp_H757NZNCTQK525FX3349",
-    ];
-
+    const howtoRecords = howtorootdata || [];
     const groupedHowtoData = {};
-    howtorootdata.forEach((row) => {
+    howtoRecords.forEach((row) => {
       if (!groupedHowtoData[row.howto_cat]) {
         groupedHowtoData[row.howto_cat] = [];
       }
@@ -245,98 +202,73 @@ export default function HomePage22(props) {
               </>
             ))}
 
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
-            {howtorootdata.length > 0 && (
-              <tr>
-                <td>
-                  {amazonIframes.map((iframeUrl, iframeIndex) => (
-                    <iframe
-                      key={iframeIndex}
-                      type="text/html"
-                      sandbox="allow-scripts allow-same-origin allow-popups"
-                      width="336"
-                      height="550"
-                      frameBorder="0"
-                      allowFullScreen
-                      style={{ maxWidth: '100%' }}
-                      src={iframeUrl}
-                    ></iframe>
-                  ))}
-                </td>
-              </tr>
-            )}
           </tbody>
         </table>
       </div>
     );
   };
 
-  const OuterTable = () => (
-    <>
-      <table style={{ width: '100%' }}>
-        <tbody>
-          <tr style={{ height: '20px' }}>
-            <td style={{ width: '25%' }}></td>
-            <td style={{ width: '1%' }}></td>
-            <td style={{ width: '48%' }}><img src={Image} style={{ boxShadow: '10px 10px 10px rgba(0,0,0,0.2)', borderRadius: '8px' }} /></td>
-            <td style={{ width: '1%' }}></td>
-            <td style={{ width: '25%' }}></td>
-          </tr>
-        </tbody>
-      </table>
+  const OuterTable = () => {
+    return (
+      <div className="home-page">
+        <div className="home-dashboard">
+      <div className="home-hero">
+        <img src={KnowledgeHero} alt="Curious Creative Autodidactic, with an animated constellation of connected knowledge nodes" />
+      </div>
 
-      <table style={{ width: '100%' }}>
-        <tbody>
-          <tr style={{ height: '20px' }}>
-            <td style={{ width: '5%' }}></td>
-            <td style={{ width: '90%' }}></td>
-            <td style={{ width: '5%' }}></td>
-          </tr>
-        </tbody>
-      </table>
+      <header className="home-intro">
+        <div>
+          <p className="home-eyebrow">BESTER · KNOWLEDGE WORKSPACE</p>
+          <h1>Welcome to your workspace</h1>
+          <p>Explore your tasks, curated resources, and practical guides.</p>
+        </div>
+        <button
+          className="home-theme-toggle"
+          type="button"
+          aria-pressed={props.isDarkMode}
+          onClick={props.onToggleTheme}
+        >
+          Switch to {props.isDarkMode ? 'light' : 'dark'} mode
+        </button>
+      </header>
 
-      <table>
-        <tbody>
-          <tr>
-            <td style={{ width: '25%' }} className="Table-home-left"><InnerTableLeft /></td>
-            <td style={{ width: '1%' }}></td>
-            <td style={{ width: '48%' }} className="Table-home-centre"><InnerTableCentre /></td>
-            <td style={{ width: '1%' }}></td>
-            <td style={{ width: '25%' }} className="Table-home-right"><InnerTableRight /></td>
-          </tr>
-        </tbody>
-      </table>
-    </>
-  );
+      <div className="home-grid">
+        <aside className="home-panel home-side-panel" aria-labelledby="home-resources-title">
+          <div className="home-panel-heading">
+            <div>
+              <h2 id="home-resources-title">Web resources</h2>
+              <p>Curated links by topic</p>
+            </div>
+          </div>
+          <InnerTableLeft />
+        </aside>
+
+        <main className="home-panel home-main-panel" aria-labelledby="home-overview-title">
+          <div className="home-panel-heading">
+            <div>
+              <h2 id="home-overview-title">Your overview</h2>
+              <p>Tasks, learning, and ideas in one place</p>
+            </div>
+          </div>
+          <InnerTableCentre />
+        </main>
+
+        <aside className="home-panel home-side-panel" aria-labelledby="home-guides-title">
+          <div className="home-panel-heading">
+            <div>
+              <h2 id="home-guides-title">How-to guides</h2>
+              <p>Browse practical walkthroughs</p>
+            </div>
+          </div>
+          <InnerTableRight />
+        </aside>
+      </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
-    <div>
-      &nbsp; &nbsp;
-      <OuterTable />
-      <table style={{ width: '100%' }}>
-        <thead>
-          <tr></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <table style={{ width: '100%' }}>
-        <thead>
-          <tr>
-            <th style={{ width: '25%' }}></th>
-            <th style={{ width: '1%' }}></th>
-            <th style={{ width: '48%' }}></th>
-            <th style={{ width: '1%' }}></th>
-            <th style={{ width: '25%' }}></th>
-          </tr>
-        </thead>
-      </table>
-    </div>
+    <OuterTable />
   );
 }

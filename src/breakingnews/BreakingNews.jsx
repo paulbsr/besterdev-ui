@@ -25,13 +25,13 @@ export default function BreakingNews() {
                 style={{
                   fontFamily: 'Segoe UI',
                   fontSize: 'medium',
-                  color: '#336791',
+                  color: 'var(--home-text, #336791)',
                   textDecoration: 'none',
                   whiteSpace: 'nowrap',
                 }}
               >
-                {news.news_source}:{' '}
-                <i style={{ color: '#D5441C' }}>{news.news_title}</i>
+                <span className="home-breaking-news-source">{news.news_source}:</span>{' '}
+                <i style={{ color: 'var(--home-text, #D5441C)' }}>{news.news_title}</i>
               </a>
             </div>
           ))}

@@ -59,7 +59,7 @@ export default function DutchLanguage_Ticker() {
                     fontFamily: "Segoe UI",
                     fontSize: "18px",
                     fontStyle: "italic",
-                    color: "#FF4F00",
+                    color: "var(--home-text, #FF4F00)",
                     cursor: "pointer",
                   }}
                 >

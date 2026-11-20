@@ -92,24 +92,25 @@ export default function AskAI() {
   };
 
   return (
-    <div style={styles.container}>
-      <form onSubmit={handleAsk} style={styles.form}>
+    <div className="home-ask-ai">
+      <form className="home-ask-ai-form" onSubmit={handleAsk} style={styles.form}>
         <input
+          className="home-ask-ai-input"
           style={styles.input}
           placeholder="Ask OpenAI anything..."
           type="text"
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <button type="submit" style={styles.button} disabled={loading}>
+        <button className="home-ask-ai-submit" type="submit" style={styles.button} disabled={loading}>
           {loading ? "Thinking..." : "Ask OpenAI"}
         </button>
-        <button type="button" style={styles.button} onClick={handleClear} disabled={loading}>
+        <button className="home-ask-ai-clear" type="button" style={styles.button} onClick={handleClear} disabled={loading}>
           Clear
         </button>
       </form>
 
-      {response && <div style={styles.responseCard}>{response}</div>}
+      {response && <div className="home-ask-ai-response" style={styles.responseCard}>{response}</div>}
     </div>
   );
 }

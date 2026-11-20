@@ -32,7 +32,9 @@ const API_BASE = "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1";
 
 const SectionButton = ({ icon: Icon, label, active, onClick }) => (
   <button
+    className="home-quick-add-button"
     type="button"
+    aria-pressed={active}
     onClick={onClick}
     style={{
       display: "flex",
@@ -56,6 +58,7 @@ const SectionButton = ({ icon: Icon, label, active, onClick }) => (
 
 const Card = ({ children }) => (
   <div
+    className="home-quick-add-form-card"
     style={{
       marginTop: 16,
       padding: 16,
@@ -88,7 +91,7 @@ export const inputStyle = {
    Main Component
 ------------------------------------------------------- */
 
-export default function CombinedCreateFP() {
+export default function CombinedCreateFP({ hideSearch = false, className = '' }) {
   const [open, setOpen] = useState(null);
 
   const toggle = (key) =>
@@ -224,7 +227,7 @@ export default function CombinedCreateFP() {
 
   return (
     <div
-      className="Font-Segoe-Small"
+      className={`Font-Segoe-Small ${className}`.trim()}
       style={{
         maxWidth: 1010,
         margin: "20px auto",
@@ -234,7 +237,16 @@ export default function CombinedCreateFP() {
         boxShadow: "10px 10px 10px rgba(0, 0, 0, 0.2)",
       }}
     >
+      <div className={hideSearch ? "home-quick-add-panel" : undefined}>
+      {hideSearch && (
+        <header className="home-quick-adds-heading">
+          <div>
+            <h2>Quick adds</h2>
+          </div>
+        </header>
+      )}
       <div
+        className="home-quick-add-actions"
         style={{
           display: "flex",
           gap: 12,
@@ -287,14 +299,16 @@ export default function CombinedCreateFP() {
           />
         </div>
 
-        <div className="tickerfp">
-          <SectionButton
-            icon={BsSearch}
-            label="Search"
-            active={open === "search"}
-            onClick={() => toggle("search")}
-          />
-        </div>
+        {!hideSearch && (
+          <div className="tickerfp">
+            <SectionButton
+              icon={BsSearch}
+              label="Search"
+              active={open === "search"}
+              onClick={() => toggle("search")}
+            />
+          </div>
+        )}
 
         {/* <DBSearchComponentBanner /> */}
       </div>
@@ -512,8 +526,9 @@ export default function CombinedCreateFP() {
 
       {open === "oauth" && <Card><BearerToken /></Card>}
       {open === "ws" && <Card><WebSocketComponent /></Card>}
-      {open === "search" && <Card><DBSearchComponentBanner /></Card>}
+      {!hideSearch && open === "search" && <Card><DBSearchComponentBanner /></Card>}
       <ConsoleFrame />
+      </div>
     </div>
   );
 }
