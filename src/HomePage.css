@@ -357,10 +357,21 @@
   overflow: auto;
 }
 
+.home-guides-panel {
+  position: sticky;
+  top: 16px;
+  max-height: none;
+  overflow: visible;
+}
+
 .home-panel-heading {
   margin: 0 0 16px;
   padding-bottom: 14px;
   border-bottom: 1px solid var(--home-border);
+}
+
+.home-resources-panel .home-panel-heading {
+  text-align: right;
 }
 
 .home-panel-heading h2 {
@@ -465,6 +476,14 @@
 .home-page .Table-home-right-text {
   padding: 5px 0;
   font-size: 0.86rem;
+}
+
+.home-page .Table-home-left-text {
+  text-align: right;
+}
+
+.home-guides-panel .Table-home-right-text {
+  text-align: left;
 }
 
 .home-page .Table-home-left a,
@@ -617,6 +636,10 @@
 .home-route[data-theme="dark"] .icon-pill {
   background: linear-gradient(180deg, #1d293a, #151d2b);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.home-route .home-breaking-news {
+  padding-top: 6px;
 }
 
 .home-route .home-breaking-news-source {

@@ -13,7 +13,7 @@ export default function BreakingNews() {
   const shuffledNews = [...breakingnews].sort(() => Math.random() - 0.5);
   console.log('breakingnews length:', breakingnews?.length);
   return (
-    <div>
+    <div className="home-breaking-news">
       <marquee scrollamount="6">
         <Stack direction="row" spacing={2}>
           {shuffledNews.map((news) => (

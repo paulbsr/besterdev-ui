@@ -291,7 +291,7 @@ export default function DutchLanguage_Woordenschat() {
             onChange={(e) =>
               setNewRow({ ...newRow, sample: e.target.value })
             }
-            placeholder="Voorbeeld"
+            placeholder="Voorbeeld (required)"
           />
 
           <div>
@@ -437,7 +437,7 @@ export default function DutchLanguage_Woordenschat() {
                       onChange={(e) =>
                         setEditRow({ ...editRow, sample: e.target.value })
                       }
-                      placeholder="Voorbeeld"
+                      placeholder="Voorbeeld  (required)"
                     />
                   </div>
 

@@ -1,4 +1,4 @@
-import { useState, useEffect, React } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import { Tooltip } from 'react-tooltip'
 import './Fonts.css';
 import 'react-dropdown/style.css';
@@ -130,13 +130,11 @@ export default function HomePage22(props) {
   const InnerTableCentre = () => {
     return (
       <div className="home-overview-sections">
-        <section className="home-overview-card" aria-labelledby="home-overview-tasks-title">
-          <h3 id="home-overview-tasks-title" className="home-overview-card-heading">Tasks</h3>
+        <section className="home-overview-card" aria-label="Tasks">
           <TaskSummaryHomepage />
         </section>
 
-        <section className="home-overview-card" aria-labelledby="home-overview-cyclopedia-title">
-          <h3 id="home-overview-cyclopedia-title" className="home-overview-card-heading">Cyclopedia</h3>
+        <section className="home-overview-card" aria-label="Cyclopedia">
           <div className="home-overview-cyclopedia-list">
             <table className="Table-home-centre">
             <tbody>
@@ -167,6 +165,7 @@ export default function HomePage22(props) {
 
   const InnerTableRight = () => {
     const howtoRecords = howtorootdata || [];
+    const [expandedCategories, setExpandedCategories] = useState({});
     const groupedHowtoData = {};
     howtoRecords.forEach((row) => {
       if (!groupedHowtoData[row.howto_cat]) {
@@ -176,6 +175,12 @@ export default function HomePage22(props) {
     });
 
     const sortedHowtoCategories = Object.keys(groupedHowtoData).sort();
+    const toggleCategory = (category) => {
+      setExpandedCategories((previous) => ({
+        ...previous,
+        [category]: !previous[category],
+      }));
+    };
 
     return (
       <div>
@@ -183,14 +188,19 @@ export default function HomePage22(props) {
           <Tooltip id="insert" />
           <tbody>
             {sortedHowtoCategories.map((category) => (
-              <>
-                &nbsp;
-                <tr key={category}>
-                  <th colSpan="2" style={{ textAlign: 'left', borderBottom: '1px solid #ddd' }} className="Table-home-right-heading">
+              <Fragment key={category}>
+                <tr>
+                  <th
+                    colSpan="2"
+                    aria-expanded={Boolean(expandedCategories[category])}
+                    onClick={() => toggleCategory(category)}
+                    style={{ textAlign: 'left', borderBottom: '1px solid #ddd', cursor: 'pointer' }}
+                    className="Table-home-right-heading"
+                  >
                     {category}
                   </th>
                 </tr>
-                {groupedHowtoData[category].map((record, index) => (
+                {expandedCategories[category] && groupedHowtoData[category].map((record, index) => (
                   <tr key={index}>
                     <td style={{ width: '20%', verticalAlign: 'top' }} className="Table-home-right-text">
                       <a href={`/howtoedit/${record.howto_id}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.howto_summary}>
@@ -199,7 +209,7 @@ export default function HomePage22(props) {
                     </td>
                   </tr>
                 ))}
-              </>
+              </Fragment>
             ))}
 
           </tbody>
@@ -233,7 +243,7 @@ export default function HomePage22(props) {
       </header>
 
       <div className="home-grid">
-        <aside className="home-panel home-side-panel" aria-labelledby="home-resources-title">
+        <aside className="home-panel home-side-panel home-resources-panel" aria-labelledby="home-resources-title">
           <div className="home-panel-heading">
             <div>
               <h2 id="home-resources-title">Web resources</h2>
@@ -253,7 +263,7 @@ export default function HomePage22(props) {
           <InnerTableCentre />
         </main>
 
-        <aside className="home-panel home-side-panel" aria-labelledby="home-guides-title">
+        <aside className="home-panel home-side-panel home-guides-panel" aria-labelledby="home-guides-title">
           <div className="home-panel-heading">
             <div>
               <h2 id="home-guides-title">How-to guides</h2>
