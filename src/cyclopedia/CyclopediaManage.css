@@ -1,0 +1,620 @@
+.cyclopedia-route {
+  --home-bg: #0c111b;
+  --home-surface: #151d2b;
+  --home-border: #293447;
+  --home-text: #e6ebf2;
+  --home-muted: #a0aec0;
+  --home-accent: #ff855f;
+  --home-link: #a8c9ec;
+
+  min-height: 100vh;
+  background: var(--home-bg);
+  color: var(--home-text);
+}
+
+.cyclopedia-route .banner-white,
+.cyclopedia-route .banner-light-left {
+  background-color: var(--home-surface) !important;
+  color: var(--home-text);
+}
+
+.cyclopedia-route > div[style*="linear-gradient"]:not(.home-brand-gradient-line),
+.cyclopedia-route .cyclopedia-quick-add-divider > div[style*="linear-gradient"]:not(.home-brand-gradient-line) {
+  background: linear-gradient(to right, #315a7d, var(--home-bg)) !important;
+}
+
+.cyclopedia-route .ticker,
+.cyclopedia-route .tickerfp,
+.cyclopedia-route .icon-pill {
+  background: linear-gradient(180deg, #1d293a, #151d2b) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.cyclopedia-route .ticker-container {
+  padding-bottom: 2px;
+}
+
+.cyclopedia-route .ticker a,
+.cyclopedia-route .tickerfp button,
+.cyclopedia-route .icon-pill {
+  color: var(--home-link) !important;
+}
+
+.cyclopedia-route .ticker i,
+.cyclopedia-route .ticker span {
+  color: var(--home-text) !important;
+}
+
+.cyclopedia-route .home-breaking-news {
+  padding-top: 6px;
+}
+
+.cyclopedia-route .home-breaking-news .home-breaking-news-source {
+  color: var(--home-accent) !important;
+}
+
+.cyclopedia-route .Font-Segoe-Small:not(.home-quick-adds) {
+  background: var(--home-surface) !important;
+  color: var(--home-text);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.24) !important;
+}
+
+.cyclopedia-route .home-quick-adds {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1440px !important;
+  margin: 0 auto 18px !important;
+  padding: 6px clamp(16px, 3vw, 40px) 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.cyclopedia-quick-add-divider {
+  padding-top: 0;
+}
+
+.cyclopedia-route .home-quick-adds .tickerfp {
+  background: transparent !important;
+  box-shadow: none;
+}
+
+.cyclopedia-route .home-quick-adds .tickerfp button {
+  color: var(--home-text) !important;
+}
+
+.cyclopedia-route .home-quick-adds .home-quick-add-form-card [style*="background"] {
+  border-color: var(--home-border) !important;
+  background: #1d293a !important;
+  color: var(--home-text) !important;
+}
+
+.cyclopedia-route .banner-light-left input {
+  border-color: var(--home-border) !important;
+  background: #101725 !important;
+  color: var(--home-text) !important;
+}
+
+.cyclopedia-manage-page {
+  --cyclopedia-bg: #0c111b;
+  --cyclopedia-surface: #151d2b;
+  --cyclopedia-border: #293447;
+  --cyclopedia-text: #e6ebf2;
+  --cyclopedia-muted: #a0aec0;
+  --cyclopedia-accent: #ff855f;
+  --cyclopedia-blue: #a8c9ec;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 30px clamp(16px, 3vw, 40px) 48px;
+  color: var(--cyclopedia-text);
+  font-family: Inter, "Segoe UI", sans-serif;
+}
+
+.cyclopedia-manage-page *,
+.cyclopedia-manage-page *::before,
+.cyclopedia-manage-page *::after {
+  box-sizing: border-box;
+}
+
+.cyclopedia-manage-state {
+  min-height: 240px;
+  display: grid;
+  place-items: center;
+  color: var(--cyclopedia-muted);
+}
+
+.cyclopedia-manage-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.cyclopedia-manage-title {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
+}
+
+.cyclopedia-manage-title-icon,
+.cyclopedia-create-icon {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  color: var(--cyclopedia-accent);
+  background: #302322;
+}
+
+.cyclopedia-manage-title-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 17px;
+  font-size: 30px;
+}
+
+.cyclopedia-eyebrow {
+  margin: 0 0 5px;
+  color: var(--cyclopedia-blue);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.cyclopedia-manage-header h1 {
+  margin: 0;
+  color: var(--cyclopedia-text);
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+}
+
+.cyclopedia-header-description {
+  margin: 7px 0 0;
+  color: var(--cyclopedia-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.cyclopedia-entry-count {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 88px;
+  min-height: 76px;
+  padding: 12px;
+  border: 1px solid var(--cyclopedia-border);
+  border-radius: 16px;
+  background: var(--cyclopedia-surface);
+}
+
+.cyclopedia-entry-count strong {
+  color: var(--cyclopedia-text);
+  font-size: 24px;
+  line-height: 1;
+}
+
+.cyclopedia-entry-count span {
+  margin-top: 6px;
+  color: var(--cyclopedia-muted);
+  font-size: 12px;
+}
+
+.cyclopedia-create-card,
+.cyclopedia-entries-card {
+  overflow: hidden;
+  border: 1px solid var(--cyclopedia-border);
+  border-radius: 18px;
+  background: var(--cyclopedia-surface);
+  box-shadow: 0 8px 26px rgba(23, 32, 51, 0.045);
+}
+
+.cyclopedia-create-card {
+  margin-bottom: 22px;
+}
+
+.cyclopedia-create-toggle {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 22px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.cyclopedia-create-toggle:hover {
+  background: #1d293a;
+}
+
+.cyclopedia-create-toggle:focus-visible,
+.cyclopedia-button:focus-visible,
+.cyclopedia-action-button:focus-visible,
+.cyclopedia-search input:focus-visible,
+.cyclopedia-form-input:focus-visible,
+.cyclopedia-inline-input:focus-visible {
+  outline: 2px solid var(--cyclopedia-accent);
+  outline-offset: 2px;
+}
+
+.cyclopedia-create-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  font-size: 24px;
+}
+
+.cyclopedia-create-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cyclopedia-create-copy strong {
+  color: var(--cyclopedia-text);
+  font-size: 15px;
+}
+
+.cyclopedia-create-copy > span {
+  color: var(--cyclopedia-muted);
+  font-size: 13px;
+}
+
+.cyclopedia-create-action {
+  padding: 9px 13px;
+  border: 1px solid rgba(255, 133, 95, 0.35);
+  border-radius: 10px;
+  color: var(--cyclopedia-accent);
+  font-size: 13px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.cyclopedia-create-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding: 4px 22px 22px;
+  border-top: 1px solid var(--cyclopedia-border);
+}
+
+.cyclopedia-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: var(--cyclopedia-text);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.cyclopedia-form-field > span:first-child > span:first-child:not(.cyclopedia-form-optional) {
+  color: var(--cyclopedia-accent);
+}
+
+.cyclopedia-form-optional {
+  color: var(--cyclopedia-muted);
+  font-weight: 400;
+}
+
+.cyclopedia-form-field-wide {
+  grid-column: 1 / -1;
+}
+
+.cyclopedia-form-input,
+.cyclopedia-inline-input {
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 12px;
+  border: 1px solid var(--cyclopedia-border);
+  border-radius: 10px;
+  background: var(--cyclopedia-surface);
+  color: var(--cyclopedia-text);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.cyclopedia-form-input::placeholder,
+.cyclopedia-search input::placeholder {
+  color: #8793a7;
+}
+
+.cyclopedia-form-textarea,
+.cyclopedia-inline-textarea {
+  min-height: 92px;
+  resize: vertical;
+}
+
+.cyclopedia-create-form-actions {
+  display: flex;
+  gap: 10px;
+  padding-top: 2px;
+}
+
+.cyclopedia-button {
+  min-height: 40px;
+  padding: 9px 15px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.cyclopedia-button-primary {
+  background: var(--cyclopedia-accent);
+  color: #ffffff;
+}
+
+.cyclopedia-button-primary:hover {
+  background: #e06f4f;
+}
+
+.cyclopedia-button-secondary {
+  border-color: var(--cyclopedia-border);
+  background: var(--cyclopedia-surface);
+  color: var(--cyclopedia-text);
+}
+
+.cyclopedia-button-secondary:hover {
+  background: var(--cyclopedia-bg);
+}
+
+.cyclopedia-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 21px 22px;
+}
+
+.cyclopedia-toolbar h2 {
+  margin: 0;
+  color: var(--cyclopedia-text);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.cyclopedia-toolbar p {
+  margin: 5px 0 0;
+  color: var(--cyclopedia-muted);
+  font-size: 13px;
+}
+
+.cyclopedia-search {
+  display: block;
+  width: min(100%, 320px);
+}
+
+.cyclopedia-search input {
+  width: 100%;
+  height: 42px;
+  padding: 0 13px;
+  border: 1px solid var(--cyclopedia-border);
+  border-radius: 10px;
+  background: var(--cyclopedia-bg);
+  color: var(--cyclopedia-text);
+  font: inherit;
+  font-size: 13px;
+}
+
+.cyclopedia-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  border-top: 1px solid var(--cyclopedia-border);
+}
+
+.cyclopedia-table {
+  width: 100%;
+  min-width: 680px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.cyclopedia-table th {
+  padding: 12px 16px;
+  background: var(--cyclopedia-bg);
+  color: var(--cyclopedia-muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.cyclopedia-table th:first-child,
+.cyclopedia-table td:first-child {
+  width: 116px;
+  padding-left: 22px;
+}
+
+.cyclopedia-table td {
+  padding: 15px 16px;
+  border-top: 1px solid var(--cyclopedia-border);
+  color: var(--cyclopedia-text);
+  font-size: 13px;
+  vertical-align: top;
+}
+
+.cyclopedia-table tbody tr:hover {
+  background: #1a2433;
+}
+
+.cyclopedia-actions-cell {
+  white-space: nowrap;
+}
+
+.cyclopedia-action-button {
+  display: inline-grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  margin-right: 6px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.cyclopedia-action-edit,
+.cyclopedia-action-save {
+  background: #23364a;
+  color: var(--cyclopedia-blue);
+}
+
+.cyclopedia-action-edit:hover,
+.cyclopedia-action-save:hover {
+  background: #2b4259;
+}
+
+.cyclopedia-action-cancel {
+  background: #252e3d;
+  color: #c3ccda;
+}
+
+.cyclopedia-action-cancel:hover {
+  background: #333e50;
+}
+
+.cyclopedia-action-delete {
+  background: #362621;
+  color: var(--cyclopedia-accent);
+}
+
+.cyclopedia-action-delete:hover {
+  background: #493026;
+}
+
+.cyclopedia-entry-name {
+  font-weight: 650;
+}
+
+.cyclopedia-entry-description {
+  display: block;
+  max-width: 780px;
+  color: var(--cyclopedia-muted);
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.cyclopedia-inline-input {
+  min-width: 160px;
+  min-height: 38px;
+}
+
+.cyclopedia-inline-textarea {
+  min-height: 84px;
+  height: auto;
+  overflow: hidden;
+  resize: none;
+}
+
+.cyclopedia-empty-state {
+  padding: 38px 16px !important;
+  color: var(--cyclopedia-muted) !important;
+  text-align: center;
+}
+
+.cyclopedia-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+@media (max-width: 640px) {
+  .cyclopedia-manage-page {
+    padding-top: 22px;
+  }
+
+  .cyclopedia-manage-header {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .cyclopedia-manage-title {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .cyclopedia-manage-title-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    font-size: 24px;
+  }
+
+  .cyclopedia-entry-count {
+    min-width: 64px;
+    min-height: 64px;
+    padding: 8px;
+  }
+
+  .cyclopedia-entry-count strong {
+    font-size: 20px;
+  }
+
+  .cyclopedia-header-description {
+    font-size: 13px;
+  }
+
+  .cyclopedia-create-toggle {
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .cyclopedia-create-copy > span {
+    line-height: 1.4;
+  }
+
+  .cyclopedia-create-action {
+    padding: 8px 9px;
+    font-size: 12px;
+  }
+
+  .cyclopedia-create-form {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 16px 15px;
+  }
+
+  .cyclopedia-form-field-wide {
+    grid-column: auto;
+  }
+
+  .cyclopedia-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 14px;
+    padding: 17px 15px;
+  }
+
+  .cyclopedia-search {
+    width: 100%;
+  }
+
+  .cyclopedia-table th:first-child,
+  .cyclopedia-table td:first-child {
+    padding-left: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cyclopedia-action-button {
+    transition: none;
+  }
+}

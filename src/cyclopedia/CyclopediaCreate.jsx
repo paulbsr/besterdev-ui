@@ -1,91 +1,112 @@
-import React, { useState } from "react";
-import OAuth2APIClient from '../oauth2/OAuth2APIClient';
-import '../Fonts.css';
-import spacer from '../graphix/besterdev_spacer_white.png';
-import spacer2 from '../graphix/besterdev_spacer_white_half.png';
+import { useState } from "react";
 import { GiHummingbird } from "react-icons/gi";
-import 'react-tooltip/dist/react-tooltip.css';
-import { Tooltip } from 'react-tooltip';
-import { toast } from 'react-toastify';
-import { baseInputStyle } from "../baseInputStyle";
+import { toast } from "react-toastify";
+import OAuth2APIClient from "../oauth2/OAuth2APIClient";
 
-export default function CyclopediaCreate() {
-  const toggleAccordion = () => { setExpanded(!isExpanded); };
+export default function CyclopediaCreate({ onCreated }) {
   const [isExpanded, setExpanded] = useState(false);
-  const [cyclopedia_name, setCyclopedia_name] = useState('');
-  const [cyclopedia_desc, setCyclopedia_desc] = useState('');
-  const [cyclopedia_url, setCyclopedia_url] = useState('');
-  const [checkForRecords, setCheckForRecords] = useState(true);
-
+  const [cyclopediaName, setCyclopediaName] = useState("");
+  const [cyclopediaDescription, setCyclopediaDescription] = useState("");
+  const [cyclopediaUrl, setCyclopediaUrl] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-      var newRecord =
-      {
-        'cyclopediaName': cyclopedia_name,
-        'cyclopediaDesc': cyclopedia_desc,
-        'cyclopediaUrl': cyclopedia_url,
-      }
 
-      {
-        const response = await OAuth2APIClient.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/create`, newRecord);
-        if (response.status === 200) {
-          setCheckForRecords(!checkForRecords);
-          toast.success(`${cyclopedia_name} memorialized.`)
-        }
-        else {
-          toast.error('Nee')
-        }
-      }
-  }
+    try {
+      await OAuth2APIClient.post("/api/v1/cyclopedia/create", {
+        cyclopediaName,
+        cyclopediaDesc: cyclopediaDescription,
+        cyclopediaUrl,
+      });
+
+      toast.success(`${cyclopediaName} added to the Cyclopedia.`);
+      setCyclopediaName("");
+      setCyclopediaDescription("");
+      setCyclopediaUrl("");
+      setExpanded(false);
+      await onCreated?.();
+    } catch (error) {
+      console.error("Failed to add Cyclopedia entry:", error);
+      toast.error("Failed to add Cyclopedia entry.");
+    }
+  };
 
   return (
-
-    <div className='Font-Verdana-Small-Postgres'>&nbsp;
-      <Tooltip id="insert" />
-      <div onClick={toggleAccordion}>
-          <a data-tooltip-id="insert" data-tooltip-content="Add Cyclopedia"><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} />
-        <b style={{ fontFamily: "Candara", fontSize: "medium", color: "#336791", cursor: "pointer" }}>Add a <i>"Cyclopedia"</i> entry</b></a>
-        <div>&nbsp;</div>
-      </div>
+    <section className="cyclopedia-create-card" aria-labelledby="cyclopedia-create-title">
+      <button
+        className="cyclopedia-create-toggle"
+        type="button"
+        aria-expanded={isExpanded}
+        aria-controls="cyclopedia-create-form"
+        onClick={() => setExpanded((expanded) => !expanded)}
+      >
+        <span className="cyclopedia-create-icon" aria-hidden="true">
+          <GiHummingbird />
+        </span>
+        <span className="cyclopedia-create-copy">
+          <strong id="cyclopedia-create-title">Add a Cyclopedia entry</strong>
+          <span>Create a searchable knowledge entry</span>
+        </span>
+        <span className="cyclopedia-create-action">
+          {isExpanded ? "Close" : "New entry"}
+        </span>
+      </button>
 
       {isExpanded && (
-        <div>
-          <div>
-            <form onSubmit={handleSubmit}>
-              <div><img alt="1" src={spacer2} /></div>
-              <div className='Font-Verdana-Small-Postgres'>
-                <div>
-                  <img alt="1" src={spacer} />
-                  <img alt="1" src={spacer} />
-                  <img alt="1" src={spacer} />WhatExactlyIs:&nbsp;&nbsp;<input style={{ ...baseInputStyle, width: "1150px" }} placeholder="Required" type="text" value={cyclopedia_name} onChange={(event) => setCyclopedia_name(event.target.value)} required /></div>
-                
-                <div>&nbsp;</div>
-                
-                <div>
-                  <img alt="1" src={spacer} />
-                  <img alt="1" src={spacer} />
-                  <img alt="1" src={spacer} />Description:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea rows={2} style={{ ...baseInputStyle, width: "1150px" }} placeholder="Required" type="text" value={cyclopedia_desc} onChange={(event) => setCyclopedia_desc(event.target.value)} required /></div>
+        <form
+          id="cyclopedia-create-form"
+          className="cyclopedia-create-form"
+          onSubmit={handleSubmit}
+        >
+          <label className="cyclopedia-form-field">
+            <span>Entry name <span aria-hidden="true">*</span></span>
+            <input
+              className="cyclopedia-form-input"
+              placeholder="What is it?"
+              type="text"
+              value={cyclopediaName}
+              onChange={(event) => setCyclopediaName(event.target.value)}
+              required
+            />
+          </label>
 
-                <div>&nbsp;</div>
+          <label className="cyclopedia-form-field cyclopedia-form-field-wide">
+            <span>Description <span aria-hidden="true">*</span></span>
+            <textarea
+              className="cyclopedia-form-input cyclopedia-form-textarea"
+              placeholder="Add a clear, concise explanation"
+              rows={3}
+              value={cyclopediaDescription}
+              onChange={(event) => setCyclopediaDescription(event.target.value)}
+              required
+            />
+          </label>
 
-                <div>
-                  <img alt="1" src={spacer} />
-                  <img alt="1" src={spacer} />
-                  <img alt="1" src={spacer} />URL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ ...baseInputStyle, width: "1150px" }} type="text" value={cyclopedia_url} onChange={(event) => setCyclopedia_url(event.target.value)} /></div>
-                
-                <div>&nbsp;</div>
-                
-                <div>
-                  <img alt="1" src={spacer} />
-                  <img alt="1" src={spacer} />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#ffffff', color: '#336791', cursor: 'pointer' }}>Add to Cyclopedia</button></div>
-                
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
-              </div>
-            </form>
+          <label className="cyclopedia-form-field cyclopedia-form-field-wide">
+            <span>Reference URL <span className="cyclopedia-form-optional">(optional)</span></span>
+            <input
+              className="cyclopedia-form-input"
+              placeholder="https://"
+              type="url"
+              value={cyclopediaUrl}
+              onChange={(event) => setCyclopediaUrl(event.target.value)}
+            />
+          </label>
+
+          <div className="cyclopedia-create-form-actions cyclopedia-form-field-wide">
+            <button className="cyclopedia-button cyclopedia-button-primary" type="submit">
+              Add entry
+            </button>
+            <button
+              className="cyclopedia-button cyclopedia-button-secondary"
+              type="button"
+              onClick={() => setExpanded(false)}
+            >
+              Cancel
+            </button>
           </div>
-        </div>)}
-    </div>
+        </form>
+      )}
+    </section>
   );
 }

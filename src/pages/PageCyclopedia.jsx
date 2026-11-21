@@ -8,12 +8,11 @@ import ToastComponent from '../ToastComponent';
 import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
-import DutchLanguage_Ticker from '../dutchlanguage/DutchLanguage_Ticker';
 
 export default function PageCyclopedia(cyclopediadata) {
 
   return (
-    <div>
+    <div className="cyclopedia-route">
       <BannerWhite />
       <GradientLine />
       <BannerLight />
@@ -21,10 +20,10 @@ export default function PageCyclopedia(cyclopediadata) {
       <BreakingNews />
       <GradientLineThin />
       <CyclopediaTicker />
-      <GradientLineThin />
-      <DutchLanguage_Ticker />
-      <GradientLineThin />
-      <CombinedCreateFP />
+      <div className="cyclopedia-quick-add-divider">
+        <GradientLineThin />
+      </div>
+      <CombinedCreateFP hideSearch className="home-quick-adds" />
       <CyclopediaManage />
       <ToastComponent />
     </div>

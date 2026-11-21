@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/static/css/main.49738d13.css",
+    "main.js": "/static/js/main.6905d010.js",
+    "static/media/DCU.png": "/static/media/DCU.a0c94c2efd9b9c9ab5dd.png",
+    "static/media/TUS.png": "/static/media/TUS.9ffa51a168292acee453.png",
+    "static/media/LYIT.png": "/static/media/LYIT.dad0265902a0ba6f4a22.png",
+    "static/media/HP.png": "/static/media/HP.5a6cb151c8bde031c942.png",
+    "static/media/TUS2.png": "/static/media/TUS2.c772b732e78f4638076f.png",
+    "static/media/Testimonial_TB.png": "/static/media/Testimonial_TB.1aae596f73f8fbf385ab.png",
+    "static/media/Darknet12.png": "/static/media/Darknet12.3757fca6f685cf50cfaa.png",
+    "static/media/DH-AESSecretKey.jpg": "/static/media/DH-AESSecretKey.28c2d64ddb139e02abcd.jpg",
+    "static/media/DELL.png": "/static/media/DELL.b3230ae5b5b9aa6664cf.png",
+    "static/media/DH-SHA256Digest.jpg": "/static/media/DH-SHA256Digest.8399e4fdf348ce8ab2ae.jpg",
+    "static/media/DH-KeyPairServer.jpg": "/static/media/DH-KeyPairServer.66ccc6daffd13d997031.jpg",
+    "static/media/DH-KeyPairClient.jpg": "/static/media/DH-KeyPairClient.1ef54232a48a705dd0b2.jpg",
+    "static/media/NT2ExamTimes.jpg": "/static/media/NT2ExamTimes.298f072d99720cba797c.jpg",
+    "static/media/NT2ExamTimetableJanuary.jpg": "/static/media/NT2ExamTimetableJanuary.ee8ecb018ec67f1fb21f.jpg",
+    "static/media/LeoSquare.png": "/static/media/LeoSquare.5fea82f7184aa05445d8.png",
+    "static/media/Amsterdam1.jpg": "/static/media/Amsterdam1.956a883a17471115f55b.jpg",
+    "static/media/dh2.jpg": "/static/media/dh2.06db9824e70b33028a46.jpg",
+    "static/media/DH-ParameterSpecObject.jpg": "/static/media/DH-ParameterSpecObject.aabe79215067507fbcb8.jpg",
+    "static/media/DH-PGLParameters.jpg": "/static/media/DH-PGLParameters.94fb69dd60b2253a8656.jpg",
+    "static/media/DH-ClientSharedSecret.jpg": "/static/media/DH-ClientSharedSecret.8a486de756a299d90a05.jpg",
+    "static/media/DH-ServerSharedSecret.jpg": "/static/media/DH-ServerSharedSecret.39d06fa0448d4a6cd90d.jpg",
+    "static/media/ShikhaSquare.jpg": "/static/media/ShikhaSquare.2d1545d9cb9cbf2897af.jpg",
+    "static/media/Testimonial_2.png": "/static/media/Testimonial_2.7e930fbf5f35860b75f1.png",
+    "static/media/FelipeSquare.jpg": "/static/media/FelipeSquare.c7f4934720abb543eba0.jpg",
+    "static/media/BSR.jpg": "/static/media/BSR.afcfd07b192965b37245.jpg",
+    "static/media/ThiagoSquare.jpg": "/static/media/ThiagoSquare.99a9634a07ce9bb5996c.jpg",
+    "static/media/knowledge-hero.svg": "/static/media/knowledge-hero.183bad099b5b4ee514f02a44c08e58e0.svg",
+    "index.html": "/index.html"
+  },
+  "entrypoints": [
+    "static/css/main.49738d13.css",
+    "static/js/main.6905d010.js"
+  ]
+}

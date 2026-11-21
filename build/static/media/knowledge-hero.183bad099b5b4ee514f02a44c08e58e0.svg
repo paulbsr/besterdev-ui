@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 200" fill="none">
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1600" y2="200" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#08111D"/>
+      <stop offset=".55" stop-color="#102238"/>
+      <stop offset="1" stop-color="#1B3048"/>
+    </linearGradient>
+    <radialGradient id="constellationGlow" cx="0" cy="0" r="1" gradientTransform="matrix(0 185 -600 0 1190 93)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#67C9D0" stop-opacity=".2"/>
+      <stop offset=".58" stop-color="#FF855F" stop-opacity=".08"/>
+      <stop offset="1" stop-color="#67C9D0" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softGlow" x="0" y="0" width="1600" height="200" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+  <style>
+    .signal { stroke-dasharray: 8 15; animation: signal 9s linear infinite; }
+    .pulse { animation: pulse 3.8s ease-in-out infinite; }
+    .pulse-late { animation: pulse 4.6s ease-in-out -2.1s infinite; }
+    .float { animation: float 6s ease-in-out infinite alternate; }
+    .float-late { animation: float 7s ease-in-out -3s infinite alternate; }
+    @keyframes signal {
+      to { stroke-dashoffset: -184; }
+    }
+    @keyframes pulse {
+      50% { opacity: .35; }
+    }
+    @keyframes float {
+      to { transform: translateY(-8px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .signal, .pulse, .pulse-late, .float, .float-late { animation: none; }
+    }
+  </style>
+  <path fill="url(#background)" d="M0 0h1600v200H0z"/>
+  <path fill="url(#constellationGlow)" d="M0 0h1600v200H0z"/>
+  <path d="M0 171c212-30 445-24 630 2 225 31 423 27 631-6 129-20 247-22 339-8v41H0v-29Z" fill="#050A11" fill-opacity=".72"/>
+
+  <text x="100" y="108" fill="#F4F7FA" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="600" letter-spacing=".2" word-spacing="12">Curious Creative Autodidactic</text>
+
+  <g stroke="#78C7D3" stroke-opacity=".42" stroke-width="1.5">
+    <path d="m735 117 94-55 106 39 104-63 113 66 101-39 110 51 115-62 112 39"/>
+    <path d="m829 62 17 74 89-35 104-63 10 101 106-35 97 55 17-94 110 73 115-39 112 39"/>
+    <path d="m735 117 111 19 89-35 113 52 106-47 97 55 110-51 102 31 112-30"/>
+    <path d="m1033 62 6 76 112-16 105 39 17-94 115 73"/>
+  </g>
+  <path class="signal" d="m735 117 94-55 106 39 104-63 113 66 101-39 110 51 115-62 112 39" stroke="#B2F1E8" stroke-opacity=".78" stroke-width="2"/>
+
+  <g fill="#B2F1E8">
+    <circle cx="735" cy="117" r="2.5"/>
+    <circle cx="829" cy="62" r="3"/>
+    <circle cx="846" cy="136" r="2"/>
+    <circle cx="935" cy="101" r="3.5"/>
+    <circle cx="1039" cy="38" r="3"/>
+    <circle cx="1049" cy="139" r="2"/>
+    <circle cx="1152" cy="73" r="3"/>
+    <circle cx="1258" cy="128" r="2.5"/>
+    <circle cx="1355" cy="34" r="3"/>
+    <circle cx="1365" cy="107" r="2"/>
+    <circle cx="1475" cy="73" r="3.5"/>
+    <circle cx="1587" cy="112" r="2.5"/>
+  </g>
+  <g fill="#75D7D5" filter="url(#softGlow)">
+    <circle class="pulse" cx="935" cy="101" r="5"/>
+    <circle class="pulse-late" cx="1152" cy="73" r="5"/>
+    <circle class="pulse" cx="1365" cy="107" r="6"/>
+    <circle class="pulse-late" cx="1475" cy="73" r="6"/>
+  </g>
+  <g fill="#FFB36B">
+    <circle class="float" cx="1039" cy="38" r="2"/>
+    <circle class="float-late" cx="1258" cy="128" r="2"/>
+    <circle class="float" cx="1475" cy="73" r="2"/>
+  </g>
+  <g fill="#8FD7C4" fill-opacity=".75">
+    <circle class="float" cx="906" cy="38" r="1.5"/>
+    <circle class="float-late" cx="1203" cy="38" r="1.5"/>
+    <circle class="float" cx="1544" cy="157" r="2"/>
+  </g>
+</svg>
