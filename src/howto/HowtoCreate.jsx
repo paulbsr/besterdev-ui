@@ -1,88 +1,106 @@
-import React, { useState, useContext, useEffect } from "react";
-import AlertContext from "../Generic/Alerts/AlertContext";
-import OAuth2APIClient from '../oauth2/OAuth2APIClient';
-import '../Fonts.css';
-import dayjs from "dayjs";
-import utc from 'dayjs/plugin/utc';
-import spacer from '../graphix/besterdev_spacer_white.png';
-import spacer2 from '../graphix/besterdev_spacer_white_half.png';
-import { GiHummingbird } from "react-icons/gi";
-import 'react-tooltip/dist/react-tooltip.css';
-import { Tooltip } from 'react-tooltip';
+import { useContext, useState } from 'react';
+import { GiHummingbird } from 'react-icons/gi';
 import { toast } from 'react-toastify';
-dayjs.extend(utc);
+import AlertContext from '../Generic/Alerts/AlertContext';
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
+import '../cyclopedia/CyclopediaManage.css';
 
-
-export default function HowtoCreate(props) {
-  const today = new Date(); // Create a new Date object representing today's date
-  const formattedDate = today.toISOString().split('T')[0]; // Convert the date to the desired format (YYYY-MM-DD)
-  const alertCtx = useContext(AlertContext);
-  const toggleAccordion = () => { setExpanded(!isExpanded); };
-  const [howto_name, setHowto_name] = useState(null)
-  const [howto_desc, setHowto_desc] = useState(null)
-  const [howto_author, setHowto_author] = useState(null)
-  const [howto_date, setHowto_date] = useState(formattedDate)
-  const [cr_date, setcr_date] = useState(formattedDate);
-  const [cr_datehold, setCr_DateHold] = useState(null)
+export default function HowtoCreate({ onCreated }) {
   const [isExpanded, setExpanded] = useState(false);
+  const [howtoName, setHowtoName] = useState('');
+  const [howtoDesc, setHowtoDesc] = useState('');
+  const alertCtx = useContext(AlertContext);
+  const howtoDate = new Date().toISOString().split('T')[0];
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (
-      cr_date != null &&
-      cr_datehold !== "Invalid Date"
-    ) {
-      var newRecord = {
-        'howto_name': howto_name,
-        'howto_desc': howto_desc,
-        'howto_author': howto_author,
-        'howto_date': howto_date,
+
+    try {
+      const response = await OAuth2APIClient.post(
+        'https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howto/create',
+        {
+          howto_name: howtoName,
+          howto_desc: howtoDesc,
+          howto_author: null,
+          howto_date: howtoDate,
+        }
+      );
+
+      if (response.status !== 200) {
+        toast.error('Failed to create Howto.');
+        return;
       }
 
-      try {
-        const response = await OAuth2APIClient.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howto/create`, newRecord);
-        if (response.status === 200) {
-          props.setCheckForRecords(!props.checkForRecords);
-          toast.success(`${howto_name} memorialized.`)
-        }
-        else {
-          toast.error('Bad')
-        }
-      }
-
-      catch (err) { alertCtx.error(`oops! Something went wrong!`); console.log(err); }
+      toast.success(`${howtoName} added to the Howto library.`);
+      setHowtoName('');
+      setHowtoDesc('');
+      setExpanded(false);
+      await onCreated?.();
+    } catch (createError) {
+      console.error('Failed to create Howto:', createError);
+      alertCtx.error('Failed to create Howto.');
     }
-    else {
-      event.preventDefault();
-      alertCtx.warning("Valid CR date required");
-    }
-  }
-
+  };
 
   return (
-
-    <div className='Font-Verdana-Small-Postgres'>&nbsp;
-      <Tooltip id="insert" />
-      <div onClick={toggleAccordion}>
-        <a data-tooltip-id="insert" data-tooltip-content="Add knowledge"><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} />
-        <b>Create a Howto</b></a>
-        <div>&nbsp;</div>
-      </div>
+    <section className="cyclopedia-create-card" aria-labelledby="howto-create-title">
+      <button
+        className="cyclopedia-create-toggle"
+        type="button"
+        aria-expanded={isExpanded}
+        aria-controls="howto-create-form"
+        onClick={() => setExpanded((expanded) => !expanded)}
+      >
+        <span className="cyclopedia-create-icon" aria-hidden="true">
+          <GiHummingbird />
+        </span>
+        <span className="cyclopedia-create-copy">
+          <strong id="howto-create-title">Add a Howto</strong>
+          <span>Create a practical guide or instruction</span>
+        </span>
+        <span className="cyclopedia-create-action">{isExpanded ? 'Close' : 'New Howto'}</span>
+      </button>
 
       {isExpanded && (
-        <div>
-          <div>
-            <form onSubmit={handleSubmit}>
-              <div><img alt="1" src={spacer2} /></div>
-              <div className='Font-Verdana-Small-Postgres'>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} /><img alt="1" src={spacer} />Howto Name:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '450px' }} placeholder="Required" type="text" value={howto_name} onChange={(event) => setHowto_name(event.target.value)} required />
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Howto Description:&nbsp;&nbsp;<input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '450px' }} placeholder="Required" type="text" value={howto_desc} onChange={(event) => setHowto_desc(event.target.value)} required />
-                <img alt="1" src={spacer} /><button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Create Howto</button>
-                <div>&nbsp;</div>
-              </div>
-            </form>
+        <form id="howto-create-form" className="cyclopedia-create-form" onSubmit={handleSubmit}>
+          <label className="cyclopedia-form-field cyclopedia-form-field-wide">
+            <span>Howto name <span aria-hidden="true">*</span></span>
+            <input
+              className="cyclopedia-form-input"
+              placeholder="What does this guide explain?"
+              type="text"
+              value={howtoName}
+              onChange={(event) => setHowtoName(event.target.value)}
+              required
+            />
+          </label>
+
+          <label className="cyclopedia-form-field cyclopedia-form-field-wide">
+            <span>Description <span aria-hidden="true">*</span></span>
+            <textarea
+              className="cyclopedia-form-input cyclopedia-form-textarea"
+              placeholder="Add a clear summary of the steps or outcome"
+              rows={3}
+              value={howtoDesc}
+              onChange={(event) => setHowtoDesc(event.target.value)}
+              required
+            />
+          </label>
+
+          <div className="cyclopedia-create-form-actions cyclopedia-form-field-wide">
+            <button className="cyclopedia-button cyclopedia-button-primary" type="submit">
+              Add Howto
+            </button>
+            <button
+              className="cyclopedia-button cyclopedia-button-secondary"
+              type="button"
+              onClick={() => setExpanded(false)}
+            >
+              Cancel
+            </button>
           </div>
-        </div>)}
-    </div>
+        </form>
+      )}
+    </section>
   );
 }
