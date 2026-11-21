@@ -498,7 +498,14 @@
 }
 
 .cyclopedia-entry-name {
+  color: var(--cyclopedia-text);
   font-weight: 650;
+  text-decoration: none;
+}
+
+.cyclopedia-entry-name:hover {
+  color: var(--cyclopedia-blue);
+  text-decoration: underline;
 }
 
 .cyclopedia-entry-description {
@@ -519,6 +526,35 @@
   height: auto;
   overflow: hidden;
   resize: none;
+}
+
+.web-resource-url-edit {
+  width: 33.333%;
+  min-width: 0;
+  min-height: 84px;
+  height: auto;
+  overflow-wrap: anywhere;
+  resize: vertical;
+  white-space: pre-wrap;
+}
+
+.web-resource-field-edit {
+  min-width: 220px;
+  min-height: 48px;
+  padding: 12px 14px;
+}
+
+.web-resource-name-edit {
+  min-width: 320px;
+}
+
+.web-resource-name-display {
+  display: block;
+  min-width: 300px;
+}
+
+.web-resource-description-edit {
+  min-width: 480px;
 }
 
 .cyclopedia-empty-state {

@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Tooltip } from 'react-tooltip';
+import { useEffect, useRef, useState } from 'react';
+import { Tooltip } from '@mui/material';
 import { toast } from 'react-toastify';
 import { FaPen, FaCheck, FaRegTrashAlt } from 'react-icons/fa';
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
@@ -7,22 +7,30 @@ import { GiSpiderWeb } from "react-icons/gi";
 import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 import { useWebsiteApi } from './WebSiteAPIProvider';
 import WebsiteCreate from './WebsiteCreate';
-import GradientLineRusty from '../gradientlines/GradientLineRusty';
-import { baseInputStyle } from '../baseInputStyle';
 import '../Fonts.css';
+import '../cyclopedia/CyclopediaManage.css';
 
 function WebsiteManage() {
-  const [checkForRecords, setCheckForRecords] = useState(true);
   const [editing, setEditing] = useState(false);
   const [websiteName, setWebsiteName] = useState('');
   const [websiteDesc, setWebsiteDesc] = useState('');
   const [websiteUrl, setWebsiteUrl] = useState('');
   const [websiteCat, setWebsiteCat] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
-  const { websiterootdata, loading, error } = useWebsiteApi();
+  const descriptionEditRef = useRef(null);
+  const { websiterootdata, loading, error, setRefreshWebsiterootdata } = useWebsiteApi();
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  const reload = () => setRefreshWebsiterootdata((value) => !value);
+
+  useEffect(() => {
+    const textarea = descriptionEditRef.current;
+    if (!textarea) return;
+    textarea.style.height = 'auto';
+    textarea.style.height = `${textarea.scrollHeight}px`;
+  }, [editing, websiteDesc]);
+
+  if (loading) return <div className="cyclopedia-manage-page cyclopedia-manage-state">Loading resources...</div>;
+  if (error) return <div className="cyclopedia-manage-page cyclopedia-manage-state">Unable to load resources: {error.message}</div>;
 
   const handleEdit = (row) => {
     setEditing(row.websiteId);
@@ -41,210 +49,147 @@ function WebsiteManage() {
   };
 
   const onEditSave = async () => {
-    const websitePUT = {
-      websiteName,
-      websiteDesc,
-      websiteUrl,
-      websiteCat,
-    };
-
-    await OAuth2APIClient.put(
-      `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/update/${editing}`,
-      websitePUT
-    );
-
-    toast.success('Website updated.');
-    setCheckForRecords(!checkForRecords);
-    onEditCancel();
+    try {
+      await OAuth2APIClient.put(
+        `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/update/${editing}`,
+        { websiteName, websiteDesc, websiteUrl, websiteCat }
+      );
+      reload();
+      toast.success('Web resource updated.');
+      onEditCancel();
+    } catch (updateError) {
+      console.error('Failed to update web resource:', updateError);
+      toast.error('Failed to update web resource.');
+    }
   };
 
-  const onEditDelete = (row) => {
-    if (!window.confirm('Are you sure you want to delete this record?')) return;
-
-    OAuth2APIClient.delete(
-      `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/delete/${row.websiteId}`
-    ).then(() => {
+  const onEditDelete = async (row) => {
+    if (!window.confirm(`Delete "${row.websiteName}"? This action cannot be undone.`)) return;
+    try {
+      await OAuth2APIClient.delete(
+        `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/delete/${row.websiteId}`
+      );
+      reload();
       toast.success(`${row.websiteName} purged.`);
-      setCheckForRecords(!checkForRecords);
-    });
+      if (editing === row.websiteId) onEditCancel();
+    } catch (deleteError) {
+      console.error('Failed to delete web resource:', deleteError);
+      toast.error('Failed to delete web resource.');
+    }
   };
 
-  const filteredWebsites = websiterootdata.filter((row) => {
+  const filteredWebsites = (websiterootdata ?? []).filter((row) => {
     const term = searchTerm.toLowerCase();
     return (
       row.websiteName?.toLowerCase().includes(term) ||
       row.websiteDesc?.toLowerCase().includes(term) ||
-      row.websiteCat?.toLowerCase().includes(term)
+      row.websiteCat?.toLowerCase().includes(term) ||
+      row.websiteUrl?.toLowerCase().includes(term)
     );
   });
 
   return (
-    <div>
-      <div>&nbsp;</div>
-      <div>&nbsp;</div>
+    <main className="cyclopedia-manage-page">
+      <header className="cyclopedia-manage-header">
+        <div className="cyclopedia-manage-title">
+          <span className="cyclopedia-manage-title-icon" aria-hidden="true"><GiSpiderWeb /></span>
+          <div>
+            <p className="cyclopedia-eyebrow">RESOURCE LIBRARY</p>
+            <h1>Web resource management</h1>
+            <p className="cyclopedia-header-description">Curate tools, websites, and books.</p>
+          </div>
+        </div>
+        <div className="cyclopedia-entry-count" aria-label={`${websiterootdata?.length ?? 0} resources`}>
+          <strong>{websiterootdata?.length ?? 0}</strong>
+          <span>resources</span>
+        </div>
+      </header>
 
-      {/* Header */}
-      <div
-        style={{
-          width: '80%',
-          margin: '12px auto',
-          display: 'flex',
-          justifyContent: 'flex-start',
-        }}
-      >
-        <GiSpiderWeb style={{ color: '#336791', fontSize: '38px' }} />
-        &nbsp;&nbsp;
-        <b style={{ fontFamily: 'Candara', fontSize: 'x-large', color: '#336791' }}>
-          Manage the {websiterootdata.length} Tools, Websites or Books
-        </b>
-      </div>
+      <WebsiteCreate onCreated={reload} />
 
-      {/* Create */}
-      <div
-        style={{
-          width: '80%',
-          margin: '12px auto',
-          display: 'flex',
-          justifyContent: 'flex-start',
-        }}
-      >
-        <WebsiteCreate
-          checkForRecords={checkForRecords}
-          setCheckForRecords={setCheckForRecords}
-        />
-      </div>
+      <section className="cyclopedia-entries-card" aria-labelledby="web-resource-entries-title">
+        <div className="cyclopedia-toolbar">
+          <div>
+            <h2 id="web-resource-entries-title">Your resources</h2>
+            <p>Search and manage your resource library.</p>
+          </div>
+          <label className="cyclopedia-search">
+            <span className="cyclopedia-visually-hidden">Search resources</span>
+            <input type="search" placeholder="Search resources..." value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} />
+          </label>
+        </div>
 
-      {/* Search */}
-      <div
-        style={{
-          width: '80%',
-          margin: '12px auto',
-          display: 'flex',
-          justifyContent: 'flex-end',
-        }}
-      >
-        <input
-          type="text"
-          placeholder="Search websites..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          style={{ ...baseInputStyle, width: '400px' }}
-        />
-      </div>
-
-      {/* Table */}
-      <div style={{ width: '80%', margin: '0 auto', padding: '8px 0' }}>
-        <table className="Table6">
-          <thead
-            style={{
-              background: 'linear-gradient(to right, #f0f4f8, #d9e2ec)',
-              boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.1)',
-            }}
-          >
+        <div className="cyclopedia-table-scroll">
+          <table className="cyclopedia-table">
+            <thead>
             <tr>
-              <th style={{ width: '30px' }} align="center">Tool</th>
-              <th style={{ width: '200px' }} align="center">Name</th>
-              <th style={{ width: '500px' }} align="center">Description</th>
-              <th style={{ width: '400px' }} align="center">URL</th>
-              <th style={{ width: '100px' }} align="center">Category</th>
+              <th scope="col">Actions</th>
+              <th scope="col">Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">URL</th>
+              <th scope="col">Category</th>
             </tr>
           </thead>
-
           <tbody>
             {filteredWebsites.map((row) => (
               <tr key={row.websiteId}>
-                <td>
+                <td className="cyclopedia-actions-cell">
                   {row.websiteId === editing ? (
                     <>
-                      <Tooltip id="reactTooltip" place="left" />
-                      <button style={toolBtn('#336791')} onClick={onEditSave} data-tooltip-id="reactTooltip" data-tooltip-content="Commit"><FaCheck style={iconStyle} /></button>
-                      <button style={toolBtn('silver')} onClick={onEditCancel} data-tooltip-id="reactTooltip" data-tooltip-content="Revert"><PiArrowCounterClockwiseBold style={iconStyle} /></button>
-                      <button style={toolBtn('#D5441C')} onClick={() => onEditDelete(row)} data-tooltip-id="reactTooltip" data-tooltip-content="Purge"><FaRegTrashAlt style={iconStyle} /></button>
+                      <Tooltip title="Save changes"><button className="cyclopedia-action-button cyclopedia-action-save" type="button" aria-label="Save changes" onClick={onEditSave}><FaCheck /></button></Tooltip>
+                      <Tooltip title="Cancel editing"><button className="cyclopedia-action-button cyclopedia-action-cancel" type="button" aria-label="Cancel editing" onClick={onEditCancel}><PiArrowCounterClockwiseBold /></button></Tooltip>
+                      <Tooltip title="Delete resource"><button className="cyclopedia-action-button cyclopedia-action-delete" type="button" aria-label={`Delete ${row.websiteName}`} onClick={() => onEditDelete(row)}><FaRegTrashAlt /></button></Tooltip>
                     </>
                   ) : (
-                    <button style={toolBtn('#336791')} onClick={() => handleEdit(row)} data-tooltip-id="reactTooltip" data-tooltip-content="Edit"><FaPen style={iconStyle} /></button>
+                    <Tooltip title="Edit resource"><button className="cyclopedia-action-button cyclopedia-action-edit" type="button" aria-label={`Edit ${row.websiteName}`} onClick={() => handleEdit(row)}><FaPen /></button></Tooltip>
                   )}
                 </td>
-
                 <td>
                   {row.websiteId === editing ? (
-                    <input
-                      style={{ ...baseInputStyle, width: '95%' }}
-                      value={websiteName}
-                      onChange={(e) => setWebsiteName(e.target.value)}
-                    />
+                    <input className="cyclopedia-inline-input web-resource-field-edit web-resource-name-edit" aria-label={`Edit name for ${row.websiteName}`} value={websiteName} onChange={(event) => setWebsiteName(event.target.value)} />
                   ) : (
-                    <a href={row.websiteUrl} target="_blank" rel="noreferrer">
-                      {row.websiteName}
-                    </a>
+                    <a className="cyclopedia-entry-name web-resource-name-display" href={row.websiteUrl} target="_blank" rel="noreferrer">{row.websiteName}</a>
                   )}
                 </td>
-
+                <td>
+                  {row.websiteId === editing ? (
+                    <textarea ref={descriptionEditRef} className="cyclopedia-inline-input cyclopedia-inline-textarea web-resource-description-edit" aria-label={`Edit description for ${row.websiteName}`} rows={3} value={websiteDesc} onChange={(event) => setWebsiteDesc(event.target.value)} />
+                  ) : (
+                    <span className="cyclopedia-entry-description">{row.websiteDesc}</span>
+                  )}
+                </td>
                 <td>
                   {row.websiteId === editing ? (
                     <textarea
-                      style={{ ...baseInputStyle, width: '99%' }}
-                      value={websiteDesc}
-                      onChange={(e) => setWebsiteDesc(e.target.value)}
-                    />
-                  ) : (
-                    row.websiteDesc
-                  )}
-                </td>
-
-                <td>
-                  {row.websiteId === editing ? (
-                    <input
-                      style={{ ...baseInputStyle, width: '95%' }}
+                      className="cyclopedia-inline-input web-resource-url-edit"
+                      aria-label={`Edit URL for ${row.websiteName}`}
+                      rows={3}
+                      wrap="soft"
                       value={websiteUrl}
-                      onChange={(e) => setWebsiteUrl(e.target.value)}
+                      onChange={(event) => setWebsiteUrl(event.target.value)}
                     />
                   ) : (
                     row.websiteUrl
                   )}
                 </td>
-
                 <td>
                   {row.websiteId === editing ? (
-                    <input
-                      style={{ ...baseInputStyle, width: '95%' }}
-                      value={websiteCat}
-                      onChange={(e) => setWebsiteCat(e.target.value)}
-                    />
+                    <input className="cyclopedia-inline-input web-resource-field-edit" aria-label={`Edit category for ${row.websiteName}`} value={websiteCat} onChange={(event) => setWebsiteCat(event.target.value)} />
                   ) : (
                     row.websiteCat
                   )}
                 </td>
               </tr>
             ))}
+            {filteredWebsites.length === 0 && (
+              <tr><td className="cyclopedia-empty-state" colSpan={5}>{searchTerm ? 'No resources match your search.' : 'No web resources yet.'}</td></tr>
+            )}
           </tbody>
         </table>
       </div>
-
-      <div>&nbsp;</div>
-      <GradientLineRusty />
-      <div>&nbsp;</div>
-    </div>
+      </section>
+    </main>
   );
 }
-
-/* shared styles */
-const toolBtn = (bg) => ({
-  height: '20px',
-  width: '20px',
-  padding: 0,
-  border: 'none',
-  borderRadius: '3px',
-  backgroundColor: bg,
-  outline: 'none',
-});
-
-const iconStyle = {
-  color: 'white',
-  display: 'block',
-  margin: 'auto',
-  fontSize: '12px',
-  cursor: 'pointer',
-};
 
 export default WebsiteManage;
