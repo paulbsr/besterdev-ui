@@ -107,36 +107,48 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, employer_name, checkForRec
 
 
     return (
-        <table className="TableCV" style={{ width: '1350px' }}>
-            {sortedRoles && sortedRoles.map((role) => (
-                <tbody>
-                    {
-                        <tr>
+        <div className="cv-role-list">
+            {sortedRoles && sortedRoles.map((role) => {
+                const isRoleExpanded = expandedRole === role.role_id;
+                const detailsId = `cv-role-details-${role.role_id}`;
+                const isManagerSoftwareEngineering =
+                    role.role_name?.trim().toLowerCase() === 'manager, software engineering';
+                const startYear = isManagerSoftwareEngineering ? 2020 : role.role_start;
+                const endYear = isManagerSoftwareEngineering ? 2026 : role.role_end;
 
-                            <div className="CV-Font-Calibri-Large-Italic-PG" onClick={() => handleRoleClick(role.role_id)} style={{ cursor: 'pointer' }}>
-                                {/* <Image src={employerImages[role.role_employer]} width="27" height="27" alt="Employer Logo" /> */}
-                                    &nbsp;&nbsp;
-                                    {role.role_name}
-                                
-                                &nbsp;-&nbsp;
-                                <Tenure startYear={role.role_start} endYear={role.role_end} /> from {role.role_start} to {role.role_end}
+                return (
+                    <article className="cv-role" key={role.role_id}>
+                        <button
+                            className="cv-role-toggle"
+                            type="button"
+                            aria-expanded={isRoleExpanded}
+                            aria-controls={detailsId}
+                            onClick={() => handleRoleClick(role.role_id)}
+                        >
+                            <span>{role.role_name}</span>
+                            <span className="cv-role-dates">
+                                <Tenure startYear={startYear} endYear={endYear} />
+                                {' '}· {startYear} – {endYear || 'Present'}
+                            </span>
+                        </button>
+                        {isRoleExpanded && (
+                            <div className="cv-role-details" id={detailsId}>
+                                <MyCVEmployerRoleDetails
+                                    mycvdata2={mycvdata1}
+                                    employer_id2={employer_id1}
+                                    role_id2={role.role_id}
+                                    role_idd={role.role_id}
+                                    role_desc={role.role_desc}
+                                    role_name={role.role_name}
+                                    checkForRecords={checkForRecords}
+                                    setCheckForRecords={setCheckForRecords}
+                                />
                             </div>
-
-
-                            {expandedRole === role.role_id &&
-                                <i className="Font-Segoe-Large-Howto">
-                                    <MyCVEmployerRoleDetails mycvdata2={mycvdata1} employer_id2={employer_id1} role_id2={role.role_id} role_idd={role.role_id} role_desc={role.role_desc} role_name={role.role_name} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
-                                </i>
-                            }
-                        
-                        </tr>
-                    }
-                    <div>&nbsp;</div>
-                </tbody>
-            )
-            )
-            }
-        </table>
+                        )}
+                    </article>
+                );
+            })}
+        </div>
     );
 }
 

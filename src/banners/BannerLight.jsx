@@ -12,6 +12,7 @@ import {
   FaNodeJs,
   FaPeopleArrows,
   FaFileContract,
+  FaLinkedin,
 } from 'react-icons/fa';
 import {
   GiRapidshareArrow,
@@ -83,7 +84,12 @@ const externalLinks = [
   { tooltip: 'Swagger', icon: <SiSwagger style={iconStyle('#85EA2D', 30)} />, href: 'https:///besterdev-api-13a0246c9cf2.herokuapp.com/swagger-ui/index.html' },
 ];
 
-const BannerLight = () => {
+const BannerLight = ({
+  showBreakingNewsTopic = true,
+  showInternalLinks = true,
+  alignIconsRight = false,
+  showGitHubProfile = false,
+}) => {
   const navigate = useNavigate();
   const [searchPhrase, setSearchPhrase] = useState('');
   const [editValue, setEditValue] = useState('');
@@ -144,10 +150,11 @@ const { refreshBreakingNews } = useBreakingNewsApi();
         display: 'flex',
         flexWrap: 'wrap',
         alignItems: 'center',
+        justifyContent: alignIconsRight ? 'flex-end' : 'flex-start',
         gap: '15px',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>&nbsp;&nbsp;
+      {showBreakingNewsTopic && <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>&nbsp;&nbsp;
         <GiRapidshareArrow style={iconStyle('#336791', 28)} />
         <span style={{ fontFamily: 'Segoe UI', color: 'var(--home-text, #336791)' }}>
           Breaking News topic:
@@ -190,7 +197,30 @@ const { refreshBreakingNews } = useBreakingNewsApi();
             {searchPhrase}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </i>
         )}
-      </div>
+      </div>}
+
+      {showGitHubProfile && (
+        <div className="banner-light-profile-links">
+          <a
+            className="banner-light-profile-link"
+            href="https://github.com/paulbsr"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <BiLogoGithub style={iconStyle('#336791', 28)} aria-hidden="true" />
+            <span>https://github.com/paulbsr</span>
+          </a>
+          <a
+            className="banner-light-profile-link"
+            href="https://www.linkedin.com/in/paul-bester-4196952b/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaLinkedin style={iconStyle('#0A66C2', 28)} aria-hidden="true" />
+            <span>https://www.linkedin.com/in/paul-bester-4196952b/</span>
+          </a>
+        </div>
+      )}
 
       {/* {internalLinks.map(({ tooltip, icon, path }, idx) => (
         <a
@@ -205,7 +235,7 @@ const { refreshBreakingNews } = useBreakingNewsApi();
         </a>
       ))} */}
 
-      {internalLinks.map(({ tooltip, icon, path }, idx) => (
+      {showInternalLinks && internalLinks.map(({ tooltip, icon, path }, idx) => (
   <div
     key={idx}
     className="icon-pill"
@@ -234,7 +264,9 @@ const { refreshBreakingNews } = useBreakingNewsApi();
         </a>
       ))} */}
 
-      {externalLinks.map(({ tooltip, icon, href }, idx) => (
+      {externalLinks
+        .filter(({ tooltip }) => !(showGitHubProfile && tooltip === 'GitHub'))
+        .map(({ tooltip, icon, href }, idx) => (
   <a
     key={idx}
     className="icon-pill"
