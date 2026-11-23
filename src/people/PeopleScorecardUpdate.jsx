@@ -97,7 +97,7 @@ export default function PeopleScorecardUpdate({
         style={{
           fontSize: "small",
           fontFamily: "Verdana",
-          color: "black",
+          color: "#17202f",
           height: 25,
         }}
         onClick={handleClickOpen}
@@ -105,17 +105,27 @@ export default function PeopleScorecardUpdate({
         {status}
       </Button>
 
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Edit Task Status / Comment</DialogTitle>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        PaperProps={{ sx: { backgroundColor: "#151d2b", color: "#e6ebf2", border: "1px solid #293447" } }}
+      >
+        <DialogTitle>Edit task status / comment</DialogTitle>
         <DialogContent>
-          <DialogContentText>Status</DialogContentText>
+          <DialogContentText sx={{ color: "#a0aec0", mb: 1 }}>Status</DialogContentText>
 
           <Select
             value={taskStatus}
             onChange={handleStatusChange}
             fullWidth
             size="small"
-            sx={{ mb: 2 }}
+            sx={{
+              mb: 2,
+              color: "#e6ebf2",
+              "& .MuiOutlinedInput-notchedOutline": { borderColor: "#293447" },
+              "&:hover .MuiOutlinedInput-notchedOutline": { borderColor: "#a8c9ec" },
+              "& .MuiSvgIcon-root": { color: "#a0aec0" },
+            }}
           >
             {["START", "WIP", "DONE", "PROBLEM", "N/A"].map((statusOption) => (
               <MenuItem key={statusOption} value={statusOption}>
@@ -133,12 +143,23 @@ export default function PeopleScorecardUpdate({
             variant="standard"
             value={taskComment}
             onChange={handleCommentChange}
+            sx={{
+              "& .MuiInputLabel-root": { color: "#a0aec0" },
+              "& .MuiInputLabel-root.Mui-focused": { color: "#a8c9ec" },
+              "& .MuiInputBase-input": { color: "#e6ebf2" },
+              "& .MuiInput-underline:before": { borderBottomColor: "#293447" },
+              "& .MuiInput-underline:hover:not(.Mui-disabled):before": { borderBottomColor: "#a8c9ec" },
+            }}
           />
         </DialogContent>
 
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={checkComment} color="primary" variant="contained">
+          <Button sx={{ color: "#a8c9ec" }} onClick={handleClose}>Cancel</Button>
+          <Button
+            onClick={checkComment}
+            variant="contained"
+            sx={{ backgroundColor: "#ff855f", "&:hover": { backgroundColor: "#e06f4f" } }}
+          >
             Confirm
           </Button>
         </DialogActions>

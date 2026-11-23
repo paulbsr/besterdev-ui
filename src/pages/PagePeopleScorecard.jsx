@@ -13,7 +13,7 @@ import DutchLanguage_Ticker from '../dutchlanguage/DutchLanguage_Ticker';
 export default function PagePeopleScorecard(cyclopediadata) {
 
   return (
-    <div>
+    <div className="people-scorecard-route">
       <BannerWhite />
       <GradientLine />
       <BannerLight />
@@ -23,8 +23,8 @@ export default function PagePeopleScorecard(cyclopediadata) {
       <CyclopediaTicker />
       <GradientLineThin />
       <DutchLanguage_Ticker />
-      <GradientLine />
-      <CombinedCreateFP />
+      <GradientLineThin />
+      <CombinedCreateFP hideSearch className="home-quick-adds" />
       <PeopleScorecard />
       <ToastComponent />
     </div>

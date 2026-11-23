@@ -65,63 +65,57 @@ export default function PeopleScorecardCreate({ checkForRecords, setCheckForReco
       .join(" ");
 
   return (
-    <div className="people-scorecard-create">
-      <div onClick={toggleAccordion} style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: "8px" }}>
-          <GiHummingbird style={{ color: "#336791", fontSize: "25px" }} />
-        <span className="Font-Verdana-Small-Postgres">Add Task to People Scorecard</span>
-      </div>
+    <section className="people-create-card" aria-labelledby="people-create-title">
+      <button
+        className="people-create-toggle"
+        type="button"
+        aria-expanded={isExpanded}
+        aria-controls="people-create-form"
+        onClick={toggleAccordion}
+      >
+        <span className="people-create-icon" aria-hidden="true">
+          <GiHummingbird />
+        </span>
+        <span className="people-create-copy">
+          <strong id="people-create-title">Add a scorecard task</strong>
+          <span>Create a team objective or work item</span>
+        </span>
+        <span className="people-create-action">
+          {isExpanded ? "Close" : "New task"}
+        </span>
+      </button>
 
       {isExpanded && (
-        <form onSubmit={handleSubmit} style={{ marginTop: "10px" }}>
-          <div className="Font-Verdana-Small-Postgres" style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-            <label>
-              Task Name:&nbsp;
-              <input
-                type="text"
-                value={taskName}
-                onChange={(e) => setTaskName(e.target.value)}
-                required
-                placeholder="Required"
-                style={inputStyle(300)}
-              />
-            </label>
+        <form id="people-create-form" className="people-create-form" onSubmit={handleSubmit}>
+          <input
+            className="people-form-input"
+            type="text"
+            aria-label="Task name (required)"
+            value={taskName}
+            onChange={(e) => setTaskName(e.target.value)}
+            required
+            placeholder="Task name"
+          />
 
-            <label>
-              Task Description:&nbsp;
-              <input
-                type="text"
-                value={taskDescription}
-                onChange={(e) => setTaskDescription(e.target.value)}
-                placeholder="Optional"
-                style={inputStyle(600)}
-              />
-            </label>
+          <textarea
+            className="people-form-input people-form-textarea"
+            aria-label="Description (optional)"
+            value={taskDescription}
+            onChange={(e) => setTaskDescription(e.target.value)}
+            placeholder="Description (optional)"
+            rows={1}
+          />
 
-            <button type="submit" style={buttonStyle}>
-              Add Task
+          <div className="people-create-form-actions">
+            <button className="people-button people-button-primary" type="submit">
+              Add task
+            </button>
+            <button className="people-button people-button-secondary" type="button" onClick={() => setExpanded(false)}>
+              Cancel
             </button>
           </div>
         </form>
       )}
-    </div>
+    </section>
   );
 }
-
-// Reusable style helpers
-const inputStyle = (width) => ({
-  height: "27.5px",
-  width: `${width}px`,
-  border: "1.25px solid #c4c4c4",
-  borderRadius: "4px",
-  paddingLeft: "10px",
-});
-
-const buttonStyle = {
-  height: "27.5px",
-  border: "1px solid #D5441C",
-  borderRadius: "5px",
-  backgroundColor: "#D5441C",
-  color: "#FFFFFF",
-  cursor: "pointer",
-  padding: "0 12px",
-};

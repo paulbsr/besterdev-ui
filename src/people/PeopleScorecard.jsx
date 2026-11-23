@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import "../Fonts.css";
+import "./PeopleScorecard.css";
 
 import {
   FaCheck,
@@ -22,7 +23,6 @@ import AlertContext from "../Generic/Alerts/AlertContext";
 import PeopleScorecardUpdate from "./PeopleScorecardUpdate";
 import PeopleScorecardCreate from "./PeopleScorecardCreate";
 import MouseoverPopover from "../MouseoverPopover";
-import GradientLineRusty from "../gradientlines/GradientLineRusty";
 import { getStatusColor } from "../getStatusColor";
 import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 import ImageAvatar_Conor from "../graphix/Avatars/ImageAvatar_Conor";
@@ -51,11 +51,14 @@ export default function PeopleScorecard() {
   const [editing, setEditing] = useState("");
   const [taskName, setTaskName] = useState(null);
   const [deleting, setDeleting] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(true);
   const alertCtx = useContext(AlertContext);
 
   const year = new Date().getFullYear();
 
   useEffect(() => {
+    setLoading(true);
     OAuth2APIClient.get(API_BASE)
       .then((response) => {
         const sorted = response.data.sort((a, b) =>
@@ -64,10 +67,12 @@ export default function PeopleScorecard() {
         setTasks(sorted);
         setError(null);
       })
-      .catch(setError);
+      .catch(setError)
+      .finally(() => setLoading(false));
   }, [checkForRecords]);
 
-  if (error) return <p>A PeopleScorecard GET error occurred.</p>;
+  if (error) return <main className="people-scorecard-page people-scorecard-state">Unable to load the People Scorecard.</main>;
+  if (loading) return <main className="people-scorecard-page people-scorecard-state">Loading scorecard...</main>;
 
   const handleDelete = (taskName, id) => {
     OAuth2APIClient.delete(`${API_BASE}/delete/${id}`)
@@ -104,114 +109,174 @@ export default function PeopleScorecard() {
     handleEditCancel();
   };
 
+  const currentYearTasks = tasks.filter((row) => row.year === year.toString());
+  const filteredTasks = currentYearTasks.filter((row) => {
+    const term = searchTerm.toLowerCase();
+    return (
+      row.taskName?.toLowerCase().includes(term) ||
+      row.taskDescription?.toLowerCase().includes(term)
+    );
+  });
+
+  const statusCounts = teamMembers.reduce(
+    (counts, member) => {
+      currentYearTasks.forEach((row) => {
+        const status = row[`status_${member.key}`];
+        if (status === "START") counts.start += 1;
+        if (status === "DONE") counts.done += 1;
+        if (status === "WIP") counts.wip += 1;
+        if (status === "PROBLEM") counts.problem += 1;
+      });
+      return counts;
+    },
+    { start: 0, done: 0, wip: 0, problem: 0 }
+  );
+
   return (
-    <div>
-      <div style={{ margin: "1rem 0" }}>
-        <Tooltip id="insert" />
-        <div style={styles.header}>
-          <BsPeopleFill style={styles.icon} />
-          <b style={styles.title}>The People Scorecard</b>
+    <main className="people-scorecard-page">
+      <header className="people-scorecard-header">
+        <div className="people-scorecard-title">
+          <span className="people-scorecard-title-icon" aria-hidden="true">
+            <BsPeopleFill />
+          </span>
+          <div>
+            <p className="people-eyebrow">TEAM PERFORMANCE · {year}</p>
+            <h1>People Scorecard</h1>
+            <p className="people-header-description">
+              Track priorities, progress, and team comments.
+            </p>
+          </div>
         </div>
-      </div>
+        <div className="people-header-metrics" aria-label="Scorecard summary">
+          <div className="people-entry-count">
+            <strong>{currentYearTasks.length}</strong>
+            <span>tasks</span>
+          </div>
+          <div className="people-entry-count people-count-problem">
+            <strong>{statusCounts.problem}</strong>
+            <span>problems</span>
+          </div>
+          <div className="people-entry-count people-count-start">
+            <strong>{statusCounts.start}</strong>
+            <span>start</span>
+          </div>
+          <div className="people-entry-count people-count-wip">
+            <strong>{statusCounts.wip}</strong>
+            <span>WIP</span>
+          </div>
+          <div className="people-entry-count people-count-done">
+            <strong>{statusCounts.done}</strong>
+            <span>done</span>
+          </div>
+        </div>
+      </header>
 
       <PeopleScorecardCreate
         checkForRecords={checkForRecords}
         setCheckForRecords={setCheckForRecords}
       />
 
-      <div style={{ margin: "1rem 0" }} />
+      <section className="people-entries-card" aria-labelledby="people-entries-title">
+        <div className="people-toolbar">
+          <div>
+            <h2 id="people-entries-title">Current objectives</h2>
+            <p>{statusCounts.wip} work items currently in progress.</p>
+          </div>
+          <label className="people-search">
+            <span className="people-visually-hidden">Search tasks</span>
+            <input
+              type="search"
+              placeholder="Search tasks..."
+              value={searchTerm}
+              onChange={(event) => setSearchTerm(event.target.value)}
+            />
+          </label>
+        </div>
 
-      {team === "Dev" && (
-        <div style={{ overflow: "auto" }}>
-          <table className="Table8 Table8hover">
+        {team === "Dev" && (
+        <div className="people-table-scroll">
+          <table className="people-table">
             <thead>
               <tr>
-                <th></th>
-                <th className="Font-Verdana-Small-Rusty" style={{ width: "400px" }}>
-                  Tasks
-                </th>
+                <th scope="col">Task</th>
                 {teamMembers.map((member) => (
-                  <th
-                    key={member.key}
-                    className="Font-Verdana-Small-Rusty"
-                    style={{ width: "10px" }}
-                    align="center"
-                  >
-                    {member.name}
+                  <th key={member.key} scope="col" className="people-member-heading">
+                    <span>{member.avatar}</span>
+                    <span>{member.name}</span>
                   </th>
-                ))}
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                {teamMembers.map((member) => (
-                  <td key={member.key}>{member.avatar}</td>
                 ))}
               </tr>
             </thead>
 
             <tbody>
-              {tasks
-                .filter((row) => row.year === year.toString())
-                .map((row) => (
-                  <tr key={row.id} style={{ textAlign: "center" }}>
-                    <td>
-                      {row.id === editing ? (
-                        <>
-                          <Tooltip content="Commit">
-                            <button
-                              style={styles.buttonBlue}
-                              onClick={() => handleEditSave(taskName, row.id)}
-                            >
-                              <FaCheck style={styles.iconSmall} />
-                            </button>
-                          </Tooltip>
-                          <Tooltip content="Revert">
-                            <button
-                              style={styles.buttonSilver}
-                              onClick={handleEditCancel}
-                            >
-                              <FaUndo style={styles.iconSmall} />
-                            </button>
-                          </Tooltip>
-                          <Tooltip content="Delete Task">
-                            <button
-                              style={styles.buttonRed}
-                              onClick={() => {
-                                setDeleting(row.id);
-                                setTaskName(row.taskName);
-                              }}
-                            >
-                              <MdDeleteForever style={styles.iconMedium} />
-                            </button>
-                          </Tooltip>
-                        </>
-                      ) : (
-                        <Tooltip content="Edit Task Name">
-                          <button
-                            style={styles.buttonBlue}
-                            onClick={() => handleEdit(row)}
-                          >
-                            <FaPen style={styles.iconSmall} />
-                          </button>
-                        </Tooltip>
-                      )}
-                    </td>
-
-                    <td className="pprecord Table3 td">
-                      {row.id === editing ? (
-                        <textarea
-                          cols="50"
-                          rows="1"
-                          defaultValue={taskName}
-                          onChange={(e) => setTaskName(e.target.value)}
-                        />
-                      ) : (
-                        <MouseoverPopover
-                          see={row.taskName}
-                          read={row.taskDescription}
-                        />
-                      )}
+              {filteredTasks.map((row) => (
+                  <tr key={row.id}>
+                    <td className="people-task-cell">
+                      <div className="people-task-layout">
+                        <div className="people-task-copy">
+                          {row.id === editing ? (
+                            <textarea
+                              className="people-inline-input"
+                              rows={2}
+                              value={taskName}
+                              onChange={(e) => setTaskName(e.target.value)}
+                            />
+                          ) : (
+                            <div>
+                              <span className="people-task-name">{row.taskName}</span>
+                              {row.taskDescription && (
+                                <span className="people-task-description">{row.taskDescription}</span>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                        <div className="people-task-actions">
+                          {row.id === editing ? (
+                            <>
+                              <Tooltip content="Commit">
+                                <button
+                                  className="people-action-button people-action-save"
+                                  type="button"
+                                  onClick={() => handleEditSave(taskName, row.id)}
+                                >
+                                  <FaCheck />
+                                </button>
+                              </Tooltip>
+                              <Tooltip content="Revert">
+                                <button
+                                  className="people-action-button people-action-cancel"
+                                  type="button"
+                                  onClick={handleEditCancel}
+                                >
+                                  <FaUndo />
+                                </button>
+                              </Tooltip>
+                              <Tooltip content="Delete Task">
+                                <button
+                                  className="people-action-button people-action-delete"
+                                  type="button"
+                                  onClick={() => {
+                                    setDeleting(row.id);
+                                    setTaskName(row.taskName);
+                                  }}
+                                >
+                                  <MdDeleteForever />
+                                </button>
+                              </Tooltip>
+                            </>
+                          ) : (
+                            <Tooltip content="Edit Task Name">
+                              <button
+                                className="people-action-button people-action-edit"
+                                type="button"
+                                onClick={() => handleEdit(row)}
+                              >
+                                <FaPen />
+                              </button>
+                            </Tooltip>
+                          )}
+                        </div>
+                      </div>
                     </td>
 
                     {teamMembers.map((member) => {
@@ -221,10 +286,12 @@ export default function PeopleScorecard() {
                       return (
                         <td
                           key={member.key}
-                          style={{
-                            backgroundColor: getStatusColor(row[statusKey]),
-                          }}
+                          className="people-status-cell"
                         >
+                          <span
+                            className="people-status-fill"
+                            style={{ backgroundColor: getStatusColor(row[statusKey]) }}
+                          >
                           <MouseoverPopover
                             see={
                               <PeopleScorecardUpdate
@@ -239,18 +306,31 @@ export default function PeopleScorecard() {
                             }
                             read={row[commentKey]}
                           />
+                          </span>
                         </td>
                       );
                     })}
                   </tr>
                 ))}
+              {filteredTasks.length === 0 && (
+                <tr>
+                  <td className="people-empty-state" colSpan={teamMembers.length + 1}>
+                    {searchTerm ? "No tasks match your search." : "No tasks for this year."}
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
-      )}
+        )}
+      </section>
 
       {/* Delete Confirmation Dialog */}
-      <Dialog open={deleting !== null} onClose={() => setDeleting(null)}>
+      <Dialog
+        open={deleting !== null}
+        onClose={() => setDeleting(null)}
+        PaperProps={{ sx: { backgroundColor: "#151d2b", color: "#e6ebf2", border: "1px solid #293447" } }}
+      >
         <DialogTitle>
           Delete <b>'{taskName}'</b>?
         </DialogTitle>
@@ -262,68 +342,11 @@ export default function PeopleScorecard() {
               padding: "3px",
             }}
           >
-            <Button onClick={() => { handleDelete(taskName, deleting); setDeleting(null); }}>Delete</Button>
-            <Button onClick={() => setDeleting(null)}>Cancel</Button>
+            <Button color="error" onClick={() => { handleDelete(taskName, deleting); setDeleting(null); }}>Delete</Button>
+            <Button sx={{ color: "#a8c9ec" }} onClick={() => setDeleting(null)}>Cancel</Button>
           </DialogActions>
         </DialogContent>
       </Dialog>
-
-      <div style={{ margin: "1rem 0" }}>
-        <GradientLineRusty />
-      </div>
-    </div>
+    </main>
   );
 }
-
-const styles = {
-  header: {
-    display: "flex",
-    alignItems: "center",
-    cursor: "pointer",
-  },
-  icon: { color: "#336791", fontSize: "38px", marginRight: "8px" },
-  title: {
-    fontFamily: "Verdana",
-    fontSize: "medium",
-    fontWeight: "bold",
-    color: "#336791",
-  },
-  buttonBlue: {
-    height: "20px",
-    width: "20px",
-    border: "none",
-    borderRadius: "3px",
-    backgroundColor: "#336791",
-    margin: "0 2px",
-  },
-  buttonSilver: {
-    height: "20px",
-    width: "20px",
-    border: "none",
-    borderRadius: "3px",
-    backgroundColor: "silver",
-    margin: "0 2px",
-  },
-  buttonRed: {
-    height: "20px",
-    width: "20px",
-    border: "none",
-    borderRadius: "3px",
-    backgroundColor: "#D5441C",
-    margin: "0 2px",
-  },
-  iconSmall: {
-    color: "white",
-    fontSize: "12px",
-    display: "block",
-    margin: "auto",
-    cursor: "pointer",
-  },
-  iconMedium: {
-    color: "white",
-    fontSize: "18px",
-    display: "block",
-    margin: "auto",
-    cursor: "pointer",
-  },
-};
