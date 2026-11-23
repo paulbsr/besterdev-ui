@@ -1,139 +1,161 @@
-import React, { useState } from "react";
-import OAuth2APIClient from '../oauth2/OAuth2APIClient';
-import "../Fonts.css";
+import { useState } from "react";
+import OAuth2APIClient from "../oauth2/OAuth2APIClient";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { GiHummingbird } from "react-icons/gi";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
+import "./TaskCreate.css";
 
-export default function TaskCreate(props) {
-    const current = new Date();
-    const [taskname, setTaskname] = useState("");
-    const [taskrequirement, setTaskrequirement] = useState("");
-    const [taskowner] = useState("Bester");
-    const [tasktargetdate, setTasktargetdate] = useState(null);
-    const [taskcreatedate] = useState(current);
-    const [taskstatus, setTaskstatus] = useState("START");
-    const [projecthandle, setProjecthandle] = useState("");
-    const [asms, setAsms] = useState("");
-    const [tasknextstep] = useState("");
-    const [isExpanded, setExpanded] = useState(false);
-    const toggleAccordion = () => { setExpanded(!isExpanded); };
+const modules = [
+  { asms: "188118", projectHandle: "UserStory", label: "BesterDev User Story" },
+  { asms: "113092", projectHandle: "NetworkSecurity", label: "Network Security" },
+  { asms: "14718", projectHandle: "EnterpriseSecurity", label: "Enterprise Security" },
+  { asms: "181268", projectHandle: "ComputerCloudSecurity", label: "Computer Cloud Security" },
+  { asms: "171593", projectHandle: "DutchLanguage", label: "Dutch Language Staatsexamen NT2" },
+  { asms: "188660", projectHandle: "StaatsexamenNT2_Lezen", label: "Staatsexamen NT2 - Lezen" },
+  { asms: "190860", projectHandle: "StaatsexamenNT2_Luisteren", label: "Staatsexamen NT2 - Luisteren" },
+  { asms: "191076", projectHandle: "StaatsexamenNT2_Schrijven", label: "Staatsexamen NT2 - Schrijven" },
+  { asms: "221193", projectHandle: "StaatsexamenNT2_Spreken", label: "Staatsexamen NT2 - Spreken" },
+];
 
-    const handleSubmit = async (event) => {
-        if (
-            tasktargetdate !== null
-        ) {
-            event.preventDefault();
-            var newtask = {
-                taskname: taskname,
-                taskrequirement: taskrequirement,
-                taskowner: taskowner,
-                tasktargetdate: tasktargetdate,
-                taskcreatedate: taskcreatedate,
-                taskstatus: taskstatus,
-                asms: asms,
-                projecthandle: projecthandle,
-                tasknextstep: tasknextstep,
-            };
-            try 
-            {
-                const response = await OAuth2APIClient.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/create`, newtask);
-                if (response.status === 200) 
-                {
-                    props.setCheckForRecords(!props.checkForRecords);
-                    toast.success(`Task added.`)
-                }
-                else {toast.error('Task not added');}
-            }
-            catch (err) { console.log(err); }
-        } else {event.preventDefault(); }
-    };
+export default function TaskCreate({ setCheckForRecords }) {
+  const [taskname, setTaskname] = useState("");
+  const [taskrequirement, setTaskrequirement] = useState("");
+  const [tasktargetdate, setTasktargetdate] = useState(null);
+  const [projecthandle, setProjecthandle] = useState("");
+  const [asms, setAsms] = useState("");
+  const [isExpanded, setExpanded] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-    const dropdownChange = (event) => {
-        const selectedIndex = event.target.options.selectedIndex;
-        const selectedOption = event.target.options[selectedIndex];
-        setAsms(event.target.value);
-        setProjecthandle(selectedOption.getAttribute('data-value2') || "");
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!tasktargetdate) {
+      toast.error("Choose a target date before creating the task.");
+      return;
     }
 
+    setSubmitting(true);
+    const newTask = {
+      taskname,
+      taskrequirement,
+      taskowner: "Bester",
+      tasktargetdate,
+      taskcreatedate: new Date(),
+      taskstatus: "START",
+      asms,
+      projecthandle,
+      tasknextstep: "",
+    };
 
+    try {
+      const response = await OAuth2APIClient.post(
+        "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/create",
+        newTask
+      );
+      if (response.status === 200) {
+        setCheckForRecords((value) => !value);
+        toast.success("Task added.");
+      } else {
+        toast.error("Task not added.");
+      }
+    } catch (error) {
+      console.error("Failed to create task:", error);
+      toast.error("Task could not be created.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
-    return (
-        <div>
-            <div onClick={toggleAccordion}>
-                &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-                <GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} />&nbsp;
-                <b><span className='Font-Verdana-Small-Postgres'>Add a Task to The Task Manager</span></b>
-            </div>
-            {isExpanded && (
-                <div>
-                    <div>&nbsp;</div>
-                    <div>
-                        <form onSubmit={handleSubmit}>
-                            <div className='Font-Segoe-Small'>
-                                <div style={{ display: "flex" }}>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  const handleModuleChange = (event) => {
+    const selectedOption = event.target.selectedOptions[0];
+    setAsms(event.target.value);
+    setProjecthandle(selectedOption?.dataset.projectHandle || "");
+  };
 
+  return (
+    <div className="task-create">
+      <button
+        className="task-create-toggle"
+        type="button"
+        aria-expanded={isExpanded}
+        aria-controls="task-create-form"
+        onClick={() => setExpanded((expanded) => !expanded)}
+      >
+        <span className="task-create-toggle-icon" aria-hidden="true">
+          <GiHummingbird />
+        </span>
+        <span className="task-create-toggle-copy">
+          <strong>Create a task</strong>
+          <span>Add a new item to a project</span>
+        </span>
+        <span className="task-create-toggle-indicator" aria-hidden="true">
+          {isExpanded ? "−" : "+"}
+        </span>
+      </button>
 
-                                    <select
-                                        style={{ 
-                                            height: '27.5px', 
-                                            border: '1.25px solid #c4c4c4', 
-                                            borderRadius: '4px', 
-                                            padding: 0, 
-                                            paddingLeft: '10px', 
-                                            width: '250px',
-                                            fontFamily: 'Segoe UI',
-                                            fontSize: '16px'
-                                            }} placeholder="Domain" id="dropdown" onChange={dropdownChange} >
-                                        <option disabled selected value="Domain">Module</option>
-                                        <option value="188118" data-value2="UserStory">BesterDev UserS tory</option>
-                                        <option value="113092" data-value2="NetworkSecurity">NetworkSecurity</option>
-                                        <option value="14718" data-value2="EnterpriseSecurity">EnterpriseSecurity</option>
-                                        <option value="181268" data-value2="ComputerCloudSecurity">ComputerCloudSecurity</option>
-                                        <option value="171593" data-value2="DutchLanguage">Dutch Lnguage Staatsexamen NT2</option>
-                                        {/* <option value="168272" data-value2="Dissertation">Dissertation</option> */}
-                                        <option value="188660" data-value2="StaatsexamenNT2_Lezen">StaatsexamenNT2_Lezen</option>
-                                        <option value="190860" data-value2="StaatsexamenNT2_Luisteren">StaatsexamenNT2_Luisteren</option>
-                                        <option value="191076" data-value2="StaatsexamenNT2_Schrijven">StaatsexamenNT2_Schrijven</option>
-                                        <option value="221193" data-value2="StaatsexamenNT2_Spreken">StaatsexamenNT2_Spreken</option>
+      {isExpanded && (
+        <form
+          id="task-create-form"
+          className="task-create-form"
+          onSubmit={handleSubmit}
+        >
+          <label className="task-create-field">
+            <span>Module</span>
+            <select value={asms} onChange={handleModuleChange} required>
+              <option value="" disabled>Select a module</option>
+              {modules.map((module) => (
+                <option
+                  key={module.asms}
+                  value={module.asms}
+                  data-project-handle={module.projectHandle}
+                >
+                  {module.label}
+                </option>
+              ))}
+            </select>
+          </label>
 
-                                    </select>
+          <label className="task-create-field">
+            <span>Task name</span>
+            <input
+              type="text"
+              value={taskname}
+              onChange={(event) => setTaskname(event.target.value)}
+              placeholder="What needs to be done?"
+              required
+            />
+          </label>
 
-                                    <div>
-                                        &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                                        <input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '400px' }} placeholder="Task Name" type="text" onChange={(event) => setTaskname(event.target.value)} required />
-                                    </div>
-                                    <div>
-                                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                        <input style={{ height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '500px' }} placeholder="Requirement / Problem / Description / Solution" type="text" onChange={(event) => setTaskrequirement(event.target.value)} />
-                                    </div>
+          <label className="task-create-field task-create-field-wide">
+            <span>Requirement or description</span>
+            <input
+              type="text"
+              value={taskrequirement}
+              onChange={(event) => setTaskrequirement(event.target.value)}
+              placeholder="Add context, requirements, or a problem to solve"
+            />
+          </label>
 
-                                    <div>
-                                        &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-                                    </div>
-                                    <div>
-                                        <DatePicker
-                                            selected={tasktargetdate}
-                                            onChange={(date) => setTasktargetdate(date)}
-                                            dateFormat="yyyy.MM.dd"
-                                            minDate={new Date()}
-                                            placeholderText="Target Date"
-                                        />
-                                    </div>
+          <label className="task-create-field">
+            <span>Target date</span>
+            <DatePicker
+              selected={tasktargetdate}
+              onChange={setTasktargetdate}
+              dateFormat="yyyy.MM.dd"
+              minDate={new Date()}
+              placeholderText="Choose a date"
+              className="task-create-date-input"
+              required
+            />
+          </label>
 
-                                    <div>
-                                        &nbsp; &nbsp; &nbsp; &nbsp;
-                                        <button className="Font-Segoe-Small" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }} onClick={() => setTaskstatus("START")}>Commit new Task</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            )
-            }
-        </div>
-    );
+          <div className="task-create-actions">
+            <button type="submit" disabled={submitting}>
+              {submitting ? "Creating..." : "Create task"}
+            </button>
+          </div>
+        </form>
+      )}
+    </div>
+  );
 }

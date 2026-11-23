@@ -1,0 +1,17 @@
+.task-manage-route {
+  min-height: 100vh;
+}
+
+.task-manage-route .home-quick-adds {
+  max-width: 1600px !important;
+}
+
+.task-manage-route .task-overview-page {
+  padding-top: 22px;
+}
+
+@media (max-width: 720px) {
+  .task-manage-route .task-overview-page {
+    padding-top: 16px;
+  }
+}

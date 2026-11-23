@@ -1,379 +1,294 @@
-import { useState, useContext } from "react";
-import MouseoverPopover from "../MouseoverPopover";
+import { useContext, useState } from "react";
 import { MdTask } from "react-icons/md";
-import GradientLineRusty from "../gradientlines/GradientLineRusty";
-import "../Fonts.css";
-import "./TaskOverview.css";
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
+import MouseoverPopover from "../MouseoverPopover";
+import { TaskContext } from "../Contexts";
 import Task from "./Task";
 import TaskCreate from "./TaskCreate";
-import { TaskContext } from "../Contexts";
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import { DialogActions } from "@mui/material";
-import Button from "@mui/material/Button";
-import dayjs from "dayjs";
-import ObjectSupport from "dayjs/plugin/objectSupport";
-import { Tooltip } from 'react-tooltip'
-import 'react-tooltip/dist/react-tooltip.css'
-
-
-
-class TaskStatusCounter {
-    constructor() {
-        this.START = [];
-        this.WIP = [];
-        this.DONE = [];
-        this.PROBLEM = [];
-    }
-}
-
-
+import "./TaskOverview.css";
 
 const projectNameMap = {
-    113092: "NetworkSecurity",
-    14718: "EnterpriseSecurity",
-    181268: "ComputerCloudSecurity",
-    171593: "AppliedCryptography",
-    168272: "Dissertation",
-    188660: "StaatsexamenNT2_Lezen",
-    190860: "StaatsexamenNT2_Luisteren",
-    191076: "StaatsexamenNT2_Schrijven",
-    221193: "StaatsexamenNT2_Spreken",
-    188118: "UserStory",
-    // 111111: "BesterDev",
+  113092: "NetworkSecurity",
+  14718: "EnterpriseSecurity",
+  181268: "ComputerCloudSecurity",
+  171593: "AppliedCryptography",
+  168272: "Dissertation",
+  188660: "StaatsexamenNT2_Lezen",
+  190860: "StaatsexamenNT2_Luisteren",
+  191076: "StaatsexamenNT2_Schrijven",
+  221193: "StaatsexamenNT2_Spreken",
+  188118: "UserStory",
 };
-
 
 const projectAsmsMap = {
-    NetworkSecurity: "113092",
-    EnterpriseSecurity: "14718",
-    ComputerCloudSecurity: "181268",
-    AppliedCryptography: "171593",
-    Dissertation: "168272",
-    StaatsexamenNT2_Lezen: "188660",
-    StaatsexamenNT2_Luisteren: "190860",
-    StaatsexamenNT2_Schrijven: "191076",
-    StaatsexamenNT2_Spreken: "221193",
-    UserStory: "188118",
-    // BesterDev: "111111",
+  NetworkSecurity: "113092",
+  EnterpriseSecurity: "14718",
+  ComputerCloudSecurity: "181268",
+  AppliedCryptography: "171593",
+  Dissertation: "168272",
+  StaatsexamenNT2_Lezen: "188660",
+  StaatsexamenNT2_Luisteren: "190860",
+  StaatsexamenNT2_Schrijven: "191076",
+  StaatsexamenNT2_Spreken: "221193",
+  UserStory: "188118",
 };
 
+const statuses = [
+  { key: "START", label: "Start", className: "task-status-start" },
+  { key: "WIP", label: "In progress", className: "task-status-wip" },
+  { key: "PROBLEM", label: "Issue", className: "task-status-problem" },
+  { key: "DONE", label: "Done", className: "task-status-done" },
+];
 
+const createProjectCounter = (asms) => ({
+  asms,
+  START: [],
+  WIP: [],
+  DONE: [],
+  PROBLEM: [],
+});
 
-export default function TaskOverview() {
-    const [checkForRecords, setCheckForRecords] = useState(true);
-    const [error, setError] = useState(null);
-    const [isExpanded, setExpanded] = useState(false);
-    const [currentStatus, setCurrentStatus] = useState("START");
-    const [currentAsms, setCurrentAsms] = useState("113092");
-    const [currentName, setCurrentName] = useState("CVCP");
-    const [modalState, setModalState] = useState(null);
-    dayjs.extend(ObjectSupport);
-    const toggleAccordion = () => { setExpanded(!isExpanded); };
-    const allTask = useContext(TaskContext);
-    const startTasks = allTask.filter(task => task.taskstatus === 'START');
-    const wipTasks = allTask.filter(task => task.taskstatus === 'WIP');
-    const problemTasks = allTask.filter(task => task.taskstatus === 'PROBLEM');
-    const doneTasks = allTask.filter(task => task.taskstatus === 'DONE');
-    const startTasksCount = startTasks.length;
-    const wipTasksCount = wipTasks.length;
-    const problemTasksCount = problemTasks.length;
-    const doneTasksCount = doneTasks.length;
+const getTaskDate = (task) => {
+  const date = task.tasks?.length ? task.tasks[0].date : task.taskcreatedate;
+  if (Array.isArray(date)) return new Date(date[0], date[1], date[2]).getTime();
+  return new Date(date).getTime();
+};
 
+export default function TaskOverview({
+  loading,
+  error,
+  checkForRecords,
+  setCheckForRecords,
+}) {
+  const allTask = useContext(TaskContext) || [];
+  const [currentStatus, setCurrentStatus] = useState("START");
+  const [currentAsms, setCurrentAsms] = useState("113092");
+  const [currentName, setCurrentName] = useState("NetworkSecurity");
 
-    const projectTaskStatusCounters = {
-        NetworkSecurity: new TaskStatusCounter(),
-        EnterpriseSecurity: new TaskStatusCounter(),
-        ComputerCloudSecurity: new TaskStatusCounter(),
-        AppliedCryptography: new TaskStatusCounter(),
-        Dissertation: new TaskStatusCounter(),
-        UserStory: new TaskStatusCounter(),
-        StaatsexamenNT2_Lezen: new TaskStatusCounter(),
-        StaatsexamenNT2_Luisteren: new TaskStatusCounter(),
-        StaatsexamenNT2_Schrijven: new TaskStatusCounter(),
-        StaatsexamenNT2_Spreken: new TaskStatusCounter(),
-    };
-    
-    for (const task of allTask) {
-        let status = task.taskstatus;
-        let asms = task.asms;
-        let name = projectNameMap[asms];
-        if (name in projectTaskStatusCounters) {
-            if (status in projectTaskStatusCounters[name]) {
-                projectTaskStatusCounters[name][status].push(task);
-            }
-        } else {
-            projectTaskStatusCounters[name] = new TaskStatusCounter();
-            if (status in projectTaskStatusCounters[name]) {
-                projectTaskStatusCounters[name][status].push(task);
-            }
-        }
+  const statusCounts = allTask.reduce(
+    (counts, task) => {
+      if (Object.prototype.hasOwnProperty.call(counts, task.taskstatus)) {
+        counts[task.taskstatus] += 1;
+      }
+      return counts;
+    },
+    { START: 0, WIP: 0, PROBLEM: 0, DONE: 0 }
+  );
+
+  const projectCounters = new Map(
+    Object.entries(projectAsmsMap).map(([name, asms]) => [
+      name,
+      createProjectCounter(asms),
+    ])
+  );
+
+  allTask.forEach((task) => {
+    const projectName =
+      projectNameMap[task.asms] ||
+      task.project_handle ||
+      String(task.asms || "Other");
+    if (!projectCounters.has(projectName)) {
+      projectCounters.set(projectName, createProjectCounter(task.asms));
     }
-    if (error) return <p>An error in TaskOverview occurred</p>;
-    
-    const dateSorter = (list) => {
-        return list.sort((a, b) => {
-            const aCompareValue = a.tasks.length
-                ? new Date(a.tasks[0].date)
-                : new Date(a.taskcreatedate);
-            const bCompareValue = b.tasks.length
-                ? new Date(b.tasks[0].date)
-                : new Date(b.taskcreatedate);
-            return aCompareValue > bCompareValue ? -1 : 1;
-        });
-    };
-    
-    const setTable = (currentName, currentAsms, currentStatus) => {
-        setCurrentName(currentName);
-        setCurrentAsms(currentAsms);
-        setCurrentStatus(currentStatus);
-    };
-    
-    const handleModal = (taskname, modalData) => {
-        setModalState({
-            taskname: taskname,
-            modalData: modalData,
-        });
-    };
 
+    const project = projectCounters.get(projectName);
+    if (project[task.taskstatus]) project[task.taskstatus].push(task);
+  });
 
+  const selectedTasks = allTask.filter(
+    (task) =>
+      String(task.asms) === String(currentAsms) &&
+      task.taskstatus === currentStatus
+  );
+
+  const setTable = (projectName, asms, status) => {
+    setCurrentName(projectName);
+    setCurrentAsms(String(asms));
+    setCurrentStatus(status);
+  };
+
+  const handleStatusCellKeyDown = (event, projectName, asms, status) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      setTable(projectName, asms, status);
+    }
+  };
+
+  const renderStatusCell = (projectName, project, status) => {
+    const tasks = [...project[status.key]].sort(
+      (a, b) => getTaskDate(b) - getTaskDate(a)
+    );
 
     return (
-        <div>
-            <div>&nbsp;</div>
-
-            <Tooltip id="insert" />
-            <div className='Font-Segoe-Large' onClick={toggleAccordion}>
-                &nbsp; &nbsp; <MdTask style={{ color: '#336791', fontSize: '38px', cursor: 'pointer' }} />
-                &nbsp;<b>The Task Manager ({allTask.length})</b>
-            </div>
-            <div>&nbsp;</div>
-
-            <div>
-                <div>
-                    <div><TaskCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} /></div>
-                </div>
-
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
-
-                <div>
-                    <div style={{ overflow: "auto" }}>
-                        <div style={{ display: "flex" }}>
-                            <div>
-                                <table className="Table8 Table8hover">
-                                    <thead>
-                                        <th style={{ minWidth: "10vw", maxWidth: "40vw" }}>COMPANY</th>
-                                        <th style={{ minWidth: "5vw", maxWidth: "20vw", whiteSpace: "nowrap" }}>START ({startTasksCount})</th>
-                                        <th style={{ minWidth: "5vw", maxWidth: "20vw" }}>WIP ({wipTasksCount})</th>
-                                        <th style={{ minWidth: "5vw", maxWidth: "20vw" }}>ISSUE ({problemTasksCount})</th>
-                                        <th style={{ minWidth: "5vw", maxWidth: "20vw" }}>DONE ({doneTasksCount})</th>
-                                    </thead>
-                                    <tbody>
-                                        {Object.keys(projectTaskStatusCounters).map((project_name) => {
-                                            let rowdata = projectTaskStatusCounters[project_name];
-                                            return (
-                                                <tr>
-                                                    <td style={{ fontSize: 13, height: 24 }}>{project_name}</td>
-                                                    <td>
-                                                        <div
-                                                            style={{ width: "100%" }}
-                                                            className="overview-box start-color"
-                                                            onClick={() =>
-                                                                setTable(
-                                                                    project_name,
-                                                                    projectAsmsMap[project_name],
-                                                                    "START"
-                                                                )
-                                                            }
-                                                        >
-                                                            <MouseoverPopover
-                                                                see={rowdata.START.length}
-                                                                read={
-                                                                    rowdata.START.length > 0
-                                                                        ? dateSorter(rowdata.START).map(
-                                                                            ({ taskname }) => (
-                                                                                <div>{taskname}</div>
-                                                                            )
-                                                                        )
-                                                                        : "No Tasks"
-                                                                }
-                                                            >
-                                                            </MouseoverPopover>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div
-                                                            style={{ width: "100%" }}
-                                                            className="overview-box wip-color"
-                                                            onClick={() =>
-                                                                setTable(
-                                                                    project_name,
-                                                                    projectAsmsMap[project_name],
-                                                                    "WIP"
-                                                                )
-                                                            }
-                                                        ><MouseoverPopover
-                                                                see={rowdata.WIP.length}
-                                                                read={
-                                                                    rowdata.WIP.length > 0
-                                                                        ? dateSorter(rowdata.WIP).map(
-                                                                            ({ taskname }) => (
-                                                                                <div>{taskname}</div>
-                                                                            )
-                                                                        )
-                                                                        : "No Tasks"
-                                                                }
-                                                            ></MouseoverPopover>
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div
-                                                            style={{ width: "100%" }}
-                                                            className="overview-box problem-color"
-                                                            onClick={() =>
-                                                                setTable(
-                                                                    project_name,
-                                                                    projectAsmsMap[project_name],
-                                                                    "PROBLEM"
-                                                                )
-                                                            }
-                                                        ><MouseoverPopover
-                                                                see={rowdata.PROBLEM.length}
-                                                                read={
-                                                                    rowdata.PROBLEM.length > 0
-                                                                        ? dateSorter(rowdata.PROBLEM).map(
-                                                                            ({ taskname }) => (
-                                                                                <div>{taskname}</div>
-                                                                            )
-                                                                        )
-                                                                        : "No Tasks"
-                                                                }
-                                                            ></MouseoverPopover>
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div
-                                                            style={{ width: "100%" }}
-                                                            className="overview-box done-color"
-                                                            onClick={() =>
-                                                                setTable(
-                                                                    project_name,
-                                                                    projectAsmsMap[project_name],
-                                                                    "DONE"
-                                                                )
-                                                            }
-                                                        ><MouseoverPopover
-                                                                see={rowdata.DONE.length}
-                                                                read={
-                                                                    rowdata.DONE.length > 0
-                                                                        ? dateSorter(rowdata.DONE).map(
-                                                                            ({ taskname }) => (
-                                                                                <div>{taskname}</div>
-                                                                            )
-                                                                        )
-                                                                        : "No Tasks"
-                                                                }
-                                                            ></MouseoverPopover>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            );
-                                        })}
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div className="fill" style={{ marginLeft: "15px" }}>
-                                <table className="Table8 Table8hover fill">
-                                    <thead>
-                                        <tr>
-                                            <th>
-                                                {currentName}: {currentStatus}
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    {allTask
-                                        .filter(
-                                            (task) =>
-                                                task.asms === currentAsms &&
-                                                task.taskstatus === currentStatus
-                                        )
-                                        .map(
-                                            ({
-                                                id,
-                                                project_handle,
-                                                taskname,
-                                                taskrequirement,
-                                                taskowner,
-                                                tasktargetdate,
-                                                taskstatus,
-                                                asms,
-                                                tasks,
-                                                taskcreatedate,
-                                            }) => (
-                                                <tbody>
-                                                    {
-                                                        <tr style={{ height: "20px" }}>
-                                                            <td>
-                                                                <MouseoverPopover
-                                                                    see={
-                                                                        <Task
-                                                                            key={id}
-                                                                            project_handle={project_handle}
-                                                                            id={id}
-                                                                            taskname={taskname}
-                                                                            taskrequirement={taskrequirement}
-                                                                            taskowner={taskowner}
-                                                                            asms={asms}
-                                                                            tasktargetdate={tasktargetdate}
-                                                                            taskstatus={taskstatus}
-                                                                            parenttask={allTask}
-                                                                            checkForRecords={checkForRecords}
-                                                                            setCheckForRecords={setCheckForRecords}
-                                                                            handleModal={handleModal}
-                                                                        />
-                                                                    }
-
-                                                                ></MouseoverPopover>
-                                                            </td>
-                                                        </tr>
-                                                    }
-                                                </tbody>
-                                            )
-                                        )}
-                                </table>
-                            </div>
-                        </div>
-                        <div>&nbsp;</div>
-                        <GradientLineRusty />
-                        <div>&nbsp;</div>
-                    </div>
-                </div>
-            </div>
-
-            <Dialog
-                maxWidth={false}
-                open={modalState}
-                onClose={() => setModalState(null)}
-            >
-                <DialogTitle style={{ fontSize: 20 }}>
-                    <b>{modalState && modalState.taskname}</b>
-                </DialogTitle>
-                <DialogContent dividers>
-                    <DialogContentText
-                        style={{ overflowWrap: "break-word", minWidth: "90vw" }}
-                    >
-                        {modalState && modalState.modalData}
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={() => setModalState(null)}>Close pop-up</Button>
-                </DialogActions>
-            </Dialog>
+      <td key={status.key}>
+        <div
+          className={`task-status-count ${status.className}`}
+          role="button"
+          tabIndex={0}
+          aria-label={`${tasks.length} ${status.label} tasks for ${projectName}`}
+          onClick={() => setTable(projectName, project.asms, status.key)}
+          onKeyDown={(event) =>
+            handleStatusCellKeyDown(event, projectName, project.asms, status.key)
+          }
+        >
+          <MouseoverPopover
+            see={tasks.length}
+            read={
+              tasks.length
+                ? tasks.map((task) => <div key={task.id}>{task.taskname}</div>)
+                : "No tasks"
+            }
+          />
         </div>
+      </td>
     );
+  };
+
+  if (error) {
+    return (
+      <main className="task-overview-page">
+        <div className="task-overview-state" role="alert">
+          <p>Unable to load tasks.</p>
+          <button type="button" onClick={() => setCheckForRecords((value) => !value)}>
+            Try again
+          </button>
+        </div>
+      </main>
+    );
+  }
+
+  if (loading) {
+    return (
+      <main className="task-overview-page">
+        <div className="task-overview-state" role="status">Loading tasks...</div>
+      </main>
+    );
+  }
+
+  return (
+    <main className="task-overview-page">
+      <Tooltip id="insert" />
+
+      <header className="task-overview-header">
+        <div className="task-overview-title">
+          <span className="task-overview-icon" aria-hidden="true">
+            <MdTask />
+          </span>
+          <div>
+            <p className="task-overview-eyebrow">PROJECT OPERATIONS</p>
+            <h1>Task Manager</h1>
+            <p className="task-overview-description">
+              Track work across projects, from start to completion.
+            </p>
+          </div>
+        </div>
+
+        <div className="task-overview-metrics" aria-label="Task counts">
+          <div className="task-overview-metric">
+            <strong>{allTask.length}</strong>
+            <span>All tasks</span>
+          </div>
+          <div className="task-overview-metric task-metric-start">
+            <strong>{statusCounts.START}</strong>
+            <span>Start</span>
+          </div>
+          <div className="task-overview-metric task-metric-wip">
+            <strong>{statusCounts.WIP}</strong>
+            <span>In progress</span>
+          </div>
+          <div className="task-overview-metric task-metric-problem">
+            <strong>{statusCounts.PROBLEM}</strong>
+            <span>Issues</span>
+          </div>
+          <div className="task-overview-metric task-metric-done">
+            <strong>{statusCounts.DONE}</strong>
+            <span>Done</span>
+          </div>
+        </div>
+      </header>
+
+      <section className="task-create-panel">
+        <TaskCreate
+          checkForRecords={checkForRecords}
+          setCheckForRecords={setCheckForRecords}
+        />
+      </section>
+
+      <div className="task-overview-board">
+        <section className="task-projects-panel">
+          <div className="task-panel-heading">
+            <div>
+              <h2>Project status</h2>
+              <p>Select a status count to view its tasks.</p>
+            </div>
+          </div>
+          <div className="task-project-matrix-scroll">
+            <table className="Table8 Table8hover task-project-matrix">
+              <thead>
+                <tr>
+                  <th scope="col">Project</th>
+                  {statuses.map((status) => (
+                    <th scope="col" key={status.key}>{status.label}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {Array.from(projectCounters.entries()).map(([projectName, project]) => (
+                  <tr key={projectName}>
+                    <th scope="row">{projectName}</th>
+                    {statuses.map((status) =>
+                      renderStatusCell(projectName, project, status)
+                    )}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section className="task-selected-panel">
+          <header className="task-panel-heading task-selected-heading">
+            <div>
+              <p className="task-overview-eyebrow">SELECTED TASKS</p>
+              <h2>{currentName}</h2>
+            </div>
+            <span className={`task-selected-status task-status-${currentStatus.toLowerCase()}`}>
+              {currentStatus}
+            </span>
+          </header>
+          <div className="task-selected-list">
+            {selectedTasks.length ? (
+              selectedTasks.map((task) => (
+                <div className="task-selected-item" key={task.id}>
+                  <MouseoverPopover
+                    see={
+                      <Task
+                        project_handle={task.project_handle}
+                        id={task.id}
+                        taskname={task.taskname}
+                        taskrequirement={task.taskrequirement}
+                        taskowner={task.taskowner}
+                        asms={task.asms}
+                        tasktargetdate={task.tasktargetdate}
+                        taskstatus={task.taskstatus}
+                        parenttask={allTask}
+                        checkForRecords={checkForRecords}
+                        setCheckForRecords={setCheckForRecords}
+                      />
+                    }
+                  />
+                </div>
+              ))
+            ) : (
+              <div className="task-overview-empty">
+                No {currentStatus.toLowerCase()} tasks for this project.
+              </div>
+            )}
+          </div>
+        </section>
+      </div>
+
+    </main>
+  );
 }
