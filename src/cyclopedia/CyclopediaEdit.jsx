@@ -1,8 +1,9 @@
 import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 import '../Fonts.css';
-import { useState, useEffect } from 'react';
-import { Tooltip } from '@mui/material';
-import { GiSpiderWeb, GiGiftOfKnowledge } from "react-icons/gi";
+import './CyclopediaEdit.css';
+import { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import { GiSpiderWeb, GiGiftOfKnowledge } from 'react-icons/gi';
+import { FiEdit2, FiExternalLink, FiSave, FiX } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 import { CyclopediaImageUpload } from './CyclopediaImageUpload';
 
@@ -10,12 +11,15 @@ export default function CyclopediaEdit({ cyclopediaId }) {
   const [record, setRecord] = useState(null);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState(null);
+  const [saving, setSaving] = useState(false);
   const [form, setForm] = useState({
     cyclopediaName: '',
     cyclopediaDesc: '',
     cyclopediaUrl: '',
     cyclopediaRef: ''
   });
+  const descriptionRef = useRef(null);
+  const isEditing = record !== null && editingId === record.cyclopediaId;
 
   /* ------------------ fetch single record ------------------ */
   const fetchRecord = async () => {
@@ -43,6 +47,20 @@ export default function CyclopediaEdit({ cyclopediaId }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cyclopediaId]);
 
+  useLayoutEffect(() => {
+    const textarea = descriptionRef.current;
+    if (!isEditing || !textarea) return undefined;
+
+    const resizeTextarea = () => {
+      textarea.style.height = 'auto';
+      textarea.style.height = `${textarea.scrollHeight}px`;
+    };
+
+    resizeTextarea();
+    window.addEventListener('resize', resizeTextarea);
+    return () => window.removeEventListener('resize', resizeTextarea);
+  }, [form.cyclopediaDesc, isEditing]);
+
   /* ------------------ helpers ------------------ */
   const startEdit = (item) => {
     setForm({
@@ -56,7 +74,14 @@ export default function CyclopediaEdit({ cyclopediaId }) {
 
   const cancelEdit = () => setEditingId(null);
 
-  const saveEdit = async () => {
+  const saveEdit = async (event) => {
+    event.preventDefault();
+    if (!form.cyclopediaName.trim()) {
+      toast.error('Name is required');
+      return;
+    }
+
+    setSaving(true);
     try {
       await OAuth2APIClient.put(
         `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopedia/update/${editingId}`,
@@ -64,191 +89,170 @@ export default function CyclopediaEdit({ cyclopediaId }) {
       );
       toast.success('Cyclopedia record updated');
       setEditingId(null);
-      fetchRecord(); // re-fetch only the updated record
+      fetchRecord();
     } catch (err) {
       console.error(err);
       toast.error('Failed to update record');
+    } finally {
+      setSaving(false);
     }
   };
 
-  if (loading) return <div>Loading Cyclopedia…</div>;
-  if (!record) return <div>No Cyclopedia found</div>;
+  if (loading) {
+    return (
+      <main className="cyclopedia-edit-page">
+        <div className="cyclopedia-edit-state" role="status">Loading Cyclopedia entry...</div>
+      </main>
+    );
+  }
+  if (!record) {
+    return (
+      <main className="cyclopedia-edit-page">
+        <div className="cyclopedia-edit-state" role="alert">No Cyclopedia entry found.</div>
+      </main>
+    );
+  }
 
-  const isEditing = editingId === record.cyclopediaId;
-
-  /* ------------------ render ------------------ */
   return (
-    <div className="Font-Verdana-Medium-Postgres">
-      <table style={{ width: '100%' }}>
-        <tbody>
-          <tr>
-            <td className="Table-home-left" style={{ width: '15%' }} />
-            <td style={{ width: '70%' }}>
+    <main className="cyclopedia-edit-page">
+      <header className="cyclopedia-edit-header">
+        <div className="cyclopedia-edit-heading">
+          <span className="cyclopedia-edit-icon" aria-hidden="true">
+            <GiGiftOfKnowledge />
+          </span>
+          <div>
+            <p className="cyclopedia-edit-eyebrow">
+              CYCLOPEDIA ENTRY <span>#{record.cyclopediaId}</span>
+            </p>
+            <h1>{isEditing ? 'Edit entry' : record.cyclopediaName}</h1>
+            {!isEditing && (
+              <p className="cyclopedia-edit-subtitle">Review and manage this knowledge entry.</p>
+            )}
+          </div>
+        </div>
+        {!isEditing && (
+          <button
+            className="cyclopedia-edit-button cyclopedia-edit-button-primary"
+            type="button"
+            onClick={() => startEdit(record)}
+          >
+            <FiEdit2 aria-hidden="true" />
+            Edit entry
+          </button>
+        )}
+      </header>
 
-              {/* ---------- HEADER ---------- */}
-              <div className="Font-Segoe-Large-Howto">
-                {!isEditing && (
-                  <>
-                    <Tooltip title={`Cyclopedia #${record.cyclopediaId}`}>
-                      <GiGiftOfKnowledge style={{ fontSize: 40, color: '#4D4D4D' }} />
-                    </Tooltip>
+      <section className="cyclopedia-edit-card">
+        {isEditing ? (
+          <form className="cyclopedia-edit-form" onSubmit={saveEdit}>
+            <label className="cyclopedia-edit-field">
+              <span>Name</span>
+              <input
+                autoFocus
+                value={form.cyclopediaName}
+                onChange={(event) => setForm({ ...form, cyclopediaName: event.target.value })}
+                required
+              />
+            </label>
 
-                    &nbsp;&nbsp;
+            <label className="cyclopedia-edit-field">
+              <span>URL</span>
+              <input
+                value={form.cyclopediaUrl}
+                onChange={(event) => setForm({ ...form, cyclopediaUrl: event.target.value })}
+              />
+            </label>
 
-                    <a
-                      className="Font-Segoe-XLarge-FP"
-                      href={record.cyclopediaUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <b>{record.cyclopediaName}</b>
-                    </a>
+            <label className="cyclopedia-edit-field cyclopedia-edit-field-wide">
+              <span>Reference <span className="cyclopedia-edit-optional">Optional</span></span>
+              <input
+                value={form.cyclopediaRef}
+                onChange={(event) => setForm({ ...form, cyclopediaRef: event.target.value })}
+              />
+            </label>
 
-                    &nbsp;&nbsp;
+            <label className="cyclopedia-edit-field cyclopedia-edit-field-wide">
+              <span>Description</span>
+              <textarea
+                ref={descriptionRef}
+                rows={7}
+                value={form.cyclopediaDesc}
+                onChange={(event) => setForm({ ...form, cyclopediaDesc: event.target.value })}
+              />
+            </label>
 
-                    <Tooltip title={`Edit ${record.cyclopediaId}`} placement="top">
-                      <button
-                        onClick={() => startEdit(record)}
-                        style={editBtn}
-                      >
-                        Edit
-                      </button>
-                    </Tooltip>
-
-                    <CyclopediaImageUpload
-                      cyclopedia_id_fk={record.cyclopediaId}
-                      cyclopedia_name={record.cyclopediaName}
-                      cyclopedia_id={record.cyclopediaId}
-                    />
-                  </>
-                )}
+            <section className="cyclopedia-edit-upload-panel cyclopedia-edit-field-wide" aria-labelledby="cyclopedia-edit-upload-title">
+              <h2 id="cyclopedia-edit-upload-title">Upload Image</h2>
+              <p>Select an image to upload or replace the image for this entry.</p>
+              <div className="cyclopedia-edit-upload">
+                <CyclopediaImageUpload
+                  cyclopedia_id_fk={record.cyclopediaId}
+                  cyclopedia_name={record.cyclopediaName}
+                  cyclopedia_id={record.cyclopediaId}
+                />
+                <span>Choose an image</span>
               </div>
+            </section>
 
-              {/* ---------- EDIT MODE ---------- */}
-              {isEditing ? (
-                <>
-                  <div>
-                    <button style={saveBtn} onClick={saveEdit}>Update</button>
-                    &nbsp; &nbsp;
-                    <button style={cancelBtn} onClick={cancelEdit}>Cancel</button>
-                  </div>
+            <div className="cyclopedia-edit-form-actions cyclopedia-edit-field-wide">
+              <button
+                className="cyclopedia-edit-button cyclopedia-edit-button-primary"
+                type="submit"
+                disabled={saving}
+              >
+                <FiSave aria-hidden="true" />
+                {saving ? 'Saving...' : 'Save changes'}
+              </button>
+              <button
+                className="cyclopedia-edit-button cyclopedia-edit-button-secondary"
+                type="button"
+                onClick={cancelEdit}
+                disabled={saving}
+              >
+                <FiX aria-hidden="true" />
+                Cancel
+              </button>
+            </div>
+          </form>
+        ) : (
+          <div className="cyclopedia-edit-content">
+            {record.cyclopediaUrl ? (
+              <a
+                className="cyclopedia-edit-url"
+                href={record.cyclopediaUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <GiSpiderWeb aria-hidden="true" />
+                <span>{record.cyclopediaUrl}</span>
+                <FiExternalLink aria-hidden="true" />
+              </a>
+            ) : (
+              <p className="cyclopedia-edit-no-url">No URL has been added.</p>
+            )}
 
-                  <br />
+            {record.cyclopediaRef && (
+              <div className="cyclopedia-edit-reference">
+                <span>Reference</span>
+                <strong>{record.cyclopediaRef}</strong>
+              </div>
+            )}
 
-                  <label>Name: &nbsp;</label>
-                  <input
-                    value={form.cyclopediaName}
-                    onChange={e => setForm({ ...form, cyclopediaName: e.target.value })}
-                    style={{ ...inputStyle, width: 550 }}
-                  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {record.cyclopediaImageEntity?.cyclopediaImage && (
+              <img
+                className="cyclopedia-edit-inline-image"
+                src={`data:image/jpeg;base64,${record.cyclopediaImageEntity.cyclopediaImage}`}
+                alt={record.cyclopediaName || 'Cyclopedia entry'}
+              />
+            )}
 
-                  <label>URL: &nbsp;</label>
-                  <input
-                    value={form.cyclopediaUrl}
-                    onChange={e => setForm({ ...form, cyclopediaUrl: e.target.value })}
-                    style={{ ...inputStyle, width: 635 }}
-                  />
-
-                  <br /><br />
-
-                  <label>Description</label>
-                  <textarea
-                    value={form.cyclopediaDesc}
-                    onChange={e => setForm({ ...form, cyclopediaDesc: e.target.value })}
-                    style={{ ...inputStyle, height: 150 }}
-                  />
-
-                  <br /><br />
-
-                </>
-              ) : (
-                /* ---------- VIEW MODE ---------- */
-                <>
-                  <div>
-                    <GiSpiderWeb />&nbsp;
-                    <a href={record.cyclopediaUrl} target="_blank" rel="noreferrer">
-                      {record.cyclopediaUrl}
-                    </a>
-                  </div>
-
-                  <br />
-
-                  {record.cyclopediaImageEntity?.cyclopediaImage ? (
-                    <img
-                      src={`data:image/jpeg;base64,${record.cyclopediaImageEntity.cyclopediaImage}`}
-                      alt={record.cyclopediaName}
-                      style={{ maxWidth: '100%' }}
-                    />
-                  ) : (
-                    <div>No image available</div>
-                  )}
-
-                  <br /><br />
-
-                  <textarea
-                    readOnly
-                    value={record.cyclopediaDesc}
-                    style={{
-                      ...inputStyle,
-                      height: 400,
-                      borderColor: '#fff'
-                    }}
-                  />
-
-                  <br /><br />
-
-                  <CyclopediaImageUpload
-                    cyclopedia_id_fk={record.cyclopediaId}
-                    cyclopedia_name={record.cyclopediaName}
-                    cyclopedia_id={record.cyclopediaId}
-                  />
-                </>
-              )}
-            </td>
-            <td className="Table-home-right" style={{ width: '15%' }} />
-          </tr>
-        </tbody>
-      </table>
-    </div>
+            <section className="cyclopedia-edit-description">
+              <h2>Description</h2>
+              <p>{record.cyclopediaDesc || 'No description has been added.'}</p>
+            </section>
+          </div>
+        )}
+      </section>
+    </main>
   );
 }
-
-/* ------------------ styles ------------------ */
-
-const inputStyle = {
-  width: '100%',
-  fontFamily: 'Segoe UI',
-  fontSize: 'Large',
-  border: '1.25px solid #336791',
-  borderRadius: '4px'
-};
-
-const editBtn = {
-  background: '#FFFFFF',
-  color: '#000000',
-  border: '1px solid #000000',
-  cursor: 'pointer',
-  borderRadius: '4px',
-  width: '65px',
-  height: '25px',
-};
-
-const saveBtn = {
-  background: '#D5441C',
-  color: '#fff',
-  border: '1px solid #D5441C',
-  cursor: 'pointer',
-  borderRadius: '4px',
-  width: '65px',
-  height: '25px',
-};
-
-const cancelBtn = {
-  background: '#336791',
-  color: '#fff',
-  border: '1px solid #336791',
-  cursor: 'pointer',
-  borderRadius: '4px',
-  width: '65px',
-  height: '25px',
-};

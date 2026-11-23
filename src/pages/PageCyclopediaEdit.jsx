@@ -8,27 +8,29 @@ import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import CyclopediaEdit from '../cyclopedia/CyclopediaEdit';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
-import DutchLanguage_Ticker from '../dutchlanguage/DutchLanguage_Ticker';
+import DutchLanguageTicker from '../dutchlanguage/DutchLanguage_Ticker';
 
 
 export default function PageCyclopediaEdit() {
   const { cyclopediaId } = useParams();
 
-    return (
-      <div>
-        <BannerWhite />
-        <GradientLine />
-        <BannerLight />
+  return (
+    <div className="cyclopedia-route">
+      <BannerWhite />
+      <GradientLine />
+      <BannerLight />
+      <GradientLineThin />
+      <BreakingNews />
+      <GradientLineThin />
+      <CyclopediaTicker />
+      <GradientLineThin />
+      <DutchLanguageTicker />
+      <div className="cyclopedia-quick-add-divider">
         <GradientLineThin />
-        <BreakingNews />
-        <GradientLineThin />
-        <CyclopediaTicker />
-        <GradientLineThin />
-        <DutchLanguage_Ticker />
-        <GradientLineThin />
-        <CombinedCreateFP />
-        <CyclopediaEdit cyclopediaId={cyclopediaId}/>
-        <ToastComponent />
       </div>
-    )
-  };
+      <CombinedCreateFP className="home-quick-adds" />
+      <CyclopediaEdit cyclopediaId={cyclopediaId} />
+      <ToastComponent />
+    </div>
+  );
+}
