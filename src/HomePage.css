@@ -117,9 +117,9 @@
 .home-search-card {
   min-width: 0;
   padding: 10px 12px;
-  border: 1px solid var(--home-border);
+  border: 1px solid var(--home-border, #293447);
   border-radius: 10px;
-  background: var(--home-surface);
+  background: var(--home-surface, #151d2b);
   box-shadow: 0 4px 14px rgba(17, 24, 39, 0.045);
 }
 
@@ -153,10 +153,10 @@
   height: 34px !important;
   margin: 0 !important;
   padding: 0 8px !important;
-  border: 1px solid var(--home-border) !important;
+  border: 1px solid var(--home-border, #293447) !important;
   border-radius: 8px !important;
-  background: var(--home-bg) !important;
-  color: var(--home-text) !important;
+  background: var(--home-bg, #0c111b) !important;
+  color: var(--home-text, #e6ebf2) !important;
   box-shadow: none !important;
   font: inherit !important;
   font-size: 0.82rem !important;
@@ -170,7 +170,7 @@
   height: 30px !important;
   margin: 0 !important;
   padding: 0 10px !important;
-  border: 1px solid var(--home-accent) !important;
+  border: 1px solid var(--home-accent, #ff855f) !important;
   border-radius: 8px !important;
   font: inherit !important;
   font-size: 0.78rem !important;
@@ -182,8 +182,8 @@
 .home-search-card .home-ask-ai-submit,
 .home-search-card .home-db-search-clear,
 .home-search-card .home-ask-ai-clear {
-  background: var(--home-surface) !important;
-  color: var(--home-text) !important;
+  background: var(--home-surface, #151d2b) !important;
+  color: var(--home-text, #e6ebf2) !important;
 }
 
 .home-search-card .home-ask-ai {
@@ -194,28 +194,43 @@
 
 .home-search-card .home-ask-ai-response {
   margin: 14px 0 0 !important;
-  border-left: 4px solid var(--home-accent) !important;
+  border-left: 4px solid var(--home-accent, #ff855f) !important;
   border-radius: 8px;
-  background: var(--home-bg) !important;
-  color: var(--home-text);
+  background: var(--home-bg, #0c111b) !important;
+  color: var(--home-text, #e6ebf2);
 }
 
 .home-search-card .dbsearchhoverbanner,
 .home-search-card .Font-Segoe-Small-Howto {
-  color: var(--home-text);
+  color: var(--home-text, #e6ebf2);
 }
 
 .home-search-card .dbsearchhoverbanner {
   padding: 8px 0;
-  border-top: 1px solid var(--home-border);
+  border-top: 1px solid var(--home-border, #293447);
+}
+
+.home-search-card .dbsearchhoverbanner:hover {
+  border-color: var(--home-border, #293447);
+  border-radius: 8px;
+  background: #202b3d;
+  color: var(--home-accent, #ff855f);
+}
+
+.home-route[data-theme="light"] .home-search-card .dbsearchhoverbanner:hover {
+  background: #f8fafc;
+}
+
+.home-search-card .dbsearchhoverbanner:hover a {
+  color: var(--home-accent, #ff855f);
 }
 
 .home-search-card .dbsearchhoverbanner a {
-  color: var(--home-link);
+  color: var(--home-link, #a8c9ec);
 }
 
 .home-search-card input:focus-visible {
-  outline: 2px solid var(--home-accent);
+  outline: 2px solid var(--home-accent, #ff855f);
   outline-offset: 2px;
 }
 
@@ -223,18 +238,42 @@
   box-sizing: content-box;
   max-width: 1600px !important;
   margin: 0 auto 18px !important;
-  padding: 0 clamp(16px, 3vw, 40px) !important;
+  padding: 4px clamp(16px, 3vw, 40px) 0 !important;
   background: transparent !important;
   border: 0 !important;
   box-shadow: none !important;
 }
 
+.combined-quick-adds {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto 18px;
+  padding: 0 clamp(16px, 3vw, 40px);
+  color: var(--home-text, #e6ebf2);
+}
+
 .home-quick-add-panel {
   padding: 14px;
-  border: 1px solid var(--home-border);
+  border: 1px solid var(--home-border, #293447);
   border-radius: 12px;
-  background: var(--home-surface);
+  background: var(--home-surface, #151d2b);
+  color: var(--home-text, #e6ebf2);
   box-shadow: 0 4px 14px rgba(17, 24, 39, 0.045);
+}
+
+.combined-quick-add-searches {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.combined-quick-add-search-card h3 {
+  margin: 0 0 8px;
+  color: var(--home-text, #e6ebf2);
+  font-size: 0.86rem;
+  font-weight: 650;
 }
 
 .home-quick-adds-heading {
@@ -243,19 +282,19 @@
 
 .home-quick-adds-heading h2 {
   margin: 0;
-  color: var(--home-text);
+  color: var(--home-text, #e6ebf2);
   font-size: 1rem;
   font-weight: 650;
 }
 
 .home-quick-adds-heading p {
   margin: 4px 0 0;
-  color: var(--home-muted);
+  color: var(--home-muted, #a0aec0);
   font-size: 0.82rem;
 }
 
 .home-quick-add-actions {
-  justify-content: flex-start !important;
+  justify-content: center !important;
   gap: 8px !important;
 }
 
@@ -270,10 +309,10 @@
   min-width: 124px;
   min-height: 38px;
   padding: 8px 12px !important;
-  border: 1px solid var(--home-border) !important;
+  border: 1px solid var(--home-border, #293447) !important;
   border-radius: 8px !important;
-  background: var(--home-bg) !important;
-  color: var(--home-text) !important;
+  background: var(--home-bg, #0c111b) !important;
+  color: var(--home-text, #e6ebf2) !important;
   font-family: inherit !important;
   font-size: 0.82rem !important;
   font-weight: 600;
@@ -282,31 +321,44 @@
 }
 
 .home-quick-adds .home-quick-add-button svg {
-  color: var(--home-accent);
+  color: var(--home-accent, #ff855f);
 }
 
 .home-quick-adds .home-quick-add-button:hover {
   transform: translateY(-1px);
-  border-color: var(--home-accent) !important;
+  border-color: var(--home-accent, #ff855f) !important;
 }
 
 .home-quick-adds .home-quick-add-button[aria-pressed="true"] {
-  border-color: var(--home-accent) !important;
-  background: var(--home-surface) !important;
-  box-shadow: inset 0 0 0 1px var(--home-accent);
+  border-color: var(--home-accent, #ff855f) !important;
+  background: var(--home-surface, #151d2b) !important;
+  box-shadow: inset 0 0 0 1px var(--home-accent, #ff855f);
 }
 
 .home-quick-adds .home-quick-add-button:focus-visible {
-  outline: 2px solid var(--home-accent);
+  outline: 2px solid var(--home-accent, #ff855f);
   outline-offset: 2px;
 }
 
 .home-quick-adds .home-quick-add-form-card {
   margin-top: 12px !important;
   padding: 14px !important;
-  border: 1px solid var(--home-border) !important;
+  border: 1px solid var(--home-border, #293447) !important;
   border-radius: 10px !important;
-  background: var(--home-surface) !important;
+  background: var(--home-surface, #151d2b) !important;
+}
+
+.home-quick-add-form-card input,
+.home-quick-add-form-card textarea,
+.home-quick-add-form-card select {
+  background: var(--home-bg, #0c111b) !important;
+  color: var(--home-text, #e6ebf2) !important;
+  border-color: var(--home-border, #293447) !important;
+}
+
+.home-quick-add-form-card [style*="background"] {
+  background: var(--home-bg, #0c111b) !important;
+  color: var(--home-text, #e6ebf2) !important;
 }
 
 .home-quick-adds .home-quick-add-form-card input,
@@ -314,10 +366,10 @@
 .home-quick-adds .home-quick-add-form-card select {
   box-sizing: border-box;
   max-width: 100%;
-  border-color: var(--home-border) !important;
+  border-color: var(--home-border, #293447) !important;
   border-radius: 8px !important;
-  background: var(--home-bg) !important;
-  color: var(--home-text) !important;
+  background: var(--home-bg, #0c111b) !important;
+  color: var(--home-text, #e6ebf2) !important;
   font-family: inherit !important;
 }
 
@@ -326,11 +378,20 @@
   padding-left: 12px !important;
 }
 
-.home-quick-adds .home-quick-add-form-card button {
-  border-color: var(--home-border) !important;
-  border-radius: 8px !important;
+.home-route[data-theme="dark"] .home-quick-adds .cyclopedia-quick-add-form input,
+.home-route[data-theme="dark"] .home-quick-adds .cyclopedia-quick-add-form textarea {
   background: var(--home-bg) !important;
-  color: var(--home-text) !important;
+}
+
+.home-route[data-theme="dark"] .home-quick-adds .cyclopedia-quick-add-form > button {
+  background: #1d293a !important;
+}
+
+.home-quick-adds .home-quick-add-form-card button {
+  border-color: var(--home-border, #293447) !important;
+  border-radius: 8px !important;
+  background: var(--home-bg, #0c111b) !important;
+  color: var(--home-text, #e6ebf2) !important;
   font-family: inherit !important;
 }
 
@@ -724,6 +785,10 @@
 }
 
 @media (max-width: 720px) {
+  .combined-quick-add-searches {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .home-page {
     padding: 14px 12px 32px;
   }

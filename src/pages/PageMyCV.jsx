@@ -4,6 +4,7 @@ import GradientLine from '../gradientlines/GradientLine';
 import GradientLineThin from '../gradientlines/GradientLineThin';
 import ToastComponent from '../ToastComponent';
 import MyCV from '../MyCV/MyCV';
+import CombinedCreateFP from '../quicks/CombinedCreateFP';
 import '../HomePage.css';
 
 export default function PageMyCV() {
@@ -18,6 +19,7 @@ export default function PageMyCV() {
           showGitHubProfile
         />
         <GradientLineThin />
+        <CombinedCreateFP className="home-quick-adds" />
         <MyCV />
         <ToastComponent />
       </div>

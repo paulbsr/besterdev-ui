@@ -23,7 +23,7 @@ export default function PageCyclopedia(cyclopediadata) {
       <div className="cyclopedia-quick-add-divider">
         <GradientLineThin />
       </div>
-      <CombinedCreateFP hideSearch className="home-quick-adds" />
+      <CombinedCreateFP className="home-quick-adds" />
       <CyclopediaManage />
       <ToastComponent />
     </div>

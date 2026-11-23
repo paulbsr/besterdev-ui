@@ -24,7 +24,7 @@ export default function PagePeopleScorecard(cyclopediadata) {
       <GradientLineThin />
       <DutchLanguage_Ticker />
       <GradientLineThin />
-      <CombinedCreateFP hideSearch className="home-quick-adds" />
+      <CombinedCreateFP className="home-quick-adds" />
       <PeopleScorecard />
       <ToastComponent />
     </div>

@@ -85,8 +85,17 @@
 
 .cyclopedia-route .home-quick-adds .home-quick-add-form-card [style*="background"] {
   border-color: var(--home-border) !important;
-  background: #1d293a !important;
   color: var(--home-text) !important;
+}
+
+.cyclopedia-route .home-quick-adds .home-quick-add-form-card input,
+.cyclopedia-route .home-quick-adds .home-quick-add-form-card textarea,
+.cyclopedia-route .home-quick-adds .home-quick-add-form-card select {
+  background: var(--home-bg) !important;
+}
+
+.cyclopedia-route .home-quick-adds .home-quick-add-form-card button[style*="background"] {
+  background: #1d293a !important;
 }
 
 .cyclopedia-route .banner-light-left input {

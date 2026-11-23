@@ -8,7 +8,6 @@ import {
   TbBrandSocketIo,
   TbBrandOauth,
 } from "react-icons/tb";
-import { BsSearch } from "react-icons/bs";
 import { MdTask } from "react-icons/md";
 
 import { useCyclopediaApi } from "../cyclopedia/CyclopediaAPIProvider";
@@ -18,6 +17,7 @@ import OAuth2APIClient from "../oauth2/OAuth2APIClient";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import DBSearchComponentBanner from "../dbsearch/DBSearchComponentBanner";
+import AskAI from "../openai/AskAI";
 import WebSocketComponent from "../websockets/WebSocketComponent";
 import BearerToken from "../oauth2/BearerToken";
 
@@ -91,7 +91,7 @@ export const inputStyle = {
    Main Component
 ------------------------------------------------------- */
 
-export default function CombinedCreateFP({ hideSearch = false, className = '' }) {
+export default function CombinedCreateFP({ className = '' }) {
   const [open, setOpen] = useState(null);
 
   const toggle = (key) =>
@@ -227,24 +227,17 @@ export default function CombinedCreateFP({ hideSearch = false, className = '' })
 
   return (
     <div
-      className={`Font-Segoe-Small ${className}`.trim()}
-      style={{
-        maxWidth: 1010,
-        margin: "20px auto",
-        padding: 18,
-        background: "#f7f7f7",
-        borderRadius: 12,
-        boxShadow: "10px 10px 10px rgba(0, 0, 0, 0.2)",
-      }}
+      className={`Font-Segoe-Small combined-quick-adds home-quick-adds ${className}`.trim()}
     >
-      <div className={hideSearch ? "home-quick-add-panel" : undefined}>
-      {hideSearch && (
-        <header className="home-quick-adds-heading">
-          <div>
-            <h2>Quick adds</h2>
-          </div>
-        </header>
-      )}
+      <div className="home-quick-add-panel">
+        <div className="combined-quick-add-searches" aria-label="Search tools">
+          <article className="home-search-card combined-quick-add-search-card">
+            <DBSearchComponentBanner />
+          </article>
+          <article className="home-search-card combined-quick-add-search-card">
+            <AskAI />
+          </article>
+        </div>
       <div
         className="home-quick-add-actions"
         style={{
@@ -299,26 +292,14 @@ export default function CombinedCreateFP({ hideSearch = false, className = '' })
           />
         </div>
 
-        {!hideSearch && (
-          <div className="tickerfp">
-            <SectionButton
-              icon={BsSearch}
-              label="Search"
-              active={open === "search"}
-              onClick={() => toggle("search")}
-            />
-          </div>
-        )}
-
-        {/* <DBSearchComponentBanner /> */}
       </div>
 
       {open === "cyclopedia" && (
         <Card>
-          <form onSubmit={submitCyclopedia} className="grid-2">
+          <form onSubmit={submitCyclopedia} className="grid-2 cyclopedia-quick-add-form">
             <input
               placeholder="Cyclopedia Name"
-              style={{ ...inputStyle, width: '370px', marginRight: '10px' }}
+              style={{ ...inputStyle, width: '570px', marginRight: '10px' }}
               value={cyclopedia.name}
               onChange={(e) =>
                 setCyclopedia((p) => ({
@@ -331,7 +312,7 @@ export default function CombinedCreateFP({ hideSearch = false, className = '' })
 
             <input
               placeholder="Supporting URL"
-              style={{ ...inputStyle, width: '510px', marginRight: '10px', background: '#FFFFFF', }}
+              style={{ ...inputStyle, width: '645px', marginRight: '10px', background: '#FFFFFF' }}
               value={cyclopedia.url}
               onChange={(e) =>
                 setCyclopedia((p) => ({
@@ -345,7 +326,7 @@ export default function CombinedCreateFP({ hideSearch = false, className = '' })
             <button type="submit"
               style={{
                 marginTop: '10px',
-                height: '30.5px',
+                height: '27.5px',
                 border: '1px solid #336791',
                 borderRadius: '6px',
                 backgroundColor: '#ffffff',
@@ -355,11 +336,10 @@ export default function CombinedCreateFP({ hideSearch = false, className = '' })
               }}
             >Save</button>
 
-
             <Field>
               <textarea
                 placeholder="Description"
-                style={{ inputStyle, marginTop: '10px', borderRadius: '6px', border: '1px solid #336791', }}
+                style={{ ...inputStyle, marginTop: '10px', borderRadius: '6px', border: '1px solid #336791' }}
                 rows={3}
                 value={cyclopedia.desc}
                 onChange={(e) =>
@@ -429,7 +409,7 @@ export default function CombinedCreateFP({ hideSearch = false, className = '' })
             <button type="submit"
               style={{
                 marginTop: '10px',
-                height: '30.5px',
+                height: '27.5px',
                 border: '1px solid #336791',
                 borderRadius: '6px',
                 backgroundColor: '#ffffff',
@@ -511,7 +491,7 @@ export default function CombinedCreateFP({ hideSearch = false, className = '' })
             <button type="submit"
               style={{
                 width: '60px',
-                height: '32.5px',
+                height: '27.5px',
                 border: '1px solid #336791',
                 borderRadius: '6px',
                 backgroundColor: '#ffffff',
@@ -526,7 +506,6 @@ export default function CombinedCreateFP({ hideSearch = false, className = '' })
 
       {open === "oauth" && <Card><BearerToken /></Card>}
       {open === "ws" && <Card><WebSocketComponent /></Card>}
-      {!hideSearch && open === "search" && <Card><DBSearchComponentBanner /></Card>}
       <ConsoleFrame />
       </div>
     </div>

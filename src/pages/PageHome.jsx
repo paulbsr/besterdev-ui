@@ -10,8 +10,6 @@ import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
 import DutchLanguage_Ticker from "../dutchlanguage/DutchLanguage_Ticker";
-import DBSearchComponentBanner from '../dbsearch/DBSearchComponentBanner';
-import AskAI from '../openai/AskAI';
 
 export default function PageHome() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -28,15 +26,7 @@ export default function PageHome() {
         <GradientLineThin />
         <DutchLanguage_Ticker />
         <GradientLineThin />
-        <section className="home-search-row" aria-label="Search tools">
-          <article className="home-search-card" aria-label="Search Besterdev">
-            <DBSearchComponentBanner />
-          </article>
-          <article className="home-search-card" aria-label="Ask OpenAI">
-            <AskAI />
-          </article>
-        </section>
-        <CombinedCreateFP hideSearch className="home-quick-adds" />
+        <CombinedCreateFP className="home-quick-adds" />
         <HomePage22
           isDarkMode={isDarkMode}
           onToggleTheme={() => setIsDarkMode((currentMode) => !currentMode)}

@@ -4,17 +4,20 @@ import GradientLine from '../gradientlines/GradientLine';
 import BannerLight from '../banners/BannerLight';
 import GradientLineThin from '../gradientlines/GradientLineThin';
 import Footer from '../Footer';
+import CombinedCreateFP from '../quicks/CombinedCreateFP';
 import '../Fonts.css';
+import '../HomePage.css';
 
 const Swagger = () => {
 
   return (
-    <div>
+    <div className="home-route" data-theme="dark">
       <BannerWhite />
       <GradientLine />
       <BannerLight />
       <GradientLineThin />
       <GradientLineThin />
+      <CombinedCreateFP className="home-quick-adds" />
       <iframe
         title="Swagger UI"
         src="http://localhost:8000/swagger-ui.html"
