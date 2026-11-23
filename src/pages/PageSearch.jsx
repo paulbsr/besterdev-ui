@@ -6,28 +6,36 @@ import CandidateAPI from '../candidates/CandidateAPI';
 import Footer from '../Footer';
 import '../Fonts.css'
 import ToastComponent from '../ToastComponent';
-import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
 import DutchLanguage_Ticker from '../dutchlanguage/DutchLanguage_Ticker';
+import BreakingNews from '../breakingnews/BreakingNews';
+import '../HomePage.css';
 
 
 export default function PageSearch() {
   return (
-    <div>
+    <div className="home-route candidate-hunt-route" data-theme="dark">
       <BannerWhite />
       <GradientLine />
       <BannerLight />
       <GradientLineThin />
-      {/* <BreakingNews /> */}
+      <BreakingNews />
       <GradientLineThin />
       <CyclopediaTicker />
       <GradientLineThin />
       <DutchLanguage_Ticker />
       <GradientLineThin />
-      <CombinedCreateFP/>
-      <CandidateAPI />
-      <Footer/>
+      <CombinedCreateFP className="home-quick-adds" />
+      <main className="candidate-hunt-page">
+        <header className="candidate-hunt-heading">
+          <p>RECRUITING WORKSPACE</p>
+          <h1>Candidate hunt</h1>
+          <span>Discover candidate profiles and find people with the skills you need.</span>
+        </header>
+        <CandidateAPI />
+      </main>
+      <Footer />
       <ToastComponent />
     </div>
   )
