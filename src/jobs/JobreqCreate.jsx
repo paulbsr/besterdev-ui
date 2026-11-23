@@ -1,187 +1,203 @@
-import React, { useState, useContext, useEffect } from "react";
-import AlertContext from "../Generic/Alerts/AlertContext";
-import '../Fonts.css';
-import dayjs from "dayjs";
-import utc from 'dayjs/plugin/utc';
-import spacer from '../graphix/besterdev_spacer_white.png'
-import spacer2 from '../graphix/besterdev_spacer_white_half.png'
+import { useEffect, useState } from "react";
 import { GiHummingbird } from "react-icons/gi";
-import 'react-tooltip/dist/react-tooltip.css'
-import { Tooltip } from 'react-tooltip'
-import { toast } from 'react-toastify';
-import { baseInputStyle } from "../baseInputStyle";
-import OAuth2APIClient from '../oauth2/OAuth2APIClient';
-dayjs.extend(utc);
+import { toast } from "react-toastify";
+import OAuth2APIClient from "../oauth2/OAuth2APIClient";
 
+const today = () => new Date().toISOString().slice(0, 10);
 
-export default function JobreqCreate(props) {
-  const today = new Date(); // Create a new Date object representing today's date
-  const formattedDate = today.toISOString().split('T')[0]; // Convert the date to the desired format (YYYY-MM-DD)
-  const alertCtx = useContext(AlertContext);
-  const toggleAccordion = () => { setExpanded(!isExpanded); };
-  const [jrnumber, setJrnumber] = useState(null);
-  const [company, setCompany] = useState(null);
-  const [jrtitle, setJrtitle] = useState(null);
-  const [location, setLocation] = useState(null);
-  const [recruitername, setRecruitername] = useState(null);
-  const [recruiteremail, setRecruiteremail] = useState(null);
-  const [recruiternumber, setRecruiternumber] = useState(null);
-  const [comment, setComment] = useState(null);
-  const [createdate, setCreatedate] = useState(formattedDate);
-  const [targetdate, setTargetdate] = useState(formattedDate);
-  const [status, setStatus] = useState(null);
-  const [wa, setWa] = useState(null);
-  const [cr_date, setcr_date] = useState(formattedDate);
-  const [cr_datehold1, setCr_DateHold1] = useState(null)
-  const [cr_datehold2, setCr_DateHold2] = useState(null)
-  const [checkForRecords, setCheckForRecords] = useState(true);
-  const [isExpanded, setExpanded] = useState(false);
-  const [WAprofile, setWAprofile] = useState('Option 1');
-  const [employerdropdown, setEmployerDropDown] = useState(null);
+export default function JobreqCreate({ setCheckForRecords }) {
+  const [jrnumber, setJrnumber] = useState("");
+  const [company, setCompany] = useState("");
+  const [jrtitle, setJrtitle] = useState("");
+  const [location, setLocation] = useState("");
+  const [recruitername, setRecruitername] = useState("");
+  const [recruiteremail, setRecruiteremail] = useState("");
+  const [recruiternumber, setRecruiternumber] = useState("");
+  const [comment, setComment] = useState("");
+  const [createdate, setCreatedate] = useState(today);
+  const [targetdate, setTargetdate] = useState(today);
+  const [status, setStatus] = useState("");
+  const [wa, setWa] = useState("");
+  const [employers, setEmployers] = useState([]);
+  const [expanded, setExpanded] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleCreateDateChange = (newVal) => {
-    setCr_DateHold1(newVal.format("YYYY.M.D"));
-    setCreatedate(newVal);
-  };
+  useEffect(() => {
+    let active = true;
+    OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers")
+      .then((response) => {
+        const sortedEmployers = response.data.sort((a, b) =>
+          a.empname.localeCompare(b.empname)
+        );
+        if (active) setEmployers(sortedEmployers);
+      })
+      .catch((error) => {
+        console.error("Failed to load employers for job requisitions:", error);
+        if (active) toast.error("Employer list could not be loaded.");
+      });
 
-  const handleTargetDateChange = (newVal) => {
-    setCr_DateHold2(newVal.format("YYYY.M.D"));
-    setTargetdate(newVal);
-  };
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (
-      createdate != null &&
-      cr_datehold1 != "Invalid Date"
-    ) {
-      var jobreqPOST = {
-        "jrnumber": jrnumber,
-        "company": company,
-        "jrtitle": jrtitle,
-        "location": location,
-        "recruitername": recruitername,
-        "recruiteremail": recruiteremail,
-        "recruiternumber": recruiternumber,
-        "comment": comment,
-        "createdate": createdate,
-        "targetdate": targetdate,
-        "status": status,
-        "wa": wa
+    setSubmitting(true);
+
+    const newJobRequest = {
+      jrnumber,
+      company,
+      jrtitle,
+      location,
+      recruitername,
+      recruiteremail,
+      recruiternumber,
+      comment,
+      createdate,
+      targetdate,
+      status,
+      wa,
+    };
+
+    try {
+      const response = await OAuth2APIClient.post(
+        "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs/create",
+        newJobRequest
+      );
+      if (response.status === 200) {
+        setCheckForRecords((value) => !value);
+        toast.success(`${jrnumber} for ${company || "employer"} added.`);
+      } else {
+        toast.error("Job requisition could not be added.");
       }
-
-      try {
-        const response = await OAuth2APIClient.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs/create`, jobreqPOST);
-        if (response.status === 200) {
-          props.setCheckForRecords(!props.checkForRecords);
-          toast.success(`${jrnumber} for ${company} memorialized.`)
-
-        }
-        else { alert(`oops! Something went wrong!`); }
-      }
-
-      catch (err) { alertCtx.error(`oops! Something went wrong!`); console.log(err); }
+    } catch (error) {
+      console.error("Failed to create job requisition:", error);
+      toast.error("Job requisition could not be added.");
+    } finally {
+      setSubmitting(false);
     }
-    else {
-      event.preventDefault();
-      alertCtx.warning("Valid CR date required");
-    }
-  }
-
-
-  useEffect(() => {
-    OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers')
-      .then((response) => { const sortedemployerrecords = response.data.sort((b, a) => b.empname.localeCompare(a.empname)); 
-        setEmployerDropDown(sortedemployerrecords); }) //sort empname alphabetically
-      .catch((e) => console.error(e));
-  }, [checkForRecords]);
-
-
-  const handleWAprofileChange = (event) => { setWAprofile(event.target.value); };
+  };
 
   return (
+    <div className="admin-create">
+      <button
+        className="admin-create-toggle"
+        type="button"
+        aria-expanded={expanded}
+        aria-controls="jobreq-create-form"
+        onClick={() => setExpanded((value) => !value)}
+      >
+        <GiHummingbird className="admin-create-toggle-icon" aria-hidden="true" />
+        <span>Add a job requisition</span>
+        <span className="admin-create-toggle-indicator" aria-hidden="true">
+          {expanded ? "−" : "+"}
+        </span>
+      </button>
 
-    <div className='Font-Verdana-Small-Postgres'>&nbsp;
-      <Tooltip id="insert" />
-      <div onClick={toggleAccordion}>
-        <a data-tooltip-id="insert" data-tooltip-content="Add Job"><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} />
-        <b style={{ cursor: 'pointer' }}>Add a Job Requisition/JR</b></a>
-      </div>
-
-      {isExpanded && (
-        <div>
-          <div>
-
-            <form onSubmit={handleSubmit}>
-              <div><img alt="1" src={spacer2} /></div>
-              <div className='Font-Verdana-Small-Postgres'>
-
-                <div>&nbsp;</div>
-                <div>
-                  <div>
-                    <img alt="1" src={spacer} /><img alt="1" src={spacer} />
-                    <label htmlFor="dropdown">Employer:&nbsp;</label>
-                    <select className='Font-Verdana-Small-Postgres'
-                      onChange={(event) => {
-                        const selectedIndex = event.target.selectedIndex;
-                        const selectedOption = event.target.options[selectedIndex];
-                        const company = selectedOption.getAttribute("data-company");
-
-                        setCompany(company);
-
-                      }}
-                      id="dropdown"
-                      style={{
-                        height: '27.5px',
-                        border: '1.25px solid #c4c4c4',
-                        borderRadius: '4px',
-                        padding: 0,
-                        paddingLeft: '10px',
-                        width: '250px'
-                      }}
-                    >
-                      <option disabled selected value="">Company / Employer</option>
-                      {employerdropdown && employerdropdown.map(option => (
-                        <option
-                          key={option.id}
-                          value={option.empname}
-                          data-company={option.empname} // Store company data as an attribute
-
-                        >
-                          {option.empname}
-                        </option>
-                      ))}
-                    </select>
-                    <img alt="1" src={spacer} />Location:&nbsp;<input style={{ ...baseInputStyle, width: "250px" }} type="text" value={location} onChange={(event) => setLocation(event.target.value)} />
-                    <img alt="1" src={spacer} />JR Number:&nbsp;<input style={{ ...baseInputStyle, width: "250px" }} placeholder="Required" type="text" value={jrnumber} onChange={(event) => setJrnumber(event.target.value)} required />
-                    <img alt="1" src={spacer} />JR Title:&nbsp;<input style={{ ...baseInputStyle, width: "250px" }} placeholder="Required" type="text" value={jrtitle} onChange={(event) => setJrtitle(event.target.value)} required />
-                    <img alt="1" src={spacer} />WFH:&nbsp;
-                    <select style={{ ...baseInputStyle, width: "230px" }} id="dropdown" value={wa} onChange={(event) => setWa(event.target.value)}>
-                      <option disabled selected value="">Work Appropriate Model</option>
-                      <option value="FR">Fully Remote</option>
-                      <option value="H1">Hybrid 1-day Onsite</option>
-                      <option value="H2">Hybrid 2-day Onsite</option>
-                      <option value="H3">Hybrid 3-day Onsite</option>
-                      <option value="H4">Hybrid 4-day Onsite</option>
-                      <option value="FO">Fully Onsite</option>
-                    </select>
-                  </div>
-                </div>
-                <div>&nbsp;</div>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Recruiter's Name:&nbsp;<input style={{ ...baseInputStyle, width: "190px" }} type="text" value={recruitername} onChange={(event) => setRecruitername(event.target.value)} />
-                <img alt="1" src={spacer} />Recruiter eMail:&nbsp;<input style={{ ...baseInputStyle, width: "205px" }} type="text" value={recruiteremail} onChange={(event) => setRecruiteremail(event.target.value)} />
-                <img alt="1" src={spacer} />Recruiter Mobile:&nbsp;<input style={{ ...baseInputStyle, width: "215px" }} type="text" value={recruiternumber} onChange={(event) => setRecruiternumber(event.target.value)} />
-                <img alt="1" src={spacer} />Status:&nbsp;<input style={{ ...baseInputStyle, width: "255px" }} type="text" value={status} onChange={(event) => setStatus(event.target.value)} />
-                <img alt="1" src={spacer} />Comment:&nbsp;<input style={{ ...baseInputStyle, width: "190px" }} type="text" value={comment} onChange={(event) => setComment(event.target.value)} />
-                <div>&nbsp;</div>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Recruitment Start:&nbsp;
-                <img alt="1" src={spacer} />Recruitment End:&nbsp;
-                <img alt="1" src={spacer} />
-                <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Add Job Requisition</button>
-              </div>
-            </form>
+      {expanded && (
+        <form
+          id="jobreq-create-form"
+          className="admin-create-form"
+          onSubmit={handleSubmit}
+        >
+          <label className="admin-create-field">
+            <span>Employer</span>
+            <select value={company} onChange={(event) => setCompany(event.target.value)}>
+              <option value="">Select an employer</option>
+              {employers.map((employer) => (
+                <option key={employer.id} value={employer.empname}>
+                  {employer.empname}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="admin-create-field">
+            <span>Requisition number</span>
+            <input
+              value={jrnumber}
+              onChange={(event) => setJrnumber(event.target.value)}
+              required
+            />
+          </label>
+          <label className="admin-create-field admin-create-field-wide">
+            <span>Job title</span>
+            <input
+              value={jrtitle}
+              onChange={(event) => setJrtitle(event.target.value)}
+              required
+            />
+          </label>
+          <label className="admin-create-field">
+            <span>Location</span>
+            <input value={location} onChange={(event) => setLocation(event.target.value)} />
+          </label>
+          <label className="admin-create-field">
+            <span>Work arrangement</span>
+            <select value={wa} onChange={(event) => setWa(event.target.value)}>
+              <option value="">Select an arrangement</option>
+              <option value="FR">Fully remote</option>
+              <option value="H1">Hybrid, 1 day onsite</option>
+              <option value="H2">Hybrid, 2 days onsite</option>
+              <option value="H3">Hybrid, 3 days onsite</option>
+              <option value="H4">Hybrid, 4 days onsite</option>
+              <option value="FO">Fully onsite</option>
+            </select>
+          </label>
+          <label className="admin-create-field">
+            <span>Recruiter name</span>
+            <input
+              value={recruitername}
+              onChange={(event) => setRecruitername(event.target.value)}
+            />
+          </label>
+          <label className="admin-create-field">
+            <span>Recruiter email</span>
+            <input
+              type="email"
+              value={recruiteremail}
+              onChange={(event) => setRecruiteremail(event.target.value)}
+            />
+          </label>
+          <label className="admin-create-field">
+            <span>Recruiter number</span>
+            <input
+              type="tel"
+              value={recruiternumber}
+              onChange={(event) => setRecruiternumber(event.target.value)}
+            />
+          </label>
+          <label className="admin-create-field">
+            <span>Status</span>
+            <input value={status} onChange={(event) => setStatus(event.target.value)} />
+          </label>
+          <label className="admin-create-field">
+            <span>Created date</span>
+            <input
+              type="date"
+              value={createdate}
+              onChange={(event) => setCreatedate(event.target.value)}
+            />
+          </label>
+          <label className="admin-create-field">
+            <span>Target date</span>
+            <input
+              type="date"
+              value={targetdate}
+              onChange={(event) => setTargetdate(event.target.value)}
+            />
+          </label>
+          <label className="admin-create-field admin-create-field-wide">
+            <span>Comment</span>
+            <textarea value={comment} onChange={(event) => setComment(event.target.value)} />
+          </label>
+          <div className="admin-create-actions">
+            <button type="submit" disabled={submitting}>
+              {submitting ? "Adding..." : "Add job requisition"}
+            </button>
           </div>
-        </div>)}
+        </form>
+      )}
     </div>
   );
 }

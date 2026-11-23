@@ -12,10 +12,12 @@ import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
 import DutchLanguage_Ticker from '../dutchlanguage/DutchLanguage_Ticker';
+import '../HomePage.css';
+import '../candidates/AdminManage.css';
 
 export default function PageManage() {
   return (
-    <div>
+    <div className="home-route candidate-admin-page" data-theme="dark">
       <BannerWhite />
       <GradientLine />
       <BannerLight />
@@ -26,10 +28,17 @@ export default function PageManage() {
       <GradientLineThin />
       <DutchLanguage_Ticker />
       <GradientLineThin />
-      <CombinedCreateFP />
-      <CandidateManage />
-      <EmployerManage1 />
-      <JobreqManage />
+      <CombinedCreateFP className="home-quick-adds" />
+      <main className="candidate-admin-content">
+        <header className="candidate-admin-heading">
+          <p>RECRUITING WORKSPACE</p>
+          <h1>People & opportunities</h1>
+          <span>Manage candidate profiles, employers, and open job requisitions.</span>
+        </header>
+        <CandidateManage />
+        <EmployerManage1 />
+        <JobreqManage />
+      </main>
       <Footer/>
       <ToastComponent />
     </div>

@@ -1,105 +1,128 @@
-import React, { useState, useContext } from "react";
-import OAuth2APIClient from '../oauth2/OAuth2APIClient';
-import '../Fonts.css';
-import spacer from '../graphix/besterdev_spacer_white.png'
-import spacer2 from '../graphix/besterdev_spacer_white_half.png'
-import 'react-tooltip/dist/react-tooltip.css'
-import { Tooltip } from 'react-tooltip'
+import { useState } from "react";
+import OAuth2APIClient from "../oauth2/OAuth2APIClient";
 import { GiHummingbird } from "react-icons/gi";
-import { toast } from 'react-toastify';
-import AlertContext from "../Generic/Alerts/AlertContext";
-import { baseInputStyle } from "../baseInputStyle";
+import { toast } from "react-toastify";
 
-export default function EmployerCreate(props) {
-
-  const today = new Date(); // Create a new Date object representing today's date
-  const formattedDate = today.toISOString().split('T')[0]; // Convert the date to the desired format (YYYY-MM-DD)
-  const toggleAccordion = () => { setExpanded(!isExpanded); };
-  const [empname, setEmpname] = useState(null);
-  const [empcontactfn, setEmpcontactfn] = useState(null);
-  const [empcontactln, setEmpcontactln] = useState(null);
-  const [empcontactnum, setEmpcontactnum] = useState(null);
-  const [empcontactemail, setEmpcontactemail] = useState(null);
-  const [empcomment, setEmpcomment] = useState(null);
+export default function EmployerCreate({ checkForRecords, setCheckForRecords }) {
+  const [empname, setEmpname] = useState("");
+  const [empcontactfn, setEmpcontactfn] = useState("");
+  const [empcontactln, setEmpcontactln] = useState("");
+  const [empcontactnum, setEmpcontactnum] = useState("");
+  const [empcontactemail, setEmpcontactemail] = useState("");
+  const [empcomment, setEmpcomment] = useState("");
   const [isExpanded, setExpanded] = useState(false);
-  const [checkForRecords, setCheckForRecords] = useState(true);
-  const [cr_date, setcr_date] = useState(formattedDate);
-  const [cr_datehold, setCr_DateHold] = useState(null)
-  const alertCtx = useContext(AlertContext);
-
+  const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (
-      cr_date != null &&
-      cr_datehold !== "Invalid Date"
-    ) 
-    {
-      var newEmpRecord = {
-        "empname": empname,
-        "empcontactfn": empcontactfn,
-        "empcontactln": empcontactln,
-        "empcontactnum": empcontactnum,
-        "empcontactemail": empcontactemail,
-        "empcomment": empcomment
+    setSubmitting(true);
+
+    const newEmployer = {
+      empname,
+      empcontactfn,
+      empcontactln,
+      empcontactnum,
+      empcontactemail,
+      empcomment,
+    };
+
+    try {
+      const response = await OAuth2APIClient.post(
+        "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers/create",
+        newEmployer
+      );
+      if (response.status === 200) {
+        setCheckForRecords((value) => !value);
+        toast.success(`${empname} added.`);
+      } else {
+        toast.error("Employer could not be added.");
       }
-
-      try {
-        const response = await OAuth2APIClient.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers/create`, newEmpRecord);
-        if (response.status === 200) { 
-          props.setCheckForRecords(!props.checkForRecords); 
-          toast.success(`${empname} memorialized.`)
-        }
-        
-        else { alert(`oops! Something went wrong!`); }
-
-      }
-
-      catch (err) { toast.error(`oops! Something went wrong!`); console.log(err); }
+    } catch (error) {
+      console.error("Failed to create employer:", error);
+      toast.error("Employer could not be added.");
+    } finally {
+      setSubmitting(false);
     }
-    else {
-      event.preventDefault();
-    }
-  }
+  };
 
   return (
-
-    <div className='Font-Verdana-Small-Postgres'>&nbsp;
-      <Tooltip id="insert" />
-      <div onClick={toggleAccordion}>
-        <a data-tooltip-id="insert" data-tooltip-content="Add Employer"><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} />
-        <b style={{ cursor: 'pointer' }}>Add an Employer/Customer</b></a>
-      </div>
+    <div className="admin-create">
+      <button
+        className="admin-create-toggle"
+        type="button"
+        aria-expanded={isExpanded}
+        aria-controls="employer-create-form"
+        onClick={() => setExpanded((expanded) => !expanded)}
+      >
+        <GiHummingbird className="admin-create-toggle-icon" aria-hidden="true" />
+        <span>Add an employer or customer</span>
+        <span className="admin-create-toggle-indicator" aria-hidden="true">
+          {isExpanded ? "−" : "+"}
+        </span>
+      </button>
 
       {isExpanded && (
-        <div>
-          <div>
-
-            <form onSubmit={handleSubmit}>
-              <div><img alt="1" src={spacer2} /></div>
-              <div className='Font-Verdana-Small-Postgres'>
-              <div>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Company Name:&nbsp;<input style={{ ...baseInputStyle, width: "230px" }} placeholder="Required" type="text" value={empname} onChange={(event) => setEmpname(event.target.value)} required />
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Comment:&nbsp;<input style={{ ...baseInputStyle, width: "1130px" }} type="text" value={empcomment} onChange={(event) => setEmpcomment(event.target.value)} />
-              </div>
-
-                <div>&nbsp;</div>
-                
-              <div>
-                 <img alt="1" src={spacer} /><img alt="1" src={spacer} />Contact's First Name:&nbsp;<input style={{ ...baseInputStyle, width: "200px" }} placeholder="Required" type="text" value={empcontactfn} onChange={(event) => setEmpcontactfn(event.target.value)} required />
-                 <img alt="1" src={spacer} /><img alt="1" src={spacer} />Contact's Last Name:&nbsp;<input style={{ ...baseInputStyle, width: "160px" }} placeholder="Required" type="text" value={empcontactln} onChange={(event) => setEmpcontactln(event.target.value)} required />
-                 <img alt="1" src={spacer} /><img alt="1" src={spacer} />Contact's eMail Address:&nbsp;<input style={{ ...baseInputStyle, width: "200px" }} placeholder="Required" type="text" value={empcontactemail} onChange={(event) => setEmpcontactemail(event.target.value)} required />
-                 <img alt="1" src={spacer} /><img alt="1" src={spacer} />Contact's Mobile Number:&nbsp;<input style={{ ...baseInputStyle, width: "200px" }} placeholder="Required" type="text" value={empcontactnum} onChange={(event) => setEmpcontactnum(event.target.value)} required />
-              </div>
-
-                <div>&nbsp;</div>
-
-                <div><img alt="1" src={spacer} />&nbsp; &nbsp; &nbsp;<button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Add Employer/Customer</button></div>
-              </div>
-            </form>
+        <form
+          id="employer-create-form"
+          className="admin-create-form"
+          onSubmit={handleSubmit}
+        >
+          <label className="admin-create-field">
+            <span>Company name</span>
+            <input
+              value={empname}
+              onChange={(event) => setEmpname(event.target.value)}
+              required
+            />
+          </label>
+          <label className="admin-create-field">
+            <span>Contact first name</span>
+            <input
+              value={empcontactfn}
+              onChange={(event) => setEmpcontactfn(event.target.value)}
+              required
+            />
+          </label>
+          <label className="admin-create-field">
+            <span>Contact last name</span>
+            <input
+              value={empcontactln}
+              onChange={(event) => setEmpcontactln(event.target.value)}
+              required
+            />
+          </label>
+          <label className="admin-create-field">
+            <span>Contact email</span>
+            <input
+              type="email"
+              value={empcontactemail}
+              onChange={(event) => setEmpcontactemail(event.target.value)}
+              required
+            />
+          </label>
+          <label className="admin-create-field">
+            <span>Contact mobile number</span>
+            <input
+              type="tel"
+              value={empcontactnum}
+              onChange={(event) => setEmpcontactnum(event.target.value)}
+              required
+            />
+          </label>
+          <label className="admin-create-field admin-create-field-wide">
+            <span>Comment</span>
+            <textarea
+              value={empcomment}
+              onChange={(event) => setEmpcomment(event.target.value)}
+            />
+          </label>
+          <div className="admin-create-actions">
+            <button type="submit" disabled={submitting}>
+              {submitting ? "Adding..." : "Add employer"}
+            </button>
           </div>
-        </div>)}
+        </form>
+      )}
     </div>
-
   );
 }

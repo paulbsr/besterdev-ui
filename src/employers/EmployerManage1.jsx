@@ -1,21 +1,17 @@
-import { useState, useEffect, useContext } from 'react'
-import GradientLineRusty from '../gradientlines/GradientLineRusty';
+import { useState, useEffect } from 'react'
 import { FaPen, FaCheck, FaRegTrashAlt } from 'react-icons/fa';
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
 import OAuth2APIClient from '../oauth2/OAuth2APIClient';
-import { baseInputStyle } from '../baseInputStyle';
 import { FaPeopleGroup } from "react-icons/fa6";
 import EmployerCreate from './EmployerCreate';
-import 'react-tooltip/dist/react-tooltip.css'
-import { Tooltip } from 'react-tooltip'
 import { toast } from 'react-toastify';
-import 'react-dropdown/style.css';
-import '../Fonts.css'
 
 
-export default function EmployerManage1(props) {
+export default function EmployerManage1() {
   const [checkForRecords, setCheckForRecords] = useState(true);
   const [employerrecords, setEmployerrecords] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [editing, setEditing] = useState("");
   const [empname, setEmpname] = useState(null);
   const [empcontactfn, setEmpcontactfn] = useState(null);
@@ -24,14 +20,21 @@ export default function EmployerManage1(props) {
   const [empcontactemail, setEmpcontactemail] = useState(null);
   const [empcomment, setEmpcomment] = useState(null);
   const [isExpanded, setExpanded] = useState(false);
-  const toggleAccordion = () => { setExpanded(!isExpanded); };
-
-
+  const toggleAccordion = () => setExpanded((expanded) => !expanded);
 
   useEffect(() => {
+    setLoading(true);
     OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers')
-      .then((response) => { const sortedemployerrecords = response.data.sort((b, a) => b.empname.localeCompare(a.empname)); setEmployerrecords(sortedemployerrecords); }) //sort empname alphabetically
-      .catch((e) => console.error(e));
+      .then((response) => {
+        const sortedRecords = response.data.sort((a, b) => a.empname.localeCompare(b.empname));
+        setEmployerrecords(sortedRecords);
+        setError(null);
+      })
+      .catch((requestError) => {
+        console.error("Failed to load employers:", requestError);
+        setError(requestError);
+      })
+      .finally(() => setLoading(false));
   }, [checkForRecords]);
 
   const handleEmpEdit = (row) => {
@@ -56,112 +59,127 @@ export default function EmployerManage1(props) {
 
 
   const onEditSave = async () => {
-    {
+    const employerPUT = {
+      empname,
+      empcontactfn,
+      empcontactln,
+      empcontactnum,
+      empcontactemail,
+      empcomment,
+    };
 
-      const employerPUT = {
-        "empname": empname,
-        "empcontactfn": empcontactfn,
-        "empcontactln": empcontactln,
-        "empcontactnum": empcontactnum,
-        "empcontactemail": empcontactemail,
-        "empcomment": empcomment
-      }
-
-      await OAuth2APIClient.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers/update/${editing}`, employerPUT)
-        .then((response) => { setCheckForRecords(!checkForRecords); toast.success(`${empname} has been updated.`) })
-        .catch((error) => { alert("Done"); })
-      setCheckForRecords(!checkForRecords)
+    try {
+      await OAuth2APIClient.put(
+        `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers/update/${editing}`,
+        employerPUT
+      );
+      toast.success(`${empname} has been updated.`);
+      setCheckForRecords((value) => !value);
       onEditCancel();
-
+    } catch (requestError) {
+      console.error("Failed to update employer:", requestError);
+      toast.error("Failed to update employer.");
     }
-  }
-
-
-  const onEditDelete = (row) => {
-    OAuth2APIClient.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers/delete/${row.id}`)
-      .then((response) => {
-        window.alert('Are you sure you want to delete');
-        setCheckForRecords(!checkForRecords);
-        toast.success(`${empname} has been purged.`)
-      }
-      )
   };
 
+  const onEditDelete = async (row) => {
+    if (!window.confirm(`Delete ${row.empname}?`)) return;
+    try {
+      await OAuth2APIClient.delete(
+        `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/employers/delete/${row.id}`
+      );
+      setCheckForRecords((value) => !value);
+      toast.success(`${row.empname} has been deleted.`);
+    } catch (requestError) {
+      console.error("Failed to delete employer:", requestError);
+      toast.error("Failed to delete employer.");
+    }
+  };
+
+  const renderActionButton = (label, Icon, onClick) => (
+    <button
+      className={`admin-action-button ${label === "Delete" ? "admin-action-delete" : ""}`}
+      type="button"
+      title={label}
+      aria-label={label}
+      onClick={onClick}
+    >
+      <Icon aria-hidden="true" />
+    </button>
+  );
 
   return (
-
-
-    <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
-      <Tooltip id="insert" />
-      <div onClick={toggleAccordion}>
-        &nbsp; &nbsp;<a data-tooltip-id="insert" data-tooltip-content="EmployerManage"><FaPeopleGroup style={{ color: '#336791', fontSize: '45px', cursor: 'pointer' }} />
-          &nbsp;<b style={{ fontFamily: "Verdana", fontSize: "medium", fontWeight: "bold", color: "#336791", cursor: 'pointer' }}>Manage Employers / Customers ({employerrecords.length})</b></a>
-      </div>
-
+    <section className="admin-management-section admin-employer-section">
+      <button
+        className="admin-section-toggle"
+        type="button"
+        aria-expanded={isExpanded}
+        aria-controls="employer-management-content"
+        onClick={toggleAccordion}
+      >
+        <span className="admin-section-icon" aria-hidden="true"><FaPeopleGroup /></span>
+        <span className="admin-section-copy">
+          <strong>Employers & customers</strong>
+          <span>Manage organizations and their contact details.</span>
+        </span>
+        <span className="admin-section-count">{employerrecords.length}</span>
+        <span className="admin-section-indicator" aria-hidden="true">{isExpanded ? "−" : "+"}</span>
+      </button>
       {isExpanded && (
-        <div>
-          <div>
-            <div>
-              <EmployerCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
-              <Tooltip id="edit" />
-              <Tooltip id="commit" />
-              <Tooltip id="revert" />
-              <Tooltip id="purge" />
-              &nbsp;
-              <table className="Table6">
+        <div id="employer-management-content" className="admin-section-content">
+          <EmployerCreate checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
+          {error ? (
+            <div className="admin-error-state" role="alert">Unable to load employer records.</div>
+          ) : loading ? (
+            <div className="admin-empty-state" role="status">Loading employers...</div>
+          ) : employerrecords.length === 0 ? (
+            <div className="admin-empty-state">No employers have been added yet.</div>
+          ) : (
+            <div className="admin-table-scroll">
+              <table className="Table6 admin-data-table employer-data-table">
                 <thead>
                   <tr>
-                    <th style={{ width: '20px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'></th>
-                    <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Company Name</th>
-                    <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Contact First Name</th>
-                    <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Contact Last Name</th>
-                    <th style={{ width: '350px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Contact eMail</th>
-                    <th style={{ width: '200px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Contact Number</th>
-                    <th style={{ width: '650px', borderRadius: '4px' }} className="Font-Verdana-Small-Rusty" align='center'>Comment</th>
+                    <th scope="col">Actions</th>
+                    <th scope="col">Company</th>
+                    <th scope="col">Contact first name</th>
+                    <th scope="col">Contact last name</th>
+                    <th scope="col">Contact email</th>
+                    <th scope="col">Contact number</th>
+                    <th scope="col">Comment</th>
                   </tr>
                 </thead>
                 <tbody>
-
                   {employerrecords.map((row) => {
                     return (
                       <tr key={row.id}>
-                        <td className="Table6 td">
-                          <>
-                            {row.id === editing ?
-                              (
-                                <>
-                                  <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#336791', outline: 'none' }} type='button' onClick={() => onEditSave()}><a data-tooltip-id="commit" data-tooltip-content="Commit"><FaCheck style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>&nbsp;
-                                  <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'silver', outline: 'none' }} type='button' onClick={() => onEditCancel()}><a data-tooltip-id="revert" data-tooltip-content="Revert"><PiArrowCounterClockwiseBold style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>&nbsp;
-                                  <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#D5441C', outline: 'none' }} type='button' onClick={() => onEditDelete(row)}><a data-tooltip-id="purge" data-tooltip-content="Purge"><FaRegTrashAlt style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>&nbsp;
-                                </>
-                              )
-                              :
-                              (
-                                <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: '#336791', outline: 'none' }} type='button' onClick={() => handleEmpEdit(row)}><a data-tooltip-id="edit" data-tooltip-content="Edit"><FaPen style={{ color: 'white', display: 'block', margin: 'auto', fontSize: '12px', cursor: 'pointer' }} /></a></button>
-                              )
-                            }
-                          </>
+                        <td>
+                          <div className="admin-action-group">
+                            {row.id === editing ? (
+                              <>
+                                {renderActionButton("Save", FaCheck, onEditSave)}
+                                {renderActionButton("Cancel", PiArrowCounterClockwiseBold, onEditCancel)}
+                                {renderActionButton("Delete", FaRegTrashAlt, () => onEditDelete(row))}
+                              </>
+                            ) : renderActionButton("Edit", FaPen, () => handleEmpEdit(row))}
+                          </div>
                         </td>
-                        <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ ...baseInputStyle, width: "180px" }} value={empname} onChange={(e) => setEmpname(e.target.value)} className='cr_edit_inputfield' />) : (row.empname)}</td>
-                        <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ ...baseInputStyle, width: "180px" }} value={empcontactfn} onChange={(e) => setEmpcontactfn(e.target.value)} className='cr_edit_inputfield' />) : (row.empcontactfn)}</td>
-                        <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ ...baseInputStyle, width: "180px" }} value={empcontactln} onChange={(e) => setEmpcontactln(e.target.value)} className='cr_edit_inputfield' />) : (row.empcontactln)}</td>
-                        <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ ...baseInputStyle, width: "330px" }} value={empcontactemail} onChange={(e) => setEmpcontactemail(e.target.value)} className='cr_edit_inputfield_disc' />) : (<a href={'mailto: ${row.email}'} target="_blank" rel="noreferrer">{row.empcontactemail}</a>)}</td>
-                        <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ ...baseInputStyle, width: "180px" }} value={empcontactnum} onChange={(e) => setEmpcontactnum(e.target.value)} className='cr_edit_inputfield' />) : (row.empcontactnum)}</td>
-                        <td className="asmshover Table6 td">{row.id === editing ? (<input style={{ ...baseInputStyle, width: "630px" }} value={empcomment} onChange={(e) => setEmpcomment(e.target.value)} className='cr_edit_inputfield' />) : (row.empcomment)}</td>
+                        <td>{row.id === editing ? <input value={empname || ""} aria-label="Company" onChange={(e) => setEmpname(e.target.value)} /> : row.empname}</td>
+                        <td>{row.id === editing ? <input value={empcontactfn || ""} aria-label="Contact first name" onChange={(e) => setEmpcontactfn(e.target.value)} /> : row.empcontactfn}</td>
+                        <td>{row.id === editing ? <input value={empcontactln || ""} aria-label="Contact last name" onChange={(e) => setEmpcontactln(e.target.value)} /> : row.empcontactln}</td>
+                        <td>{row.id === editing ? <input value={empcontactemail || ""} aria-label="Contact email" onChange={(e) => setEmpcontactemail(e.target.value)} /> : <a href={`mailto:${row.empcontactemail}`}>{row.empcontactemail}</a>}</td>
+                        <td>{row.id === editing ? <input value={empcontactnum || ""} aria-label="Contact number" onChange={(e) => setEmpcontactnum(e.target.value)} /> : row.empcontactnum}</td>
+                        <td>{row.id === editing ? <input value={empcomment || ""} aria-label="Comment" onChange={(e) => setEmpcomment(e.target.value)} /> : row.empcomment}</td>
                       </tr>
                     )
                   })
                   }
                 </tbody>
               </table>
-              <div>&nbsp;</div>
-              <GradientLineRusty />
-              <div>&nbsp;</div>
             </div>
-          </div>
+          )}
         </div>
       )
       }
-    </div>
+    </section>
   )
 }

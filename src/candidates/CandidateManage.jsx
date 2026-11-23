@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Tooltip } from "react-tooltip";
 import { toast } from "react-toastify";
 import {
   FaPen,
@@ -8,16 +7,8 @@ import {
 } from "react-icons/fa";
 import { PiArrowCounterClockwiseBold } from "react-icons/pi";
 import { MdManageAccounts } from "react-icons/md";
-import "react-tooltip/dist/react-tooltip.css";
-import "../Fonts.css";
-import "react-dropdown/style.css";
-import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
 import CandidateCreate from "./CandidateCreate";
-import GradientLineRusty from "../gradientlines/GradientLineRusty";
 import OAuth2APIClient from "../oauth2/OAuth2APIClient"
-
-dayjs.extend(utc);
 
 export default function CandidateManage() {
   // --- UI State ---
@@ -26,6 +17,7 @@ export default function CandidateManage() {
   const [tableData, setTableData] = useState([]);
   const [editingId, setEditingId] = useState("");
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   // --- Editing State ---
   const [editingCandidate, setEditingCandidate] = useState({
@@ -46,20 +38,24 @@ export default function CandidateManage() {
   // --- Fetch Candidates ---
   useEffect(() => {
     const fetchCandidates = async () => {
+      setLoading(true);
       try {
         const res = await OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates");
         const sorted = res.data.sort((a, b) => a.firstname.localeCompare(b.firstname));
         setTableData(sorted);
+        setError(null);
       } catch (err) {
         console.error("Error fetching candidates:", err);
         setError(err);
+      } finally {
+        setLoading(false);
       }
     };
     fetchCandidates();
   }, [checkForRecords]);
 
   // --- Handlers ---
-  const toggleAccordion = () => setExpanded(!isExpanded);
+  const toggleAccordion = () => setExpanded((expanded) => !expanded);
 
   const handleEdit = (row) => {
     setEditingId(row.id);
@@ -119,154 +115,132 @@ export default function CandidateManage() {
     }
   };
 
-  if (error) return <p>Error loading candidates.</p>;
-
-  // --- Styles ---
-  const inputStyle = {
-    height: "22.5px",
-    border: "1.25px solid #336791",
-    borderRadius: "4px",
-    paddingLeft: "5px"
-  };
-
-  const actionButton = (bg, tooltip, Icon, onClick) => (
+  const actionButton = (tooltip, Icon, onClick) => (
     <button
-      style={{
-        height: "20px",
-        width: "20px",
-        padding: 0,
-        border: "none",
-        borderRadius: "3px",
-        backgroundColor: bg,
-        outline: "none"
-      }}
+      className={`admin-action-button ${tooltip.content === "Delete" ? "admin-action-delete" : ""}`}
       type="button"
+      title={tooltip.content}
+      aria-label={tooltip.content}
       onClick={onClick}
     >
-      <a data-tooltip-id={tooltip.id} data-tooltip-content={tooltip.content}>
-        <Icon
-          style={{
-            color: "white",
-            display: "block",
-            margin: "auto",
-            fontSize: "12px",
-            cursor: "pointer"
-          }}
-        />
-      </a>
+      <Icon aria-hidden="true" />
     </button>
   );
 
   return (
-    <div className="Font-Verdana-Medium-Postgres">
-      <Tooltip id="insert" />
-      <div onClick={toggleAccordion}>
-        <a
-          data-tooltip-id="insert"
-          data-tooltip-content="CandidateManage"
-          style={{ cursor: "pointer" }}
-        >
-          <MdManageAccounts
-            style={{ color: "#336791", fontSize: "45px", verticalAlign: "middle" }}
-          />
-          &nbsp;
-          <b style={{ fontSize: "medium", color: "#336791" }}>
-            Manage Candidates / Commodities ({tableData.length})
-          </b>
-        </a>
-      </div>
+    <section className="admin-management-section admin-candidate-section">
+      <button
+        className="admin-section-toggle"
+        type="button"
+        aria-expanded={isExpanded}
+        aria-controls="candidate-management-content"
+        onClick={toggleAccordion}
+      >
+        <span className="admin-section-icon" aria-hidden="true">
+          <MdManageAccounts />
+        </span>
+        <span className="admin-section-copy">
+          <strong>Candidates</strong>
+          <span>Manage candidate profiles and role associations.</span>
+        </span>
+        <span className="admin-section-count">{tableData.length}</span>
+        <span className="admin-section-indicator" aria-hidden="true">
+          {isExpanded ? "−" : "+"}
+        </span>
+      </button>
 
       {isExpanded && (
-        <div>
+        <div id="candidate-management-content" className="admin-section-content">
           <CandidateCreate
             checkForRecords={checkForRecords}
             setCheckForRecords={setCheckForRecords}
           />
 
-          <table className="Table6">
-            <thead>
-              <tr>
-                {[
-                  "",
-                  "Firstname",
-                  "Lastname",
-                  "eMail",
-                  "Mobile",
-                  "Date Found",
-                  "Job Title",
-                  "Primary Skill",
-                  "Comment",
-                  "Employer",
-                  "Role",
-                  "Req"
-                ].map((header, i) => (
-                  <th key={i} className="Font-Verdana-Small-Postgres">
-                    {header}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {tableData.map((row) => {
-                const isEditing = row.id === editingId;
-                return (
-                  <tr key={row.id}>
-                    <td>
-                      {isEditing ? (
-                        <>
-                          {actionButton("#336791", { id: "commit", content: "Commit" }, FaCheck, onEditSave)}
-                          &nbsp;
-                          {actionButton("silver", { id: "revert", content: "Revert" }, PiArrowCounterClockwiseBold, onEditCancel)}
-                          &nbsp;
-                          {actionButton("#D5441C", { id: "purge", content: "Delete" }, FaRegTrashAlt, () => onEditDelete(row))}
-                        </>
-                      ) : (
-                        actionButton("#336791", { id: "edit", content: "Edit" }, FaPen, () => handleEdit(row))
-                      )}
-                    </td>
-
+          {error ? (
+            <div className="admin-error-state" role="alert">Unable to load candidate records.</div>
+          ) : loading ? (
+            <div className="admin-empty-state" role="status">Loading candidates...</div>
+          ) : tableData.length === 0 ? (
+            <div className="admin-empty-state">No candidates have been added yet.</div>
+          ) : (
+            <div className="admin-table-scroll">
+              <table className="admin-data-table candidate-data-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Actions</th>
                     {[
-                      "firstname",
-                      "lastname",
-                      "email",
-                      "mobile",
-                      "dob",
-                      "jobdesc",
-                      "skill1",
-                      "comment",
-                      "employer",
-                      "role",
-                      "reqnum"
-                    ].map((field, i) => (
-                      <td key={i} className="asmshover Table6 td">
-                        {isEditing ? (
-                          <input
-                            style={{ ...inputStyle, width: "100%" }}
-                            value={editingCandidate[field] || ""}
-                            onChange={(e) => handleInputChange(field, e.target.value)}
-                          />
-                        ) : field === "email" ? (
-                          <a href={`mailto:${row.email}`} target="_blank" rel="noreferrer">
-                            {row.email}
-                          </a>
-                        ) : field === "dob" ? (
-                          new Date(row.dob).toLocaleDateString("en-CA")
-                        ) : (
-                          row[field]
-                        )}
-                      </td>
+                      ["firstname", "First name"],
+                      ["lastname", "Last name"],
+                      ["email", "Email"],
+                      ["mobile", "Mobile"],
+                      ["dob", "Date found"],
+                      ["jobdesc", "Job title"],
+                      ["skill1", "Primary skill"],
+                      ["comment", "Comment"],
+                      ["employer", "Employer"],
+                      ["role", "Role"],
+                      ["reqnum", "Requisition"],
+                    ].map(([, header]) => (
+                      <th key={header} scope="col">{header}</th>
                     ))}
                   </tr>
-                );
-              })}
-            </tbody>
-          </table>
-
-          <div>&nbsp;</div>
-          <GradientLineRusty />
-          <div>&nbsp;</div>
+                </thead>
+                <tbody>
+                  {tableData.map((row) => {
+                    const isEditing = row.id === editingId;
+                    return (
+                      <tr key={row.id}>
+                        <td>
+                          <div className="admin-action-group">
+                            {isEditing ? (
+                              <>
+                                {actionButton({ content: "Save" }, FaCheck, onEditSave)}
+                                {actionButton({ content: "Cancel" }, PiArrowCounterClockwiseBold, onEditCancel)}
+                                {actionButton({ content: "Delete" }, FaRegTrashAlt, () => onEditDelete(row))}
+                              </>
+                            ) : (
+                              actionButton({ content: "Edit" }, FaPen, () => handleEdit(row))
+                            )}
+                          </div>
+                        </td>
+                        {[
+                          "firstname",
+                          "lastname",
+                          "email",
+                          "mobile",
+                          "dob",
+                          "jobdesc",
+                          "skill1",
+                          "comment",
+                          "employer",
+                          "role",
+                          "reqnum",
+                        ].map((field) => (
+                          <td key={field}>
+                            {isEditing ? (
+                              <input
+                                aria-label={`${field} for ${row.firstname} ${row.lastname}`}
+                                value={editingCandidate[field] || ""}
+                                onChange={(event) => handleInputChange(field, event.target.value)}
+                              />
+                            ) : field === "email" ? (
+                              <a href={`mailto:${row.email}`}>{row.email}</a>
+                            ) : field === "dob" && row.dob ? (
+                              new Date(row.dob).toLocaleDateString("en-CA")
+                            ) : (
+                              row[field] || "—"
+                            )}
+                          </td>
+                        ))}
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
       )}
-    </div>
+    </section>
   );
 }

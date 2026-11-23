@@ -1,164 +1,197 @@
-import { useState, useEffect } from "react";
-import '../Fonts.css';
-import dayjs from "dayjs";
-import utc from 'dayjs/plugin/utc';
-import spacer from '../graphix/besterdev_spacer_white.png';
-import spacer2 from '../graphix/besterdev_spacer_white_half.png';
+import { useEffect, useState } from "react";
 import { GiHummingbird } from "react-icons/gi";
-import 'react-tooltip/dist/react-tooltip.css';
-import { Tooltip } from 'react-tooltip';
-import { toast } from 'react-toastify';
-import { baseInputStyle } from "../baseInputStyle";
-import OAuth2APIClient from '../oauth2/OAuth2APIClient';
-dayjs.extend(utc);
+import { toast } from "react-toastify";
+import OAuth2APIClient from "../oauth2/OAuth2APIClient";
 
+const today = () => new Date().toISOString().slice(0, 10);
 
-export default function CandidateCreate(props) {
-  const today = new Date(); // Create a new Date object representing today's date
-  const formattedDate = today.toISOString().split('T')[0]; // Convert the date to the desired format (YYYY-MM-DD)
-  const toggleAccordion = () => { setExpanded(!isExpanded); };
-  const [firstname, setfirstname] = useState('');
-  const [lastname, setlastname] = useState('');
-  const [email, setemail] = useState('');
-  const [mobile, setmobile] = useState('');
-  const [jobdesc, setJobdesc] = useState('');
-  const [skill1, setSkill1] = useState('');
-  const [comment, setComment] = useState('');
-  const [role, setRole] = useState(null);
-  const [reqnum, setReqnum] = useState(null);
-  const [employer, setEmployer] = useState(null);
-  const [jobreqs, setJobreqs] = useState(null);
-  const [cr_date, setcr_date] = useState(formattedDate);
-  const [cr_datehold, setCr_DateHold] = useState(null)
-  const [isExpanded, setExpanded] = useState(false);
+export default function CandidateCreate({ setCheckForRecords }) {
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [jobdesc, setJobdesc] = useState("");
+  const [skill1, setSkill1] = useState("");
+  const [comment, setComment] = useState("");
+  const [role, setRole] = useState("");
+  const [reqnum, setReqnum] = useState("");
+  const [employer, setEmployer] = useState("");
+  const [foundDate, setFoundDate] = useState(today);
+  const [jobreqs, setJobreqs] = useState([]);
+  const [selectedJobreq, setSelectedJobreq] = useState("");
+  const [expanded, setExpanded] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+    OAuth2APIClient.get("https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs")
+      .then((response) => {
+        const sortedJobreqs = response.data.sort((a, b) =>
+          a.company.localeCompare(b.company)
+        );
+        if (active) setJobreqs(sortedJobreqs);
+      })
+      .catch((error) => {
+        console.error("Failed to load job requisitions for candidates:", error);
+        if (active) toast.error("Job requisitions could not be loaded.");
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const handleJobreqChange = (event) => {
+    const jobreq = jobreqs.find((item) => String(item.id) === event.target.value);
+    setSelectedJobreq(event.target.value);
+    setEmployer(jobreq?.company || "");
+    setRole(jobreq?.jrtitle || "");
+    setReqnum(jobreq?.jrnumber || "");
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (
-      cr_date != null &&
-      cr_datehold !== "Invalid Date"
-    ) 
-    
-    {
-      var newRecord = {
-        'firstname': firstname,
-        'dob': cr_date,
-        'lastname': lastname,
-        'email': email,
-        'mobile': mobile,
-        'jobdesc': jobdesc,
-        'skill1': skill1,
-        'comment': comment,
-        'role': role,
-        'reqnum': reqnum,
-        'employer': employer
+    setSubmitting(true);
+
+    const newCandidate = {
+      firstname,
+      dob: foundDate,
+      lastname,
+      email,
+      mobile,
+      jobdesc,
+      skill1,
+      comment,
+      role,
+      reqnum,
+      employer,
+    };
+
+    try {
+      const response = await OAuth2APIClient.post(
+        "https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/create",
+        newCandidate
+      );
+      if (response.status === 200) {
+        setCheckForRecords((value) => !value);
+        toast.success(`${firstname} ${lastname} added.`);
+      } else {
+        toast.error("Candidate could not be added.");
       }
-
-      try {
-        const response = await OAuth2APIClient.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/candidates/create`, newRecord);
-        if (response.status === 200) { 
-          props.setCheckForRecords(!props.checkForRecords); 
-          toast.success(`${firstname} ${lastname} has been memorialized.`)
-        }
-        else { 
-          toast.error('Bad')
-        }
-      }
-
-      catch (err) { toast.error(`CandidateCreate issue!`); console.log(err); }
+    } catch (error) {
+      console.error("Failed to create candidate:", error);
+      toast.error("Candidate could not be added.");
+    } finally {
+      setSubmitting(false);
     }
-    else {
-      event.preventDefault();
-    }
-  }
-
-
-  useEffect(() => {
-    OAuth2APIClient.get('https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/jobreqs')
-      .then((response) => {const sortedjobreqs = response.data.sort((b, a) => b.company.localeCompare(a.company));
-        setJobreqs(sortedjobreqs);
-      })
-  },
-    []);
-
+  };
 
   return (
+    <div className="admin-create">
+      <button
+        className="admin-create-toggle"
+        type="button"
+        aria-expanded={expanded}
+        aria-controls="candidate-create-form"
+        onClick={() => setExpanded((value) => !value)}
+      >
+        <GiHummingbird className="admin-create-toggle-icon" aria-hidden="true" />
+        <span>Add a candidate</span>
+        <span className="admin-create-toggle-indicator" aria-hidden="true">
+          {expanded ? "−" : "+"}
+        </span>
+      </button>
 
-    <div className='Font-Verdana-Small-Postgres'>&nbsp;
-      <Tooltip id="insert" />
-      <div onClick={toggleAccordion}>
-        <a data-tooltip-id="insert" data-tooltip-content="Add Candidate"><img alt="1" src={spacer} /><img alt="1" src={spacer} /><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} />
-        <b style={{ cursor: 'pointer' }}>Manually Add a Candidate</b></a>
-        <div>&nbsp;</div>
-      </div>
-
-      {isExpanded && (
-        <div>
-          <div>
-            <form onSubmit={handleSubmit}>
-              <div><img alt="1" src={spacer2} /></div>
-              <div className='Font-Verdana-Small-Postgres'>
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Firstname:&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ ...baseInputStyle, width: "288px" }} placeholder="Required" type="text" value={firstname} onChange={(event) => setfirstname(event.target.value)} required />
-                <img alt="1" src={spacer} /><img alt="1" src={spacer} />Lastname:&nbsp;&nbsp;<input style={{ ...baseInputStyle, width: "303px" }} placeholder="Required" type="text" value={lastname} onChange={(event) => setlastname(event.target.value)} required />
-                <img alt="1" src={spacer} />eMail:&nbsp;&nbsp;&nbsp;<input style={{ ...baseInputStyle, width: "298px" }} placeholder="Required" type="text" value={email} onChange={(event) => setemail(event.target.value)} required />
-                <img alt="1" src={spacer} />Mobile:<img alt="1" src={spacer} /><input style={{ ...baseInputStyle, width: "320px" }} placeholder="Required" type="text" value={mobile} onChange={(event) => setmobile(event.target.value)} required />
-                </div>
-                <div>&nbsp;</div>
-                <div>
-                <img alt="1" src={spacer} />
-                <img alt="1" src={spacer} />
-                
-                
-                <label htmlFor="dropdown">Propose for:&nbsp;&nbsp;</label>
-                <select className='Font-Verdana-Small-Postgres'
-                  onChange={(event) => {
-                    const selectedIndex = event.target.selectedIndex;
-                    const selectedOption = event.target.options[selectedIndex];
-                    const company = selectedOption.getAttribute("data-company");
-                    const jrtitle = selectedOption.getAttribute("data-jrtitle");
-                    const jrnumber = selectedOption.getAttribute("data-jrnumber");
-
-                    setEmployer(company);
-                    setRole(jrtitle);
-                    setReqnum(jrnumber);
-                  }}
-                  id="dropdown"
-                  style={{
-                    height: '27.5px',
-                    border: '1.25px solid #c4c4c4',
-                    borderRadius: '4px',
-                    padding: 0,
-                    paddingLeft: '10px',
-                    width: '300px'
-                  }}
-                >
-
-                  <option disabled selected value="">Employer  -  Role  - Req Number</option>
-
-                  {jobreqs && jobreqs.map(option => (
-                    <option
-                      key={option.id}
-                      value={option.id}
-                      data-company={option.company} // Store company data as an attribute
-                      data-jrtitle={option.jrtitle} // Store jrtitle data as an attribute
-                      data-jrnumber={option.jrnumber} // Store jrnumber data as an attribute
-                    >
-                      {option.company}   -   {option.jrtitle}   -   {option.jrnumber}
-                    </option>
-                  ))}
-                </select>
-
-                
-                  <img alt="1" src={spacer} /><img alt="1" src={spacer} />Job Title:&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ ...baseInputStyle, width: "305px" }} placeholder="Required" type="text" value={jobdesc} onChange={(event) => setJobdesc(event.target.value)} required />
-                  <img alt="1" src={spacer} />Skill:&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ ...baseInputStyle, width: "300px" }} placeholder="Required" type="text" value={skill1} onChange={(event) => setSkill1(event.target.value)} required />
-                  <img alt="1" src={spacer} />Comment:&nbsp;&nbsp;<input style={{ ...baseInputStyle, width: "320px" }} type="text" value={comment} onChange={(event) => setComment(event.target.value)} />
-                  <div>&nbsp;</div>
-                <img alt="1" src={spacer} />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#D5441C', color: '#FFFFFF', cursor: 'pointer' }}>Add Candidate</button>
-                <div>&nbsp;</div>
-              </div>
-            </form>
+      {expanded && (
+        <form
+          id="candidate-create-form"
+          className="admin-create-form"
+          onSubmit={handleSubmit}
+        >
+          <label className="admin-create-field">
+            <span>First name</span>
+            <input
+              value={firstname}
+              onChange={(event) => setFirstname(event.target.value)}
+              required
+            />
+          </label>
+          <label className="admin-create-field">
+            <span>Last name</span>
+            <input
+              value={lastname}
+              onChange={(event) => setLastname(event.target.value)}
+              required
+            />
+          </label>
+          <label className="admin-create-field">
+            <span>Email</span>
+            <input
+              type="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              required
+            />
+          </label>
+          <label className="admin-create-field">
+            <span>Mobile</span>
+            <input
+              type="tel"
+              value={mobile}
+              onChange={(event) => setMobile(event.target.value)}
+              required
+            />
+          </label>
+          <label className="admin-create-field">
+            <span>Date found</span>
+            <input
+              type="date"
+              value={foundDate}
+              onChange={(event) => setFoundDate(event.target.value)}
+              required
+            />
+          </label>
+          <label className="admin-create-field">
+            <span>Job title</span>
+            <input
+              value={jobdesc}
+              onChange={(event) => setJobdesc(event.target.value)}
+              required
+            />
+          </label>
+          <label className="admin-create-field">
+            <span>Primary skill</span>
+            <input
+              value={skill1}
+              onChange={(event) => setSkill1(event.target.value)}
+              required
+            />
+          </label>
+          <label className="admin-create-field">
+            <span>Proposed requisition</span>
+            <select value={selectedJobreq} onChange={handleJobreqChange}>
+              <option value="">No requisition selected</option>
+              {jobreqs.map((jobreq) => (
+                <option key={jobreq.id} value={jobreq.id}>
+                  {jobreq.company} — {jobreq.jrtitle} — {jobreq.jrnumber}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="admin-create-field admin-create-field-wide">
+            <span>Comment</span>
+            <textarea
+              value={comment}
+              onChange={(event) => setComment(event.target.value)}
+            />
+          </label>
+          <div className="admin-create-actions">
+            <button type="submit" disabled={submitting}>
+              {submitting ? "Adding..." : "Add candidate"}
+            </button>
           </div>
-        </div>)}
+        </form>
+      )}
     </div>
   );
 }
