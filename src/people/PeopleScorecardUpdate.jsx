@@ -11,6 +11,7 @@ import {
   DialogActions,
 } from "@mui/material";
 import { PeopleScorecardUpdateHelp } from "./PeopleScorecardUpdateHelp";
+import { getStatusTextColor } from "../getStatusColor";
 
 export default function PeopleScorecardUpdate({
   id,
@@ -97,7 +98,7 @@ export default function PeopleScorecardUpdate({
         style={{
           fontSize: "small",
           fontFamily: "Verdana",
-          color: "#17202f",
+          color: getStatusTextColor(status),
           height: 25,
         }}
         onClick={handleClickOpen}
