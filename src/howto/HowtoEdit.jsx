@@ -1,91 +1,65 @@
-import { useState, useEffect } from 'react';
-import { Tooltip } from '@mui/material';
-import '../Fonts.css';
-import 'react-dropdown/style.css';
-import HowtoStepAccordion from './HowtoStepAccordion';
+import { useMemo } from 'react';
+import { BsPatchQuestion } from 'react-icons/bs';
 import { useWebsiteApi } from '../websites/WebSiteAPIProvider';
+import HowtoStepAccordion from './HowtoStepAccordion';
 
-export default function HowtoEdit(props) {
-  const [isExpanded, setExpanded] = useState(false);
-  const toggleAccordion = () => { setExpanded(!isExpanded); };
-  const [websitedata1, setWebsitedata1] = useState([]);
-  const { websiterootdata, loading, error } = useWebsiteApi(); //gebruik van die nuwe useContext :-)
+export default function HowtoEdit({ howto_id }) {
+  const { websiterootdata, loading, error, setRefreshWebsiterootdata } = useWebsiteApi();
 
-  useEffect(() => {
-    if (websiterootdata && Array.isArray(websiterootdata)) {
-      const filteredwebsites = websiterootdata.filter(site => site.howtoIdFk === props.howto_id);
-      const sortedfilteredwebsites = filteredwebsites.sort((a, b) => a.websiteName.localeCompare(b.websiteName));
-      setWebsitedata1(sortedfilteredwebsites);
-    }
-  }, [websiterootdata, props.howto_id]);
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-
-  const InnerTableLeft = () => {
-    const groupedData = {};
-
-    websitedata1.forEach((row) => {
-      if (!groupedData[row.websiteCat]) {
-        groupedData[row.websiteCat] = [];
-      }
-      groupedData[row.websiteCat].push(row);
-    });
-
-    const sortedCategories = Object.keys(groupedData).sort();
-
-    return (
-      <div className="scrollable-container">
-        <Tooltip id="insert" />
-        <table className="Table-home-left">
-          <tbody>
-            {sortedCategories.map((category) => (
-              <>
-                &nbsp;
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
-                {groupedData[category].map((record, index) => (
-                  <tr key={index}>
-                    <td style={{ width: '20%', verticalAlign: 'top' }} className="Font-Segoe-Medium-Howto">
-                      <a href={record.websiteUrl} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={record.websiteDesc}>
-                        {record.websiteName}
-                      </a>
-                    </td>
-                  </tr>
-                ))}
-              </>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    );
-  };
+  const websites = useMemo(() => {
+    if (!Array.isArray(websiterootdata)) return [];
+    return websiterootdata
+      .filter((site) => String(site.howtoIdFk) === String(howto_id))
+      .sort((a, b) => (a.websiteName || '').localeCompare(b.websiteName || ''));
+  }, [websiterootdata, howto_id]);
 
   return (
-    <div className='Font-Verdana-Medium-Postgres'>&nbsp; &nbsp;
-      <table style={{ width: '100%' }}>
-        <thead>
-          <tr>
-            <td style={{ width: '25%' }}></td>
-            <td style={{ width: '1%' }}></td>
-            <td style={{ width: '48%' }}></td>
-            <td style={{ width: '1%' }}></td>
-            <td style={{ width: '25%' }}></td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style={{ width: '25%' }} className="Table-home-left"><InnerTableLeft /></td>
-            <td style={{ width: '1%' }}></td>
-            <td style={{ width: '48%' }} className="Table-home-centre"><HowtoStepAccordion howto_ids={props.howto_id} /></td>
-            <td style={{ width: '1%' }}></td>
-            <td style={{ width: '25%' }} className="Table-home-right"></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <main className="howto-edit-page">
+      <header className="howto-edit-header">
+        <span className="howto-edit-header-icon" aria-hidden="true"><BsPatchQuestion /></span>
+        <div>
+          <p className="howto-edit-eyebrow">HOW-TO LIBRARY</p>
+          <h1>Edit guide</h1>
+          <p>Manage the guide’s resources, steps, and supporting details.</p>
+        </div>
+      </header>
+
+      <div className="howto-edit-layout">
+        <aside className="howto-resources-card" aria-labelledby="howto-resources-heading">
+          <div className="howto-resources-header">
+            <div>
+              <p className="howto-edit-eyebrow">REFERENCE MATERIAL</p>
+              <h2 id="howto-resources-heading">Related resources</h2>
+            </div>
+            <span className="howto-resource-count">{loading ? '…' : websites.length}</span>
+          </div>
+          {loading ? (
+            <p className="howto-edit-state" role="status">Loading resources…</p>
+          ) : error ? (
+            <p className="howto-edit-state howto-edit-error" role="alert">
+              Unable to load resources: {error.message}
+            </p>
+          ) : websites.length ? (
+            <ul className="howto-resource-list">
+              {websites.map((site) => (
+                <li key={site.websiteId}>
+                  <a href={site.websiteUrl} target="_blank" rel="noopener noreferrer">
+                    <strong>{site.websiteName}</strong>
+                    {site.websiteDesc && <span>{site.websiteDesc}</span>}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="howto-edit-state">No related resources have been added to this guide.</p>
+          )}
+        </aside>
+
+        <HowtoStepAccordion
+          howto_ids={howto_id}
+          onResourceCreated={() => setRefreshWebsiterootdata((value) => !value)}
+        />
+      </div>
+    </main>
   );
 }

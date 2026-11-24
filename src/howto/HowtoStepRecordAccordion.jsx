@@ -1,142 +1,182 @@
-import React, { useState } from 'react';
-import HowtoStepRecordCreate from './HowtoStepRecordCreate';
-import OAuth2APIClient from '../oauth2/OAuth2APIClient';
-import '../Fonts.css'
+import { useState } from 'react';
 import { Tooltip } from '@mui/material';
-import { MdAddCircleOutline } from "react-icons/md";
-import { GiCheckMark } from "react-icons/gi"; //Commit
-import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard
-import { FaRegTrashAlt } from 'react-icons/fa'; //Delete
-import { BsPencil } from 'react-icons/bs'; //Edit
-import { ImageUpload } from '../ImageUpload';
+import { MdAddCircleOutline } from 'react-icons/md';
+import { GiCheckMark } from 'react-icons/gi';
+import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
+import { FaRegTrashAlt } from 'react-icons/fa';
+import { BsPencil } from 'react-icons/bs';
 import { toast } from 'react-toastify';
+import HowtoStepRecordCreate from './HowtoStepRecordCreate';
+import { ImageUpload } from '../ImageUpload';
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
-function HowtoStepRecordAccordion({ howtodata, step_idd, step_number, step_name, checkForRecords, setCheckForRecords }) {
-    const date = new Date();
-    const [isExpanded, setExpanded] = useState(false);
-    const toggleAccordion = () => { setExpanded(!isExpanded); };
-    const [editing, setEditing] = useState(false);
-    const [steprecord_number, setStepRecord_number] = useState();
-    const [steprecord, setStepRecord] = useState();
-    const [steprecord_date, setStepRecord_date] = useState(date);
-    const filteredSteps = howtodata.howto_steps.filter((task, key) => { return task.step_id === step_idd });
-    const SortedStepRecords = filteredSteps[0].step_records.sort((a, b) => a.steprecord_number - b.steprecord_number);
+function HowtoStepRecordAccordion({
+  howtodata,
+  step_idd,
+  step_number,
+  step_name,
+  checkForRecords,
+  setCheckForRecords,
+}) {
+  const [isExpanded, setExpanded] = useState(false);
+  const [editing, setEditing] = useState(null);
+  const [steprecordNumber, setStepRecordNumber] = useState('');
+  const [steprecord, setStepRecord] = useState('');
+  const step = howtodata.howto_steps.find((item) => item.step_id === step_idd);
+  const stepRecords = [...(step?.step_records ?? [])].sort(
+    (a, b) => a.steprecord_number - b.steprecord_number
+  );
 
-    const handleEdit = (steprecord_id, newsteprecordnumber, newsteprecord) => 
-    {
-        setEditing(steprecord_id);
-        setStepRecord_number(newsteprecordnumber);
-        setStepRecord(newsteprecord);
-        setStepRecord_date(date);
-    }
+  const handleEdit = (record) => {
+    setEditing(record.steprecord_id);
+    setStepRecordNumber(record.steprecord_number);
+    setStepRecord(record.steprecord);
+  };
 
-    const onEditCancel = () => 
-    {
-        setEditing(false);
-    }
+  const onEditCancel = () => {
+    setEditing(null);
+    setStepRecordNumber('');
+    setStepRecord('');
+  };
 
-    const onEditSave = async (steprecord_id) => 
-    {
-
-        const StepRecordPUT =
+  const onEditSave = async (recordId) => {
+    try {
+      await OAuth2APIClient.put(
+        `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/update/${recordId}`,
         {
-            'steprecord_number': steprecord_number,
-            'steprecord': steprecord,
-            'steprecord_date': steprecord_date,
+          steprecord_number: steprecordNumber,
+          steprecord,
+          steprecord_date: new Date(),
         }
-
-        const response = await OAuth2APIClient.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/update/${steprecord_id}`, StepRecordPUT)
-        setCheckForRecords(!checkForRecords)
-        toast.success(`Step Record amended.`)
-        onEditCancel();
+      );
+      setCheckForRecords((value) => !value);
+      toast.success('Step record updated.');
+      onEditCancel();
+    } catch (requestError) {
+      console.error('Failed to update step record:', requestError);
+      toast.error('Unable to update this step record.');
     }
+  };
 
-    const onEditDelete = (steprecord_id) => {
-        OAuth2APIClient.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/delete/${steprecord_id}`)
-            .then((response) => {
-                window.alert('Are you sure you want to delete');
-                setCheckForRecords(!checkForRecords);
-                toast.success(`${steprecord_id} purged.`)
-            }
-            )
-    };
-
-    function editableStepRecord(steprecord_id, steprecord_number, steprecord, checkForRecords, setCheckForRecords) {
-        return (
-            <div>
-                <div style={{ display: 'flex' }}>
-                    <div>
-                        {editing === steprecord_id ?
-                            <>
-                                <input
-                                    required
-                                    defaultValue={steprecord_number}
-                                    onChange={(e) => setStepRecord_number(e.target.value)}
-                                    style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '21.5px', border: '1.25px solid #D5441C', borderRadius: '4px', width: '20px', padding: 0, paddingLeft: '9px', }} />
-                                &nbsp;&nbsp;
-
-                                <input
-                                    required
-                                    defaultValue={steprecord}
-                                    onChange={(e) => setStepRecord(e.target.value)}
-                                    style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '21.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1200px' }} />
-                            </>
-                            :
-                            <div className="Font-Segoe-Large-Howto">
-                                <span style={{ fontSize: 'medium', color: 'black', cursor: 'pointer' }}>{step_number}.{steprecord_number})</span>
-                                &nbsp;
-                                <span className="steprecordhover">{steprecord}</span>
-                                &nbsp;&nbsp;&nbsp;
-                            </div>
-                        }
-                    </div>
-
-                    <div style={{ display: 'flex', float: 'right' }}>
-                        <>
-                            {editing === steprecord_id ?
-                                (
-                                    <>&nbsp;&nbsp;
-                                        <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave(steprecord_id)}><GiCheckMark style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
-                                        <Tooltip title='Discard' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditCancel()}><PiArrowCounterClockwiseBold style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
-                                        <Tooltip title='Purge' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditDelete(steprecord_id)}>< FaRegTrashAlt style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
-                                    </>
-                                )
-                                :
-                                (
-                                    <Tooltip title={`Edit StepRecord: ${steprecord_id}`} placement="top-end">
-                                        <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(steprecord_id, steprecord_number, steprecord) }}>
-                                            <BsPencil style={{ color: '#C0C0C0', display: 'round', margin: 'auto', fontSize: '15px' }} /></button>
-                                    </Tooltip>
-                                )
-                            }
-                        </>
-                    </div>
-                </div>
-            </div>
-        )
+  const onEditDelete = async (record) => {
+    if (!window.confirm(`Delete step record ${step_number}.${record.steprecord_number}?`)) return;
+    try {
+      await OAuth2APIClient.delete(
+        `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/delete/${record.steprecord_id}`
+      );
+      setCheckForRecords((value) => !value);
+      toast.success('Step record deleted.');
+      if (editing === record.steprecord_id) onEditCancel();
+    } catch (requestError) {
+      console.error('Failed to delete step record:', requestError);
+      toast.error('Unable to delete this step record.');
     }
+  };
 
-    return (
-        <div>
-            <div>
-                {SortedStepRecords.map(({ steprecord_id, steprecord_number, steprecord }) => (editableStepRecord(steprecord_id, steprecord_number, steprecord, checkForRecords, setCheckForRecords)))}
-            </div>
-
-            <div className='Font-Verdana-Small'>
-                <Tooltip title='Insert an additional Step Record' placement="top"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={toggleAccordion}><MdAddCircleOutline style={{ color: 'D5441C', display: 'block', margin: 'auto', fontSize: '20px' }} /></button></Tooltip>
-
-                <ImageUpload stepidfk={step_idd} parentstepname={step_name} parentstepid={step_idd} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
-            </div>
-
-            {isExpanded &&
-                (
-                    <div>
-                        <HowtoStepRecordCreate step_idd={step_idd} checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
-                    </div>
-                )
-            }
+  return (
+    <section className="howto-records">
+      <header className="howto-records-header">
+        <h3>Step records</h3>
+        <div className="howto-record-tools">
+          <Tooltip title="Add a step record">
+            <button
+              className="howto-icon-button"
+              type="button"
+              aria-label="Add a step record"
+              aria-expanded={isExpanded}
+              onClick={() => setExpanded((value) => !value)}
+            >
+              <MdAddCircleOutline aria-hidden="true" />
+            </button>
+          </Tooltip>
+          <ImageUpload
+            stepidfk={step_idd}
+            parentstepname={step_name}
+            parentstepid={step_idd}
+            checkForRecords={checkForRecords}
+            setCheckForRecords={setCheckForRecords}
+          />
         </div>
-    );
+      </header>
+
+      {stepRecords.length ? (
+        <ol className="howto-record-list">
+          {stepRecords.map((record) => (
+            <li className="howto-record-item" key={record.steprecord_id}>
+              {record.steprecord_id === editing ? (
+                <div className="howto-record-edit-fields">
+                  <label className="howto-edit-field howto-record-number-field">
+                    <span>Number</span>
+                    <input
+                      value={steprecordNumber}
+                      onChange={(event) => setStepRecordNumber(event.target.value)}
+                      required
+                    />
+                  </label>
+                  <label className="howto-edit-field">
+                    <span>Record details</span>
+                    <input
+                      value={steprecord}
+                      onChange={(event) => setStepRecord(event.target.value)}
+                      required
+                    />
+                  </label>
+                </div>
+              ) : (
+                <p className="howto-record-text">
+                  <strong>{step_number}.{record.steprecord_number}</strong>
+                  <span>{record.steprecord}</span>
+                </p>
+              )}
+              <div className="howto-step-actions">
+                {record.steprecord_id === editing ? (
+                  <>
+                    <Tooltip title="Save changes">
+                      <button className="howto-icon-button" type="button" aria-label="Save record changes" onClick={() => onEditSave(record.steprecord_id)}>
+                        <GiCheckMark aria-hidden="true" />
+                      </button>
+                    </Tooltip>
+                    <Tooltip title="Cancel editing">
+                      <button className="howto-icon-button" type="button" aria-label="Cancel record editing" onClick={onEditCancel}>
+                        <PiArrowCounterClockwiseBold aria-hidden="true" />
+                      </button>
+                    </Tooltip>
+                    <Tooltip title="Delete record">
+                      <button className="howto-icon-button howto-icon-button-danger" type="button" aria-label="Delete step record" onClick={() => onEditDelete(record)}>
+                        <FaRegTrashAlt aria-hidden="true" />
+                      </button>
+                    </Tooltip>
+                  </>
+                ) : (
+                  <>
+                    <Tooltip title="Edit record">
+                      <button className="howto-icon-button" type="button" aria-label="Edit step record" onClick={() => handleEdit(record)}>
+                        <BsPencil aria-hidden="true" />
+                      </button>
+                    </Tooltip>
+                    <Tooltip title="Delete record">
+                      <button className="howto-icon-button howto-icon-button-danger" type="button" aria-label="Delete step record" onClick={() => onEditDelete(record)}>
+                        <FaRegTrashAlt aria-hidden="true" />
+                      </button>
+                    </Tooltip>
+                  </>
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
+      ) : (
+        <p className="howto-edit-state howto-record-empty">No records have been added to this step yet.</p>
+      )}
+
+      {isExpanded && (
+        <HowtoStepRecordCreate
+          step_idd={step_idd}
+          setCheckForRecords={setCheckForRecords}
+        />
+      )}
+    </section>
+  );
 }
 
 export default HowtoStepRecordAccordion;

@@ -1,162 +1,165 @@
-import React, { useState, useContext } from 'react';
-import '../Fonts.css'
+import { useState } from 'react';
+import { Tooltip } from '@mui/material';
+import { AiOutlineEdit } from 'react-icons/ai';
+import { GiCheckMark } from 'react-icons/gi';
+import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
+import { IoFootstepsOutline } from 'react-icons/io5';
+import { toast } from 'react-toastify';
 import HowtoStepRecordAccordion from './HowtoStepRecordAccordion';
 import OAuth2APIClient from '../oauth2/OAuth2APIClient';
-import { Tooltip } from '@mui/material';
-import { AiOutlineEdit } from "react-icons/ai";
-import { GiCheckMark } from "react-icons/gi"; //Commit
-import { PiArrowCounterClockwiseBold } from 'react-icons/pi'; //Discard
-import { FaRegTrashAlt } from 'react-icons/fa'; //Delete
-import { BsPencil } from 'react-icons/bs';
-import { toast } from 'react-toastify';
-import { IoFootstepsSharp, IoFootstepsOutline } from "react-icons/io5";
 
-export default function HowtoStep({ howto_id, step_id, step_number, step_name, step_url, step_obj, step_image, howtodata, checkForRecords, setCheckForRecords }) {
-
+export default function HowtoStep({
+  howto_id,
+  step_id,
+  step_number,
+  step_name,
+  step_url,
+  step_obj,
+  step_image,
+  howtodata,
+  checkForRecords,
+  setCheckForRecords,
+}) {
   const [isExpanded, setExpanded] = useState(false);
-  const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [editing, setEditing] = useState(false);
-  const [stepnumber, setStepNumber] = useState();
-  const [stepname, setName] = useState();
-  const [stepurl, setStepURL] = useState();
-  const [stepobjective, setStepObjective] = useState();
+  const [stepnumber, setStepNumber] = useState(step_number);
+  const [stepname, setName] = useState(step_name);
+  const [stepurl, setStepURL] = useState(step_url);
+  const [stepobjective, setStepObjective] = useState(step_obj);
 
   const handleEdit = () => {
-    setStepNumber(step_number)
-    setName(step_name)
-    setStepURL(step_url)
-    setStepObjective(step_obj)
-    setEditing(true)
-  }
-
-  const onEditCancel = () => 
-  {
-    setEditing(false);
-  }
-
-  const onEditSave = async () => {
-
-    const updatedStep =
-    {
-      'step_number': stepnumber,
-      'step_name': stepname,
-      'step_url': stepurl,
-      'step_obj': stepobjective,
-    }
-
-    const response = await OAuth2APIClient.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtostep/update/${step_id}`, updatedStep)
-      .then((response) => 
-      {
-        setCheckForRecords(!checkForRecords);
-        toast.success(`${stepname} updated.`)
-      }
-      )
-    onEditCancel();
+    setStepNumber(step_number);
+    setName(step_name);
+    setStepURL(step_url);
+    setStepObjective(step_obj);
+    setEditing(true);
   };
 
+  const onEditCancel = () => {
+    setEditing(false);
+    setStepNumber(step_number);
+    setName(step_name);
+    setStepURL(step_url);
+    setStepObjective(step_obj);
+  };
+
+  const onEditSave = async () => {
+    try {
+      await OAuth2APIClient.put(
+        `https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtostep/update/${step_id}`,
+        {
+          step_number: stepnumber,
+          step_name: stepname,
+          step_url: stepurl,
+          step_obj: stepobjective,
+        }
+      );
+      setCheckForRecords((value) => !value);
+      toast.success(`${stepname} updated.`);
+      setEditing(false);
+    } catch (requestError) {
+      console.error('Failed to update Howto step:', requestError);
+      toast.error('Unable to update this step.');
+    }
+  };
 
   return (
-
-    <>
-      <div className="Font-Segoe-Large-Howto" >
-        <div style={{ display: 'flex', float: 'right' }}>
-          <>
-            {editing === true ?
-              (
-                <>
-                  &nbsp;&nbsp;
-                  <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave()}><GiCheckMark style={{ color: '#D5441C', display: 'block', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>&nbsp;
-                  <Tooltip title='Discard' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditCancel()}><PiArrowCounterClockwiseBold style={{ color: '#D5441C', display: 'block', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
-                </>
-              )
-              :
-              (
-                isExpanded && step_name !== 'DONE' ?
-                  <Tooltip title={`Edit Step: ${step_id}`} placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => { handleEdit() }}><BsPencil style={{ color: '#C0C0C0', display: 'block', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
-                  :
-                  null
-              )
-            }
-          </>
+    <article className={`howto-step-card${isExpanded ? ' is-expanded' : ''}`}>
+      <header className="howto-step-header">
+        <button
+          className="howto-step-toggle"
+          type="button"
+          aria-expanded={isExpanded}
+          aria-controls={`howto-step-content-${step_id}`}
+          onClick={() => setExpanded((value) => !value)}
+        >
+          <span className="howto-step-number">
+            Step-{editing ? stepnumber || step_number : step_number}
+          </span>
+          <IoFootstepsOutline className="howto-step-mark" aria-hidden="true" />
+          <span className="howto-step-title">
+            {editing ? stepname || 'Untitled step' : step_name}
+          </span>
+          <span className="howto-step-indicator" aria-hidden="true">{isExpanded ? '−' : '+'}</span>
+        </button>
+        <div className="howto-step-actions">
+          {editing ? (
+            <>
+              <Tooltip title="Save changes">
+                <button className="howto-icon-button" type="button" aria-label="Save step changes" onClick={onEditSave}>
+                  <GiCheckMark aria-hidden="true" />
+                </button>
+              </Tooltip>
+              <Tooltip title="Cancel editing">
+                <button className="howto-icon-button" type="button" aria-label="Cancel step editing" onClick={onEditCancel}>
+                  <PiArrowCounterClockwiseBold aria-hidden="true" />
+                </button>
+              </Tooltip>
+            </>
+          ) : isExpanded && step_name !== 'DONE' ? (
+            <Tooltip title={`Edit step ${step_number}`}>
+              <button className="howto-icon-button" type="button" aria-label={`Edit step ${step_number}`} onClick={handleEdit}>
+                <AiOutlineEdit aria-hidden="true" />
+              </button>
+            </Tooltip>
+          ) : null}
         </div>
+      </header>
 
-        {editing === true ?
-          <><i>Step Number:</i>&nbsp;&nbsp;<>
-            <input
-              required
-              defaultValue={step_number}
-              onChange={(e) => setStepNumber(e.target.value)}
-              style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '25px' }} />
-
-            <>&nbsp;&nbsp;<i>Step Name:</i>&nbsp;&nbsp;<>
-              <input
-                required
-                defaultValue={step_name}
-                onChange={(e) => setName(e.target.value)}
-                style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '970px' }} />
-              <div className="Font-Spacer-White">Make this Spacer White</div>
-            </>
-            </>
-          </>
-          </>
-          :
-          <>
-            <i onClick={toggleAccordion}>
-              <IoFootstepsOutline style={{ color: '#D5441C', fontSize: '18px', cursor: 'pointer' }}/>&nbsp;
-              <i className="Font-Segoe-Large-Howto"><u>Step-{step_number}</u>:
-              {/* <IoFootstepsOutline style={{ color: '#D5441C', fontSize: '18px', cursor: 'pointer' }}/> */}
-              &nbsp;</i>
-              <b className="Font-Segoe-Large-Howto">{step_name}</b>
-            </i>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <i className="Font-Spacer-White">HowtoStepID#{step_id}&nbsp;</i>
-          </>
-        }
-
-      </div>
-
-      <div></div>
-
-      {isExpanded &&
-        <div>
-          <div className="Font-Segoe-Large-Howto" >
-
-            {editing === true ?
-              <><i>Supporting URL:</i>&nbsp;&nbsp;<>
-                <input
-                  required
-                  defaultValue={step_url}
-                  onChange={(e) => setStepURL(e.target.value)}
-                  style={{ fontFamily: 'Segoe UI', fontSize: 'Large', height: '27.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1100px' }} />
-                <div className='Font-Spacer-White'>Make this Spacer White</div>
-              </>
-              </>
-              :
-              <a className="Font-Segoe-Small" href={step_url} target="_blank" rel="noreferrer">{step_url}</a>}
-
-            {editing === true ?
-              <><i>Step Objective:</i>&nbsp;&nbsp;<>
+      {isExpanded && (
+        <div className="howto-step-content" id={`howto-step-content-${step_id}`}>
+          {editing ? (
+            <div className="howto-step-edit-fields">
+              <label className="howto-edit-field">
+                <span>Step number</span>
+                <input value={stepnumber ?? ''} onChange={(event) => setStepNumber(event.target.value)} required />
+              </label>
+              <label className="howto-edit-field howto-edit-field-wide">
+                <span>Step name</span>
+                <input value={stepname ?? ''} onChange={(event) => setName(event.target.value)} required />
+              </label>
+              <label className="howto-edit-field howto-edit-field-wide">
+                <span>Supporting URL</span>
+                <input value={stepurl ?? ''} onChange={(event) => setStepURL(event.target.value)} required />
+              </label>
+              <label className="howto-edit-field howto-edit-field-wide">
+                <span>Step objective</span>
                 <textarea
-                  rows="3"
+                  rows={3}
+                  value={stepobjective ?? ''}
+                  onChange={(event) => setStepObjective(event.target.value)}
                   required
-                  defaultValue={step_obj}
-                  onChange={(e) => setStepObjective(e.target.value)}
-                  size='Large'
-                  style={{ fontFamily: 'Segoe UI', fontSize: 'Large', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1112px' }} />
-                
-                <div className='Font-Spacer-White'>Make this Spacer White</div>
-              </>
-              </>
-              :
-              <div className="Font-Segoe-Medium"><i>{step_obj}</i>
-              <div>{step_image === undefined || step_image === null ? null : <img src={'data:image/jpg;base64,'+step_image} />}</div>
-              </div>
-              
-              }
-          </div>
-          <HowtoStepRecordAccordion step_idd={step_id} howto_id={howto_id} howtodata={howtodata} step_number={step_number} step_name={step_name}checkForRecords={checkForRecords} setCheckForRecords={setCheckForRecords} />
+                />
+              </label>
+            </div>
+          ) : (
+            <div className="howto-step-details">
+              {step_url && (
+                <a className="howto-step-url" href={step_url} target="_blank" rel="noreferrer">
+                  {step_url}
+                </a>
+              )}
+              {step_obj && <p className="howto-step-objective">{step_obj}</p>}
+              {step_image && (
+                <img
+                  className="howto-step-image"
+                  src={`data:image/jpeg;base64,${step_image}`}
+                  alt={`Illustration for step ${step_number}: ${step_name}`}
+                />
+              )}
+            </div>
+          )}
+          <HowtoStepRecordAccordion
+            step_idd={step_id}
+            howto_id={howto_id}
+            howtodata={howtodata}
+            step_number={step_number}
+            step_name={step_name}
+            checkForRecords={checkForRecords}
+            setCheckForRecords={setCheckForRecords}
+          />
         </div>
-      }
-    </>
+      )}
+    </article>
   );
 }

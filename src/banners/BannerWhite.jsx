@@ -3,7 +3,6 @@ import { TbLetterT } from "react-icons/tb";
 import { TbLetterR } from "react-icons/tb";
 import { TbLetterI } from "react-icons/tb";
 import { TbLetterB } from "react-icons/tb";
-import { TbLetterU } from "react-icons/tb";
 import { TbLetterO } from "react-icons/tb";
 import { TbLetterE } from "react-icons/tb";
 import { TbLetterD } from "react-icons/tb";

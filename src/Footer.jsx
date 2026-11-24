@@ -14,17 +14,17 @@ const today = new Date(); // Create a new Date object representing today's date
 const formattedDate = today.toISOString().split('T')[0]; // Convert the date to the desired format (YYYY-MM-DD)
 const Footer = () => (
 <div className="Font-Verdana-Small-Footer">
-    <TbSquareRoundedLetterP style={{color: 'black', fontSize: '20px' }}/>
-    <TbSquareRoundedLetterA style={{color: 'black', fontSize: '20px' }}/>
-    <TbSquareRoundedLetterU style={{color: 'black', fontSize: '20px' }}/>
-    <TbSquareRoundedLetterL style={{color: 'black', fontSize: '20px' }}/>
+    <TbSquareRoundedLetterP style={{color: 'white', fontSize: '25px' }}/>
+    <TbSquareRoundedLetterA style={{color: 'white', fontSize: '25px' }}/>
+    <TbSquareRoundedLetterU style={{color: 'white', fontSize: '25px' }}/>
+    <TbSquareRoundedLetterL style={{color: 'white', fontSize: '25px' }}/>
     &nbsp;
-    <TbSquareRoundedLetterB style={{color: 'black', fontSize: '20px' }}/>
-    <TbSquareRoundedLetterE style={{color: 'black', fontSize: '20px' }}/>
-    <TbSquareRoundedLetterS style={{color: 'black', fontSize: '20px' }}/>
-    <TbSquareRoundedLetterT style={{color: 'black', fontSize: '20px' }}/>
-    <TbSquareRoundedLetterE style={{color: 'black', fontSize: '20px' }}/>
-    <TbSquareRoundedLetterR style={{color: 'black', fontSize: '20px' }}/>
+    <TbSquareRoundedLetterB style={{color: 'white', fontSize: '25px' }}/>
+    <TbSquareRoundedLetterE style={{color: 'white', fontSize: '25px' }}/>
+    <TbSquareRoundedLetterS style={{color: 'white', fontSize: '25px' }}/>
+    <TbSquareRoundedLetterT style={{color: 'white', fontSize: '25px' }}/>
+    <TbSquareRoundedLetterE style={{color: 'white', fontSize: '25px' }}/>
+    <TbSquareRoundedLetterR style={{color: 'white', fontSize: '25px' }}/>
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     Last Updated: {formattedDate }. &nbsp; All rights reserved. 
 </div>);

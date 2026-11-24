@@ -1,92 +1,109 @@
-import React, { useState, useContext, useEffect } from "react";
-import OAuth2APIClient from '../oauth2/OAuth2APIClient';
-import '../Fonts.css';
-import dayjs from "dayjs";
-import utc from 'dayjs/plugin/utc';
-import spacer2 from '../graphix/besterdev_spacer_white_half.png';
-import { GiHummingbird, GiFootsteps } from "react-icons/gi";
-import 'react-tooltip/dist/react-tooltip.css';
-import { Tooltip } from 'react-tooltip';
+import { useState } from 'react';
+import { GiHummingbird } from 'react-icons/gi';
+import { IoFootstepsOutline } from 'react-icons/io5';
 import { toast } from 'react-toastify';
-import { IoFootstepsSharp, IoFootstepsOutline } from "react-icons/io5";
-dayjs.extend(utc);
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
-
-export default function HowtoStepCreate(props) {
-  const toggleAccordion = () => { setExpanded(!isExpanded); };
-  const [step_number, setStep_number] = useState();
-  const [step_name, setStep_name] = useState();
-  const [step_url, setStep_url] = useState();
-  const [step_obj, setStep_obj] = useState();
-  const [howtos, setHowtos] = useState('');
+export default function HowtoStepCreate({
+  howto_idb,
+  howto_name,
+  setCheckForRecords,
+}) {
   const [isExpanded, setExpanded] = useState(false);
+  const [stepNumber, setStepNumber] = useState('');
+  const [stepName, setStepName] = useState('');
+  const [stepUrl, setStepUrl] = useState('');
+  const [stepObjective, setStepObjective] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    {
-      var newRecord =
-      {
-        'howto_id_fk': props.howto_idb,
-        'step_number': step_number,
-        'step_name': step_name,
-        'step_url': step_url,
-        'step_obj': step_obj,
-      }
-
-      const response = await OAuth2APIClient.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtostep/create`, newRecord);
-      if (response.status === 200) {
-        props.setCheckForRecords(!props.checkForRecords);
-        toast.success(`Step ${step_number} added.`);
-        setStep_number('');
-        setStep_name('');
-        setStep_obj('');
-        setStep_url('');
-      }
-      else { toast.error('Nee') }
+    try {
+      await OAuth2APIClient.post(
+        'https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtostep/create',
+        {
+          howto_id_fk: howto_idb,
+          step_number: stepNumber,
+          step_name: stepName,
+          step_url: stepUrl,
+          step_obj: stepObjective,
+        }
+      );
+      setCheckForRecords((value) => !value);
+      toast.success(`Step ${stepNumber} added.`);
+      setStepNumber('');
+      setStepName('');
+      setStepUrl('');
+      setStepObjective('');
+      setExpanded(false);
+    } catch (requestError) {
+      console.error('Failed to add Howto step:', requestError);
+      toast.error('Unable to add this step.');
     }
-  }
-
+  };
 
   return (
-
-    <div className='Font-Verdana-Small-Postgres'>&nbsp;
-      <Tooltip id="insert" />
-      <div onClick={toggleAccordion}>
-        <a data-tooltip-id="insert" data-tooltip-content="Add a Step"><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} />
-        <b>Add a Step <IoFootstepsOutline style={{ color: '#D5441C', fontSize: '18px', cursor: 'pointer' }} /> to <i>"{props.howto_name}"</i></b></a>
-        <div>&nbsp;</div>
-      </div>
-
+    <section className="howto-create-panel">
+      <button
+        className="howto-create-toggle"
+        type="button"
+        aria-expanded={isExpanded}
+        onClick={() => setExpanded((value) => !value)}
+      >
+        <span className="howto-create-icon" aria-hidden="true">
+          <GiHummingbird /><IoFootstepsOutline />
+        </span>
+        <span><strong>Add a step</strong><small>Break the guide into actionable instructions.</small></span>
+        <span className="howto-create-indicator" aria-hidden="true">{isExpanded ? '−' : '+'}</span>
+      </button>
       {isExpanded && (
-        <div>
-          <div>
-            <form onSubmit={handleSubmit}>
-              <div><img alt="1" src={spacer2} /></div>
-              <div className='Font-Verdana-Small-Postgres'>
-                Step Number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style={{ fontFamily: 'Verdana', fontSize: 'Small', height: '25.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '30px' }} placeholder="Req" type="text" value={step_number} onChange={(event) => setStep_number(event.target.value)} required />
-
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Step Name:&nbsp;&nbsp;<input style={{ fontFamily: 'Verdana', fontSize: 'Small', height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '845px' }} placeholder="Required" type="text" value={step_name} onChange={(event) => setStep_name(event.target.value)} required />
-
-                <div>&nbsp;</div>
-
-                <div>
-                  Supporting URL:&nbsp;&nbsp;<input style={{ fontFamily: 'Verdana', fontSize: 'Small', height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '997px' }} placeholder="Optional" type="text" value={step_url} onChange={(event) => setStep_url(event.target.value)} />
-                </div>
-
-                <div>&nbsp;</div>
-                Step Objective:&nbsp;&nbsp;&nbsp;
-
-                <textarea style={{ fontFamily: 'Verdana', fontSize: 'Small', height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} placeholder="Optional" type="text" value={step_obj} onChange={(event) => setStep_obj(event.target.value)} />
-
-                <div>&nbsp;</div>
-
-                <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#D5441C', cursor: 'pointer' }}>Add this Step to {props.howto_name}</button>
-                <div>&nbsp;</div>
-              </div>
-            </form>
+        <form className="howto-create-form" onSubmit={handleSubmit}>
+          <label className="howto-edit-field howto-step-number-field">
+            <span>Step number</span>
+            <input
+              type="number"
+              min="1"
+              value={stepNumber}
+              onChange={(event) => setStepNumber(event.target.value)}
+              required
+            />
+          </label>
+          <label className="howto-edit-field">
+            <span>Step name</span>
+            <input
+              value={stepName}
+              onChange={(event) => setStepName(event.target.value)}
+              placeholder="What should the reader do?"
+              required
+            />
+          </label>
+          <label className="howto-edit-field howto-edit-field-wide">
+            <span>Supporting URL <small>Optional</small></span>
+            <input
+              type="url"
+              value={stepUrl}
+              onChange={(event) => setStepUrl(event.target.value)}
+              placeholder="https://"
+            />
+          </label>
+          <label className="howto-edit-field howto-edit-field-wide">
+            <span>Step objective <small>Optional</small></span>
+            <textarea
+              rows={3}
+              value={stepObjective}
+              onChange={(event) => setStepObjective(event.target.value)}
+              placeholder="Describe the outcome or supporting details"
+            />
+          </label>
+          <div className="howto-create-actions">
+            <button className="howto-button howto-button-primary" type="submit">
+              Add step to {howto_name}
+            </button>
+            <button className="howto-button howto-button-secondary" type="button" onClick={() => setExpanded(false)}>
+              Cancel
+            </button>
           </div>
-        </div>)}
-    </div>
+        </form>
+      )}
+    </section>
   );
 }

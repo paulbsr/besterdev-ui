@@ -28,7 +28,7 @@ export function ImageUpload(props) {
             );
 
             if (response.status === 200) {
-                props.setCheckForRecords(!props.checkForRecords);
+                props.setCheckForRecords((value) => !value);
                 toast.success(`Image saved for Step#${props.parentstepid}`);
             } else {
                 toast.error('An error occurred while saving the image.');
@@ -53,29 +53,13 @@ export function ImageUpload(props) {
                     <Tooltip id="image-upload-tooltip" place="top" />
 
                     <button
+                        className="howto-image-upload-button"
                         type="button"
                         onClick={onImageUpload}
                         data-tooltip-id="image-upload-tooltip"
                         data-tooltip-content="Add or Replace an image to this Step"
-                        style={{
-                            height: '20px',
-                            width: '20px',
-                            padding: 0,
-                            border: 'none',
-                            borderRadius: '3px',
-                            backgroundColor: 'white',
-                            outline: 'none',
-                            cursor: 'pointer'
-                        }}
                     >
-                        <MdCamera
-                            style={{
-                                color: '#D5441C',
-                                display: 'block',
-                                margin: 'auto',
-                                fontSize: '19px'
-                            }}
-                        />
+                        <MdCamera aria-hidden="true" />
                     </button>
 
                     {imageList.map((img, index) => (

@@ -3,7 +3,6 @@ import { Tooltip } from 'react-tooltip'
 import './Fonts.css';
 import 'react-dropdown/style.css';
 import KnowledgeHero from './graphix/knowledge-hero.svg';
-import DBSearchComponent from './dbsearch/DBSearchComponent';
 import TaskSummaryHomepage from './tasks/TaskSummaryHomepage';
 import { useWebsiteApi } from './websites/WebSiteAPIProvider';
 import { useHowtoApi } from './howto/HowtoAPIProvider';

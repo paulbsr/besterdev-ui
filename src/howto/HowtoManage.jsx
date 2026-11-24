@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { FaPen, FaCheck, FaRegTrashAlt } from 'react-icons/fa';
 import { PiArrowCounterClockwiseBold } from 'react-icons/pi';
 import { BsPatchQuestion } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 import HowtoCreate from './HowtoCreate';
 import { useHowtoApi } from './HowtoAPIProvider';
 import OAuth2APIClient from '../oauth2/OAuth2APIClient';
@@ -198,7 +199,9 @@ export default function HowtoManage() {
                           onChange={(event) => setHowtoName(event.target.value)}
                         />
                       ) : (
-                        <span className="cyclopedia-entry-name">{row.howto_name}</span>
+                        <Link className="cyclopedia-entry-name" to={`/howtoedit/${row.howto_id}`}>
+                          {row.howto_name}
+                        </Link>
                       )}
                     </td>
                     <td>

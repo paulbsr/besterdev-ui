@@ -4,7 +4,6 @@ import '../Fonts.css';
 import 'react-tooltip/dist/react-tooltip.css';
 import { useBreakingNewsApi } from '../breakingnews/BreakingNewsApiContext';
 import OAuth2APIClient from '../oauth2/OAuth2APIClient';
-import ConsoleFrame from '../consolelogs/ConsoleFrame';
 
 import {
   FaReact,
@@ -71,8 +70,8 @@ const externalLinks = [
   { tooltip: 'JavaScript', icon: <SiJavascript style={iconStyle('#F0DB4F', 32)} />, href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
   { tooltip: 'NodeJS', icon: <FaNodeJs style={iconStyle('#336791', 35)} />, href: 'https://nodejs.org' },
   { tooltip: 'Java', icon: <FaJava style={iconStyle('#D5441C', 40)} />, href: 'https://www.java.com' },
-  { tooltip: 'Spring Boot', icon: <SiSpringboot style={iconStyle('#336791', 33)} />, href: 'https://spring.io/projects/spring-boot' },
-  { tooltip: 'PostgreSQL', icon: <BiLogoPostgresql style={iconStyle('#336791', 33)} />, href: 'https://www.postgresql.org' },
+  { tooltip: 'Spring Boot', icon: <SiSpringboot style={iconStyle('#336795', 33)} />, href: 'https://spring.io/projects/spring-boot' },
+  { tooltip: 'PostgreSQL', icon: <BiLogoPostgresql style={iconStyle('#336795', 33)} />, href: 'https://www.postgresql.org' },
   { tooltip: 'GitHub', icon: <BiLogoGithub style={iconStyle('#000', 33)} />, href: 'https://github.com' },
   { tooltip: 'AWS Amplify', icon: <FaAws style={iconStyle('#ff8500', 33)} />, href: 'https://aws.amazon.com/amplify/' },
   { tooltip: 'Heroku', icon: <BiLogoHeroku style={iconStyle('#6762a6', 33)} />, href: 'https://dashboard.heroku.com/apps' },

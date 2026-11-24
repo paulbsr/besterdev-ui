@@ -1,88 +1,99 @@
-import React, { useState, useContext, useEffect } from "react";
-import OAuth2APIClient from '../oauth2/OAuth2APIClient';
-import '../Fonts.css';
-import dayjs from "dayjs";
-import utc from 'dayjs/plugin/utc';
-import spacer2 from '../graphix/besterdev_spacer_white_half.png';
-import { GiHummingbird, GiSpiderWeb } from "react-icons/gi";
-import 'react-tooltip/dist/react-tooltip.css';
-import { Tooltip } from 'react-tooltip';
+import { useState } from 'react';
+import { GiHummingbird, GiSpiderWeb } from 'react-icons/gi';
 import { toast } from 'react-toastify';
-dayjs.extend(utc);
+import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
-
-export default function HowtoUrlCreate(props) {
-  const toggleAccordion = () => { setExpanded(!isExpanded); };
-  const [websiteName, setWebsiteName] = useState();
-  const [websiteUrl, setWebsiteUrl] = useState();
-  const [websiteDesc, setwebsiteDesc] = useState();
+export default function HowtoUrlCreate({
+  howto_idb,
+  howto_name,
+  setCheckForRecords,
+  onResourceCreated,
+}) {
   const [isExpanded, setExpanded] = useState(false);
+  const [websiteName, setWebsiteName] = useState('');
+  const [websiteUrl, setWebsiteUrl] = useState('');
+  const [websiteDesc, setWebsiteDesc] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    {
-      var newRecord =
-      {
-        'howtoIdFk': props.howto_idb,
-        'websiteName': websiteName,
-        'websiteUrl': websiteUrl,
-        'websiteDesc': websiteDesc,
-        'websiteCat': props.howto_name
-      }
-
-      const response = await OAuth2APIClient.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/create`, newRecord);
-      if (response.status === 200) {
-        props.setCheckForRecords(!props.checkForRecords);
-        toast.success(`${websiteName} memorialized.`);
-        setWebsiteName('');
-        setwebsiteDesc('');
-        setWebsiteUrl('');
-      }
-      else { toast.error('Nee') }
-      
+    try {
+      await OAuth2APIClient.post(
+        'https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/websites/create',
+        {
+          howtoIdFk: howto_idb,
+          websiteName,
+          websiteUrl,
+          websiteDesc,
+          websiteCat: howto_name,
+        }
+      );
+      setCheckForRecords((value) => !value);
+      onResourceCreated();
+      toast.success(`${websiteName} added to this guide.`);
+      setWebsiteName('');
+      setWebsiteUrl('');
+      setWebsiteDesc('');
+      setExpanded(false);
+    } catch (requestError) {
+      console.error('Failed to add Howto resource:', requestError);
+      toast.error('Unable to add this resource.');
     }
-
-  }
+  };
 
   return (
-
-    <div className='Font-Verdana-Small-Postgres'>&nbsp;
-      <Tooltip id="insert" />
-      <div onClick={toggleAccordion}>
-        <a data-tooltip-id="insert" data-tooltip-content="Add a Web-based Resource"><GiHummingbird style={{ color: '#336791', fontSize: '25px', cursor: 'pointer' }} /></a>
-        <b>Add a Web <GiSpiderWeb style={{ color: '#D5441C', fontSize: '17px', cursor: 'pointer' }} /> resource to <i>"{props.howto_name}"</i></b>
-        <div>&nbsp;</div>
-      </div>
-
+    <section className="howto-create-panel">
+      <button
+        className="howto-create-toggle"
+        type="button"
+        aria-expanded={isExpanded}
+        onClick={() => setExpanded((value) => !value)}
+      >
+        <span className="howto-create-icon" aria-hidden="true">
+          <GiHummingbird /><GiSpiderWeb />
+        </span>
+        <span><strong>Add a resource</strong><small>Keep useful links close to the guide.</small></span>
+        <span className="howto-create-indicator" aria-hidden="true">{isExpanded ? '−' : '+'}</span>
+      </button>
       {isExpanded && (
-        <div>
-          <div>
-            <form onSubmit={handleSubmit}>
-              <div><img alt="1" src={spacer2} /></div>
-              <div className='Font-Verdana-Small-Postgres'>
-                Website Display Name:&nbsp;&nbsp;<input style={{ fontFamily: 'Verdana', fontSize: 'Small', height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '985px' }} placeholder="Required" type="text" value={websiteName} onChange={(event) => setWebsiteName(event.target.value)} required />
-
-                <div>&nbsp;</div>
-
-                <div>
-                  Website Link:&nbsp;&nbsp;
-                  <input style={{ fontFamily: 'Verdana', fontSize: 'Small', height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1050px' }} placeholder="Required" type="text" value={websiteUrl} onChange={(event) => setWebsiteUrl(event.target.value)} />
-                </div>
-
-                <div>&nbsp;</div>
-                Website Description:&nbsp;&nbsp;&nbsp;
-
-                <input style={{ fontFamily: 'Verdana', fontSize: 'Small', height: '27.5px', border: '1.25px solid #c4c4c4', borderRadius: '4px', padding: 0, paddingLeft: '10px', width: '1000px' }} placeholder="Optional" type="text" value={websiteDesc} onChange={(event) => setwebsiteDesc(event.target.value)} />
-
-                <div>&nbsp;</div>
-
-                <button className="Font-Verdana-Small-Postgres" type="submit" style={{ marginLeft: '10px', height: '27.5px', border: '1px solid #D5441C', borderRadius: '5px', backgroundColor: '#FFFFFF', color: '#D5441C', cursor: 'pointer' }}>Add this Website to {props.howto_name}</button>
-                <div>&nbsp;</div>
-              </div>
-            </form>
+        <form className="howto-create-form" onSubmit={handleSubmit}>
+          <label className="howto-edit-field howto-edit-field-wide">
+            <span>Display name</span>
+            <input
+              value={websiteName}
+              onChange={(event) => setWebsiteName(event.target.value)}
+              placeholder="Resource title"
+              required
+            />
+          </label>
+          <label className="howto-edit-field howto-edit-field-wide">
+            <span>Website URL</span>
+            <input
+              type="url"
+              value={websiteUrl}
+              onChange={(event) => setWebsiteUrl(event.target.value)}
+              placeholder="https://"
+              required
+            />
+          </label>
+          <label className="howto-edit-field howto-edit-field-wide">
+            <span>Description <small>Optional</small></span>
+            <textarea
+              rows={2}
+              value={websiteDesc}
+              onChange={(event) => setWebsiteDesc(event.target.value)}
+              placeholder="What is this resource useful for?"
+            />
+          </label>
+          <div className="howto-create-actions">
+            <button className="howto-button howto-button-primary" type="submit">
+              Add resource to {howto_name}
+            </button>
+            <button className="howto-button howto-button-secondary" type="button" onClick={() => setExpanded(false)}>
+              Cancel
+            </button>
           </div>
-        </div>)}
-    </div>
+        </form>
+      )}
+    </section>
   );
 }
