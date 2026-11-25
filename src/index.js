@@ -103,7 +103,7 @@ const App = () => {
       <Router>
         <Routes>
           {/* Default landing page */}
-          <Route path="/" element={<Navigate to="/dutchlanguage" replace />} />
+          <Route path="/" element={<Navigate to="/home" replace />} />
 
           {/* Dutch Language page */}
           <Route path="/dutchlanguage" element={<PageDutchLanguage />} />

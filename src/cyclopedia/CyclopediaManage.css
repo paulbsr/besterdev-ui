@@ -249,6 +249,7 @@
 .cyclopedia-create-toggle:focus-visible,
 .cyclopedia-button:focus-visible,
 .cyclopedia-action-button:focus-visible,
+.cyclopedia-entry-name:focus-visible,
 .cyclopedia-search input:focus-visible,
 .cyclopedia-form-input:focus-visible,
 .cyclopedia-inline-input:focus-visible {
@@ -507,14 +508,14 @@
 }
 
 .cyclopedia-entry-name {
-  color: var(--cyclopedia-text);
+  color: var(--cyclopedia-blue);
   font-weight: 650;
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .cyclopedia-entry-name:hover {
-  color: var(--cyclopedia-blue);
-  text-decoration: underline;
+  color: var(--cyclopedia-accent);
 }
 
 .cyclopedia-entry-description {

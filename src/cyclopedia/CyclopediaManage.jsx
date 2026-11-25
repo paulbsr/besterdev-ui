@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { Tooltip } from '@mui/material';
 import { toast } from 'react-toastify';
 import { FaPen, FaCheck, FaRegTrashAlt } from 'react-icons/fa';
@@ -207,7 +208,9 @@ function CyclopediaManage() {
                           onChange={(event) => setCyclopediaName(event.target.value)}
                         />
                       ) : (
-                        <span className="cyclopedia-entry-name">{row.cyclopediaName}</span>
+                        <Link className="cyclopedia-entry-name" to={`/cyclopediaedit/${row.cyclopediaId}`}>
+                          {row.cyclopediaName}
+                        </Link>
                       )}
                     </td>
                     <td>
