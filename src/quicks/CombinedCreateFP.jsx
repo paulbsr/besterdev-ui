@@ -17,7 +17,6 @@ import OAuth2APIClient from "../oauth2/OAuth2APIClient";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import DBSearchComponentBanner from "../dbsearch/DBSearchComponentBanner";
-import AskAI from "../openai/AskAI";
 import WebSocketComponent from "../websockets/WebSocketComponent";
 import BearerToken from "../oauth2/BearerToken";
 
@@ -232,14 +231,9 @@ export default function CombinedCreateFP({ className = '' }) {
       <div className="home-quick-add-panel">
         <div className="combined-quick-add-searches" aria-label="Search tools">
           <article className="home-search-card combined-quick-add-search-card">
-            <DBSearchComponentBanner />
-          </article>
-          <article className="home-search-card combined-quick-add-search-card">
-            <AskAI />
-          </article>
-        </div>
+            <DBSearchComponentBanner includeAI actions={
       <div
-        className="home-quick-add-actions"
+        className="home-quick-add-actions combined-search-actions"
         style={{
           display: "flex",
           gap: 12,
@@ -293,6 +287,9 @@ export default function CombinedCreateFP({ className = '' }) {
         </div>
 
       </div>
+            } />
+          </article>
+        </div>
 
       {open === "cyclopedia" && (
         <Card>

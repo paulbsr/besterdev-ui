@@ -28,12 +28,12 @@ const BannerWhite = () => {
       <span className="home-brand-mark-ring" aria-hidden="true" />
       <span className="home-brand-mark-letter" aria-hidden="true">B</span>
       </Link>
-      <TbLetterB className="home-banner-bester-letter" style={{color: '#336791', fontSize: '40px' }}/>
-      <TbLetterE className="home-banner-bester-letter" style={{color: '#336791', fontSize: '40px' }}/>
-      <TbLetterS className="home-banner-bester-letter" style={{color: '#336791', fontSize: '40px' }}/>
-      <TbLetterT className="home-banner-bester-letter" style={{color: '#336791', fontSize: '40px' }}/>
-      <TbLetterE className="home-banner-bester-letter" style={{color: '#336791', fontSize: '40px' }}/>
-      <TbLetterR className="home-banner-bester-letter" style={{color: '#336791', fontSize: '40px' }}/>
+      <TbLetterB className="home-banner-bester-letter home-banner-name-letter" style={{color: '#336791', fontSize: '40px' }}/>
+      <TbLetterE className="home-banner-bester-letter home-banner-name-letter" style={{color: '#336791', fontSize: '40px' }}/>
+      <TbLetterS className="home-banner-bester-letter home-banner-name-letter" style={{color: '#336791', fontSize: '40px' }}/>
+      <TbLetterT className="home-banner-bester-letter home-banner-name-letter" style={{color: '#336791', fontSize: '40px' }}/>
+      <TbLetterE className="home-banner-bester-letter home-banner-name-letter" style={{color: '#336791', fontSize: '40px' }}/>
+      <TbLetterR className="home-banner-bester-letter home-banner-name-letter" style={{color: '#336791', fontSize: '40px' }}/>
       <TbLetterD className="home-banner-brand-letter" style={{color: '#D5441C', fontSize: '40px' }}/>
       <TbLetterE className="home-banner-brand-letter" style={{color: '#D5441C', fontSize: '40px' }}/>
       <TbLetterV className="home-banner-brand-letter" style={{color: '#D5441C', fontSize: '40px', marginRight: "400px" }}/>

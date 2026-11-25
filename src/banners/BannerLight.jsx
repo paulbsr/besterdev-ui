@@ -49,17 +49,19 @@ const iconStyle = (color, size) => ({
   cursor: 'pointer',
 });
 
+const navigationIconStyle = (size) => iconStyle('var(--home-link, #336791)', size);
+
 const internalLinks = [
-  { tooltip: 'Home', icon: <IoHome style={iconStyle('var(--home-text, #000)', 28)} />, path: '/home' },
-  { tooltip: 'Cyclopedia', icon: <GiGiftOfKnowledge style={iconStyle('#336791', 31)} />, path: '/cyclopediamanage' },
-  { tooltip: 'Web Resources', icon: <GiSpiderWeb style={iconStyle('#336791', 30)} />, path: '/webresourcemanage' },
-  { tooltip: 'HOWTOs', icon: <BsPatchQuestion style={iconStyle('#336791', 29)} />, path: '/howtomanage' },
-  { tooltip: 'People Scorecard', icon: <BsPeopleFill style={iconStyle('#336791', 32)} />, path: '/peoplescorecard' },
-  { tooltip: 'Tasks', icon: <MdTask style={iconStyle('#336791', 30)} />, path: '/taskmanage' },
-  { tooltip: 'Diffie-Hellman Key Exchange', icon: <GiHouseKeys style={iconStyle('#336791', 32)} />, path: '/dhkeyexchange' },
-  { tooltip: 'MyCV', icon: <FaFileContract style={iconStyle('#336791', 26)} />, path: '/mycv' },
-  { tooltip: 'Candidate Hunt', icon: <FaPeopleArrows style={iconStyle('#336791', 30)} />, path: '/hunt' },
-  { tooltip: 'Candidates', icon: <MdManageAccounts style={iconStyle('#336791', 35)} />, path: '/candidatemanage' },
+  { tooltip: 'Home', icon: <IoHome style={navigationIconStyle(28)} />, path: '/home' },
+  { tooltip: 'Cyclopedia', icon: <GiGiftOfKnowledge style={navigationIconStyle(31)} />, path: '/cyclopediamanage' },
+  { tooltip: 'Web Resources', icon: <GiSpiderWeb style={navigationIconStyle(30)} />, path: '/webresourcemanage' },
+  { tooltip: 'HOWTOs', icon: <BsPatchQuestion style={navigationIconStyle(29)} />, path: '/howtomanage' },
+  { tooltip: 'People Scorecard', icon: <BsPeopleFill style={navigationIconStyle(32)} />, path: '/peoplescorecard' },
+  { tooltip: 'Tasks', icon: <MdTask style={navigationIconStyle(30)} />, path: '/taskmanage' },
+  { tooltip: 'Diffie-Hellman Key Exchange', icon: <GiHouseKeys style={navigationIconStyle(32)} />, path: '/dhkeyexchange' },
+  { tooltip: 'MyCV', icon: <FaFileContract style={navigationIconStyle(26)} />, path: '/mycv' },
+  { tooltip: 'Candidate Hunt', icon: <FaPeopleArrows style={navigationIconStyle(30)} />, path: '/hunt' },
+  { tooltip: 'Candidates', icon: <MdManageAccounts style={navigationIconStyle(35)} />, path: '/candidatemanage' },
   { tooltip: 'Dutch Language', icon: <GiWindmill style={iconStyle('#FF4F00', 32)} />, path: '/dutchlanguage' },
   { tooltip: 'Mijn Boek', icon: <GiOpenBook style={iconStyle('#FF4F00', 32)} />, path: '/dutchlanguagebook' },
 ];

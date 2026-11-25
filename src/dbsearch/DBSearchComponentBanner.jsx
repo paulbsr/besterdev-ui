@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useId, useRef, useState } from 'react';
 import OAuth2APIClient from '../oauth2/OAuth2APIClient';
+import { askAI } from '../openai/AskAI';
 import { IoFootstepsSharp } from "react-icons/io5";
 import { GiGiftOfKnowledge } from "react-icons/gi";
 import { BsPatchQuestion } from "react-icons/bs";
@@ -12,9 +13,14 @@ import { toast } from 'react-toastify';
 import '../Fonts.css';
 
 
-const DBSearchComponentBanner = () => {
+const DBSearchComponentBanner = ({ includeAI = false, actions }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [searchProvider, setSearchProvider] = useState('besterdev');
+  const [aiResponse, setAiResponse] = useState('');
+  const [loading, setLoading] = useState(false);
+  const requestId = useRef(0);
+  const providerName = useId();
   const [editing, setEditing] = useState(false);
   const [cyclopedianame, setCyclopedianame] = useState('');
   const [cyclopediadesc, setCyclopediadesc] = useState('');
@@ -25,17 +31,40 @@ const DBSearchComponentBanner = () => {
   const navigate = useNavigate();
 
   const handleSearch = async (event) => {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault();
+    if (!searchQuery.trim()) return;
+
+    const currentRequest = ++requestId.current;
+    setSearchResults([]);
+    setNorecordsFound(false);
+    setAiResponse('');
+    setLoading(true);
     try {
-      const response = await OAuth2APIClient.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/search?keyword=${searchQuery}`,
+      if (searchProvider === 'chatgpt') {
+        const answer = await askAI(searchQuery);
+        if (currentRequest === requestId.current) setAiResponse(answer);
+      } else {
+        const response = await OAuth2APIClient.get(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/search?keyword=${encodeURIComponent(searchQuery)}`,
           {
             caller: 'DBSearchComponentBanner'
           }
         );
-      setSearchResults(response.data);
-      setNorecordsFound(response.data.length === 0);
+        if (currentRequest === requestId.current) {
+          setSearchResults(response.data);
+          setNorecordsFound(response.data.length === 0);
+        }
+      }
     } catch (error) {
-      console.error('Error searching:', error);
+      if (currentRequest === requestId.current) {
+        console.error('Error searching:', error);
+        if (searchProvider === 'chatgpt') {
+          setAiResponse('Error: ' + error.message);
+        } else {
+          toast.error('Search failed');
+        }
+      }
+    } finally {
+      if (currentRequest === requestId.current) setLoading(false);
     }
   };
 
@@ -69,12 +98,26 @@ const DBSearchComponentBanner = () => {
   }
 
   const handleCancel = () => {
+    requestId.current += 1;
     setSearchQuery('');
     setSearchResults([]);
+    setNorecordsFound(false);
+    setAiResponse('');
+    setLoading(false);
+  };
+
+  const handleProviderChange = (event) => {
+    requestId.current += 1;
+    setSearchProvider(event.target.value);
+    setSearchResults([]);
+    setNorecordsFound(false);
+    setAiResponse('');
+    setLoading(false);
   };
 
   const highlightKeyword = (text, keyword) => {
-    const parts = text.split(new RegExp(`(${keyword})`, 'gi'));
+    const escapedKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const parts = text.split(new RegExp(`(${escapedKeyword})`, 'gi'));
     return parts.map((part, index) =>
       part.toLowerCase() === keyword.toLowerCase() ? <mark key={index}>{part}</mark> : part
     );
@@ -96,16 +139,32 @@ const DBSearchComponentBanner = () => {
           marginBottom: "10px",
           boxShadow: '10px 10px 10px rgba(0,0,0,0.2)',
         }}
-        placeholder="Search BesterDev"
+        placeholder={includeAI ? 'Search BesterDev or ChatGPT' : 'Search BesterDev'}
+        aria-label="Search query"
         type="text"
         value={searchQuery}
         onChange={(event) => setSearchQuery(event.target.value)}
         required
       />
 
+      {includeAI && (
+        <fieldset className="combined-search-provider">
+          {/* <legend>Search with</legend> */}
+          <label>
+            <input type="radio" name={providerName} value="besterdev" checked={searchProvider === 'besterdev'} onChange={handleProviderChange} />
+            BesterDev
+          </label>
+          <label>
+            <input type="radio" name={providerName} value="chatgpt" checked={searchProvider === 'chatgpt'} onChange={handleProviderChange} />
+            ChatGPT
+          </label>
+        </fieldset>
+      )}
+
       <button
         className="home-db-search-submit"
         type="submit"
+        disabled={loading}
         style={{
           marginLeft: '20px',
           height: '30.5px',
@@ -115,7 +174,7 @@ const DBSearchComponentBanner = () => {
           color: '#336791',
           cursor: 'pointer',
         }}>
-        Search
+        {loading ? 'Searching...' : 'Search'}
       </button>
 
       <button
@@ -133,6 +192,10 @@ const DBSearchComponentBanner = () => {
         }}>
         Clear
       </button>
+
+      {actions}
+
+      {aiResponse && <div className="home-ask-ai-response combined-search-response">{aiResponse}</div>}
 
       {searchResults.length > 0 ? (
         <div className="home-db-search-results">
