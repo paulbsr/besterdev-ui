@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import BannerWhite from '../banners/BannerWhite';
 import GradientLine from '../gradientlines/GradientLine';
 import BannerLight from '../banners/BannerLight';
@@ -12,10 +11,8 @@ import CombinedCreateFP from '../quicks/CombinedCreateFP';
 import DutchLanguage_Ticker from "../dutchlanguage/DutchLanguage_Ticker";
 
 export default function PageHome() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
-
   return (
-      <div className="home-route" data-theme={isDarkMode ? 'dark' : 'light'}>
+      <div className="home-route" data-theme="dark">
         <BannerWhite />
         <GradientLine />
         <BannerLight />
@@ -27,10 +24,7 @@ export default function PageHome() {
         <DutchLanguage_Ticker />
         <GradientLineThin />
         <CombinedCreateFP className="home-quick-adds" />
-        <HomePage22
-          isDarkMode={isDarkMode}
-          onToggleTheme={() => setIsDarkMode((currentMode) => !currentMode)}
-        />
+        <HomePage22 />
         <Footer/>
         <ToastComponent />
       </div>

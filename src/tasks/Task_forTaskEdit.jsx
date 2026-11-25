@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "../Fonts.css";
 import "./Task.css";
-import { getStatusByColourTaskText } from "../getStatusByColourTaskText";
 import { BsArrowCounterclockwise } from "react-icons/bs"; //Revert & Pencil grey
 import { GiCheckMark } from "react-icons/gi"; //Commit grey
 import { Tooltip } from "@mui/material";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import dayjs from "dayjs";
-import ObjectSupport from "dayjs/plugin/objectSupport";
 import { toast } from 'react-toastify';
 import TaskRecordAccordion_forTaskEdit from "./TaskRecordAccordion_forTaskEdit";
+import { parseTaskDate } from "./taskDate";
 import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 
 
@@ -35,7 +31,6 @@ export default function Task_forTaskEdit({
     const [editing, setEditing] = useState(false);
     const [requirement, setRequirement] = useState(null);
     const [taskurl, setTaskurl] = useState(null);
-    const [newTargetDate, setNewTargetDate] = useState(null);
     const [name, setName] = useState(null);
     const [error, setError] = useState(null);
     const [duration, setDuration] = useState(null);
@@ -61,10 +56,8 @@ export default function Task_forTaskEdit({
         setDuration(1);
     }
     const handleEdit = () => {
-        setTaskurl(taskurl);
+        setTaskurl(taskUrl);
         setRequirement(taskrequirement);
-        setNewTargetDate(new Date(tasktargetdate));
-        // setNewTargetDate(new Date(...tasktargetdate));
         setName(taskname);
         setEditing(true);
     };
@@ -72,236 +65,103 @@ export default function Task_forTaskEdit({
         setEditing(false);
         setRequirement(null);
         setTaskurl(null);
-        setNewTargetDate(null);
         setName(null);
     };
-    // const deadlineDaysRemaining = getDeadlineInDays(tasktargetdate);
-    console.log('In <Task_forTaskEdit> is jou tasktargetdate:', tasktargetdate)
-    const deadlineDaysRemaining = getDeadlineInDays(tasktargetdate);
-    const deadlineColor = calculateDeadlineTextColor(deadlineDaysRemaining);
-    // const handleChange = (e, newVal) => setTaskurl(newVal);
-    
     const onEditSave = async () => {
-        let updatedDetails = [];
-        let noDetails = [];
+        if (!parseTaskDate(tasktargetdate)) {
+            toast.error('Cannot save task: its due date is missing or invalid.');
+            return;
+        }
         const updatedTask = 
         {
-            tasktargetdate: newTargetDate,
+            tasktargetdate,
             taskrequirement: requirement,
-            // taskowner: owner,
             taskname: name,
             taskUrl: taskurl,
         };
-        // using conditional on length evaluates whether or not it's a truthy value,
-        // so if noDetails.length doesn't return a truthy value(i.e. if its null, undefined, or 0),
-        // the enclosed code is never executed.
-        if (noDetails.length) {
-            // alertCtx.warning(`Please fill in ${noDetails.join(", ")}`);
-            return;
+        try {
+            const response = await OAuth2APIClient.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskdetails/${id}`, updatedTask);
+            if (response.status === 202) {
+                setCheckForRecords(!checkForRecords);
+                toast.success('Task Updated.');
+                onEditCancel();
+            } else {
+                toast.error('Task not Updated.');
+            }
+        } catch (saveError) {
+            console.error('Failed to update task:', saveError);
+            toast.error('Task not Updated.');
         }
-
-        const response = await OAuth2APIClient.put(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/tasks/update/taskdetails/${id}`,updatedTask)
-                // `http://localhost:8000/api/v1/tasks/update/taskdetails/${id}`,updatedTask)
-                if (response.status === 202) 
-                    {
-                        setCheckForRecords(!checkForRecords);
-                        { toast.success(`Task Updated.`) }
-                    }
-                    else {toast.error('Task not Updated.');}
-        onEditCancel();
     };
-
-function getDeadlineInDays(deadline) {
-    // add object support to dayjs
-    dayjs.extend(ObjectSupport);
-    // current time
-    const now = dayjs();
-    // create js Date object using
-    const t = new Date(deadline[0], deadline[1] - 1, deadline[2]); // Adjust month for JS Date object
-    // convert date object into a dayjs object
-    let targetdate = dayjs(t);
-
-    // Calculate the difference in days
-    const differenceInDays = targetdate.diff(now, "day");
-
-    return differenceInDays;
-}
-
-
-
-
-    
-    // return a hex color to be used in styling based on days until/after deadline
-    function calculateDeadlineTextColor(noOfDays) {
-        if (noOfDays > 5) {
-            return "#212121";
-        } else if (noOfDays <= 5 && noOfDays > 0) {
-            return "#ed8a09";
-        } else if (noOfDays < 0) {
-            return "#e32929";
-        } else {
-            return "#212121";
-        }
-    }
-    
-    
-    
     
     return (
-        <>
-            <div style={{ color: getStatusByColourTaskText(taskstatus) }}>
-                <div style={{ float: "right" }}>
-                    &nbsp;
-
+        <div className="task-editor-detail">
+            <div className="task-editor-card-header">
+                <div className="task-editor-heading">
+                    <div className="task-editor-meta">
+                        <span>Task #{id}</span>
+                        <span className={`task-editor-status task-editor-status-${(taskstatus || '').toLowerCase()}`}>{taskstatus}</span>
+                    </div>
+                    {editing ? (
+                        <label className="task-editor-field">
+                            <span>Task name</span>
+                            <textarea required defaultValue={taskname} onChange={(e) => setName(e.target.value)} rows={2} />
+                        </label>
+                    ) : (
+                        <button className="task-editor-expand" type="button" aria-expanded={isExpanded} onClick={toggleAccordion}>
+                            <span>{taskname}</span><span aria-hidden="true">{isExpanded ? '−' : '+'}</span>
+                        </button>
+                    )}
                 </div>
-                <div style={{ display: "flex", float: "right" }}>
-                    {taskstatus === "DONE" && duration !== null && duration >= 0 ? ( // render time taken to complete if task is DONE
-                        <div className="task-finished">
-                            {"Days to completion: " + duration}
-                        </div>
-                    ) 
-                    : null
-                    }
-
-                    <>
-                        {editing === true ? 
-                        (
-                            <>
-                                <Tooltip title="Commit" placement="top-end">
-                                    <div onClick={() => onEditSave()}>
-                                        &nbsp;<GiCheckMark style={{ color: "#336791", fontSize: "15px", cursor: "pointer" }} />
-                                    </div>
-                                </Tooltip>
-
-                                <Tooltip title="Revert" placement="top-end">
-                                    <div onClick={() => onEditCancel()}>
-                                        &nbsp;<BsArrowCounterclockwise style={{ color: "#336791", fontSize: "17px", cursor: "pointer" }} />
-                                    </div>
-                                </Tooltip>
-                            </>
-                        ) 
-                        : isExpanded && taskstatus !== "DONE" ? 
-                        (
-                                    <Tooltip title={`Edit Task: ${id}`} placement="top-end">
-                                            <button
-                                                style={{ marginLeft: '5px', height: '24.5px', border: '1px solid #336791', borderRadius: '5px', backgroundColor: '#336791', color: '#FFFFFF', cursor: 'pointer', fontSize: '14px' }}
-                                                type='button'
-                                                onClick={() => { handleEdit() }}>Edit
-                                            </button>
-                                    </Tooltip>
-                        ) 
-                        : 
-                        null
-                        }
-                    </>
-                </div>
-                
-                
-                {editing === true ? 
-                (
-                    <>
+                <div className="task-editor-actions">
+                    {taskstatus === "DONE" && duration !== null && duration >= 0 && (
+                        <span className="task-editor-duration">Days to completion: {duration}</span>
+                    )}
+                    {editing ? (
                         <>
-                            <u>TASK NAME</u>:
-                            <textarea
-                                required
-                                defaultValue={taskname}
-                                onChange={(e) => setName(e.target.value)}
-                                size="small"
-                                style={{
-                                    width: 1000,
-                                    height: "20px",
-                                    marginBottom: "15px",
-                                    marginTop: "5px",
-                                    display: "flex",
-                                    border: "1px dotted grey",
-                                    borderRadius: "6px"
-                                }}
-                            />
+                            <Tooltip title="Commit" placement="top-end" describeChild>
+                                <button className="task-editor-action" type="button" onClick={onEditSave}><GiCheckMark aria-hidden="true" /> Save</button>
+                            </Tooltip>
+                            <Tooltip title="Revert" placement="top-end" describeChild>
+                                <button className="task-editor-action task-editor-action-secondary" type="button" onClick={onEditCancel}><BsArrowCounterclockwise aria-hidden="true" /> Cancel</button>
+                            </Tooltip>
                         </>
-                    </>
-                ) 
-                : 
-                (
-                    
-                    <u onClick={toggleAccordion}><b style={{cursor: 'pointer', fontFamily: 'Verdana'}}>{taskname}</b></u>
-                )
-                }
+                    ) : isExpanded && taskstatus !== "DONE" ? (
+                        <Tooltip title={`Edit Task: ${id}`} placement="top-end" describeChild>
+                            <button className="task-editor-action" type="button" onClick={handleEdit}>Edit task</button>
+                        </Tooltip>
+                    ) : null}
+                </div>
             </div>
-            
-            
-            
-            
+
             {isExpanded && (
-                <div>
-                    <div style={{ color: getStatusByColourTaskText(taskstatus) }}>
-                        <div>&nbsp;</div>
-                        <u>REQUIREMENT</u>:{" "}
-                        {editing === true ? (
-                            <textarea
-                                freeSolo
-                                required
-                                defaultValue={taskrequirement}
-                                onChange={(e) => setRequirement(e.target.value)}
-                                size="small"
-                                style={{
-                                    width: 1000,
-                                    height: "250px",
-                                    marginBottom: "15px",
-                                    marginTop: "5px",
-                                    display: "flex",
-                                    border: "1px dotted grey",
-                                    borderRadius: "6px"
-
-                                }}
-                            />
-                        ) 
-                        : 
-                        (taskrequirement)
-                        }
+                <div className="task-editor-content">
+                    <div className="task-editor-field">
+                        <span>Requirement</span>
+                        {editing ? (
+                            <textarea aria-label="Requirement" required defaultValue={taskrequirement} onChange={(e) => setRequirement(e.target.value)} rows={8} />
+                        ) : <p>{taskrequirement}</p>}
                     </div>
-                    
-                    
-                    <div style={{ color: getStatusByColourTaskText(taskstatus) }}>
-                        <div>&nbsp;</div>
-                        <u>URL</u>:{" "}
-                        {editing === true ? 
-                        (
-                            <textarea
-                            freeSolo
-                            required
-                            defaultValue={taskUrl}
-                            onChange={(e) => setTaskurl(e.target.value)}
-                            size="small"
-                            style={{
-                                width: 1000,
-                                height: "18px",
-                                marginBottom: "15px",
-                                marginTop: "5px",
-                                display: "flex",
-                                border: "1px dotted grey",
-                                borderRadius: "6px"
-                            }}
+                    <div className="task-editor-field">
+                        <span>URL</span>
+                        {editing ? (
+                            <textarea aria-label="URL" required defaultValue={taskUrl} onChange={(e) => setTaskurl(e.target.value)} rows={2} />
+                        ) : <a href={taskUrl} target="_blank" rel="noopener noreferrer">{taskUrl}</a>}
+                    </div>
+                    <div className="task-editor-records">
+                        <h2>Progress and status</h2>
+                        <TaskRecordAccordion_forTaskEdit
+                            project_handle={project_handle}
+                            taskstatus={taskstatus}
+                            parentid={id}
+                            asms_number={asms}
+                            parenttask={parenttask}
+                            checkForRecords={checkForRecords}
+                            setCheckForRecords={setCheckForRecords}
                         />
-                        ) 
-                        : 
-                        (
-                        <a href={taskUrl} target="_blank" >{taskUrl}</a>
-                        )
-                        }
                     </div>
-
-                        <div>&nbsp;</div>
-                     <TaskRecordAccordion_forTaskEdit
-                        project_handle={project_handle}
-                        taskstatus={taskstatus}
-                        parentid={id}
-                        asms_number={asms}
-                        parenttask={parenttask}
-                        checkForRecords={checkForRecords}
-                        setCheckForRecords={setCheckForRecords}
-                    />
                 </div>
             )}
-        </>
+        </div>
     );
 }

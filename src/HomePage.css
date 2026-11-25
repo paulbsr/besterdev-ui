@@ -82,29 +82,6 @@
   letter-spacing: 0.12em;
 }
 
-.home-theme-toggle {
-  flex: 0 0 auto;
-  padding: 9px 13px;
-  border: 1px solid var(--home-border);
-  border-radius: 9px;
-  background: var(--home-surface);
-  color: var(--home-text);
-  font: inherit;
-  font-size: 0.84rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: border-color 150ms ease, background-color 150ms ease, color 150ms ease;
-}
-
-.home-theme-toggle:hover {
-  border-color: var(--home-accent);
-}
-
-.home-theme-toggle:focus-visible {
-  outline: 2px solid var(--home-accent);
-  outline-offset: 2px;
-}
-
 .home-search-row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -267,11 +244,12 @@
 }
 
 .home-search-card.combined-quick-add-search-card .home-db-search-form {
-  grid-template-columns: minmax(0, 15%) max-content max-content minmax(0, 1fr);
+  grid-template-columns: minmax(0, 18.75%) max-content max-content minmax(0, 1fr);
 }
 
 .home-search-card.combined-quick-add-search-card .home-db-search-input {
   grid-column: 1;
+  border-color: #ff855f !important;
 }
 
 .home-search-card.combined-quick-add-search-card .home-db-search-submit,
@@ -875,10 +853,6 @@
 
   .home-search-card .home-db-search-input {
     grid-column: 1 / -1;
-  }
-
-  .home-theme-toggle {
-    align-self: flex-start;
   }
 
   .home-grid {

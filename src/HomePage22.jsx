@@ -231,14 +231,6 @@ export default function HomePage22(props) {
           <h1>Welcome to your workspace</h1>
           <p>Explore your tasks, curated resources, and practical guides.</p>
         </div>
-        <button
-          className="home-theme-toggle"
-          type="button"
-          aria-pressed={props.isDarkMode}
-          onClick={props.onToggleTheme}
-        >
-          Switch to {props.isDarkMode ? 'light' : 'dark'} mode
-        </button>
       </header>
 
       <div className="home-grid">

@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { MdTask } from "react-icons/md";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
@@ -6,6 +7,7 @@ import MouseoverPopover from "../MouseoverPopover";
 import { TaskContext } from "../Contexts";
 import Task from "./Task";
 import TaskCreate from "./TaskCreate";
+import { compareTaskDatesDescending } from "./taskDate";
 import "./TaskOverview.css";
 
 const projectNameMap = {
@@ -50,9 +52,7 @@ const createProjectCounter = (asms) => ({
 });
 
 const getTaskDate = (task) => {
-  const date = task.tasks?.length ? task.tasks[0].date : task.taskcreatedate;
-  if (Array.isArray(date)) return new Date(date[0], date[1], date[2]).getTime();
-  return new Date(date).getTime();
+  return task.tasks?.length ? task.tasks[0].date : task.taskcreatedate;
 };
 
 export default function TaskOverview({
@@ -117,7 +117,7 @@ export default function TaskOverview({
 
   const renderStatusCell = (projectName, project, status) => {
     const tasks = [...project[status.key]].sort(
-      (a, b) => getTaskDate(b) - getTaskDate(a)
+      (a, b) => compareTaskDatesDescending(getTaskDate(a), getTaskDate(b))
     );
 
     return (
@@ -278,6 +278,9 @@ export default function TaskOverview({
                       />
                     }
                   />
+                  <Link className="task-selected-edit-link" to={`/taskedit/${task.id}`} aria-label={`Open task editor for ${task.taskname}`}>
+                    Open task editor
+                  </Link>
                 </div>
               ))
             ) : (

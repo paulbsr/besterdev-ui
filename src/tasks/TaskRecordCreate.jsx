@@ -81,28 +81,28 @@ export default function TaskRecordCreate(props) {
                 </textarea>
                 <div></div>
                 <button
-                    className="Font-Verdana-Small-Postgres"
+                    className="Font-Verdana-Small-Postgres task-record-start"
                     type="submit"
                     style={{ height: '22.5px', border: '1px solid #ffffff', borderRadius: '5px', backgroundColor: '#C0C0C080', color: '#336791', cursor: 'pointer' }}
                     onClick={() => setStatus("START")}>
                     START
                 </button>
                 <button
-                    className="Font-Verdana-Small-Postgres"
+                    className="Font-Verdana-Small-Postgres task-record-wip"
                     type="submit"
                     style={{ height: '22.5px', border: '1px solid #ffffff', borderRadius: '5px', backgroundColor: '#0F9ED540', color: '#336791', cursor: 'pointer' }}
                     onClick={() => setStatus("WIP")}>
                     WIP
                 </button>
                 <button
-                    className="Font-Verdana-Small-Postgres"
+                    className="Font-Verdana-Small-Postgres task-record-problem"
                     type="submit"
                     style={{ height: '22.5px', border: '1px solid #ffffff', borderRadius: '5px', backgroundColor: '#BE000040', color: '#336791', cursor: 'pointer' }}
                     onClick={() => setStatus("PROBLEM")}>
                     ISSUE
                 </button>
                 <button
-                    className="Font-Verdana-Small-Postgres"
+                    className="Font-Verdana-Small-Postgres task-record-done"
                     type="submit"
                     style={{ height: '22.5px', border: '1px solid #ffffff', borderRadius: '5px', backgroundColor: '#00B40040', color: '#336791', cursor: 'pointer' }}
                     onClick={() => setStatus("DONE")}>

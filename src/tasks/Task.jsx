@@ -15,6 +15,7 @@ import TaskPopOut from "./TaskPopOut";
 import { toast } from 'react-toastify';
 import { PiRocketLaunchLight } from "react-icons/pi";
 import OAuth2APIClient from '../oauth2/OAuth2APIClient';
+import { formatTaskDate, parseTaskDate } from './taskDate';
 
 export default function Task({
     project_handle,
@@ -60,9 +61,14 @@ export default function Task({
         setDuration(1);
     }
     const handleEdit = () => {
+        const targetDate = parseTaskDate(tasktargetdate);
+        if (!targetDate) {
+            toast.error('Cannot edit task: its due date is missing or invalid.');
+            return;
+        }
         setOwner(taskowner);
         setRequirement(taskrequirement);
-        setNewTargetDate(new Date(tasktargetdate));
+        setNewTargetDate(targetDate);
         // setNewTargetDate(new Date(...tasktargetdate));
         setName(taskname);
         setEditing(true);
@@ -81,9 +87,13 @@ export default function Task({
 
     const onEditSave = async () => {
         let noDetails = [];
+        if (!parseTaskDate(newTargetDate)) {
+            toast.error('Cannot save task: its due date is missing or invalid.');
+            return;
+        }
 
         const updatedTask = {
-            tasktargetdate: newTargetDate,
+            tasktargetdate: formatTaskDate(newTargetDate).replace(/\./g, '-'),
             taskrequirement: requirement,
             taskowner: owner,
             taskname: name,
@@ -131,11 +141,10 @@ export default function Task({
         // current time
         const now = dayjs();
         // create js Date object using
-        const t = new Date(deadline[0], deadline[1], deadline[2]);
+        const t = parseTaskDate(deadline);
+        if (!t) return NaN;
         // convert date object into a dayjs object
         let targetdate = dayjs(t);
-        // Subtract extra month which is there for some reason TODO: fix it
-        targetdate = targetdate.subtract(1, 'month');
         //return negative if the deadline has already passed.
         if (now.unix() - targetdate.unix() > 0) {
             return -1 * now.diff(targetdate, "day");
@@ -245,7 +254,7 @@ export default function Task({
                         </>
                     </>
                 ) : (
-                    <u onClick={toggleAccordion}>
+                    <u className="task-selected-name" onClick={toggleAccordion}>
                         <b>{taskname}</b>
                     </u>
                 )}
@@ -270,7 +279,7 @@ export default function Task({
                                 }}
                             />
                         ) : (
-                            taskrequirement
+                            <span className="task-selected-field-value">{taskrequirement}</span>
                         )}
                     </div>
                     <div style={{ color: getStatusByColourTaskText(taskstatus) }}>
@@ -294,7 +303,7 @@ export default function Task({
                             )
                             :
                             (
-                                taskowner
+                                <span className="task-selected-field-value">{taskowner}</span>
                             )
                         }
                     </div>
@@ -309,15 +318,7 @@ export default function Task({
                                 />
                             </div>
                         ) : (
-                            tasktargetdate[0] +
-                            "." +
-                            (tasktargetdate[1] < 10
-                                ? "0" + tasktargetdate[1]
-                                : tasktargetdate[1]) +
-                            "." +
-                            (tasktargetdate[2] < 10
-                                ? "0" + tasktargetdate[2]
-                                : tasktargetdate[2])
+                            <span className="task-selected-field-value">{formatTaskDate(tasktargetdate)}</span>
                         )}
                     </div>
                     <TaskRecordAccordion

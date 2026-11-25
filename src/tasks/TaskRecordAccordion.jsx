@@ -8,6 +8,7 @@ import { BiSolidMessageRoundedAdd } from "react-icons/bi";
 import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 import TaskRecordCreate from "./TaskRecordCreate";
 import TaskRecordStatusByColourLong from "./TaskRecordStatusByColourLong";
+import { compareTaskDatesDescending } from "./taskDate";
 import "../Fonts.css";
 
 
@@ -36,10 +37,9 @@ function TaskRecordAccordion({
         return task.id === parentid;
     });
 
-    const taskRecords = orderedTasks[0].tasks.sort(
+    const taskRecords = [...orderedTasks[0].tasks].sort(
         (a, b) =>
-            new Date(b.date[0], b.date[1], b.date[2]) -
-            new Date(a.date[0], a.date[1], a.date[2]) || b.childid - a.childid
+            compareTaskDatesDescending(a.date, b.date) || b.childid - a.childid
     );
 
 
@@ -111,7 +111,7 @@ function TaskRecordAccordion({
                             ) : null}
                         </>
                     </div>
-                    <div>
+                    <div className="task-record-content">
                         {editing === childid ? (
                             <textarea
                                 // cols="150"
@@ -121,7 +121,7 @@ function TaskRecordAccordion({
                                 onChange={(e) => setTaskrecord(e.target.value)}
                                 style={{
                                     width: 1000,
-                                    height: "18px",
+                                    height: "80px",
                                     marginBottom: "15px",
                                     marginTop: "5px",
                                     display: "flex",

@@ -8,6 +8,7 @@ import { GiCheckMark } from "react-icons/gi"; //Commit
 import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 import TaskRecordCreate from "./TaskRecordCreate";
 import TaskRecordStatusByColourLong_forTaskEdit from "./TaskRecordStatusByColourLong_forTaskEdit";
+import { compareTaskDatesDescending } from "./taskDate";
 import "../Fonts.css";
 
 function TaskRecordAccordion_forTaskEdit({
@@ -34,10 +35,9 @@ function TaskRecordAccordion_forTaskEdit({
     
     const orderedTasks = parenttask;
     
-    const taskRecords = orderedTasks.tasks.sort(
+    const taskRecords = [...orderedTasks.tasks].sort(
         (a, b) =>
-            new Date(b.date[0], b.date[1], b.date[2]) -
-            new Date(a.date[0], a.date[1], a.date[2]) || b.childid - a.childid
+            compareTaskDatesDescending(a.date, b.date) || b.childid - a.childid
     );
     
    
@@ -195,7 +195,7 @@ function TaskRecordAccordion_forTaskEdit({
     }
     return (
         <div>
-            <div style={{ color: getStatusByColourTaskText(taskstatus) }} onClick={toggleAccordion}>
+            <div className="task-editor-status-toggle" style={{ color: getStatusByColourTaskText(taskstatus) }} onClick={toggleAccordion}>
                 <u>STATUS</u>:&nbsp;
                 <Tooltip title="xxxxxxxxxxx" placement="top-end">
                     <BiSolidMessageRoundedAdd style={{ color: "#336791", fontSize: "20px" }} />

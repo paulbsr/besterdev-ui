@@ -8,6 +8,7 @@ import Dialog from "@mui/material/Dialog";
 import TaskRecordAccordion from "./TaskRecordAccordion";
 import DialogContentText from "@mui/material/DialogContentText";
 import { getStatusByColourTaskText } from "../getStatusByColourTaskText";
+import { formatTaskDate } from "./taskDate";
 
 
 export default function TaskPopOut({
@@ -58,15 +59,7 @@ export default function TaskPopOut({
                         </div>
                         <div style={{ color: getStatusByColourTaskText(taskstatus) }}>
                             <u>DUE</u>:{" "}
-                            {tasktargetdate[0] +
-                                "." +
-                                (tasktargetdate[1] < 10
-                                    ? "0" + tasktargetdate[1]
-                                    : tasktargetdate[1]) +
-                                "." +
-                                (tasktargetdate[2] < 10
-                                    ? "0" + tasktargetdate[2]
-                                    : tasktargetdate[2])}
+                            {formatTaskDate(tasktargetdate)}
                         </div>
                     </DialogContentText>
                     <TaskRecordAccordion
