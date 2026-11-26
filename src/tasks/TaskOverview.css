@@ -320,7 +320,7 @@
 
 .task-selected-item {
   --task-done-text: #87cf8a;
-  --task-start-text: #c1c3c6;
+  --task-start-text: #9aa4b2;
   --task-wip-text: #a8c9ec;
   min-width: 0;
   padding: 12px;
@@ -352,11 +352,11 @@
 
 .task-selected-edit-link {
   display: inline-block;
-  margin-top: 10px;
+  margin-left: 10px;
   color: var(--home-link, #a8c9ec);
-  font-size: 12px;
-  font-weight: 600;
-  text-underline-offset: 3px;
+  font-size: 8pt;
+  font-weight: 400;
+  text-decoration: none;
 }
 
 .task-selected-edit-link:hover {
@@ -370,6 +370,12 @@
 
 .task-selected-item u {
   text-decoration: none;
+}
+
+.task-selected-item .task-selected-name,
+.task-selected-item .task-selected-field-value,
+.task-selected-item .taskrecordshover {
+  cursor: pointer;
 }
 
 .task-selected-item .task-selected-name:hover,

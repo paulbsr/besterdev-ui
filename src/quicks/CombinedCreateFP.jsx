@@ -178,9 +178,9 @@ export default function CombinedCreateFP({ className = '' }) {
   });
 
   const TASK_MODULES = [
-    { id: "188118", handle: "UserStory", label: "BesterDev User Story" },
-    { id: "171593", handle: "Dutch Language", label: "Dutch NT2" },
-    { id: "168272", handle: "Dissertation", label: "Dissertation" },
+    { id: "188118", handle: "BesterDev User Stories", label: "BesterDev User Story" },
+    // { id: "171593", handle: "Dutch Language", label: "Dutch NT2" },
+    // { id: "168272", handle: "Dissertation", label: "Dissertation" },
   ];
 
   const submitTask = async (e) => {

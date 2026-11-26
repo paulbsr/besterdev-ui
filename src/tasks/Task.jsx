@@ -28,6 +28,7 @@ export default function Task({
     asms,
     childrecord,
     parenttask,
+    nameSuffix,
     checkForRecords,
     setCheckForRecords
 }) {
@@ -254,9 +255,12 @@ export default function Task({
                         </>
                     </>
                 ) : (
-                    <u className="task-selected-name" onClick={toggleAccordion}>
-                        <b>{taskname}</b>
-                    </u>
+                    <>
+                        <u className="task-selected-name" onClick={toggleAccordion}>
+                            <b>{taskname}</b>
+                        </u>
+                        {nameSuffix}
+                    </>
                 )}
             </div>
             {isExpanded && (

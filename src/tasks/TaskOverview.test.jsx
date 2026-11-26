@@ -5,7 +5,7 @@ import { MemoryRouter, Route, Routes, useParams } from 'react-router-dom';
 import { TaskContext } from '../Contexts';
 import TaskOverview from './TaskOverview';
 
-jest.mock('./Task', () => ({ taskname }) => <span>{taskname}</span>);
+jest.mock('./Task', () => ({ taskname, nameSuffix }) => <span>{taskname}{nameSuffix}</span>);
 jest.mock('./TaskCreate', () => () => null);
 jest.mock('../MouseoverPopover', () => ({ see }) => <div>{see}</div>);
 

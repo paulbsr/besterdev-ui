@@ -11,29 +11,31 @@ import { compareTaskDatesDescending } from "./taskDate";
 import "./TaskOverview.css";
 
 const projectNameMap = {
-  113092: "NetworkSecurity",
-  14718: "EnterpriseSecurity",
-  181268: "ComputerCloudSecurity",
-  171593: "AppliedCryptography",
-  168272: "Dissertation",
-  188660: "StaatsexamenNT2_Lezen",
-  190860: "StaatsexamenNT2_Luisteren",
-  191076: "StaatsexamenNT2_Schrijven",
-  221193: "StaatsexamenNT2_Spreken",
-  188118: "UserStory",
+  188118: "BesterDev User Stories",
+  113092: "Available",
+  14718: "Available",
+  181268: "Available",
+  171593: "Available",
+  168272: "Available",
+  188660: "Available",
+  190860: "Available",
+  191076: "Available",
+  221193: "Available",
+
 };
 
 const projectAsmsMap = {
-  NetworkSecurity: "113092",
-  EnterpriseSecurity: "14718",
-  ComputerCloudSecurity: "181268",
-  AppliedCryptography: "171593",
-  Dissertation: "168272",
-  StaatsexamenNT2_Lezen: "188660",
-  StaatsexamenNT2_Luisteren: "190860",
-  StaatsexamenNT2_Schrijven: "191076",
-  StaatsexamenNT2_Spreken: "221193",
-  UserStory: "188118",
+  "BesterDev User Stories": "188118",
+  // Available: "113092",
+  // Available: "14718",
+  // Available: "181268",
+  // Available: "171593",
+  // Available: "168272",
+  // Available: "188660",
+  // Available: "190860",
+  // Available: "191076",
+  // Available: "221193",
+
 };
 
 const statuses = [
@@ -275,12 +277,14 @@ export default function TaskOverview({
                         parenttask={allTask}
                         checkForRecords={checkForRecords}
                         setCheckForRecords={setCheckForRecords}
+                        nameSuffix={
+                          <Link className="task-selected-edit-link" to={`/taskedit/${task.id}`} aria-label={`Open task editor for ${task.taskname}`}>
+                            Open task editor
+                          </Link>
+                        }
                       />
                     }
                   />
-                  <Link className="task-selected-edit-link" to={`/taskedit/${task.id}`} aria-label={`Open task editor for ${task.taskname}`}>
-                    Open task editor
-                  </Link>
                 </div>
               ))
             ) : (

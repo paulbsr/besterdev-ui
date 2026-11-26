@@ -127,7 +127,7 @@
   flex: 1 1 200px;
   width: auto !important;
   min-width: 0;
-  height: 34px !important;
+  height: 32px !important;
   margin: 0 !important;
   padding: 0 8px !important;
   border: 1px solid var(--home-border, #293447) !important;
@@ -144,7 +144,7 @@
 .home-search-card .home-db-search-clear,
 .home-search-card .home-ask-ai-clear {
   box-sizing: border-box;
-  height: 30px !important;
+  height: 32px !important;
   margin: 0 !important;
   padding: 0 10px !important;
   border: 1px solid var(--home-accent, #ff855f) !important;
@@ -249,7 +249,7 @@
 
 .home-search-card.combined-quick-add-search-card .home-db-search-input {
   grid-column: 1;
-  border-color: #ff855f !important;
+  border-color: var(--home-border, #293447) !important;
 }
 
 .home-search-card.combined-quick-add-search-card .home-db-search-submit,
@@ -332,8 +332,10 @@
 .home-quick-adds .home-quick-add-button {
   width: auto !important;
   min-width: 124px;
-  min-height: 38px;
-  padding: 8px 12px !important;
+  min-height: 32px;
+  height: 32px;
+  box-sizing: border-box;
+  padding: 0 12px !important;
   border: 1px solid var(--home-border, #293447) !important;
   border-radius: 8px !important;
   background: var(--home-bg, #0c111b) !important;

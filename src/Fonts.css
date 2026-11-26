@@ -4,20 +4,6 @@
   gap: 2rem;
 }
 
-.homepage-top,
-
-.homepage-main {
-  display: grid;
-  grid-template-columns: 25% 50% 25%;
-  gap: 1rem;
-}
-
-.hero-image {
-  max-width: 100%;
-  border-radius: 8px;
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.2);
-}
-
 .Font-Spacer-White {
     font-family: "Verdana";
     font-size: x-small;
@@ -42,112 +28,10 @@
     font-size: medium
 }
 
-.Font-Verdana-Medium-Bold {
-    font-family: "Verdana";
-    font-size: medium;
-    font-weight: bold;
-}
-
-.Font-Verdana-Medium-Bold-DBSearch {
-    font-family: "Verdana";
-    font-size: medium;
-    font-weight: bold;
-    color: #336791;
-}
-
-.Font-Verdana-Medium-Italic-Rusty {
-    font-family: "Verdana";
-    font-size: medium;
-    font-style: italic;
-    color: #D5441C;
-}
-
-.Font-Verdana-Large {
-    font-family: "Verdana";
-    font-size: large
-}
-
-.Font-Verdana-Small-Rusty {
-    font-family: "Verdana";
-    font-size: small;
-    color: #D5441C
-}
-
 .Font-Verdana-Small-Postgres {
     font-family: "Verdana";
     font-size: small;
     color: #336791
-}
-
-
-.Font-Verdana-Medium-LinkedIn {
-    font-family: "Verdana";
-    font-size: medium;
-    color: #0A66C2
-}
-
-.Font-Verdana-Medium-Howto {
-    font-family: "Verdana";
-    font-size: medium;
-    color: #000000
-}
-
-.Font-Verdana-Large-Howto {
-    font-family: "Verdana";
-    font-size: large;
-    color: #423333
-}
-
-.Font-Verdana-Medium-Howto-Rusty {
-    font-family: "Verdana";
-    font-size: medium;
-    color: #D5441C
-}
-
-.Font-Verdana-Large-Howto-Rusty {
-    font-family: "Verdana";
-    font-size: large;
-    color: #D5441C
-}
-
-.Font-Verdana-Larger-Howto-Rusty {
-    font-family: "Verdana";
-    font-size: larger;
-    color: #D5441C
-}
-
-.Font-Verdana-Larger-Howto-Rusty-Bold {
-    font-family: "Verdana";
-    font-size: larger;
-    color: #D5441C;
-    font-weight: bold;
-}
-
-.Font-Verdana-Larger-Howto-Postgres {
-    font-family: "Verdana";
-    font-size: larger;
-    color: #336791
-}
-
-.Font-Verdana-Large-Howto-Italic-Rusty {
-    font-family: "Verdana";
-    font-size: large;
-    font-style: italic;
-    color: #D5441C;
-}
-
-
-.Font-Verdana-Medium-Indeed {
-    font-family: "Verdana";
-    font-size: medium;
-    color: #003A9B
-}
-
-
-.Font-Verdana-Smaller_Insert {
-    font-family: "Verdana";
-    font-size: smaller;
-    color: #444342
 }
 
 .Font-Verdana-Small_Compliment_Blue {
@@ -156,15 +40,8 @@
     color: #1CADD5
 }
 
-
 .Font-Verdana-QuickAdd {
     font-family: "Verdana";
-    font-size: small;
-    color: grey
-}
-
-.Font-Segoe-QuickAdd {
-    font-family: "Segoe UI";
     font-size: small;
     color: grey
 }
@@ -175,30 +52,10 @@
     color: #336791;
 }
 
-.Font-Segoe-Medium {
-    font-family: "Segoe UI";
-    font-size: medium;
-    color: #336791;
-}
-
-.Font-Segoe-Large {
-    font-family: "Segoe UI";
-    font-size: larger;
-    color: #336791;
-}
-
 .Font-Segoe-Medium-Howto {
     font-family: "Segoe UI";
     font-size: medium;
     color: #2e2828
-}
-
-.Font-Segoe-Medium-Howto-CV {
-    font-family: "Segoe UI";
-    font-size: small;
-    color: #8f9192;
-    font-style: italic;
-    font-weight: normal;
 }
 
 .Font-Segoe-Medium-Howto-Desc {
@@ -221,22 +78,6 @@
     font-size: small;
     color: #0c0c0c;
     cursor: pointer;
-}
-
-.Font-Segoe-Large-FP {
-    font-family: "Segoe UI";
-    font-size: large;
-    color: #D5441C;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.Font-Segoe-XLarge-FP {
-    font-family: "Segoe UI";
-    font-size: x-large;
-    color: #D5441C;
-    cursor: pointer;
-    font-weight: n;
 }
 
 .Table6 {
@@ -275,33 +116,6 @@
     font-family: "Calibri";
     font-size: xx-large;
     min-width: 50%;
-    border-radius: 8px;
-}
-
-.TableCVhover {
-    border: 1px solid rgb(233, 228, 228);
-    background-color: #b3360d;
-    padding: 10px;
-    font-family: "Segoe UI";
-    font-size: 25px;
-    border-radius: 8px;
-}
-
-.TableCV th {
-    border: 1px solid rgb(233, 228, 228);
-    background-color: #f7f4f3;
-    padding: 10px;
-    font-family: "Calibri";
-    font-size: 45px;
-    border-radius: 8px;
-}
-
-.TableHowto th {
-    border: 1px solid rgb(233, 228, 228);
-    background-color: #f7f4f3;
-    padding: 10px;
-    font-family: "Calibri";
-    font-size: 35px;
     border-radius: 8px;
 }
 
@@ -371,27 +185,6 @@
     vertical-align: top;
 }
 
-.Table-home-right-cats{
-    background-color: #ffffff;
-    padding: 4px;
-    font-family: "Segoe UI";
-    font-size: small ;
-    text-align: justify;
-    font-weight: normal;
-    vertical-align: top;
-}
-
-
-.Table-howtoedit{
-    font-family: "Segoe UI";
-    font-size: larger;
-    color: #D5441C;
-    background-color: #f7f4f3;
-    border-radius: 4px;
-    border: 1px solid #336791;
-    font-weight: normal;
-}
-
 .asmshover:hover {
     font-family: "Verdana";
     font-size: small;
@@ -399,16 +192,6 @@
     border-radius: 4px;
     /* border: 1px solid #913333; */
     padding: 4px;
-}
-
-.fphover:hover {
-    font-family: "Verdana";
-    font-size: small;
-    color: #D5441C;
-    background-color: #f7f4f3;
-    border-radius: 3px;
-    border: 1px solid #336791;
-    cursor: 'pointer';
 }
 
 .fphover2:hover {
@@ -441,31 +224,11 @@
     cursor: 'pointer';
 }
 
-.searchhover:hover {
-    cursor: 'pointer';
-    font-family: "Verdana";
-    font-size: medium;
-    color: #D5441C;
-    background-color: #f7f4f3;
-    border-radius: 3px;
-    border: 1px solid #336791;
-}
-
 .mycvhover:hover {
     font-family: "Segoe UI";
     font-size: large;
     font-style: italic;
     color: #000000;
-    background-color: #f7f4f3;
-    border-radius: 4px;
-    border: 1px solid #336791;
-    padding-right: 5px;
-}
-
-.steprecordhover:hover {
-    font-family: "Segoe UI";
-    font-size: large;
-    color: #D5441C;
     background-color: #f7f4f3;
     border-radius: 4px;
     border: 1px solid #336791;
@@ -502,23 +265,7 @@
     padding: 5px 10px;
     border-radius: 4px;
   }
-  
-/* Tooltip arrow */
-.tooltip-arrow {
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 5px solid black;
-  }
-  
-  /* Tooltip content */
-  .tooltip-inner {
-    background-color: black;
-    color: white;
-    padding: 8px;
-  }
-    
+
   .footer{
     margin-top: 1rem;
     padding: 1rem;
@@ -529,13 +276,7 @@
     width: 100%;
   }
 
-.marquee-container {
-    width: 100%;
-    height: 100px; /* Adjust height as needed */
-    overflow: hidden;
-  }
-  
-  .marquee {
+.marquee {
     width: 100%;
     white-space: nowrap;
     animation: marquee 20s linear infinite;
@@ -601,35 +342,7 @@
     font-size: medium;
 }
 
-.overview-box {
-    width: 25%;
-    text-align: center;
-    color: rgb(51,103,145);
-    font-weight: bold;
-    border-radius: 5px;
-    margin-left: 1px;
-    margin-right: 1px;
-}
-
-.fit-eleven {
-    width: 9%;
-    min-width: 135px;
-    font-size: large;
-    overflow: auto;
-    white-space: nowrap;
-}
-
-.start-color {background-color: rgb(192, 192, 192, .50);}
-.wip-color {background-color: rgb(15, 158, 213, .25);}
-.done-color {background-color: rgb(0, 180, 0, .25);}
-.problem-color {background-color: rgb(190, 0, 0, .25);}
 .fill {width: 99%;}
-
-.search-input::placeholder {
-  color: #000000;        /* placeholder colour */
-  font-size: 14px;       /* placeholder font size */
-  opacity: 1;            /* prevents browser dimming */
-}
 
 .custom-datepicker-input {
   width: 120px;
