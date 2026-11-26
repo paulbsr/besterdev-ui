@@ -69,14 +69,14 @@ function MyCVEmployerRoles({ mycvdata1, employer_id1, employer_name, checkForRec
 
     function editableEmployerRole(role_id, role_desc) {
         return (
-            <div style={{ display: 'flex', float: 'right' }}>
+            <div style={{ display: 'flex', width: editing === role_id ? '100%' : undefined, justifyContent: 'flex-end' }}>
                 {
                     editing === role_id ?
                         <textarea
                             required
                             defaultValue={role_desc}
                             onChange={(e) => setRole_desc(e.target.value)}
-                            style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '80.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '9px', width: '1150px' }} />
+                            style={{ fontFamily: 'Calibri', fontSize: 'Large', height: '80.5px', border: '1.25px solid #D5441C', borderRadius: '4px', padding: 0, paddingLeft: '9px', flex: '1 1 auto', minWidth: 0 }} />
                         :
                         null
                 }

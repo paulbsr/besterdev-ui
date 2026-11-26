@@ -94,6 +94,29 @@ export default function MyCV() {
           </header>
 
           <div className="cv-grid">
+            <aside className="cv-left-column">
+              <section className="cv-panel cv-education-panel" aria-labelledby="cv-learning-title">
+                <div className="cv-panel-heading">
+                  <div>
+                    <h2 id="cv-learning-title">Life long learning</h2>
+                    <p>Postgraduate study and continuing development</p>
+                  </div>
+                </div>
+                <div className="cv-education-list">
+                  <article className="cv-education-item">
+                    <img src={TUS2} alt="Technological University of the Shannon" />
+                    <h3>MSc. Software Design (Cybersecurity)</h3>
+                    <p>Technological University of the Shannon · 2025</p>
+                  </article>
+                  <article className="cv-education-item">
+                    <img src={LYIT} alt="Letterkenny Institute of Technology" />
+                    <h3>MSc. Software Design (Cloud Native)</h3>
+                    <p>Technological University of the Shannon · 2022</p>
+                  </article>
+                </div>
+              </section>
+            </aside>
+
             <main className="cv-main-column">
               <section className="cv-panel cv-summary-panel" aria-labelledby="cv-summary-title">
                 <div className="cv-panel-heading">
@@ -113,11 +136,6 @@ export default function MyCV() {
                       ))
                   )}
                 </div>
-                <p className="cv-platform-note">
-BesterDev is a full-stack web application independently conceived, architected and developed by me, encompassing the complete software development lifecycle. The frontend is built with **React and JavaScript**, supported by a **Java / Spring Boot microservices backend** and **PostgreSQL** database. The technology stack further incorporates **Python and Scikit-learn** for machine learning and predictive analytics, **OpenAI APIs** for generative AI capabilities, **Firebase** for cloud services, **AWS S3** for object storage, **AWS Amplify** and **Heroku** for application hosting and deployment, and **Auth0** for identity and authentication management.
-
-Explore the source repositories: [Frontend UI](https://github.com/paulbsr/besterdev-ui) | [Backend API](https://github.com/paulbsr/besterdev-api).
-                </p>
               </section>
 
               <section className="cv-panel cv-accordion-panel">
@@ -236,16 +254,6 @@ Explore the source repositories: [Frontend UI](https://github.com/paulbsr/bester
                   </div>
                 </div>
                 <div className="cv-education-list">
-                  <article className="cv-education-item">
-                    <img src={TUS2} alt="Technological University of the Shannon" />
-                    <h3>MSc. Software Design (Cybersecurity)</h3>
-                    <p>Technological University of the Shannon · 2025</p>
-                  </article>
-                  <article className="cv-education-item">
-                    <img src={LYIT} alt="Letterkenny Institute of Technology" />
-                    <h3>MSc. Software Design (Cloud Native)</h3>
-                    <p>Technological University of the Shannon · 2022</p>
-                  </article>
                   <article className="cv-education-item">
                     <img src={TUS} alt="Letterkenny Institute of Technology" />
                     <h3>MSc. Cloud Computing</h3>

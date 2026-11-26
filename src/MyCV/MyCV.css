@@ -95,17 +95,30 @@
 
 .cv-grid {
   display: grid;
-  grid-template-columns: minmax(0, 2.2fr) minmax(220px, 0.65fr);
+  grid-template-columns: minmax(280px, 1fr) minmax(0, 3fr) minmax(280px, 1fr);
   align-items: start;
   gap: 18px;
 }
 
+.cv-left-column,
+.cv-sidebar {
+  position: sticky;
+  top: 20px;
+}
+
+.cv-left-column,
 .cv-main-column,
 .cv-sidebar {
   display: flex;
   min-width: 0;
   flex-direction: column;
   gap: 16px;
+}
+
+.cv-left-column .cv-panel,
+.cv-sidebar .cv-panel {
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .cv-panel {
@@ -152,36 +165,20 @@
 
 .cv-summary-copy p {
   margin: 0 0 12px;
-  color: var(--cv-accent);
+  color: var(--cv-text);
   font-size: 0.88rem;
   font-style: italic;
   line-height: 1.7;
+  text-align: center;
+  transition: color 0.15s ease;
+}
+
+.cv-summary-copy p:hover {
+  color: var(--cv-accent);
 }
 
 .cv-summary-copy p:last-child {
   margin-bottom: 0;
-}
-
-.cv-platform-note {
-  margin: 16px 0 0;
-  padding: 12px 14px;
-  border-left: 3px solid var(--cv-accent);
-  border-radius: 0 8px 8px 0;
-  background: var(--cv-bg);
-  color: var(--cv-muted);
-  font-size: 0.84rem;
-  line-height: 1.65;
-}
-
-.cv-platform-note a {
-  color: var(--cv-link);
-  text-decoration: none;
-}
-
-.cv-platform-note a:hover {
-  color: var(--cv-accent);
-  text-decoration: underline;
-  text-underline-offset: 3px;
 }
 
 .cv-accordion-panel {
@@ -288,8 +285,8 @@
 
 .cv-employer-logo {
   display: block;
-  width: 36px;
-  height: 36px;
+  width: 45px;
+  height: 45px;
   flex: 0 0 auto;
   border-radius: 6px;
   background: #fff;
@@ -387,11 +384,32 @@
 }
 
 .cv-role-details textarea {
-  width: min(100%, 700px) !important;
+  width: 100% !important;
 }
 
 .cv-role-details input {
   width: min(100%, 400px) !important;
+}
+
+.cv-edit-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.cv-role-details .cv-edit-name {
+  flex: 0 0 200px;
+  width: 200px !important;
+  min-width: 0;
+  padding: 4px 8px;
+}
+
+.cv-role-details .cv-edit-desc {
+  flex: 1 1 auto;
+  width: auto !important;
+  min-width: 0;
+  padding: 4px 8px;
 }
 
 .cv-role-details button {
@@ -474,9 +492,15 @@
   }
 
   .cv-sidebar {
+    position: static;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: start;
+  }
+
+  .cv-left-column {
+    position: static;
+    order: 3;
   }
 }
 

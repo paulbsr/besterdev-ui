@@ -57,7 +57,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding: 26px 4px 22px;
+  padding: 26px 4px 4px;
 }
 
 .home-intro h1 {
@@ -920,4 +920,34 @@ div.react-tooltip {
   color: var(--home-text);
   font-family: 'Segoe UI', sans-serif;
   cursor: pointer;
+}
+
+.home-platform-note {
+  margin: 0 0 22px;
+  color: var(--home-muted);
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.home-platform-note p {
+  margin: 0 0 10px;
+}
+
+.home-platform-note p:last-child {
+  margin-bottom: 0;
+}
+
+.home-platform-note strong {
+  color: var(--home-text);
+}
+
+.home-platform-note a {
+  color: var(--home-link);
+  text-decoration: none;
+}
+
+.home-platform-note a:hover {
+  color: var(--home-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }

@@ -272,10 +272,19 @@ export default function HomePage22(props) {
         <div>
           <p className="home-eyebrow">BESTER · KNOWLEDGE WORKSPACE</p>
           <h1>Welcome to my workspace</h1>
-          <p>Explore your tasks, curated resources, and practical guides.</p>
         </div>
         <TechStackIcons />
       </header>
+
+      <div className="home-platform-note">
+        <p>
+          BesterDev is a full-stack web application independently conceived, architected and developed by me, encompassing the complete software development lifecycle. The frontend is built with <strong>React and JavaScript</strong>, supported by a <strong>Java / Spring Boot microservices backend</strong> and <strong>PostgreSQL</strong> database. The technology stack further incorporates <strong>Python and Scikit-learn</strong> for machine learning and predictive analytics, <strong>OpenAI APIs</strong> for generative AI capabilities, <strong>Firebase</strong> for cloud services, <strong>AWS S3</strong> for object storage, <strong>AWS Amplify</strong> and <strong>Heroku</strong> for application hosting and deployment, and <strong>Auth0</strong> for identity and           authentication management.{' '}
+          Please feel free to explore the public repos:{' '}
+          <a href="https://github.com/paulbsr/besterdev-ui" target="_blank" rel="noopener noreferrer">Frontend UI</a>
+          {' | '}
+          <a href="https://github.com/paulbsr/besterdev-api" target="_blank" rel="noopener noreferrer">Backend API</a>.
+        </p>
+      </div>
 
       <div className="home-grid">
         <aside className="home-panel home-side-panel home-resources-panel" aria-labelledby="home-resources-title">
