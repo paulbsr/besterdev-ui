@@ -874,3 +874,13 @@
     border-radius: 12px;
   }
 }
+
+.home-route .home-tech-stack .icon-pill,
+.home-route[data-theme="dark"] .home-tech-stack .icon-pill {
+  background: transparent;
+  box-shadow: none;
+}
+
+div.react-tooltip {
+  font-size: 16px;
+}

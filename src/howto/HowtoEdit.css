@@ -510,6 +510,28 @@
   border-radius: 9px;
 }
 
+.howto-step-image-zoomable {
+  cursor: zoom-in;
+}
+
+.howto-image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.85);
+  cursor: zoom-out;
+  overflow: auto;
+}
+
+.howto-image-lightbox img {
+  margin: auto;
+  max-width: none;
+  max-height: none;
+  border-radius: 6px;
+}
+
 .howto-records {
   min-width: 0;
   padding: 13px;

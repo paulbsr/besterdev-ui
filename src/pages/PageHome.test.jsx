@@ -12,7 +12,7 @@ jest.mock('../websites/WebSiteAPIProvider', () => ({
 jest.mock('../howto/HowtoAPIProvider', () => ({ useHowtoApi: () => ({ howtorootdata: [] }) }));
 jest.mock('../tasks/TaskSummaryHomepage', () => () => null);
 jest.mock('../banners/BannerWhite', () => () => null);
-jest.mock('../banners/BannerLight', () => () => null);
+jest.mock('../banners/BannerLight', () => ({ __esModule: true, default: () => null, TechStackIcons: () => null }));
 jest.mock('../gradientlines/GradientLine', () => () => null);
 jest.mock('../gradientlines/GradientLineThin', () => () => null);
 jest.mock('../Footer', () => () => null);
@@ -26,7 +26,7 @@ test('keeps the homepage in dark mode without a theme switch', async () => {
   OAuth2APIClient.get.mockResolvedValue({ data: [] });
   const { container } = render(<MemoryRouter><PageHome /></MemoryRouter>);
 
-  expect(await screen.findByRole('heading', { name: 'Welcome to your workspace' })).toBeInTheDocument();
+  expect(await screen.findByRole('heading', { name: 'Welcome to my workspace' })).toBeInTheDocument();
   expect(container.querySelector('.home-route')).toHaveAttribute('data-theme', 'dark');
   expect(screen.queryByRole('button', { name: /switch to .* mode/i })).not.toBeInTheDocument();
 });

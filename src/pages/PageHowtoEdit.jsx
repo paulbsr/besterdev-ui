@@ -8,7 +8,6 @@ import ToastComponent from '../ToastComponent';
 import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
-import DutchLanguageTicker from '../dutchlanguage/DutchLanguage_Ticker';
 import Footer from '../Footer';
 import '../HomePage.css';
 import '../cyclopedia/CyclopediaManage.css';
@@ -26,8 +25,6 @@ export default function PageHowtoEdit() {
       <BreakingNews />
       <GradientLineThin />
       <CyclopediaTicker />
-      <GradientLineThin />
-      <DutchLanguageTicker />
       <GradientLineThin />
       <CombinedCreateFP className="home-quick-adds" />
       <HowtoEdit howto_id={howto_id} />

@@ -11,7 +11,6 @@ import ToastComponent from '../ToastComponent';
 import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
-import DutchLanguage_Ticker from '../dutchlanguage/DutchLanguage_Ticker';
 import '../HomePage.css';
 import '../candidates/AdminManage.css';
 
@@ -25,8 +24,6 @@ export default function PageManage() {
       <BreakingNews />
       <GradientLineThin />
       <CyclopediaTicker />
-      <GradientLineThin />
-      <DutchLanguage_Ticker />
       <GradientLineThin />
       <CombinedCreateFP className="home-quick-adds" />
       <main className="candidate-admin-content">

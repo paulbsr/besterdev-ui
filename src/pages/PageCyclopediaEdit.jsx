@@ -8,7 +8,6 @@ import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import CyclopediaEdit from '../cyclopedia/CyclopediaEdit';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
-import DutchLanguageTicker from '../dutchlanguage/DutchLanguage_Ticker';
 
 
 export default function PageCyclopediaEdit() {
@@ -24,7 +23,6 @@ export default function PageCyclopediaEdit() {
       <GradientLineThin />
       <CyclopediaTicker />
       <GradientLineThin />
-      <DutchLanguageTicker />
       <div className="cyclopedia-quick-add-divider">
         <GradientLineThin />
       </div>

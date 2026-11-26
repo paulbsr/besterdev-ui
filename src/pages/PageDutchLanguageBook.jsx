@@ -16,6 +16,7 @@ export default function PageDutchLanguageBook() {
         <BannerLight />
         <GradientLineThin />
         <DutchLanguage_Ticker />
+        <GradientLineThin />
         <CombinedCreateFP />
         <DutchLanguageMijnBoek />
         <Footer />

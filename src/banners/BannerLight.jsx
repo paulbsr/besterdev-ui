@@ -49,7 +49,7 @@ const iconStyle = (color, size) => ({
   cursor: 'pointer',
 });
 
-const navigationIconStyle = (size) => iconStyle('var(--home-link, #336791)', size);
+const navigationIconStyle = (size) => iconStyle('#FFFFFF', size);
 
 const internalLinks = [
   { tooltip: 'Home', icon: <IoHome style={navigationIconStyle(28)} />, path: '/home' },
@@ -70,24 +70,46 @@ const externalLinks = [
   { tooltip: 'OpenAI API', icon: <SiOpenai style={iconStyle('#10A37F', 31)} />, href: 'https://platform.openai.com/api-keys' },
   { tooltip: 'ReactJS', icon: <FaReact style={iconStyle('#61dafb', 35)} />, href: 'https://react.dev' },
   { tooltip: 'JavaScript', icon: <SiJavascript style={iconStyle('#F0DB4F', 32)} />, href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
-  { tooltip: 'NodeJS', icon: <FaNodeJs style={iconStyle('#336791', 35)} />, href: 'https://nodejs.org' },
+  { tooltip: 'NodeJS', icon: <FaNodeJs style={iconStyle('#8AC400', 35)} />, href: 'https://nodejs.org' },
   { tooltip: 'Java', icon: <FaJava style={iconStyle('#D5441C', 40)} />, href: 'https://www.java.com' },
-  { tooltip: 'Spring Boot', icon: <SiSpringboot style={iconStyle('#336795', 33)} />, href: 'https://spring.io/projects/spring-boot' },
+  { tooltip: 'Spring Boot', icon: <SiSpringboot style={iconStyle('#6DB33F', 33)} />, href: 'https://spring.io/projects/spring-boot' },
   { tooltip: 'PostgreSQL', icon: <BiLogoPostgresql style={iconStyle('#336795', 33)} />, href: 'https://www.postgresql.org' },
-  { tooltip: 'GitHub', icon: <BiLogoGithub style={iconStyle('#000', 33)} />, href: 'https://github.com' },
+  { tooltip: 'GitHub', icon: <BiLogoGithub style={iconStyle('#FFFFFF', 33)} />, href: 'https://github.com' },
   { tooltip: 'AWS Amplify', icon: <FaAws style={iconStyle('#ff8500', 33)} />, href: 'https://aws.amazon.com/amplify/' },
   { tooltip: 'Heroku', icon: <BiLogoHeroku style={iconStyle('#6762a6', 33)} />, href: 'https://dashboard.heroku.com/apps' },
   { tooltip: 'Google Account', icon: <BiLogoGoogle style={iconStyle('#4688F1', 33)} />, href: 'https://myaccount.google.com/' },
   { tooltip: 'Google Cloud', icon: <SiGooglecloud style={iconStyle('#4688F1', 31)} />, href: 'https://console.cloud.google.com' },
   { tooltip: 'Firebase', icon: <SiFirebase style={iconStyle('#FFCB2B', 33)} />, href: 'https://console.firebase.google.com' },
-  { tooltip: 'HashiCorp Vault', icon: <SiVault style={iconStyle('#000', 30)} />, href: 'https://portal.cloud.hashicorp.com' },
-  { tooltip: 'Auth0', icon: <SiAuth0 style={iconStyle('#000', 30)} />, href: 'https://manage.auth0.com' },
+  { tooltip: 'HashiCorp Vault', icon: <SiVault style={iconStyle('#FED81C', 30)} />, href: 'https://portal.cloud.hashicorp.com' },
+  { tooltip: 'Auth0', icon: <SiAuth0 style={iconStyle('#EB5424', 30)} />, href: 'https://manage.auth0.com' },
   { tooltip: 'Swagger', icon: <SiSwagger style={iconStyle('#85EA2D', 30)} />, href: 'https:///besterdev-api-13a0246c9cf2.herokuapp.com/swagger-ui/index.html' },
 ];
+
+const renderExternalLinks = (links) => links.map(({ tooltip, icon, href }) => (
+  <a
+    key={tooltip}
+    className="icon-pill"
+    data-tooltip-id="insert"
+    data-tooltip-content={tooltip}
+    href={href}
+    target="_blank"
+    rel="noreferrer"
+  >
+    {icon}
+  </a>
+));
+
+export const TechStackIcons = () => (
+  <div className="home-tech-stack" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'flex-end', gap: '15px' }}>
+    <span style={{ fontFamily: 'Segoe UI', color: 'var(--home-text, #336791)' }}>my tech stack</span>
+    {renderExternalLinks(externalLinks)}
+  </div>
+);
 
 const BannerLight = ({
   showBreakingNewsTopic = true,
   showInternalLinks = true,
+  showExternalLinks = true,
   alignIconsRight = false,
   showGitHubProfile = false,
 }) => {
@@ -265,21 +287,9 @@ const { refreshBreakingNews } = useBreakingNewsApi();
         </a>
       ))} */}
 
-      {externalLinks
-        .filter(({ tooltip }) => !(showGitHubProfile && tooltip === 'GitHub'))
-        .map(({ tooltip, icon, href }, idx) => (
-  <a
-    key={idx}
-    className="icon-pill"
-    data-tooltip-id="insert"
-    data-tooltip-content={tooltip}
-    href={href}
-    target="_blank"
-    rel="noreferrer"
-  >
-    {icon}
-  </a>
-))}
+      {showExternalLinks && renderExternalLinks(
+        externalLinks.filter(({ tooltip }) => !(showGitHubProfile && tooltip === 'GitHub'))
+      )}
     </div>
   );
 };

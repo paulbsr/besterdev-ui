@@ -8,7 +8,6 @@ import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import TaskEdit from '../tasks/TaskEdit';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
-import DutchLanguage_Ticker from '../dutchlanguage/DutchLanguage_Ticker';
 import '../HomePage.css';
 import '../tasks/TaskEdit.css';
 
@@ -26,8 +25,6 @@ export default function PageTaskEdit() {
         <BreakingNews />
         <GradientLineThin />
         <CyclopediaTicker />
-        <GradientLineThin />
-        <DutchLanguage_Ticker />
         <GradientLineThin />
         <CombinedCreateFP className="home-quick-adds" />
         <TaskEdit task_id={task_id}/>

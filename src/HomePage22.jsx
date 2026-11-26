@@ -8,6 +8,7 @@ import { useWebsiteApi } from './websites/WebSiteAPIProvider';
 import { useHowtoApi } from './howto/HowtoAPIProvider';
 import { useNavigate } from 'react-router-dom';
 import OAuth2APIClient from './oauth2/OAuth2APIClient';
+import { TechStackIcons } from './banners/BannerLight';
 import './HomePage.css';
 
 export default function HomePage22(props) {
@@ -228,9 +229,10 @@ export default function HomePage22(props) {
       <header className="home-intro">
         <div>
           <p className="home-eyebrow">BESTER · KNOWLEDGE WORKSPACE</p>
-          <h1>Welcome to your workspace</h1>
+          <h1>Welcome to my workspace</h1>
           <p>Explore your tasks, curated resources, and practical guides.</p>
         </div>
+        <TechStackIcons />
       </header>
 
       <div className="home-grid">

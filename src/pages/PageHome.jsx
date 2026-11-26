@@ -8,20 +8,17 @@ import ToastComponent from '../ToastComponent';
 import BreakingNews from '../breakingnews/BreakingNews';
 import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
-import DutchLanguage_Ticker from "../dutchlanguage/DutchLanguage_Ticker";
 
 export default function PageHome() {
   return (
       <div className="home-route" data-theme="dark">
         <BannerWhite />
         <GradientLine />
-        <BannerLight />
+        <BannerLight showExternalLinks={false} />
         <GradientLineThin />
         <BreakingNews />
         <GradientLineThin />
         <CyclopediaTicker />
-        <GradientLineThin />
-        <DutchLanguage_Ticker />
         <GradientLineThin />
         <CombinedCreateFP className="home-quick-adds" />
         <HomePage22 />

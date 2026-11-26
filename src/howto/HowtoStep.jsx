@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Tooltip } from '@mui/material';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { GiCheckMark } from 'react-icons/gi';
@@ -22,6 +22,14 @@ export default function HowtoStep({
 }) {
   const [isExpanded, setExpanded] = useState(false);
   const [editing, setEditing] = useState(false);
+  const [imageOpen, setImageOpen] = useState(false);
+
+  useEffect(() => {
+    if (!imageOpen) return undefined;
+    const onKeyDown = (event) => { if (event.key === 'Escape') setImageOpen(false); };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [imageOpen]);
   const [stepnumber, setStepNumber] = useState(step_number);
   const [stepname, setName] = useState(step_name);
   const [stepurl, setStepURL] = useState(step_url);
@@ -142,11 +150,27 @@ export default function HowtoStep({
               {step_obj && <p className="howto-step-objective">{step_obj}</p>}
               {step_image && (
                 <img
-                  className="howto-step-image"
+                  className="howto-step-image howto-step-image-zoomable"
                   src={`data:image/jpeg;base64,${step_image}`}
                   alt={`Illustration for step ${step_number}: ${step_name}`}
+                  title="Click to view full size"
+                  onClick={() => setImageOpen(true)}
                 />
               )}
+            </div>
+          )}
+          {imageOpen && step_image && (
+            <div
+              className="howto-image-lightbox"
+              role="dialog"
+              aria-modal="true"
+              aria-label={`Full size image for step ${step_number}`}
+              onClick={() => setImageOpen(false)}
+            >
+              <img
+                src={`data:image/jpeg;base64,${step_image}`}
+                alt={`Full size illustration for step ${step_number}: ${step_name}`}
+              />
             </div>
           )}
           <HowtoStepRecordAccordion

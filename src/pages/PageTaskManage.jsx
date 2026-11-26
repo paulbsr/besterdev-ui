@@ -10,7 +10,6 @@ import CyclopediaTicker from '../cyclopedia/CyclopediaTicker';
 import TaskOverview from '../tasks/TaskOverview';
 import { TaskContext } from "../Contexts";
 import CombinedCreateFP from '../quicks/CombinedCreateFP';
-import DutchLanguage_Ticker from '../dutchlanguage/DutchLanguage_Ticker';
 import OAuth2APIClient from '../oauth2/OAuth2APIClient';
 import '../HomePage.css';
 import '../tasks/TaskManage.css';
@@ -53,8 +52,6 @@ export default function PageTaskManage() {
       <BreakingNews />
       <GradientLineThin />
       <CyclopediaTicker />
-      <GradientLineThin />
-      <DutchLanguage_Ticker />
       <GradientLineThin />
       <CombinedCreateFP className="home-quick-adds" />
       <TaskContext.Provider value={tasks}>
