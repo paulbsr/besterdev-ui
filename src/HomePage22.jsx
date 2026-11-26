@@ -1,4 +1,4 @@
-import { useState, useEffect, Fragment } from 'react'
+import { useState, useEffect, useRef, Fragment } from 'react'
 import { Tooltip } from 'react-tooltip'
 import './Fonts.css';
 import 'react-dropdown/style.css';
@@ -9,16 +9,62 @@ import { useHowtoApi } from './howto/HowtoAPIProvider';
 import { useNavigate } from 'react-router-dom';
 import OAuth2APIClient from './oauth2/OAuth2APIClient';
 import { TechStackIcons } from './banners/BannerLight';
+import { GitHubCalendar } from 'react-github-calendar';
 import './HomePage.css';
 
+const WEEKS_SHOWN = 53;
+const BLOCK_MARGIN = 2;
+const LABEL_ALLOWANCE = 36;
+const FIRST_CONTRIBUTION_YEAR = 2020;
+
+// Sizes the contribution blocks so the whole year fits the container width.
+function GitHubContributions({ username, year }) {
+  const containerRef = useRef(null);
+  const [blockSize, setBlockSize] = useState(8);
+
+  useEffect(() => {
+    const element = containerRef.current;
+    if (!element || typeof ResizeObserver === 'undefined') return undefined;
+    const update = () => {
+      const available = element.clientWidth - LABEL_ALLOWANCE;
+      const size = Math.floor(available / WEEKS_SHOWN) - BLOCK_MARGIN;
+      setBlockSize(Math.max(4, Math.min(12, size)));
+    };
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section ref={containerRef} className="home-github-contributions" aria-label="GitHub contributions">
+      <GitHubCalendar
+        username={username}
+        year={year}
+        colorScheme="dark"
+        blockSize={blockSize}
+        blockMargin={BLOCK_MARGIN}
+        fontSize={11}
+      />
+    </section>
+  );
+}
 export default function HomePage22(props) {
   const [isExpanded, setExpanded] = useState(false);
+  const [contributionYear, setContributionYear] = useState('last');
+  const currentYear = new Date().getFullYear();
+  const contributionYears = Array.from(
+    { length: currentYear - FIRST_CONTRIBUTION_YEAR + 1 },
+    (_, index) => currentYear - index
+  );
   const toggleAccordion = () => { setExpanded(!isExpanded); };
   const [showHowtoEdit, setShowHowtoEdit] = useState(false);
   const [howtoIdd, setHowtoIdd] = useState(null);
   const { websiterootdata, loading, error } = useWebsiteApi(); //gebruik van die nuwe useContext :-)
   const { howtorootdata } = useHowtoApi(); //gebruik van die nuwe useContext :-)
   const [fourtyRandomRecords, setFourtyRandomRecords] = useState([]);
+  const randomLetter = fourtyRandomRecords.find((record) => record?.cyclopediaName)
+    ?.cyclopediaName.trim().charAt(0).toUpperCase();
   const navigate = useNavigate();
 
 
@@ -130,10 +176,6 @@ export default function HomePage22(props) {
   const InnerTableCentre = () => {
     return (
       <div className="home-overview-sections">
-        <section className="home-overview-card" aria-label="Tasks">
-          <TaskSummaryHomepage />
-        </section>
-
         <section className="home-overview-card" aria-label="Cyclopedia">
           <div className="home-overview-cyclopedia-list">
             <table className="Table-home-centre">
@@ -240,27 +282,59 @@ export default function HomePage22(props) {
           <div className="home-panel-heading">
             <div>
               <h2 id="home-resources-title">Web resources</h2>
-              <p>Curated links by topic</p>
             </div>
           </div>
           <InnerTableLeft />
         </aside>
 
+        <div className="home-centre-column">
+        <section className="home-panel home-github-panel" aria-labelledby="home-github-title">
+          <div className="home-panel-heading home-github-heading">
+            <div>
+              <h2 id="home-github-title">GitHub contributions</h2>
+            </div>
+            <select
+              className="home-github-year-select"
+              aria-label="Contribution year"
+              value={contributionYear}
+              onChange={(event) => {
+                const { value } = event.target;
+                setContributionYear(value === 'last' ? 'last' : Number(value));
+              }}
+            >
+              <option value="last">Last 12 months</option>
+              {contributionYears.map((year) => (
+                <option key={year} value={year}>{year}</option>
+              ))}
+            </select>
+          </div>
+          <GitHubContributions username="paulbsr" year={contributionYear} />
+        </section>
+
+        <section className="home-panel home-tasks-panel" aria-labelledby="home-tasks-title">
+          <div className="home-panel-heading">
+            <div>
+              <h2 id="home-tasks-title">Tasks</h2>
+            </div>
+          </div>
+          <TaskSummaryHomepage />
+        </section>
+
         <main className="home-panel home-main-panel" aria-labelledby="home-overview-title">
           <div className="home-panel-heading">
             <div>
-              <h2 id="home-overview-title">Your overview</h2>
-              <p>Tasks, learning, and ideas in one place</p>
+              <h2 id="home-overview-title">Cyclopedia</h2>
+              {randomLetter && <p>Randomly selected Letter "{randomLetter}"</p>}
             </div>
           </div>
           <InnerTableCentre />
         </main>
+        </div>
 
         <aside className="home-panel home-side-panel home-guides-panel" aria-labelledby="home-guides-title">
           <div className="home-panel-heading">
             <div>
               <h2 id="home-guides-title">How-to guides</h2>
-              <p>Browse practical walkthroughs</p>
             </div>
           </div>
           <InnerTableRight />

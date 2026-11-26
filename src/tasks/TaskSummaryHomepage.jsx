@@ -66,7 +66,7 @@ const TaskSummaryHomepage = (props) => {
                       textAlign: 'left', 
                       borderBottom: '1px solid #ddd', 
                       cursor: 'pointer',
-                      color: category === "PROBLEM" ? '#C65F5F' : (category === "WIP" ? '#6F8FAB' : (category === "DONE" ? '#169247' : (category === "START" ? '#4A4A4A' : 'inherit')))
+                      color: category === "PROBLEM" ? '#C65F5F' : (category === "WIP" ? '#4A9EFF' : (category === "DONE" ? '#1FB35A' : (category === "START" ? '#9AA4B2' : 'inherit')))
                     }} 
                     className="Table-home-left-heading"
                     onClick={() => toggleSection(category)}>
@@ -81,7 +81,7 @@ const TaskSummaryHomepage = (props) => {
                        rel="noopener noreferrer" 
                        data-tooltip-id="task-tooltip" 
                        data-tooltip-content={getMostRecentTaskRecord(record.tasks)}
-                       style={{ color: category === "PROBLEM" ? '#C65F5F' : (category === "WIP" ? '#6F8FAB' : (category === "START" ? '#4A4A4A' : (category === "DONE" ? '#169247' : 'inherit'))) }}>
+                       style={{ color: category === "PROBLEM" ? '#C65F5F' : (category === "WIP" ? '#4A9EFF' : (category === "START" ? '#9AA4B2' : (category === "DONE" ? '#1FB35A' : 'inherit'))) }}>
                       {record.taskname}
                     </a>
                   </td>

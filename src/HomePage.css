@@ -884,3 +884,40 @@
 div.react-tooltip {
   font-size: 16px;
 }
+
+.home-github-contributions {
+  display: flex;
+  justify-content: center;
+  padding: 0 0 18px;
+  color: var(--home-text, #e6ebf2);
+}
+
+.home-github-contributions {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.home-centre-column {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+
+.home-github-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.home-github-year-select {
+  height: 30px;
+  padding: 0 8px;
+  border: 1px solid var(--home-border);
+  border-radius: 6px;
+  background: var(--home-surface);
+  color: var(--home-text);
+  font-family: 'Segoe UI', sans-serif;
+  cursor: pointer;
+}

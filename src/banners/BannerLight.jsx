@@ -10,7 +10,7 @@ import {
   FaJava,
   FaNodeJs,
   FaPeopleArrows,
-  FaFileContract,
+  FaUserTie,
   FaLinkedin,
 } from 'react-icons/fa';
 import {
@@ -59,7 +59,7 @@ const internalLinks = [
   { tooltip: 'People Scorecard', icon: <BsPeopleFill style={navigationIconStyle(32)} />, path: '/peoplescorecard' },
   { tooltip: 'Tasks', icon: <MdTask style={navigationIconStyle(30)} />, path: '/taskmanage' },
   { tooltip: 'Diffie-Hellman Key Exchange', icon: <GiHouseKeys style={navigationIconStyle(32)} />, path: '/dhkeyexchange' },
-  { tooltip: 'MyCV', icon: <FaFileContract style={navigationIconStyle(26)} />, path: '/mycv' },
+  { tooltip: 'MyCV', icon: <FaUserTie style={navigationIconStyle(26)} />, path: '/mycv' },
   { tooltip: 'Candidate Hunt', icon: <FaPeopleArrows style={navigationIconStyle(30)} />, path: '/hunt' },
   { tooltip: 'Candidates', icon: <MdManageAccounts style={navigationIconStyle(35)} />, path: '/candidatemanage' },
   { tooltip: 'Dutch Language', icon: <GiWindmill style={iconStyle('#FF4F00', 32)} />, path: '/dutchlanguage' },
