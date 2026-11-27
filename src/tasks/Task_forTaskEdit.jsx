@@ -26,8 +26,6 @@ export default function Task_forTaskEdit({
     taskUrl
 }) {
     
-    const [isExpanded, setExpanded] = useState(false);
-    const toggleAccordion = () => {setExpanded(!isExpanded);};
     const [editing, setEditing] = useState(false);
     const [requirement, setRequirement] = useState(null);
     const [taskurl, setTaskurl] = useState(null);
@@ -108,9 +106,7 @@ export default function Task_forTaskEdit({
                             <textarea required defaultValue={taskname} onChange={(e) => setName(e.target.value)} rows={2} />
                         </label>
                     ) : (
-                        <button className="task-editor-expand" type="button" aria-expanded={isExpanded} onClick={toggleAccordion}>
-                            <span>{taskname}</span><span aria-hidden="true">{isExpanded ? '−' : '+'}</span>
-                        </button>
+                        <h2 className="task-editor-task-name">{taskname}</h2>
                     )}
                 </div>
                 <div className="task-editor-actions">
@@ -126,7 +122,7 @@ export default function Task_forTaskEdit({
                                 <button className="task-editor-action task-editor-action-secondary" type="button" onClick={onEditCancel}><BsArrowCounterclockwise aria-hidden="true" /> Cancel</button>
                             </Tooltip>
                         </>
-                    ) : isExpanded && taskstatus !== "DONE" ? (
+                    ) : taskstatus !== "DONE" ? (
                         <Tooltip title={`Edit Task: ${id}`} placement="top-end" describeChild>
                             <button className="task-editor-action" type="button" onClick={handleEdit}>Edit task</button>
                         </Tooltip>
@@ -134,7 +130,6 @@ export default function Task_forTaskEdit({
                 </div>
             </div>
 
-            {isExpanded && (
                 <div className="task-editor-content">
                     <div className="task-editor-field">
                         <span>Requirement</span>
@@ -161,7 +156,6 @@ export default function Task_forTaskEdit({
                         />
                     </div>
                 </div>
-            )}
         </div>
     );
 }

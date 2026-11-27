@@ -179,7 +179,7 @@ export default function CombinedCreateFP({ className = '' }) {
 
   const TASK_MODULES = [
     { id: "188118", handle: "BesterDev User Stories", label: "BesterDev User Story" },
-    // { id: "171593", handle: "Dutch Language", label: "Dutch NT2" },
+    { id: "113092", handle: "Random Tasks", label: "Random Tasks" },
     // { id: "168272", handle: "Dissertation", label: "Dissertation" },
   ];
 
@@ -439,7 +439,7 @@ export default function CombinedCreateFP({ className = '' }) {
 
             <input
               placeholder="Task Description"
-              style={{ ...inputStyle, width: '170px', marginRight: '10px' }}
+              style={{ ...inputStyle, width: '570px', marginRight: '10px' }}
               value={task.requirement}
               onChange={(e) =>
                 setTask((p) => ({
@@ -451,7 +451,7 @@ export default function CombinedCreateFP({ className = '' }) {
 
 
             <select
-              style={{ ...inputStyle, width: '139px', marginRight: '10px', height: '32.5px', padding: "6px 14px" }}
+              style={{ ...inputStyle, width: '139px', marginRight: '10px', height: '29.5px', padding: "6px 14px" }}
               value={task.moduleId}
               onChange={(e) => {
                 const mod = TASK_MODULES.find(

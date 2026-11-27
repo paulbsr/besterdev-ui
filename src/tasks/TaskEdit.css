@@ -134,26 +134,14 @@
 .task-editor-status-problem { color: #f29b9b; }
 .task-editor-status-done { color: #87cf8a; }
 
-.task-editor-expand {
-  display: flex;
-  width: 100%;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
+.task-editor-task-name {
+  margin: 0;
   padding: 0;
-  border: 0;
-  background: transparent;
   color: var(--home-text, #e6ebf2);
   font: inherit;
   font-size: 18px;
   font-weight: 650;
-  text-align: left;
-  cursor: pointer;
-}
-
-.task-editor-expand span:last-child {
-  color: var(--home-accent, #ff855f);
-  font-size: 22px;
+  overflow-wrap: anywhere;
 }
 
 .task-editor-actions {

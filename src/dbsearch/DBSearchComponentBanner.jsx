@@ -11,6 +11,7 @@ import { GiFiles } from "react-icons/gi";
 import { MdTask } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import '../Fonts.css';
+import './DBSearchComponentBanner.css';
 
 
 const DBSearchComponentBanner = ({ includeAI = false, actions }) => {
@@ -214,7 +215,7 @@ const DBSearchComponentBanner = ({ includeAI = false, actions }) => {
                   ) : (
                     <div className="Font-Segoe-Small-Howto">
                       <a onClick={() => navigate(`/cyclopediaedit/${result.cyclopediaId}`)}>&nbsp;&nbsp;&nbsp;
-                        <GiGiftOfKnowledge style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
+                        <GiGiftOfKnowledge className="dbsearch-result-icon" style={{ fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                         <b>{highlightKeyword(result.cyclopediaName, searchQuery)}: </b>
                         {highlightKeyword(result.cyclopediaDesc, searchQuery)}
                         &nbsp;&nbsp;&nbsp;
@@ -227,7 +228,7 @@ const DBSearchComponentBanner = ({ includeAI = false, actions }) => {
               return (
                 <div className="dbsearchhoverbanner" key={result.id}>
                   <div className="Font-Segoe-Small-Howto">&nbsp;&nbsp;&nbsp;
-                    <TbWorldWww style={{ color: '#336791', fontSize: '23px', cursor: 'pointer' }} />&nbsp;
+                    <TbWorldWww className="dbsearch-result-icon" style={{ fontSize: '23px', cursor: 'pointer' }} />&nbsp;
                     <a href={result.website_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.website_desc}>
                       <b>{highlightKeyword(result.website_name, searchQuery)}</b>
                     </a>
@@ -239,7 +240,7 @@ const DBSearchComponentBanner = ({ includeAI = false, actions }) => {
               return (
                 <div className="dbsearchhoverbanner" key={result.id}>
                   <div className="Font-Segoe-Small-Howto">&nbsp;&nbsp;&nbsp;
-                    <SiWritedotas style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
+                    <SiWritedotas className="dbsearch-result-icon" style={{ fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                     <a href={result.news_url} target="_blank" rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.news_source}>
                       {highlightKeyword(result.news_title, searchQuery)}
                     </a>
@@ -251,7 +252,7 @@ const DBSearchComponentBanner = ({ includeAI = false, actions }) => {
               return (
                 <div className="dbsearchhoverbanner" key={result.id}>
                   <div className="Font-Segoe-Small-Howto">&nbsp;&nbsp;&nbsp;
-                    <MdTask style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
+                    <MdTask className="dbsearch-result-icon" style={{ fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                     <a href={`/taskedit/${result.id}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={`TaskID#${result.id}`}>
                       <b>{highlightKeyword(result.taskname, searchQuery)}</b>
                     </a>
@@ -262,9 +263,9 @@ const DBSearchComponentBanner = ({ includeAI = false, actions }) => {
               return (
                 <div className="dbsearchhoverbanner" key={result.id}>
                   <div className="Font-Segoe-Small-Howto">&nbsp;&nbsp;&nbsp;
-                    <MdTask style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />
+                    <MdTask className="dbsearch-result-icon" style={{ fontSize: '21px', cursor: 'pointer' }} />
                     <a href={`/taskedit/${result.parentid}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={`TaskID#${result.parentid}`}>
-                      <GiFiles style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
+                      <GiFiles className="dbsearch-result-icon" style={{ fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                       {highlightKeyword(result.childrecord, searchQuery)}
                     </a>
                   </div>
@@ -274,7 +275,7 @@ const DBSearchComponentBanner = ({ includeAI = false, actions }) => {
               return (
                 <div className="dbsearchhoverbanner" key={result.id}>
                   <div className="Font-Segoe-Small-Howto">&nbsp;&nbsp;&nbsp;
-                    <BsPatchQuestion style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
+                    <BsPatchQuestion className="dbsearch-result-icon" style={{ fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                     <a href={`/howtoedit/${result.howto_id}`} rel="noopener noreferrer" data-tooltip-id="insert" data-tooltip-content={result.howto_summary}>
                       <b>{highlightKeyword(result.howto_name, searchQuery)}</b>
                     </a>
@@ -285,8 +286,8 @@ const DBSearchComponentBanner = ({ includeAI = false, actions }) => {
               return (
                 <div className="dbsearchhoverbanner" key={result.id}>
                   <div className="Font-Segoe-Small-Howto">&nbsp;&nbsp;&nbsp;
-                    <BsPatchQuestion style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />
-                    <IoFootstepsSharp style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
+                    <BsPatchQuestion className="dbsearch-result-icon" style={{ fontSize: '21px', cursor: 'pointer' }} />
+                    <IoFootstepsSharp className="dbsearch-result-icon" style={{ fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                     <b>{highlightKeyword(result.step_name, searchQuery)}</b> which has a Step Objective to: <i>" {result.step_obj} " </i>
                   </div>
                 </div>
@@ -295,9 +296,9 @@ const DBSearchComponentBanner = ({ includeAI = false, actions }) => {
               return (
                 <div className="dbsearchhoverbanner" key={result.id}>
                   <div className="Font-Segoe-Small-Howto">&nbsp;&nbsp;&nbsp;
-                    <BsPatchQuestion style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />
-                    <IoFootstepsSharp style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />
-                    <GiFiles style={{ color: '#336791', fontSize: '21px', cursor: 'pointer' }} />&nbsp;
+                    <BsPatchQuestion className="dbsearch-result-icon" style={{ fontSize: '21px', cursor: 'pointer' }} />
+                    <IoFootstepsSharp className="dbsearch-result-icon" style={{ fontSize: '21px', cursor: 'pointer' }} />
+                    <GiFiles className="dbsearch-result-icon" style={{ fontSize: '21px', cursor: 'pointer' }} />&nbsp;
                     {highlightKeyword(result.steprecord, searchQuery)}
                   </div>
                 </div>

@@ -1,4 +1,6 @@
 .task-overview-page {
+  --task-issue-color: #e97878;
+  --task-start-color: #c1c3c6;
   box-sizing: border-box;
   width: 100%;
   max-width: 1600px;
@@ -295,7 +297,7 @@
 }
 
 .task-selected-status.task-status-start {
-  color: #c1c3c6;
+  color: var(--task-start-color);
 }
 
 .task-selected-status.task-status-wip {
@@ -303,7 +305,7 @@
 }
 
 .task-selected-status.task-status-problem {
-  color: #e97878;
+  color: var(--task-issue-color);
 }
 
 .task-selected-status.task-status-done {
@@ -318,6 +320,7 @@
 
 .task-selected-item {
   --task-done-text: #87cf8a;
+  --task-problem-text: var(--task-issue-color);
   --task-start-text: #9aa4b2;
   --task-wip-text: #a8c9ec;
   min-width: 0;
@@ -352,7 +355,7 @@
   display: inline-block;
   margin-left: 10px;
   color: var(--home-link, #a8c9ec);
-  font-size: 8pt;
+  font-size: 7pt;
   font-weight: 400;
   text-decoration: none;
 }

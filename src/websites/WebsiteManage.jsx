@@ -95,7 +95,7 @@ function WebsiteManage() {
           <span className="cyclopedia-manage-title-icon" aria-hidden="true"><GiSpiderWeb /></span>
           <div>
             <p className="cyclopedia-eyebrow">RESOURCE LIBRARY</p>
-            <h1>Web resource management</h1>
+            <h1>Web Resource Management</h1>
             <p className="cyclopedia-header-description">Curate tools, websites, and books.</p>
           </div>
         </div>

@@ -8,7 +8,7 @@ import TaskEdit from './TaskEdit';
 jest.mock('../oauth2/OAuth2APIClient', () => ({ get: jest.fn(), put: jest.fn() }));
 jest.mock('./TaskRecordAccordion_forTaskEdit', () => () => <div>Task progress</div>);
 
-test('displays the task and preserves expanding and inline editing', async () => {
+test('displays task details immediately and preserves inline editing', async () => {
   OAuth2APIClient.get.mockResolvedValue({
     data: {
       id: 42,
@@ -22,17 +22,15 @@ test('displays the task and preserves expanding and inline editing', async () =>
   });
   render(<MemoryRouter><TaskEdit task_id="42" /></MemoryRouter>);
 
-  const task = await screen.findByRole('button', { name: 'Update documentation' });
-  expect(task).toHaveAttribute('aria-expanded', 'false');
-  fireEvent.click(task);
-  expect(task).toHaveAttribute('aria-expanded', 'true');
+  expect(await screen.findByRole('heading', { name: 'Update documentation' })).toBeInTheDocument();
+  expect(screen.queryByRole('button', { name: 'Update documentation' })).not.toBeInTheDocument();
   expect(screen.getByText('Describe the feature')).toBeInTheDocument();
   expect(screen.getByText('Task progress')).toBeInTheDocument();
   fireEvent.click(screen.getByRole('button', { name: 'Edit task' }));
   expect(screen.getByLabelText('Task name')).toHaveValue('Update documentation');
   expect(screen.getByLabelText('Requirement')).toHaveValue('Describe the feature');
   fireEvent.click(screen.getByRole('button', { name: 'Cancel' }));
-  expect(screen.getByRole('button', { name: 'Update documentation' })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: 'Update documentation' })).toBeInTheDocument();
 
   OAuth2APIClient.put.mockResolvedValue({ status: 202 });
   fireEvent.click(screen.getByRole('button', { name: 'Edit task' }));

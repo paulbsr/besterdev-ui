@@ -290,20 +290,40 @@
   font-size: 12px;
 }
 
+.people-count-done {
+  border-color: rgba(135, 207, 138, 0.432);
+  background: rgba(135, 207, 138, 0.2592);
+}
+
 .people-count-done strong {
-  color: #a8e3aa;
+  color: #87cf8a;
+}
+
+.people-count-problem {
+  border-color: rgba(233, 120, 120, 0.432);
+  background: rgba(233, 120, 120, 0.2592);
 }
 
 .people-count-problem strong {
-  color: #f78888;
+  color: #e97878;
+}
+
+.people-count-wip {
+  border-color: rgba(124, 159, 219, 0.432);
+  background: rgba(124, 159, 219, 0.288);
 }
 
 .people-count-wip strong {
-  color: #a8bded;
+  color: #7c9fdb;
+}
+
+.people-count-start {
+  border-color: rgba(193, 195, 198, 0.3168);
+  background: rgba(193, 195, 198, 0.2016);
 }
 
 .people-count-start strong {
-  color: #cfcfcf;
+  color: #c1c3c6;
 }
 
 .people-create-card,
@@ -415,8 +435,8 @@
 
 .people-create-form-actions .people-button {
   box-sizing: border-box;
-  height: 27.5px;
-  min-height: 27.5px;
+  height: 38px;
+  min-height: 38px;
   padding: 0 12px;
 }
 

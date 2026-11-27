@@ -2,32 +2,53 @@ import { useState } from "react";
 import { GiHummingbird } from "react-icons/gi";
 import { toast } from "react-toastify";
 import OAuth2APIClient from "../oauth2/OAuth2APIClient";
+import { CyclopediaImageUpload, uploadCyclopediaImage } from "./CyclopediaImageUpload";
 
 export default function CyclopediaCreate({ onCreated }) {
   const [isExpanded, setExpanded] = useState(false);
   const [cyclopediaName, setCyclopediaName] = useState("");
   const [cyclopediaDescription, setCyclopediaDescription] = useState("");
   const [cyclopediaUrl, setCyclopediaUrl] = useState("");
+  const [cyclopediaImage, setCyclopediaImage] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    setIsSubmitting(true);
     try {
-      await OAuth2APIClient.post("/api/v1/cyclopedia/create", {
+      const response = await OAuth2APIClient.post("/api/v1/cyclopedia/create", {
         cyclopediaName,
         cyclopediaDesc: cyclopediaDescription,
         cyclopediaUrl,
       });
 
-      toast.success(`${cyclopediaName} added to the Cyclopedia.`);
+      const createdId = response.data?.cyclopediaId ?? response.data?.id;
+      if (cyclopediaImage && createdId) {
+        try {
+          await uploadCyclopediaImage(cyclopediaImage, createdId, cyclopediaName);
+          toast.success(`${cyclopediaName} added to the Cyclopedia with an image.`);
+        } catch (imageError) {
+          console.error("Cyclopedia entry created, but image upload failed:", imageError);
+          toast.warning(`${cyclopediaName} was added, but its image could not be uploaded.`);
+        }
+      } else if (cyclopediaImage) {
+        toast.warning(`${cyclopediaName} was added, but the API did not return its ID for image upload.`);
+      } else {
+        toast.success(`${cyclopediaName} added to the Cyclopedia.`);
+      }
+
       setCyclopediaName("");
       setCyclopediaDescription("");
       setCyclopediaUrl("");
+      setCyclopediaImage(null);
       setExpanded(false);
       await onCreated?.();
     } catch (error) {
       console.error("Failed to add Cyclopedia entry:", error);
       toast.error("Failed to add Cyclopedia entry.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -59,7 +80,7 @@ export default function CyclopediaCreate({ onCreated }) {
           onSubmit={handleSubmit}
         >
           <label className="cyclopedia-form-field">
-            <span>Entry name <span aria-hidden="true">*</span></span>
+            <span>Cyclopedia Entry Name <span aria-hidden="true">*</span></span>
             <input
               className="cyclopedia-form-input"
               placeholder="What is it?"
@@ -93,14 +114,20 @@ export default function CyclopediaCreate({ onCreated }) {
             />
           </label>
 
+          <div className="cyclopedia-form-field cyclopedia-form-field-wide">
+            <span>Image <span className="cyclopedia-form-optional">(optional)</span></span>
+            <CyclopediaImageUpload onImageSelected={setCyclopediaImage} />
+          </div>
+
           <div className="cyclopedia-create-form-actions cyclopedia-form-field-wide">
-            <button className="cyclopedia-button cyclopedia-button-primary" type="submit">
-              Add entry
+            <button className="cyclopedia-button cyclopedia-button-primary" type="submit" disabled={isSubmitting}>
+              {isSubmitting ? "Adding..." : "Add entry"}
             </button>
             <button
               className="cyclopedia-button cyclopedia-button-secondary"
               type="button"
               onClick={() => setExpanded(false)}
+              disabled={isSubmitting}
             >
               Cancel
             </button>

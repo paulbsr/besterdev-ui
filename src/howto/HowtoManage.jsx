@@ -96,7 +96,7 @@ export default function HowtoManage() {
           </span>
           <div>
             <p className="cyclopedia-eyebrow">HOW-TO LIBRARY</p>
-            <h1>Howto management</h1>
+            <h1>HOWTO Management</h1>
             <p className="cyclopedia-header-description">
               Create and maintain practical guides and instructions.
             </p>

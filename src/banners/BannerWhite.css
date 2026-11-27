@@ -1,0 +1,26 @@
+.banner-white-with-avatar {
+  position: relative;
+}
+
+.banner-white-with-avatar .home-banner-content {
+  padding-right: 80px;
+}
+
+.banner-white-avatar {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  width: 56px;
+  height: 56px;
+  border: 2px solid var(--home-accent, #d5441c);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+@media (max-width: 1200px) {
+  .banner-white-with-avatar .banner-white-brand-end,
+  .banner-white-with-avatar .banner-white-tagline-end {
+    margin-right: 12px !important;
+  }
+}

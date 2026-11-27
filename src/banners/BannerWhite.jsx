@@ -17,11 +17,14 @@ import { TbLetterN } from "react-icons/tb";
 import { TbLetterP } from "react-icons/tb";
 import { TbLetterY } from "react-icons/tb";
 import { Link } from 'react-router-dom';
+import bannerAvatar from './banner-avatar.jpeg';
+import './BannerWhite.css';
 
 const BannerWhite = () => {
   return (
-    <div className="banner-white">
+    <div className="banner-white banner-white-with-avatar">
       <div>&nbsp;</div>
+      <img className="banner-white-avatar" src={bannerAvatar} alt="Hooded hacker avatar" />
       <div className="home-banner-content">
 
       <Link to="/home" className="home-brand-mark" aria-label="Home" data-tooltip-id="insert" data-tooltip-content="Home">
@@ -36,7 +39,7 @@ const BannerWhite = () => {
       <TbLetterR className="home-banner-bester-letter home-banner-name-letter" style={{color: '#336791', fontSize: '40px' }}/>
       <TbLetterD className="home-banner-brand-letter" style={{color: '#D5441C', fontSize: '40px' }}/>
       <TbLetterE className="home-banner-brand-letter" style={{color: '#D5441C', fontSize: '40px' }}/>
-      <TbLetterV className="home-banner-brand-letter" style={{color: '#D5441C', fontSize: '40px', marginRight: "400px" }}/>
+      <TbLetterV className="home-banner-brand-letter banner-white-brand-end" style={{color: '#D5441C', fontSize: '40px', marginRight: "400px" }}/>
 
       < TbLetterC className="home-banner-brand-letter" style={{color: '#D5441C', fontSize: '9px' }}/>
       < TbLetterO className="home-banner-bester-letter" style={{color: '#336791', fontSize: '10px' }}/>
@@ -69,7 +72,7 @@ const BannerWhite = () => {
       < TbLetterR className="home-banner-bester-letter" style={{color: '#336791', fontSize: '12px' }}/>
       < TbLetterO className="home-banner-bester-letter" style={{color: '#336791', fontSize: '11px' }}/>
       < TbLetterP className="home-banner-bester-letter" style={{color: '#336791', fontSize: '10px' }}/>
-      < TbLetterY className="home-banner-bester-letter" style={{color: '#336791', fontSize: '9px', marginRight: "300px" }}/>
+      < TbLetterY className="home-banner-bester-letter banner-white-tagline-end" style={{color: '#336791', fontSize: '9px', marginRight: "300px" }}/>
       </div>
     </div>
   );

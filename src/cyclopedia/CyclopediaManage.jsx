@@ -106,7 +106,7 @@ function CyclopediaManage() {
           </span>
           <div>
             <p className="cyclopedia-eyebrow">KNOWLEDGE LIBRARY</p>
-            <h1>Cyclopedia management</h1>
+            <h1>Cyclopedia Management</h1>
             <p className="cyclopedia-header-description">
               Curate definitions, concepts, and reference links.
             </p>
@@ -124,7 +124,7 @@ function CyclopediaManage() {
         <div className="cyclopedia-toolbar">
           <div>
             <h2 id="cyclopedia-entries-title">Your entries</h2>
-            <p>Search and manage your knowledge library.</p>
+            <p>Search and manage the knowledge library.</p>
           </div>
           <label className="cyclopedia-search">
             <span className="cyclopedia-visually-hidden">Search entries</span>

@@ -6,28 +6,42 @@ import { Tooltip } from '@mui/material';
 import { useCyclopediaApi } from './CyclopediaAPIProvider';
 import { CiCamera } from "react-icons/ci";
 
+export async function uploadCyclopediaImage(imageFile, cyclopediaId, cyclopediaName) {
+    const formData = new FormData();
+    formData.append('cyclopediaImageData', imageFile);
+    formData.append('cyclopediaIdFk', cyclopediaId);
+    formData.append('cyclopediaName', cyclopediaName);
+    formData.append('cyclopediaId', cyclopediaId);
+
+    return OAuth2APIClient.post(
+        'https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopediaimages/upload',
+        formData,
+        { headers: { 'Content-Type': 'multipart/form-data' } }
+    );
+}
+
 export function CyclopediaImageUpload(props) {
     const [image, setImage] = React.useState([]);
-    const { cyclopediarootdata, loading, error, setRefreshCyclopediarootdata } = useCyclopediaApi();
+    const { reload } = useCyclopediaApi();
     const maxNumber = 1;
 
     const onImageSave = async (imageList, addUpdateIndex) => {
         setImage(imageList);
-        const formData = new FormData();
-        formData.append('cyclopediaImageData', imageList[0].file); // Assuming you only allow one image to be uploaded
-        formData.append('cyclopediaIdFk', props.cyclopedia_id);
-        formData.append('cyclopediaName', props.cyclopedia_name);
-        formData.append('cyclopediaId', props.cyclopedia_id);
+        const imageFile = imageList[0]?.file;
+        if (props.onImageSelected) {
+            props.onImageSelected(imageFile || null);
+            return;
+        }
 
         try {
-            const response = await OAuth2APIClient.post(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/cyclopediaimages/upload`, formData, { //HEROKU
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
-            if (response.status === 200) {
+            const response = await uploadCyclopediaImage(
+                imageFile,
+                props.cyclopedia_id,
+                props.cyclopedia_name
+            );
+            if (response.status >= 200 && response.status < 300) {
                 toast.success(`Image saved`);
-                setRefreshCyclopediarootdata(prev => !prev);  // Assuming setRefresh triggers a data refetch
+                await reload();
             } else {
                 toast.error('An error occurred while saving the image.');
             }

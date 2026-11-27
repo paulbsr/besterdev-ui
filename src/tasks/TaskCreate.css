@@ -102,6 +102,7 @@
   color: var(--home-text, #e6ebf2);
   font: inherit;
   font-size: 13px;
+  font-weight: normal;
 }
 
 .task-create-field select {

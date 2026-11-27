@@ -55,6 +55,19 @@ test('displays BesterDev results for a query containing regex characters', async
   expect(await screen.findByText('C++')).toBeInTheDocument();
 });
 
+test('marks icons in BesterDev search results for theme-accent styling', async () => {
+  OAuth2APIClient.get.mockResolvedValue({
+    data: [{ id: 1, cyclopediaId: 1, cyclopediaName: 'Orange entry', cyclopediaDesc: 'Description' }],
+  });
+  const { container } = renderSearch();
+
+  fireEvent.change(screen.getByLabelText('Search query'), { target: { value: 'Orange' } });
+  fireEvent.click(screen.getByRole('button', { name: 'Search' }));
+
+  await screen.findByText('Orange');
+  expect(container.querySelector('.dbsearch-result-icon')).toBeInTheDocument();
+});
+
 test('ignores a pending response after clearing', async () => {
   let resolveSearch;
   OAuth2APIClient.get.mockReturnValue(new Promise((resolve) => { resolveSearch = resolve; }));
