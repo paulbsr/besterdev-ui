@@ -12,7 +12,7 @@ import "./TaskOverview.css";
 
 const projectNameMap = {
   188118: "BesterDev User Stories",
-  113092: "Available",
+  113092: "Random Tasks",
   14718: "Available",
   181268: "Available",
   171593: "Available",
@@ -26,7 +26,7 @@ const projectNameMap = {
 
 const projectAsmsMap = {
   "BesterDev User Stories": "188118",
-  // Available: "113092",
+  "Random Tasks": "113092",
   // Available: "14718",
   // Available: "181268",
   // Available: "171593",

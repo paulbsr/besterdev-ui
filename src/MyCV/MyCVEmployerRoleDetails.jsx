@@ -46,15 +46,18 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
     }
 
 
-    const onEditDelete = (roledetail_id) => {
-        OAuth2APIClient.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/howtosteprecord/delete/${roledetail_id}`)
-            .then((response) => 
-            {
-                window.alert('Are you sure you want to delete');
-                setCheckForRecords(!checkForRecords);
-                toast.success(`${roledetail_id} purged.`)
-            }
-            )
+    const onEditDelete = async (roledetail_id) => {
+        if (!window.confirm('Are you sure you want to delete this role detail?')) return;
+
+        try {
+            await OAuth2APIClient.delete(`https://besterdev-api-13a0246c9cf2.herokuapp.com/api/v1/role_detail/delete/${roledetail_id}`);
+            setCheckForRecords((value) => !value);
+            toast.success(`${roledetail_id} purged.`);
+            onEditCancel();
+        } catch (error) {
+            console.error('Failed to delete role detail:', error);
+            toast.error('Unable to delete this role detail.');
+        }
     };
 
     function editableEmployerRoleDetails(roledetail_id, roledetail_name, roledetail_desc, checkForRecords, setCheckForRecords) {
@@ -64,7 +67,7 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
                     <div style={{ flex: '1 1 auto', minWidth: 0 }}>
                         {editing === roledetail_id ?
                             <div className="cv-edit-row">
-                                <GiCheckMark style={{ color: '#336791', display: 'round', margin: 'auto', fontSize: '10px' }} />
+                                <GiCheckMark style={{ color: 'var(--cv-accent)', display: 'round', margin: 'auto', fontSize: '10px' }} />
                                 <input
                                     required
                                     defaultValue={roledetail_name}
@@ -79,7 +82,7 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
                             :
                             <div className="mycvhover">
                                 &nbsp;
-                                <GiCheckMark style={{ color: '#336791', display: 'round', margin: 'auto', fontSize: '10px' }} />
+                                <GiCheckMark style={{ color: 'var(--cv-accent)', display: 'round', margin: 'auto', fontSize: '10px' }} />
                                 &nbsp;&nbsp;
                                 {roledetail_name}&nbsp; - &nbsp;{roledetail_desc}
                             </div>
@@ -93,14 +96,14 @@ function MyCVEmployerRoleDetails({ mycvdata2, employer_id2, role_id2, role_idd, 
                                     <>&nbsp;&nbsp;
                                         <Tooltip title='Commit' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditSave(roledetail_id)}><GiCheckMark style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
                                         <Tooltip title='Discard' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditCancel()}><PiArrowCounterClockwiseBold style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
-                                        <Tooltip title='Purge' placement="top-end"><button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditDelete(roledetail_id)}>< FaRegTrashAlt style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
+                                        <Tooltip title='Purge' placement="top-end"><button aria-label="Purge role detail" style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', outline: 'none', cursor: 'pointer' }} type='button' onClick={() => onEditDelete(roledetail_id)}>< FaRegTrashAlt style={{ color: '#D5441C', display: 'round', margin: 'auto', fontSize: '15px' }} /></button></Tooltip>
                                     </>
                                 )
                                 :
                                 (
                                     <Tooltip title='Edit Role Detail' placement="top-end">&nbsp;&nbsp;
-                                        <button style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(roledetail_id, roledetail_name, roledetail_desc) }}>
-                                            <BsPencil style={{ color: '#DDDDDD', display: 'round', margin: 'auto', fontSize: '15px' }} /></button>
+                                        <button className="cv-edit-button" aria-label="Edit role detail" style={{ height: '20px', width: '20px', padding: 0, border: 'none', borderRadius: '3px', backgroundColor: 'white', cursor: 'pointer' }} type='button' onClick={() => { handleEdit(roledetail_id, roledetail_name, roledetail_desc) }}>
+                                            <BsPencil style={{ display: 'round', margin: 'auto', fontSize: '15px' }} /></button>
                                     </Tooltip>
                                 )
                             }

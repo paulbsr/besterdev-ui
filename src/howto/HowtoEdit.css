@@ -365,6 +365,11 @@
   background: #101725;
 }
 
+.howto-step-card.is-expanded,
+.howto-create-panel.is-expanded {
+  border-color: var(--home-accent, #ff855f);
+}
+
 .howto-step-header {
   display: flex;
   align-items: center;

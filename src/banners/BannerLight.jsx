@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Tooltip } from 'react-tooltip';
 import '../Fonts.css';
 import 'react-tooltip/dist/react-tooltip.css';
 import { useBreakingNewsApi } from '../breakingnews/BreakingNewsApiContext';
@@ -89,7 +90,7 @@ const renderExternalLinks = (links) => links.map(({ tooltip, icon, href }) => (
   <a
     key={tooltip}
     className="icon-pill"
-    data-tooltip-id="insert"
+    data-tooltip-id="banner-light-tooltip"
     data-tooltip-content={tooltip}
     href={href}
     target="_blank"
@@ -177,6 +178,11 @@ const { refreshBreakingNews } = useBreakingNewsApi();
         gap: '15px',
       }}
     >
+      <Tooltip
+        id="banner-light-tooltip"
+        border="1px solid var(--home-accent, #D5441C)"
+        style={{ fontWeight: 700 }}
+      />
       {showBreakingNewsTopic && <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>&nbsp;&nbsp;
         <GiRapidshareArrow style={iconStyle('#336791', 28)} />
         <span style={{ fontFamily: 'Segoe UI', color: 'var(--home-text, #336791)' }}>
@@ -262,7 +268,7 @@ const { refreshBreakingNews } = useBreakingNewsApi();
   <div
     key={idx}
     className="icon-pill"
-    data-tooltip-id="insert"
+    data-tooltip-id="banner-light-tooltip"
     data-tooltip-content={tooltip}
     onClick={() => navigate(path)}
     role="button"

@@ -546,11 +546,6 @@
   margin-top: 0;
 }
 
-.home-overview-cyclopedia-list .fphover2:hover {
-  font-family: inherit;
-  font-size: inherit;
-}
-
 .home-page .Table-home-left-heading,
 .home-page .Table-home-right-heading {
   padding: 10px 0 7px;
@@ -583,6 +578,10 @@
 
 .home-page .Table-home-centre .home-centre-topic {
   color: var(--home-text);
+}
+
+.home-page .home-overview-cyclopedia-list a {
+  transition: color 0.15s ease;
 }
 
 .home-page .Table-home-left a:hover,

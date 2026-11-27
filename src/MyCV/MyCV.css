@@ -1,3 +1,8 @@
+.cv-page-route,
+.cv-page-route * {
+  cursor: pointer;
+}
+
 .cv-route {
   --cv-bg: #f5f6f8;
   --cv-surface: #ffffff;
@@ -170,10 +175,29 @@
   font-style: italic;
   line-height: 1.7;
   text-align: center;
+}
+
+.cv-summary-copy p,
+.cv-expertise-list li,
+.cv-career-panel .cv-panel-heading h2,
+.cv-career-panel .cv-panel-heading p,
+.cv-employer-heading h3,
+.cv-employer-heading span,
+.cv-employer-description,
+.cv-role-toggle span,
+.cv-route .mycvhover {
   transition: color 0.15s ease;
 }
 
-.cv-summary-copy p:hover {
+.cv-summary-copy p:hover,
+.cv-expertise-list li:hover,
+.cv-career-panel .cv-panel-heading h2:hover,
+.cv-career-panel .cv-panel-heading p:hover,
+.cv-employer-heading h3:hover,
+.cv-employer-heading span:hover,
+.cv-employer-description:hover,
+.cv-role-toggle span:hover,
+.cv-route .mycvhover:hover {
   color: var(--cv-accent);
 }
 
@@ -183,6 +207,43 @@
 
 .cv-accordion-panel {
   padding: 0 20px;
+}
+
+@property --cv-expertise-border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.cv-expertise-panel {
+  position: relative;
+}
+
+.cv-expertise-panel::after {
+  position: absolute;
+  inset: -1px;
+  padding: 2px;
+  border-radius: inherit;
+  background: conic-gradient(from var(--cv-expertise-border-angle), transparent 0deg 300deg, var(--cv-accent) 335deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  content: "";
+  animation: cv-expertise-border-orbit 12s linear infinite;
+}
+
+@keyframes cv-expertise-border-orbit {
+  to {
+    --cv-expertise-border-angle: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-expertise-panel::after {
+    animation: none;
+  }
 }
 
 .cv-section-toggle {
@@ -218,11 +279,14 @@
 .cv-expertise-list,
 .cv-highlight-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 10px 16px;
   margin: 0;
   padding: 0 0 18px;
   list-style: none;
+}
+
+.cv-expertise-list {
+  grid-template-columns: repeat(auto-fit, minmax(max(210px, calc((100% - 32px) / 3)), 1fr));
 }
 
 .cv-highlight-list {
@@ -356,18 +420,6 @@
   overflow-wrap: anywhere;
 }
 
-.cv-route .mycvhover:hover {
-  border-color: var(--cv-border);
-  background: var(--cv-surface);
-  color: var(--cv-accent);
-  font-family: inherit;
-  font-size: inherit;
-}
-
-.cv-route .mycvhover:hover svg {
-  color: var(--cv-accent) !important;
-}
-
 .cv-role-details input,
 .cv-role-details textarea {
   box-sizing: border-box;
@@ -410,6 +462,15 @@
 
 .cv-role-details button {
   background: transparent !important;
+}
+
+.cv-role-details .cv-edit-button svg {
+  color: #ddd;
+  transition: color 0.15s ease;
+}
+
+.cv-role-details .cv-edit-button:hover svg {
+  color: var(--cv-accent);
 }
 
 .cv-education-list {

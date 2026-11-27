@@ -7,15 +7,15 @@ import { toast } from "react-toastify";
 import "./TaskCreate.css";
 
 const modules = [
-  { asms: "188118", projectHandle: "UserStory", label: "BesterDev User Story" },
-  { asms: "113092", projectHandle: "NetworkSecurity", label: "Network Security" },
-  { asms: "14718", projectHandle: "EnterpriseSecurity", label: "Enterprise Security" },
-  { asms: "181268", projectHandle: "ComputerCloudSecurity", label: "Computer Cloud Security" },
-  { asms: "171593", projectHandle: "DutchLanguage", label: "Dutch Language Staatsexamen NT2" },
-  { asms: "188660", projectHandle: "StaatsexamenNT2_Lezen", label: "Staatsexamen NT2 - Lezen" },
-  { asms: "190860", projectHandle: "StaatsexamenNT2_Luisteren", label: "Staatsexamen NT2 - Luisteren" },
-  { asms: "191076", projectHandle: "StaatsexamenNT2_Schrijven", label: "Staatsexamen NT2 - Schrijven" },
-  { asms: "221193", projectHandle: "StaatsexamenNT2_Spreken", label: "Staatsexamen NT2 - Spreken" },
+  { asms: "188118", projectHandle: "BesterDev User Stories", label: "BesterDev User Story" },
+  { asms: "113092", projectHandle: "Random Tasks", label: "Random Tasks" },
+  // { asms: "14718", projectHandle: "EnterpriseSecurity", label: "Enterprise Security" },
+  // { asms: "181268", projectHandle: "ComputerCloudSecurity", label: "Computer Cloud Security" },
+  // { asms: "171593", projectHandle: "DutchLanguage", label: "Dutch Language Staatsexamen NT2" },
+  // { asms: "188660", projectHandle: "StaatsexamenNT2_Lezen", label: "Staatsexamen NT2 - Lezen" },
+  // { asms: "190860", projectHandle: "StaatsexamenNT2_Luisteren", label: "Staatsexamen NT2 - Luisteren" },
+  // { asms: "191076", projectHandle: "StaatsexamenNT2_Schrijven", label: "Staatsexamen NT2 - Schrijven" },
+  // { asms: "221193", projectHandle: "StaatsexamenNT2_Spreken", label: "Staatsexamen NT2 - Spreken" },
 ];
 
 export default function TaskCreate({ setCheckForRecords }) {
@@ -100,9 +100,9 @@ export default function TaskCreate({ setCheckForRecords }) {
           onSubmit={handleSubmit}
         >
           <label className="task-create-field">
-            <span>Module</span>
+            <span>Project</span>
             <select value={asms} onChange={handleModuleChange} required>
-              <option value="" disabled>Select a module</option>
+              <option value="" disabled>Select Project</option>
               {modules.map((module) => (
                 <option
                   key={module.asms}

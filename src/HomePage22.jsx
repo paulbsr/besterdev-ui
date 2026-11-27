@@ -182,7 +182,7 @@ export default function HomePage22(props) {
             <tbody>
               {fourtyRandomRecords.map((rowc, index) => (
                 <tr key={index}>
-                  <td className="fphover2">
+                  <td>
                     {rowc && (
                       <div style={{ cursor: 'pointer' }}>
                         <a onClick={() => navigate(`/cyclopediaedit/${rowc.cyclopediaId}`)}>

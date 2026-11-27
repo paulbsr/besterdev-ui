@@ -38,7 +38,7 @@ function SectionHeading({ icon, children, expanded, onClick, id }) {
 
 export default function MyCV() {
   const [checkForRecords, setCheckForRecords] = useState(true);
-  const [isExpandedExpertise, setExpandedExpertise] = useState(false);
+  const [isExpandedExpertise, setExpandedExpertise] = useState(true);
   const [isExpandedHighlights, setExpandedHighlights] = useState(false);
   const [isExpandedTestimonials, setExpandedTestimonials] = useState(false);
   const [mycvdata, setMycvdata] = useState([]);
@@ -138,7 +138,7 @@ export default function MyCV() {
                 </div>
               </section>
 
-              <section className="cv-panel cv-accordion-panel">
+              <section className="cv-panel cv-accordion-panel cv-expertise-panel">
                 <SectionHeading
                   icon={<GiSkills aria-hidden="true" />}
                   expanded={isExpandedExpertise}

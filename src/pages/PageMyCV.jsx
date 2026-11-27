@@ -8,7 +8,7 @@ import '../HomePage.css';
 
 export default function PageMyCV() {
     return (
-      <div className="home-route" data-theme="dark">
+      <div className="home-route cv-page-route" data-theme="dark">
         <BannerWhite />
         <GradientLine />
         <BannerLight

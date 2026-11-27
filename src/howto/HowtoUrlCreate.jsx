@@ -41,7 +41,7 @@ export default function HowtoUrlCreate({
   };
 
   return (
-    <section className="howto-create-panel">
+    <section className={`howto-create-panel${isExpanded ? ' is-expanded' : ''}`}>
       <button
         className="howto-create-toggle"
         type="button"
